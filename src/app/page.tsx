@@ -27,7 +27,7 @@ function gridPath(lvl: number) {
 }
 const scoreColor = (s: number) => s >= 7 ? '#34d399' : s >= 4 ? '#fbbf24' : '#f87171';
 
-function HeroRadar({ steps, caption }: { steps: Array<{ label: string }>; caption?: string }) {
+function HeroRadar({ steps, caption }: { steps: ReadonlyArray<{ label: string }>; caption?: string }) {
   const [scores, setScores] = useState(INITIAL_SCORES);
 
   useEffect(() => {
