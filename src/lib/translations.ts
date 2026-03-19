@@ -107,9 +107,10 @@ export const translations = {
     },
     skillBuilder: {
       label: "Skills Developer", h2a: "Development reports built", h2b: "around your exact profile",
-      p1: "Every development report in the Skills Developer is a highly personal 5-page PDF — built on your assessment results, your handicap, and your performance benchmarked against comparable golfer profiles. Enriched by insights from predictive analytics, machine learning, and AI across the full methodology and the data of 1,000+ profiles.",
-      p2: "Each report targets one or more of your 40+ (Standard) or 70+ (Deluxe) measured elements. Inside: exercises typically taking 10–15 minutes, expert tips, reflections, nudges, mantras, storytelling, and AI prompts with follow-up questions for self-improvement and self-coaching.",
-      p3: "Two types of development report: Basic (10 credits) and Extended (15 credits). Credit bundles available from $6.99 per 10 credits. Standard includes 60 credits, Deluxe includes 120 — start developing immediately after your assessment.",
+      p1: "Every Skills Developer report is a highly personal 5-page PDF — built on your assessment results, benchmarked against comparable golfer profiles, and enriched by AI on data from 1,000+ profiles.",
+      p2: "Each report targets one specific element — to improve a low score or build on a strength. Every report contains:",
+      p2items: ["Physical exercise", "Mental exercise", "Expert insight", "Reflection", "Storytelling", "Mantra", "AI prompts"],
+      p3: "Bundles from $6.99 per 10 credits. Standard includes 60 credits — Deluxe includes 120.",
       cta: "Explore the Skills Developer →", cardNote: "Hover to reveal your pattern",
     },
     testimonials: {
@@ -263,9 +264,10 @@ export const translations = {
     },
     skillBuilder: {
       label: "Skills Developer", h2a: "Ontwikkelrapporten op maat", h2b: "van jouw exacte profiel",
-      p1: "Elk ontwikkelrapport in de Skills Developer is een sterk persoonlijk PDF van 5 pagina's — opgebouwd vanuit jouw assessmentresultaten, jouw handicap en jouw prestaties gebenchmarkt tegen vergelijkbare golferprofielen. Verrijkt door inzichten uit predictive analytics, machine learning en AI op de volledige methodiek en de data van 1.000+ profielen.",
-      p2: "Elk rapport richt zich op één of meer van jouw 40+ (Standaard) of 70+ (Deluxe) gemeten elementen. Erin: oefeningen van doorgaans 10–15 minuten, expert tips, reflecties, nudges, mantra's, storytelling en AI-prompts met doorvraagprompts voor zelfverbetering en zelfcoaching.",
-      p3: "Twee typen ontwikkelrapporten: Basic (10 credits) en Extended (15 credits). Creditbundles verkrijgbaar vanaf $6,99 per 10 credits. Standaard bevat 60 credits, Deluxe 120 — start direct na jouw assessment met ontwikkelen.",
+      p1: "Elk Skills Developer rapport is een sterk persoonlijk PDF van 5 pagina's — opgebouwd vanuit jouw assessmentresultaten, gebenchmarkt tegen vergelijkbare profielen en verrijkt door AI op data van 1.000+ golfers.",
+      p2: "Elk rapport richt zich op één specifiek element — om een lage score te verbeteren of een sterkte verder te ontwikkelen. Elk rapport bevat:",
+      p2items: ["Fysieke oefening", "Mentale oefening", "Expert inzicht", "Reflectie", "Storytelling", "Mantra", "AI-prompts"],
+      p3: "Bundels vanaf $6,99 per 10 credits. Standaard bevat 60 credits — Deluxe bevat 120.",
       cta: "Ontdek de Skills Developer →", cardNote: "Beweeg je muis om je patroon te onthullen",
     },
     testimonials: {
@@ -418,9 +420,10 @@ export const translations = {
     },
     skillBuilder: {
       label: "Skills Developer", h2a: "Entwicklungsberichte, die auf", h2b: "dein genaues Profil zugeschnitten sind",
-      p1: "Jeder Entwicklungsbericht im Skills Developer ist ein hochpersönliches 5-seitiges PDF — aufgebaut auf deinen Assessment-Ergebnissen, deinem Handicap und deiner Leistung im Vergleich mit ähnlichen Golferprofilen. Angereichert durch Erkenntnisse aus Predictive Analytics, Machine Learning und KI auf Basis der Methodik und der Daten von 1.000+ Profilen.",
-      p2: "Jeder Bericht zielt auf eines oder mehrere deiner 40+ (Standard) oder 70+ (Deluxe) gemessenen Elemente ab. Inhalt: Übungen von typischerweise 10–15 Minuten, Expertentipps, Reflexionen, Nudges, Mantras, Storytelling und KI-Prompts mit Folgefragen für Selbstverbesserung und Selbst-Coaching.",
-      p3: "Zwei Berichtstypen: Basic (10 Credits) und Extended (15 Credits). Credit-Bundles ab $6,99 für 10 Credits. Standard enthält 60 Credits, Deluxe 120 — starte direkt nach deinem Assessment mit der Entwicklung.",
+      p1: "Jeder Skills Developer-Bericht ist ein hochpersönliches 5-seitiges PDF — aufgebaut auf deinen Ergebnissen, verglichen mit ähnlichen Golferprofilen und angereichert durch KI auf Daten von 1.000+ Profilen.",
+      p2: "Jeder Bericht zielt auf ein spezifisches Element ab — um eine schwache Stelle zu verbessern oder eine Stärke weiter auszubauen. Jeder Bericht enthält:",
+      p2items: ["Physische Übung", "Mentale Übung", "Experteneinblick", "Reflexion", "Storytelling", "Mantra", "KI-Prompts"],
+      p3: "Bundles ab $6,99 pro 10 Credits. Standard enthält 60 Credits — Deluxe enthält 120.",
       cta: "Den Skills Developer entdecken →", cardNote: "Bewege die Maus, um dein Muster zu enthüllen",
     },
     testimonials: {
@@ -573,9 +576,10 @@ export const translations = {
     },
     skillBuilder: {
       label: "Skills Developer", h2a: "Des rapports de développement", h2b: "adaptés à votre profil exact",
-      p1: "Chaque rapport de développement du Skills Developer est un PDF hautement personnel de 5 pages — construit sur vos résultats d'évaluation, votre handicap et vos performances comparées à des profils similaires. Enrichi par des insights en analytics prédictif, machine learning et IA sur la méthodologie complète et les données de 1 000+ profils.",
-      p2: "Chaque rapport cible un ou plusieurs de vos 40+ (Standard) ou 70+ (Deluxe) éléments mesurés. Au programme : exercices de 10–15 minutes, conseils d'experts, réflexions, nudges, mantras, storytelling et prompts IA avec questions de relance pour l'auto-amélioration et l'auto-coaching.",
-      p3: "Deux types de rapport : Basic (10 crédits) et Extended (15 crédits). Forfaits de crédits disponibles à partir de $6,99 pour 10 crédits. Standard inclut 60 crédits, Deluxe 120 — commencez à vous développer immédiatement après votre évaluation.",
+      p1: "Chaque rapport du Skills Developer est un PDF hautement personnel de 5 pages — construit sur vos résultats, comparé à des profils similaires et enrichi par l'IA sur les données de 1 000+ profils.",
+      p2: "Chaque rapport cible un élément spécifique — pour améliorer un score faible ou renforcer un point fort. Chaque rapport contient :",
+      p2items: ["Exercice physique", "Exercice mental", "Insight expert", "Réflexion", "Storytelling", "Mantra", "Prompts IA"],
+      p3: "Forfaits dès $6,99 pour 10 crédits. Standard inclut 60 crédits — Deluxe inclut 120.",
       cta: "Explorer le Skills Developer →", cardNote: "Survolez pour révéler votre schéma",
     },
     testimonials: {
@@ -728,9 +732,10 @@ export const translations = {
     },
     skillBuilder: {
       label: "Skills Developer", h2a: "Informes de desarrollo", h2b: "adaptados a tu perfil exacto",
-      p1: "Cada informe de desarrollo del Skills Developer es un PDF altamente personal de 5 páginas — construido sobre tus resultados de evaluación, tu hándicap y tu rendimiento comparado con perfiles similares. Enriquecido con insights de analítica predictiva, machine learning e IA sobre la metodología completa y los datos de 1.000+ perfiles.",
-      p2: "Cada informe se dirige a uno o más de tus 40+ (Estándar) o 70+ (Deluxe) elementos medidos. Contenido: ejercicios de 10–15 minutos, consejos de expertos, reflexiones, nudges, mantras, storytelling y prompts de IA con preguntas de seguimiento para la autosuperación y el autocoaching.",
-      p3: "Dos tipos de informe: Basic (10 créditos) y Extended (15 créditos). Paquetes de créditos disponibles desde $6,99 por 10 créditos. Estándar incluye 60 créditos, Deluxe 120 — comienza a desarrollarte inmediatamente tras tu evaluación.",
+      p1: "Cada informe del Skills Developer es un PDF altamente personal de 5 páginas — construido sobre tus resultados, comparado con perfiles similares y enriquecido por IA sobre datos de 1.000+ perfiles.",
+      p2: "Cada informe se dirige a un elemento específico — para mejorar una puntuación baja o potenciar una fortaleza. Cada informe contiene:",
+      p2items: ["Ejercicio físico", "Ejercicio mental", "Insight experto", "Reflexión", "Storytelling", "Mantra", "Prompts de IA"],
+      p3: "Paquetes desde $6,99 por 10 créditos. Estándar incluye 60 créditos — Deluxe incluye 120.",
       cta: "Explorar el Skills Developer →", cardNote: "Pasa el ratón para revelar tu patrón",
     },
     testimonials: {

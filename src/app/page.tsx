@@ -513,9 +513,36 @@ function PageContent() {
                 {T.skillBuilder.h2a}<br /><em>{T.skillBuilder.h2b}</em>
               </h2>
               <div className="w-12 h-0.5 bg-amber-500 mb-6" />
-              <p className="text-stone-600 leading-relaxed mb-4">{T.skillBuilder.p1}</p>
-              <p className="text-stone-600 leading-relaxed mb-4">{T.skillBuilder.p2}</p>
-              <p className="text-stone-600 leading-relaxed mb-8">{T.skillBuilder.p3}</p>
+              <p className="text-stone-600 leading-relaxed mb-5">{T.skillBuilder.p1}</p>
+              <p className="text-stone-600 leading-relaxed mb-3">{T.skillBuilder.p2}</p>
+              {"p2items" in T.skillBuilder && Array.isArray(T.skillBuilder.p2items) && (
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {(T.skillBuilder.p2items as string[]).map((item, k) => {
+                    const chipColors = [
+                      "bg-amber-100 text-amber-800 border-amber-200",
+                      "bg-sky-100 text-sky-800 border-sky-200",
+                      "bg-green-100 text-green-800 border-green-200",
+                      "bg-rose-100 text-rose-800 border-rose-200",
+                      "bg-violet-100 text-violet-800 border-violet-200",
+                      "bg-purple-100 text-purple-800 border-purple-200",
+                      "bg-blue-100 text-blue-800 border-blue-200",
+                    ];
+                    return (
+                      <span key={k} className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border ${chipColors[k % chipColors.length]}`}>
+                        <span className="w-1 h-1 rounded-full bg-current opacity-60" />
+                        {item}
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
+              <div className="flex items-center gap-3 mb-8 p-3.5 rounded-xl bg-green-950/[0.05] border border-green-900/10">
+                <div className="flex gap-2">
+                  <span className="px-2.5 py-1 rounded-lg bg-white border border-green-900/10 text-xs font-semibold text-green-900 shadow-sm">{T.pricing.plans[0].plan} · 60 credits</span>
+                  <span className="px-2.5 py-1 rounded-lg bg-green-950 text-xs font-semibold text-amber-300 shadow-sm">{T.pricing.plans[1].plan} · 120 credits</span>
+                </div>
+                <span className="text-xs text-stone-400">from $6.99 / 10</span>
+              </div>
               <a href="https://mentalroutine.com/shop" className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
                 {T.skillBuilder.cta}
               </a>
