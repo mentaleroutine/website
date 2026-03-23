@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="De meest complete mentale golf-analyse. Mental Routine Assessment Deluxe — 140 credits, uitgebreid rapport én persoonlijk actieplan. $129 eenmalig.">
+  <title>Mental Routine Assessment Deluxe — $129</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --charcoal:#0e1512;--charcoal-mid:#161e1a;
+      --forest:#1B3A2D;--forest-mid:#254D3A;--fairway:#3D7A5A;
+      --cream:#F7F3EC;--cream-dark:#EDE8DF;
+      --gold:#B8952A;--gold-light:#D4AF50;--gold-pale:#F0DCAA;
+      --red-soft:#C0392B;
+      --text-dark:#1A2E22;--text-body:#3A4A3E;--text-muted:#6B7A6E;
+      --font-d:'Cormorant Garamond',Georgia,serif;
+      --font-b:'DM Sans',system-ui,sans-serif;
+      --font-s:'Bebas Neue',sans-serif;
+      --r:4px;--rm:10px;--rl:18px;
+      --sh:0 2px 12px rgba(27,58,45,.09);--shm:0 8px 36px rgba(27,58,45,.15);--shl:0 24px 64px rgba(27,58,45,.22);
+      --t:.35s cubic-bezier(.4,0,.2,1);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-b);color:var(--text-body);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased}
+    h1,h2,h3{font-family:var(--font-d);color:var(--text-dark);line-height:1.1;letter-spacing:-.01em}
+    h1{font-size:clamp(2.8rem,6vw,5.2rem);font-weight:600}
+    h2{font-size:clamp(2rem,3.8vw,3.4rem);font-weight:600}
+    h3{font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:500}
+    p{line-height:1.75}
+    .container{max-width:1120px;margin:0 auto;padding:0 1.5rem}
+    .container-sm{max-width:720px;margin:0 auto;padding:0 1.5rem}
+    .text-gold{color:var(--gold)}
+    .section-label{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.9rem 2.2rem;border-radius:var(--r);font-family:var(--font-b);font-size:.82rem;font-weight:700;text-decoration:none;cursor:pointer;border:none;transition:var(--t);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
+    .btn-gold{background:var(--gold);color:var(--forest);box-shadow:0 4px 24px rgba(184,149,42,.4)}
+    .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 40px rgba(184,149,42,.52)}
+    .btn-gold:active{transform:translateY(0)}
+    .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+    .faq-q:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    .btn-lg{padding:1.2rem 3rem;font-size:.9rem}
+    .btn-xl{padding:1.35rem 3.6rem;font-size:.95rem;letter-spacing:.09em}
+
+    /* REVEAL ON SCROLL */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+    /* REDUCED MOTION */
+    @media(prefers-reduced-motion:reduce){
+      .reveal{opacity:1;transform:none;transition:none}
+      .feat-card,.tcard{transition:none}
+      html{scroll-behavior:auto}
+    }
+
+    /* TOP GOLD LINE */
+    .top-line{height:3px;background:linear-gradient(90deg,transparent 0%,var(--gold) 30%,var(--gold-light) 60%,transparent 100%)}
+
+    /* STICKY HEADER */
+    .site-header{
+      position:sticky;top:0;z-index:200;
+      background:rgba(27,58,45,.97);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(184,149,42,.2);
+      padding:.75rem 0;
+    }
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-family:var(--font-d);font-size:1.35rem;font-weight:600;color:var(--cream);text-decoration:none;letter-spacing:.02em;flex-shrink:0}
+    .logo span{color:var(--gold)}
+    .header-mid{display:none;flex-direction:column;align-items:center;line-height:1.2}
+    .header-mid-name{font-family:var(--font-b);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,243,236,.5)}
+    .header-mid-price{font-family:var(--font-s);font-size:1.55rem;color:var(--gold);line-height:1}
+    @media(min-width:600px){.header-mid{display:flex}}
+
+    /* MOBILE STICKY BOTTOM BAR */
+    .mobile-bottom{
+      position:fixed;bottom:0;left:0;right:0;z-index:200;
+      background:var(--forest);border-top:2px solid rgba(184,149,42,.3);
+      padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+    }
+    .mobile-bottom-price{display:flex;flex-direction:column;flex-shrink:0}
+    .mobile-bottom-was{font-size:.65rem;color:rgba(247,243,236,.35);text-decoration:line-through}
+    .mobile-bottom-now{font-family:var(--font-s);font-size:1.6rem;color:var(--gold);line-height:1}
+    .mobile-bottom .btn{flex:1;text-align:center;padding:.85rem 1rem}
+    @media(min-width:600px){.mobile-bottom{display:none}}
+    @media(max-width:599px){.site-header .btn{display:none}body{padding-bottom:72px}}
+
+    /* HERO */
+    .hero{
+      position:relative;background:var(--charcoal);overflow:hidden;
+      padding:5.5rem 0 7rem;min-height:90vh;display:flex;align-items:center;
+    }
+    .hero::before{
+      content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 75% 65% at 90% 20%,rgba(184,149,42,.14) 0%,transparent 55%),
+        radial-gradient(ellipse 55% 70% at 5% 85%,rgba(37,77,58,.22) 0%,transparent 55%),
+        linear-gradient(160deg,#0e1512 0%,#101a16 100%);
+      pointer-events:none;
+    }
+    .hero::after{
+      content:'';position:absolute;right:-150px;bottom:-150px;
+      width:800px;height:800px;border-radius:50%;
+      border:1px solid rgba(184,149,42,.07);
+      box-shadow:0 0 0 100px rgba(184,149,42,.04),0 0 0 210px rgba(184,149,42,.025);
+      pointer-events:none;
+    }
+    .hero-content{position:relative;z-index:2;max-width:780px}
+    .hero-eyebrow{
+      display:inline-flex;align-items:center;gap:.5rem;
+      background:rgba(184,149,42,.13);border:1px solid rgba(184,149,42,.3);
+      color:var(--gold-light);padding:.3rem .8rem;border-radius:2px;
+      font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:1.6rem;
+    }
+    .hero h1{color:var(--cream);margin-bottom:1.2rem}
+    .hero h1 em{font-style:italic;color:var(--gold)}
+    .hero-sub{font-size:clamp(1rem,1.8vw,1.22rem);color:rgba(247,243,236,.72);max-width:560px;margin-bottom:2.8rem;line-height:1.7}
+    .hero-cta-wrap{margin-bottom:3rem}
+    .hero-badges{display:flex;flex-wrap:wrap;gap:1.4rem}
+    .hero-badge{display:flex;align-items:center;gap:.4rem;color:rgba(247,243,236,.56);font-size:.78rem;font-weight:500}
+    .hero-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+    .hero-badge-launch{color:var(--gold-light);font-weight:600}
+    .hero-badge-dot-gold{background:var(--gold-light);width:6px;height:6px}
+
+    /* SOCIAL PROOF BAR */
+    .spbar{background:var(--charcoal);border-top:1px solid rgba(184,149,42,.15);border-bottom:1px solid rgba(184,149,42,.15);padding:1.4rem 0}
+    .spbar-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.8rem 2.8rem}
+    .sp-stars{display:flex;align-items:center;gap:.5rem}
+    .sp-stars-icons{color:var(--gold);font-size:1.05rem;letter-spacing:.05em}
+    .sp-stars-text{color:rgba(247,243,236,.7);font-size:.82rem;font-weight:600}
+    .sp-count{display:flex;align-items:center;gap:.6rem}
+    .sp-avatars{display:flex}
+    .sp-avatar{
+      width:28px;height:28px;border-radius:50%;border:2px solid var(--charcoal);
+      background:var(--forest-mid);display:flex;align-items:center;justify-content:center;
+      font-family:var(--font-d);font-size:.75rem;font-weight:600;color:var(--gold);
+      margin-left:-8px;flex-shrink:0;
+    }
+    .sp-avatar:first-child{margin-left:0}
+    .sp-count-text{color:rgba(247,243,236,.65);font-size:.82rem}
+    .sp-count-text strong{color:var(--gold-light)}
+    .sp-rec{display:flex;align-items:center;gap:.5rem;color:rgba(247,243,236,.5);font-size:.78rem;font-weight:500}
+    .sp-rec-icon{color:var(--gold);font-size:.9rem}
+    .sp-divider{width:1px;height:24px;background:rgba(247,243,236,.1)}
+    @media(max-width:599px){.sp-divider{display:none}}
+
+    /* PAIN */
+    .pain{background:var(--cream);padding:6rem 0}
+    .pain-intro{text-align:center;max-width:600px;margin:0 auto 2.5rem}
+    .pain-bullets{max-width:580px;margin:0 auto;list-style:none}
+    .pain-bullets li{
+      font-family:var(--font-d);font-size:clamp(1.05rem,1.8vw,1.22rem);font-style:italic;
+      color:var(--text-dark);line-height:1.6;padding:.85rem 0;
+      border-bottom:1px solid var(--cream-dark);
+      display:flex;align-items:baseline;gap:.7rem;
+    }
+    .pain-bullets li:last-child{border-bottom:none}
+    .pain-dash{color:var(--gold);font-style:normal;font-size:1.2rem;flex-shrink:0}
+
+    /* BRIDGE CTA */
+    .bridge-cta{background:var(--cream-dark);padding:2rem 1.5rem;text-align:center}
+    .bridge-cta a{font-family:var(--font-b);font-size:1rem;color:var(--fairway);text-decoration:none;border-bottom:1px solid var(--fairway);padding-bottom:.15rem;transition:color var(--t),border-color var(--t)}
+    .bridge-cta a:hover{color:var(--forest);border-color:var(--forest)}
+
+    /* HOW IT WORKS */
+    .hiw{background:var(--cream-dark);padding:6rem 0}
+    .hiw-hdr{text-align:center;margin-bottom:3rem}
+    .hiw-grid{display:grid;grid-template-columns:1fr;gap:1.2rem}
+    @media(min-width:640px){.hiw-grid{grid-template-columns:repeat(3,1fr);gap:2rem}}
+    .hiw-step{background:#fff;border-radius:var(--rl);padding:2rem 1.6rem;text-align:center;box-shadow:var(--sh);border:1px solid rgba(27,58,45,.06);position:relative}
+    .hiw-num{font-family:var(--font-s);font-size:3rem;color:var(--gold);line-height:1;margin-bottom:.5rem}
+    .hiw-step h3{margin-bottom:.5rem;color:var(--forest)}
+    .hiw-step p{font-size:.85rem;color:var(--text-muted);line-height:1.65}
+
+    /* COMPARISON */
+    .compare{background:var(--charcoal-mid);padding:6rem 0}
+    .compare-hdr{text-align:center;margin-bottom:3rem}
+    .compare-hdr h2{color:var(--cream)}
+    .compare-hdr p{color:rgba(247,243,236,.55);font-size:.95rem;margin-top:.6rem}
+    .compare-wrap{
+      display:grid;grid-template-columns:1fr 1fr;max-width:680px;margin:0 auto;
+      border-radius:var(--rl);overflow:hidden;box-shadow:var(--shl);
+      border:1px solid rgba(184,149,42,.25);
+    }
+    @media(max-width:500px){.compare-wrap{grid-template-columns:1fr}}
+    .col-std{background:#1a2420}
+    .col-dlx{background:linear-gradient(180deg,#1e2b24 0%,#1b3028 100%);border-left:1px solid rgba(184,149,42,.25);position:relative}
+    .col-dlx::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+    .col-hdr{padding:1.1rem 1.4rem;text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .col-std .col-hdr{color:rgba(247,243,236,.4);border-bottom:1px solid rgba(255,255,255,.06)}
+    .col-dlx .col-hdr{color:var(--gold-light);border-bottom:1px solid rgba(184,149,42,.2);background:rgba(184,149,42,.08)}
+    .col-price{text-align:center;padding:.6rem 1.4rem .9rem;border-bottom:1px solid rgba(255,255,255,.06)}
+    .col-std .col-price{border-bottom-color:rgba(255,255,255,.06)}
+    .col-dlx .col-price{border-bottom-color:rgba(184,149,42,.18)}
+    .col-price-num{font-family:var(--font-s);font-size:2.2rem;line-height:1;color:rgba(247,243,236,.35)}
+    .col-dlx .col-price-num{color:var(--gold)}
+    .col-row{display:flex;align-items:center;gap:.65rem;padding:.65rem 1.4rem;font-size:.82rem;border-bottom:1px solid rgba(255,255,255,.04)}
+    .col-row:last-child{border-bottom:none}
+    .col-std .col-row{color:rgba(247,243,236,.38)}
+    .col-dlx .col-row{color:rgba(247,243,236,.75)}
+    .col-tick{flex-shrink:0;font-size:.8rem}
+    .col-std .col-tick{color:rgba(107,122,110,.35)}
+    .col-dlx .col-tick{color:var(--gold)}
+    .excl-tag{display:inline-block;background:rgba(184,149,42,.18);color:var(--gold-light);font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.1rem .38rem;border-radius:2px;margin-left:.3rem;vertical-align:middle}
+
+    /* WHAT YOU GET (Deluxe grid) */
+    .features{background:var(--forest);padding:6rem 0}
+    .features-hdr{text-align:center;margin-bottom:3.5rem}
+    .features-hdr h2{color:var(--cream)}
+    .features-hdr p{color:rgba(247,243,236,.55);font-size:.95rem;margin-top:.6rem}
+    .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:860px;margin:0 auto}
+    @media(max-width:560px){.feat-grid{grid-template-columns:1fr}}
+    .feat-card{background:rgba(255,255,255,.05);border:1px solid rgba(184,149,42,.18);border-radius:var(--rl);padding:2.2rem 2rem;transition:var(--t)}
+    .feat-card:hover{background:rgba(255,255,255,.08);border-color:rgba(184,149,42,.35);transform:translateY(-3px)}
+    .feat-icon{font-size:2.2rem;margin-bottom:1rem;display:block}
+    .feat-card h3{color:var(--cream);font-size:1.1rem;margin-bottom:.45rem}
+    .feat-card p{color:rgba(247,243,236,.55);font-size:.88rem}
+
+    /* ASSESSMENT BREAKDOWN */
+    .breakdown{background:var(--charcoal);padding:5rem 0}
+    .breakdown-hdr{text-align:center;margin-bottom:2.5rem}
+    .breakdown-hdr h2{color:var(--cream)}
+    .breakdown-cols{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:760px;margin:0 auto}
+    @media(max-width:560px){.breakdown-cols{grid-template-columns:1fr}}
+    .bd-group h4{font-family:var(--font-b);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:1px solid rgba(184,149,42,.2)}
+    .bd-list{display:flex;flex-wrap:wrap;gap:.45rem}
+    .bd-badge{display:inline-block;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,42,.18);border-radius:3px;color:rgba(247,243,236,.65);font-size:.78rem;font-weight:500;padding:.32rem .7rem}
+
+    /* VOOR WIE / NIET VOOR WIE */
+    .forwho-section{background:var(--cream-dark);padding:64px 0}
+    .forwho-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:820px;margin:0 auto}
+    .forwho-col{background:var(--cream);border-radius:var(--rl);padding:32px 28px;box-shadow:var(--sh)}
+    .forwho-col-title{font-family:var(--font-d);font-size:1.25rem;font-weight:700;letter-spacing:.01em;margin:0 0 20px;padding-bottom:12px;border-bottom:1px solid var(--cream-dark)}
+    .forwho-col--no .forwho-col-title{color:var(--text-muted)}
+    .forwho-col--yes .forwho-col-title{color:var(--forest)}
+    .forwho-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+    .forwho-list li{display:flex;align-items:flex-start;gap:10px;font-family:var(--font-b);font-size:.95rem;color:var(--text-body);line-height:1.45}
+    .forwho-icon{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;margin-top:1px}
+    .forwho-icon--no{background:#f0e8e8;color:#9B3A3A}
+    .forwho-icon--yes{background:#e0ede7;color:var(--forest)}
+    @media(max-width:640px){.forwho-grid{grid-template-columns:1fr;gap:20px}.forwho-section{padding:48px 0}}
+
+    /* TESTIMONIALS */
+    .testi{background:#fff;padding:6.5rem 0}
+    .testi-hdr{text-align:center;max-width:560px;margin:0 auto 3.5rem}
+    .testi-grid{display:grid;grid-template-columns:1fr;gap:1.6rem}
+    @media(min-width:900px){.testi-grid{grid-template-columns:repeat(3,1fr)}}
+    .tcard{
+      background:var(--cream);border-radius:var(--rl);padding:2.2rem 2rem;
+      border:1px solid var(--cream-dark);border-top:3px solid var(--gold);
+      box-shadow:var(--shm);display:flex;flex-direction:column;gap:1rem;transition:var(--t);
+    }
+    .tcard:hover{transform:translateY(-3px);box-shadow:var(--shm)}
+    .tcard-stars{color:var(--gold);font-size:.95rem;letter-spacing:.06em;display:block}
+    .tcard-star-empty{color:var(--cream-dark)}
+    .tcard-quote{font-family:var(--font-d);font-size:clamp(1.02rem,1.6vw,1.12rem);color:var(--text-dark);line-height:1.65;flex:1;font-style:italic}
+    .tcard-result{
+      display:inline-flex;align-items:center;gap:.5rem;
+      background:rgba(27,58,45,.06);border-radius:var(--r);padding:.4rem .7rem;
+      font-size:.75rem;font-weight:600;color:var(--forest);
+    }
+    .tcard-result-arrow{color:var(--fairway)}
+    .tcard-author{display:flex;align-items:center;gap:.9rem;padding-top:1rem;border-top:1px solid var(--cream-dark)}
+    .tcard-avatar{
+      width:46px;height:46px;border-radius:50%;flex-shrink:0;
+      background:var(--forest);display:flex;align-items:center;justify-content:center;
+      font-family:var(--font-d);font-size:1.2rem;font-weight:600;color:var(--gold);
+      border:2px solid rgba(184,149,42,.3);
+    }
+    .tcard-name{font-weight:700;font-size:.9rem;color:var(--text-dark);margin-bottom:.15rem}
+    .tcard-meta{font-size:.77rem;color:var(--text-muted)}
+    .tcard-verified{display:inline-flex;align-items:center;gap:.3rem;font-size:.65rem;font-weight:600;color:var(--fairway);margin-top:.2rem}
+
+    /* TEAM BAR */
+    .team-bar{background:var(--forest);padding:3rem 0;border-top:2px solid var(--gold)}
+    .team-bar-inner{display:flex;align-items:center;gap:2.5rem}
+    .team-avatars{display:flex;align-items:center;gap:1.2rem;flex-shrink:0}
+    .team-member{display:flex;flex-direction:column;align-items:center;gap:.45rem}
+    .team-avatar{width:52px;height:52px;border-radius:50%;background:var(--forest-mid);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-b);font-size:.85rem;font-weight:600;color:var(--gold-light);position:relative;overflow:hidden}
+    .team-avatar img{width:100%;height:100%;object-fit:cover}
+    .team-member-name{font-family:var(--font-b);font-size:.68rem;font-weight:700;color:var(--cream);white-space:nowrap}
+    .team-member-role{font-size:.58rem;color:rgba(247,243,236,.5);white-space:nowrap;text-align:center}
+    .team-text-block{flex:1}
+    .team-bar-heading{font-family:var(--font-d);font-size:1.25rem;font-weight:600;color:var(--cream);margin:0 0 .75rem;line-height:1.3}
+    .team-bar-body{font-family:var(--font-b);font-size:.92rem;color:var(--cream-dark);line-height:1.65;margin:0;opacity:.85}
+    @media(max-width:640px){.team-bar-inner{flex-direction:column;text-align:center;gap:1.5rem}.team-avatars{justify-content:center}}
+
+    /* PRICING */
+    .pricing{background:var(--cream);padding:7rem 0}
+    .pricing-hdr{text-align:center;max-width:540px;margin:0 auto 3rem}
+    .urgency-callout{display:flex;align-items:flex-start;gap:.75rem;background:rgba(27,58,45,.07);border-left:3px solid var(--fairway);border-radius:var(--r);padding:.9rem 1.2rem;margin:0 auto 2rem;max-width:520px}
+    .urgency-callout svg{flex-shrink:0;margin-top:.15rem;color:var(--fairway)}
+    .urgency-callout p{margin:0;font-family:var(--font-b);font-size:.9rem;line-height:1.5;color:var(--forest)}
+    .pcard{background:#fff;border-radius:var(--rl);overflow:hidden;box-shadow:var(--shl);max-width:560px;margin:0 auto;border:2px solid rgba(184,149,42,.3);position:relative}
+    .pcard-badge{position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--forest);font-size:.67rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.3rem 1.1rem;border-radius:0 0 8px 8px;white-space:nowrap;z-index:2}
+    .pcard-hdr{background:linear-gradient(160deg,#0e1512 0%,#1B3A2D 100%);padding:2.8rem 2.6rem 2rem;text-align:center;position:relative}
+    .pcard-hdr::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 5%,var(--gold) 50%,transparent 95%)}
+    .pcard-name{font-family:var(--font-b);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.5rem}
+    .pcard-hdr h2{color:var(--cream);font-size:1.6rem;margin-bottom:.9rem}
+    .pprice-row{display:flex;align-items:baseline;justify-content:center;gap:.8rem}
+    .pprice{font-family:var(--font-s);font-size:4.4rem;color:var(--gold);line-height:1}
+    .pprice-label{color:rgba(247,243,236,.45);font-size:.78rem;margin-top:.3rem}
+    .pcard-body{padding:2rem 2.6rem 2.6rem}
+
+    /* VALUE COMPARISON */
+    .value-frame{background:rgba(27,58,45,.04);border:1px solid rgba(27,58,45,.1);border-radius:var(--rm);padding:1.1rem 1.3rem;margin-bottom:1.6rem}
+    .value-frame-title{font-size:.72rem;font-weight:700;color:var(--text-dark);margin-bottom:.7rem;letter-spacing:.03em}
+    .value-compare{display:grid;grid-template-columns:1fr;gap:.35rem}
+    .vc-row{display:flex;align-items:center;justify-content:space-between;font-size:.82rem;padding:.15rem 0}
+    .vc-label{color:var(--text-muted);text-decoration:line-through;text-decoration-color:rgba(107,122,110,.3)}
+    .vc-price{color:var(--text-muted);font-weight:600}
+    .vc-row-highlight{background:rgba(184,149,42,.08);border-radius:var(--r);padding:.4rem .6rem;margin-top:.3rem}
+    .vc-row-highlight .vc-label{color:var(--forest);text-decoration:none;font-weight:700}
+    .vc-row-highlight .vc-price{color:var(--gold);font-family:var(--font-s);font-size:1.1rem}
+
+    .pfeatures{list-style:none;margin-bottom:2rem}
+    .pfeatures li{display:flex;align-items:flex-start;gap:.65rem;padding:.55rem 0;font-size:.88rem;border-bottom:1px solid var(--cream-dark);color:var(--text-body)}
+    .pfeatures li:last-child{border-bottom:none}
+    .pcheck{color:var(--fairway);font-weight:800;flex-shrink:0;font-size:1rem;line-height:1.3}
+    .pcheck-gold{color:var(--gold);font-weight:800;flex-shrink:0;font-size:1rem;line-height:1.3}
+    .pexcl{display:inline-block;background:rgba(184,149,42,.12);color:var(--gold);font-size:.63rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.1rem .42rem;border-radius:2px;margin-left:.4rem;vertical-align:middle}
+    .pcta{width:100%;padding:1.25rem;font-size:.92rem;border-radius:var(--rm);justify-content:center}
+    .pcta-sub{text-align:center;font-family:var(--font-b);font-size:.8rem;color:var(--text-muted);margin:.55rem 0 0}
+
+    /* PCARD TRUST STRIP */
+    .pcard-trust{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+    .pcard-trust-item{font-size:.76rem;font-weight:500;color:var(--text-muted);background:rgba(27,58,45,.06);border:1px solid rgba(27,58,45,.1);border-radius:var(--rm);padding:.35rem .75rem;white-space:nowrap}
+
+    /* GUARANTEE BLOCK */
+    .guarantee-block{background:rgba(27,58,45,.07);border:1.5px solid rgba(27,58,45,.22);border-radius:var(--rl);padding:1.25rem 1.5rem;margin-bottom:1.25rem;display:flex;gap:1rem;align-items:flex-start}
+    .guarantee-block .gb-icon{font-size:2rem;line-height:1;flex-shrink:0;margin-top:.1rem}
+    .guarantee-block .gb-title{font-family:var(--font-b);font-weight:700;font-size:1rem;color:var(--forest);margin:0 0 .3rem;letter-spacing:.01em}
+    .guarantee-block .gb-sub{font-family:var(--font-b);font-size:.82rem;color:var(--text-body);margin:0 0 .2rem;line-height:1.45}
+    .guarantee-block .gb-promise{font-family:var(--font-b);font-weight:600;font-size:.85rem;color:var(--forest);margin:0}
+
+    /* CREDITS BREAKDOWN */
+    .pfeature-credits-detail{display:block !important;padding:.2rem 0 .55rem !important;border-bottom:1px solid var(--cream-dark)}
+    .credits-breakdown{background:rgba(184,149,42,.07);border:1px solid rgba(184,149,42,.2);border-radius:var(--rm);padding:.9rem 1rem;margin-left:1.65rem}
+    .credits-breakdown-title{display:block;font-size:.76rem;font-weight:700;color:var(--forest);margin-bottom:.6rem;letter-spacing:.01em}
+    .credits-breakdown-grid{display:grid;grid-template-columns:1fr 1fr;gap:.35rem .8rem}
+    @media(max-width:440px){.credits-breakdown-grid{grid-template-columns:1fr}}
+    .cb-item{display:flex;align-items:center;gap:.45rem;font-size:.78rem;color:var(--text-body);line-height:1.4}
+    .cb-cost{display:inline-block;font-family:var(--font-s);font-size:.72rem;color:var(--gold);min-width:38px;font-weight:700;letter-spacing:.02em}
+    .credits-breakdown-note{display:block;font-size:.7rem;color:var(--text-muted);font-style:italic;margin-top:.55rem;padding-top:.45rem;border-top:1px solid rgba(184,149,42,.15)}
+
+    /* FAQ */
+    .faq{background:var(--cream-dark);padding:6rem 0}
+    .faq-hdr{text-align:center;margin-bottom:2.5rem}
+    .faq-list{max-width:680px;margin:0 auto}
+    .faq-item{background:#fff;border-radius:var(--rm);margin-bottom:.6rem;overflow:hidden;border:1px solid rgba(27,58,45,.07)}
+    .faq-q{
+      width:100%;padding:1.1rem 1.35rem;display:flex;justify-content:space-between;
+      align-items:center;gap:1rem;background:none;border:none;cursor:pointer;
+      text-align:left;font-family:var(--font-b);font-size:.9rem;font-weight:600;
+      color:var(--text-dark);transition:var(--t);
+    }
+    .faq-q:hover{background:var(--cream)}
+    .faq-icon{
+      width:22px;height:22px;border-radius:50%;background:var(--forest);
+      display:flex;align-items:center;justify-content:center;
+      color:var(--cream);font-size:.95rem;flex-shrink:0;transition:var(--t);
+    }
+    .faq-item.open .faq-icon{background:var(--gold);color:var(--forest);transform:rotate(45deg)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+    .faq-a-inner{padding:0 1.35rem 1.1rem;font-size:.87rem;color:var(--text-muted);line-height:1.75}
+
+    /* FINAL CTA */
+    .fcta{background:linear-gradient(160deg,#0e1512 0%,#1B3A2D 100%);padding:7rem 0;text-align:center;position:relative;overflow:hidden}
+    .fcta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(184,149,42,.1) 0%,transparent 70%);pointer-events:none}
+    .fcta::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+    .fcta-inner{position:relative;z-index:2}
+    .fcta h2{color:var(--cream);margin-bottom:.9rem}
+    .fcta-sub{font-size:clamp(1rem,1.8vw,1.15rem);color:rgba(247,243,236,.65);max-width:480px;margin:0 auto 2.6rem;line-height:1.7}
+    .fcta-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem;margin-top:2rem}
+    .fcta-badge{display:flex;align-items:center;gap:.4rem;color:rgba(247,243,236,.5);font-size:.78rem;font-weight:500}
+    .fcta-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+    /* FOOTER */
+    footer{background:var(--charcoal);padding:1.8rem 0;text-align:center}
+    footer p{font-size:.75rem;color:rgba(247,243,236,.28)}
+    footer a{color:rgba(247,243,236,.4);text-decoration:none}
+    footer a:hover{color:var(--gold)}
+  </style>
+</head>
+<body>
+
+<!-- TOP GOLD LINE -->
+<div class="top-line"></div>
+
+<!-- STICKY HEADER -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="https://mentaleroutine.com" class="logo">Mental <span>Routine</span></a>
+      <div class="header-mid">
+        <span class="header-mid-name">Assessment Deluxe ✦</span>
+        <span class="header-mid-price">$129</span>
+      </div>
+      <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold">Start Deluxe →</a>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE STICKY BOTTOM BAR -->
+<div class="mobile-bottom">
+  <div class="mobile-bottom-price">
+    <span class="mobile-bottom-was">Meest Compleet</span>
+    <span class="mobile-bottom-now">$129</span>
+  </div>
+  <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold">Start Deluxe →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal">
+        <svg width="7" height="7" viewBox="0 0 7 7" fill="currentColor"><circle cx="3.5" cy="3.5" r="3.5"/></svg>
+        Meest complete mentale golf-analyse
+      </div>
+      <h1 class="reveal d1">Jouw mentale spel,<br><em>volledig doorgrond.</em></h1>
+      <p class="hero-sub reveal d2">In 25 minuten weet je precies wat je tegenhoudt — en met 20+ pagina's analyse en een persoonlijk actieplan weet je ook exact wat je morgen anders doet op de baan.</p>
+      <div class="hero-cta-wrap reveal d3">
+        <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold btn-xl">Start jouw Deluxe Assessment → <strong style="margin-left:.3rem">$129</strong></a>
+      </div>
+      <div class="hero-badges reveal d4">
+        <span class="hero-badge hero-badge-launch"><span class="hero-badge-dot hero-badge-dot-gold"></span>Vóór de internationale lancering (mei 2026)</span>
+        <span class="hero-badge"><span class="hero-badge-dot"></span>30 dagen geld-terug-garantie</span>
+        <span class="hero-badge"><span class="hero-badge-dot"></span>140 credits inbegrepen</span>
+        <span class="hero-badge"><span class="hero-badge-dot"></span>Actieplan inbegrepen</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<div class="spbar">
+  <div class="container">
+    <div class="spbar-inner">
+      <div class="sp-stars">
+        <span class="sp-stars-icons">★★★★★</span>
+        <span class="sp-stars-text">4.9/5</span>
+      </div>
+      <div class="sp-divider"></div>
+      <div class="sp-count">
+        <div class="sp-avatars">
+          <div class="sp-avatar">M</div>
+          <div class="sp-avatar">L</div>
+          <div class="sp-avatar">J</div>
+        </div>
+        <span class="sp-count-text"><strong>1.247 golfers</strong> gingen je voor</span>
+      </div>
+      <div class="sp-divider"></div>
+      <div class="sp-rec">
+        <span class="sp-rec-icon">✓</span>
+        PGA-netwerk · 10 jaar onderzoek
+      </div>
+      <div class="sp-divider"></div>
+      <div class="sp-range">
+        <span class="sp-range-badge">
+          <span aria-hidden="true">⛳</span>
+          Handicap 0 t/m 54
+          <span class="sp-range-bar" role="presentation"></span>
+          Alle leeftijden
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN: "Herken je dit?" -->
+<section class="pain">
+  <div class="container-sm">
+    <div class="pain-intro reveal">
+      <span class="section-label">Herken je dit?</span>
+      <h2>Je weet dat er<br>meer in zit</h2>
+    </div>
+    <ul class="pain-bullets">
+      <li class="reveal d1"><span class="pain-dash">—</span>Je speelt al jaren op hetzelfde niveau — terwijl je precies weet dat je beter kunt. Je mist alleen het inzicht om die grens te doorbreken.</li>
+      <li class="reveal d2"><span class="pain-dash">—</span>Onder druk — een belangrijk toernooi, publiek op hole 1 — verdwijnt je spel. Terwijl je op de range alles hebt. Altijd weer.</li>
+      <li class="reveal d3"><span class="pain-dash">—</span>Een rapport zou helpen. Maar je wil meer dan cijfers: je wil een concreet plan. Precies weten wat je morgen anders doet.</li>
+      <li class="reveal d4"><span class="pain-dash">—</span>Je bent serieus genoeg om te investeren in je spel — maar dan ook in iets dat echt werkt. Niet een losse tip, maar een complete analyse.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BRIDGE CTA -->
+<div class="bridge-cta">
+  <a href="#pricing">Klinkt dit bekend? Bekijk wat de Deluxe Assessment voor jou doet →</a>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="hiw">
+  <div class="container-sm">
+    <div class="hiw-hdr reveal">
+      <span class="section-label">Zo werkt het</span>
+      <h2>In 3 stappen naar resultaat</h2>
+    </div>
+    <div class="hiw-grid">
+      <div class="hiw-step reveal d1">
+        <div class="hiw-num">01</div>
+        <h3>Vul in</h3>
+        <p>Beantwoord gerichte vragen over je mentale spel op de baan. Duurt gemiddeld 25 minuten.</p>
+      </div>
+      <div class="hiw-step reveal d2">
+        <div class="hiw-num">02</div>
+        <h3>Ontvang</h3>
+        <p>Je persoonlijk rapport (20+ pagina's, 70+ factoren) is direct beschikbaar — inclusief je persoonlijk actieplan.</p>
+      </div>
+      <div class="hiw-step reveal d3">
+        <div class="hiw-num">03</div>
+        <h3>Verbeter</h3>
+        <p>Ga direct aan de slag met je actieplan. Ontgrendel verdiepingsrapporten met je 140 credits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERGELIJKING STANDAARD VS DELUXE -->
+<section class="compare">
+  <div class="container">
+    <div class="compare-hdr reveal">
+      <span class="section-label">Waarom Deluxe?</span>
+      <h2>Dubbel zoveel voor serieuze golfers</h2>
+      <p>Bekijk exact wat de Deluxe-versie extra biedt.</p>
+    </div>
+    <div class="compare-wrap reveal d2">
+      <div class="col-std">
+        <div class="col-hdr">Standaard — $59</div>
+        <div class="col-price"><span class="col-price-num">$59</span></div>
+        <div class="col-row"><span class="col-tick">✓</span> Rapport (12 pag. · 40+ factoren)</div>
+        <div class="col-row"><span class="col-tick">✓</span> 60 Skills Developer credits</div>
+        <div class="col-row"><span class="col-tick">✓</span> 8 domeinen van de Mentale Routine</div>
+        <div class="col-row"><span class="col-tick" style="color:rgba(107,122,110,.25)">✗</span> 6 beïnvloedende dimensies</div>
+        <div class="col-row"><span class="col-tick" style="color:rgba(107,122,110,.25)">✗</span> Persoonlijk actieplan</div>
+        <div class="col-row"><span class="col-tick" style="color:rgba(107,122,110,.25)">✗</span> Uitgebreid rapport 20+ pag.</div>
+        <div class="col-row"><span class="col-tick" style="color:rgba(107,122,110,.25)">✗</span> Prioritaire toegang</div>
+        <div class="col-row"><span class="col-tick" style="color:rgba(107,122,110,.25)">✗</span> Ruim 2× meer credits</div>
+      </div>
+      <div class="col-dlx">
+        <div class="col-hdr">✦ Deluxe — $129</div>
+        <div class="col-price"><span class="col-price-num">$129</span></div>
+        <div class="col-row"><span class="col-tick">✦</span> Rapport 20+ pag. · 70+ factoren <span class="excl-tag">+</span></div>
+        <div class="col-row"><span class="col-tick">✦</span> 140 credits <span class="excl-tag">2.3×</span></div>
+        <div class="col-row"><span class="col-tick">✦</span> 8 domeinen van de Mentale Routine</div>
+        <div class="col-row"><span class="col-tick">✦</span> 6 beïnvloedende dimensies</div>
+        <div class="col-row"><span class="col-tick">✦</span> Persoonlijk actieplan <span class="excl-tag">Nieuw</span></div>
+        <div class="col-row"><span class="col-tick">✦</span> Uitgebreide analyse <span class="excl-tag">+</span></div>
+        <div class="col-row"><span class="col-tick">✦</span> Prioritaire toegang <span class="excl-tag">Nieuw</span></div>
+        <div class="col-row"><span class="col-tick">✦</span> Dubbel zoveel waarde</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAT JE KRIJGT -->
+<section class="features">
+  <div class="container">
+    <div class="features-hdr reveal">
+      <span class="section-label" style="color:var(--gold-pale);">Wat je krijgt</span>
+      <h2>Alles wat je nodig hebt</h2>
+      <p>Vier krachtige onderdelen, één compleet resultaat.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal d1">
+        <span class="feat-icon">📄</span>
+        <h3>Uitgebreid rapport 20+ pagina's</h3>
+        <p>20+ pagina's met 70+ factoren: de Mentale Routine (8 domeinen × 5 subelementen) plus risicogeneigdheid, druk/stress, incasseringsvermogen en geoefendheid.</p>
+      </div>
+      <div class="feat-card reveal d2">
+        <span class="feat-icon">🎯</span>
+        <h3>140 Skills Developer credits</h3>
+        <p>Ruim twee keer zoveel als Standaard (140 vs. 60) — voldoende om 14 persoonlijke trainingsmodules te ontgrendelen en direct aan de slag te gaan.</p>
+      </div>
+      <div class="feat-card reveal d3">
+        <span class="feat-icon">🗺️</span>
+        <h3>Persoonlijk actieplan</h3>
+        <p>Op jouw resultaten afgestemd stappenplan dat exact beschrijft wat je vandaag kunt doen om te verbeteren — concreet, meetbaar, golfspecifiek.</p>
+      </div>
+      <div class="feat-card reveal d4">
+        <span class="feat-icon">⚡</span>
+        <h3>Prioritaire toegang tot programma's</h3>
+        <p>Sla de wachtrij over. Als Deluxe-deelnemer krijg je als eerste toegang tot nieuwe coaching-programma's en -modules.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSESSMENT BREAKDOWN -->
+<section class="breakdown">
+  <div class="container">
+    <div class="breakdown-hdr reveal">
+      <span class="section-label">Wat we meten</span>
+      <h2 style="color:var(--cream);">8 domeinen · 6 dimensies</h2>
+      <p style="color:rgba(247,243,236,.5);font-size:.88rem;margin-top:.5rem;">De Mentale Routine per slag + de factoren die haar beïnvloeden</p>
+    </div>
+    <div class="breakdown-cols reveal d2">
+      <div class="bd-group">
+        <h4>8 Domeinen van de Mentale Routine</h4>
+        <div class="bd-list">
+          <span class="bd-badge">Focus</span>
+          <span class="bd-badge">Concentratie</span>
+          <span class="bd-badge">Overtuiging</span>
+          <span class="bd-badge">Vertrouwen</span>
+          <span class="bd-badge">Beoordeling</span>
+          <span class="bd-badge">Acceptatie</span>
+          <span class="bd-badge">Analyse</span>
+          <span class="bd-badge">Lering trekken</span>
+        </div>
+        <p style="font-size:.78rem;color:rgba(247,243,236,.4);margin-top:.7rem;">Pre-shot routine · De swing · Post-shot routine — elk domein heeft 5 subdomeinen</p>
+      </div>
+      <div class="bd-group">
+        <h4>6 Dimensies die de Routine beïnvloeden</h4>
+        <div class="bd-list">
+          <span class="bd-badge">Risicogeneigdheid</span>
+          <span class="bd-badge">Druk</span>
+          <span class="bd-badge">Stress</span>
+          <span class="bd-badge">Geoefendheid</span>
+          <span class="bd-badge">Incasseringsvermogen</span>
+          <span class="bd-badge">Potentieel/talent</span>
+        </div>
+        <p style="font-size:.78rem;color:rgba(247,243,236,.4);margin-top:.7rem;">Exclusief Deluxe — deze factoren bepalen hoe goed jouw Mentale Routine tot zijn recht komt</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOOR WIE / NIET VOOR WIE -->
+<section class="forwho-section">
+  <div class="container">
+    <div class="forwho-grid">
+      <div class="forwho-col forwho-col--no reveal d1">
+        <p class="forwho-col-title">Dit is NIET voor jou als&hellip;</p>
+        <ul class="forwho-list">
+          <li>
+            <span class="forwho-icon forwho-icon--no" aria-hidden="true">✗</span>
+            Je alleen technische swing-tips zoekt
+          </li>
+          <li>
+            <span class="forwho-icon forwho-icon--no" aria-hidden="true">✗</span>
+            Je al volledige begeleiding hebt van een sportpsycholoog
+          </li>
+          <li>
+            <span class="forwho-icon forwho-icon--no" aria-hidden="true">✗</span>
+            Je tevreden bent met een globaal overzicht zonder actieplan
+          </li>
+          <li>
+            <span class="forwho-icon forwho-icon--no" aria-hidden="true">✗</span>
+            Je mentale training niet serieus wil nemen
+          </li>
+        </ul>
+      </div>
+      <div class="forwho-col forwho-col--yes reveal d2">
+        <p class="forwho-col-title">Dit IS voor jou als&hellip;</p>
+        <ul class="forwho-list">
+          <li>
+            <span class="forwho-icon forwho-icon--yes" aria-hidden="true">✓</span>
+            Je weet dat er meer in zit &mdash; en je wil precies weten wat je tegenhoudt
+          </li>
+          <li>
+            <span class="forwho-icon forwho-icon--yes" aria-hidden="true">✓</span>
+            Je een compleet rapport wil delen met je coach voor gerichte begeleiding
+          </li>
+          <li>
+            <span class="forwho-icon forwho-icon--yes" aria-hidden="true">✓</span>
+            Je competitief golft en elke mentale voorsprong wil benutten
+          </li>
+          <li>
+            <span class="forwho-icon forwho-icon--yes" aria-hidden="true">✓</span>
+            Je niet alleen inzicht wil, maar ook een concreet actieplan om op te handelen
+          </li>
+          <li>
+            <span class="forwho-icon forwho-icon--yes" aria-hidden="true">✓</span>
+            Je bereid bent serieus te investeren in structurele verbetering
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="container">
+    <div class="testi-hdr reveal">
+      <span class="section-label">Ervaringen</span>
+      <h2>Golfers die de stap zetten</h2>
+    </div>
+    <div class="testi-grid">
+
+      <!-- Testimonial 1: coach -->
+      <div class="tcard reveal d1">
+        <span class="tcard-stars">★★★★★</span>
+        <p class="tcard-quote">"Als coach zie ik veel assessments passeren. Dit is veruit het meest complete instrument dat ik mijn spelers aanbeveel. Het actieplan alleen al is de prijs waard — mijn leerlingen weten precies waar ze aan moeten werken."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">RV</div>
+          <div>
+            <div class="tcard-name">Roel Vandenberghe</div>
+            <div class="tcard-meta">PGA-gecertificeerd coach · Antwerpen</div>
+            <div class="tcard-verified">✓ Geverifieerde professional</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2: competitiegolfer -->
+      <div class="tcard reveal d2">
+        <span class="tcard-stars">★★★★<span class="tcard-star-empty">★</span></span>
+        <p class="tcard-quote">"Speelde jarenlang met handicap 4, maar bleef vastzitten op dezelfde patronen. Na de Deluxe Assessment begreep ik eindelijk waarom. Het rapport was een oogopener, het actieplan was de gamechanger."</p>
+        <div class="tcard-result">
+          Handicap <strong>4.2</strong> <span class="tcard-result-arrow">→</span> <strong>2.8</strong>
+        </div>
+        <div class="tcard-author">
+          <div class="tcard-avatar">MS</div>
+          <div>
+            <div class="tcard-name">Matthias Smeets</div>
+            <div class="tcard-meta">Competitiegolfer · Maastricht</div>
+            <div class="tcard-verified">✓ Geverifieerde koper</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3: upgrade van Standaard -->
+      <div class="tcard reveal d3">
+        <span class="tcard-stars">★★★★★</span>
+        <p class="tcard-quote">"Begon met Standaard, upgradede na een week. Had ik meteen Deluxe moeten nemen. Het verschil zit in het actieplan — dat geeft het rapport echt handen en voeten. 140 credits is ook een stuk aangenamer werken."</p>
+        <div class="tcard-result">
+          Handicap <strong>12.1</strong> <span class="tcard-result-arrow">→</span> <strong>9.4</strong>
+        </div>
+        <div class="tcard-author">
+          <div class="tcard-avatar">LB</div>
+          <div>
+            <div class="tcard-name">Lien Baert</div>
+            <div class="tcard-meta">Geüpgradet van Standaard · Gent</div>
+            <div class="tcard-verified">✓ Geverifieerde koper</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEAM BAR -->
+<section class="team-bar">
+  <div class="container">
+    <div class="team-bar-inner reveal">
+      <div class="team-avatars">
+        <div class="team-member">
+          <div class="team-avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23365a47' width='100' height='100'/%3E%3Ccircle cx='50' cy='36' r='18' fill='%23c4b99a'/%3E%3Cellipse cx='50' cy='90' rx='30' ry='28' fill='%23c4b99a'/%3E%3Ccircle cx='50' cy='36' r='16' fill='%23ddd5c4'/%3E%3Cellipse cx='50' cy='90' rx='28' ry='26' fill='%23ddd5c4'/%3E%3Cpath d='M32 28c0-12 8-18 18-18s18 6 18 18c0 2-1 4-2 4-2-8-8-12-16-12s-14 4-16 12c-1 0-2-2-2-4z' fill='%23aaa'/%3E%3C/svg%3E" alt="Henk de Jong"></div>
+          <span class="team-member-name">Henk de Jong</span>
+          <span class="team-member-role">Golfer · 40+ jaar</span>
+          <span class="team-member-role">PGA-netwerk</span>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23365a47' width='100' height='100'/%3E%3Ccircle cx='50' cy='36' r='18' fill='%23c4b99a'/%3E%3Cellipse cx='50' cy='90' rx='30' ry='28' fill='%23c4b99a'/%3E%3Ccircle cx='50' cy='36' r='16' fill='%23ddd5c4'/%3E%3Cellipse cx='50' cy='90' rx='28' ry='26' fill='%23ddd5c4'/%3E%3C/svg%3E" alt="Berend Jansen"></div>
+          <span class="team-member-name">Berend Jansen</span>
+          <span class="team-member-role">Psychometrisch expert</span>
+          <span class="team-member-role">Assessmentspecialist</span>
+        </div>
+      </div>
+      <div class="team-text-block">
+        <h3 class="team-bar-heading">15+ jaar ervaring. 10 jaar golf-specifiek onderzoek.</h3>
+        <p class="team-bar-body">Henk de Jong speelt 40+ jaar golf en bracht via zijn PGA-netwerk 1.000+ golfers bij het onderzoek. Berend Jansen is expert in psychometrische meetinstrumenten — het wetenschappelijk meten van waarom mensen doen wat ze doen. Samen bouwen zij al 15 jaar gedragsassessments voor grote organisaties. In 2016 startten zij MentalRoutine.com. Na 10 jaar onderzoek en meerdere gesloten testfases loopt momenteel de laatste betafase. Het assessment is nu beschikbaar voor directe aankoop, vóór de internationale lancering.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-hdr reveal">
+      <span class="section-label">Investering</span>
+      <h2>Eén prijs. Volledige analyse.<br>Persoonlijk actieplan.</h2>
+    </div>
+    <div class="urgency-callout reveal">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p>Internationale lancering gepland voor mei 2026. Je koopt nu nog vóór de officiële lancering.</p>
+    </div>
+    <div class="pcard reveal d1">
+      <div class="pcard-badge">Meest Compleet</div>
+      <div class="pcard-hdr">
+        <div class="pcard-name">Assessment Deluxe</div>
+        <h2>Mental Routine Deluxe</h2>
+        <div class="pprice-row">
+          <span class="pprice">$129</span>
+        </div>
+        <div class="pprice-label">Eenmalig · Geen abonnement · Direct toegang</div>
+      </div>
+      <div class="pcard-body">
+
+        <!-- VALUE COMPARISON -->
+        <div class="value-frame">
+          <div class="value-frame-title">Vergelijk de investering:</div>
+          <div class="value-compare">
+            <div class="vc-row"><span class="vc-label">Sportpsycholoog</span><span class="vc-price">$150–300/sessie</span></div>
+            <div class="vc-row"><span class="vc-label">Mentale coaching traject</span><span class="vc-price">$500+</span></div>
+            <div class="vc-row"><span class="vc-label">Mental golf-app abonnement</span><span class="vc-price">$120/jaar</span></div>
+            <div class="vc-row vc-row-highlight"><span class="vc-label">Assessment Deluxe</span><span class="vc-price">$129</span></div>
+          </div>
+        </div>
+
+        <ul class="pfeatures">
+          <li><span class="pcheck">✓</span> Volledig gepersonaliseerde analyse (70+ factoren)</li>
+          <li><span class="pcheck">✓</span> 8 domeinen van de Mentale Routine</li>
+          <li><span class="pcheck">✓</span> 6 beïnvloedende dimensies</li>
+          <li><span class="pcheck-gold">✦</span> Uitgebreid rapport 20+ pagina's <span class="pexcl">Exclusief Deluxe</span></li>
+          <li><span class="pcheck-gold">✦</span> 140 Skills Developer credits <span class="pexcl">Exclusief Deluxe</span></li>
+          <li class="pfeature-credits-detail">
+            <div class="credits-breakdown">
+              <span class="credits-breakdown-title">140 credits = 14 persoonlijke ontwikkelrapporten, bijvoorbeeld:</span>
+              <div class="credits-breakdown-grid">
+                <span class="cb-item"><span class="cb-cost">10 cr.</span> Focus versterken</span>
+                <span class="cb-item"><span class="cb-cost">10 cr.</span> Concentratie verdiepen</span>
+                <span class="cb-item"><span class="cb-cost">10 cr.</span> Overtuiging opbouwen</span>
+                <span class="cb-item"><span class="cb-cost">10 cr.</span> Acceptatie na slechte hole</span>
+                <span class="cb-item"><span class="cb-cost">10 cr.</span> Analyse verbeteren</span>
+                <span class="cb-item"><span class="cb-cost">10 cr.</span> Lering trekken uit rondes</span>
+                <span class="cb-item"><span class="cb-cost">10 cr.</span> Druk omzetten in focus</span>
+                <span class="cb-item"><span class="cb-cost">10 cr.</span> Risicokeuze optimaliseren</span>
+              </div>
+              <span class="credits-breakdown-note">Kies zelf welke 14 modules je ontgrendelt op basis van jouw rapport en actieplan</span>
+            </div>
+          </li>
+          <li><span class="pcheck-gold">✦</span> Persoonlijk actieplan <span class="pexcl">Exclusief Deluxe</span></li>
+          <li><span class="pcheck">✓</span> Prioritaire toegang tot programma's</li>
+          <li><span class="pcheck">✓</span> Direct toegang na betaling</li>
+          <li><span class="pcheck">✓</span> In 25 minuten ingevuld</li>
+          <li><span class="pcheck">✓</span> 30 dagen geld-terug-garantie</li>
+          <li><span class="pcheck">✓</span> Levenslange toegang tot jouw rapport</li>
+          <li><span class="pcheck">✓</span> Deel je rapport met je coach of pro</li>
+        </ul>
+
+        <div class="pcard-trust">
+          <span class="pcard-trust-item">🏌️ Ontwikkeld met PGA-professionals</span>
+          <span class="pcard-trust-item">📊 15+ jaar ervaring</span>
+          <span class="pcard-trust-item">🔬 10+ jaar golfonderzoek</span>
+        </div>
+
+        <div class="guarantee-block">
+          <div class="gb-icon">🛡</div>
+          <div class="gb-content">
+            <p class="gb-title">30 Dagen Volledige Terugbetaling</p>
+            <p class="gb-sub">Niet tevreden? Stuur één mail naar support@mentaleroutine.com</p>
+            <p class="gb-promise">Je krijgt je $129 terug. Geen vragen gesteld.</p>
+          </div>
+        </div>
+
+        <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold btn-xl pcta">Start jouw Deluxe Assessment →</a>
+        <p class="pcta-sub">Gemiddeld 25 minuten · Sla op en ga later verder</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="faq-hdr reveal">
+      <h2>Veelgestelde vragen</h2>
+    </div>
+    <div class="faq-list reveal d2" role="list">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-dlx-1">
+          Wat is het verschil met de Standaard Assessment?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="faq-dlx-1" role="region">
+          <div class="faq-a-inner">De Deluxe bevat alles wat de Standaard heeft, plus een uitgebreid rapport van 20+ pagina's met 70+ factoren (vs. 12 pagina's met 40+ factoren), 140 Skills Developer credits (vs. 60), een persoonlijk actieplan én prioritaire toegang tot nieuwe programma's. De extra factoren — risicogeneigdheid, druk/stress, incasseringsvermogen en geoefendheid — laten zien welke omstandigheden jouw Mentale Routine beïnvloeden.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-dlx-2">
+          Wat zijn Skills Developer credits?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="faq-dlx-2" role="region">
+          <div class="faq-a-inner">De Skills Developer genereert persoonlijke ontwikkelrapporten (PDF, 5 pagina's) voor elk subelement van je Mentale Routine. 140 credits = 14 rapporten. Elk rapport bevat adviezen, oefeningen (driving range, putting green, op de baan), mentale oefeningen, reflecties en AI-prompts voor selfcoaching — volledig afgestemd op jouw score én je exacte handicap. Scoor je laag? Dan motiveren we je om te verbeteren. Scoor je hoog? Dan inspireren we je om die kracht optimaal te benutten. Jouw rapport laat precies zien welke subelementen prioriteit verdienen.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-dlx-3">
+          Wanneer ontvang ik mijn rapport en actieplan?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="faq-dlx-3" role="region">
+          <div class="faq-a-inner">Direct na het voltooien van de assessment (gemiddeld 25 minuten) ontvang je jouw gepersonaliseerd rapport en actieplan. Je hebt altijd toegang via je account.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-dlx-4">
+          Geldt de geld-terug-garantie echt?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="faq-dlx-4" role="region">
+          <div class="faq-a-inner">Ja, onvoorwaardelijk. Stuur binnen 30 dagen een e-mail naar <a href="mailto:support@mentaleroutine.com">support@mentaleroutine.com</a> en je ontvangt je geld terug — geen vragen, geen gedoe. We zijn overtuigd van de kwaliteit van de Deluxe Assessment.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-dlx-5">
+          Voor welk niveau is dit geschikt?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="faq-dlx-5" role="region">
+          <div class="faq-a-inner">Voor alle niveaus — van beginner tot single-digit handicap. Het assessment meet mentale patronen, niet technische vaardigheden. Juist als beginner heb je een uniek voordeel: je kunt de mentale routine er direct goed inslijpen in plaats van eerst jarenlang verkeerde gewoontes aan te leren. Ons onderzoek omvat 1.000+ golfers van scratch tot handicap 54.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-dlx-6">
+          Hoe vaak moet ik het assessment doen?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="faq-dlx-6" role="region">
+          <div class="faq-a-inner">We raden aan om het assessment minimaal één keer per jaar te doen om je mentale ontwikkeling te volgen. Werk je intensief met de uitkomsten? Dan kun je na 4 tot 6 maanden overwegen om opnieuw te meten. Elke meting is een nieuwe aankoop — zo krijg je een volledig actueel rapport met verse scores en aanbevelingen, vergeleken met de nieuwste onderzoeksgroep.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-dlx-7">
+          Waar is dit assessment op gebaseerd?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="faq-dlx-7" role="region">
+          <div class="faq-a-inner">Op 15 jaar bewezen meetmethodologie voor gedrag, cultuur en leiderschap — vanaf 2016 specifiek doorontwikkeld voor golf in samenwerking met PGA-professionals. De 8 domeinen en 6 dimensies zijn gebaseerd op 10+ jaar veldonderzoek met 1.000+ golfers (handicap 4–54). Het volledige framework is vastgelegd in een intern methodologisch handboek.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-dlx-8">
+          Kan ik het rapport delen met mijn coach?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="faq-dlx-8" role="region">
+          <div class="faq-a-inner">Ja, absoluut. Het Deluxe rapport is uitgebreid genoeg om als basis te dienen voor een coachingsgesprek. Veel coaches gebruiken het als startpunt voor gerichte begeleiding — de objectieve data geeft een coach meetpunten die in een lesuur niet te observeren zijn.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="fcta">
+  <div class="container">
+    <div class="fcta-inner reveal">
+      <h2>Klaar om écht inzicht te krijgen?</h2>
+      <p class="fcta-sub">1.247 golfers ontdekten wat hen tegenhield. De assessment duurt 25 minuten. Het inzicht — en het actieplan — blijft je bij.</p>
+      <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold btn-xl">Start jouw Deluxe Assessment → <strong style="margin-left:.4rem">$129</strong></a>
+      <div class="fcta-badges">
+        <span class="fcta-badge"><span class="fcta-badge-dot"></span>30 dagen geld-terug</span>
+        <span class="fcta-badge"><span class="fcta-badge-dot"></span>Veilig betalen</span>
+        <span class="fcta-badge"><span class="fcta-badge-dot"></span>Direct toegang</span>
+        <span class="fcta-badge"><span class="fcta-badge-dot"></span>Actieplan inbegrepen</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2026 MentalRoutine.com &nbsp;|&nbsp; support@mentaleroutine.com</p>
+  </div>
+</footer>
+
+<script>
+  /* REVEAL ON SCROLL */
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    /* Respect reduced-motion preference */
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function(el) { el.classList.add('visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(
+      function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    els.forEach(function(el) { io.observe(el); });
+  })();
+
+  /* FAQ ACCORDION */
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function () {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        var ans = item.querySelector('.faq-a');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
