@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Doe de gratis quiz en ontdek in 8 minuten welk mentaal patroon jou de meeste slagen kost. Speel 9 holes en ontdek direct je mentale profiel. Gebaseerd op 10 jaar onderzoek met 1.000+ golfers.">
+  <title>Gratis Quiz — Welk mentaal patroon kost jou de meeste slagen? | Mental Routine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --forest:#1B3A2D;--forest-mid:#254D3A;--fairway:#3D7A5A;
+      --cream:#F7F3EC;--cream-dark:#EDE8DF;
+      --gold:#B8952A;--gold-light:#D4AF50;
+      --charcoal:#111814;--text-dark:#1A2E22;--text-body:#3A4A3E;--text-muted:#6B7A6E;
+      --red-soft:#C0392B;
+      --font-d:'Cormorant Garamond',Georgia,serif;
+      --font-b:'DM Sans',system-ui,sans-serif;
+      --font-s:'Bebas Neue',sans-serif;
+      --r:4px;--rm:10px;--rl:18px;
+      --sh:0 2px 12px rgba(27,58,45,.09);--shm:0 8px 36px rgba(27,58,45,.15);--shl:0 24px 64px rgba(27,58,45,.22);
+      --t:.35s cubic-bezier(.4,0,.2,1);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-b);color:var(--text-body);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased}
+    h1,h2,h3{font-family:var(--font-d);color:var(--text-dark);line-height:1.1;letter-spacing:-.01em}
+    h1{font-size:clamp(2.8rem,6vw,5.2rem);font-weight:600}
+    h2{font-size:clamp(2rem,3.8vw,3.4rem);font-weight:600}
+    h3{font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:500}
+    p{line-height:1.75}
+    .container{max-width:1120px;margin:0 auto;padding:0 1.5rem}
+    .container-sm{max-width:720px;margin:0 auto;padding:0 1.5rem}
+    .text-gold{color:var(--gold)}
+    .section-label{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.9rem 2.2rem;border-radius:var(--r);font-family:var(--font-b);font-size:.82rem;font-weight:700;text-decoration:none;cursor:pointer;border:none;transition:var(--t);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
+    .btn-gold{background:var(--gold);color:var(--forest);box-shadow:0 4px 24px rgba(184,149,42,.4)}
+    .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 40px rgba(184,149,42,.52)}
+    .btn-gold:active{transform:translateY(0)}
+    .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+    .btn-lg{padding:1.2rem 3rem;font-size:.9rem}
+    .btn-xl{padding:1.35rem 3.6rem;font-size:.95rem;letter-spacing:.09em}
+
+    /* REVEAL ON SCROLL */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+    @media(prefers-reduced-motion:reduce){
+      .reveal{opacity:1;transform:none;transition:none}
+      html{scroll-behavior:auto}
+      .phase,.quiz-page,.result-section{transition:none !important}
+    }
+
+    /* ─── PHASE TRANSITIONS ─── */
+    .phase{transition:opacity .45s cubic-bezier(.4,0,.2,1)}
+    .phase.hidden{display:none}
+    .phase.fading-out{opacity:0;pointer-events:none}
+
+    /* ─── STICKY HEADER ─── */
+    .site-header{
+      position:sticky;top:0;z-index:200;
+      background:rgba(27,58,45,.97);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(184,149,42,.2);
+      padding:.75rem 0;
+    }
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-family:var(--font-d);font-size:1.35rem;font-weight:600;color:var(--cream);text-decoration:none;letter-spacing:.02em;flex-shrink:0}
+    .logo span{color:var(--gold)}
+    .header-mid{font-family:var(--font-b);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(247,243,236,.55);flex:1;text-align:center}
+    @media(max-width:599px){.header-mid{display:none}}
+
+    /* ─── HERO ─── */
+    .hero{
+      position:relative;background:var(--forest);overflow:hidden;
+      padding:5.5rem 0 7rem;min-height:88vh;display:flex;align-items:center;
+    }
+    .hero::before{
+      content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 70% 60% at 95% 30%,rgba(61,122,90,.24) 0%,transparent 60%),
+        radial-gradient(ellipse 50% 80% at 5% 90%,rgba(184,149,42,.08) 0%,transparent 55%),
+        linear-gradient(155deg,#1B3A2D 0%,#111814 100%);
+      pointer-events:none;
+    }
+    .hero::after{
+      content:'';position:absolute;right:-100px;bottom:-100px;
+      width:650px;height:650px;border-radius:50%;
+      border:1px solid rgba(184,149,42,.06);
+      box-shadow:0 0 0 80px rgba(184,149,42,.035),0 0 0 170px rgba(184,149,42,.025),0 0 0 290px rgba(184,149,42,.015);
+      pointer-events:none;
+    }
+    .hero-content{position:relative;z-index:2;max-width:780px}
+    .hero-eyebrow{
+      display:inline-flex;align-items:center;gap:.5rem;
+      background:rgba(184,149,42,.13);border:1px solid rgba(184,149,42,.3);
+      color:var(--gold-light);padding:.3rem .8rem;border-radius:2px;
+      font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:1.6rem;
+    }
+    .hero h1{color:var(--cream);margin-bottom:1.2rem}
+    .hero h1 em{font-style:italic;color:var(--gold)}
+    .hero-sub{font-size:clamp(1.05rem,1.9vw,1.25rem);color:rgba(247,243,236,.72);max-width:560px;margin-bottom:2.8rem;line-height:1.7}
+    .hero-cta-wrap{margin-bottom:3rem}
+    .hero-badges{display:flex;flex-wrap:wrap;gap:1.4rem}
+    .hero-badge{display:flex;align-items:center;gap:.4rem;color:rgba(247,243,236,.56);font-size:.78rem;font-weight:500}
+    .hero-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+    /* ─── SOCIAL PROOF BAR ─── */
+    .spbar{background:var(--charcoal);border-top:1px solid rgba(184,149,42,.15);border-bottom:1px solid rgba(184,149,42,.15);padding:1.4rem 0}
+    .spbar-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.8rem 2.8rem}
+    .sp-stars{display:flex;align-items:center;gap:.5rem}
+    .sp-stars-icons{color:var(--gold);font-size:1.05rem;letter-spacing:.05em}
+    .sp-stars-text{color:rgba(247,243,236,.7);font-size:.82rem;font-weight:600}
+    .sp-count{display:flex;align-items:center;gap:.6rem}
+    .sp-avatars{display:flex}
+    .sp-avatar{
+      width:28px;height:28px;border-radius:50%;border:2px solid var(--charcoal);
+      background:var(--forest-mid);display:flex;align-items:center;justify-content:center;
+      font-family:var(--font-d);font-size:.75rem;font-weight:600;color:var(--gold);
+      margin-left:-8px;flex-shrink:0;
+    }
+    .sp-avatar:first-child{margin-left:0}
+    .sp-count-text{color:rgba(247,243,236,.65);font-size:.82rem}
+    .sp-count-text strong{color:var(--gold-light)}
+    .sp-rec{display:flex;align-items:center;gap:.5rem;color:rgba(247,243,236,.5);font-size:.78rem;font-weight:500}
+    .sp-rec-icon{color:var(--gold);font-size:.9rem}
+    .sp-divider{width:1px;height:24px;background:rgba(247,243,236,.1)}
+    @media(max-width:599px){.sp-divider{display:none}}
+    .sp-range-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(184,149,42,.12);border:1px solid rgba(184,149,42,.25);border-radius:20px;padding:3px 9px;font-size:.73rem;font-weight:600;color:var(--gold-light);letter-spacing:.01em;white-space:nowrap}
+    .sp-range-bar{display:inline-block;width:38px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--fairway) 0%,var(--gold) 100%);vertical-align:middle;margin:0 2px;flex-shrink:0}
+
+    /* ─── PAIN ─── */
+    .pain{background:var(--cream);padding:6rem 0}
+    .pain-intro{text-align:center;max-width:600px;margin:0 auto 2.5rem}
+    .pain-bullets{max-width:580px;margin:0 auto;list-style:none}
+    .pain-bullets li{
+      font-family:var(--font-d);font-size:clamp(1.05rem,1.8vw,1.22rem);font-style:italic;
+      color:var(--text-dark);line-height:1.6;padding:.85rem 0;
+      border-bottom:1px solid var(--cream-dark);
+      display:flex;align-items:baseline;gap:.7rem;
+    }
+    .pain-bullets li:last-child{border-bottom:none}
+    .pain-dash{color:var(--gold);font-style:normal;font-size:1.2rem;flex-shrink:0}
+    .bridge-cta{background:var(--cream-dark);padding:2rem 1.5rem;text-align:center}
+    .bridge-cta a{font-family:var(--font-b);font-size:1rem;color:var(--fairway);text-decoration:none;border-bottom:1px solid var(--fairway);padding-bottom:.15rem;transition:color var(--t),border-color var(--t);cursor:pointer}
+    .bridge-cta a:hover{color:var(--forest);border-color:var(--forest)}
+
+    /* ─── WHAT YOU GET ─── */
+    .wyg{background:var(--cream-dark);padding:6rem 0}
+    .wyg-hdr{text-align:center;max-width:580px;margin:0 auto 3rem}
+    .wyg-grid{display:grid;grid-template-columns:1fr;gap:1.4rem}
+    @media(min-width:768px){.wyg-grid{grid-template-columns:repeat(3,1fr);gap:2rem}}
+    .wyg-card{
+      background:#fff;border-radius:var(--rl);padding:2.2rem 2rem;
+      box-shadow:var(--sh);border:1px solid rgba(27,58,45,.07);
+      text-align:center;transition:var(--t);
+    }
+    .wyg-card:hover{transform:translateY(-4px);box-shadow:var(--shm)}
+    .wyg-icon{width:48px;height:48px;margin:0 auto 1.1rem;display:flex;align-items:center;justify-content:center;border-radius:var(--rm);background:rgba(27,58,45,.06)}
+    .wyg-icon svg{width:24px;height:24px;color:var(--forest)}
+    .wyg-card h3{font-size:1.1rem;color:var(--forest);margin-bottom:.65rem}
+    .wyg-card p{font-size:.87rem;color:var(--text-muted);line-height:1.7}
+
+    /* ─── TEAM BAR ─── */
+    .team-bar{background:var(--forest);padding:3rem 0;border-top:2px solid var(--gold)}
+    .team-bar-inner{display:flex;align-items:center;gap:2.5rem}
+    .team-avatars{display:flex;align-items:center;gap:1.2rem;flex-shrink:0}
+    .team-member{display:flex;flex-direction:column;align-items:center;gap:.45rem}
+    .team-avatar{width:52px;height:52px;border-radius:50%;background:var(--forest-mid);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-b);font-size:.85rem;font-weight:600;color:var(--gold-light);position:relative;overflow:hidden}
+    .team-avatar img{width:100%;height:100%;object-fit:cover}
+    .team-member-name{font-family:var(--font-b);font-size:.68rem;font-weight:700;color:var(--cream);white-space:nowrap}
+    .team-member-role{font-size:.58rem;color:rgba(247,243,236,.5);white-space:nowrap;text-align:center}
+    .team-text-block{flex:1}
+    .team-bar-heading{font-family:var(--font-d);font-size:1.25rem;font-weight:600;color:var(--cream);margin:0 0 .75rem;line-height:1.3}
+    .team-bar-body{font-family:var(--font-b);font-size:.92rem;color:var(--cream-dark);line-height:1.65;margin:0;opacity:.85}
+    @media(max-width:640px){.team-bar-inner{flex-direction:column;text-align:center;gap:1.5rem}.team-avatars{justify-content:center}}
+
+    /* ─── FINAL CTA ─── */
+    .fcta{background:var(--forest);padding:7rem 0;text-align:center;position:relative;overflow:hidden}
+    .fcta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(61,122,90,.2) 0%,transparent 70%);pointer-events:none}
+    .fcta-inner{position:relative;z-index:2}
+    .fcta h2{color:var(--cream);margin-bottom:.9rem}
+    .fcta-sub{font-size:clamp(1rem,1.8vw,1.15rem);color:rgba(247,243,236,.65);max-width:480px;margin:0 auto 2.6rem;line-height:1.7}
+    .fcta-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem;margin-top:2rem}
+    .fcta-badge{display:flex;align-items:center;gap:.4rem;color:rgba(247,243,236,.5);font-size:.78rem;font-weight:500}
+    .fcta-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+    footer{background:var(--charcoal);padding:1.8rem 0;text-align:center}
+    footer p{font-size:.75rem;color:rgba(247,243,236,.28)}
+    footer a{color:rgba(247,243,236,.4);text-decoration:none}
+    footer a:hover{color:var(--gold)}
+
+    /* ═══════════════════════════════
+       PHASE 2: QUIZ
+    ═══════════════════════════════ */
+    #phase-quiz{background:var(--cream);min-height:100vh;display:flex;flex-direction:column}
+    .quiz-header{background:rgba(27,58,45,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(184,149,42,.2);padding:.75rem 1.5rem;position:sticky;top:0;z-index:100}
+    .quiz-header-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .quiz-progress-wrap{flex:1}
+    .quiz-progress-label{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,243,236,.5);margin-bottom:.4rem;display:block}
+    .quiz-progress-track{height:4px;background:rgba(247,243,236,.12);border-radius:2px;overflow:hidden}
+    .quiz-progress-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+    .quiz-logo{font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--cream);text-decoration:none;white-space:nowrap;flex-shrink:0}
+    .quiz-logo span{color:var(--gold)}
+
+    .quiz-body{flex:1;padding:2.5rem 1.5rem 3rem}
+    .quiz-inner{max-width:680px;width:100%;margin:0 auto}
+
+    /* Hole page animation */
+    .quiz-page{
+      animation:fadeSlideIn .38s cubic-bezier(.4,0,.2,1) both;
+    }
+    @keyframes fadeSlideIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Hole page header (holes 1-6: question holes) */
+    .quiz-domain-header{margin-bottom:2rem}
+    .quiz-domain-number{font-family:var(--font-s);font-size:3.2rem;color:var(--gold);line-height:1;margin-bottom:.25rem}
+    .quiz-domain-name{font-family:var(--font-d);font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:600;color:var(--text-dark);line-height:1.15;margin-bottom:.5rem}
+    .quiz-domain-subtitle{font-size:.92rem;color:var(--text-muted);line-height:1.6;max-width:560px}
+
+    /* Individual question within a hole page */
+    .quiz-domain-questions{display:flex;flex-direction:column;gap:2rem;margin-bottom:2rem}
+    .quiz-q-item{}
+    .quiz-q-item-text{font-family:var(--font-b);font-size:.97rem;color:var(--text-dark);line-height:1.55;margin-bottom:.9rem;font-weight:500}
+
+    /* 1-10 scale */
+    .scale-wrap{display:flex;flex-direction:column;gap:.4rem}
+    .scale-row{display:flex;align-items:center;gap:.3rem}
+    .scale-label-text{font-size:.68rem;color:var(--text-muted);font-weight:500;letter-spacing:.02em;white-space:nowrap;min-width:0}
+    .scale-label-left{margin-right:.4rem}
+    .scale-label-right{margin-left:.4rem}
+    .scale-buttons{display:flex;gap:.3rem;flex-shrink:0}
+    .scale-btn{
+      width:36px;height:36px;border-radius:var(--r);
+      border:1.5px solid rgba(27,58,45,.2);
+      background:#fff;
+      font-family:var(--font-b);font-size:.82rem;font-weight:600;color:var(--text-muted);
+      cursor:pointer;display:flex;align-items:center;justify-content:center;
+      transition:border-color .18s ease,background .18s ease,color .18s ease,transform .15s ease;
+      flex-shrink:0;
+    }
+    .scale-btn:hover{border-color:var(--forest);color:var(--forest);background:rgba(27,58,45,.04);transform:translateY(-1px)}
+    .scale-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    .scale-btn.selected{border-color:var(--gold);background:var(--gold);color:var(--forest);font-weight:700}
+    @media(max-width:480px){
+      .scale-btn{width:30px;height:30px;font-size:.76rem}
+      .scale-buttons{gap:.22rem}
+    }
+
+    /* Segmentation pages (holes 7-9) */
+    .quiz-seg-number{font-family:var(--font-s);font-size:3.5rem;color:var(--gold);line-height:1;margin-bottom:.5rem}
+    .quiz-seg-text{font-family:var(--font-d);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:600;color:var(--text-dark);line-height:1.3;margin-bottom:2rem}
+    .quiz-answers{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.8rem}
+    .quiz-answer-btn{
+      background:#fff;border:1.5px solid rgba(27,58,45,.12);border-radius:var(--rm);
+      padding:1rem 1.4rem;text-align:left;cursor:pointer;
+      font-family:var(--font-b);font-size:.95rem;color:var(--text-body);
+      transition:border-color .22s ease,background .22s ease,transform .22s ease,box-shadow .22s ease;
+      display:flex;align-items:center;gap:.9rem;line-height:1.4;
+    }
+    .quiz-answer-btn:hover{border-color:var(--forest);background:rgba(27,58,45,.04);transform:translateX(3px)}
+    .quiz-answer-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    .quiz-answer-btn.selected{border-color:var(--gold);background:rgba(184,149,42,.12);color:var(--forest);font-weight:600}
+    .quiz-answer-btn.selected .qa-letter{background:var(--gold);color:var(--forest);border-color:var(--gold)}
+    .qa-letter{
+      width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(27,58,45,.18);
+      display:flex;align-items:center;justify-content:center;
+      font-size:.72rem;font-weight:700;color:var(--text-muted);flex-shrink:0;
+      transition:background .22s,border-color .22s,color .22s;
+    }
+
+    /* Navigation buttons */
+    .quiz-nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(27,58,45,.08)}
+    .quiz-back-btn{
+      background:none;border:none;cursor:pointer;
+      font-family:var(--font-b);font-size:.82rem;color:var(--text-muted);
+      padding:.5rem .8rem;display:flex;align-items:center;gap:.4rem;
+      transition:color var(--t);border-radius:var(--r);
+    }
+    .quiz-back-btn:hover{color:var(--text-dark)}
+    .quiz-back-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    .quiz-back-btn[style*="visibility:hidden"]{pointer-events:none}
+    .quiz-next-btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      padding:.85rem 2rem;border-radius:var(--r);
+      font-family:var(--font-b);font-size:.82rem;font-weight:700;
+      cursor:pointer;border:none;transition:var(--t);
+      letter-spacing:.07em;text-transform:uppercase;
+      background:var(--gold);color:var(--forest);
+      box-shadow:0 4px 24px rgba(184,149,42,.4);
+    }
+    .quiz-next-btn:hover:not(:disabled){background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 40px rgba(184,149,42,.52)}
+    .quiz-next-btn:disabled{background:rgba(184,149,42,.25);color:rgba(27,58,45,.4);box-shadow:none;cursor:not-allowed;transform:none}
+    .quiz-next-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+    /* ═══════════════════════════════
+       PHASE 3: RESULTS
+    ═══════════════════════════════ */
+    #phase-results{background:var(--cream)}
+
+    /* Result hero */
+    .result-hero{background:var(--forest);padding:4.5rem 0 5rem;text-align:center;position:relative;overflow:hidden}
+    .result-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(61,122,90,.18) 0%,transparent 70%);pointer-events:none}
+    .result-hero-inner{position:relative;z-index:2}
+    .result-hero-label{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1rem}
+    .result-score-big{font-family:var(--font-s);font-size:clamp(5rem,14vw,9rem);color:var(--gold);line-height:1;display:block}
+    .result-score-sub{font-family:var(--font-d);font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(247,243,236,.78);font-style:italic;margin-top:.5rem}
+
+    /* Radar section */
+    .result-radar-section{background:var(--cream);padding:4rem 0}
+    .result-radar-inner{max-width:680px;margin:0 auto;padding:0 1.5rem}
+    .result-radar-hdr{text-align:center;margin-bottom:2.5rem}
+    .result-radar-hdr h2{font-size:clamp(1.6rem,3vw,2.4rem)}
+
+    /* The radar chart */
+    .radar-layout{display:flex;align-items:center;gap:2.5rem}
+    @media(max-width:640px){.radar-layout{flex-direction:column;gap:1.5rem}}
+    .radar-chart-wrap{position:relative;width:260px;height:260px;flex-shrink:0}
+    @media(min-width:500px){.radar-chart-wrap{width:300px;height:300px}}
+    .radar-chart-svg{width:100%;height:100%;overflow:visible}
+    .radar-grid-polygon{fill:none;stroke:rgba(27,58,45,.09);stroke-width:1}
+    .radar-axis{stroke:rgba(27,58,45,.07);stroke-width:1}
+    .radar-shape-fill{fill:rgba(27,58,45,.14);stroke:var(--forest);stroke-width:2.5;stroke-linejoin:round}
+    .radar-label{font-family:var(--font-b);font-size:11px;fill:var(--text-body);font-weight:600;text-anchor:middle;dominant-baseline:central}
+
+    /* Phase score cards — vertical stack next to radar */
+    .radar-phase-scores{display:flex;flex-direction:column;gap:.65rem;flex:1;min-width:0}
+    @media(max-width:640px){.radar-phase-scores{width:100%;max-width:400px}}
+    .phase-score-card{background:#fff;border-radius:var(--rm);padding:.85rem 1rem;display:flex;align-items:flex-start;gap:.9rem;border:1px solid rgba(27,58,45,.08);box-shadow:var(--sh)}
+    .phase-score-left{flex-shrink:0;text-align:center;min-width:58px}
+    .phase-score-card .phase-val{font-family:var(--font-s);font-size:2rem;color:var(--forest);line-height:1}
+    .phase-score-card .phase-val-sub{font-size:.6rem;color:var(--text-muted);margin-top:.1rem}
+    .phase-score-right{flex:1;min-width:0}
+    .phase-score-card .phase-name{font-family:var(--font-b);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dark);margin-bottom:.15rem;line-height:1.2}
+    .phase-score-card .phase-sub{font-size:.68rem;color:var(--gold);font-weight:600;margin-bottom:.25rem}
+    .phase-score-card .phase-desc{font-size:.72rem;color:var(--text-muted);line-height:1.45}
+    .score-val-res{font-family:var(--font-s);font-size:.82rem;color:var(--text-dark);min-width:28px;text-align:right}
+
+    /* Strongest & Weakest */
+    /* 8-domain bars (2 revealed, 6 locked) */
+    .result-domains{background:var(--cream-dark);padding:3.5rem 0}
+    .result-domains-inner{max-width:620px;margin:0 auto;padding:0 1.5rem}
+    .domain-bars{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
+    .domain-bar{display:flex;align-items:center;gap:.7rem;background:#fff;border-radius:var(--rm);padding:.7rem 1rem;border:1px solid rgba(27,58,45,.07);box-shadow:var(--sh);position:relative;overflow:hidden}
+    .domain-bar-name{font-family:var(--font-b);font-size:.8rem;font-weight:600;color:var(--text-dark);min-width:110px;flex-shrink:0}
+    .domain-bar-track{flex:1;height:10px;background:rgba(27,58,45,.07);border-radius:5px;overflow:hidden;position:relative}
+    .domain-bar-fill{height:100%;border-radius:5px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+    .domain-bar-score{font-family:var(--font-s);font-size:1.1rem;min-width:42px;text-align:right}
+    .domain-bar-tag{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .5rem;border-radius:3px;margin-left:.3rem;white-space:nowrap}
+    .domain-bar-tag--strong{background:rgba(61,122,90,.12);color:var(--fairway)}
+    .domain-bar-tag--weak{background:rgba(184,149,42,.15);color:var(--gold)}
+
+    /* Locked bars */
+    .domain-bar--locked .domain-bar-track{background:rgba(27,58,45,.05)}
+    .domain-bar--locked .domain-bar-fill{background:rgba(27,58,45,.08) !important;filter:blur(6px)}
+    .domain-bar--locked .domain-bar-score{color:rgba(27,58,45,.15);font-size:.85rem}
+    .domain-bar--locked .domain-bar-name{color:var(--text-muted)}
+    .domain-bar--locked{opacity:.72}
+    .domain-bar-lock{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;flex-shrink:0;color:var(--text-muted);opacity:.55}
+    .domain-bar-lock svg{width:14px;height:14px}
+
+    /* Phase group headers in domain bars */
+    .domain-group{margin-bottom:.4rem}
+    .domain-group+.domain-group{margin-top:1.4rem}
+    .domain-group-hdr{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem;padding:0 .2rem}
+    .domain-group-line{flex:1;height:1px;background:rgba(27,58,45,.1)}
+    .domain-group-label{font-family:var(--font-b);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+
+    /* CTA under bars */
+    .domains-cta{text-align:center;padding:1.5rem 0 0}
+    .domains-cta-text{font-family:var(--font-d);font-size:clamp(1.1rem,2vw,1.4rem);color:var(--text-dark);font-weight:500;margin-bottom:.8rem;font-style:italic}
+    .domains-cta-sub{font-size:.82rem;color:var(--text-muted);margin-top:.7rem}
+
+    /* ─── OPT-IN WALL ─── */
+    .optin-section{background:var(--cream-dark);padding:5rem 0}
+    .optin-inner{max-width:560px;margin:0 auto;padding:0 1.5rem}
+    .optin-hdr{text-align:center;margin-bottom:2.5rem}
+    .optin-hdr h2{font-size:clamp(1.8rem,3.2vw,2.8rem);margin-bottom:.8rem}
+    .optin-hdr p{color:var(--text-muted);font-size:.95rem}
+    .optin-checklist{list-style:none;margin-bottom:2rem;display:flex;flex-direction:column;gap:.7rem}
+    .optin-checklist li{display:flex;align-items:flex-start;gap:.7rem;font-size:.92rem;color:var(--text-body);line-height:1.5}
+    .optin-check{color:var(--fairway);font-weight:800;font-size:1rem;flex-shrink:0;margin-top:.05rem}
+
+    .optin-form{background:#fff;border-radius:var(--rl);padding:2.2rem 2rem;box-shadow:var(--shm);border:1px solid rgba(27,58,45,.08)}
+    .form-group{margin-bottom:1.2rem}
+    .form-group label{display:block;font-size:.78rem;font-weight:700;color:var(--text-dark);margin-bottom:.45rem;letter-spacing:.03em}
+    .form-group input{
+      width:100%;padding:.85rem 1rem;border:1.5px solid rgba(27,58,45,.15);border-radius:var(--rm);
+      font-family:var(--font-b);font-size:.92rem;color:var(--text-dark);background:#fff;
+      transition:border-color .22s;
+    }
+    .form-group input:focus{outline:none;border-color:var(--gold)}
+    .form-group input::placeholder{color:var(--text-muted);opacity:.7}
+    .form-submit{width:100%;padding:1.2rem;font-size:.92rem;border-radius:var(--rm);justify-content:center;margin-top:.5rem}
+    .form-sub{text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:.9rem;line-height:1.55}
+    .form-privacy{text-align:center;font-size:.7rem;color:var(--text-muted);margin-top:.5rem;opacity:.75}
+
+    .optin-thanks{text-align:center;background:#fff;border-radius:var(--rl);padding:3rem 2rem;box-shadow:var(--sh);display:none}
+    .optin-thanks.visible{display:block}
+    .thanks-icon{font-size:2.5rem;margin-bottom:1rem;display:block}
+    .thanks-title{font-family:var(--font-d);font-size:1.7rem;font-weight:600;color:var(--forest);margin-bottom:.6rem}
+    .thanks-body{font-size:.92rem;color:var(--text-muted);line-height:1.65;margin-bottom:1.4rem}
+    .thanks-link{color:var(--gold);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+    .thanks-link:hover{color:var(--gold-light)}
+
+    /* ─── ASSESSMENT TEASER ─── */
+    .assess-teaser{background:var(--forest);padding:4.5rem 0;text-align:center;position:relative;overflow:hidden}
+    .assess-teaser::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(61,122,90,.15) 0%,transparent 70%);pointer-events:none}
+    .assess-teaser-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;padding:0 1.5rem}
+    .assess-teaser h2{color:var(--cream);margin-bottom:1rem}
+    .assess-teaser p{color:rgba(247,243,236,.65);font-size:.92rem;max-width:480px;margin:0 auto 2rem;line-height:1.7}
+    .assess-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;text-align:left}
+    @media(max-width:480px){.assess-compare{grid-template-columns:1fr}}
+    .assess-compare-card{background:rgba(247,243,236,.06);border:1px solid rgba(247,243,236,.1);border-radius:var(--rm);padding:1.2rem 1.3rem}
+    .assess-compare-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,243,236,.4);margin-bottom:.5rem;display:block}
+    .assess-compare-title{font-family:var(--font-d);font-size:1.05rem;font-weight:600;color:var(--cream);margin-bottom:.4rem}
+    .assess-compare-detail{font-size:.8rem;color:rgba(247,243,236,.5);line-height:1.5}
+    .assess-compare-card--highlight{border-color:rgba(184,149,42,.35);background:rgba(184,149,42,.07)}
+    .assess-compare-card--highlight .assess-compare-label{color:var(--gold-light)}
+    .assess-compare-card--highlight .assess-compare-title{color:var(--gold-light)}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PHASE 1: PRE-QUIZ LANDING
+═══════════════════════════════════════ -->
+<div id="phase-landing" class="phase">
+
+  <!-- STICKY HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="https://mentaleroutine.com" class="logo">Mental <span>Routine</span></a>
+        <div class="header-mid">9 holes &middot; 8 minuten &middot; Gratis</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-h1">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow reveal" aria-hidden="true">
+          <svg width="7" height="7" viewBox="0 0 7 7" fill="currentColor"><circle cx="3.5" cy="3.5" r="3.5"/></svg>
+          Gratis quiz &middot; 9 holes &middot; 8 minuten
+        </div>
+        <h1 id="hero-h1" class="reveal d1">Welk mentaal patroon<br>kost jou de <em>meeste slagen?</em></h1>
+        <p class="hero-sub reveal d2">Speel 9 holes met ons en ontdek direct waar jouw mentale golfspel het sterkst en het zwakst is. Gebaseerd op 10 jaar onderzoek met 1.000+ golfers.</p>
+        <div class="hero-cta-wrap reveal d3">
+          <button class="btn btn-gold btn-xl start-quiz-btn" aria-label="Start de gratis quiz">Start de quiz &rarr;</button>
+        </div>
+        <div class="hero-badges reveal d4">
+          <span class="hero-badge"><span class="hero-badge-dot"></span>9 holes &middot; 8 minuten</span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span>Gebaseerd op 1.000+ golfers</span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span>Direct resultaat</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <div class="spbar" role="region" aria-label="Sociale bewijsvoering">
+    <div class="container">
+      <div class="spbar-inner">
+        <div class="sp-stars">
+          <span class="sp-stars-icons" aria-label="5 sterren">★★★★★</span>
+          <span class="sp-stars-text">4.9/5</span>
+        </div>
+        <div class="sp-divider" aria-hidden="true"></div>
+        <div class="sp-count">
+          <div class="sp-avatars" aria-hidden="true">
+            <div class="sp-avatar">T</div>
+            <div class="sp-avatar">M</div>
+            <div class="sp-avatar">J</div>
+          </div>
+          <span class="sp-count-text"><strong>1.247 golfers</strong> deden de quiz al</span>
+        </div>
+        <div class="sp-divider" aria-hidden="true"></div>
+        <div class="sp-rec">
+          <span class="sp-rec-icon" aria-hidden="true">&#10003;</span>
+          PGA-netwerk &middot; 10 jaar onderzoek
+        </div>
+        <div class="sp-divider" aria-hidden="true"></div>
+        <span class="sp-range-badge">
+          <span aria-hidden="true">&#9971;</span>
+          Handicap 0 t/m 54
+          <span class="sp-range-bar" role="presentation"></span>
+          Alle leeftijden
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAIN SECTION -->
+  <section class="pain" aria-labelledby="pain-h2">
+    <div class="container-sm">
+      <div class="pain-intro reveal">
+        <span class="section-label">Herken je dit?</span>
+        <h2 id="pain-h2">Het zit niet<br>in je swing</h2>
+      </div>
+      <ul class="pain-bullets">
+        <li class="reveal d1"><span class="pain-dash" aria-hidden="true">&#8212;</span>Op de range lukt alles &mdash; op de baan verdwijnt je swing zodra het telt.</li>
+        <li class="reveal d2"><span class="pain-dash" aria-hidden="true">&#8212;</span>&#201;&#233;n slechte hole en je hele ronde is verpest. Altijd weer.</li>
+        <li class="reveal d3"><span class="pain-dash" aria-hidden="true">&#8212;</span>Je hebt het talent voor beter &mdash; maar mentaal laat je slagen liggen.</li>
+        <li class="reveal d4"><span class="pain-dash" aria-hidden="true">&#8212;</span>Je wilt weten waarom. Niet vaag advies, maar een concreet antwoord.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="bridge-cta">
+    <a role="button" tabindex="0" class="start-quiz-btn" aria-label="Start de quiz">Speel 9 holes en ontdek in 8 minuten welk patroon jou de meeste slagen kost &rarr;</a>
+  </div>
+
+  <!-- WHAT YOU GET -->
+  <section class="wyg" aria-labelledby="wyg-h2">
+    <div class="container">
+      <div class="wyg-hdr reveal">
+        <span class="section-label">Na de 9 holes</span>
+        <h2 id="wyg-h2">Dit krijg je &mdash; gratis</h2>
+      </div>
+      <div class="wyg-grid">
+        <div class="wyg-card reveal d1">
+          <div class="wyg-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Jouw mentale profiel</h3>
+          <p>Radarchart met scores op de 3 fases van je Mentale Routine. Direct op je scherm zichtbaar na de 9e hole.</p>
+        </div>
+        <div class="wyg-card reveal d2">
+          <div class="wyg-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </div>
+          <h3>Je #1 sterkste en zwakste punt</h3>
+          <p>Concreet: welk domein kost jou de meeste slagen per ronde? En waar presteer je boven gemiddeld?</p>
+        </div>
+        <div class="wyg-card reveal d3">
+          <div class="wyg-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Persoonlijke PDF per mail</h3>
+          <p>Volledige uitslag met uitleg, tips en oefeningen. Gratis, zonder verplichtingen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM BAR -->
+  <section class="team-bar" aria-label="Over het team">
+    <div class="container">
+      <div class="team-bar-inner reveal">
+        <div class="team-avatars">
+          <div class="team-member">
+            <div class="team-avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23365a47' width='100' height='100'/%3E%3Ccircle cx='50' cy='36' r='18' fill='%23c4b99a'/%3E%3Cellipse cx='50' cy='90' rx='30' ry='28' fill='%23c4b99a'/%3E%3Ccircle cx='50' cy='36' r='16' fill='%23ddd5c4'/%3E%3Cellipse cx='50' cy='90' rx='28' ry='26' fill='%23ddd5c4'/%3E%3Cpath d='M32 28c0-12 8-18 18-18s18 6 18 18c0 2-1 4-2 4-2-8-8-12-16-12s-14 4-16 12c-1 0-2-2-2-4z' fill='%23aaa'/%3E%3C/svg%3E" alt="Henk de Jong"></div>
+            <span class="team-member-name">Henk de Jong</span>
+            <span class="team-member-role">Golfer &middot; 40+ jaar</span>
+            <span class="team-member-role">PGA-netwerk</span>
+          </div>
+          <div class="team-member">
+            <div class="team-avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23365a47' width='100' height='100'/%3E%3Ccircle cx='50' cy='36' r='18' fill='%23c4b99a'/%3E%3Cellipse cx='50' cy='90' rx='30' ry='28' fill='%23c4b99a'/%3E%3Ccircle cx='50' cy='36' r='16' fill='%23ddd5c4'/%3E%3Cellipse cx='50' cy='90' rx='28' ry='26' fill='%23ddd5c4'/%3E%3C/svg%3E" alt="Berend Jansen"></div>
+            <span class="team-member-name">Berend Jansen</span>
+            <span class="team-member-role">Psychometrisch expert</span>
+            <span class="team-member-role">Assessmentspecialist</span>
+          </div>
+        </div>
+        <div class="team-text-block">
+          <h3 class="team-bar-heading">15+ jaar ervaring. 10 jaar golf-specifiek onderzoek.</h3>
+          <p class="team-bar-body">Henk de Jong speelt 40+ jaar golf en bracht via zijn PGA-netwerk 1.000+ golfers bij het onderzoek. Berend Jansen is expert in psychometrische meetinstrumenten &mdash; het wetenschappelijk meten van waarom mensen doen wat ze doen. Samen bouwen zij al 15 jaar gedragsassessments. In 2016 startten zij MentalRoutine.com.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="fcta" aria-label="Afsluitende aanroep tot actie">
+    <div class="container">
+      <div class="fcta-inner">
+        <h2 class="reveal" style="color:var(--cream)">9 holes. 24 vragen.<br>Direct inzicht.</h2>
+        <p class="fcta-sub reveal d1">1.247 golfers ontdekten al welk mentaal patroon hen slagen kostte.</p>
+        <button class="btn btn-gold btn-xl reveal d2 start-quiz-btn" aria-label="Start de gratis quiz">Start de quiz &rarr;</button>
+        <div class="fcta-badges reveal d3">
+          <span class="fcta-badge"><span class="fcta-badge-dot"></span>Gratis</span>
+          <span class="fcta-badge"><span class="fcta-badge-dot"></span>9 holes &middot; 8 minuten</span>
+          <span class="fcta-badge"><span class="fcta-badge-dot"></span>Direct resultaat</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2026 MentalRoutine.com &nbsp;|&nbsp; <a href="mailto:support@mentalroutine.com">support@mentalroutine.com</a>
+      </p>
+    </div>
+  </footer>
+
+</div><!-- /phase-landing -->
+
+
+<!-- ═══════════════════════════════════════
+     PHASE 2: QUIZ
+═══════════════════════════════════════ -->
+<div id="phase-quiz" class="phase hidden" role="main" aria-label="Quiz — 9 holes">
+
+  <header class="quiz-header">
+    <div class="quiz-header-inner">
+      <a href="https://mentaleroutine.com" class="quiz-logo" aria-label="Mental Routine homepage">Mental <span>Routine</span></a>
+      <div class="quiz-progress-wrap">
+        <span class="quiz-progress-label" id="quiz-progress-label" aria-live="polite">Hole 1 van 9</span>
+        <div class="quiz-progress-track" role="progressbar" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100" aria-labelledby="quiz-progress-label">
+          <div class="quiz-progress-fill" id="quiz-progress-fill" style="width:11%"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="quiz-body">
+    <div class="quiz-inner">
+      <div id="quiz-page-wrap" aria-live="polite" aria-atomic="true">
+        <!-- Holes rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+</div><!-- /phase-quiz -->
+
+
+<!-- ═══════════════════════════════════════
+     PHASE 3: RESULTS
+═══════════════════════════════════════ -->
+<div id="phase-results" class="phase hidden" role="main" aria-label="Jouw resultaten">
+
+  <!-- STICKY HEADER (reuse site-header style) -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="https://mentaleroutine.com" class="logo">Mental <span>Routine</span></a>
+        <div class="header-mid">Jouw mentale profiel</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- RESULT HERO -->
+  <section class="result-hero" aria-labelledby="result-h2">
+    <div class="result-hero-inner">
+      <span class="result-hero-label">Jouw Mentale Routine profiel</span>
+      <span class="result-score-big" id="result-score-display" aria-label="Totaalscore">--/100</span>
+      <p class="result-score-sub" id="result-score-subtitle">Berekening...</p>
+    </div>
+  </section>
+
+  <!-- RADAR CHART SECTION -->
+  <section class="result-radar-section" aria-labelledby="radar-h2">
+    <div class="result-radar-inner">
+      <div class="result-radar-hdr">
+        <span class="section-label">Jouw profiel</span>
+        <h2 id="radar-h2">Jouw Mentale Routine in 3 fases</h2>
+      </div>
+      <div class="radar-layout">
+        <div class="radar-chart-wrap">
+          <svg class="radar-chart-svg" id="radar-svg" viewBox="0 0 340 320" aria-hidden="true">
+            <!-- Triangle radar rendered by JS -->
+          </svg>
+        </div>
+        <div class="radar-phase-scores" id="radar-phase-scores">
+          <!-- Phase score cards rendered by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 DOMAIN BARS (2 revealed, 6 locked) -->
+  <section class="result-domains" aria-labelledby="domains-h2">
+    <div class="result-domains-inner">
+      <div style="text-align:center;margin-bottom:2rem">
+        <span class="section-label">Jouw 8 domeinen</span>
+        <h2 id="domains-h2" style="font-size:clamp(1.5rem,2.8vw,2.2rem)">Hoe scoor je per domein?</h2>
+      </div>
+      <div class="domain-bars" id="domain-bars">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="domains-cta">
+        <p class="domains-cta-text">6 van je 8 scores zijn vergrendeld</p>
+        <a href="#optin-h2" class="btn btn-gold">Ontgrendel al je scores &rarr;</a>
+        <p class="domains-cta-sub">Gratis PDF met alle 8 scores, uitleg, tips en oefeningen</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPT-IN WALL -->
+  <section class="optin-section" aria-labelledby="optin-h2">
+    <div class="optin-inner">
+      <div class="optin-hdr">
+        <span class="section-label">Wil je weten wat dit betekent?</span>
+        <h2 id="optin-h2">Ontvang je volledige uitslag &mdash; gratis</h2>
+        <p>Je persoonlijke PDF met:</p>
+      </div>
+      <ul class="optin-checklist" aria-label="Inhoud van de PDF">
+        <li><span class="optin-check" aria-hidden="true">&#10003;</span> Jouw 8 scores + uitleg</li>
+        <li><span class="optin-check" aria-hidden="true">&#10003;</span> 3 oefeningen die je direct kunt toepassen</li>
+        <li><span class="optin-check" aria-hidden="true">&#10003;</span> Persoonlijke tips op basis van jouw Mentale Routine profiel</li>
+        <li><span class="optin-check" aria-hidden="true">&#10003;</span> Kortingscoupon voor het volledige Assessment</li>
+      </ul>
+
+      <div id="optin-form-wrap">
+        <form class="optin-form" id="optin-form" novalidate aria-labelledby="optin-h2">
+          <div class="form-group">
+            <label for="input-naam">Voornaam</label>
+            <input type="text" id="input-naam" name="naam" placeholder="Jouw voornaam" autocomplete="given-name" required>
+          </div>
+          <div class="form-group">
+            <label for="input-email">E-mailadres</label>
+            <input type="email" id="input-email" name="email" placeholder="jouw@email.nl" autocomplete="email" required>
+          </div>
+          <div class="form-group">
+            <label for="input-hcp">Exacte handicap</label>
+            <input type="number" id="input-hcp" name="handicap" placeholder="Bijv. 18.4" min="0" max="54" step="0.1" autocomplete="off">
+          </div>
+          <button type="submit" class="btn btn-gold form-submit">Verstuur mijn uitslag &rarr;</button>
+          <p class="form-sub">Je ontvangt je PDF binnen 5 minuten. Geen spam, geen verplichtingen.</p>
+          <p class="form-privacy">We delen je gegevens nooit met derden.</p>
+        </form>
+      </div>
+
+      <div class="optin-thanks" id="optin-thanks" role="alert" aria-live="polite">
+        <span class="thanks-icon" aria-hidden="true">&#10003;</span>
+        <div class="thanks-title">Je uitslag is onderweg!</div>
+        <p class="thanks-body">Check je inbox (en eventueel je spam-map) binnen 5 minuten.<br><br>Wil je niet wachten? <a href="assessment-standaard.html" class="thanks-link">&rarr; Bekijk het volledige Assessment</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSESSMENT TEASER -->
+  <section class="assess-teaser" aria-labelledby="assess-h2">
+    <div class="assess-teaser-inner">
+      <span class="section-label" style="color:var(--gold-light)">Klaar voor het volledige plaatje?</span>
+      <h2 id="assess-h2" style="color:var(--cream);margin-bottom:1rem">Quiz vs. Assessment</h2>
+      <div class="assess-compare">
+        <div class="assess-compare-card">
+          <span class="assess-compare-label">Deze quiz</span>
+          <div class="assess-compare-title">Gratis sneldiagnose</div>
+          <div class="assess-compare-detail">8 domeinen &middot; 9 holes &middot; 24 vragen &middot; Globale indicatie &middot; 8 minuten</div>
+        </div>
+        <div class="assess-compare-card assess-compare-card--highlight">
+          <span class="assess-compare-label">Assessment Standaard</span>
+          <div class="assess-compare-title">Volledig mentaal profiel</div>
+          <div class="assess-compare-detail">40+ factoren &middot; 18 holes &middot; 12 pagina&#8217;s PDF rapportage &middot; 25 minuten</div>
+        </div>
+      </div>
+      <a href="assessment-standaard.html" class="btn btn-gold btn-lg">Bekijk het Assessment Standaard &rarr; $59</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2026 MentalRoutine.com &nbsp;|&nbsp; <a href="mailto:support@mentalroutine.com">support@mentalroutine.com</a>
+      </p>
+    </div>
+  </footer>
+
+</div><!-- /phase-results -->
+
+
+<script>
+(function() {
+  'use strict';
+
+  /* ══════════════════════════════════
+     DOMAINS
+  ══════════════════════════════════ */
+  var DOMAINS = [
+    'Focus', 'Concentratie', 'Overtuiging', 'Vertrouwen',
+    'Beoordeling', 'Acceptatie', 'Analyse', 'Lering trekken'
+  ];
+
+  /* ══════════════════════════════════
+     QUESTION POOLS
+     8 domains x 3 questions x 3 variants = 72 variants total
+     Each entry: { domain: 0-7, variants: [A, B, C] }
+  ══════════════════════════════════ */
+  var QUESTION_POOLS = [
+    // Domain 0: Focus — Q1
+    { domain: 0, variants: [
+      'Als ik boven de bal sta, ben ik met mijn gedachten volledig bij d\u00e9ze slag.',
+      'Tijdens het adresseren is mijn hoofd helemaal leeg \u2014 alleen de slag telt.',
+      'Ik ben volledig aanwezig bij elke slag die ik doe, zonder afleiding van binnenuit.'
+    ]},
+    // Domain 0: Focus — Q2
+    { domain: 0, variants: [
+      'Ik kan gedachten aan eerdere holes of mijn score parkeren als ik een slag voorbereid.',
+      'Wat er op de vorige hole gebeurde, speelt niet door mijn hoofd als ik de volgende slag voorbereid.',
+      'Ik kan mijn score vergeten en me concentreren op de slag die voor me ligt.'
+    ]},
+    // Domain 0: Focus — Q3
+    { domain: 0, variants: [
+      'Ik laat me niet afleiden door wat er na deze slag of na deze ronde komt.',
+      'Gedachten over het eindresultaat of de laatste holes storen me niet tijdens het spelen.',
+      'Ik denk niet vooruit naar wat er nog moet komen \u2014 ik ben bij de slag van nu.'
+    ]},
+
+    // Domain 1: Concentratie — Q1
+    { domain: 1, variants: [
+      'Ik kan geluiden, medespelers en beweging om me heen buitensluiten tijdens mijn slag.',
+      'Externe prikkels \u2014 een vogel, een golfkar, iemand die praat \u2014 halen me niet uit mijn concentratie.',
+      'Wat er om me heen gebeurt raakt me niet als ik eenmaal in mijn routine zit.'
+    ]},
+    // Domain 1: Concentratie — Q2
+    { domain: 1, variants: [
+      'Als iemand praat of beweegt in mijn backswing, kan ik mijn concentratie vasthouden.',
+      'Onverwachte geluiden of bewegingen tijdens mijn swing brengen me niet van mijn stuk.',
+      'Zelfs als er iets onverwachts gebeurt net voor mijn slag, blijf ik gefocust.'
+    ]},
+    // Domain 1: Concentratie — Q3
+    { domain: 1, variants: [
+      'Ik merk dat ik een hele ronde lang mijn concentratieniveau kan vasthouden, ook na 14 holes.',
+      'Mijn concentratie op hole 16 is even scherp als op hole 1.',
+      'Ik verlies geen scherpte naarmate de ronde vordert \u2014 ook niet als ik moe word.'
+    ]},
+
+    // Domain 2: Overtuiging — Q1
+    { domain: 2, variants: [
+      'Als ik mijn club heb gekozen, sta ik daar volledig achter \u2014 geen twijfel meer.',
+      'Zodra ik mijn club uit de bag trek, is mijn keuze definitief \u2014 ik twijfel niet meer.',
+      'Ik maak mijn clubkeuze en ga er vol vertrouwen mee door, zonder aarzeling.'
+    ]},
+    // Domain 2: Overtuiging — Q2
+    { domain: 2, variants: [
+      'Ik kies een slagtype (fade, draw, punch) en voer dat uit zonder halverwege te veranderen.',
+      'Als ik een slagtype heb gekozen, houd ik daaraan vast \u2014 ook als ik boven de bal twijfel voel opkomen.',
+      'Mijn slagkeuze wijzigt niet meer als ik eenmaal sta \u2014 ik commit volledig.'
+    ]},
+    // Domain 2: Overtuiging — Q3
+    { domain: 2, variants: [
+      'Bij een moeilijke slag vertrouw ik op mijn slagkeuze, ook als er een veiliger optie is.',
+      'Ik durf de slag te kiezen die het beste past, ook als die riskanter is.',
+      'Ik kies niet automatisch de veilige optie \u2014 ik speel de slag die ik vertrouw.'
+    ]},
+
+    // Domain 3: Vertrouwen — Q1
+    { domain: 3, variants: [
+      'Bij een belangrijke slag \u2014 eerste tee, cruciale putt \u2014 vertrouw ik volledig op mijn swing.',
+      'Op beslissende momenten \u2014 een matchplay-putt, de eerste afslag \u2014 blijft mijn swing hetzelfde.',
+      'Als het echt telt, vertrouw ik op mijn lichaam en mijn techniek zonder na te denken.'
+    ]},
+    // Domain 3: Vertrouwen — Q2
+    { domain: 3, variants: [
+      'Na een paar slechte slagen behoud ik het vertrouwen dat de volgende goed kan zijn.',
+      'Een reeks slechte slagen ondermijnt mijn geloof in mijn swing niet fundamenteel.',
+      'Ik weet dat \u00e9\u00e9n slechte slag niets zegt over de volgende \u2014 mijn vertrouwen blijft intact.'
+    ]},
+    // Domain 3: Vertrouwen — Q3
+    { domain: 3, variants: [
+      'Ik durf in wedstrijdsituaties dezelfde slagen te spelen als op de driving range.',
+      'Mijn wedstrijdswing is dezelfde als mijn range-swing \u2014 ik verander niets onder druk.',
+      'Wat ik op de range kan, breng ik ook op de baan \u2014 ongeacht de situatie.'
+    ]},
+
+    // Domain 4: Beoordeling — Q1
+    { domain: 4, variants: [
+      'Na een slechte slag kan ik objectief beoordelen wat er technisch misging.',
+      'Ik analyseer een mislukte slag met mijn hoofd, niet met mijn emoties.',
+      'Ik kan rustig vaststellen wat er fout ging bij een slechte slag, zonder frustratie.'
+    ]},
+    // Domain 4: Beoordeling — Q2
+    { domain: 4, variants: [
+      'Ik beoordeel een slag op de beslissing en de uitvoering \u2014 niet alleen op het resultaat.',
+      'Een goed geslagen bal die slecht uitpakt frustreert me niet \u2014 ik beoordeel het proces.',
+      'Ik weet het verschil tussen een slechte beslissing en pech \u2014 en dat be\u00efnvloedt hoe ik reageer.'
+    ]},
+    // Domain 4: Beoordeling — Q3
+    { domain: 4, variants: [
+      'Ik kan het verschil zien tussen een mentale fout en een technische fout.',
+      'Na een slechte slag weet ik of het aan mijn hoofd lag of aan mijn techniek.',
+      'Ik herken wanneer een fout mentaal was en wanneer technisch \u2014 dat helpt me gericht verbeteren.'
+    ]},
+
+    // Domain 5: Acceptatie — Q1
+    { domain: 5, variants: [
+      'Na een dubbelbogey kan ik de volgende hole met een schone lei beginnen.',
+      'Een slechte hole laat ik achter me \u2014 als ik op de volgende tee sta is het verleden tijd.',
+      'Ik stap na een ramphole de volgende tee-box op alsof de ronde opnieuw begint.'
+    ]},
+    // Domain 5: Acceptatie — Q2
+    { domain: 5, variants: [
+      'Een slechte slag be\u00efnvloedt mijn stemming voor de rest van de ronde niet.',
+      'Mijn humeur op de baan wordt niet bepaald door individuele slechte slagen.',
+      'Ik laat een slechte slag mijn plezier in de rest van de ronde niet vergallen.'
+    ]},
+    // Domain 5: Acceptatie — Q3
+    { domain: 5, variants: [
+      'Als ik drie holes achtereen slecht speel, raak ik niet in een neerwaartse spiraal.',
+      'Een reeks slechte holes betekent niet automatisch dat de hele ronde verloren is voor mij.',
+      'Ik kan een negatieve reeks doorbreken en weer positief de volgende hole ingaan.'
+    ]},
+
+    // Domain 6: Analyse — Q1
+    { domain: 6, variants: [
+      'Na een ronde neem ik bewust de tijd om te evalueren wat er goed en fout ging.',
+      'Ik sta na een ronde stil bij wat er goed ging en wat beter kan \u2014 dat is een vast moment.',
+      'Na het binnenlopen op 18 evalueer ik mijn ronde structureel, niet alleen als het slecht ging.'
+    ]},
+    // Domain 6: Analyse — Q2
+    { domain: 6, variants: [
+      'Ik weet na elke ronde precies welke holes en slagen het verschil maakten.',
+      'Ik kan na een ronde aanwijzen welke 3\u20134 momenten het scoreverschil hebben bepaald.',
+      'Ik herinner me niet alleen de slechte slagen, maar ook de beslissende goede slagen van een ronde.'
+    ]},
+    // Domain 6: Analyse — Q3
+    { domain: 6, variants: [
+      'Ik onderscheid patronen in mijn spel \u2014 bijvoorbeeld dat ik altijd op hole 14\u201316 inzak.',
+      'Ik herken terugkerende patronen over meerdere rondes heen \u2014 zoals altijd slecht starten of eindigen.',
+      'Als ik terugkijk op meerdere rondes, zie ik duidelijke trends in wanneer mijn spel inzakt.'
+    ]},
+
+    // Domain 7: Lering trekken — Q1
+    { domain: 7, variants: [
+      'Op basis van eerdere rondes pas ik mijn voorbereiding of strategie concreet aan.',
+      'Inzichten uit eerdere rondes vertaal ik naar concrete veranderingen in mijn aanpak.',
+      'Wat ik leer van een ronde gebruik ik actief in mijn voorbereiding op de volgende.'
+    ]},
+    // Domain 7: Lering trekken — Q2
+    { domain: 7, variants: [
+      'Als ik een terugkerend probleem herken (bijv. slechte start), werk ik er gericht aan.',
+      'Patronen die ik in mijn spel ontdek, pak ik bewust aan \u2014 niet hopen dat het vanzelf beter gaat.',
+      'Ik onderneem actie als ik merk dat hetzelfde probleem steeds terugkomt in mijn rondes.'
+    ]},
+    // Domain 7: Lering trekken — Q3
+    { domain: 7, variants: [
+      'Ik heb een duidelijk beeld van wat ik de afgelopen maanden heb verbeterd in mijn spel.',
+      'Als iemand me vraagt wat ik het afgelopen jaar in mijn spel heb verbeterd, kan ik concreet antwoorden.',
+      'Ik kan specifieke voorbeelden noemen van hoe mijn spel zich de laatste tijd heeft ontwikkeld.'
+    ]}
+  ];
+
+  /* ══════════════════════════════════
+     SEGMENTATION HOLES (7, 8, 9)
+  ══════════════════════════════════ */
+  var SEG_HOLES = [
+    {
+      holeNum: 7,
+      title: 'Hole 7 \u2014 Jouw profiel',
+      text: 'Wat beschrijft jouw golf het best?',
+      answers: [
+        'Puur recreatief \u2014 het gaat om plezier en gezelligheid',
+        'Sociaal met een competitief randje',
+        'Competitief \u2014 ik speel wedstrijden en wil winnen',
+        'Serieus amateur \u2014 ik investeer actief in mijn spel'
+      ]
+    },
+    {
+      holeNum: 8,
+      title: 'Hole 8 \u2014 Jouw ambitie',
+      text: 'Wat wil je het meest verbeteren aan je mentale golfspel?',
+      answers: [
+        'Consistentie \u2014 niet meer die enorme schommelingen per ronde',
+        'Scores \u2014 structureel lagere handicap',
+        'Plezier \u2014 minder frustratie, meer genieten',
+        'Drukbestendigheid \u2014 presteren als het er \u00e9\u00e9cht om gaat'
+      ]
+    },
+    {
+      holeNum: 9,
+      title: 'Hole 9 \u2014 Jouw golfleven',
+      text: 'Hoe ziet jouw golfleven eruit?',
+      answers: [
+        'Ik speel af en toe, wanneer het uitkomt',
+        'Ik speel wekelijks, vaste dag(en)',
+        'Ik speel meerdere keren per week',
+        'Ik speel \u00e9n oefen structureel'
+      ]
+    }
+  ];
+
+  var TOTAL_HOLES = 9; // 6 question holes + 3 segmentation holes
+
+  /* ══════════════════════════════════
+     STATE
+  ══════════════════════════════════ */
+  var state = {
+    currentHole: 0, // 0-indexed: 0-5 = question holes, 6-8 = segmentation holes
+    // selectedQuestions: array of 24 objects { domain, text, answer: null }
+    // shuffled into random order, split into 6 groups of 4
+    holeQuestions: [], // holeQuestions[0..5] = array of 4 question objects
+    segAnswers: [null, null, null], // for holes 7, 8, 9
+    domainScores: [],
+    totalScore: 0,
+    strongestDomain: 0,
+    weakestDomain: 0
+  };
+
+  /* ══════════════════════════════════
+     QUIZ INITIALIZATION
+  ══════════════════════════════════ */
+  function initQuiz() {
+    // Step 1: For each pool entry, pick 1 random variant
+    var selected = QUESTION_POOLS.map(function(pool) {
+      var idx = Math.floor(Math.random() * pool.variants.length);
+      return { domain: pool.domain, text: pool.variants[idx], answer: null };
+    });
+
+    // Step 2: Shuffle the 24 selected questions (Fisher-Yates)
+    for (var i = selected.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = selected[i];
+      selected[i] = selected[j];
+      selected[j] = tmp;
+    }
+
+    // Step 3: Split into 6 groups of 4
+    state.holeQuestions = [];
+    for (var h = 0; h < 6; h++) {
+      state.holeQuestions.push(selected.slice(h * 4, h * 4 + 4));
+    }
+
+    state.segAnswers = [null, null, null];
+    state.currentHole = 0;
+    state.quizStartTime = Date.now();
+  }
+
+  /* ══════════════════════════════════
+     PHASE MANAGEMENT
+  ══════════════════════════════════ */
+  function showPhase(phaseId) {
+    var phases = ['phase-landing', 'phase-quiz', 'phase-results'];
+    phases.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (id === phaseId) {
+        el.classList.remove('hidden');
+        el.style.display = '';
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      } else {
+        el.classList.add('hidden');
+        el.style.display = 'none';
+      }
+    });
+  }
+
+  /* ══════════════════════════════════
+     PROGRESS UPDATE
+  ══════════════════════════════════ */
+  function updateProgress(holeIndex) {
+    var progressPct = Math.round(((holeIndex + 1) / TOTAL_HOLES) * 100);
+    document.getElementById('quiz-progress-fill').style.width = progressPct + '%';
+    var label = document.getElementById('quiz-progress-label');
+    label.textContent = 'Hole ' + (holeIndex + 1) + ' van ' + TOTAL_HOLES;
+    var track = document.querySelector('.quiz-progress-track');
+    if (track) track.setAttribute('aria-valuenow', progressPct);
+  }
+
+  /* ══════════════════════════════════
+     RENDER HOLE
+  ══════════════════════════════════ */
+  function renderHole(holeIndex) {
+    updateProgress(holeIndex);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    var wrap = document.getElementById('quiz-page-wrap');
+
+    if (holeIndex < 6) {
+      renderQuestionHole(wrap, holeIndex);
+    } else {
+      renderSegmentationHole(wrap, holeIndex);
+    }
+  }
+
+  /* ══════════════════════════════════
+     RENDER QUESTION HOLE (holes 1-6)
+  ══════════════════════════════════ */
+  function renderQuestionHole(wrap, holeIndex) {
+    var questions = state.holeQuestions[holeIndex];
+    var holeNum = holeIndex + 1;
+
+    var questionsHtml = questions.map(function(q, qIdx) {
+      var savedVal = q.answer;
+
+      var buttonsHtml = '';
+      for (var n = 1; n <= 10; n++) {
+        var isSelected = savedVal === n;
+        buttonsHtml += '<button class="scale-btn' + (isSelected ? ' selected' : '') + '" '
+          + 'data-qidx="' + qIdx + '" data-val="' + n + '" '
+          + 'aria-pressed="' + isSelected + '" '
+          + 'aria-label="' + n + ' van 10">'
+          + n
+          + '</button>';
+      }
+
+      return '<div class="quiz-q-item" data-question-index="' + qIdx + '">'
+        + '<div class="quiz-q-item-text">' + q.text + '</div>'
+        + '<div class="scale-wrap">'
+        + '<div class="scale-row">'
+        + '<span class="scale-label-text scale-label-left">Helemaal niet</span>'
+        + '<div class="scale-buttons" role="group" aria-label="Score 1 tot 10">' + buttonsHtml + '</div>'
+        + '<span class="scale-label-text scale-label-right">Helemaal</span>'
+        + '</div>'
+        + '</div>'
+        + '</div>';
+    }).join('');
+
+    var allAnswered = areAllHoleQuestionsAnswered(holeIndex);
+
+    var html = '<div class="quiz-page" aria-label="Hole ' + holeNum + ' van 9">'
+      + '<div class="quiz-domain-header">'
+      + '<div class="quiz-domain-number" aria-hidden="true">Hole ' + holeNum + '</div>'
+      + '<div class="quiz-domain-subtitle">4 vragen</div>'
+      + '</div>'
+      + '<div class="quiz-domain-questions">' + questionsHtml + '</div>'
+      + '<div class="quiz-nav">'
+      + '<button class="quiz-back-btn" id="quiz-back-btn" style="' + (holeIndex === 0 ? 'visibility:hidden' : '') + '" aria-label="Ga terug naar de vorige hole">'
+      + '<span aria-hidden="true">\u2190</span> Vorige hole'
+      + '</button>'
+      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (allAnswered ? '' : 'disabled') + ' aria-label="Ga naar de volgende hole">'
+      + 'Volgende hole \u2192'
+      + '</button>'
+      + '</div>'
+      + '</div>';
+
+    wrap.innerHTML = html;
+    bindQuestionHoleEvents(holeIndex);
+  }
+
+  /* ══════════════════════════════════
+     RENDER SEGMENTATION HOLE (holes 7-9)
+  ══════════════════════════════════ */
+  function renderSegmentationHole(wrap, holeIndex) {
+    var segIdx = holeIndex - 6; // 0, 1, 2
+    var seg = SEG_HOLES[segIdx];
+    var savedVal = state.segAnswers[segIdx];
+    var isLastHole = (holeIndex === TOTAL_HOLES - 1);
+
+    var LETTERS = ['A', 'B', 'C', 'D'];
+    var answersHtml = seg.answers.map(function(label, i) {
+      var isSelected = savedVal === i;
+      return '<button class="quiz-answer-btn' + (isSelected ? ' selected' : '') + '" '
+        + 'data-index="' + i + '" aria-pressed="' + isSelected + '">'
+        + '<span class="qa-letter" aria-hidden="true">' + LETTERS[i] + '</span>'
+        + '<span>' + label + '</span>'
+        + '</button>';
+    }).join('');
+
+    var hasAnswer = savedVal !== null;
+
+    var html = '<div class="quiz-page" aria-label="' + seg.title + '">'
+      + '<div class="quiz-seg-number" aria-hidden="true">' + seg.title + '</div>'
+      + '<div class="quiz-seg-text">' + seg.text + '</div>'
+      + '<div class="quiz-answers" role="group" aria-label="Antwoordopties">' + answersHtml + '</div>'
+      + '<div class="quiz-nav">'
+      + '<button class="quiz-back-btn" id="quiz-back-btn" aria-label="Ga terug naar de vorige hole">'
+      + '<span aria-hidden="true">\u2190</span> Vorige hole'
+      + '</button>'
+      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (hasAnswer ? '' : 'disabled') + ' aria-label="' + (isLastHole ? 'Bekijk mijn resultaten' : 'Ga naar de volgende hole') + '">'
+      + (isLastHole ? 'Bekijk mijn resultaten \u2192' : 'Volgende hole \u2192')
+      + '</button>'
+      + '</div>'
+      + '</div>';
+
+    wrap.innerHTML = html;
+    bindSegmentationHoleEvents(holeIndex, segIdx);
+  }
+
+  /* ══════════════════════════════════
+     EVENT BINDING
+  ══════════════════════════════════ */
+  function bindQuestionHoleEvents(holeIndex) {
+    var wrap = document.getElementById('quiz-page-wrap');
+
+    wrap.querySelectorAll('.scale-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        handleScaleClick(btn, holeIndex);
+      });
+      btn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleScaleClick(btn, holeIndex);
+        }
+      });
+    });
+
+    var backBtn = document.getElementById('quiz-back-btn');
+    if (backBtn && holeIndex > 0) {
+      backBtn.addEventListener('click', function() {
+        state.currentHole = holeIndex - 1;
+        renderHole(state.currentHole);
+      });
+    }
+
+    var nextBtn = document.getElementById('quiz-next-btn');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        if (!nextBtn.disabled) {
+          goToNextHole(holeIndex);
+        }
+      });
+    }
+  }
+
+  function bindSegmentationHoleEvents(holeIndex, segIdx) {
+    var wrap = document.getElementById('quiz-page-wrap');
+
+    wrap.querySelectorAll('.quiz-answer-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        handleSegAnswer(btn, segIdx);
+      });
+      btn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleSegAnswer(btn, segIdx);
+        }
+      });
+    });
+
+    var backBtn = document.getElementById('quiz-back-btn');
+    if (backBtn) {
+      backBtn.addEventListener('click', function() {
+        state.currentHole = holeIndex - 1;
+        renderHole(state.currentHole);
+      });
+    }
+
+    var nextBtn = document.getElementById('quiz-next-btn');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        if (!nextBtn.disabled) {
+          goToNextHole(holeIndex);
+        }
+      });
+    }
+  }
+
+  /* ══════════════════════════════════
+     ANSWER HANDLERS
+  ══════════════════════════════════ */
+  function handleScaleClick(btn, holeIndex) {
+    var qIdx = parseInt(btn.getAttribute('data-qidx'), 10);
+    var val = parseInt(btn.getAttribute('data-val'), 10);
+
+    // Store answer directly on the question object
+    state.holeQuestions[holeIndex][qIdx].answer = val;
+
+    // Update visual state for this question's row
+    var questionItem = btn.closest('.quiz-q-item');
+    if (questionItem) {
+      questionItem.querySelectorAll('.scale-btn').forEach(function(b) {
+        b.classList.remove('selected');
+        b.setAttribute('aria-pressed', 'false');
+      });
+    }
+    btn.classList.add('selected');
+    btn.setAttribute('aria-pressed', 'true');
+
+    // Enable next button if all 4 answered
+    if (areAllHoleQuestionsAnswered(holeIndex)) {
+      var nextBtn = document.getElementById('quiz-next-btn');
+      if (nextBtn) nextBtn.disabled = false;
+    }
+  }
+
+  function handleSegAnswer(btn, segIdx) {
+    var answerIndex = parseInt(btn.getAttribute('data-index'), 10);
+    state.segAnswers[segIdx] = answerIndex;
+
+    var allBtns = btn.closest('.quiz-answers').querySelectorAll('.quiz-answer-btn');
+    allBtns.forEach(function(b) {
+      b.classList.remove('selected');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    btn.classList.add('selected');
+    btn.setAttribute('aria-pressed', 'true');
+
+    var nextBtn = document.getElementById('quiz-next-btn');
+    if (nextBtn) nextBtn.disabled = false;
+  }
+
+  function areAllHoleQuestionsAnswered(holeIndex) {
+    var questions = state.holeQuestions[holeIndex];
+    if (!questions || questions.length < 4) return false;
+    for (var i = 0; i < 4; i++) {
+      if (questions[i].answer === null || questions[i].answer === undefined) return false;
+    }
+    return true;
+  }
+
+  /* ══════════════════════════════════
+     NAVIGATION
+  ══════════════════════════════════ */
+  function goToNextHole(holeIndex) {
+    if (holeIndex < TOTAL_HOLES - 1) {
+      state.currentHole = holeIndex + 1;
+      renderHole(state.currentHole);
+    } else {
+      // Last hole — calculate and show results
+      var elapsed = Math.round((Date.now() - state.quizStartTime) / 1000);
+      state.quizDurationSeconds = elapsed;
+      console.log('[Quiz] Invultijd: ' + Math.floor(elapsed / 60) + ':' + ('0' + (elapsed % 60)).slice(-2) + ' (' + elapsed + 's)');
+      calculateResults();
+      buildResultScreen();
+      showPhase('phase-results');
+    }
+  }
+
+  /* ══════════════════════════════════
+     SCORING
+     Domain score = average of its 3 questions (1-10) scaled to 0-100
+     score = ((avg - 1) / 9) * 100
+  ══════════════════════════════════ */
+  function calculateResults() {
+    // Collect all answered questions grouped by domain
+    var domainSums = [0, 0, 0, 0, 0, 0, 0, 0];
+    var domainCounts = [0, 0, 0, 0, 0, 0, 0, 0];
+
+    for (var h = 0; h < 6; h++) {
+      var questions = state.holeQuestions[h];
+      for (var q = 0; q < questions.length; q++) {
+        var qObj = questions[q];
+        var val = (qObj.answer !== null && qObj.answer !== undefined) ? qObj.answer : 5.5;
+        domainSums[qObj.domain] += val;
+        domainCounts[qObj.domain]++;
+      }
+    }
+
+    // S-curve to amplify contrast: pushes scores away from center
+    // so results feel more differentiated and interesting
+    function amplify(raw) {
+      var x = raw / 100;
+      var curved = x < 0.5
+        ? 0.5 * Math.pow(2 * x, 1.7)
+        : 1 - 0.5 * Math.pow(2 * (1 - x), 1.7);
+      return Math.max(0, Math.min(100, Math.round(curved * 100)));
+    }
+
+    var domainScores = [];
+    for (var i = 0; i < 8; i++) {
+      var count = domainCounts[i] > 0 ? domainCounts[i] : 1;
+      var avg = domainSums[i] / count;
+      var raw = Math.round(((avg - 1) / 9) * 100);
+      domainScores.push(amplify(raw));
+    }
+    state.domainScores = domainScores;
+
+    // Total
+    var total = 0;
+    for (var j = 0; j < domainScores.length; j++) total += domainScores[j];
+    state.totalScore = Math.round(total / 8);
+
+    // Phase scores (for 3-axis radar)
+    var preShot = Math.round((domainScores[0] + domainScores[1]) / 2);
+    var swing = Math.round((domainScores[2] + domainScores[3]) / 2);
+    var postShot = Math.round((domainScores[4] + domainScores[5] + domainScores[6] + domainScores[7]) / 4);
+    state.phaseScores = [preShot, swing, postShot];
+
+    // Strongest & weakest
+    var maxScore = -1, minScore = 101;
+    var strongIdx = 0, weakIdx = 0;
+    domainScores.forEach(function(s, idx) {
+      if (s > maxScore) { maxScore = s; strongIdx = idx; }
+      if (s < minScore) { minScore = s; weakIdx = idx; }
+    });
+    state.strongestDomain = strongIdx;
+    state.weakestDomain = weakIdx;
+  }
+
+  /* ══════════════════════════════════
+     RESULT SCREEN BUILDING
+  ══════════════════════════════════ */
+  function buildResultScreen() {
+    var total = state.totalScore;
+    var scores = state.domainScores;
+
+    document.getElementById('result-score-display').textContent = total + '/100';
+
+    var sub = '';
+    if (total <= 30) sub = 'Er is flink wat ruimte voor groei';
+    else if (total <= 50) sub = 'Je laat nog veel slagen liggen';
+    else if (total <= 70) sub = 'Een goede basis met duidelijke verbeterpunten';
+    else if (total <= 85) sub = 'Sterk \u2014 maar er zit nog meer in';
+    else sub = 'Uitstekend mentaal spel';
+    document.getElementById('result-score-subtitle').textContent = sub;
+
+    buildRadarSVG(state.phaseScores);
+    buildPhaseCards(state.phaseScores);
+    buildDomainBars(scores, state.strongestDomain, state.weakestDomain);
+  }
+
+  function buildRadarSVG(phaseScores) {
+    var svg = document.getElementById('radar-svg');
+    var cx = 170, cy = 160, maxR = 110;
+    var n = 3;
+    var PHASE_LABELS = ['Pre-shot routine', 'De swing', 'Post-shot routine'];
+
+    function getPoint(index, radius) {
+      var angle = (Math.PI * 2 * index / n) - (Math.PI / 2);
+      return {
+        x: cx + radius * Math.cos(angle),
+        y: cy + radius * Math.sin(angle)
+      };
+    }
+
+    function polygonPoints(radius) {
+      var pts = [];
+      for (var i = 0; i < n; i++) {
+        var p = getPoint(i, radius);
+        pts.push(p.x.toFixed(2) + ',' + p.y.toFixed(2));
+      }
+      return pts.join(' ');
+    }
+
+    var svgContent = '';
+
+    // Grid triangles
+    var gridLevels = [0.2, 0.4, 0.6, 0.8, 1.0];
+    gridLevels.forEach(function(level) {
+      svgContent += '<polygon class="radar-grid-polygon" points="' + polygonPoints(maxR * level) + '"/>';
+    });
+
+    // Axes
+    for (var i = 0; i < n; i++) {
+      var outer = getPoint(i, maxR);
+      svgContent += '<line class="radar-axis" x1="' + cx + '" y1="' + cy + '" x2="' + outer.x.toFixed(2) + '" y2="' + outer.y.toFixed(2) + '"/>';
+    }
+
+    // Score shape
+    var shapePoints = [];
+    for (var d = 0; d < n; d++) {
+      var normalized = phaseScores[d] / 100;
+      var p = getPoint(d, maxR * Math.max(normalized, 0.05));
+      shapePoints.push(p.x.toFixed(2) + ',' + p.y.toFixed(2));
+    }
+    svgContent += '<polygon class="radar-shape-fill" points="' + shapePoints.join(' ') + '"/>';
+
+    // Score dots
+    for (var dd = 0; dd < n; dd++) {
+      var norm = phaseScores[dd] / 100;
+      var dp = getPoint(dd, maxR * Math.max(norm, 0.05));
+      svgContent += '<circle cx="' + dp.x.toFixed(2) + '" cy="' + dp.y.toFixed(2) + '" r="5" fill="var(--forest)" stroke="#fff" stroke-width="2"/>';
+    }
+
+    // Labels
+    var labelRadius = maxR + 28;
+    for (var li = 0; li < n; li++) {
+      var lp = getPoint(li, labelRadius);
+      var anchor = 'middle';
+      var lx = lp.x;
+      var ly = lp.y;
+      if (li === 0) { ly -= 6; }
+      if (li === 1) { lx += 8; anchor = 'start'; }
+      if (li === 2) { lx -= 8; anchor = 'end'; }
+      svgContent += '<text class="radar-label" x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" text-anchor="' + anchor + '">' + PHASE_LABELS[li] + '</text>';
+      // Score under label
+      var sy = ly + 15;
+      svgContent += '<text class="radar-label" x="' + lx.toFixed(1) + '" y="' + sy.toFixed(1) + '" text-anchor="' + anchor + '" style="font-size:13px;fill:var(--forest);font-weight:700">' + phaseScores[li] + '/100</text>';
+    }
+
+    svg.innerHTML = svgContent;
+  }
+
+  function buildPhaseCards(phaseScores) {
+    var PHASE_NAMES = ['Pre-shot routine', 'De swing', 'Post-shot routine'];
+    var PHASE_SUBS = [
+      'Focus & Concentratie',
+      'Overtuiging & Vertrouwen',
+      'Beoordeling, Acceptatie, Analyse & Lering'
+    ];
+    var PHASE_DESCS = [
+      'Hoe goed bereid je elke slag mentaal voor? Kun je afleidingen buitensluiten en volledig bij déze slag zijn?',
+      'Sta je achter je keuze en vertrouw je je lichaam op het moment dat het telt?',
+      'Hoe ga je om met het resultaat? Kun je loslaten, analyseren en leren \u2014 zonder emotie?'
+    ];
+    var container = document.getElementById('radar-phase-scores');
+    var html = '';
+    for (var i = 0; i < 3; i++) {
+      html += '<div class="phase-score-card">'
+        + '<div class="phase-score-left">'
+        +   '<div class="phase-val">' + phaseScores[i] + '</div>'
+        +   '<div class="phase-val-sub">/100</div>'
+        + '</div>'
+        + '<div class="phase-score-right">'
+        +   '<div class="phase-name">' + PHASE_NAMES[i] + '</div>'
+        +   '<div class="phase-sub">' + PHASE_SUBS[i] + '</div>'
+        +   '<div class="phase-desc">' + PHASE_DESCS[i] + '</div>'
+        + '</div>'
+        + '</div>';
+    }
+    container.innerHTML = html;
+  }
+
+  function buildDomainBars(scores, strongIdx, weakIdx) {
+    var container = document.getElementById('domain-bars');
+    var LOCK_SVG = '<span class="domain-bar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>';
+
+    var GROUPS = [
+      { label: 'Pre-shot routine', domains: [0, 1] },
+      { label: 'De swing', domains: [2, 3] },
+      { label: 'Post-shot routine', domains: [4, 5, 6, 7] }
+    ];
+
+    var html = '';
+    GROUPS.forEach(function(group) {
+      html += '<div class="domain-group">'
+        + '<div class="domain-group-hdr">'
+        + '<span class="domain-group-line"></span>'
+        + '<span class="domain-group-label">' + group.label + '</span>'
+        + '<span class="domain-group-line"></span>'
+        + '</div>';
+
+      group.domains.forEach(function(i) {
+        var isRevealed = (i === strongIdx || i === weakIdx);
+        var lockedClass = isRevealed ? '' : ' domain-bar--locked';
+        var score = scores[i];
+        var color = score >= 75 ? 'var(--fairway)' : (score >= 50 ? 'var(--gold)' : 'var(--red-soft)');
+        var tag = '';
+        if (i === strongIdx) tag = '<span class="domain-bar-tag domain-bar-tag--strong">Sterkste</span>';
+        if (i === weakIdx) tag = '<span class="domain-bar-tag domain-bar-tag--weak">Zwakste</span>';
+
+        var barWidth = isRevealed ? score : (30 + Math.round(Math.random() * 50));
+        var barColor = isRevealed ? color : 'rgba(27,58,45,.15)';
+        var scoreArea = isRevealed
+          ? '<span class="domain-bar-score">' + score + '/100</span>' + tag
+          : '<span class="domain-bar-score">??</span>' + LOCK_SVG;
+
+        html += '<div class="domain-bar' + lockedClass + '">'
+          + '<span class="domain-bar-name">' + DOMAINS[i] + '</span>'
+          + '<div class="domain-bar-track"><div class="domain-bar-fill" data-width="' + barWidth + '" style="width:0%;background:' + barColor + '"></div></div>'
+          + scoreArea
+          + '</div>';
+      });
+
+      html += '</div>';
+    });
+
+    container.innerHTML = html;
+
+    setTimeout(function() {
+      container.querySelectorAll('.domain-bar-fill').forEach(function(bar) {
+        bar.style.width = bar.getAttribute('data-width') + '%';
+      });
+    }, 200);
+  }
+
+  /* ══════════════════════════════════
+     SCROLL REVEAL
+  ══════════════════════════════════ */
+  var revealObserver;
+  if ('IntersectionObserver' in window) {
+    revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+
+  /* ══════════════════════════════════
+     INIT: START QUIZ BUTTONS
+  ══════════════════════════════════ */
+  function startQuiz() {
+    initQuiz();
+    showPhase('phase-quiz');
+    renderHole(0);
+  }
+
+  document.querySelectorAll('.start-quiz-btn').forEach(function(btn) {
+    btn.addEventListener('click', startQuiz);
+    btn.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        startQuiz();
+      }
+    });
+  });
+
+  /* ══════════════════════════════════
+     OPT-IN FORM
+  ══════════════════════════════════ */
+  document.getElementById('optin-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var naam = document.getElementById('input-naam').value.trim();
+    var email = document.getElementById('input-email').value.trim();
+    var handicap = document.getElementById('input-hcp').value.trim();
+
+    if (!naam || !email) {
+      if (!naam) document.getElementById('input-naam').focus();
+      else document.getElementById('input-email').focus();
+      return;
+    }
+
+    // Build full payload for backend
+    var payload = {
+      naam: naam,
+      email: email,
+      handicap: handicap ? parseFloat(handicap) : null,
+      totaalscore: state.totalScore,
+      domein_scores: state.domainScores,
+      fase_scores: state.phaseScores,
+      sterkste_index: state.strongestDomain,
+      zwakste_index: state.weakestDomain,
+      segmentatie: {
+        profiel: state.segAnswers[0],   // 0-3: recreatief/sociaal/competitief/serieus
+        ambitie: state.segAnswers[1],   // 0-3: consistentie/scores/plezier/drukbestendigheid
+        golfleven: state.segAnswers[2]  // 0-3: af en toe/wekelijks/meerdere keren/structureel
+      },
+      invultijd_seconden: state.quizDurationSeconds || null
+    };
+
+    // Disable button while sending
+    var btn = e.target.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = 'Bezig met versturen...';
+
+    var API_URL = 'https://portal.mentaleroutine.com/api/quiz/optin';
+
+    fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Server error: ' + res.status);
+      return res.json();
+    })
+    .then(function() {
+      document.getElementById('optin-form-wrap').style.display = 'none';
+      var thanks = document.getElementById('optin-thanks');
+      thanks.classList.add('visible');
+      thanks.focus();
+    })
+    .catch(function(err) {
+      console.error('[Quiz] Opt-in error:', err);
+      btn.disabled = false;
+      btn.textContent = 'Verstuur mijn uitslag \u2192';
+      // Fallback: show thanks anyway so user isn't stuck
+      document.getElementById('optin-form-wrap').style.display = 'none';
+      var thanks = document.getElementById('optin-thanks');
+      thanks.classList.add('visible');
+      thanks.focus();
+    });
+  });
+
+  /* ══════════════════════════════════
+     INITIAL DISPLAY
+  ══════════════════════════════════ */
+  document.getElementById('phase-quiz').style.display = 'none';
+  document.getElementById('phase-results').style.display = 'none';
+
+})();
+</script>
+
+</body>
+</html>
