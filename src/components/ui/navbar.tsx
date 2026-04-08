@@ -161,10 +161,10 @@ const Navbar = () => {
           <LangDropdown />
           <div className="w-px h-4 bg-white/10" />
           <a
-            href="https://shop.mentalroutine.com"
+            href="#early-access"
             className="inline-flex items-center justify-center rounded-xl bg-amber-400 px-4 py-2 text-xs font-bold text-green-950 tracking-wide shadow-md shadow-amber-500/20 transition-all duration-200 hover:bg-amber-300 hover:-translate-y-px hover:shadow-lg hover:shadow-amber-500/30 whitespace-nowrap"
           >
-            {t.cta}
+            {translations[lang].earlyAccess.navCta}
           </a>
         </div>
 
@@ -216,14 +216,14 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="https://shop.mentalroutine.com"
+                href="#early-access"
                 className="inline-flex items-center justify-center w-full rounded-xl bg-amber-400 px-5 py-3.5 text-base font-bold text-green-950 mt-4 shadow-lg shadow-amber-500/20 hover:bg-amber-300 transition-colors"
                 onClick={() => setIsOpen(false)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45 }}
               >
-                {t.cta}
+                {translations[lang].earlyAccess.navCta}
               </motion.a>
             </nav>
           </motion.div>

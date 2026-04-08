@@ -206,6 +206,92 @@ function ContactSection() {
   );
 }
 
+// ── EARLY ACCESS SIGNUP ────────────────────────────────────────────────────────
+function EarlyAccessSection() {
+  const { lang } = useLang();
+  const t = translations[lang].earlyAccess;
+  const [form, setForm] = React.useState({ name: "", email: "", handicap: "" });
+  const [submitted, setSubmitted] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [error, setError] = React.useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch("/api/early-access", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
+  }
+
+  return (
+    <section id="early-access" className="py-28 px-6 bg-green-950 relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/3 w-96 h-96 rounded-full bg-green-700/20 blur-3xl" />
+        <div className="absolute bottom-0 right-1/3 w-96 h-96 rounded-full bg-amber-600/[0.07] blur-3xl" />
+      </div>
+      <div className="container mx-auto max-w-4xl relative z-10">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          {/* Left — copy */}
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">{t.sectionLabel}</p>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              {t.h2a}<br /><em className="text-amber-300">{t.h2b}</em>
+            </h2>
+            <div className="w-12 h-0.5 bg-amber-500 mb-6" />
+            <p className="text-green-200/70 leading-relaxed mb-4">{t.p1}</p>
+            <p className="text-green-200/50 text-sm leading-relaxed">{t.p2}</p>
+          </motion.div>
+
+          {/* Right — form */}
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+            {submitted ? (
+              <div className="rounded-2xl p-10 bg-white/[0.06] border border-amber-400/20 text-center">
+                <div className="w-14 h-14 rounded-full bg-amber-400/15 flex items-center justify-center mx-auto mb-5">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#c4a043" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7"><polyline points="4 12 9 17 20 6"/></svg>
+                </div>
+                <h3 className="text-xl font-semibold text-[#f6f1e7] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.success.h3}</h3>
+                <p className="text-sm text-green-200/60">{t.success.p}</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="rounded-2xl p-8 bg-white/[0.06] border border-white/10 space-y-5">
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs font-semibold text-green-100/80 mb-1.5 tracking-wide">{t.fields.name}</label>
+                    <input type="text" required value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder={t.fields.namePlaceholder} className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/[0.06] text-sm text-[#f6f1e7] placeholder:text-green-200/30 focus:outline-none focus:border-amber-500 transition-colors" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-green-100/80 mb-1.5 tracking-wide">{t.fields.handicap}</label>
+                    <input type="text" value={form.handicap} onChange={e => setForm(f => ({ ...f, handicap: e.target.value }))} placeholder={t.fields.handicapPlaceholder} className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/[0.06] text-sm text-[#f6f1e7] placeholder:text-green-200/30 focus:outline-none focus:border-amber-500 transition-colors" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-green-100/80 mb-1.5 tracking-wide">{t.fields.email}</label>
+                  <input type="email" required value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} placeholder={t.fields.emailPlaceholder} className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/[0.06] text-sm text-[#f6f1e7] placeholder:text-green-200/30 focus:outline-none focus:border-amber-500 transition-colors" />
+                </div>
+                <button type="submit" disabled={sending} className="w-full py-3.5 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
+                  {sending ? "..." : t.fields.submit}
+                </button>
+                {error && <p className="text-center text-xs text-red-400">Something went wrong. Please try again.</p>}
+              </form>
+            )}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ── PAGE CONTENT ───────────────────────────────────────────────────────────────
 function PageContent() {
   const { lang } = useLang();
@@ -250,6 +336,14 @@ function PageContent() {
               </motion.p>
             )}
 
+            {/* Beta badge */}
+            <motion.div className="flex justify-center lg:justify-start mb-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.75 }}>
+              <span className="inline-flex items-center gap-2 bg-amber-400/[0.08] border border-amber-400/25 rounded-full px-4 py-1.5 text-xs text-amber-300/80">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0" />
+                {T.earlyAccess.betaBadge}
+              </span>
+            </motion.div>
+
             {"trustBadge" in T.hero && T.hero.trustBadge && (
               <motion.div className="flex justify-center lg:justify-start mb-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.78 }}>
                 <span className="inline-flex items-center gap-2 bg-white/[0.06] border border-white/[0.1] rounded-full px-4 py-1.5 text-xs text-green-200/65">
@@ -260,8 +354,8 @@ function PageContent() {
             )}
 
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
-              <a href="https://shop.mentalroutine.com" className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
-                {T.hero.cta1}
+              <a href="#early-access" className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
+                {T.earlyAccess.heroCta}
               </a>
               <a href="#mental-routine" className="px-8 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm">
                 {T.hero.cta2}
@@ -449,6 +543,11 @@ function PageContent() {
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6 mb-4" />
             <p className="text-green-200/60 text-sm">{T.pricing.note}</p>
+            {/* Beta banner */}
+            <div className="mt-6 inline-flex items-center gap-2 bg-amber-400/[0.08] border border-amber-400/25 rounded-full px-5 py-2 text-xs text-amber-300/80">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0" />
+              {T.earlyAccess.pricingBanner}
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
@@ -490,8 +589,8 @@ function PageContent() {
                     </ul>
                   </div>
                 )}
-                <a href="https://shop.mentalroutine.com" className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 1 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
-                  {card.cta}
+                <a href="#early-access" className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 1 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
+                  {T.earlyAccess.pricingCta}
                 </a>
               </motion.div>
             ))}
@@ -560,8 +659,8 @@ function PageContent() {
                 </div>
                 <span className="text-xs text-stone-400">from $6.99 / 10</span>
               </div>
-              <a href="https://shop.mentalroutine.com" className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
-                {T.skillBuilder.cta}
+              <a href="#early-access" className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
+                {T.earlyAccess.heroCta}
               </a>
             </motion.div>
 
@@ -645,33 +744,8 @@ function PageContent() {
       {/* ── CONTACT FORM ─────────────────────────────────────────────────── */}
       <ContactSection />
 
-      {/* ── FINAL CTA ────────────────────────────────────────────────────── */}
-      <section className="py-28 px-6 bg-green-950 text-center relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/3 w-96 h-96 rounded-full bg-green-700/20 blur-3xl" />
-          <div className="absolute bottom-0 right-1/3 w-96 h-96 rounded-full bg-amber-600/[0.07] blur-3xl" />
-        </div>
-        <div className="container mx-auto max-w-3xl relative z-10">
-          <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">{T.cta.label}</p>
-          <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            {T.cta.h2a}<br /><em className="text-amber-300">{T.cta.h2b}</em>
-          </h2>
-          <div className="w-12 h-0.5 bg-amber-500 mx-auto mb-8" />
-          <p className="text-green-200/70 leading-relaxed mb-4 max-w-lg mx-auto">{T.cta.p1}</p>
-          <p className="text-green-200/50 text-sm leading-relaxed mb-10 max-w-md mx-auto">{T.cta.p2}</p>
-          <a href="https://shop.mentalroutine.com" className="inline-flex items-center gap-2 px-10 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm tracking-wide">
-            {T.cta.btn}
-          </a>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs text-green-200/40">
-            {T.cta.trust.map((item, i) => (
-              <span key={i} className="flex items-center gap-1.5">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5"><polyline points="2 8 6 12 14 4"/></svg>
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── EARLY ACCESS SIGNUP ──────────────────────────────────────────── */}
+      <EarlyAccessSection />
 
       {/* ── FOOTER ───────────────────────────────────────────────────────── */}
       <footer className="bg-[#0d1f15] relative overflow-hidden">
@@ -749,15 +823,13 @@ function PageContent() {
                 ))}
               </div>
 
-              <a href="https://shop.mentalroutine.com"
+              <a href="#early-access"
                 className="inline-flex items-center gap-2 text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors group"
               >
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0">
-                  <path d="M2 2h1.5l1.8 7.5h7.2l1.5-5H5"/>
-                  <circle cx="6.5" cy="13" r="1"/>
-                  <circle cx="12" cy="13" r="1"/>
+                  <path d="M8 1v14M1 8l7-7 7 7"/>
                 </svg>
-                <span>shop.mentalroutine.com</span>
+                <span>{T.earlyAccess.heroCta}</span>
                 <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 group-hover:translate-x-0.5 transition-transform">
                   <path d="M1 6h10M6 1l5 5-5 5"/>
                 </svg>
