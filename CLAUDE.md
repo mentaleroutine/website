@@ -89,7 +89,7 @@ public/
 | # | Sectie | ID | Achtergrond | Beschrijving |
 |---|--------|----|-------------|--------------|
 | 1 | **Navbar** | — | fixed, blur | Navigatie + taalwisselaar + CTA knop |
-| 2 | **Hero** | `#hero` | `#162b1e` (donkergroen) | H1, 2 paragrafen, heroBadge, CTA's, howItWorksLine, mobile mini-report mockup, desktop radar chart |
+| 2 | **Hero** | `#hero` | `#162b1e` (donkergroen) | H1, 2 paragrafen, heroBadge, CTA's, howItWorksLine, quiz link, mobile mini-report mockup, desktop radar chart |
 | 3 | **Research** | `#how-it-works` | `#f6f1e7` | Statistieken (90%, 1000+, 70+), Jack Nicklaus quote |
 | 4 | **8-Step Routine** | `#mental-routine` | `#faf8f3` | 8 kaarten in 4-kolom grid, footer note |
 | 5 | **Process** | `#steps` | `#f6f1e7` | 3 stappen: Assessment → Rapport → Actie, privacy note |
@@ -101,7 +101,7 @@ public/
 | 11 | **FAQ** | `#faq` | `#faf8f3` | 9 vragen, accordion via FaqsSection component |
 | 12 | **Early Access** | `#early-access` | `green-950` | Signup formulier, spots counter, pricing cards |
 | 13 | **Contact** | `#contact` | `#f6f1e7` | Contactformulier |
-| 14 | **Footer** | — | `#0d1f15` | Logo, menu, social links, teaching pro link |
+| 14 | **Footer** | — | `#0d1f15` | Logo, menu (incl. quiz link), social links, teaching pro link → `/pro-program`, quiz link |
 
 ## Pricing (huidige waarden)
 
@@ -155,6 +155,15 @@ public/
 - **Pre-launch datum**: May 15th, 2026
 - **Officiële launch datum**: June 1st, 2026
 
+## Pro Program Pagina
+
+- **URL**: `https://mentalroutine.com/pro-program`
+- **Bestand**: `src/app/pro-program/page.tsx`
+- **Doel**: Landing page voor PGA Teaching Professionals om het assessment aan te bieden aan hun leerlingen
+- **Taal**: alleen Engels (niet meertalig, niet in translations.ts)
+- **Toegang vanuit hoofdpagina**: footer link "Teaching Professional? Recommend the assessment to your students →"
+- **Bevat**: aanmeldformulier met velden voor PGA-nummer, divisie, land, faciliteit, actieve leerlingen, etc.
+
 ## Contactformulier
 
 - **API route**: `src/app/api/contact/route.ts`
@@ -180,7 +189,7 @@ public/
 ```typescript
 {
   nav: { howItWorks, pricing, testimonials, faq, contact, cta },
-  hero: { badge, h1a, h1b, p1, p2, heroBadge, radarCaption, cta1, cta2, howItWorksLine },
+  hero: { badge, h1a, h1b, p1, p2, heroBadge, radarCaption, cta1, cta2, howItWorksLine, quizCta },
   heroCardLabels: [{ tag, insight }],  // 8 items
   yourProfile: string,
   stepLabel: string,
@@ -210,7 +219,7 @@ public/
     fields: { name, namePlaceholder, handicap, handicapPlaceholder, email, emailPlaceholder, message, messagePlaceholder, submit, note },
     success: { h3, p }
   },
-  cta: { label, h2a, h2b, p1, p2, btn, trust: [] },  // 4 trust items
+  cta: { label, h2a, h2b, p1, p2, btn, quizLine, trust: [] },  // 4 trust items (niet gerenderd in page.tsx)
   earlyAccess: {
     badge, betaBadge, navCta, heroCta, pricingBanner, pricingCta, ctaBtn,
     sectionLabel, h2a, h2b, p1, p2, offer,
@@ -218,7 +227,7 @@ public/
     fields: { name, namePlaceholder, handicap, handicapPlaceholder, email, emailPlaceholder, planLabel, submit },
     socialProof, success: { h3, p }
   },
-  footer: { tagline, copyright, teachingPro, socialLabel }
+  footer: { tagline, copyright, teachingPro, socialLabel, quizLink }
 }
 ```
 
@@ -334,8 +343,15 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 
 ### Gratis Quiz (launch 20 april 2026)
 - URL: `https://mentalroutine.com/quiz.html`
-- Bestand: `public/quiz.html`
-- Na launch: link toevoegen op de hoofdpagina (bijv. in hero of CTA sectie)
+- Bestand: `public/quiz.html` (standalone HTML, eigen CSS, geen Tailwind/Next.js)
+- Taal: alleen Nederlands (niet meertalig)
+- **Links op hoofdpagina** (alvast actief, alsof quiz beschikbaar is):
+  - Hero: "Of probeer eerst de gratis quiz →" (`hero.quizCta`, 5 talen)
+  - Footer navigatie: "Free Quiz" / "Gratis Quiz" link (`footer.quizLink`, 5 talen)
+  - Footer rechterkolom: quiz-link met vraagteken-icoon
+- **Coming soon banner**: bovenaan quiz.html, meldt dat quiz pas op 20 april beschikbaar is + link terug naar assessment
+- **Quiz geblokkeerd**: `QUIZ_LOCKED = true` flag in JS — alle "Start de quiz" knoppen scrollen naar coming soon banner met pulse-animatie i.p.v. quiz te starten
+- **Op 20 april**: (1) zet `QUIZ_LOCKED = false`, (2) verwijder `<div id="coming-soon-banner">` blok
 
 ### Pricing Anker (na launch evalueren)
 - Extern vergelijkingspunt (bijv. "sessie bij golfpsycholoog: $150+") overwogen maar uitgesteld
@@ -438,4 +454,9 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Pricing anker (extern vergelijkingspunt) → pas na launch evalueren
 - Video/animatie → binnenkort, niet nu
 - Sticky navigation bar → gebruiker wil dit niet
-- Gratis quiz link → launch 20 april 2026 op mentalroutine.com/quiz.html
+
+### Quiz integratie + Teaching Pro link fix (8 april 2026)
+- Quiz-links toegevoegd op hoofdpagina: hero (`quizCta`), footer nav (`quizLink`), footer col 3
+- Alle links wijzen naar `/quiz.html` (5 talen)
+- `quiz.html`: coming soon banner + `QUIZ_LOCKED = true` blokkeren quiz tot 20 april
+- Footer "Teaching Professional?" link gefixt: `#contact` → `/pro-program`
