@@ -208,6 +208,7 @@ public/
     label, h2a, h2b, note, badge, creditsNote,
     reportPreview: { label, items: [] },
     previewBtn: string,
+    previewModal: { standard, deluxe, training },           // ← nieuw (9 apr)
     pricingQuote: { text, name, role },
     comparisonTitle: string,                               // ← nieuw (8 apr ronde 2)
     comparisonRows: [{ label, standard, deluxe }],         // ← nieuw (6 rijen)
@@ -215,13 +216,15 @@ public/
   },
   skillBuilder: {
     label, h2a, h2b, p1, p2, p2items: [],  // 7 content types
-    p3, extraCredits, cta, cardNote, previewBtn
+    p3, extraCredits, cta, cardNote, previewBtn,
+    reportCountStd, reportCountDlx,                        // ← nieuw (9 apr)
+    mockup: { tagline, title, subtitle, priority, physical, mental, exercise, expertInsight, reflection, storytelling, mantra, aiPrompt, benchmarked, exPhysical, exMental, exExpert, exReflection, exStorytelling, exMantra, exAiPrompt, exBenchmarked }  // ← nieuw (9 apr)
   },
   testimonials: { label, h2, items: [{ quote, text, image, name, role }] },  // 9 items
   faq: { label, h2, contactText, contactLink, showMore, items: [{ title, content }] },  // 9 items
   contact: {
     label, h2a, h2b, p1, p2,
-    fields: { name, namePlaceholder, handicap, handicapPlaceholder, email, emailPlaceholder, message, messagePlaceholder, submit, note },
+    fields: { name, namePlaceholder, handicap, handicapPlaceholder, email, emailPlaceholder, message, messagePlaceholder, submit, note, sending, error },  // ← sending/error nieuw (9 apr)
     success: { h3, p }
   },
   cta: { label, h2a, h2b, p1, p2, btn, quizLine, trust: [] },  // 4 trust items (niet gerenderd in page.tsx)
@@ -230,10 +233,11 @@ public/
     sectionLabel, h2a, h2b, p1, p2, offer,
     heroUrgency: string,                                   // ← nieuw (ronde 3)
     spotsLeft: string,
-    fields: { name, namePlaceholder, handicap, handicapPlaceholder, email, emailPlaceholder, planLabel, submit },
+    extraReports: string,                                   // ← nieuw (9 apr)
+    fields: { name, namePlaceholder, handicap, handicapPlaceholder, email, emailPlaceholder, planLabel, submit, sending, error },  // ← sending/error nieuw (9 apr)
     socialProof, success: { h3, p }
   },
-  footer: { tagline, copyright, teachingPro, socialLabel, quizLink }
+  footer: { tagline, copyright, teachingPro, socialLabel, quizLink, quoteText, quoteAuthor, methodBy }  // ← quote/method nieuw (9 apr)
 }
 ```
 
@@ -339,7 +343,9 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **Skip-to-content link**: `<a href="#hero" className="sr-only focus:not-sr-only ...">` vóór Navbar
 - **Radar chart**: `role="img"` + `aria-label` met beschrijving
 - **Spots counter**: `role="status"` + `aria-live="polite"` voor screenreader updates
-- **FAQ accordion**: semantische `<button>` elementen, `AnimatePresence` voor open/dicht
+- **FAQ accordion**: WAI-ARIA accordion pattern — `aria-expanded`, `aria-controls` op trigger button, `role="region"` + `aria-labelledby` op content panel
+- **Navbar mobile**: close button heeft `aria-label="Close menu"`
+- **Dynamic html lang**: `document.documentElement.lang` wordt gesynchroniseerd via `useEffect` in `LangProvider`
 
 ### Bestanden die NOOIT gestaged worden
 - `.next/` — build output
@@ -573,3 +579,35 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - FAQ "show more" knop had hardcoded Engelse tekst → vertaald via `faq.showMore`
 - Hero toonde "$49" dubbel (in CTA + urgentieregel) → prijs verwijderd uit urgentieregel
 - `heroCta` prijs: "$49" toegevoegd als "from $49" — onderscheidt betaalde assessment van gratis quiz
+
+### i18n Completering + Accessibility Fixes (9 april 2026)
+
+**Hardcoded strings vertaald (alle 5 talen):**
+- `contact.fields.sending` + `contact.fields.error`: "Sending..." / "Something went wrong..." → vertaald
+- `earlyAccess.fields.sending` + `earlyAccess.fields.error`: zelfde patroon
+- `earlyAccess.extraReports`: "2 extra training reports" → vertaald per taal
+- `footer.quoteText` + `footer.quoteAuthor` + `footer.methodBy`: footer quote en method credit → vertaald
+- `skillBuilder.reportCountStd` + `reportCountDlx`: "4–6 reports" / "9–14 reports" → vertaald
+- `skillBuilder.mockup`: 20 keys voor training report mockup card → vertaald (was hardcoded Engels)
+- `pricing.previewModal`: modal titels per plan type → vertaald (standard/deluxe/training)
+- Comparison table headers: hardcoded "Standard"/"Deluxe" → `T.pricing.plans[n].plan`
+- Mobile hero badge: hardcoded "Mental Routine Assessment" → `T.hero.badge`
+
+**ReportPreviewModal vertaald (page.tsx):**
+- Component gebruikt nu `useLang()` + `translations[lang]` voor modal titel
+- Hardcoded ternary (`plan === "training" ? "Training Report — Sample" : ...`) → `T.pricing.previewModal[plan]`
+
+**Dynamic html lang (lang-context.tsx):**
+- `useEffect` toegevoegd in `LangProvider` die `document.documentElement.lang = lang` synchroniseert
+- Zorgt dat screenreaders en SEO tools de juiste taal detecteren bij wisselen
+
+**Tailwind v4 fix (navbar.tsx):**
+- `bg-white/8` → `bg-white/[0.08]` (bracket notation verplicht in Tailwind v4)
+
+**FAQ accessibility (faqs.tsx):**
+- WAI-ARIA accordion pattern geïmplementeerd:
+  - Trigger button: `id`, `aria-expanded`, `aria-controls`
+  - Content panel: `id`, `role="region"`, `aria-labelledby`
+
+**Navbar accessibility (navbar.tsx):**
+- Mobile close button: `aria-label="Close menu"` toegevoegd

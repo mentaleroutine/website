@@ -11,6 +11,9 @@ import { translations, type Translation } from "@/lib/translations";
 
 // ── Report Preview Modal ──────────────────────────────────────────────────────
 function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe" | "training"; onClose: () => void }) {
+  const { lang } = useLang();
+  const T: Translation = translations[lang];
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
@@ -19,7 +22,7 @@ function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe" | "
   }, [onClose]);
 
   const src = plan === "training" ? "/reports/sample-training-report.html" : plan === "deluxe" ? "/reports/sample-deluxe.html" : "/reports/sample-standard.html";
-  const label = plan === "training" ? "Training Report — Sample" : plan === "deluxe" ? "Deluxe — Sample Report" : "Standard — Sample Report";
+  const label = T.pricing.previewModal[plan];
 
   return (
     <motion.div

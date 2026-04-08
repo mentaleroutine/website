@@ -192,6 +192,7 @@ const Navbar = () => {
             <button
               className="absolute top-6 right-6 p-2 text-green-300 hover:text-white transition-colors"
               onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
             >
               <X className="h-6 w-6" />
             </button>

@@ -31,7 +31,10 @@ export function FaqsSection() {
       >
         <button
           className="flex w-full items-start gap-5 px-6 py-5 text-left"
+          id={`${id}-trigger`}
           onClick={() => setOpenId(isOpen ? '' : id)}
+          aria-expanded={isOpen}
+          aria-controls={`${id}-content`}
         >
           {/* Number */}
           <span
@@ -77,6 +80,9 @@ export function FaqsSection() {
         <AnimatePresence initial={false}>
           {isOpen && (
             <motion.div
+              id={`${id}-content`}
+              role="region"
+              aria-labelledby={`${id}-trigger`}
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}

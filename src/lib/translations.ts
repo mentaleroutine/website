@@ -102,6 +102,7 @@ export const translations = {
       creditsNote: "Training reports included — extra reports available from $6.99 in the shop.",
       reportPreview: { label: "Your report includes:", items: ["Scores on all your measured elements", "What each score means for your game", "Your top 3 development priorities", "Recommended training reports"] },
       previewBtn: "Preview sample report →",
+      previewModal: { standard: "Standard — Sample Report", deluxe: "Deluxe — Sample Report", training: "Training Report — Sample" },
       pricingQuote: { text: "The report described things about my game I'd never been able to articulate.", name: "Robert M.", role: "Handicap 13.7" },
       comparisonTitle: "Compare plans",
       comparisonRows: [
@@ -297,6 +298,7 @@ export const translations = {
       creditsNote: "Trainingsrapporten inbegrepen — extra rapporten vanaf $6,99 in de shop.",
       reportPreview: { label: "Jouw rapport bevat:", items: ["Scores op al jouw gemeten elementen", "Wat elke score betekent voor jouw spel", "Jouw top-3 ontwikkelpunten", "Aanbevolen trainingsrapporten"] },
       previewBtn: "Bekijk voorbeeldrapport →",
+      previewModal: { standard: "Standaard — Voorbeeldrapport", deluxe: "Deluxe — Voorbeeldrapport", training: "Trainingsrapport — Voorbeeld" },
       pricingQuote: { text: "Het rapport beschreef dingen over mijn spel die ik zelf nooit had kunnen verwoorden.", name: "Willem B.", role: "Handicap 12.8" },
       comparisonTitle: "Vergelijk pakketten",
       comparisonRows: [
@@ -491,6 +493,7 @@ export const translations = {
       creditsNote: "Trainingsberichte inbegriffen — zusätzliche Berichte ab $6,99 im Shop.",
       reportPreview: { label: "Dein Bericht enthält:", items: ["Werte für alle deine gemessenen Elemente", "Was jeder Wert für dein Spiel bedeutet", "Deine Top-3-Entwicklungsprioritäten", "Empfohlene Trainingsberichte"] },
       previewBtn: "Beispielbericht ansehen →",
+      previewModal: { standard: "Standard — Beispielbericht", deluxe: "Deluxe — Beispielbericht", training: "Trainingsbericht — Beispiel" },
       pricingQuote: { text: "Der Bericht beschrieb Dinge über mein Spiel, die ich selbst nie hätte benennen können.", name: "Stefan W.", role: "Handicap 11.4" },
       comparisonTitle: "Pläne vergleichen",
       comparisonRows: [
@@ -685,6 +688,7 @@ export const translations = {
       creditsNote: "Rapports d'entraînement inclus — rapports supplémentaires dès $6,99 dans la boutique.",
       reportPreview: { label: "Votre rapport comprend :", items: ["Scores sur tous vos éléments mesurés", "Ce que chaque score signifie pour votre jeu", "Vos 3 priorités de développement principales", "Rapports d'entraînement recommandés"] },
       previewBtn: "Voir le rapport exemple →",
+      previewModal: { standard: "Standard — Rapport exemple", deluxe: "Deluxe — Rapport exemple", training: "Rapport d'entraînement — Exemple" },
       pricingQuote: { text: "Le rapport décrivait des choses sur mon jeu que je n'aurais jamais pu formuler moi-même.", name: "Mathieu B.", role: "Handicap 14.2" },
       comparisonTitle: "Comparer les plans",
       comparisonRows: [
@@ -879,6 +883,7 @@ export const translations = {
       creditsNote: "Informes de entrenamiento incluidos — informes adicionales desde $6,99 en la tienda.",
       reportPreview: { label: "Tu informe incluye:", items: ["Puntuaciones en todos tus elementos medidos", "Qué significa cada puntuación para tu juego", "Tus 3 prioridades de desarrollo principales", "Informes de entrenamiento recomendados"] },
       previewBtn: "Ver informe de ejemplo →",
+      previewModal: { standard: "Estándar — Informe de ejemplo", deluxe: "Deluxe — Informe de ejemplo", training: "Informe de entrenamiento — Ejemplo" },
       pricingQuote: { text: "El informe describía cosas sobre mi juego que yo mismo nunca había podido articular.", name: "Pablo M.", role: "Hándicap 13.3" },
       comparisonTitle: "Comparar planes",
       comparisonRows: [
