@@ -5,6 +5,7 @@
 - **Styling**: Tailwind CSS v4
 - **Animatie**: Framer Motion (`framer-motion` import in page.tsx/faqs.tsx, `motion/react` import in navbar.tsx/testimonials-columns.tsx)
 - **E-mail**: Resend SDK (contactformulier + early access signup)
+- **Analytics**: Plausible (privacy-friendly, cookieloos, GDPR-compliant)
 - **Fonts**: Google Fonts — Cormorant Garamond (headings, serif), Inter (body, sans-serif)
 - **Runtime**: Node.js (lokaal in `C:\Program Files\nodejs\`, niet in standaard PATH)
 
@@ -115,6 +116,10 @@ public/
 
 **Upgrade pad**: Standard → Deluxe voor $89 (gedocumenteerd in FAQ Q9, niet prominent op pricing cards om directe Deluxe-conversie niet te ondermijnen)
 
+**Early access prijzen zijn dynamisch**: `EA_PRICE_STD` (49) en `EA_PRICE_DLX` (99) constanten in page.tsx. Bij launch: verander alleen deze 2 waarden + de constanten in `api/early-access/route.ts` (`EA_STD`, `EA_DLX`). De `heroCta` translation gebruikt `{price}` template die at render time wordt ingevuld.
+
+**Pricing anchor**: "For comparison: a single session with a golf psychologist typically costs $150–$300." — subtiele vergelijking onder pricing note (`pricing.pricingAnchor`, alle 5 talen, € voor NL/DE/FR).
+
 **Let op**: De termen "Skills Developer" en "bonus credits" zijn volledig verwijderd uit alle user-facing tekst (0 matches in zichtbare content). "Skills Developer" hernoemd naar "Training Reports" / "Trainingsrapporten", "bonus credits" vervangen door "extra training reports". De interne property-namen in translations.ts heten nog steeds `skillBuilder.*` — dat is de technische key, de zichtbare labels zijn hernoemd.
 
 ## Sample Report Previews
@@ -141,8 +146,10 @@ public/
 
 ### Backend (`src/app/api/early-access/route.ts`)
 1. Voegt contact toe aan Resend Audience (`8e40ab7a-eab7-470d-943f-03a312e98ebc`)
-2. Stuurt notificatie-email naar `support@mentalroutine.com` met naam, email, plan-voorkeur, handicap
-3. Stuurt bevestiging-email naar subscriber met early access pricing info
+2. Stuurt notificatie-email naar `support@mentalroutine.com` met naam, email, plan-voorkeur, handicap, taal
+3. Stuurt meertalige bevestiging-email naar subscriber (5 talen, bepaald door frontend `lang` parameter)
+4. Emails parallel via `Promise.all` voor snelheid
+- **Pricing constanten**: `EA_STD = 49`, `EA_DLX = 99`, `REG_STD = 59`, `REG_DLX = 129` — bij launch alleen deze aanpassen
 
 ### Live Spots Counter
 - **API endpoint**: `GET /api/spots` → `src/app/api/spots/route.ts`
@@ -193,7 +200,7 @@ public/
 
 ```typescript
 {
-  nav: { howItWorks, pricing, testimonials, faq, contact, cta, openMenu, closeMenu, selectLang },  // ← a11y labels nieuw (9 apr)
+  nav: { howItWorks, pricing, testimonials, faq, contact, cta, openMenu, closeMenu, selectLang, skipToContent },  // ← a11y labels nieuw (9 apr)
   hero: { badge, h1a, h1b, p1, p2, heroBadge, radarCaption, radarAriaLabel, cta1, cta2, howItWorksLine, quizCta },
   heroCardLabels: [{ tag, insight }],  // 8 items
   yourProfile: string,
@@ -205,7 +212,7 @@ public/
   guarantee: { title, body },
   dimensions: { label, h2a, h2b, p1, p2, quote, quoteAuthor, items: [{ label, desc, scenario }] },  // 6 items
   pricing: {
-    label, h2a, h2b, note, badge, creditsNote,
+    label, h2a, h2b, note, badge, creditsNote, pricingAnchor,  // ← pricingAnchor nieuw (9 apr)
     reportPreview: { label, items: [] },
     previewBtn: string,
     previewModal: { standard, deluxe, training, closePreview, iframeTitle },  // ← nieuw (9 apr)
@@ -347,6 +354,24 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **Navbar mobile**: close button heeft `aria-label="Close menu"`
 - **Dynamic html lang**: `document.documentElement.lang` wordt gesynchroniseerd via `useEffect` in `LangProvider`
 
+### Analytics (Plausible)
+- **Provider**: Plausible Analytics — privacy-friendly, cookieloos, GDPR-compliant
+- **Script**: `<script async src="https://plausible.io/js/pa-ItBerh_Nl5g0FDj6e1den.js" />` in `layout.tsx`
+- **Initialisatie**: `window.plausible` stub in `layout.tsx` (queues events vóór script geladen is)
+- **Helper**: `track()` functie in `page.tsx` — wrapper rond `window.plausible()`
+- **Global type**: `Window.plausible` gedeclareerd in page.tsx via `declare global`
+- **Custom events**:
+
+| Event | Props | Trigger |
+|-------|-------|---------|
+| `hero_cta_click` | — | Hero CTA knop klik |
+| `quiz_click` | `source: "hero"` | Quiz link in hero |
+| `plan_select` | `plan: "standard" \| "deluxe"` | Plan selector in early access |
+| `pricing_cta_click` | `plan: "standard" \| "deluxe"` | Pricing CTA knop klik |
+| `report_preview` | `type: "standard" \| "deluxe" \| "training"` | Sample report preview geopend |
+| `signup` | `plan, lang` | Succesvolle early access signup |
+| `lang_switch` | `lang: "en" \| "nl" \| ...` | Taalwisselaar in navbar |
+
 ### Bestanden die NOOIT gestaged worden
 - `.next/` — build output
 - `.claude/` — Claude projectdata
@@ -384,9 +409,10 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **Quiz geblokkeerd**: `QUIZ_LOCKED = true` flag in JS — alle "Start de quiz" knoppen scrollen naar coming soon banner met pulse-animatie i.p.v. quiz te starten
 - **Op 20 april**: (1) zet `QUIZ_LOCKED = false`, (2) verwijder `<div id="coming-soon-banner">` blok
 
-### Pricing Anker (na launch evalueren)
-- Extern vergelijkingspunt (bijv. "sessie bij golfpsycholoog: $150+") overwogen maar uitgesteld
-- Pas na launch evalueren of extra urgentie nodig is bovenop was-prijs + deadline + spots counter
+### Pricing Anker ✅ (afgerond)
+- Geïmplementeerd als subtiele italic tekst onder pricing note
+- "For comparison: a single session with a golf psychologist typically costs $150–$300." (5 talen, € voor NL/DE/FR)
+- Key: `pricing.pricingAnchor` in translations
 
 ### Upgrade Pad Standard → Deluxe
 - Prijs: $89 (verschil $129 - $59 + $19 marge)
@@ -626,3 +652,30 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 
 **Performance (early-access API):**
 - Notificatie + bevestiging emails nu parallel via `Promise.all` (scheelt ~200-400ms per signup)
+
+### Technische Reviews + Conversie-optimalisatie (9 april 2026)
+
+**Dynamic pricing (page.tsx + api/early-access/route.ts):**
+- Early access prijzen via constanten: `EA_PRICE_STD = 49`, `EA_PRICE_DLX = 99` in page.tsx
+- API route: `EA_STD = 49`, `EA_DLX = 99`, `REG_STD = 59`, `REG_DLX = 129`
+- `earlyAccess.heroCta` gebruikt `{price}` template → `.replace("{price}", ...)` at render time
+- Was-prijzen in EA cards halen reguliere prijs uit `T.pricing.plans[n].price`
+
+**Pricing anchor geïmplementeerd (alle 5 talen):**
+- Nieuwe key `pricing.pricingAnchor`: extern vergelijkingspunt (golfpsycholoog $150-$300 / €150-€300)
+- Subtiele italic tekst onder pricing note in pricing sectie
+
+**Dynamic social proof (alle 5 talen):**
+- `earlyAccess.socialProof` gebruikt `{count}` template → vervangen door `total - spots` (= aantal signups)
+- Consistent met spots counter — toont hoeveel golfers al aangemeld zijn
+
+**Meertalige bevestiging-emails (api/early-access/route.ts):**
+- `confirmationEmail(name, lang)` functie met volledige email-tekst in 5 talen
+- Frontend stuurt `lang` mee in POST body → API stuurt email in juiste taal
+- Notificatie-email toont ook de taal van de subscriber
+
+**Plausible Analytics integratie (layout.tsx + page.tsx + navbar.tsx):**
+- Privacy-friendly, cookieloos, GDPR-compliant analytics
+- Script + stub in layout.tsx, `track()` helper + `declare global` in page.tsx
+- 7 custom events: hero_cta_click, quiz_click, plan_select, pricing_cta_click, report_preview, signup, lang_switch
+- Navbar: `lang_switch` event bij taalwisseling
