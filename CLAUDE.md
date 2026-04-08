@@ -45,6 +45,7 @@ public/
   reports/
     sample-standard.html        — dummy voorbeeldrapport Standard (12 pagina's)
     sample-deluxe.html          — dummy voorbeeldrapport Deluxe (20 pagina's)
+    sample-training-report.html — sample trainingsrapport (5 pagina's, clickable preview)
   assessment-standaard.html     — assessment landingspagina (standaard)
   assessment-deluxe.html        — assessment landingspagina (deluxe)
   upgrade-standaard-deluxe.html — upgrade landingspagina
@@ -82,7 +83,7 @@ public/
 1. **HeroRadar** — SVG radar chart met 8 assen, roteert random scores elke 3s
 2. **ContactSection** — werkend contactformulier (POST naar `/api/contact`)
 3. **EarlyAccessSection** — signup formulier met plan-voorkeur (POST naar `/api/early-access`)
-4. **ReportPreviewModal** — iframe modal die sample reports toont (Standard of Deluxe)
+4. **ReportPreviewModal** — iframe modal die sample reports toont (Standard, Deluxe, of Training Report)
 
 ### Secties in PageContent
 
@@ -95,8 +96,8 @@ public/
 | 5 | **Process** | `#steps` | `#f6f1e7` | 3 stappen: Assessment → Rapport → Actie, privacy note |
 | 6 | **Dimensions** | — | `#faf8f3` | 6 psychologische dimensies, Arnold Palmer quote |
 | 7 | **Why It Works** | — | `green-950` | 4 kolommen met iconen |
-| 8 | **Pricing** | `#pricing` | `green-950` | 2 plan-kaarten, vergelijkingstabel, report preview, guarantee, testimonial quote, credits note |
-| 9 | **Training Reports** | — | `#f6f1e7` | (voorheen Skills Developer) chips, mockup report card, report teller |
+| 8 | **Pricing** | `#pricing` | `green-950` | 2 plan-kaarten, vergelijkingstabel (responsive: tabel desktop / cards mobile), report preview, guarantee, testimonial quote, credits note, quiz CTA card |
+| 9 | **Training Reports** | — | `#f6f1e7` | (voorheen Skills Developer) chips, clickable report preview card (opent sample training report in modal), preview button, report teller |
 | 10 | **Testimonials** | `#testimonials` | `#faf8f3` | 3 auto-scroll kolommen (9 testimonials), pull quotes |
 | 11 | **FAQ** | `#faq` | `#faf8f3` | 9 vragen, accordion via FaqsSection component |
 | 12 | **Early Access** | `#early-access` | `green-950` | Signup formulier, spots counter, pricing cards |
@@ -107,22 +108,26 @@ public/
 
 | Plan | Prijs | Was-prijs | Inclusief | Early Access |
 |------|-------|-----------|-----------|-------------|
-| Standard | $59 | $79 | 12p PDF rapport + 4–6 trainingsrapporten | $49 + 20 bonus credits |
-| Deluxe | $129 | $179 | 20p PDF rapport + 9–14 trainingsrapporten | $99 + 20 bonus credits |
+| Standard | $59 | $79 | 12p PDF rapport + 4–6 trainingsrapporten | $49 + 2 extra training reports |
+| Deluxe | $129 | $179 | 20p PDF rapport + 9–14 trainingsrapporten | $99 + 2 extra training reports |
 
 **Extra trainingsrapporten**: vanaf $6,99 in de shop
 
 **Upgrade pad**: Standard → Deluxe voor $89 (gedocumenteerd in FAQ Q9, niet prominent op pricing cards om directe Deluxe-conversie niet te ondermijnen)
 
-**Let op**: De term "Skills Developer" is volledig verwijderd uit alle user-facing tekst (0 matches in zichtbare content). Hernoemd naar "Training Reports" / "Trainingsrapporten" etc. De interne property-namen in translations.ts heten nog steeds `skillBuilder.*` — dat is de technische key, de zichtbare labels zijn hernoemd.
+**Let op**: De termen "Skills Developer" en "bonus credits" zijn volledig verwijderd uit alle user-facing tekst (0 matches in zichtbare content). "Skills Developer" hernoemd naar "Training Reports" / "Trainingsrapporten", "bonus credits" vervangen door "extra training reports". De interne property-namen in translations.ts heten nog steeds `skillBuilder.*` — dat is de technische key, de zichtbare labels zijn hernoemd.
 
 ## Sample Report Previews
 
-- **Locatie**: `public/reports/sample-standard.html` en `public/reports/sample-deluxe.html`
+- **Locatie**: `public/reports/sample-standard.html`, `public/reports/sample-deluxe.html`, `public/reports/sample-training-report.html`
 - **Type**: Volledige HTML pagina's met eigen CSS (geen Tailwind), gestyled om een PDF-rapport te simuleren
-- **Bevat**: Cover page, score bars, deep dives per stap, geblurde secties (met lock icon), prioriteiten, aanbevelingen
-- **Geladen via**: `ReportPreviewModal` component in page.tsx — iframe in een modal overlay
-- **Trigger**: "Preview sample report →" knop onder elke pricing card
+- **Assessment reports** (Standard + Deluxe): Cover page, score bars, deep dives per stap, geblurde secties (met lock icon), prioriteiten, aanbevelingen
+- **Training report** (5 pagina's): Cover met score indicator (3.8/10 Conviction Under Pressure), benchmark vergelijking, fysieke + mentale oefening, expert insight + storytelling (Shane Lowry), reflectievragen + mantra, geblurde AI self-coaching prompts + extended benchmark
+- **Geladen via**: `ReportPreviewModal` component in page.tsx — iframe in een modal overlay, ondersteunt 3 types: `"standard"` | `"deluxe"` | `"training"`
+- **Triggers**:
+  - "Preview sample report →" knop onder elke pricing card (standard/deluxe)
+  - Clickable mockup card in Training Reports sectie (training)
+  - "Preview sample training report →" knop in Training Reports sectie (`skillBuilder.previewBtn`)
 - **Status**: Dit zijn dummy/placeholder rapporten. Wanneer echte PDF's beschikbaar zijn, vervang je deze door:
   1. PDF bestanden in `/public/reports/`
   2. Modal aanpassen om PDF te tonen (of linken naar directe download)
@@ -210,7 +215,7 @@ public/
   },
   skillBuilder: {
     label, h2a, h2b, p1, p2, p2items: [],  // 7 content types
-    p3, extraCredits, cta, cardNote
+    p3, extraCredits, cta, cardNote, previewBtn
   },
   testimonials: { label, h2, items: [{ quote, text, image, name, role }] },  // 9 items
   faq: { label, h2, contactText, contactLink, items: [{ title, content }] },  // 9 items
@@ -454,6 +459,35 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Pricing anker (extern vergelijkingspunt) → pas na launch evalueren
 - Video/animatie → binnenkort, niet nu
 - Sticky navigation bar → gebruiker wil dit niet
+
+### Expert Panel Review — 5 Fixes (8 april 2026)
+
+**1. "20 bonus credits" → "2 extra training reports" (alle 5 talen + API):**
+- `earlyAccess.pricingBanner`: "20 bonus credits" → "2 extra training reports" (EN, NL, DE, FR, ES)
+- `earlyAccess.offer`: zelfde wijziging in alle 5 talen
+- Early Access pricing cards in page.tsx: hardcoded "20 bonus credits" → dynamisch uit translations
+- Bevestiging-email in `api/early-access/route.ts`: "20 bonus credits" → "2 extra training reports"
+- Alle varianten verwijderd: "bonus credits", "crédits bonus", "Bonus-Credits", "créditos bonus"
+
+**2+4. Sample Training Report preview (nieuw bestand + clickable mockup):**
+- Nieuw bestand: `public/reports/sample-training-report.html` (5 pagina's, premium styling)
+- `ReportPreviewModal` uitgebreid: `plan` prop accepteert nu `"standard" | "deluxe" | "training"`
+- State type in page.tsx: `useState<"standard" | "deluxe" | "training" | null>(null)`
+- Training Reports mockup card: van statische tekst naar clickable card met `onClick={() => setPreviewPlan("training")}`
+- Hardcoded labels vervangen: "Skills Developer · Extended Report" → "Training Report · 5 pages", "15 credits" → "Personalised for your profile"
+- Preview button toegevoegd: `skillBuilder.previewBtn` (alle 5 talen)
+
+**3. Quiz prominenter (CTA card na pricing):**
+- Nieuwe quiz CTA card toegevoegd onderaan pricing sectie (na pricingQuote, vóór Training Reports)
+- Gestyled met vraagteken-icoon, amber accenten, groene achtergrond
+- Gebruikt `cta.quizLine` tekst uit translations (alle 5 talen)
+- Link naar `/quiz.html`
+
+**5. Vergelijkingstabel responsive:**
+- Desktop: bestaande `<table>` layout behouden (`hidden sm:block`)
+- Mobile: nieuwe card-based layout toegevoegd (`sm:hidden`)
+- Elke rij wordt een kaart met label + Standard/Deluxe waarden naast elkaar
+- Amber accenten voor Deluxe waarden, consistent met desktop styling
 
 ### Quiz integratie + Teaching Pro link fix (8 april 2026)
 - Quiz-links toegevoegd op hoofdpagina: hero (`quizCta`), footer nav (`quizLink`), footer col 3

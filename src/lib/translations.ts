@@ -5,9 +5,9 @@ export const translations = {
   // ENGLISH
   // ─────────────────────────────────────────────────────────────────
   en: {
-    nav: { howItWorks: "How It Works", pricing: "Pricing", testimonials: "Testimonials", faq: "FAQ", contact: "Contact", cta: "Start Assessment" },
+    nav: { howItWorks: "The Research", pricing: "Pricing", testimonials: "Testimonials", faq: "FAQ", contact: "Contact", cta: "Start Assessment" },
     hero: {
-      badge: "Mental Performance for Golfers",
+      badge: "The Mental Routine Assessment",
       h1a: "Find Out What's Really", h1b: "Costing You Strokes.",
       p1: "Inconsistent scores. Frustration after a bad hole. Losing it under pressure. The missing piece is almost never technical — it's mental. And it's trainable.",
       p2: "The Mental Routine Assessment maps your mental game in 15 minutes — and gives you a concrete plan to fix what's costing you strokes and enjoyment.",
@@ -65,6 +65,7 @@ export const translations = {
         { num: "03", title: "Take Action",  body: "Use your included training reports to work on specific elements in your profile — each one a personalised 5-page PDF targeting a low score or building on a strength. Standard includes 4–6, Deluxe includes 9–14." },
       ],
       privacyNote: "Your responses are processed confidentially and never shared with third parties.",
+      coachNote: "Working with a coach? Share your report — it gives them an objective starting point.",
     },
     whyItWorks: {
       label: "Why It Works",
@@ -77,8 +78,8 @@ export const translations = {
       ],
     },
     guarantee: {
-      title: "30-Day Money-Back Guarantee — No Questions Asked",
-      body: "Not what you expected? Full refund within 30 days. Your investment in understanding your mental game carries zero financial risk.",
+      title: "30-Day Money-Back Guarantee",
+      body: "If you don't find at least one insight in your report that changes how you think about your game — full refund within 30 days. No questions asked.",
     },
     dimensions: {
       label: "What Gets Measured", h2a: "Your mental profile", h2b: "across six dimensions",
@@ -174,11 +175,11 @@ export const translations = {
     earlyAccess: {
       badge: "Pre-Launch May 15th",
       betaBadge: "Currently in closed Beta with 100+ golfers — fine-tuning for international pre-launch",
-      navCta: "Get Early Access",
-      heroCta: "Get Early Access",
+      navCta: "Early Access",
+      heroCta: "See My Mental Profile — from $49",
       pricingBanner: "Early Access pre-launch May 15th — exclusive discount + 2 extra training reports. Official launch and regular pricing from June 1st.",
-      pricingCta: "Get Early Access →",
-      ctaBtn: "Get Early Access →",
+      pricingCta: "Lock In Early Access →",
+      ctaBtn: "Start in 15 Minutes →",
       sectionLabel: "Pre-Launch — May 15th",
       h2a: "Your mental game report", h2b: "at the lowest price — ever.",
       p1: "In 15 minutes you'll know exactly what's costing you strokes — and what to work on first. Your personalised PDF report + training reports, ready before anyone else. Pre-launch May 15th. Official launch: June 1st.",
@@ -186,6 +187,7 @@ export const translations = {
       offer: "Early Access pricing: Standard $49 (instead of $59) · Deluxe $99 (instead of $129) — plus 2 extra training reports on every plan.",
       fields: { name: "Name", namePlaceholder: "Your name", handicap: "Golf Handicap", handicapPlaceholder: "e.g. 14.2", email: "Email", emailPlaceholder: "you@example.com", planLabel: "I'm interested in", submit: "Lock In My Early-Bird Price →" },
       spotsLeft: "spots left at early-bird pricing",
+      heroUrgency: "Early access from $49 · pricing ends June 1st",
       socialProof: "Join golfers already on the early access list",
       success: { h3: "You're on the list!", p: "We'll send you your exclusive early-bird link on May 15th — ahead of the official launch on June 1st. Check your inbox for a confirmation." },
     },
@@ -196,9 +198,9 @@ export const translations = {
   // DUTCH
   // ─────────────────────────────────────────────────────────────────
   nl: {
-    nav: { howItWorks: "Hoe Het Werkt", pricing: "Prijzen", testimonials: "Ervaringen", faq: "FAQ", contact: "Contact", cta: "Doe de Assessment" },
+    nav: { howItWorks: "Het Onderzoek", pricing: "Prijzen", testimonials: "Ervaringen", faq: "FAQ", contact: "Contact", cta: "Doe de Assessment" },
     hero: {
-      badge: "Mentale Prestaties voor Golfers",
+      badge: "De Mental Routine Assessment",
       h1a: "Ontdek Wat Je Écht", h1b: "Slagen Kost.",
       p1: "Inconsistente scores. Frustratie na een slechte hole. De controle verliezen onder druk. Het ontbrekende stuk is bijna nooit technisch — het is mentaal. En het is trainbaar.",
       p2: "De Mentale Routine Assessment brengt jouw mentale spel in kaart in 15 minuten — en geeft je een concreet plan om aan te pakken wat je slagen en plezier kost.",
@@ -255,6 +257,7 @@ export const translations = {
         { num: "03", title: "Aan de Slag",  body: "Gebruik jouw inbegrepen trainingsrapporten om gericht aan specifieke elementen in je profiel te werken — elk rapport is een persoonlijk PDF van 5 pagina's, gericht op een lage score of het verder uitbouwen van een sterkte. Standaard bevat 4–6, Deluxe bevat 9–14." },
       ],
       privacyNote: "Je antwoorden worden vertrouwelijk verwerkt en nooit gedeeld met derden.",
+      coachNote: "Werk je met een coach? Deel je rapport — het geeft hen een objectief startpunt.",
     },
     whyItWorks: {
       label: "Waarom Het Werkt",
@@ -268,7 +271,7 @@ export const translations = {
     },
     guarantee: {
       title: "30 Dagen Niet-Goed-Geld-Terug",
-      body: "Niet wat je verwachtte? Volledig terugbetaald binnen 30 dagen. Jouw investering in je mentale spel draagt nul financieel risico.",
+      body: "Als je niet minstens één inzicht vindt dat verandert hoe je over je spel denkt — volledig terugbetaald binnen 30 dagen. Geen vragen.",
     },
     dimensions: {
       label: "Wat Wordt Gemeten", h2a: "Jouw mentale profiel", h2b: "over zes dimensies",
@@ -364,10 +367,10 @@ export const translations = {
       badge: "Pre-Launch 15 mei",
       betaBadge: "Momenteel in besloten Beta met 100+ golfers — fine-tuning voor internationale pre-launch",
       navCta: "Early Access",
-      heroCta: "Krijg Early Access",
+      heroCta: "Bekijk Mijn Mentale Profiel — vanaf $49",
       pricingBanner: "Early Access pre-launch 15 mei — exclusieve korting + 2 extra trainingsrapporten. Officiële lancering en reguliere prijs vanaf 1 juni.",
-      pricingCta: "Krijg Early Access →",
-      ctaBtn: "Krijg Early Access →",
+      pricingCta: "Verzeker Early Access →",
+      ctaBtn: "Start in 15 Minuten →",
       sectionLabel: "Pre-Launch — 15 mei",
       h2a: "Jouw mentale spelrapport", h2b: "voor de laagste prijs — ooit.",
       p1: "Over 15 minuten weet je precies wat je slagen kost — en waar je als eerste aan moet werken. Jouw persoonlijke PDF-rapport + trainingsrapporten, klaar vóór ieder ander. Pre-launch 15 mei. Officiële lancering: 1 juni.",
@@ -375,6 +378,7 @@ export const translations = {
       offer: "Early Access prijzen: Standaard $49 (i.p.v. $59) · Deluxe $99 (i.p.v. $129) — plus 2 extra trainingsrapporten op elk plan.",
       fields: { name: "Naam", namePlaceholder: "Jouw naam", handicap: "Golf Handicap", handicapPlaceholder: "bijv. 14,2", email: "E-mail", emailPlaceholder: "jij@voorbeeld.nl", planLabel: "Ik ben geïnteresseerd in", submit: "Zeker Mijn Early-Bird Prijs →" },
       spotsLeft: "plekken beschikbaar tegen early-bird prijs",
+      heroUrgency: "Early access vanaf $49 · actie eindigt 1 juni",
       socialProof: "Sluit je aan bij golfers op de early access lijst",
       success: { h3: "Je staat op de lijst!", p: "We sturen je op 15 mei jouw exclusieve early-bird link — vóór de officiële lancering op 1 juni. Check je inbox voor een bevestiging." },
     },
@@ -385,9 +389,9 @@ export const translations = {
   // GERMAN
   // ─────────────────────────────────────────────────────────────────
   de: {
-    nav: { howItWorks: "Wie Es Funktioniert", pricing: "Preise", testimonials: "Erfahrungen", faq: "FAQ", contact: "Kontakt", cta: "Assessment Starten" },
+    nav: { howItWorks: "Die Forschung", pricing: "Preise", testimonials: "Erfahrungen", faq: "FAQ", contact: "Kontakt", cta: "Assessment Starten" },
     hero: {
-      badge: "Mentale Leistung für Golfer",
+      badge: "Das Mental Routine Assessment",
       h1a: "Finde heraus, was dich", h1b: "wirklich Schläge kostet.",
       p1: "Inkonsistente Scores. Frust nach einem schlechten Loch. Die Kontrolle unter Druck verlieren. Das fehlende Stück ist fast nie technisch — es ist mental. Und es ist trainierbar.",
       p2: "Das Mental Routine Assessment kartiert dein mentales Spiel in 15 Minuten — und gibt dir einen konkreten Plan, um zu beheben, was dir Schläge und Freude kostet.",
@@ -444,6 +448,7 @@ export const translations = {
         { num: "03", title: "In Aktion treten",  body: "Nutze deine enthaltenen Trainingsberichte, um gezielt an bestimmten Elementen deines Profils zu arbeiten — jeder Bericht ist ein persönliches 5-seitiges PDF, das eine Schwachstelle verbessert oder eine Stärke ausbaut. Standard enthält 4–6, Deluxe enthält 9–14." },
       ],
       privacyNote: "Deine Antworten werden vertraulich verarbeitet und niemals an Dritte weitergegeben.",
+      coachNote: "Arbeitest du mit einem Coach? Teile deinen Bericht — er gibt ihnen einen objektiven Ausgangspunkt.",
     },
     whyItWorks: {
       label: "Warum Es Funktioniert",
@@ -456,8 +461,8 @@ export const translations = {
       ],
     },
     guarantee: {
-      title: "30-Tage-Geld-zurück-Garantie — Keine Fragen gestellt",
-      body: "Nicht das, was du erwartet hast? Vollständige Rückerstattung innerhalb von 30 Tagen. Kein finanzielles Risiko.",
+      title: "30-Tage-Geld-zurück-Garantie",
+      body: "Wenn du nicht mindestens eine Erkenntnis findest, die verändert wie du über dein Spiel denkst — volle Rückerstattung innerhalb von 30 Tagen. Ohne Wenn und Aber.",
     },
     dimensions: {
       label: "Was Gemessen Wird", h2a: "Dein mentales Profil", h2b: "über sechs Dimensionen",
@@ -553,10 +558,10 @@ export const translations = {
       badge: "Pre-Launch 15. Mai",
       betaBadge: "Derzeit in geschlossener Beta mit 100+ Golfern — Feinabstimmung für den internationalen Pre-Launch",
       navCta: "Early Access",
-      heroCta: "Early Access sichern",
+      heroCta: "Mein Mentales Profil — ab $49",
       pricingBanner: "Early Access Pre-Launch 15. Mai — exklusiver Rabatt + 2 zusätzliche Trainingsberichte. Offizieller Start und reguläre Preise ab 1. Juni.",
       pricingCta: "Early Access sichern →",
-      ctaBtn: "Early Access sichern →",
+      ctaBtn: "In 15 Minuten starten →",
       sectionLabel: "Pre-Launch — 15. Mai",
       h2a: "Dein mentaler Spielbericht", h2b: "zum niedrigsten Preis — überhaupt.",
       p1: "In 15 Minuten weißt du genau, was dich Schläge kostet — und woran du zuerst arbeiten solltest. Dein personalisierter PDF-Bericht + Trainingsberichte, fertig vor allen anderen. Pre-Launch 15. Mai. Offizieller Start: 1. Juni.",
@@ -564,6 +569,7 @@ export const translations = {
       offer: "Early Access Preise: Standard $49 (statt $59) · Deluxe $99 (statt $129) — plus 2 zusätzliche Trainingsberichte auf jeden Plan.",
       fields: { name: "Name", namePlaceholder: "Dein Name", handicap: "Golf-Handicap", handicapPlaceholder: "z.B. 14,2", email: "E-Mail", emailPlaceholder: "du@beispiel.de", planLabel: "Ich interessiere mich für", submit: "Meinen Early-Bird-Preis sichern →" },
       spotsLeft: "Plätze zum Early-Bird-Preis verfügbar",
+      heroUrgency: "Early Access ab $49 · Aktion endet am 1. Juni",
       socialProof: "Schließe dich Golfern auf der Early Access Liste an",
       success: { h3: "Du stehst auf der Liste!", p: "Wir senden dir am 15. Mai deinen exklusiven Early-Bird-Link — vor dem offiziellen Start am 1. Juni. Prüfe deinen Posteingang für eine Bestätigung." },
     },
@@ -574,9 +580,9 @@ export const translations = {
   // FRENCH
   // ─────────────────────────────────────────────────────────────────
   fr: {
-    nav: { howItWorks: "Comment Ça Marche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "Mon Évaluation" },
+    nav: { howItWorks: "La Recherche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "Mon Évaluation" },
     hero: {
-      badge: "Performance Mentale pour Golfeurs",
+      badge: "Le Mental Routine Assessment",
       h1a: "Découvrez ce qui vous", h1b: "coûte vraiment des coups.",
       p1: "Des scores inconsistants. De la frustration après un mauvais trou. Perdre le contrôle sous pression. La pièce manquante est presque jamais technique — elle est mentale. Et elle est entraînable.",
       p2: "L'Évaluation de la Routine Mentale cartographie votre jeu mental en 15 minutes — et vous donne un plan concret pour corriger ce qui vous coûte des coups et du plaisir.",
@@ -633,6 +639,7 @@ export const translations = {
         { num: "03", title: "Passez à l'Action", body: "Utilisez vos rapports d'entraînement inclus pour travailler sur des éléments spécifiques de votre profil — chacun est un PDF personnalisé de 5 pages ciblant un score faible ou renforçant un point fort. Standard inclut 4–6, Deluxe inclut 9–14." },
       ],
       privacyNote: "Vos réponses sont traitées de façon confidentielle et ne sont jamais partagées avec des tiers.",
+      coachNote: "Vous travaillez avec un coach ? Partagez votre rapport — il leur donne un point de départ objectif.",
     },
     whyItWorks: {
       label: "Pourquoi Ça Marche",
@@ -646,7 +653,7 @@ export const translations = {
     },
     guarantee: {
       title: "Garantie Satisfait ou Remboursé — 30 Jours",
-      body: "Pas ce que vous attendiez ? Remboursement complet sous 30 jours. Aucun risque financier.",
+      body: "Si vous ne trouvez pas au moins un insight qui change votre façon de voir votre jeu — remboursement intégral sous 30 jours. Sans condition.",
     },
     dimensions: {
       label: "Ce Qui Est Mesuré", h2a: "Votre profil mental", h2b: "en six dimensions",
@@ -742,10 +749,10 @@ export const translations = {
       badge: "Pré-lancement le 15 mai",
       betaBadge: "Actuellement en Bêta fermée avec 100+ golfeurs — peaufinage pour le pré-lancement international",
       navCta: "Early Access",
-      heroCta: "Obtenir l'Early Access",
+      heroCta: "Voir Mon Profil Mental — dès $49",
       pricingBanner: "Pré-lancement Early Access le 15 mai — réduction exclusive + 2 rapports d'entraînement supplémentaires. Lancement officiel et tarif régulier à partir du 1er juin.",
-      pricingCta: "Obtenir l'Early Access →",
-      ctaBtn: "Obtenir l'Early Access →",
+      pricingCta: "Réserver l'Early Access →",
+      ctaBtn: "Commencer en 15 Minutes →",
       sectionLabel: "Pré-lancement — 15 mai",
       h2a: "Votre rapport de jeu mental", h2b: "au prix le plus bas — jamais.",
       p1: "En 15 minutes vous saurez exactement ce qui vous coûte des coups — et sur quoi travailler en premier. Votre rapport PDF personnalisé + rapports d'entraînement, prêts avant tout le monde. Pré-lancement le 15 mai. Lancement officiel : 1er juin.",
@@ -753,6 +760,7 @@ export const translations = {
       offer: "Prix Early Access : Standard $49 (au lieu de $59) · Deluxe $99 (au lieu de $129) — plus 2 rapports d'entraînement supplémentaires sur chaque plan.",
       fields: { name: "Nom", namePlaceholder: "Votre nom", handicap: "Handicap de Golf", handicapPlaceholder: "ex. 14,2", email: "E-mail", emailPlaceholder: "vous@exemple.fr", planLabel: "Je suis intéressé(e) par", submit: "Réserver mon prix Early-Bird →" },
       spotsLeft: "places disponibles au tarif early-bird",
+      heroUrgency: "Early access dès $49 · offre valable jusqu'au 1er juin",
       socialProof: "Rejoignez les golfeurs déjà sur la liste early access",
       success: { h3: "Vous êtes sur la liste !", p: "Nous vous enverrons votre lien early-bird exclusif le 15 mai — avant le lancement officiel du 1er juin. Vérifiez votre boîte de réception pour une confirmation." },
     },
@@ -763,9 +771,9 @@ export const translations = {
   // SPANISH
   // ─────────────────────────────────────────────────────────────────
   es: {
-    nav: { howItWorks: "Cómo Funciona", pricing: "Precios", testimonials: "Testimonios", faq: "FAQ", contact: "Contacto", cta: "Mi Evaluación" },
+    nav: { howItWorks: "La Investigación", pricing: "Precios", testimonials: "Testimonios", faq: "FAQ", contact: "Contacto", cta: "Mi Evaluación" },
     hero: {
-      badge: "Rendimiento Mental para Golfistas",
+      badge: "El Mental Routine Assessment",
       h1a: "Descubre qué te está", h1b: "costando golpes realmente.",
       p1: "Puntuaciones inconsistentes. Frustración después de un mal hoyo. Perder el control bajo presión. La pieza que falta casi nunca es técnica — es mental. Y es entrenable.",
       p2: "La Evaluación de la Rutina Mental mapea tu juego mental en 15 minutos — y te da un plan concreto para corregir lo que te cuesta golpes y disfrute.",
@@ -822,6 +830,7 @@ export const translations = {
         { num: "03", title: "Actúa",           body: "Usa tus informes de entrenamiento incluidos para trabajar en elementos específicos de tu perfil — cada uno es un PDF personalizado de 5 páginas dirigido a una puntuación baja o a potenciar una fortaleza. Estándar incluye 4–6, Deluxe incluye 9–14." },
       ],
       privacyNote: "Tus respuestas se procesan de forma confidencial y nunca se comparten con terceros.",
+      coachNote: "¿Trabajas con un coach? Comparte tu informe — les da un punto de partida objetivo.",
     },
     whyItWorks: {
       label: "Por Qué Funciona",
@@ -834,8 +843,8 @@ export const translations = {
       ],
     },
     guarantee: {
-      title: "Garantía de Devolución de 30 Días — Sin preguntas",
-      body: "¿No es lo que esperabas? Reembolso completo en 30 días. Tu inversión en comprender tu juego mental no conlleva ningún riesgo financiero.",
+      title: "Garantía de Devolución de 30 Días",
+      body: "Si no encuentras al menos un insight que cambie cómo piensas sobre tu juego — reembolso completo en 30 días. Sin preguntas.",
     },
     dimensions: {
       label: "Qué Se Mide", h2a: "Tu perfil mental", h2b: "en seis dimensiones",
@@ -931,10 +940,10 @@ export const translations = {
       badge: "Pre-lanzamiento 15 de mayo",
       betaBadge: "Actualmente en Beta cerrada con 100+ golfistas — ajustes finales para el pre-lanzamiento internacional",
       navCta: "Early Access",
-      heroCta: "Obtener Early Access",
+      heroCta: "Ver Mi Perfil Mental — desde $49",
       pricingBanner: "Pre-lanzamiento Early Access el 15 de mayo — descuento exclusivo + 2 informes de entrenamiento adicionales. Lanzamiento oficial y precio regular desde el 1 de junio.",
-      pricingCta: "Obtener Early Access →",
-      ctaBtn: "Obtener Early Access →",
+      pricingCta: "Reservar Early Access →",
+      ctaBtn: "Empezar en 15 Minutos →",
       sectionLabel: "Pre-lanzamiento — 15 de mayo",
       h2a: "Tu informe de juego mental", h2b: "al precio más bajo — de siempre.",
       p1: "En 15 minutos sabrás exactamente qué te cuesta golpes — y en qué trabajar primero. Tu informe PDF personalizado + informes de entrenamiento, listos antes que nadie. Pre-lanzamiento el 15 de mayo. Lanzamiento oficial: 1 de junio.",
@@ -942,9 +951,14 @@ export const translations = {
       offer: "Precios Early Access: Estándar $49 (en vez de $59) · Deluxe $99 (en vez de $129) — más 2 informes de entrenamiento adicionales en cada plan.",
       fields: { name: "Nombre", namePlaceholder: "Tu nombre", handicap: "Hándicap de Golf", handicapPlaceholder: "ej. 14,2", email: "Correo electrónico", emailPlaceholder: "tu@ejemplo.es", planLabel: "Me interesa", submit: "Asegurar mi precio Early-Bird →" },
       spotsLeft: "plazas disponibles al precio early-bird",
+      heroUrgency: "Early access desde $49 · oferta hasta el 1 de junio",
       socialProof: "Únete a los golfistas ya en la lista de early access",
       success: { h3: "¡Estás en la lista!", p: "Te enviaremos tu enlace early-bird exclusivo el 15 de mayo — antes del lanzamiento oficial el 1 de junio. Revisa tu bandeja de entrada para una confirmación." },
     },
     footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Profesional de la enseñanza? Recomienda la evaluación a tus alumnos →", socialLabel: "Síguenos", quizLink: "Quiz Gratis" },
   },
 } as const;
+
+/** Derived type for a single language's translation object (widened from literal strings) */
+type Widen<T> = T extends string ? string : T extends ReadonlyArray<infer U> ? ReadonlyArray<Widen<U>> : T extends object ? { [K in keyof T]: Widen<T[K]> } : T;
+export type Translation = Widen<(typeof translations)["en"]>;

@@ -7,7 +7,7 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
 import { FaqsSection } from "@/components/ui/faqs";
 import { LangProvider, useLang } from "@/context/lang-context";
-import { translations } from "@/lib/translations";
+import { translations, type Translation } from "@/lib/translations";
 
 // ── Report Preview Modal ──────────────────────────────────────────────────────
 function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe" | "training"; onClose: () => void }) {
@@ -79,7 +79,7 @@ function HeroRadar({ steps, caption }: { steps: ReadonlyArray<{ label: string }>
   return (
     <motion.div className="flex-1 hidden md:flex flex-col items-center justify-center gap-3"
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.5 }}>
-      <svg viewBox="-15 -15 330 330" width={380} height={380}>
+      <svg viewBox="-15 -15 330 330" width={380} height={380} role="img" aria-label="Radar chart showing example mental performance scores across 8 factors">
 
         {/* Grid webs */}
         {[2, 4, 6, 8, 10].map(lvl => (
@@ -248,7 +248,7 @@ function ContactSection() {
 // ── EARLY ACCESS SIGNUP ────────────────────────────────────────────────────────
 function EarlyAccessSection() {
   const { lang } = useLang();
-  const t = translations[lang].earlyAccess;
+  const t: Translation["earlyAccess"] = translations[lang].earlyAccess;
   const [form, setForm] = React.useState({ name: "", email: "", handicap: "", plan: "deluxe" });
   const [submitted, setSubmitted] = React.useState(false);
   const [sending, setSending] = React.useState(false);
@@ -298,7 +298,7 @@ function EarlyAccessSection() {
             <div className="w-12 h-0.5 bg-amber-500 mb-6" />
             <p className="text-green-200/70 leading-relaxed mb-4">{t.p1}</p>
             <p className="text-green-200/50 text-sm leading-relaxed mb-6">{t.p2}</p>
-            {"offer" in t && (
+            {t.offer && (
               <div className="rounded-xl bg-amber-400/[0.08] border border-amber-400/25 p-5 space-y-3">
                 <div className="grid grid-cols-2 gap-3">
                   <div className="rounded-lg bg-white/[0.05] border border-white/[0.08] p-3 text-center">
@@ -330,18 +330,16 @@ function EarlyAccessSection() {
             ) : (
               <form onSubmit={handleSubmit} className="rounded-2xl p-8 bg-white/[0.06] border border-white/10 space-y-5">
                 {spots && spots.spots < spots.total && (
-                  <div className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-amber-400/[0.08] border border-amber-400/20">
+                  <div className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-amber-400/[0.08] border border-amber-400/20" role="status" aria-live="polite">
                     <span className="text-xl font-bold text-amber-400" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{spots.spots}</span>
                     <span className="text-[11px] text-green-200/40">/ {spots.total}</span>
-                    <span className="text-[11px] text-amber-300/70 ml-1">{"spotsLeft" in t ? (t as typeof t & { spotsLeft: string }).spotsLeft : "spots left"}</span>
+                    <span className="text-[11px] text-amber-300/70 ml-1">{t.spotsLeft}</span>
                   </div>
                 )}
-                {"socialProof" in t && (
-                  <p className="text-center text-xs text-green-200/50 flex items-center justify-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-                    {(t as typeof t & { socialProof: string }).socialProof}
-                  </p>
-                )}
+                <p className="text-center text-xs text-green-200/50 flex items-center justify-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
+                  {t.socialProof}
+                </p>
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs font-semibold text-green-100/80 mb-1.5 tracking-wide">{t.fields.name}</label>
@@ -383,7 +381,7 @@ function EarlyAccessSection() {
 // ── PAGE CONTENT ───────────────────────────────────────────────────────────────
 function PageContent() {
   const { lang } = useLang();
-  const T = translations[lang];
+  const T: Translation = translations[lang];
   const [previewPlan, setPreviewPlan] = useState<"standard" | "deluxe" | "training" | null>(null);
 
   const firstColumn  = T.testimonials.items.slice(0, 3);
@@ -392,6 +390,11 @@ function PageContent() {
 
   return (
     <main className="bg-[#faf8f3] text-[#1a1c18]">
+
+      {/* ── SKIP TO CONTENT (accessibility) ── */}
+      <a href="#hero" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-amber-400 focus:text-green-950 focus:rounded-lg focus:text-sm focus:font-bold">
+        Skip to content
+      </a>
 
       {/* ── NAVBAR ───────────────────────────────────────────────────────── */}
       <Navbar />
@@ -440,11 +443,13 @@ function PageContent() {
               {T.hero.howItWorksLine}
             </motion.p>
 
-            {"quizCta" in T.hero && (
-              <motion.a href="/quiz.html" className="inline-flex items-center gap-1.5 text-xs text-amber-300/70 hover:text-amber-300 transition-colors mt-3 mx-auto lg:mx-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.0 }}>
-                {(T.hero as any).quizCta}
-              </motion.a>
-            )}
+            <motion.p className="text-xs text-amber-300/60 max-w-md mx-auto lg:mx-0 mt-2 tracking-wide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.95 }}>
+              {T.earlyAccess.heroUrgency}
+            </motion.p>
+
+            <motion.a href="/quiz.html" className="inline-flex items-center gap-1.5 text-xs text-amber-300/70 hover:text-amber-300 transition-colors mt-3 mx-auto lg:mx-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.0 }}>
+              {T.hero.quizCta}
+            </motion.a>
           </div>
 
           {/* Mobile-only mini report mockup */}
@@ -568,12 +573,14 @@ function PageContent() {
               </motion.div>
             ))}
           </div>
-          {"privacyNote" in T.process && T.process.privacyNote && (
-            <motion.p className="mt-6 text-center text-xs text-stone-400 flex items-center justify-center gap-1.5" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><path d="M8 1l5.5 2.5v4c0 3-2.5 5.5-5.5 6.5C5 13 2.5 10.5 2.5 7.5v-4L8 1z"/></svg>
-              {T.process.privacyNote}
-            </motion.p>
-          )}
+          <motion.p className="mt-6 text-center text-xs text-stone-400 flex items-center justify-center gap-1.5" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><path d="M8 1l5.5 2.5v4c0 3-2.5 5.5-5.5 6.5C5 13 2.5 10.5 2.5 7.5v-4L8 1z"/></svg>
+            {T.process.privacyNote}
+          </motion.p>
+          <motion.a href="/pro-program" className="mt-3 text-center text-xs text-amber-700/70 hover:text-amber-700 transition-colors flex items-center justify-center gap-1.5" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5"/></svg>
+            {T.process.coachNote}
+          </motion.a>
         </div>
       </section>
 
@@ -685,7 +692,7 @@ function PageContent() {
                     </li>
                   ))}
                 </ul>
-                {"reportPreview" in T.pricing && T.pricing.reportPreview && (
+                {T.pricing.reportPreview && (
                   <div className="mb-6 rounded-xl bg-white/[0.05] border border-white/[0.08] p-4">
                     <p className="text-[10px] font-bold tracking-widest uppercase text-amber-400/70 mb-2.5">{T.pricing.reportPreview.label}</p>
                     <ul className="space-y-1.5">
@@ -698,9 +705,9 @@ function PageContent() {
                     </ul>
                   </div>
                 )}
-                {"previewBtn" in T.pricing && (
+                {T.pricing.previewBtn && (
                   <button onClick={() => setPreviewPlan(i === 0 ? "standard" : "deluxe")} className="w-full text-center py-2 mb-3 rounded-lg text-xs font-medium text-amber-300/70 hover:text-amber-300 border border-amber-400/20 hover:border-amber-400/40 bg-amber-400/[0.04] hover:bg-amber-400/[0.08] transition-all">
-                    {(T.pricing as typeof T.pricing & { previewBtn: string }).previewBtn}
+                    {T.pricing.previewBtn}
                   </button>
                 )}
                 <a href="#early-access" className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 1 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
@@ -711,16 +718,16 @@ function PageContent() {
           </div>
 
           {/* ── CREDITS NOTE ── */}
-          {"creditsNote" in T.pricing && T.pricing.creditsNote && (
+          {T.pricing.creditsNote && (
             <p className="mt-5 text-center text-xs text-green-200/40">
               {T.pricing.creditsNote}
             </p>
           )}
 
           {/* ── COMPARISON TABLE ── */}
-          {"comparisonRows" in T.pricing && (
+          {T.pricing.comparisonRows && (
             <motion.div className="mt-12 max-w-2xl mx-auto" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}>
-              <h3 className="text-center font-serif text-2xl font-semibold text-white mb-6">{(T.pricing as any).comparisonTitle}</h3>
+              <h3 className="text-center font-serif text-2xl font-semibold text-white mb-6">{T.pricing.comparisonTitle}</h3>
 
               {/* Desktop table */}
               <div className="hidden sm:block rounded-2xl border border-white/[0.08] bg-white/[0.04] overflow-hidden">
@@ -733,8 +740,8 @@ function PageContent() {
                     </tr>
                   </thead>
                   <tbody>
-                    {((T.pricing as any).comparisonRows as ReadonlyArray<{label: string; standard: string; deluxe: string}>).map((row, i) => (
-                      <tr key={i} className={i < ((T.pricing as any).comparisonRows as ReadonlyArray<unknown>).length - 1 ? "border-b border-white/[0.06]" : ""}>
+                    {T.pricing.comparisonRows.map((row, i) => (
+                      <tr key={i} className={i < T.pricing.comparisonRows.length - 1 ? "border-b border-white/[0.06]" : ""}>
                         <td className="py-3 px-4 text-green-200/70">{row.label}</td>
                         <td className="py-3 px-4 text-center text-white/80">{row.standard}</td>
                         <td className="py-3 px-4 text-center text-white/80">{row.deluxe}</td>
@@ -746,7 +753,7 @@ function PageContent() {
 
               {/* Mobile cards */}
               <div className="sm:hidden space-y-3">
-                {((T.pricing as any).comparisonRows as ReadonlyArray<{label: string; standard: string; deluxe: string}>).map((row, i) => (
+                {T.pricing.comparisonRows.map((row, i) => (
                   <div key={i} className="rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3">
                     <p className="text-xs text-green-200/70 mb-2">{row.label}</p>
                     <div className="flex gap-3">
@@ -780,29 +787,25 @@ function PageContent() {
           </motion.div>
 
           {/* Pricing testimonial */}
-          {"pricingQuote" in T.pricing && (
-            <motion.div className="mt-6 max-w-md mx-auto text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}>
-              <p className="text-sm italic text-green-200/50 leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                "{(T.pricing as typeof T.pricing & { pricingQuote: { text: string; name: string; role: string } }).pricingQuote.text}"
-              </p>
-              <p className="text-xs text-amber-400/60 mt-2">
-                — {(T.pricing as typeof T.pricing & { pricingQuote: { text: string; name: string; role: string } }).pricingQuote.name}, {(T.pricing as typeof T.pricing & { pricingQuote: { text: string; name: string; role: string } }).pricingQuote.role}
-              </p>
-            </motion.div>
-          )}
+          <motion.div className="mt-6 max-w-md mx-auto text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}>
+            <p className="text-sm italic text-green-200/50 leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              &ldquo;{T.pricing.pricingQuote.text}&rdquo;
+            </p>
+            <p className="text-xs text-amber-400/60 mt-2">
+              — {T.pricing.pricingQuote.name}, {T.pricing.pricingQuote.role}
+            </p>
+          </motion.div>
 
           {/* ── QUIZ CTA — softer alternative after pricing ── */}
-          {"quizCta" in T.hero && (
-            <motion.div className="mt-10 text-center" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}>
-              <div className="inline-flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-6 py-4">
-                <svg viewBox="0 0 20 20" fill="none" stroke="#c4a043" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 shrink-0"><path d="M10 18.5a8.5 8.5 0 1 0 0-17 8.5 8.5 0 0 0 0 17z"/><path d="M7.2 7.2a2.8 2.8 0 0 1 5.1 1.4c0 1.9-2.8 2.5-2.8 2.5"/><circle cx="10" cy="14.5" r="0.5" fill="#c4a043"/></svg>
-                <div className="text-left">
-                  <p className="text-sm text-green-200/70">{"quizLine" in T.cta ? (T.cta as any).quizLine : "Not sure yet? Try the free quiz first."}</p>
-                  <a href="/quiz.html" className="text-xs text-amber-400 hover:text-amber-300 font-semibold transition-colors">{(T.hero as any).quizCta}</a>
-                </div>
+          <motion.div className="mt-10 text-center" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}>
+            <div className="inline-flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-6 py-4">
+              <svg viewBox="0 0 20 20" fill="none" stroke="#c4a043" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 shrink-0"><path d="M10 18.5a8.5 8.5 0 1 0 0-17 8.5 8.5 0 0 0 0 17z"/><path d="M7.2 7.2a2.8 2.8 0 0 1 5.1 1.4c0 1.9-2.8 2.5-2.8 2.5"/><circle cx="10" cy="14.5" r="0.5" fill="#c4a043"/></svg>
+              <div className="text-left">
+                <p className="text-sm text-green-200/70">{T.cta.quizLine}</p>
+                <a href="/quiz.html" className="text-xs text-amber-400 hover:text-amber-300 font-semibold transition-colors">{T.hero.quizCta}</a>
               </div>
-            </motion.div>
-          )}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -818,9 +821,9 @@ function PageContent() {
               <div className="w-12 h-0.5 bg-amber-500 mb-6" />
               <p className="text-stone-600 leading-relaxed mb-5">{T.skillBuilder.p1}</p>
               <p className="text-stone-600 leading-relaxed mb-3">{T.skillBuilder.p2}</p>
-              {"p2items" in T.skillBuilder && Array.isArray(T.skillBuilder.p2items) && (
+              {T.skillBuilder.p2items && (
                 <div className="flex flex-wrap gap-2 mb-5">
-                  {(T.skillBuilder.p2items as string[]).map((item, k) => {
+                  {(T.skillBuilder.p2items as ReadonlyArray<string>).map((item, k) => {
                     const chipColors = [
                       "bg-amber-100 text-amber-800 border-amber-200",
                       "bg-sky-100 text-sky-800 border-sky-200",
@@ -847,7 +850,7 @@ function PageContent() {
                 <span className="text-xs text-stone-400">{T.skillBuilder.extraCredits}</span>
               </div>
               <a href="#early-access" className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
-                {T.earlyAccess.heroCta}
+                {T.earlyAccess.ctaBtn}
               </a>
             </motion.div>
 
@@ -899,9 +902,9 @@ function PageContent() {
               </div>
               {/* Preview button */}
               <div className="bg-[#faf8f3] px-3.5 pb-3.5">
-                {"previewBtn" in T.skillBuilder && (
+                {T.skillBuilder.previewBtn && (
                   <button className="w-full text-center py-2.5 rounded-lg text-xs font-medium text-amber-700 hover:text-amber-900 border border-amber-500/20 hover:border-amber-500/40 bg-amber-400/[0.06] hover:bg-amber-400/[0.12] transition-all group-hover:border-amber-500/40 group-hover:bg-amber-400/[0.12]">
-                    {(T.skillBuilder as any).previewBtn}
+                    {T.skillBuilder.previewBtn}
                   </button>
                 )}
               </div>
@@ -987,7 +990,7 @@ function PageContent() {
                   { label: T.nav.testimonials, href: '#testimonials'  },
                   { label: T.nav.faq,          href: '#faq'           },
                   { label: T.nav.contact,      href: '#contact'       },
-                  ...("quizLink" in T.footer ? [{ label: (T.footer as any).quizLink, href: '/quiz.html' }] : []),
+                  { label: T.footer.quizLink, href: '/quiz.html' },
                 ].map(link => (
                   <a
                     key={link.href}
@@ -1030,23 +1033,23 @@ function PageContent() {
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0">
                   <path d="M8 1v14M1 8l7-7 7 7"/>
                 </svg>
-                <span>{T.earlyAccess.heroCta}</span>
+                <span>{T.earlyAccess.ctaBtn}</span>
                 <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 group-hover:translate-x-0.5 transition-transform">
                   <path d="M1 6h10M6 1l5 5-5 5"/>
                 </svg>
               </a>
 
-              {"teachingPro" in T.footer && T.footer.teachingPro && (
+              {T.footer.teachingPro && (
                 <a href="/pro-program" className="inline-flex items-center gap-2 text-xs text-green-200/35 hover:text-amber-300 transition-colors mt-4 group">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5"/></svg>
                   <span>{T.footer.teachingPro}</span>
                 </a>
               )}
 
-              {"quizLink" in T.footer && (
+              {T.footer.quizLink && (
                 <a href="/quiz.html" className="inline-flex items-center gap-2 text-xs text-green-200/35 hover:text-amber-300 transition-colors mt-3 group">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14z"/><path d="M5.8 5.8a2.2 2.2 0 0 1 4.1 1.1c0 1.5-2.2 2-2.2 2"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg>
-                  <span>{(T.footer as any).quizLink}</span>
+                  <span>{T.footer.quizLink}</span>
                 </a>
               )}
             </div>
