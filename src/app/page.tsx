@@ -380,6 +380,10 @@ function PageContent() {
                 {T.hero.cta2}
               </a>
             </motion.div>
+
+            <motion.p className="text-xs text-green-200/40 max-w-md mx-auto lg:mx-0 mt-5 tracking-wide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.9 }}>
+              {T.hero.howItWorksLine}
+            </motion.p>
           </div>
 
           {/* Radar chart — 8 Mental Routine steps, rotating scores every 3s */}
@@ -671,7 +675,7 @@ function PageContent() {
                   <span className="px-2.5 py-1 rounded-lg bg-white border border-green-900/10 text-xs font-semibold text-green-900 shadow-sm">{T.pricing.plans[0].plan} · 60 credits</span>
                   <span className="px-2.5 py-1 rounded-lg bg-green-950 text-xs font-semibold text-amber-300 shadow-sm">{T.pricing.plans[1].plan} · 140 credits</span>
                 </div>
-                <span className="text-xs text-stone-400">from $6.99 / 10</span>
+                <span className="text-xs text-stone-400">{T.skillBuilder.extraCredits}</span>
               </div>
               <a href="#early-access" className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
                 {T.earlyAccess.heroCta}
