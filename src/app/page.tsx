@@ -1,13 +1,51 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/ui/navbar";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
 import { FaqsSection } from "@/components/ui/faqs";
 import { LangProvider, useLang } from "@/context/lang-context";
 import { translations } from "@/lib/translations";
+
+// ── Report Preview Modal ──────────────────────────────────────────────────────
+function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe"; onClose: () => void }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", onKey); };
+  }, [onClose]);
+
+  const src = plan === "deluxe" ? "/reports/sample-deluxe.html" : "/reports/sample-standard.html";
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      <motion.div
+        className="relative w-full max-w-3xl h-[85vh] bg-[#faf8f3] rounded-2xl overflow-hidden shadow-2xl border border-green-900/10"
+        initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }}
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-5 py-3 bg-green-950 border-b border-white/10">
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-bold tracking-widest uppercase text-amber-400">
+              {plan === "deluxe" ? "Deluxe" : "Standard"} — Sample Report
+            </span>
+          </div>
+          <button onClick={onClose} className="w-8 h-8 rounded-lg flex items-center justify-center text-green-200/60 hover:text-white hover:bg-white/10 transition-colors">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <iframe src={src} className="w-full h-[calc(85vh-48px)]" title="Sample Report Preview" />
+      </motion.div>
+    </motion.div>
+  );
+}
 
 // ── Radar chart with rotating random scores ───────────────────────────────────
 const INITIAL_SCORES = [8, 6, 4, 7, 5, 3, 5, 2];
@@ -282,6 +320,12 @@ function EarlyAccessSection() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="rounded-2xl p-8 bg-white/[0.06] border border-white/10 space-y-5">
+                {"spotsLeft" in t && (
+                  <div className="flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-amber-400/[0.08] border border-amber-400/20">
+                    <span className="text-lg font-bold text-amber-400" style={{ fontFamily: "'Cormorant Garamond', serif" }}>47</span>
+                    <span className="text-[11px] text-amber-300/70">{(t as typeof t & { spotsLeft: string }).spotsLeft}</span>
+                  </div>
+                )}
                 {"socialProof" in t && (
                   <p className="text-center text-xs text-green-200/50 flex items-center justify-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
@@ -330,6 +374,7 @@ function EarlyAccessSection() {
 function PageContent() {
   const { lang } = useLang();
   const T = translations[lang];
+  const [previewPlan, setPreviewPlan] = useState<"standard" | "deluxe" | null>(null);
 
   const firstColumn  = T.testimonials.items.slice(0, 3);
   const secondColumn = T.testimonials.items.slice(3, 6);
@@ -385,6 +430,36 @@ function PageContent() {
               {T.hero.howItWorksLine}
             </motion.p>
           </div>
+
+          {/* Mobile-only mini report mockup */}
+          <motion.div className="md:hidden w-full max-w-sm mx-auto mt-8 rounded-2xl overflow-hidden border border-white/10 shadow-xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.95 }}>
+            <div className="bg-green-900/50 px-4 py-3 border-b border-white/[0.06]">
+              <p className="text-[9px] font-bold tracking-widest uppercase text-amber-400/60">Mental Routine Assessment</p>
+              <p className="text-sm font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Your Mental Performance Report</p>
+            </div>
+            <div className="bg-green-950/80 p-4 space-y-2">
+              {[
+                { label: "Focus", score: 7.8, color: "bg-green-400" },
+                { label: "Concentration", score: 7.2, color: "bg-green-400" },
+                { label: "Conviction", score: 3.8, color: "bg-red-400" },
+                { label: "Acceptance", score: 3.2, color: "bg-red-400" },
+              ].map((item, k) => (
+                <div key={k} className="flex items-center gap-2">
+                  <span className="text-[10px] text-green-200/50 w-20 shrink-0">{item.label}</span>
+                  <div className="flex-1 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+                    <motion.div
+                      className={`h-full rounded-full ${item.color}`}
+                      initial={{ width: 0 }}
+                      animate={{ width: `${item.score * 10}%` }}
+                      transition={{ duration: 1, delay: 1 + k * 0.15 }}
+                    />
+                  </div>
+                  <span className="text-[10px] font-bold text-green-200/60 w-8 text-right">{item.score}</span>
+                </div>
+              ))}
+              <p className="text-[9px] text-green-200/30 text-center pt-1">{T.hero.radarCaption}</p>
+            </div>
+          </motion.div>
 
           {/* Radar chart — 8 Mental Routine steps, rotating scores every 3s */}
           <HeroRadar steps={T.routine.steps} caption={T.hero.radarCaption} />
@@ -607,6 +682,11 @@ function PageContent() {
                     </ul>
                   </div>
                 )}
+                {"previewBtn" in T.pricing && (
+                  <button onClick={() => setPreviewPlan(i === 0 ? "standard" : "deluxe")} className="w-full text-center py-2 mb-3 rounded-lg text-xs font-medium text-amber-300/70 hover:text-amber-300 border border-amber-400/20 hover:border-amber-400/40 bg-amber-400/[0.04] hover:bg-amber-400/[0.08] transition-all">
+                    {(T.pricing as typeof T.pricing & { previewBtn: string }).previewBtn}
+                  </button>
+                )}
                 <a href="#early-access" className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 1 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
                   {T.earlyAccess.pricingCta}
                 </a>
@@ -634,10 +714,22 @@ function PageContent() {
               <p className="text-xs text-green-200/50 mt-0.5 max-w-lg leading-relaxed">{T.guarantee.body}</p>
             </div>
           </motion.div>
+
+          {/* Pricing testimonial */}
+          {"pricingQuote" in T.pricing && (
+            <motion.div className="mt-6 max-w-md mx-auto text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}>
+              <p className="text-sm italic text-green-200/50 leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                "{(T.pricing as typeof T.pricing & { pricingQuote: { text: string; name: string; role: string } }).pricingQuote.text}"
+              </p>
+              <p className="text-xs text-amber-400/60 mt-2">
+                — {(T.pricing as typeof T.pricing & { pricingQuote: { text: string; name: string; role: string } }).pricingQuote.name}, {(T.pricing as typeof T.pricing & { pricingQuote: { text: string; name: string; role: string } }).pricingQuote.role}
+              </p>
+            </motion.div>
+          )}
         </div>
       </section>
 
-      {/* ── SKILLS DEVELOPER ─────────────────────────────────────────────── */}
+      {/* ── TRAINING REPORTS (formerly Skills Developer) ─────────────────── */}
       <section className="py-28 px-6 bg-[#f6f1e7]">
         <div className="container mx-auto max-w-5xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -672,8 +764,8 @@ function PageContent() {
               )}
               <div className="flex items-center gap-3 mb-8 p-3.5 rounded-xl bg-green-950/[0.05] border border-green-900/10">
                 <div className="flex gap-2">
-                  <span className="px-2.5 py-1 rounded-lg bg-white border border-green-900/10 text-xs font-semibold text-green-900 shadow-sm">{T.pricing.plans[0].plan} · 60 credits</span>
-                  <span className="px-2.5 py-1 rounded-lg bg-green-950 text-xs font-semibold text-amber-300 shadow-sm">{T.pricing.plans[1].plan} · 140 credits</span>
+                  <span className="px-2.5 py-1 rounded-lg bg-white border border-green-900/10 text-xs font-semibold text-green-900 shadow-sm">{T.pricing.plans[0].plan} · 4–6 reports</span>
+                  <span className="px-2.5 py-1 rounded-lg bg-green-950 text-xs font-semibold text-amber-300 shadow-sm">{T.pricing.plans[1].plan} · 9–14 reports</span>
                 </div>
                 <span className="text-xs text-stone-400">{T.skillBuilder.extraCredits}</span>
               </div>
@@ -764,6 +856,11 @@ function PageContent() {
 
       {/* ── CONTACT FORM ─────────────────────────────────────────────────── */}
       <ContactSection />
+
+      {/* ── REPORT PREVIEW MODAL ────────────────────────────────────────── */}
+      <AnimatePresence>
+        {previewPlan && <ReportPreviewModal plan={previewPlan} onClose={() => setPreviewPlan(null)} />}
+      </AnimatePresence>
 
       {/* ── FOOTER ───────────────────────────────────────────────────────── */}
       <footer className="bg-[#0d1f15] relative overflow-hidden">

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Routine Assessment — Sample Report (Standard)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #faf8f3; color: #1c2a1f; line-height: 1.6; }
+
+  /* ── Cover ── */
+  .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(160deg, #162b1e 0%, #1a3625 50%, #0d1f15 100%); color: #f6f1e7; padding: 3rem 2rem; text-align: center; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; border-radius: 50%; background: rgba(196,160,67,0.08); filter: blur(80px); }
+  .cover-logo { width: 64px; height: 64px; margin-bottom: 1.5rem; }
+  .cover h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 600; line-height: 1.2; margin-bottom: 0.5rem; }
+  .cover h1 em { color: #fbbf24; font-style: italic; }
+  .cover .subtitle { font-size: 0.85rem; color: rgba(246,241,231,0.5); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2rem; }
+  .cover .meta { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; font-size: 0.8rem; color: rgba(246,241,231,0.4); }
+  .cover .meta strong { color: #fbbf24; }
+  .cover .badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25); border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.7rem; color: rgba(251,191,36,0.8); margin-top: 2rem; }
+  .cover .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fbbf24; }
+
+  /* ── Pages ── */
+  .page { max-width: 700px; margin: 0 auto; padding: 3rem 2rem; border-bottom: 1px solid rgba(28,42,31,0.08); }
+  .page:last-child { border-bottom: none; }
+  .page-num { font-size: 0.65rem; color: rgba(28,42,31,0.25); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 2rem; }
+
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: #162b1e; margin-bottom: 1rem; line-height: 1.2; }
+  h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: #162b1e; margin-bottom: 0.75rem; }
+  p { font-size: 0.88rem; color: #57665a; margin-bottom: 1rem; }
+
+  /* ── Radar placeholder ── */
+  .radar-placeholder { width: 100%; max-width: 340px; aspect-ratio: 1; margin: 2rem auto; border-radius: 50%; background: linear-gradient(135deg, rgba(196,160,67,0.08), rgba(34,197,94,0.06)); border: 2px dashed rgba(28,42,31,0.12); display: flex; align-items: center; justify-content: center; }
+  .radar-placeholder span { font-size: 0.75rem; color: rgba(28,42,31,0.3); text-align: center; padding: 1rem; }
+
+  /* ── Score bars ── */
+  .score-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+  .score-label { font-size: 0.78rem; font-weight: 600; color: #162b1e; width: 160px; flex-shrink: 0; }
+  .score-bar { flex: 1; height: 10px; border-radius: 999px; background: rgba(28,42,31,0.06); overflow: hidden; }
+  .score-fill { height: 100%; border-radius: 999px; transition: width 0.5s; }
+  .score-fill.high { background: linear-gradient(90deg, #34d399, #22c55e); }
+  .score-fill.mid { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+  .score-fill.low { background: linear-gradient(90deg, #f87171, #ef4444); }
+  .score-num { font-size: 0.78rem; font-weight: 700; width: 36px; text-align: right; flex-shrink: 0; }
+
+  /* ── Dimension cards ── */
+  .dim-card { background: white; border: 1px solid rgba(28,42,31,0.07); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+  .dim-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: #162b1e; margin-bottom: 0.5rem; }
+  .dim-card .insight { font-size: 0.82rem; color: #b8860b; background: rgba(251,191,36,0.08); border-left: 3px solid #fbbf24; padding: 0.5rem 0.75rem; border-radius: 0 6px 6px 0; margin-top: 0.75rem; }
+
+  /* ── Priority box ── */
+  .priority-box { background: #162b1e; border-radius: 16px; padding: 1.5rem; color: #f6f1e7; margin: 2rem 0; }
+  .priority-box h3 { color: #fbbf24; margin-bottom: 1rem; }
+  .priority-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem; }
+  .priority-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: #fbbf24; line-height: 1; flex-shrink: 0; }
+  .priority-text { font-size: 0.82rem; color: rgba(246,241,231,0.7); }
+  .priority-text strong { color: #f6f1e7; }
+
+  /* ── Blurred section ── */
+  .blurred { position: relative; }
+  .blurred .blur-content { filter: blur(6px); user-select: none; pointer-events: none; }
+  .blurred .blur-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(250,248,243,0.7); backdrop-filter: blur(2px); border-radius: 12px; }
+  .blur-overlay .lock-icon { width: 48px; height: 48px; border-radius: 50%; background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
+  .blur-overlay p { font-size: 0.82rem; font-weight: 600; color: #162b1e; }
+  .blur-overlay .sub { font-size: 0.72rem; color: #57665a; margin-top: 0.25rem; font-weight: 400; }
+
+  /* ── Watermark ── */
+  .watermark { text-align: center; padding: 2rem; font-size: 0.7rem; color: rgba(28,42,31,0.2); letter-spacing: 0.1em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ COVER ═══════════ -->
+<div class="cover">
+  <img src="/logoMRpng.png" alt="MentalRoutine" class="cover-logo">
+  <div class="subtitle">Mental Routine Assessment</div>
+  <h1>Your Mental<br><em>Performance Report</em></h1>
+  <div class="meta">
+    <span>Prepared for: <strong>Alex Johnson</strong></span>
+    <span>Handicap: <strong>14.2</strong> · Date: <strong>April 2026</strong></span>
+    <span>Plan: <strong>Standard — 12 pages</strong></span>
+  </div>
+  <div class="badge">Sample Report — For Preview Only</div>
+</div>
+
+<!-- ═══════════ PAGE 2: Overview ═══════════ -->
+<div class="page">
+  <div class="page-num">Page 2 of 12</div>
+  <h2>Your Mental Profile at a Glance</h2>
+  <p>Below is your overall mental performance radar — a snapshot of how you score across all 8 steps of the Mental Routine. Each axis represents one step, scored from 1 (weak) to 10 (excellent).</p>
+
+  <div class="radar-placeholder">
+    <span>Your personalised<br>radar chart appears here</span>
+  </div>
+
+  <p>Your overall mental routine score is <strong>6.2 / 10</strong> — placing you in the <strong>62nd percentile</strong> among golfers with a similar handicap (12–16). Your strongest areas are <strong>Focus</strong> and <strong>Concentration</strong>. Your biggest development opportunities are in <strong>Acceptance</strong> and <strong>Conviction</strong>.</p>
+</div>
+
+<!-- ═══════════ PAGE 3: 8-Step Scores ═══════════ -->
+<div class="page">
+  <div class="page-num">Page 3 of 12</div>
+  <h2>Your 8 Mental Routine Steps</h2>
+  <p>These are your individual scores across all 8 steps of the Mental Routine framework.</p>
+
+  <div style="margin: 1.5rem 0;">
+    <div class="score-row"><span class="score-label">Focus</span><div class="score-bar"><div class="score-fill high" style="width:78%"></div></div><span class="score-num" style="color:#22c55e">7.8</span></div>
+    <div class="score-row"><span class="score-label">Concentration</span><div class="score-bar"><div class="score-fill high" style="width:72%"></div></div><span class="score-num" style="color:#22c55e">7.2</span></div>
+    <div class="score-row"><span class="score-label">Conviction</span><div class="score-bar"><div class="score-fill low" style="width:38%"></div></div><span class="score-num" style="color:#ef4444">3.8</span></div>
+    <div class="score-row"><span class="score-label">Performance</span><div class="score-bar"><div class="score-fill mid" style="width:65%"></div></div><span class="score-num" style="color:#f59e0b">6.5</span></div>
+    <div class="score-row"><span class="score-label">Evaluation</span><div class="score-bar"><div class="score-fill mid" style="width:61%"></div></div><span class="score-num" style="color:#f59e0b">6.1</span></div>
+    <div class="score-row"><span class="score-label">Acceptance</span><div class="score-bar"><div class="score-fill low" style="width:32%"></div></div><span class="score-num" style="color:#ef4444">3.2</span></div>
+    <div class="score-row"><span class="score-label">Analysis</span><div class="score-bar"><div class="score-fill mid" style="width:58%"></div></div><span class="score-num" style="color:#f59e0b">5.8</span></div>
+    <div class="score-row"><span class="score-label">Learning Transfer</span><div class="score-bar"><div class="score-fill mid" style="width:54%"></div></div><span class="score-num" style="color:#f59e0b">5.4</span></div>
+  </div>
+
+  <p>Your average across all 8 steps: <strong>5.7 / 10</strong>. The two steps flagged in red represent your top priorities — these are the areas where targeted improvement will have the greatest impact on your consistency and scores.</p>
+</div>
+
+<!-- ═══════════ PAGE 4: Step deep dive — Conviction ═══════════ -->
+<div class="page">
+  <div class="page-num">Page 4 of 12</div>
+  <h2>Step 3: Conviction — <em>3.8 / 10</em></h2>
+  <p>Conviction is the degree to which you fully commit to a shot before executing it. A high score means you rarely second-guess yourself mid-swing. A low score indicates hesitation, doubt, or partial commitment — which directly affects both accuracy and distance.</p>
+
+  <div class="dim-card">
+    <h4>What your score means</h4>
+    <p>At 3.8, your conviction is notably below the average for your handicap range (5.9). This suggests you frequently step into shots without full mental commitment. The most common pattern: you've selected the right club and target, but at the top of the backswing, a voice says "maybe I should have..." — and the shot is already compromised.</p>
+    <div class="insight">Key pattern detected: Your conviction drops most significantly on approach shots to par 4s (holes 4–9), suggesting early-round pressure erodes your commitment before you've settled into the round.</div>
+  </div>
+
+  <h3>Recommendations</h3>
+  <p>1. <strong>Implement a commitment checkpoint</strong> — before every shot, ask yourself: "Am I 100% committed to this shot?" If the answer is not an immediate yes, step away and restart your pre-shot routine.</p>
+  <p>2. <strong>Use the Skills Developer</strong> — the "Conviction Under Pressure" report (15 credits) contains exercises specifically designed for your pattern.</p>
+</div>
+
+<!-- ═══════════ PAGE 5: Step deep dive — Acceptance ═══════════ -->
+<div class="page">
+  <div class="page-num">Page 5 of 12</div>
+  <h2>Step 6: Acceptance — <em>3.2 / 10</em></h2>
+  <p>Acceptance measures how effectively you process the outcome of each shot — good or bad — and release it before moving to the next. This is the most commonly underdeveloped step, and also the one with the greatest impact on enjoyment.</p>
+
+  <div class="dim-card">
+    <h4>What your score means</h4>
+    <p>At 3.2, you are carrying unprocessed emotion from bad shots into subsequent holes. Your data shows a clear pattern: after a bogey or worse, your scores on the next two holes average +0.8 strokes above your baseline. This "emotional carry-over" is one of the most trainable patterns in golf psychology.</p>
+    <div class="insight">Key pattern detected: Your acceptance score drops further when playing competitively vs. socially, suggesting external pressure amplifies your inability to release bad outcomes.</div>
+  </div>
+
+  <h3>Recommendations</h3>
+  <p>1. <strong>The 10-step walk</strong> — give yourself exactly 10 steps after a bad shot to feel whatever you feel. At step 10, consciously leave it behind.</p>
+  <p>2. <strong>Use the Skills Developer</strong> — the "Post-Shot Release" report targets this exact pattern.</p>
+</div>
+
+<!-- ═══════════ PAGE 6-7: Dimensions (blurred) ═══════════ -->
+<div class="page">
+  <div class="page-num">Page 6–7 of 12</div>
+  <h2>Your Six Psychological Dimensions</h2>
+  <p>Beyond the 8-step routine, your mental game is shaped by six broader dimensions. The Standard report includes your scores and a brief interpretation for each.</p>
+
+  <div class="blurred" style="margin: 1.5rem 0;">
+    <div class="blur-content">
+      <div class="score-row"><span class="score-label">Physical Self-Mgmt</span><div class="score-bar"><div class="score-fill mid" style="width:65%"></div></div><span class="score-num">6.5</span></div>
+      <div class="score-row"><span class="score-label">Mental Condition</span><div class="score-bar"><div class="score-fill mid" style="width:58%"></div></div><span class="score-num">5.8</span></div>
+      <div class="score-row"><span class="score-label">Routine Mastery</span><div class="score-bar"><div class="score-fill mid" style="width:57%"></div></div><span class="score-num">5.7</span></div>
+      <div class="score-row"><span class="score-label">Risk Management</span><div class="score-bar"><div class="score-fill high" style="width:71%"></div></div><span class="score-num">7.1</span></div>
+      <div class="score-row"><span class="score-label">Pressure Mgmt</span><div class="score-bar"><div class="score-fill low" style="width:42%"></div></div><span class="score-num">4.2</span></div>
+      <div class="score-row"><span class="score-label">Practice Quality</span><div class="score-bar"><div class="score-fill mid" style="width:55%"></div></div><span class="score-num">5.5</span></div>
+    </div>
+    <div class="blur-overlay">
+      <div class="lock-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#b8860b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <p>Full dimension scores in your report</p>
+      <p class="sub">Complete your assessment to unlock</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 8: Top 3 Priorities ═══════════ -->
+<div class="page">
+  <div class="page-num">Page 8 of 12</div>
+  <h2>Your Top 3 Development Priorities</h2>
+  <p>Based on your scores, benchmark comparisons, and impact analysis, these are the three areas where targeted work will produce the largest improvement in your game.</p>
+
+  <div class="priority-box">
+    <h3>Your priorities</h3>
+    <div class="priority-item">
+      <span class="priority-num">1</span>
+      <div class="priority-text"><strong>Acceptance — Post-Shot Release</strong><br>Your emotional carry-over after bad shots is costing you an estimated 2–4 strokes per round. This is your single highest-impact opportunity.</div>
+    </div>
+    <div class="priority-item">
+      <span class="priority-num">2</span>
+      <div class="priority-text"><strong>Conviction — Commitment Under Pressure</strong><br>Hesitation on approach shots is reducing both accuracy and distance. A specific drill protocol can address this within 3–4 practice sessions.</div>
+    </div>
+    <div class="priority-item">
+      <span class="priority-num">3</span>
+      <div class="priority-text"><strong>Learning Transfer — Closing the Loop</strong><br>You're not systematically storing what you learn after each shot. Building this habit transforms every round into a deliberate learning experience.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 9-10: Recommended reports (blurred) ═══════════ -->
+<div class="page">
+  <div class="page-num">Pages 9–10 of 12</div>
+  <h2>Recommended Training Reports</h2>
+  <p>Based on your profile, these are the Skills Developer reports that will have the most impact. Your Standard plan includes 60 credits — enough for 4–6 reports.</p>
+
+  <div class="blurred" style="margin: 1.5rem 0;">
+    <div class="blur-content">
+      <div class="dim-card"><h4>1. Post-Shot Release Protocol</h4><p>A 5-page personalised training report targeting your Acceptance score. Contains physical exercises, mental drills, expert insights, and AI coaching prompts.</p></div>
+      <div class="dim-card"><h4>2. Conviction Under Pressure</h4><p>Targeted at your approach shot hesitation pattern. Includes a driving range protocol and a pre-round visualisation routine.</p></div>
+      <div class="dim-card"><h4>3. The Learning Loop</h4><p>Teaches the post-shot mental storage technique. Most golfers see improvement in 2–3 rounds.</p></div>
+    </div>
+    <div class="blur-overlay">
+      <div class="lock-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#b8860b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <p>Personalised recommendations in your report</p>
+      <p class="sub">Complete your assessment to unlock</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 11-12: Summary ═══════════ -->
+<div class="page">
+  <div class="page-num">Pages 11–12 of 12</div>
+  <h2>Summary &amp; Next Steps</h2>
+  <p>Your Mental Routine Assessment reveals a golfer with <strong>strong foundational skills</strong> in Focus and Concentration, but with significant room for improvement in the post-shot mental routine — particularly Acceptance and Conviction.</p>
+  <p>The good news: these are among the most trainable aspects of the mental game. Golfers with similar profiles who work on their top 2 priorities typically see measurable score improvement within 4–6 rounds.</p>
+
+  <div style="background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.2); border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0;">
+    <h3 style="color: #b8860b; margin-bottom: 0.5rem;">Your next step</h3>
+    <p style="margin-bottom: 0;">Open the Skills Developer and start with your #1 priority: <strong>Post-Shot Release</strong>. This single report can change how you experience every round from now on.</p>
+  </div>
+</div>
+
+<div class="watermark">
+  This is a sample report for preview purposes · Your report will be fully personalised<br>
+  © 2026 MentalRoutine.com · Based on the NogBeterGolfen method by Henk de Jong
+</div>
+
+</body>
+</html>
