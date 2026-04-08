@@ -89,17 +89,17 @@ public/
 
 | # | Sectie | ID | Achtergrond | Beschrijving |
 |---|--------|----|-------------|--------------|
-| 1 | **Navbar** | — | fixed, blur | Navigatie + taalwisselaar + CTA knop |
-| 2 | **Hero** | `#hero` | `#162b1e` (donkergroen) | H1, 2 paragrafen, heroBadge, CTA's, howItWorksLine, quiz link, mobile mini-report mockup, desktop radar chart |
+| 1 | **Navbar** | — | fixed, blur | Navigatie (hernoemd: "The Research") + taalwisselaar + CTA knop ("Early Access") |
+| 2 | **Hero** | `#hero` | `#162b1e` (donkergroen) | Productnaam badge, H1, 2 paragrafen, heroBadge, CTA met prijs ($49), urgentie-regel (deadline + spots), howItWorksLine, quiz link, mobile mini-report mockup, desktop radar chart (met aria-label), skip-to-content link |
 | 3 | **Research** | `#how-it-works` | `#f6f1e7` | Statistieken (90%, 1000+, 70+), Jack Nicklaus quote |
 | 4 | **8-Step Routine** | `#mental-routine` | `#faf8f3` | 8 kaarten in 4-kolom grid, footer note |
-| 5 | **Process** | `#steps` | `#f6f1e7` | 3 stappen: Assessment → Rapport → Actie, privacy note |
+| 5 | **Process** | `#steps` | `#f6f1e7` | 3 stappen: Assessment → Rapport → Actie, privacy note, coach sharing link → `/pro-program` |
 | 6 | **Dimensions** | — | `#faf8f3` | 6 psychologische dimensies, Arnold Palmer quote |
 | 7 | **Why It Works** | — | `green-950` | 4 kolommen met iconen |
 | 8 | **Pricing** | `#pricing` | `green-950` | 2 plan-kaarten, vergelijkingstabel (responsive: tabel desktop / cards mobile), report preview, guarantee, testimonial quote, credits note, quiz CTA card |
 | 9 | **Training Reports** | — | `#f6f1e7` | (voorheen Skills Developer) chips, clickable report preview card (opent sample training report in modal), preview button, report teller |
 | 10 | **Testimonials** | `#testimonials` | `#faf8f3` | 3 auto-scroll kolommen (9 testimonials), pull quotes |
-| 11 | **FAQ** | `#faq` | `#faf8f3` | 9 vragen, accordion via FaqsSection component |
+| 11 | **FAQ** | `#faq` | `#faf8f3` | 9 vragen, accordion via FaqsSection component, mobile: eerste 4 + "show more" knop |
 | 12 | **Early Access** | `#early-access` | `green-950` | Signup formulier, spots counter, pricing cards |
 | 13 | **Contact** | `#contact` | `#f6f1e7` | Contactformulier |
 | 14 | **Footer** | — | `#0d1f15` | Logo, menu (incl. quiz link), social links, teaching pro link → `/pro-program`, quiz link |
@@ -200,7 +200,7 @@ public/
   stepLabel: string,
   research: { label, h2a, h2b, p1, p2, stats: [{ num, label }], quote, quoteAuthor },
   routine: { label, h2a, h2b, intro, footerNote, steps: [{ num, label, body }] },  // 8 steps
-  process: { label, h2a, h2b, steps: [{ num, title, body }], privacyNote },  // 3 steps
+  process: { label, h2a, h2b, steps: [{ num, title, body }], privacyNote, coachNote },  // 3 steps
   whyItWorks: { label, h2a, h2b, items: [{ title, body }] },  // 4 items
   guarantee: { title, body },
   dimensions: { label, h2a, h2b, p1, p2, quote, quoteAuthor, items: [{ label, desc, scenario }] },  // 6 items
@@ -218,7 +218,7 @@ public/
     p3, extraCredits, cta, cardNote, previewBtn
   },
   testimonials: { label, h2, items: [{ quote, text, image, name, role }] },  // 9 items
-  faq: { label, h2, contactText, contactLink, items: [{ title, content }] },  // 9 items
+  faq: { label, h2, contactText, contactLink, showMore, items: [{ title, content }] },  // 9 items
   contact: {
     label, h2a, h2b, p1, p2,
     fields: { name, namePlaceholder, handicap, handicapPlaceholder, email, emailPlaceholder, message, messagePlaceholder, submit, note },
@@ -228,7 +228,8 @@ public/
   earlyAccess: {
     badge, betaBadge, navCta, heroCta, pricingBanner, pricingCta, ctaBtn,
     sectionLabel, h2a, h2b, p1, p2, offer,
-    spotsLeft: string,                                     // ← nieuw
+    heroUrgency: string,                                   // ← nieuw (ronde 3)
+    spotsLeft: string,
     fields: { name, namePlaceholder, handicap, handicapPlaceholder, email, emailPlaceholder, planLabel, submit },
     socialProof, success: { h3, p }
   },
@@ -314,12 +315,31 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 
 ### TypeScript
 - `as const` in translations maakt arrays readonly → gebruik `ReadonlyArray<>` in props
-- Bij nieuw toegevoegde optionele velden (zoals `previewBtn`, `pricingQuote`, `spotsLeft`): gebruik `"key" in T.object` guard + type assertion
+- **`Translation` type** geëxporteerd uit `translations.ts` — widened via `Widen<T>` utility type zodat alle string literals naar `string` worden
+- `Widen<T>` lost het probleem op dat `translations[lang]` een union is van 5 talen met verschillende literal strings
+- Gebruik `const T: Translation = translations[lang]` in componenten — geen `as any` of `"key" in` guards meer nodig
+- Getypeerde destructuring: `const t: Translation["faq"] = translations[lang].faq` etc.
 
 ### Framer Motion imports
 - `page.tsx` en `faqs.tsx`: importeren uit `"framer-motion"`
 - `navbar.tsx` en `testimonials-columns.tsx`: importeren uit `"motion/react"`
 - **Niet mixen** binnen één bestand
+
+### SEO & Structured Data (`layout.tsx`)
+- **Metadata**: title, description, metadataBase (`https://www.mentalroutine.com`), canonical, robots
+- **Open Graph**: title, description, url, siteName, locale (`en_US`), type (`website`)
+- **Twitter Card**: `summary_large_image`, title, description
+- **JSON-LD** (3 blokken in `<head>`):
+  1. `Organization` — naam, url, logo, sameAs (Instagram, TikTok, YouTube, X, LinkedIn)
+  2. `Product` — 2 offers: Standard $59, Deluxe $129 (PreOrder availability)
+  3. `FAQPage` — 5 meest relevante FAQ items voor Google rich snippets
+- **Ontbrekend**: OG image (`og:image` tag) — moet nog aangemaakt worden
+
+### Accessibility
+- **Skip-to-content link**: `<a href="#hero" className="sr-only focus:not-sr-only ...">` vóór Navbar
+- **Radar chart**: `role="img"` + `aria-label` met beschrijving
+- **Spots counter**: `role="status"` + `aria-live="polite"` voor screenreader updates
+- **FAQ accordion**: semantische `<button>` elementen, `AnimatePresence` voor open/dicht
 
 ### Bestanden die NOOIT gestaged worden
 - `.next/` — build output
@@ -494,3 +514,62 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Alle links wijzen naar `/quiz.html` (5 talen)
 - `quiz.html`: coming soon banner + `QUIZ_LOCKED = true` blokkeren quiz tot 20 april
 - Footer "Teaching Professional?" link gefixt: `#contact` → `/pro-program`
+
+### Expert Panel Review — Ronde 3: Zelf-audit + fixes (8 april 2026)
+
+**Navigatie hernoemen (alle 5 talen):**
+- `nav.howItWorks`: "How It Works" → "The Research" (EN), "Het Onderzoek" (NL), "Die Forschung" (DE), "La Recherche" (FR), "La Investigación" (ES)
+- Reden: sectie heet "Research" en toont statistieken/quotes, niet een how-it-works flow
+
+**Guarantee tekst versterkt (alle 5 talen):**
+- `guarantee.title`: "30-Day Money-Back Guarantee" → "Your Guarantee"
+- `guarantee.body`: zakelijke toon → emotioneel ("If you don't find at least one insight that makes you think differently about your game, we'll refund every cent.")
+
+**CTA-tekst gedifferentieerd (alle 5 talen):**
+- 4 varianten per context i.p.v. overal dezelfde tekst:
+  - `earlyAccess.heroCta`: "See My Mental Profile — from $49" (hero knop, met prijs)
+  - `earlyAccess.navCta`: "Early Access" (navbar, kort)
+  - `earlyAccess.pricingCta`: "Lock In Early Access →" (pricing sectie)
+  - `earlyAccess.ctaBtn`: "Start in 15 Minutes →" (training reports, footer)
+
+**Accessibility (page.tsx):**
+- Skip-to-content link toegevoegd vóór Navbar (`sr-only focus:not-sr-only`)
+- Radar SVG: `role="img"` + `aria-label` toegevoegd
+- Spots counter: `role="status"` + `aria-live="polite"` toegevoegd
+
+**Hero urgentie-regel (alle 5 talen + page.tsx):**
+- Nieuwe `earlyAccess.heroUrgency` key: "Early access pricing ends June 1st · limited spots available"
+- Getoond als subtiele amber tekst onder howItWorksLine in hero
+- Prijs ($49) bewust alleen in CTA-knop (niet in urgentieregel, voorkomt duplicatie)
+
+**Hero badge → productnaam (alle 5 talen):**
+- `hero.badge`: "Launching soon" → "The Mental Routine Assessment" (EN), "De Mental Routine Assessment" (NL), etc.
+- Maakt productnaam direct zichtbaar boven de fold
+
+**Coach sharing note (alle 5 talen + page.tsx):**
+- Nieuwe `process.coachNote` key: "Working with a coach? Share your report — it gives them an objective starting point."
+- Getoond als link naar `/pro-program` onder privacy note in Process sectie
+
+**SEO & Structured Data (layout.tsx — volledig herschreven):**
+- Van 19 regels naar 149 regels
+- Extended Metadata: title, description, metadataBase, canonical, OG, Twitter Card, robots
+- 3 JSON-LD blokken: Organization (met sameAs social links), Product (2 offers), FAQPage (5 Q&As)
+
+**Type safety verbeterd (translations.ts + page.tsx + faqs.tsx):**
+- `Widen<T>` utility type toegevoegd — widened recursief alle literal strings naar `string`
+- `Translation` type geëxporteerd: `export type Translation = Widen<(typeof translations)["en"]>`
+- Alle `as any` assertions verwijderd (was 15+, nu 0)
+- Alle `"key" in T.xxx` guards verwijderd — directe property access
+- Componenten getypeerd: `const T: Translation`, `const t: Translation["faq"]`
+
+**FAQ mobile show-more (faqs.tsx, alle 5 talen):**
+- Desktop: alle 9 vragen zichtbaar (`hidden sm:block`)
+- Mobile: eerste 4 + "+5 more questions" knop (`sm:hidden`)
+- Nieuwe `faq.showMore` key per taal: "more questions" (EN), "meer vragen" (NL), etc.
+- `MOBILE_INITIAL_COUNT = 4` constante
+- `renderItem` functie geëxtraheerd om duplicatie tussen desktop/mobile te voorkomen
+
+**Bug fixes (zelf-audit):**
+- FAQ "show more" knop had hardcoded Engelse tekst → vertaald via `faq.showMore`
+- Hero toonde "$49" dubbel (in CTA + urgentieregel) → prijs verwijderd uit urgentieregel
+- `heroCta` prijs: "$49" toegevoegd als "from $49" — onderscheidt betaalde assessment van gratis quiz

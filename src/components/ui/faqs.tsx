@@ -134,7 +134,7 @@ export function FaqsSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <span>+{t.items.length - MOBILE_INITIAL_COUNT} more questions</span>
+            <span>+{t.items.length - MOBILE_INITIAL_COUNT} {t.showMore}</span>
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-3 h-3">
               <path d="M2 4l4 4 4-4" />
             </svg>

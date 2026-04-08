@@ -143,7 +143,7 @@ export const translations = {
     },
     faq: {
       label: "Questions & Answers", h2: "Frequently Asked Questions",
-      contactText: "Everything you need to know before you start. Can't find the answer?", contactLink: "Contact us",
+      contactText: "Everything you need to know before you start. Can't find the answer?", contactLink: "Contact us", showMore: "more questions",
       items: [
         { title: "How long does the assessment take?", content: "The assessment takes 15–25 minutes. You can complete it on any device — phone, tablet, or desktop. Once submitted, your personalised PDF report is available for download immediately." },
         { title: "What exactly is the Mental Routine Assessment?", content: "The Mental Routine Assessment is a structured digital questionnaire grounded in over a decade of research with more than 1,000 golfers. It measures your mental performance across 8 routine factors and 6 psychological dimensions — including focus, conviction, pressure sensitivity, and acceptance. The result is a personalised PDF report that shows precisely where your mental game gains and loses you strokes." },
@@ -187,7 +187,7 @@ export const translations = {
       offer: "Early Access pricing: Standard $49 (instead of $59) · Deluxe $99 (instead of $129) — plus 2 extra training reports on every plan.",
       fields: { name: "Name", namePlaceholder: "Your name", handicap: "Golf Handicap", handicapPlaceholder: "e.g. 14.2", email: "Email", emailPlaceholder: "you@example.com", planLabel: "I'm interested in", submit: "Lock In My Early-Bird Price →" },
       spotsLeft: "spots left at early-bird pricing",
-      heroUrgency: "Early access from $49 · pricing ends June 1st",
+      heroUrgency: "Early access pricing ends June 1st · limited spots available",
       socialProof: "Join golfers already on the early access list",
       success: { h3: "You're on the list!", p: "We'll send you your exclusive early-bird link on May 15th — ahead of the official launch on June 1st. Check your inbox for a confirmation." },
     },
@@ -335,7 +335,7 @@ export const translations = {
     },
     faq: {
       label: "Vragen & Antwoorden", h2: "Veelgestelde Vragen",
-      contactText: "Alles wat je moet weten voordat je begint. Antwoord niet gevonden?", contactLink: "Neem contact op",
+      contactText: "Alles wat je moet weten voordat je begint. Antwoord niet gevonden?", contactLink: "Neem contact op", showMore: "meer vragen",
       items: [
         { title: "Hoe lang duurt het assessment?", content: "Het assessment duurt 15–25 minuten. Je kunt het invullen op elk apparaat — telefoon, tablet of computer. Zodra je het hebt ingediend, is jouw gepersonaliseerde PDF-rapport direct beschikbaar om te downloaden." },
         { title: "Wat is de Mentale Routine Assessment precies?", content: "De Mentale Routine Assessment is een gestructureerde digitale vragenlijst gebaseerd op meer dan tien jaar onderzoek met meer dan 1.000 golfers. Het meet je mentale prestaties op 8 routinefactoren en 6 psychologische dimensies — waaronder focus, overtuiging, drukgevoeligheid en aanvaarding. Het resultaat is een gepersonaliseerd PDF-rapport dat precies laat zien waar jouw mentale spel je slagen kost." },
@@ -378,7 +378,7 @@ export const translations = {
       offer: "Early Access prijzen: Standaard $49 (i.p.v. $59) · Deluxe $99 (i.p.v. $129) — plus 2 extra trainingsrapporten op elk plan.",
       fields: { name: "Naam", namePlaceholder: "Jouw naam", handicap: "Golf Handicap", handicapPlaceholder: "bijv. 14,2", email: "E-mail", emailPlaceholder: "jij@voorbeeld.nl", planLabel: "Ik ben geïnteresseerd in", submit: "Zeker Mijn Early-Bird Prijs →" },
       spotsLeft: "plekken beschikbaar tegen early-bird prijs",
-      heroUrgency: "Early access vanaf $49 · actie eindigt 1 juni",
+      heroUrgency: "Early access actie eindigt 1 juni · beperkt aantal plekken",
       socialProof: "Sluit je aan bij golfers op de early access lijst",
       success: { h3: "Je staat op de lijst!", p: "We sturen je op 15 mei jouw exclusieve early-bird link — vóór de officiële lancering op 1 juni. Check je inbox voor een bevestiging." },
     },
@@ -526,7 +526,7 @@ export const translations = {
     },
     faq: {
       label: "Fragen & Antworten", h2: "Häufig gestellte Fragen",
-      contactText: "Alles, was du wissen musst, bevor du anfängst. Keine Antwort gefunden?", contactLink: "Kontaktiere uns",
+      contactText: "Alles, was du wissen musst, bevor du anfängst. Keine Antwort gefunden?", contactLink: "Kontaktiere uns", showMore: "weitere Fragen",
       items: [
         { title: "Wie lange dauert das Assessment?", content: "Das Assessment dauert 15–25 Minuten. Du kannst es auf jedem Gerät ausfüllen — Smartphone, Tablet oder Desktop. Sobald du es eingereicht hast, ist dein personalisierter PDF-Bericht sofort zum Download verfügbar." },
         { title: "Was ist das Mental Routine Assessment genau?", content: "Das Mental Routine Assessment ist ein strukturierter digitaler Fragebogen, der auf über einem Jahrzehnt Forschung mit mehr als 1.000 Golfern basiert. Es misst deine mentale Leistung in 8 Routinefaktoren und 6 psychologischen Dimensionen — darunter Fokus, Überzeugung, Druckmanagement und Akzeptanz. Das Ergebnis ist ein personalisierter PDF-Bericht, der genau zeigt, wo dein mentales Spiel dir Schläge kostet." },
@@ -569,7 +569,7 @@ export const translations = {
       offer: "Early Access Preise: Standard $49 (statt $59) · Deluxe $99 (statt $129) — plus 2 zusätzliche Trainingsberichte auf jeden Plan.",
       fields: { name: "Name", namePlaceholder: "Dein Name", handicap: "Golf-Handicap", handicapPlaceholder: "z.B. 14,2", email: "E-Mail", emailPlaceholder: "du@beispiel.de", planLabel: "Ich interessiere mich für", submit: "Meinen Early-Bird-Preis sichern →" },
       spotsLeft: "Plätze zum Early-Bird-Preis verfügbar",
-      heroUrgency: "Early Access ab $49 · Aktion endet am 1. Juni",
+      heroUrgency: "Early Access Aktion endet am 1. Juni · begrenzte Plätze",
       socialProof: "Schließe dich Golfern auf der Early Access Liste an",
       success: { h3: "Du stehst auf der Liste!", p: "Wir senden dir am 15. Mai deinen exklusiven Early-Bird-Link — vor dem offiziellen Start am 1. Juni. Prüfe deinen Posteingang für eine Bestätigung." },
     },
@@ -717,7 +717,7 @@ export const translations = {
     },
     faq: {
       label: "Questions & Réponses", h2: "Questions Fréquemment Posées",
-      contactText: "Tout ce que vous devez savoir avant de commencer. Pas de réponse ?", contactLink: "Contactez-nous",
+      contactText: "Tout ce que vous devez savoir avant de commencer. Pas de réponse ?", contactLink: "Contactez-nous", showMore: "autres questions",
       items: [
         { title: "Combien de temps dure l'évaluation ?", content: "L'évaluation prend 15–25 minutes. Vous pouvez la compléter sur n'importe quel appareil — téléphone, tablette ou ordinateur. Une fois soumise, votre rapport PDF personnalisé est immédiatement disponible en téléchargement." },
         { title: "Qu'est-ce exactement que l'Évaluation de la Routine Mentale ?", content: "L'Évaluation de la Routine Mentale est un questionnaire numérique structuré basé sur plus d'une décennie de recherche avec plus de 1 000 golfeurs. Elle mesure vos performances mentales sur 8 facteurs de routine et 6 dimensions psychologiques — notamment le focus, la conviction, la sensibilité à la pression et l'acceptation. Le résultat est un rapport PDF personnalisé qui montre précisément où votre jeu mental vous coûte des coups." },
@@ -760,7 +760,7 @@ export const translations = {
       offer: "Prix Early Access : Standard $49 (au lieu de $59) · Deluxe $99 (au lieu de $129) — plus 2 rapports d'entraînement supplémentaires sur chaque plan.",
       fields: { name: "Nom", namePlaceholder: "Votre nom", handicap: "Handicap de Golf", handicapPlaceholder: "ex. 14,2", email: "E-mail", emailPlaceholder: "vous@exemple.fr", planLabel: "Je suis intéressé(e) par", submit: "Réserver mon prix Early-Bird →" },
       spotsLeft: "places disponibles au tarif early-bird",
-      heroUrgency: "Early access dès $49 · offre valable jusqu'au 1er juin",
+      heroUrgency: "Offre Early Access jusqu'au 1er juin · places limitées",
       socialProof: "Rejoignez les golfeurs déjà sur la liste early access",
       success: { h3: "Vous êtes sur la liste !", p: "Nous vous enverrons votre lien early-bird exclusif le 15 mai — avant le lancement officiel du 1er juin. Vérifiez votre boîte de réception pour une confirmation." },
     },
@@ -908,7 +908,7 @@ export const translations = {
     },
     faq: {
       label: "Preguntas & Respuestas", h2: "Preguntas Frecuentes",
-      contactText: "Todo lo que necesitas saber antes de empezar. ¿No encuentras la respuesta?", contactLink: "Contáctanos",
+      contactText: "Todo lo que necesitas saber antes de empezar. ¿No encuentras la respuesta?", contactLink: "Contáctanos", showMore: "más preguntas",
       items: [
         { title: "¿Cuánto tiempo lleva la evaluación?", content: "La evaluación lleva 15–25 minutos. Puedes completarla en cualquier dispositivo — teléfono, tablet u ordenador. Una vez enviada, tu informe PDF personalizado está disponible para descargar inmediatamente." },
         { title: "¿Qué es exactamente la Evaluación de la Rutina Mental?", content: "La Evaluación de la Rutina Mental es un cuestionario digital estructurado basado en más de una década de investigación con más de 1.000 golfistas. Mide tu rendimiento mental en 8 factores de rutina y 6 dimensiones psicológicas — incluyendo enfoque, convicción, sensibilidad a la presión y aceptación. El resultado es un informe PDF personalizado que muestra exactamente dónde tu juego mental te cuesta golpes." },
@@ -951,7 +951,7 @@ export const translations = {
       offer: "Precios Early Access: Estándar $49 (en vez de $59) · Deluxe $99 (en vez de $129) — más 2 informes de entrenamiento adicionales en cada plan.",
       fields: { name: "Nombre", namePlaceholder: "Tu nombre", handicap: "Hándicap de Golf", handicapPlaceholder: "ej. 14,2", email: "Correo electrónico", emailPlaceholder: "tu@ejemplo.es", planLabel: "Me interesa", submit: "Asegurar mi precio Early-Bird →" },
       spotsLeft: "plazas disponibles al precio early-bird",
-      heroUrgency: "Early access desde $49 · oferta hasta el 1 de junio",
+      heroUrgency: "Oferta Early Access hasta el 1 de junio · plazas limitadas",
       socialProof: "Únete a los golfistas ya en la lista de early access",
       success: { h3: "¡Estás en la lista!", p: "Te enviaremos tu enlace early-bird exclusivo el 15 de mayo — antes del lanzamiento oficial el 1 de junio. Revisa tu bandeja de entrada para una confirmación." },
     },
