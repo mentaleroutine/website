@@ -422,6 +422,8 @@
     .assess-compare-card--highlight{border-color:rgba(184,149,42,.35);background:rgba(184,149,42,.07)}
     .assess-compare-card--highlight .assess-compare-label{color:var(--gold-light)}
     .assess-compare-card--highlight .assess-compare-title{color:var(--gold-light)}
+    /* ── COMING SOON PULSE ── */
+    @keyframes comingSoonPulse{0%,100%{background:linear-gradient(135deg,#1B3A2D 0%,#254D3A 100%)}50%{background:linear-gradient(135deg,#254D3A 0%,#3D7A5A 100%)}}
   </style>
 </head>
 <body>
@@ -1586,11 +1588,26 @@
     renderHole(0);
   }
 
+  /* ── COMING SOON: block quiz start until launch ── */
+  var QUIZ_LOCKED = true;  // Set to false on 20 april 2026 to enable the quiz
   document.querySelectorAll('.start-quiz-btn').forEach(function(btn) {
-    btn.addEventListener('click', startQuiz);
+    btn.addEventListener('click', function(e) {
+      if (QUIZ_LOCKED) {
+        e.preventDefault();
+        document.getElementById('coming-soon-banner').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('coming-soon-banner').style.animation = 'comingSoonPulse .5s ease-in-out 2';
+        return;
+      }
+      startQuiz();
+    });
     btn.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
+        if (QUIZ_LOCKED) {
+          document.getElementById('coming-soon-banner').scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('coming-soon-banner').style.animation = 'comingSoonPulse .5s ease-in-out 2';
+          return;
+        }
         startQuiz();
       }
     });
