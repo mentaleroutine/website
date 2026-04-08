@@ -126,6 +126,8 @@ export const translations = {
       extraCredits: "Extra reports from $6.99 in the shop",
       previewBtn: "Preview sample training report →",
       cta: "Explore Your Training Reports →", cardNote: "Hover to reveal your pattern",
+      reportCountStd: "4–6 reports", reportCountDlx: "9–14 reports",
+      mockup: { tagline: "Training Report · 5 pages", title: "Conviction Under Pressure", subtitle: "Personalised for your profile", priority: "top priority", physical: "PHYSICAL", mental: "MENTAL", exercise: "Exercise", expertInsight: "Expert Insight", reflection: "Reflection", storytelling: "Storytelling", mantra: "Mantra", aiPrompt: "AI Prompt", benchmarked: "Benchmarked", exPhysical: "Conviction drill — driving range · 2 × 10 min", exMental: "Visualisation routine — at home · 10 min", exExpert: "Why conviction breaks under pressure", exReflection: "What did hesitation cost you today?", exStorytelling: "Tour pro story: committing when it counts", exMantra: "\"I commit. I trust. I swing.\"", exAiPrompt: "Self-coaching questions for next round", exBenchmarked: "Golfers hcp 12–16 · similar profile" },
     },
     testimonials: {
       label: "From the Fairway", h2: "What golfers are saying",
@@ -160,7 +162,7 @@ export const translations = {
       label: "Get in Touch", h2a: "Questions? We'd love", h2b: "to hear from you.",
       p1: "Not sure which plan is right for you? Want to know more about how the assessment works? Or just curious whether this is the right next step for your golf game?",
       p2: "Send us a message and we'll get back to you within one business day. We're golfers too — we get it.",
-      fields: { name: "Name", namePlaceholder: "Your name", handicap: "Golf Handicap", handicapPlaceholder: "e.g. 14.2", email: "Email", emailPlaceholder: "you@example.com", message: "Message", messagePlaceholder: "What would you like to know?", submit: "Send Message →", note: "We respond within one business day." },
+      fields: { name: "Name", namePlaceholder: "Your name", handicap: "Golf Handicap", handicapPlaceholder: "e.g. 14.2", email: "Email", emailPlaceholder: "you@example.com", message: "Message", messagePlaceholder: "What would you like to know?", submit: "Send Message →", note: "We respond within one business day.", sending: "Sending...", error: "Something went wrong. Please try again." },
       success: { h3: "Message received", p: "We'll be in touch within one business day. Good luck on the course in the meantime." },
     },
     cta: {
@@ -185,13 +187,14 @@ export const translations = {
       p1: "In 15 minutes you'll know exactly what's costing you strokes — and what to work on first. Your personalised PDF report + training reports, ready before anyone else. Pre-launch May 15th. Official launch: June 1st.",
       p2: "Sign up now to lock in your early-bird discount and be first in line — spots are limited and this price won't return after June 1st.",
       offer: "Early Access pricing: Standard $49 (instead of $59) · Deluxe $99 (instead of $129) — plus 2 extra training reports on every plan.",
-      fields: { name: "Name", namePlaceholder: "Your name", handicap: "Golf Handicap", handicapPlaceholder: "e.g. 14.2", email: "Email", emailPlaceholder: "you@example.com", planLabel: "I'm interested in", submit: "Lock In My Early-Bird Price →" },
+      fields: { name: "Name", namePlaceholder: "Your name", handicap: "Golf Handicap", handicapPlaceholder: "e.g. 14.2", email: "Email", emailPlaceholder: "you@example.com", planLabel: "I'm interested in", submit: "Lock In My Early-Bird Price →", sending: "...", error: "Something went wrong. Please try again." },
       spotsLeft: "spots left at early-bird pricing",
       heroUrgency: "Early access pricing ends June 1st · limited spots available",
+      extraReports: "+ 2 extra training reports",
       socialProof: "Join golfers already on the early access list",
       success: { h3: "You're on the list!", p: "We'll send you your exclusive early-bird link on May 15th — ahead of the official launch on June 1st. Check your inbox for a confirmation." },
     },
-    footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free Quiz" },
+    footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free Quiz", quoteText: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong", methodBy: "Method by Henk de Jong" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -318,6 +321,8 @@ export const translations = {
       extraCredits: "Extra rapporten vanaf $6,99 in de shop",
       previewBtn: "Bekijk voorbeeldrapport →",
       cta: "Ontdek Je Trainingsrapporten →", cardNote: "Beweeg je muis om je patroon te onthullen",
+      reportCountStd: "4–6 rapporten", reportCountDlx: "9–14 rapporten",
+      mockup: { tagline: "Trainingsrapport · 5 pagina's", title: "Overtuiging Onder Druk", subtitle: "Gepersonaliseerd voor jouw profiel", priority: "topprioriteit", physical: "FYSIEK", mental: "MENTAAL", exercise: "Oefening", expertInsight: "Expert Inzicht", reflection: "Reflectie", storytelling: "Storytelling", mantra: "Mantra", aiPrompt: "AI Prompt", benchmarked: "Gebenchmarkt", exPhysical: "Overtuigingsdrill — driving range · 2 × 10 min", exMental: "Visualisatieroutine — thuis · 10 min", exExpert: "Waarom overtuiging breekt onder druk", exReflection: "Wat kostte aarzeling je vandaag?", exStorytelling: "Tour pro verhaal: committen wanneer het ertoe doet", exMantra: "\"Ik commit. Ik vertrouw. Ik swing.\"", exAiPrompt: "Zelfcoaching-vragen voor de volgende ronde", exBenchmarked: "Golfers hcp 12–16 · vergelijkbaar profiel" },
     },
     testimonials: {
       label: "Van de Fairway", h2: "Wat golfers zeggen",
@@ -352,7 +357,7 @@ export const translations = {
       label: "Neem Contact Op", h2a: "Vragen? We horen", h2b: "graag van je.",
       p1: "Weet je niet zeker welk pakket bij jou past? Wil je meer weten over hoe de assessment werkt? Of ben je gewoon benieuwd of dit de juiste volgende stap is voor jouw golfspel?",
       p2: "Stuur ons een bericht en we reageren binnen één werkdag. Wij zijn ook golfers — we begrijpen het.",
-      fields: { name: "Naam", namePlaceholder: "Jouw naam", handicap: "Golf Handicap", handicapPlaceholder: "bijv. 14,2", email: "E-mail", emailPlaceholder: "jij@voorbeeld.nl", message: "Bericht", messagePlaceholder: "Wat wil je weten?", submit: "Verstuur Bericht →", note: "We reageren binnen één werkdag." },
+      fields: { name: "Naam", namePlaceholder: "Jouw naam", handicap: "Golf Handicap", handicapPlaceholder: "bijv. 14,2", email: "E-mail", emailPlaceholder: "jij@voorbeeld.nl", message: "Bericht", messagePlaceholder: "Wat wil je weten?", submit: "Verstuur Bericht →", note: "We reageren binnen één werkdag.", sending: "Verzenden...", error: "Er is iets misgegaan. Probeer het opnieuw." },
       success: { h3: "Bericht ontvangen", p: "We nemen binnen één werkdag contact op. Veel succes op de baan in de tussentijd." },
     },
     cta: {
@@ -376,13 +381,14 @@ export const translations = {
       p1: "Over 15 minuten weet je precies wat je slagen kost — en waar je als eerste aan moet werken. Jouw persoonlijke PDF-rapport + trainingsrapporten, klaar vóór ieder ander. Pre-launch 15 mei. Officiële lancering: 1 juni.",
       p2: "Schrijf je nu in om jouw early-bird korting vast te leggen en als eerste aan de beurt te zijn — plekken zijn beperkt en deze prijs komt niet terug na 1 juni.",
       offer: "Early Access prijzen: Standaard $49 (i.p.v. $59) · Deluxe $99 (i.p.v. $129) — plus 2 extra trainingsrapporten op elk plan.",
-      fields: { name: "Naam", namePlaceholder: "Jouw naam", handicap: "Golf Handicap", handicapPlaceholder: "bijv. 14,2", email: "E-mail", emailPlaceholder: "jij@voorbeeld.nl", planLabel: "Ik ben geïnteresseerd in", submit: "Zeker Mijn Early-Bird Prijs →" },
+      fields: { name: "Naam", namePlaceholder: "Jouw naam", handicap: "Golf Handicap", handicapPlaceholder: "bijv. 14,2", email: "E-mail", emailPlaceholder: "jij@voorbeeld.nl", planLabel: "Ik ben geïnteresseerd in", submit: "Zeker Mijn Early-Bird Prijs →", sending: "...", error: "Er is iets misgegaan. Probeer het opnieuw." },
       spotsLeft: "plekken beschikbaar tegen early-bird prijs",
       heroUrgency: "Early access actie eindigt 1 juni · beperkt aantal plekken",
+      extraReports: "+ 2 extra trainingsrapporten",
       socialProof: "Sluit je aan bij golfers op de early access lijst",
       success: { h3: "Je staat op de lijst!", p: "We sturen je op 15 mei jouw exclusieve early-bird link — vóór de officiële lancering op 1 juni. Check je inbox voor een bevestiging." },
     },
-    footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis Quiz" },
+    footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis Quiz", quoteText: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong", methodBy: "Methode van Henk de Jong" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -509,6 +515,8 @@ export const translations = {
       extraCredits: "Zusätzliche Berichte ab $6,99 im Shop",
       previewBtn: "Beispiel-Trainingsbericht ansehen →",
       cta: "Entdecke Deine Trainingsberichte →", cardNote: "Bewege die Maus, um dein Muster zu enthüllen",
+      reportCountStd: "4–6 Berichte", reportCountDlx: "9–14 Berichte",
+      mockup: { tagline: "Trainingsbericht · 5 Seiten", title: "Überzeugung Unter Druck", subtitle: "Personalisiert für dein Profil", priority: "Top-Priorität", physical: "PHYSISCH", mental: "MENTAL", exercise: "Übung", expertInsight: "Experteneinblick", reflection: "Reflexion", storytelling: "Storytelling", mantra: "Mantra", aiPrompt: "KI-Prompt", benchmarked: "Benchmarked", exPhysical: "Überzeugungsdrill — Driving Range · 2 × 10 Min", exMental: "Visualisierungsroutine — zu Hause · 10 Min", exExpert: "Warum Überzeugung unter Druck bricht", exReflection: "Was hat dich das Zögern heute gekostet?", exStorytelling: "Tour-Pro-Geschichte: Committen wenn es zählt", exMantra: "\"Ich committe. Ich vertraue. Ich schwinge.\"", exAiPrompt: "Selbstcoaching-Fragen für die nächste Runde", exBenchmarked: "Golfer Hcp 12–16 · ähnliches Profil" },
     },
     testimonials: {
       label: "Vom Fairway", h2: "Was Golfer sagen",
@@ -543,7 +551,7 @@ export const translations = {
       label: "Kontakt aufnehmen", h2a: "Fragen? Wir freuen uns,", h2b: "von dir zu hören.",
       p1: "Nicht sicher, welcher Plan zu dir passt? Möchtest du mehr darüber erfahren, wie das Assessment funktioniert? Oder einfach neugierig, ob das der richtige nächste Schritt für dein Golfspiel ist?",
       p2: "Schick uns eine Nachricht und wir melden uns innerhalb eines Werktags. Wir sind auch Golfer — wir verstehen das.",
-      fields: { name: "Name", namePlaceholder: "Dein Name", handicap: "Golf-Handicap", handicapPlaceholder: "z.B. 14,2", email: "E-Mail", emailPlaceholder: "du@beispiel.de", message: "Nachricht", messagePlaceholder: "Was möchtest du wissen?", submit: "Nachricht senden →", note: "Wir antworten innerhalb eines Werktags." },
+      fields: { name: "Name", namePlaceholder: "Dein Name", handicap: "Golf-Handicap", handicapPlaceholder: "z.B. 14,2", email: "E-Mail", emailPlaceholder: "du@beispiel.de", message: "Nachricht", messagePlaceholder: "Was möchtest du wissen?", submit: "Nachricht senden →", note: "Wir antworten innerhalb eines Werktags.", sending: "Wird gesendet...", error: "Etwas ist schiefgelaufen. Bitte versuche es erneut." },
       success: { h3: "Nachricht erhalten", p: "Wir melden uns innerhalb eines Werktags. Viel Erfolg auf dem Platz in der Zwischenzeit." },
     },
     cta: {
@@ -567,13 +575,14 @@ export const translations = {
       p1: "In 15 Minuten weißt du genau, was dich Schläge kostet — und woran du zuerst arbeiten solltest. Dein personalisierter PDF-Bericht + Trainingsberichte, fertig vor allen anderen. Pre-Launch 15. Mai. Offizieller Start: 1. Juni.",
       p2: "Melde dich jetzt an, um deinen Early-Bird-Rabatt zu sichern und als Erster an der Reihe zu sein — Plätze sind begrenzt und dieser Preis kommt nach dem 1. Juni nicht zurück.",
       offer: "Early Access Preise: Standard $49 (statt $59) · Deluxe $99 (statt $129) — plus 2 zusätzliche Trainingsberichte auf jeden Plan.",
-      fields: { name: "Name", namePlaceholder: "Dein Name", handicap: "Golf-Handicap", handicapPlaceholder: "z.B. 14,2", email: "E-Mail", emailPlaceholder: "du@beispiel.de", planLabel: "Ich interessiere mich für", submit: "Meinen Early-Bird-Preis sichern →" },
+      fields: { name: "Name", namePlaceholder: "Dein Name", handicap: "Golf-Handicap", handicapPlaceholder: "z.B. 14,2", email: "E-Mail", emailPlaceholder: "du@beispiel.de", planLabel: "Ich interessiere mich für", submit: "Meinen Early-Bird-Preis sichern →", sending: "...", error: "Etwas ist schiefgelaufen. Bitte versuche es erneut." },
       spotsLeft: "Plätze zum Early-Bird-Preis verfügbar",
       heroUrgency: "Early Access Aktion endet am 1. Juni · begrenzte Plätze",
+      extraReports: "+ 2 zusätzliche Trainingsberichte",
       socialProof: "Schließe dich Golfern auf der Early Access Liste an",
       success: { h3: "Du stehst auf der Liste!", p: "Wir senden dir am 15. Mai deinen exklusiven Early-Bird-Link — vor dem offiziellen Start am 1. Juni. Prüfe deinen Posteingang für eine Bestätigung." },
     },
-    footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfehle das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloses Quiz" },
+    footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfehle das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloses Quiz", quoteText: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong", methodBy: "Methode von Henk de Jong" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -700,6 +709,8 @@ export const translations = {
       extraCredits: "Rapports supplémentaires dès $6,99 dans la boutique",
       previewBtn: "Voir un rapport d'entraînement exemple →",
       cta: "Explorer vos rapports d'entraînement →", cardNote: "Survolez pour révéler votre schéma",
+      reportCountStd: "4–6 rapports", reportCountDlx: "9–14 rapports",
+      mockup: { tagline: "Rapport d'entraînement · 5 pages", title: "Conviction Sous Pression", subtitle: "Personnalisé pour votre profil", priority: "priorité absolue", physical: "PHYSIQUE", mental: "MENTAL", exercise: "Exercice", expertInsight: "Insight Expert", reflection: "Réflexion", storytelling: "Storytelling", mantra: "Mantra", aiPrompt: "Prompt IA", benchmarked: "Benchmarké", exPhysical: "Drill de conviction — practice · 2 × 10 min", exMental: "Routine de visualisation — à la maison · 10 min", exExpert: "Pourquoi la conviction cède sous la pression", exReflection: "Qu'est-ce que l'hésitation vous a coûté aujourd'hui ?", exStorytelling: "Histoire d'un pro : s'engager quand ça compte", exMantra: "\"Je m'engage. Je fais confiance. Je swingue.\"", exAiPrompt: "Questions d'auto-coaching pour le prochain tour", exBenchmarked: "Golfeurs hcp 12–16 · profil similaire" },
     },
     testimonials: {
       label: "Du Fairway", h2: "Ce que disent les golfeurs",
@@ -734,7 +745,7 @@ export const translations = {
       label: "Nous Contacter", h2a: "Des questions ? Nous serions", h2b: "ravis d'avoir de vos nouvelles.",
       p1: "Vous n'êtes pas sûr du plan qui vous convient ? Vous voulez en savoir plus sur le fonctionnement de l'évaluation ? Ou simplement curieux de savoir si c'est la bonne prochaine étape pour votre jeu ?",
       p2: "Envoyez-nous un message et nous vous répondrons dans un jour ouvrable. Nous sommes aussi golfeurs — nous comprenons.",
-      fields: { name: "Nom", namePlaceholder: "Votre nom", handicap: "Handicap de Golf", handicapPlaceholder: "ex. 14,2", email: "E-mail", emailPlaceholder: "vous@exemple.fr", message: "Message", messagePlaceholder: "Que souhaitez-vous savoir ?", submit: "Envoyer le message →", note: "Nous répondons dans un jour ouvrable." },
+      fields: { name: "Nom", namePlaceholder: "Votre nom", handicap: "Handicap de Golf", handicapPlaceholder: "ex. 14,2", email: "E-mail", emailPlaceholder: "vous@exemple.fr", message: "Message", messagePlaceholder: "Que souhaitez-vous savoir ?", submit: "Envoyer le message →", note: "Nous répondons dans un jour ouvrable.", sending: "Envoi en cours...", error: "Une erreur est survenue. Veuillez réessayer." },
       success: { h3: "Message reçu", p: "Nous vous répondrons dans un jour ouvrable. Bonne chance sur le parcours en attendant." },
     },
     cta: {
@@ -758,13 +769,14 @@ export const translations = {
       p1: "En 15 minutes vous saurez exactement ce qui vous coûte des coups — et sur quoi travailler en premier. Votre rapport PDF personnalisé + rapports d'entraînement, prêts avant tout le monde. Pré-lancement le 15 mai. Lancement officiel : 1er juin.",
       p2: "Inscrivez-vous maintenant pour verrouiller votre réduction early-bird et être parmi les premiers — les places sont limitées et ce prix ne reviendra pas après le 1er juin.",
       offer: "Prix Early Access : Standard $49 (au lieu de $59) · Deluxe $99 (au lieu de $129) — plus 2 rapports d'entraînement supplémentaires sur chaque plan.",
-      fields: { name: "Nom", namePlaceholder: "Votre nom", handicap: "Handicap de Golf", handicapPlaceholder: "ex. 14,2", email: "E-mail", emailPlaceholder: "vous@exemple.fr", planLabel: "Je suis intéressé(e) par", submit: "Réserver mon prix Early-Bird →" },
+      fields: { name: "Nom", namePlaceholder: "Votre nom", handicap: "Handicap de Golf", handicapPlaceholder: "ex. 14,2", email: "E-mail", emailPlaceholder: "vous@exemple.fr", planLabel: "Je suis intéressé(e) par", submit: "Réserver mon prix Early-Bird →", sending: "...", error: "Une erreur est survenue. Veuillez réessayer." },
       spotsLeft: "places disponibles au tarif early-bird",
       heroUrgency: "Offre Early Access jusqu'au 1er juin · places limitées",
+      extraReports: "+ 2 rapports d'entraînement supplémentaires",
       socialProof: "Rejoignez les golfeurs déjà sur la liste early access",
       success: { h3: "Vous êtes sur la liste !", p: "Nous vous enverrons votre lien early-bird exclusif le 15 mai — avant le lancement officiel du 1er juin. Vérifiez votre boîte de réception pour une confirmation." },
     },
-    footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Professionnel de l'enseignement ? Recommandez l'évaluation à vos élèves →", socialLabel: "Suivez-nous", quizLink: "Quiz Gratuit" },
+    footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Professionnel de l'enseignement ? Recommandez l'évaluation à vos élèves →", socialLabel: "Suivez-nous", quizLink: "Quiz Gratuit", quoteText: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong", methodBy: "Méthode de Henk de Jong" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -891,6 +903,8 @@ export const translations = {
       extraCredits: "Informes adicionales desde $6,99 en la tienda",
       previewBtn: "Ver informe de entrenamiento de ejemplo →",
       cta: "Explorar tus informes de entrenamiento →", cardNote: "Pasa el ratón para revelar tu patrón",
+      reportCountStd: "4–6 informes", reportCountDlx: "9–14 informes",
+      mockup: { tagline: "Informe de entrenamiento · 5 páginas", title: "Convicción Bajo Presión", subtitle: "Personalizado para tu perfil", priority: "máxima prioridad", physical: "FÍSICO", mental: "MENTAL", exercise: "Ejercicio", expertInsight: "Insight Experto", reflection: "Reflexión", storytelling: "Storytelling", mantra: "Mantra", aiPrompt: "Prompt IA", benchmarked: "Benchmarked", exPhysical: "Drill de convicción — campo de práctica · 2 × 10 min", exMental: "Rutina de visualización — en casa · 10 min", exExpert: "Por qué la convicción cede bajo presión", exReflection: "¿Qué te costó la indecisión hoy?", exStorytelling: "Historia de un pro: comprometerse cuando importa", exMantra: "\"Me comprometo. Confío. Hago el swing.\"", exAiPrompt: "Preguntas de auto-coaching para la próxima ronda", exBenchmarked: "Golfistas hcp 12–16 · perfil similar" },
     },
     testimonials: {
       label: "Desde el Fairway", h2: "Lo que dicen los golfistas",
@@ -925,7 +939,7 @@ export const translations = {
       label: "Contacto", h2a: "¿Preguntas? Nos encantaría", h2b: "saber de ti.",
       p1: "¿No estás seguro de qué plan es el adecuado para ti? ¿Quieres saber más sobre cómo funciona la evaluación? ¿O simplemente tienes curiosidad sobre si este es el próximo paso correcto para tu juego de golf?",
       p2: "Envíanos un mensaje y te responderemos en un día hábil. Nosotros también somos golfistas — lo entendemos.",
-      fields: { name: "Nombre", namePlaceholder: "Tu nombre", handicap: "Hándicap de Golf", handicapPlaceholder: "ej. 14,2", email: "Correo electrónico", emailPlaceholder: "tu@ejemplo.es", message: "Mensaje", messagePlaceholder: "¿Qué te gustaría saber?", submit: "Enviar Mensaje →", note: "Respondemos en un día hábil." },
+      fields: { name: "Nombre", namePlaceholder: "Tu nombre", handicap: "Hándicap de Golf", handicapPlaceholder: "ej. 14,2", email: "Correo electrónico", emailPlaceholder: "tu@ejemplo.es", message: "Mensaje", messagePlaceholder: "¿Qué te gustaría saber?", submit: "Enviar Mensaje →", note: "Respondemos en un día hábil.", sending: "Enviando...", error: "Algo salió mal. Por favor, inténtalo de nuevo." },
       success: { h3: "Mensaje recibido", p: "Nos pondremos en contacto en un día hábil. Buena suerte en el campo mientras tanto." },
     },
     cta: {
@@ -949,13 +963,14 @@ export const translations = {
       p1: "En 15 minutos sabrás exactamente qué te cuesta golpes — y en qué trabajar primero. Tu informe PDF personalizado + informes de entrenamiento, listos antes que nadie. Pre-lanzamiento el 15 de mayo. Lanzamiento oficial: 1 de junio.",
       p2: "Regístrate ahora para asegurar tu descuento early-bird y ser de los primeros — las plazas son limitadas y este precio no volverá después del 1 de junio.",
       offer: "Precios Early Access: Estándar $49 (en vez de $59) · Deluxe $99 (en vez de $129) — más 2 informes de entrenamiento adicionales en cada plan.",
-      fields: { name: "Nombre", namePlaceholder: "Tu nombre", handicap: "Hándicap de Golf", handicapPlaceholder: "ej. 14,2", email: "Correo electrónico", emailPlaceholder: "tu@ejemplo.es", planLabel: "Me interesa", submit: "Asegurar mi precio Early-Bird →" },
+      fields: { name: "Nombre", namePlaceholder: "Tu nombre", handicap: "Hándicap de Golf", handicapPlaceholder: "ej. 14,2", email: "Correo electrónico", emailPlaceholder: "tu@ejemplo.es", planLabel: "Me interesa", submit: "Asegurar mi precio Early-Bird →", sending: "...", error: "Algo salió mal. Por favor, inténtalo de nuevo." },
       spotsLeft: "plazas disponibles al precio early-bird",
       heroUrgency: "Oferta Early Access hasta el 1 de junio · plazas limitadas",
+      extraReports: "+ 2 informes de entrenamiento adicionales",
       socialProof: "Únete a los golfistas ya en la lista de early access",
       success: { h3: "¡Estás en la lista!", p: "Te enviaremos tu enlace early-bird exclusivo el 15 de mayo — antes del lanzamiento oficial el 1 de junio. Revisa tu bandeja de entrada para una confirmación." },
     },
-    footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Profesional de la enseñanza? Recomienda la evaluación a tus alumnos →", socialLabel: "Síguenos", quizLink: "Quiz Gratis" },
+    footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Profesional de la enseñanza? Recomienda la evaluación a tus alumnos →", socialLabel: "Síguenos", quizLink: "Quiz Gratis", quoteText: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong", methodBy: "Método de Henk de Jong" },
   },
 } as const;
 

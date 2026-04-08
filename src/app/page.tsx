@@ -233,9 +233,9 @@ function ContactSection() {
                 <textarea required rows={4} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} placeholder={t.fields.messagePlaceholder} className="w-full px-4 py-3 rounded-lg border border-green-900/15 bg-[#faf8f3] text-sm text-green-950 placeholder:text-stone-400 focus:outline-none focus:border-amber-500 transition-colors resize-none" />
               </div>
               <button type="submit" disabled={sending} className="w-full py-3.5 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
-                {sending ? "Sending..." : t.fields.submit}
+                {sending ? t.fields.sending : t.fields.submit}
               </button>
-              {error && <p className="text-center text-xs text-red-600">Something went wrong. Please try again.</p>}
+              {error && <p className="text-center text-xs text-red-600">{t.fields.error}</p>}
               <p className="text-center text-xs text-stone-400">{t.fields.note}</p>
             </form>
           )}
@@ -248,7 +248,8 @@ function ContactSection() {
 // ── EARLY ACCESS SIGNUP ────────────────────────────────────────────────────────
 function EarlyAccessSection() {
   const { lang } = useLang();
-  const t: Translation["earlyAccess"] = translations[lang].earlyAccess;
+  const T: Translation = translations[lang];
+  const t: Translation["earlyAccess"] = T.earlyAccess;
   const [form, setForm] = React.useState({ name: "", email: "", handicap: "", plan: "deluxe" });
   const [submitted, setSubmitted] = React.useState(false);
   const [sending, setSending] = React.useState(false);
@@ -302,17 +303,17 @@ function EarlyAccessSection() {
               <div className="rounded-xl bg-amber-400/[0.08] border border-amber-400/25 p-5 space-y-3">
                 <div className="grid grid-cols-2 gap-3">
                   <div className="rounded-lg bg-white/[0.05] border border-white/[0.08] p-3 text-center">
-                    <p className="text-[10px] font-bold tracking-widest uppercase text-green-200/50 mb-1">Standard</p>
+                    <p className="text-[10px] font-bold tracking-widest uppercase text-green-200/50 mb-1">{T.pricing.plans[0].plan}</p>
                     <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}><sup className="text-sm align-super font-normal">$</sup>49</p>
                     <p className="text-[11px] text-green-200/35 line-through">$59</p>
                   </div>
                   <div className="rounded-lg bg-amber-400/[0.06] border border-amber-400/20 p-3 text-center">
-                    <p className="text-[10px] font-bold tracking-widest uppercase text-amber-300/70 mb-1">Deluxe</p>
+                    <p className="text-[10px] font-bold tracking-widest uppercase text-amber-300/70 mb-1">{T.pricing.plans[1].plan}</p>
                     <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}><sup className="text-sm align-super font-normal">$</sup>99</p>
                     <p className="text-[11px] text-green-200/35 line-through">$129</p>
                   </div>
                 </div>
-                <p className="text-center text-xs text-amber-300/70">+ 2 extra training reports</p>
+                <p className="text-center text-xs text-amber-300/70">{t.extraReports}</p>
               </div>
             )}
           </motion.div>
@@ -358,17 +359,17 @@ function EarlyAccessSection() {
                   <label className="block text-xs font-semibold text-green-100/80 mb-2.5 tracking-wide">{t.fields.planLabel}</label>
                   <div className="grid grid-cols-2 gap-3">
                     <button type="button" onClick={() => setForm(f => ({ ...f, plan: "standard" }))} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "standard" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
-                      Standard · <span className="text-amber-400">$49</span>
+                      {T.pricing.plans[0].plan} · <span className="text-amber-400">$49</span>
                     </button>
                     <button type="button" onClick={() => setForm(f => ({ ...f, plan: "deluxe" }))} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "deluxe" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
-                      Deluxe · <span className="text-amber-400">$99</span>
+                      {T.pricing.plans[1].plan} · <span className="text-amber-400">$99</span>
                     </button>
                   </div>
                 </div>
                 <button type="submit" disabled={sending} className="w-full py-3.5 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
-                  {sending ? "..." : t.fields.submit}
+                  {sending ? t.fields.sending : t.fields.submit}
                 </button>
-                {error && <p className="text-center text-xs text-red-400">Something went wrong. Please try again.</p>}
+                {error && <p className="text-center text-xs text-red-400">{t.fields.error}</p>}
               </form>
             )}
           </motion.div>
@@ -455,7 +456,7 @@ function PageContent() {
           {/* Mobile-only mini report mockup */}
           <motion.div className="md:hidden w-full max-w-sm mx-auto mt-8 rounded-2xl overflow-hidden border border-white/10 shadow-xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.95 }}>
             <div className="bg-green-900/50 px-4 py-3 border-b border-white/[0.06]">
-              <p className="text-[9px] font-bold tracking-widest uppercase text-amber-400/60">Mental Routine Assessment</p>
+              <p className="text-[9px] font-bold tracking-widest uppercase text-amber-400/60">{T.hero.badge}</p>
               <p className="text-sm font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{T.yourProfile}</p>
             </div>
             <div className="bg-green-950/80 p-4 space-y-2">
@@ -844,8 +845,8 @@ function PageContent() {
               )}
               <div className="flex items-center gap-3 mb-8 p-3.5 rounded-xl bg-green-950/[0.05] border border-green-900/10">
                 <div className="flex gap-2">
-                  <span className="px-2.5 py-1 rounded-lg bg-white border border-green-900/10 text-xs font-semibold text-green-900 shadow-sm">{T.pricing.plans[0].plan} · 4–6 reports</span>
-                  <span className="px-2.5 py-1 rounded-lg bg-green-950 text-xs font-semibold text-amber-300 shadow-sm">{T.pricing.plans[1].plan} · 9–14 reports</span>
+                  <span className="px-2.5 py-1 rounded-lg bg-white border border-green-900/10 text-xs font-semibold text-green-900 shadow-sm">{T.pricing.plans[0].plan} · {T.skillBuilder.reportCountStd}</span>
+                  <span className="px-2.5 py-1 rounded-lg bg-green-950 text-xs font-semibold text-amber-300 shadow-sm">{T.pricing.plans[1].plan} · {T.skillBuilder.reportCountDlx}</span>
                 </div>
                 <span className="text-xs text-stone-400">{T.skillBuilder.extraCredits}</span>
               </div>
@@ -860,9 +861,9 @@ function PageContent() {
               <div className="bg-green-950 px-6 pt-6 pb-5">
                 <div className="flex items-start justify-between gap-3 mb-4">
                   <div>
-                    <p className="text-[9px] font-bold tracking-widest uppercase text-amber-400/60 mb-1">Training Report · 5 pages</p>
-                    <p className="text-lg font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Conviction Under Pressure</p>
-                    <p className="text-xs text-green-200/40 mt-0.5">Personalised for your profile</p>
+                    <p className="text-[9px] font-bold tracking-widest uppercase text-amber-400/60 mb-1">{T.skillBuilder.mockup.tagline}</p>
+                    <p className="text-lg font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{T.skillBuilder.mockup.title}</p>
+                    <p className="text-xs text-green-200/40 mt-0.5">{T.skillBuilder.mockup.subtitle}</p>
                   </div>
                   <div className="w-9 h-9 rounded-xl bg-amber-400/15 border border-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#c4a043" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -873,20 +874,20 @@ function PageContent() {
                     <div className="h-full w-[38%] bg-amber-400 rounded-full" />
                   </div>
                   <span className="text-xs text-amber-400 font-semibold shrink-0">3.8 / 10</span>
-                  <span className="text-[10px] text-green-200/30 shrink-0">· top priority</span>
+                  <span className="text-[10px] text-green-200/30 shrink-0">· {T.skillBuilder.mockup.priority}</span>
                 </div>
               </div>
               {/* Report content preview */}
               <div className="bg-[#faf8f3] p-3.5 space-y-2">
                 {([
-                  { dot: "bg-amber-500",     tag: "PHYSICAL", tagColor: "bg-amber-100 text-amber-700", label: "Exercise", body: "Conviction drill — driving range · 2 × 10 min" },
-                  { dot: "bg-sky-500",       tag: "MENTAL",   tagColor: "bg-sky-100 text-sky-700",     label: "Exercise", body: "Visualisation routine — at home · 10 min" },
-                  { dot: "bg-green-600",     label: "Expert Insight",  body: "Why conviction breaks under pressure" },
-                  { dot: "bg-rose-400",      label: "Reflection",      body: "What did hesitation cost you today?" },
-                  { dot: "bg-violet-500",    label: "Storytelling",    body: "Tour pro story: committing when it counts" },
-                  { dot: "bg-purple-400",    label: "Mantra",          body: "\"I commit. I trust. I swing.\"" },
-                  { dot: "bg-blue-500/70",   label: "AI Prompt",       body: "Self-coaching questions for next round" },
-                  { dot: "bg-stone-400",     label: "Benchmarked",     body: "Golfers hcp 12–16 · similar profile" },
+                  { dot: "bg-amber-500",     tag: T.skillBuilder.mockup.physical, tagColor: "bg-amber-100 text-amber-700", label: T.skillBuilder.mockup.exercise, body: T.skillBuilder.mockup.exPhysical },
+                  { dot: "bg-sky-500",       tag: T.skillBuilder.mockup.mental,   tagColor: "bg-sky-100 text-sky-700",     label: T.skillBuilder.mockup.exercise, body: T.skillBuilder.mockup.exMental },
+                  { dot: "bg-green-600",     label: T.skillBuilder.mockup.expertInsight,  body: T.skillBuilder.mockup.exExpert },
+                  { dot: "bg-rose-400",      label: T.skillBuilder.mockup.reflection,     body: T.skillBuilder.mockup.exReflection },
+                  { dot: "bg-violet-500",    label: T.skillBuilder.mockup.storytelling,   body: T.skillBuilder.mockup.exStorytelling },
+                  { dot: "bg-purple-400",    label: T.skillBuilder.mockup.mantra,         body: T.skillBuilder.mockup.exMantra },
+                  { dot: "bg-blue-500/70",   label: T.skillBuilder.mockup.aiPrompt,       body: T.skillBuilder.mockup.exAiPrompt },
+                  { dot: "bg-stone-400",     label: T.skillBuilder.mockup.benchmarked,    body: T.skillBuilder.mockup.exBenchmarked },
                 ] as Array<{ dot: string; tag?: string; tagColor?: string; label: string; body: string }>).map((row, k) => (
                   <div key={k} className="flex items-center gap-2.5 bg-white rounded-lg px-3 py-2 border border-green-900/[0.06] shadow-sm">
                     <span className={`w-1.5 h-1.5 rounded-full ${row.dot} shrink-0`} />
@@ -974,9 +975,9 @@ function PageContent() {
               {/* Quote */}
               <blockquote className="border-l-2 border-amber-500/40 pl-4">
                 <p className="text-base italic text-green-200/60 leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  "Mental golf is not a talent — it is a skill."
+                  &ldquo;{T.footer.quoteText}&rdquo;
                 </p>
-                <cite className="mt-2 block text-xs text-amber-600/70 not-italic tracking-widest uppercase">— Henk de Jong</cite>
+                <cite className="mt-2 block text-xs text-amber-600/70 not-italic tracking-widest uppercase">{T.footer.quoteAuthor}</cite>
               </blockquote>
             </div>
 
@@ -1063,7 +1064,7 @@ function PageContent() {
             <div className="flex items-center gap-4 text-xs text-green-200/25">
               <a href="https://nogbetergolfen.nl" className="hover:text-green-200/60 transition-colors">nogbetergolfen.nl</a>
               <span>·</span>
-              <span>Method by Henk de Jong</span>
+              <span>{T.footer.methodBy}</span>
             </div>
           </div>
         </div>

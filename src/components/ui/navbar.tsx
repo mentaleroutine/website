@@ -82,7 +82,7 @@ function LangDropdown({ onSelect }: { onSelect?: () => void }) {
                 >
                   {/* Code badge */}
                   <span className={`inline-flex items-center justify-center w-7 h-4 rounded text-[10px] font-bold tracking-wide shrink-0 ${
-                    lang === option.code ? "bg-amber-400/20 text-amber-400" : "bg-white/8 text-green-300/60"
+                    lang === option.code ? "bg-amber-400/20 text-amber-400" : "bg-white/[0.08] text-green-300/60"
                   }`}>
                     {option.code.toUpperCase()}
                   </span>
