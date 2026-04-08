@@ -307,13 +307,13 @@ function EarlyAccessSection() {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="rounded-lg bg-white/[0.05] border border-white/[0.08] p-3 text-center">
                     <p className="text-[10px] font-bold tracking-widest uppercase text-green-200/50 mb-1">{T.pricing.plans[0].plan}</p>
-                    <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}><sup className="text-sm align-super font-normal">$</sup>49</p>
-                    <p className="text-[11px] text-green-200/35 line-through">$59</p>
+                    <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}><sup className="text-sm align-super font-normal">$</sup>{EA_PRICE_STD}</p>
+                    <p className="text-[11px] text-green-200/35 line-through">${T.pricing.plans[0].price}</p>
                   </div>
                   <div className="rounded-lg bg-amber-400/[0.06] border border-amber-400/20 p-3 text-center">
                     <p className="text-[10px] font-bold tracking-widest uppercase text-amber-300/70 mb-1">{T.pricing.plans[1].plan}</p>
-                    <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}><sup className="text-sm align-super font-normal">$</sup>99</p>
-                    <p className="text-[11px] text-green-200/35 line-through">$129</p>
+                    <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}><sup className="text-sm align-super font-normal">$</sup>{EA_PRICE_DLX}</p>
+                    <p className="text-[11px] text-green-200/35 line-through">${T.pricing.plans[1].price}</p>
                   </div>
                 </div>
                 <p className="text-center text-xs text-amber-300/70">{t.extraReports}</p>
@@ -342,7 +342,7 @@ function EarlyAccessSection() {
                 )}
                 <p className="text-center text-xs text-green-200/50 flex items-center justify-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-                  {t.socialProof}
+                  {spots ? t.socialProof.replace("{count}", String(spots.total - spots.spots)) : t.socialProof.replace("{count}", "")}
                 </p>
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
@@ -362,10 +362,10 @@ function EarlyAccessSection() {
                   <label className="block text-xs font-semibold text-green-100/80 mb-2.5 tracking-wide">{t.fields.planLabel}</label>
                   <div className="grid grid-cols-2 gap-3">
                     <button type="button" onClick={() => setForm(f => ({ ...f, plan: "standard" }))} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "standard" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
-                      {T.pricing.plans[0].plan} · <span className="text-amber-400">$49</span>
+                      {T.pricing.plans[0].plan} · <span className="text-amber-400">${EA_PRICE_STD}</span>
                     </button>
                     <button type="button" onClick={() => setForm(f => ({ ...f, plan: "deluxe" }))} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "deluxe" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
-                      {T.pricing.plans[1].plan} · <span className="text-amber-400">$99</span>
+                      {T.pricing.plans[1].plan} · <span className="text-amber-400">${EA_PRICE_DLX}</span>
                     </button>
                   </div>
                 </div>
@@ -383,6 +383,10 @@ function EarlyAccessSection() {
 }
 
 // ── PAGE CONTENT ───────────────────────────────────────────────────────────────
+// Early access pricing — change these when early access ends (June 1st)
+const EA_PRICE_STD = 49;
+const EA_PRICE_DLX = 99;
+
 function PageContent() {
   const { lang } = useLang();
   const T: Translation = translations[lang];
@@ -397,7 +401,7 @@ function PageContent() {
 
       {/* ── SKIP TO CONTENT (accessibility) ── */}
       <a href="#hero" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-amber-400 focus:text-green-950 focus:rounded-lg focus:text-sm focus:font-bold">
-        Skip to content
+        {T.nav.skipToContent}
       </a>
 
       {/* ── NAVBAR ───────────────────────────────────────────────────────── */}
@@ -436,7 +440,7 @@ function PageContent() {
 
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
               <a href="#early-access" className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
-                {T.earlyAccess.heroCta}
+                {T.earlyAccess.heroCta.replace("{price}", `$${EA_PRICE_STD}`)}
               </a>
               <a href="#mental-routine" className="px-8 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm">
                 {T.hero.cta2}
@@ -667,6 +671,7 @@ function PageContent() {
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6 mb-4" />
             <p className="text-green-200/60 text-sm">{T.pricing.note}</p>
+            <p className="mt-2 text-xs text-green-200/35 italic">{T.pricing.pricingAnchor}</p>
             <p className="mt-3 text-xs text-amber-300/70">{T.earlyAccess.pricingBanner}</p>
           </div>
 

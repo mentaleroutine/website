@@ -5,7 +5,7 @@ export const translations = {
   // ENGLISH
   // ─────────────────────────────────────────────────────────────────
   en: {
-    nav: { howItWorks: "The Research", pricing: "Pricing", testimonials: "Testimonials", faq: "FAQ", contact: "Contact", cta: "Start Assessment", openMenu: "Open menu", closeMenu: "Close menu", selectLang: "Select language" },
+    nav: { howItWorks: "The Research", pricing: "Pricing", testimonials: "Testimonials", faq: "FAQ", contact: "Contact", cta: "Start Assessment", openMenu: "Open menu", closeMenu: "Close menu", selectLang: "Select language", skipToContent: "Skip to content" },
     hero: {
       badge: "The Mental Routine Assessment",
       h1a: "Find Out What's Really", h1b: "Costing You Strokes.",
@@ -100,6 +100,7 @@ export const translations = {
     pricing: {
       label: "Pricing", h2a: "Invest in the part of your", h2b: "game you've neglected",
       note: "Early Access pricing — regular pricing applies from June 1st. Both plans include the Assessment + your personalised PDF report + personal training reports.", badge: "Most Popular",
+      pricingAnchor: "For comparison: a single session with a golf psychologist typically costs $150–$300.",
       creditsNote: "Training reports included — extra reports available from $6.99 in the shop.",
       reportPreview: { label: "Your report includes:", items: ["Scores on all your measured elements", "What each score means for your game", "Your top 3 development priorities", "Recommended training reports"] },
       previewBtn: "Preview sample report →",
@@ -180,7 +181,7 @@ export const translations = {
       badge: "Pre-Launch May 15th",
       betaBadge: "Currently in closed Beta with 100+ golfers — fine-tuning for international pre-launch",
       navCta: "Early Access",
-      heroCta: "See My Mental Profile — from $49",
+      heroCta: "See My Mental Profile — from {price}",
       pricingBanner: "Early Access pre-launch May 15th — exclusive discount + 2 extra training reports. Official launch and regular pricing from June 1st.",
       pricingCta: "Lock In Early Access →",
       ctaBtn: "Start in 15 Minutes →",
@@ -193,7 +194,7 @@ export const translations = {
       spotsLeft: "spots left at early-bird pricing",
       heroUrgency: "Early access pricing ends June 1st · limited spots available",
       extraReports: "+ 2 extra training reports",
-      socialProof: "Join golfers already on the early access list",
+      socialProof: "Join {count} golfers already on the early access list",
       success: { h3: "You're on the list!", p: "We'll send you your exclusive early-bird link on May 15th — ahead of the official launch on June 1st. Check your inbox for a confirmation." },
     },
     footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free Quiz", quoteText: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong", methodBy: "Method by Henk de Jong", menuLabel: "Menu" },
@@ -203,7 +204,7 @@ export const translations = {
   // DUTCH
   // ─────────────────────────────────────────────────────────────────
   nl: {
-    nav: { howItWorks: "Het Onderzoek", pricing: "Prijzen", testimonials: "Ervaringen", faq: "FAQ", contact: "Contact", cta: "Doe de Assessment", openMenu: "Menu openen", closeMenu: "Menu sluiten", selectLang: "Taal kiezen" },
+    nav: { howItWorks: "Het Onderzoek", pricing: "Prijzen", testimonials: "Ervaringen", faq: "FAQ", contact: "Contact", cta: "Doe de Assessment", openMenu: "Menu openen", closeMenu: "Menu sluiten", selectLang: "Taal kiezen", skipToContent: "Ga naar inhoud" },
     hero: {
       badge: "De Mental Routine Assessment",
       h1a: "Ontdek Wat Je Écht", h1b: "Slagen Kost.",
@@ -297,6 +298,7 @@ export const translations = {
     pricing: {
       label: "Prijzen", h2a: "Investeer in het deel van je spel", h2b: "dat je tot nu toe verwaarloosde",
       note: "Early Access prijzen — reguliere prijs geldt vanaf 1 juni. Beide pakketten bevatten de Assessment + jouw gepersonaliseerde PDF-rapport + persoonlijke trainingsrapporten.", badge: "Meest Populair",
+      pricingAnchor: "Ter vergelijking: één sessie bij een golfpsycholoog kost al snel €150–€300.",
       creditsNote: "Trainingsrapporten inbegrepen — extra rapporten vanaf $6,99 in de shop.",
       reportPreview: { label: "Jouw rapport bevat:", items: ["Scores op al jouw gemeten elementen", "Wat elke score betekent voor jouw spel", "Jouw top-3 ontwikkelpunten", "Aanbevolen trainingsrapporten"] },
       previewBtn: "Bekijk voorbeeldrapport →",
@@ -376,7 +378,7 @@ export const translations = {
       badge: "Pre-Launch 15 mei",
       betaBadge: "Momenteel in besloten Beta met 100+ golfers — fine-tuning voor internationale pre-launch",
       navCta: "Early Access",
-      heroCta: "Bekijk Mijn Mentale Profiel — vanaf $49",
+      heroCta: "Bekijk Mijn Mentale Profiel — vanaf {price}",
       pricingBanner: "Early Access pre-launch 15 mei — exclusieve korting + 2 extra trainingsrapporten. Officiële lancering en reguliere prijs vanaf 1 juni.",
       pricingCta: "Verzeker Early Access →",
       ctaBtn: "Start in 15 Minuten →",
@@ -389,7 +391,7 @@ export const translations = {
       spotsLeft: "plekken beschikbaar tegen early-bird prijs",
       heroUrgency: "Early access actie eindigt 1 juni · beperkt aantal plekken",
       extraReports: "+ 2 extra trainingsrapporten",
-      socialProof: "Sluit je aan bij golfers op de early access lijst",
+      socialProof: "Sluit je aan bij {count} golfers op de early access lijst",
       success: { h3: "Je staat op de lijst!", p: "We sturen je op 15 mei jouw exclusieve early-bird link — vóór de officiële lancering op 1 juni. Check je inbox voor een bevestiging." },
     },
     footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis Quiz", quoteText: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong", methodBy: "Methode van Henk de Jong", menuLabel: "Menu" },
@@ -399,7 +401,7 @@ export const translations = {
   // GERMAN
   // ─────────────────────────────────────────────────────────────────
   de: {
-    nav: { howItWorks: "Die Forschung", pricing: "Preise", testimonials: "Erfahrungen", faq: "FAQ", contact: "Kontakt", cta: "Assessment Starten", openMenu: "Menü öffnen", closeMenu: "Menü schließen", selectLang: "Sprache wählen" },
+    nav: { howItWorks: "Die Forschung", pricing: "Preise", testimonials: "Erfahrungen", faq: "FAQ", contact: "Kontakt", cta: "Assessment Starten", openMenu: "Menü öffnen", closeMenu: "Menü schließen", selectLang: "Sprache wählen", skipToContent: "Zum Inhalt springen" },
     hero: {
       badge: "Das Mental Routine Assessment",
       h1a: "Finde heraus, was dich", h1b: "wirklich Schläge kostet.",
@@ -493,6 +495,7 @@ export const translations = {
     pricing: {
       label: "Preise", h2a: "Investiere in den Teil deines Spiels,", h2b: "den du vernachlässigt hast",
       note: "Early Access Preise — reguläre Preise gelten ab 1. Juni. Beide Pläne enthalten das Assessment + deinen personalisierten PDF-Bericht + persönliche Trainingsberichte.", badge: "Am Beliebtesten",
+      pricingAnchor: "Zum Vergleich: Eine einzelne Sitzung bei einem Golfpsychologen kostet in der Regel 150–300 €.",
       creditsNote: "Trainingsberichte inbegriffen — zusätzliche Berichte ab $6,99 im Shop.",
       reportPreview: { label: "Dein Bericht enthält:", items: ["Werte für alle deine gemessenen Elemente", "Was jeder Wert für dein Spiel bedeutet", "Deine Top-3-Entwicklungsprioritäten", "Empfohlene Trainingsberichte"] },
       previewBtn: "Beispielbericht ansehen →",
@@ -572,7 +575,7 @@ export const translations = {
       badge: "Pre-Launch 15. Mai",
       betaBadge: "Derzeit in geschlossener Beta mit 100+ Golfern — Feinabstimmung für den internationalen Pre-Launch",
       navCta: "Early Access",
-      heroCta: "Mein Mentales Profil — ab $49",
+      heroCta: "Mein Mentales Profil — ab {price}",
       pricingBanner: "Early Access Pre-Launch 15. Mai — exklusiver Rabatt + 2 zusätzliche Trainingsberichte. Offizieller Start und reguläre Preise ab 1. Juni.",
       pricingCta: "Early Access sichern →",
       ctaBtn: "In 15 Minuten starten →",
@@ -585,7 +588,7 @@ export const translations = {
       spotsLeft: "Plätze zum Early-Bird-Preis verfügbar",
       heroUrgency: "Early Access Aktion endet am 1. Juni · begrenzte Plätze",
       extraReports: "+ 2 zusätzliche Trainingsberichte",
-      socialProof: "Schließe dich Golfern auf der Early Access Liste an",
+      socialProof: "Schließe dich {count} Golfern auf der Early Access Liste an",
       success: { h3: "Du stehst auf der Liste!", p: "Wir senden dir am 15. Mai deinen exklusiven Early-Bird-Link — vor dem offiziellen Start am 1. Juni. Prüfe deinen Posteingang für eine Bestätigung." },
     },
     footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfehle das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloses Quiz", quoteText: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong", methodBy: "Methode von Henk de Jong", menuLabel: "Menü" },
@@ -595,7 +598,7 @@ export const translations = {
   // FRENCH
   // ─────────────────────────────────────────────────────────────────
   fr: {
-    nav: { howItWorks: "La Recherche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "Mon Évaluation", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu", selectLang: "Choisir la langue" },
+    nav: { howItWorks: "La Recherche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "Mon Évaluation", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu", selectLang: "Choisir la langue", skipToContent: "Aller au contenu" },
     hero: {
       badge: "Le Mental Routine Assessment",
       h1a: "Découvrez ce qui vous", h1b: "coûte vraiment des coups.",
@@ -689,6 +692,7 @@ export const translations = {
     pricing: {
       label: "Tarifs", h2a: "Investissez dans la partie de votre", h2b: "jeu que vous avez négligée",
       note: "Tarifs Early Access — tarif régulier à partir du 1er juin. Les deux plans incluent l'Évaluation + votre rapport PDF personnalisé + des rapports d'entraînement personnels.", badge: "Le Plus Populaire",
+      pricingAnchor: "À titre de comparaison : une seule séance chez un psychologue du golf coûte généralement 150 à 300 €.",
       creditsNote: "Rapports d'entraînement inclus — rapports supplémentaires dès $6,99 dans la boutique.",
       reportPreview: { label: "Votre rapport comprend :", items: ["Scores sur tous vos éléments mesurés", "Ce que chaque score signifie pour votre jeu", "Vos 3 priorités de développement principales", "Rapports d'entraînement recommandés"] },
       previewBtn: "Voir le rapport exemple →",
@@ -768,7 +772,7 @@ export const translations = {
       badge: "Pré-lancement le 15 mai",
       betaBadge: "Actuellement en Bêta fermée avec 100+ golfeurs — peaufinage pour le pré-lancement international",
       navCta: "Early Access",
-      heroCta: "Voir Mon Profil Mental — dès $49",
+      heroCta: "Voir Mon Profil Mental — dès {price}",
       pricingBanner: "Pré-lancement Early Access le 15 mai — réduction exclusive + 2 rapports d'entraînement supplémentaires. Lancement officiel et tarif régulier à partir du 1er juin.",
       pricingCta: "Réserver l'Early Access →",
       ctaBtn: "Commencer en 15 Minutes →",
@@ -781,7 +785,7 @@ export const translations = {
       spotsLeft: "places disponibles au tarif early-bird",
       heroUrgency: "Offre Early Access jusqu'au 1er juin · places limitées",
       extraReports: "+ 2 rapports d'entraînement supplémentaires",
-      socialProof: "Rejoignez les golfeurs déjà sur la liste early access",
+      socialProof: "Rejoignez {count} golfeurs déjà sur la liste early access",
       success: { h3: "Vous êtes sur la liste !", p: "Nous vous enverrons votre lien early-bird exclusif le 15 mai — avant le lancement officiel du 1er juin. Vérifiez votre boîte de réception pour une confirmation." },
     },
     footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Professionnel de l'enseignement ? Recommandez l'évaluation à vos élèves →", socialLabel: "Suivez-nous", quizLink: "Quiz Gratuit", quoteText: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong", methodBy: "Méthode de Henk de Jong", menuLabel: "Menu" },
@@ -791,7 +795,7 @@ export const translations = {
   // SPANISH
   // ─────────────────────────────────────────────────────────────────
   es: {
-    nav: { howItWorks: "La Investigación", pricing: "Precios", testimonials: "Testimonios", faq: "FAQ", contact: "Contacto", cta: "Mi Evaluación", openMenu: "Abrir menú", closeMenu: "Cerrar menú", selectLang: "Seleccionar idioma" },
+    nav: { howItWorks: "La Investigación", pricing: "Precios", testimonials: "Testimonios", faq: "FAQ", contact: "Contacto", cta: "Mi Evaluación", openMenu: "Abrir menú", closeMenu: "Cerrar menú", selectLang: "Seleccionar idioma", skipToContent: "Ir al contenido" },
     hero: {
       badge: "El Mental Routine Assessment",
       h1a: "Descubre qué te está", h1b: "costando golpes realmente.",
@@ -885,6 +889,7 @@ export const translations = {
     pricing: {
       label: "Precios", h2a: "Invierte en la parte de tu juego", h2b: "que has descuidado",
       note: "Precios Early Access — precio regular a partir del 1 de junio. Ambos planes incluyen la Evaluación + tu informe PDF personalizado + informes de entrenamiento personales.", badge: "Más Popular",
+      pricingAnchor: "Para comparar: una sola sesión con un psicólogo de golf suele costar entre $150 y $300.",
       creditsNote: "Informes de entrenamiento incluidos — informes adicionales desde $6,99 en la tienda.",
       reportPreview: { label: "Tu informe incluye:", items: ["Puntuaciones en todos tus elementos medidos", "Qué significa cada puntuación para tu juego", "Tus 3 prioridades de desarrollo principales", "Informes de entrenamiento recomendados"] },
       previewBtn: "Ver informe de ejemplo →",
@@ -964,7 +969,7 @@ export const translations = {
       badge: "Pre-lanzamiento 15 de mayo",
       betaBadge: "Actualmente en Beta cerrada con 100+ golfistas — ajustes finales para el pre-lanzamiento internacional",
       navCta: "Early Access",
-      heroCta: "Ver Mi Perfil Mental — desde $49",
+      heroCta: "Ver Mi Perfil Mental — desde {price}",
       pricingBanner: "Pre-lanzamiento Early Access el 15 de mayo — descuento exclusivo + 2 informes de entrenamiento adicionales. Lanzamiento oficial y precio regular desde el 1 de junio.",
       pricingCta: "Reservar Early Access →",
       ctaBtn: "Empezar en 15 Minutos →",
@@ -977,7 +982,7 @@ export const translations = {
       spotsLeft: "plazas disponibles al precio early-bird",
       heroUrgency: "Oferta Early Access hasta el 1 de junio · plazas limitadas",
       extraReports: "+ 2 informes de entrenamiento adicionales",
-      socialProof: "Únete a los golfistas ya en la lista de early access",
+      socialProof: "Únete a {count} golfistas ya en la lista de early access",
       success: { h3: "¡Estás en la lista!", p: "Te enviaremos tu enlace early-bird exclusivo el 15 de mayo — antes del lanzamiento oficial el 1 de junio. Revisa tu bandeja de entrada para una confirmación." },
     },
     footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Profesional de la enseñanza? Recomienda la evaluación a tus alumnos →", socialLabel: "Síguenos", quizLink: "Quiz Gratis", quoteText: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong", methodBy: "Método de Henk de Jong", menuLabel: "Menú" },
