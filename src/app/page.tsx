@@ -41,11 +41,11 @@ function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe" | "
               {label}
             </span>
           </div>
-          <button onClick={onClose} className="w-8 h-8 rounded-lg flex items-center justify-center text-green-200/60 hover:text-white hover:bg-white/10 transition-colors">
+          <button onClick={onClose} aria-label={T.pricing.previewModal.closePreview} className="w-8 h-8 rounded-lg flex items-center justify-center text-green-200/60 hover:text-white hover:bg-white/10 transition-colors">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>
-        <iframe src={src} className="w-full h-[calc(85vh-48px)]" title="Sample Report Preview" />
+        <iframe src={src} className="w-full h-[calc(85vh-48px)]" title={T.pricing.previewModal.iframeTitle} />
       </motion.div>
     </motion.div>
   );
@@ -986,7 +986,7 @@ function PageContent() {
 
             {/* Col 2 — Navigation */}
             <div>
-              <p className="text-[10px] font-bold tracking-widest uppercase text-green-400/40 mb-5">Menu</p>
+              <p className="text-[10px] font-bold tracking-widest uppercase text-green-400/40 mb-5">{T.footer.menuLabel}</p>
               <nav className="flex flex-col gap-3">
                 {[
                   { label: T.nav.howItWorks,   href: '#how-it-works' },

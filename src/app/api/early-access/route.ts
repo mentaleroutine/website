@@ -22,28 +22,27 @@ export async function POST(req: Request) {
       unsubscribed: false,
     });
 
-    // Notification to support
-    await resend.emails.send({
-      from: "MentalRoutine <contact@mentalroutine.com>",
-      to: "support@mentalroutine.com",
-      subject: `Early Access signup: ${name} — ${planLabel}`,
-      text: [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Plan preference: ${planLabel}`,
-        handicap ? `Golf Handicap: ${handicap}` : null,
-      ]
-        .filter(Boolean)
-        .join("\n"),
-    });
-
-    // Confirmation email to the subscriber
-    await resend.emails.send({
-      from: "MentalRoutine <contact@mentalroutine.com>",
-      replyTo: "support@mentalroutine.com",
-      to: email,
-      subject: "You're on the Early Access list — your early-bird price is locked in!",
-      text: `Hi ${name},
+    // Send notification + confirmation emails in parallel
+    await Promise.all([
+      resend.emails.send({
+        from: "MentalRoutine <contact@mentalroutine.com>",
+        to: "support@mentalroutine.com",
+        subject: `Early Access signup: ${name} — ${planLabel}`,
+        text: [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          `Plan preference: ${planLabel}`,
+          handicap ? `Golf Handicap: ${handicap}` : null,
+        ]
+          .filter(Boolean)
+          .join("\n"),
+      }),
+      resend.emails.send({
+        from: "MentalRoutine <contact@mentalroutine.com>",
+        replyTo: "support@mentalroutine.com",
+        to: email,
+        subject: "You're on the Early Access list — your early-bird price is locked in!",
+        text: `Hi ${name},
 
 Thanks for signing up! We're currently in a closed Beta with 100+ golfers, fine-tuning everything for our international launch on May 15th.
 
@@ -58,7 +57,8 @@ In the meantime — keep enjoying the game.
 
 The MentalRoutine Team
 www.mentalroutine.com`,
-    });
+      }),
+    ]);
 
     return NextResponse.json({ ok: true });
   } catch {

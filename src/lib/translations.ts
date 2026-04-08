@@ -102,7 +102,7 @@ export const translations = {
       creditsNote: "Training reports included — extra reports available from $6.99 in the shop.",
       reportPreview: { label: "Your report includes:", items: ["Scores on all your measured elements", "What each score means for your game", "Your top 3 development priorities", "Recommended training reports"] },
       previewBtn: "Preview sample report →",
-      previewModal: { standard: "Standard — Sample Report", deluxe: "Deluxe — Sample Report", training: "Training Report — Sample" },
+      previewModal: { standard: "Standard — Sample Report", deluxe: "Deluxe — Sample Report", training: "Training Report — Sample", closePreview: "Close preview", iframeTitle: "Sample Report Preview" },
       pricingQuote: { text: "The report described things about my game I'd never been able to articulate.", name: "Robert M.", role: "Handicap 13.7" },
       comparisonTitle: "Compare plans",
       comparisonRows: [
@@ -195,7 +195,7 @@ export const translations = {
       socialProof: "Join golfers already on the early access list",
       success: { h3: "You're on the list!", p: "We'll send you your exclusive early-bird link on May 15th — ahead of the official launch on June 1st. Check your inbox for a confirmation." },
     },
-    footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free Quiz", quoteText: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong", methodBy: "Method by Henk de Jong" },
+    footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free Quiz", quoteText: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong", methodBy: "Method by Henk de Jong", menuLabel: "Menu" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -298,7 +298,7 @@ export const translations = {
       creditsNote: "Trainingsrapporten inbegrepen — extra rapporten vanaf $6,99 in de shop.",
       reportPreview: { label: "Jouw rapport bevat:", items: ["Scores op al jouw gemeten elementen", "Wat elke score betekent voor jouw spel", "Jouw top-3 ontwikkelpunten", "Aanbevolen trainingsrapporten"] },
       previewBtn: "Bekijk voorbeeldrapport →",
-      previewModal: { standard: "Standaard — Voorbeeldrapport", deluxe: "Deluxe — Voorbeeldrapport", training: "Trainingsrapport — Voorbeeld" },
+      previewModal: { standard: "Standaard — Voorbeeldrapport", deluxe: "Deluxe — Voorbeeldrapport", training: "Trainingsrapport — Voorbeeld", closePreview: "Voorbeeld sluiten", iframeTitle: "Voorbeeldrapport" },
       pricingQuote: { text: "Het rapport beschreef dingen over mijn spel die ik zelf nooit had kunnen verwoorden.", name: "Willem B.", role: "Handicap 12.8" },
       comparisonTitle: "Vergelijk pakketten",
       comparisonRows: [
@@ -390,7 +390,7 @@ export const translations = {
       socialProof: "Sluit je aan bij golfers op de early access lijst",
       success: { h3: "Je staat op de lijst!", p: "We sturen je op 15 mei jouw exclusieve early-bird link — vóór de officiële lancering op 1 juni. Check je inbox voor een bevestiging." },
     },
-    footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis Quiz", quoteText: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong", methodBy: "Methode van Henk de Jong" },
+    footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis Quiz", quoteText: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong", methodBy: "Methode van Henk de Jong", menuLabel: "Menu" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -493,7 +493,7 @@ export const translations = {
       creditsNote: "Trainingsberichte inbegriffen — zusätzliche Berichte ab $6,99 im Shop.",
       reportPreview: { label: "Dein Bericht enthält:", items: ["Werte für alle deine gemessenen Elemente", "Was jeder Wert für dein Spiel bedeutet", "Deine Top-3-Entwicklungsprioritäten", "Empfohlene Trainingsberichte"] },
       previewBtn: "Beispielbericht ansehen →",
-      previewModal: { standard: "Standard — Beispielbericht", deluxe: "Deluxe — Beispielbericht", training: "Trainingsbericht — Beispiel" },
+      previewModal: { standard: "Standard — Beispielbericht", deluxe: "Deluxe — Beispielbericht", training: "Trainingsbericht — Beispiel", closePreview: "Vorschau schließen", iframeTitle: "Beispielbericht" },
       pricingQuote: { text: "Der Bericht beschrieb Dinge über mein Spiel, die ich selbst nie hätte benennen können.", name: "Stefan W.", role: "Handicap 11.4" },
       comparisonTitle: "Pläne vergleichen",
       comparisonRows: [
@@ -585,7 +585,7 @@ export const translations = {
       socialProof: "Schließe dich Golfern auf der Early Access Liste an",
       success: { h3: "Du stehst auf der Liste!", p: "Wir senden dir am 15. Mai deinen exklusiven Early-Bird-Link — vor dem offiziellen Start am 1. Juni. Prüfe deinen Posteingang für eine Bestätigung." },
     },
-    footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfehle das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloses Quiz", quoteText: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong", methodBy: "Methode von Henk de Jong" },
+    footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfehle das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloses Quiz", quoteText: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong", methodBy: "Methode von Henk de Jong", menuLabel: "Menü" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -688,7 +688,7 @@ export const translations = {
       creditsNote: "Rapports d'entraînement inclus — rapports supplémentaires dès $6,99 dans la boutique.",
       reportPreview: { label: "Votre rapport comprend :", items: ["Scores sur tous vos éléments mesurés", "Ce que chaque score signifie pour votre jeu", "Vos 3 priorités de développement principales", "Rapports d'entraînement recommandés"] },
       previewBtn: "Voir le rapport exemple →",
-      previewModal: { standard: "Standard — Rapport exemple", deluxe: "Deluxe — Rapport exemple", training: "Rapport d'entraînement — Exemple" },
+      previewModal: { standard: "Standard — Rapport exemple", deluxe: "Deluxe — Rapport exemple", training: "Rapport d'entraînement — Exemple", closePreview: "Fermer l'aperçu", iframeTitle: "Aperçu du rapport" },
       pricingQuote: { text: "Le rapport décrivait des choses sur mon jeu que je n'aurais jamais pu formuler moi-même.", name: "Mathieu B.", role: "Handicap 14.2" },
       comparisonTitle: "Comparer les plans",
       comparisonRows: [
@@ -780,7 +780,7 @@ export const translations = {
       socialProof: "Rejoignez les golfeurs déjà sur la liste early access",
       success: { h3: "Vous êtes sur la liste !", p: "Nous vous enverrons votre lien early-bird exclusif le 15 mai — avant le lancement officiel du 1er juin. Vérifiez votre boîte de réception pour une confirmation." },
     },
-    footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Professionnel de l'enseignement ? Recommandez l'évaluation à vos élèves →", socialLabel: "Suivez-nous", quizLink: "Quiz Gratuit", quoteText: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong", methodBy: "Méthode de Henk de Jong" },
+    footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Professionnel de l'enseignement ? Recommandez l'évaluation à vos élèves →", socialLabel: "Suivez-nous", quizLink: "Quiz Gratuit", quoteText: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong", methodBy: "Méthode de Henk de Jong", menuLabel: "Menu" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -883,7 +883,7 @@ export const translations = {
       creditsNote: "Informes de entrenamiento incluidos — informes adicionales desde $6,99 en la tienda.",
       reportPreview: { label: "Tu informe incluye:", items: ["Puntuaciones en todos tus elementos medidos", "Qué significa cada puntuación para tu juego", "Tus 3 prioridades de desarrollo principales", "Informes de entrenamiento recomendados"] },
       previewBtn: "Ver informe de ejemplo →",
-      previewModal: { standard: "Estándar — Informe de ejemplo", deluxe: "Deluxe — Informe de ejemplo", training: "Informe de entrenamiento — Ejemplo" },
+      previewModal: { standard: "Estándar — Informe de ejemplo", deluxe: "Deluxe — Informe de ejemplo", training: "Informe de entrenamiento — Ejemplo", closePreview: "Cerrar vista previa", iframeTitle: "Vista previa del informe" },
       pricingQuote: { text: "El informe describía cosas sobre mi juego que yo mismo nunca había podido articular.", name: "Pablo M.", role: "Hándicap 13.3" },
       comparisonTitle: "Comparar planes",
       comparisonRows: [
@@ -975,7 +975,7 @@ export const translations = {
       socialProof: "Únete a los golfistas ya en la lista de early access",
       success: { h3: "¡Estás en la lista!", p: "Te enviaremos tu enlace early-bird exclusivo el 15 de mayo — antes del lanzamiento oficial el 1 de junio. Revisa tu bandeja de entrada para una confirmación." },
     },
-    footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Profesional de la enseñanza? Recomienda la evaluación a tus alumnos →", socialLabel: "Síguenos", quizLink: "Quiz Gratis", quoteText: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong", methodBy: "Método de Henk de Jong" },
+    footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Profesional de la enseñanza? Recomienda la evaluación a tus alumnos →", socialLabel: "Síguenos", quizLink: "Quiz Gratis", quoteText: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong", methodBy: "Método de Henk de Jong", menuLabel: "Menú" },
   },
 } as const;
 
