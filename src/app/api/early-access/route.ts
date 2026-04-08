@@ -6,11 +6,13 @@ const AUDIENCE_ID = "8e40ab7a-eab7-470d-943f-03a312e98ebc";
 
 export async function POST(req: Request) {
   try {
-    const { name, email, handicap } = await req.json();
+    const { name, email, handicap, plan } = await req.json();
 
     if (!name || !email) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
+
+    const planLabel = plan === "standard" ? "Standard ($49)" : "Deluxe ($99)";
 
     // Add contact to Resend Audience
     await resend.contacts.create({
@@ -24,10 +26,11 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: "MentalRoutine <contact@mentalroutine.com>",
       to: "support@mentalroutine.com",
-      subject: `Early Access signup: ${name}`,
+      subject: `Early Access signup: ${name} — ${planLabel}`,
       text: [
         `Name: ${name}`,
         `Email: ${email}`,
+        `Plan preference: ${planLabel}`,
         handicap ? `Golf Handicap: ${handicap}` : null,
       ]
         .filter(Boolean)
