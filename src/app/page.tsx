@@ -438,6 +438,12 @@ function PageContent() {
             <motion.p className="text-xs text-green-200/40 max-w-md mx-auto lg:mx-0 mt-5 tracking-wide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.9 }}>
               {T.hero.howItWorksLine}
             </motion.p>
+
+            {"quizCta" in T.hero && (
+              <motion.a href="/quiz.html" className="inline-flex items-center gap-1.5 text-xs text-amber-300/70 hover:text-amber-300 transition-colors mt-3 mx-auto lg:mx-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.0 }}>
+                {(T.hero as any).quizCta}
+              </motion.a>
+            )}
           </div>
 
           {/* Mobile-only mini report mockup */}
@@ -938,6 +944,7 @@ function PageContent() {
                   { label: T.nav.testimonials, href: '#testimonials'  },
                   { label: T.nav.faq,          href: '#faq'           },
                   { label: T.nav.contact,      href: '#contact'       },
+                  ...("quizLink" in T.footer ? [{ label: (T.footer as any).quizLink, href: '/quiz.html' }] : []),
                 ].map(link => (
                   <a
                     key={link.href}
@@ -990,6 +997,13 @@ function PageContent() {
                 <a href="#contact" className="inline-flex items-center gap-2 text-xs text-green-200/35 hover:text-amber-300 transition-colors mt-4 group">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5"/></svg>
                   <span>{T.footer.teachingPro}</span>
+                </a>
+              )}
+
+              {"quizLink" in T.footer && (
+                <a href="/quiz.html" className="inline-flex items-center gap-2 text-xs text-green-200/35 hover:text-amber-300 transition-colors mt-3 group">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14z"/><path d="M5.8 5.8a2.2 2.2 0 0 1 4.1 1.1c0 1.5-2.2 2-2.2 2"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg>
+                  <span>{(T.footer as any).quizLink}</span>
                 </a>
               )}
             </div>

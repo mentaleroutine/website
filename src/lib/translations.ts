@@ -15,6 +15,7 @@ export const translations = {
       radarCaption: "Example profile — your scores will differ",
       cta1: "Get My Mental Performance Report", cta2: "See the 8 Factors",
       howItWorksLine: "15-minute questionnaire → personalised PDF report → targeted improvement plan",
+      quizCta: "Or try the free quiz first →",
     },
     heroCardLabels: [
       { tag: "Focus",            insight: "Target selection is strong. Visualisation consistent before each shot." },
@@ -166,6 +167,7 @@ export const translations = {
       p1: "Most golfers spend years — and thousands on lessons — without ever addressing the real reason they plateau. In 15 minutes, the assessment tells you exactly what's holding you back.",
       p2: "Better scores. More enjoyment. More confidence on the first tee. It all starts with understanding your mental game.",
       btn: "Get Your Mental Routine Assessment →",
+      quizLine: "Not sure yet? Try the free 8-minute quiz first.",
       trust: ["Access within 2 minutes", "Standard $59 · Deluxe $129", "Research base: 1,000+ golfers", "30-day money-back guarantee"],
     },
     earlyAccess: {
@@ -186,7 +188,7 @@ export const translations = {
       socialProof: "Join golfers already on the early access list",
       success: { h3: "You're on the list!", p: "We'll send you your exclusive early-bird link on May 15th — ahead of the official launch on June 1st. Check your inbox for a confirmation." },
     },
-    footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us" },
+    footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free Quiz" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -203,6 +205,7 @@ export const translations = {
       radarCaption: "Voorbeeldprofiel — jouw scores zullen afwijken",
       cta1: "Ontvang Mijn Mentale Prestatierapport", cta2: "Bekijk de 8 Factoren",
       howItWorksLine: "15 minuten vragenlijst → persoonlijk PDF-rapport → gericht verbeterplan",
+      quizCta: "Of probeer eerst de gratis quiz →",
     },
     heroCardLabels: [
       { tag: "Focus",           insight: "Doelselectie is sterk. Visualisatie consistent voor elke slag." },
@@ -352,6 +355,7 @@ export const translations = {
       p1: "De meeste golfers besteden jaren — en duizenden aan lessen — zonder ooit de echte reden van hun plafond aan te pakken. In 15 minuten vertelt de assessment precies wat je tegenhoudt.",
       p2: "Betere scores. Meer plezier. Meer zelfvertrouwen op de eerste tee. Het begint allemaal met inzicht in je mentale spel.",
       btn: "Haal Jouw Mentale Routine Assessment →",
+      quizLine: "Nog niet zeker? Probeer eerst de gratis 8-minuten quiz.",
       trust: ["Toegang binnen 2 minuten", "Standaard $59 · Deluxe $129", "Onderzoeksbasis: 1.000+ golfers", "30 dagen niet-goed-geld-terug"],
     },
     earlyAccess: {
@@ -372,7 +376,7 @@ export const translations = {
       socialProof: "Sluit je aan bij golfers op de early access lijst",
       success: { h3: "Je staat op de lijst!", p: "We sturen je op 15 mei jouw exclusieve early-bird link — vóór de officiële lancering op 1 juni. Check je inbox voor een bevestiging." },
     },
-    footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons" },
+    footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis Quiz" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -389,6 +393,7 @@ export const translations = {
       radarCaption: "Beispielprofil — deine Werte werden abweichen",
       cta1: "Mein mentales Leistungsreport erhalten", cta2: "Die 8 Faktoren ansehen",
       howItWorksLine: "15-Minuten-Fragebogen → personalisierter PDF-Bericht → gezielter Verbesserungsplan",
+      quizCta: "Oder probiere zuerst das kostenlose Quiz →",
     },
     heroCardLabels: [
       { tag: "Fokus",            insight: "Zielauswahl ist stark. Visualisierung konsistent vor jedem Schlag." },
@@ -538,6 +543,7 @@ export const translations = {
       p1: "Die meisten Golfer verbringen Jahre — und Tausende für Stunden — ohne jemals den wirklichen Grund ihres Plateaus anzugehen. In 15 Minuten sagt dir das Assessment genau, was dich aufhält.",
       p2: "Bessere Scores. Mehr Spaß. Mehr Selbstvertrauen am ersten Abschlag. Es beginnt alles mit dem Verständnis deines mentalen Spiels.",
       btn: "Dein Mental Routine Assessment holen →",
+      quizLine: "Noch nicht sicher? Probiere zuerst das kostenlose 8-Minuten-Quiz.",
       trust: ["Zugang in 2 Minuten", "Standard $59 · Deluxe $129", "Forschungsbasis: 1.000+ Golfer", "30-Tage-Geld-zurück-Garantie"],
     },
     earlyAccess: {
@@ -558,7 +564,7 @@ export const translations = {
       socialProof: "Schließe dich Golfern auf der Early Access Liste an",
       success: { h3: "Du stehst auf der Liste!", p: "Wir senden dir am 15. Mai deinen exklusiven Early-Bird-Link — vor dem offiziellen Start am 1. Juni. Prüfe deinen Posteingang für eine Bestätigung." },
     },
-    footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfehle das Assessment deinen Schülern →", socialLabel: "Folge uns" },
+    footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfehle das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloses Quiz" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -575,6 +581,7 @@ export const translations = {
       radarCaption: "Profil exemple — vos scores seront différents",
       cta1: "Obtenir Mon Rapport de Performance Mentale", cta2: "Voir les 8 Facteurs",
       howItWorksLine: "Questionnaire de 15 minutes → rapport PDF personnalisé → plan d'amélioration ciblé",
+      quizCta: "Ou essayez d'abord le quiz gratuit →",
     },
     heroCardLabels: [
       { tag: "Focus",             insight: "Sélection d'objectif solide. Visualisation constante avant chaque coup." },
@@ -724,6 +731,7 @@ export const translations = {
       p1: "La plupart des golfeurs passent des années — et dépensent des milliers en leçons — sans jamais s'attaquer à la vraie raison de leur plateau. En 15 minutes, l'évaluation vous dit exactement ce qui vous retient.",
       p2: "De meilleurs scores. Plus de plaisir. Plus de confiance au premier départ. Tout commence par la compréhension de votre jeu mental.",
       btn: "Obtenir votre Évaluation de la Routine Mentale →",
+      quizLine: "Pas encore sûr ? Essayez d'abord le quiz gratuit de 8 minutes.",
       trust: ["Accès en 2 minutes", "Standard $59 · Deluxe $129", "Base de recherche : 1 000+ golfeurs", "Satisfait ou remboursé sous 30 jours"],
     },
     earlyAccess: {
@@ -744,7 +752,7 @@ export const translations = {
       socialProof: "Rejoignez les golfeurs déjà sur la liste early access",
       success: { h3: "Vous êtes sur la liste !", p: "Nous vous enverrons votre lien early-bird exclusif le 15 mai — avant le lancement officiel du 1er juin. Vérifiez votre boîte de réception pour une confirmation." },
     },
-    footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Professionnel de l'enseignement ? Recommandez l'évaluation à vos élèves →", socialLabel: "Suivez-nous" },
+    footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Professionnel de l'enseignement ? Recommandez l'évaluation à vos élèves →", socialLabel: "Suivez-nous", quizLink: "Quiz Gratuit" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -761,6 +769,7 @@ export const translations = {
       radarCaption: "Perfil de ejemplo — tus puntuaciones serán diferentes",
       cta1: "Obtener Mi Informe de Rendimiento Mental", cta2: "Ver los 8 Factores",
       howItWorksLine: "Cuestionario de 15 minutos → informe PDF personalizado → plan de mejora específico",
+      quizCta: "O prueba primero el quiz gratis →",
     },
     heroCardLabels: [
       { tag: "Enfoque",              insight: "Selección de objetivo sólida. Visualización consistente antes de cada golpe." },
@@ -910,6 +919,7 @@ export const translations = {
       p1: "La mayoría de los golfistas pasan años — y gastan miles en lecciones — sin abordar nunca la verdadera razón de su estancamiento. En 15 minutos, la evaluación te dice exactamente qué te frena.",
       p2: "Mejores puntuaciones. Más diversión. Más confianza en el primer tee. Todo empieza por entender tu juego mental.",
       btn: "Obtener Tu Evaluación de la Rutina Mental →",
+      quizLine: "¿Aún no estás seguro? Prueba primero el quiz gratis de 8 minutos.",
       trust: ["Acceso en 2 minutos", "Estándar $59 · Deluxe $129", "Base de investigación: 1.000+ golfistas", "Garantía de devolución de 30 días"],
     },
     earlyAccess: {
@@ -930,6 +940,6 @@ export const translations = {
       socialProof: "Únete a los golfistas ya en la lista de early access",
       success: { h3: "¡Estás en la lista!", p: "Te enviaremos tu enlace early-bird exclusivo el 15 de mayo — antes del lanzamiento oficial el 1 de junio. Revisa tu bandeja de entrada para una confirmación." },
     },
-    footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Profesional de la enseñanza? Recomienda la evaluación a tus alumnos →", socialLabel: "Síguenos" },
+    footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Profesional de la enseñanza? Recomienda la evaluación a tus alumnos →", socialLabel: "Síguenos", quizLink: "Quiz Gratis" },
   },
 } as const;
