@@ -117,10 +117,26 @@ function ContactSection() {
   const t = translations[lang].contact;
   const [form, setForm] = React.useState({ name: "", email: "", handicap: "", message: "" });
   const [submitted, setSubmitted] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -177,9 +193,10 @@ function ContactSection() {
                 <label className="block text-xs font-semibold text-green-950 mb-1.5 tracking-wide">{t.fields.message}</label>
                 <textarea required rows={4} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} placeholder={t.fields.messagePlaceholder} className="w-full px-4 py-3 rounded-lg border border-green-900/15 bg-[#faf8f3] text-sm text-green-950 placeholder:text-stone-400 focus:outline-none focus:border-amber-500 transition-colors resize-none" />
               </div>
-              <button type="submit" className="w-full py-3.5 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
-                {t.fields.submit}
+              <button type="submit" disabled={sending} className="w-full py-3.5 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
+                {sending ? "Sending..." : t.fields.submit}
               </button>
+              {error && <p className="text-center text-xs text-red-600">Something went wrong. Please try again.</p>}
               <p className="text-center text-xs text-stone-400">{t.fields.note}</p>
             </form>
           )}
