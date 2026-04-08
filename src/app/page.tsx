@@ -140,8 +140,8 @@ function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-28 px-6 bg-[#f6f1e7]">
-      <div className="container mx-auto max-w-5xl grid lg:grid-cols-2 gap-16 items-start">
+    <section id="contact" className="py-16 px-6 bg-[#f6f1e7]">
+      <div className="container mx-auto max-w-5xl grid lg:grid-cols-2 gap-12 items-start">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -210,7 +210,7 @@ function ContactSection() {
 function EarlyAccessSection() {
   const { lang } = useLang();
   const t = translations[lang].earlyAccess;
-  const [form, setForm] = React.useState({ name: "", email: "", handicap: "" });
+  const [form, setForm] = React.useState({ name: "", email: "", handicap: "", plan: "deluxe" });
   const [submitted, setSubmitted] = React.useState(false);
   const [sending, setSending] = React.useState(false);
   const [error, setError] = React.useState(false);
@@ -252,8 +252,20 @@ function EarlyAccessSection() {
             <p className="text-green-200/70 leading-relaxed mb-4">{t.p1}</p>
             <p className="text-green-200/50 text-sm leading-relaxed mb-6">{t.p2}</p>
             {"offer" in t && (
-              <div className="rounded-xl bg-amber-400/[0.08] border border-amber-400/25 px-5 py-4">
-                <p className="text-sm text-amber-200/90 font-medium leading-relaxed">{(t as typeof t & { offer: string }).offer}</p>
+              <div className="rounded-xl bg-amber-400/[0.08] border border-amber-400/25 p-5 space-y-3">
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="rounded-lg bg-white/[0.05] border border-white/[0.08] p-3 text-center">
+                    <p className="text-[10px] font-bold tracking-widest uppercase text-green-200/50 mb-1">Standard</p>
+                    <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}><sup className="text-sm align-super font-normal">$</sup>49</p>
+                    <p className="text-[11px] text-green-200/35 line-through">$59</p>
+                  </div>
+                  <div className="rounded-lg bg-amber-400/[0.06] border border-amber-400/20 p-3 text-center">
+                    <p className="text-[10px] font-bold tracking-widest uppercase text-amber-300/70 mb-1">Deluxe</p>
+                    <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}><sup className="text-sm align-super font-normal">$</sup>99</p>
+                    <p className="text-[11px] text-green-200/35 line-through">$129</p>
+                  </div>
+                </div>
+                <p className="text-center text-xs text-amber-300/70">+ 20 bonus credits</p>
               </div>
             )}
           </motion.div>
@@ -270,6 +282,12 @@ function EarlyAccessSection() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="rounded-2xl p-8 bg-white/[0.06] border border-white/10 space-y-5">
+                {"socialProof" in t && (
+                  <p className="text-center text-xs text-green-200/50 flex items-center justify-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
+                    {(t as typeof t & { socialProof: string }).socialProof}
+                  </p>
+                )}
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs font-semibold text-green-100/80 mb-1.5 tracking-wide">{t.fields.name}</label>
@@ -283,6 +301,17 @@ function EarlyAccessSection() {
                 <div>
                   <label className="block text-xs font-semibold text-green-100/80 mb-1.5 tracking-wide">{t.fields.email}</label>
                   <input type="email" required value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} placeholder={t.fields.emailPlaceholder} className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/[0.06] text-sm text-[#f6f1e7] placeholder:text-green-200/30 focus:outline-none focus:border-amber-500 transition-colors" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-green-100/80 mb-2.5 tracking-wide">{t.fields.planLabel}</label>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button type="button" onClick={() => setForm(f => ({ ...f, plan: "standard" }))} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "standard" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
+                      Standard · <span className="text-amber-400">$49</span>
+                    </button>
+                    <button type="button" onClick={() => setForm(f => ({ ...f, plan: "deluxe" }))} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "deluxe" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
+                      Deluxe · <span className="text-amber-400">$99</span>
+                    </button>
+                  </div>
                 </div>
                 <button type="submit" disabled={sending} className="w-full py-3.5 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
                   {sending ? "..." : t.fields.submit}
@@ -335,28 +364,13 @@ function PageContent() {
               {T.hero.p2}
             </motion.p>
 
-            {"allLevels" in T.hero && T.hero.allLevels && (
-              <motion.p className="text-xs text-green-300/45 max-w-lg mx-auto lg:mx-0 mb-4 tracking-wide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.72 }}>
-                {T.hero.allLevels}
-              </motion.p>
-            )}
-
-            {/* Beta badge */}
-            <motion.div className="flex justify-center lg:justify-start mb-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.75 }}>
+            {/* Combined Beta + trust badge */}
+            <motion.div className="flex justify-center lg:justify-start mb-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.72 }}>
               <span className="inline-flex items-center gap-2 bg-amber-400/[0.08] border border-amber-400/25 rounded-full px-4 py-1.5 text-xs text-amber-300/80">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0" />
-                {T.earlyAccess.betaBadge}
+                {T.hero.heroBadge}
               </span>
             </motion.div>
-
-            {"trustBadge" in T.hero && T.hero.trustBadge && (
-              <motion.div className="flex justify-center lg:justify-start mb-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.78 }}>
-                <span className="inline-flex items-center gap-2 bg-white/[0.06] border border-white/[0.1] rounded-full px-4 py-1.5 text-xs text-green-200/65">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-                  {T.hero.trustBadge}
-                </span>
-              </motion.div>
-            )}
 
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
               <a href="#early-access" className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
@@ -384,8 +398,7 @@ function PageContent() {
               </h2>
               <div className="w-12 h-0.5 bg-amber-500 mb-6" />
               <p className="text-stone-600 leading-relaxed mb-5">{T.research.p1}</p>
-              <p className="text-stone-600 leading-relaxed mb-5">{T.research.p2}</p>
-              <p className="text-stone-600 leading-relaxed">{T.research.p3}</p>
+              <p className="text-stone-600 leading-relaxed">{T.research.p2}</p>
             </div>
 
             <div className="bg-green-950 rounded-2xl p-10 text-[#f6f1e7] shadow-2xl shadow-green-950/30">
@@ -548,11 +561,7 @@ function PageContent() {
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6 mb-4" />
             <p className="text-green-200/60 text-sm">{T.pricing.note}</p>
-            {/* Beta banner */}
-            <div className="mt-6 inline-flex items-center gap-2 bg-amber-400/[0.08] border border-amber-400/25 rounded-full px-5 py-2 text-xs text-amber-300/80">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0" />
-              {T.earlyAccess.pricingBanner}
-            </div>
+            <p className="mt-3 text-xs text-amber-300/70">{T.earlyAccess.pricingBanner}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
@@ -660,7 +669,7 @@ function PageContent() {
               <div className="flex items-center gap-3 mb-8 p-3.5 rounded-xl bg-green-950/[0.05] border border-green-900/10">
                 <div className="flex gap-2">
                   <span className="px-2.5 py-1 rounded-lg bg-white border border-green-900/10 text-xs font-semibold text-green-900 shadow-sm">{T.pricing.plans[0].plan} · 60 credits</span>
-                  <span className="px-2.5 py-1 rounded-lg bg-green-950 text-xs font-semibold text-amber-300 shadow-sm">{T.pricing.plans[1].plan} · 120 credits</span>
+                  <span className="px-2.5 py-1 rounded-lg bg-green-950 text-xs font-semibold text-amber-300 shadow-sm">{T.pricing.plans[1].plan} · 140 credits</span>
                 </div>
                 <span className="text-xs text-stone-400">from $6.99 / 10</span>
               </div>
@@ -746,11 +755,11 @@ function PageContent() {
         </div>
       </section>
 
-      {/* ── CONTACT FORM ─────────────────────────────────────────────────── */}
-      <ContactSection />
-
       {/* ── EARLY ACCESS SIGNUP ──────────────────────────────────────────── */}
       <EarlyAccessSection />
+
+      {/* ── CONTACT FORM ─────────────────────────────────────────────────── */}
+      <ContactSection />
 
       {/* ── FOOTER ───────────────────────────────────────────────────────── */}
       <footer className="bg-[#0d1f15] relative overflow-hidden">

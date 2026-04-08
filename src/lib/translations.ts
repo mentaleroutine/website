@@ -8,11 +8,10 @@ export const translations = {
     nav: { howItWorks: "How It Works", pricing: "Pricing", testimonials: "Testimonials", faq: "FAQ", contact: "Contact", cta: "Start Assessment" },
     hero: {
       badge: "Mental Performance for Golfers",
-      h1a: "Play Better.", h1b: "Enjoy Every Round.",
+      h1a: "Master the Mental Game.", h1b: "Play Your Best Golf.",
       p1: "Inconsistent scores. Frustration after a bad hole. Losing it under pressure. The missing piece is almost never technical — it's mental. And it's trainable.",
       p2: "The Mental Routine Assessment maps your mental game in 15 minutes — and gives you a concrete plan to fix what's costing you strokes and enjoyment.",
-      trustBadge: "1,000+ golfers assessed · 90% report measurable improvement",
-      allLevels: "For every golfer — scratch to handicap 54.",
+      heroBadge: "1,000+ golfers studied · 100+ in the current closed Beta",
       radarCaption: "Example profile — your scores will differ",
       cta1: "Get My Mental Performance Report", cta2: "See the 8 Factors",
     },
@@ -31,9 +30,8 @@ export const translations = {
     research: {
       label: "The Research Behind It",
       h2a: "You can't train what", h2b: "you're not aware of.",
-      p1: "Over the last decade, we conducted research with over 1,000 golfers — including many with a handicap near zero. We expected the data to reveal clear technical or physical differences. What it revealed instead was a set of consistent mental patterns: focus, concentration, conviction, resilience under pressure, and the ability to process a bad shot and move on.",
-      p2: "The crucial insight was that good golfers score well on these factors — but they got there through years of unconscious trial and error. Most golfers never understand which mental patterns are costing them strokes, because nobody has ever mapped it for them.",
-      p3: "The Mental Routine Assessment does exactly that. It gives you a personalised map of your mental golf profile — so you can stop guessing and start improving the right things.",
+      p1: "A decade of research with 1,000+ golfers revealed something surprising: the difference between consistent and inconsistent players isn't technical — it's a set of mental patterns including focus, conviction, resilience, and the ability to let go of a bad shot.",
+      p2: "Good golfers develop these patterns through years of unconscious trial and error. Most never discover which mental habits are costing them strokes — because nobody has mapped it for them. Until now.",
       stats: [
         { num: "90%",   label: "of golf performance at the top level is widely attributed to the mental game — a figure consistently cited by coaches and sports psychologists worldwide" },
         { num: "1000+", label: "golfers studied over the last decade, forming the research base of the assessment methodology" },
@@ -97,7 +95,7 @@ export const translations = {
     },
     pricing: {
       label: "Pricing", h2a: "Invest in the part of your", h2b: "game you've neglected",
-      note: "Beta pricing — price increases when the Skills Developer is fully released. Both plans include the Assessment (a digital questionnaire) + your personalised PDF report + Skills Developer credits.", badge: "Most Popular",
+      note: "Early Access pricing — regular pricing applies from June 1st. Both plans include the Assessment (a digital questionnaire) + your personalised PDF report + Skills Developer credits.", badge: "Most Popular",
       creditsNote: "1 Basic development report = 10 credits. Additional bundles from $6.99 for 10 credits.",
       reportPreview: { label: "Your report includes:", items: ["Scores on all your measured elements", "What each score means for your game", "Your top 3 development priorities", "Recommended Skills Developer reports"] },
       plans: [
@@ -110,7 +108,7 @@ export const translations = {
       p1: "Every Skills Developer report is a highly personal 5-page PDF — built on your assessment results, benchmarked against comparable golfer profiles, and enriched by AI on data from 1,000+ profiles.",
       p2: "Each report targets one specific element — to improve a low score or build on a strength. Every report contains:",
       p2items: ["Physical exercise", "Mental exercise", "Expert insight", "Reflection", "Storytelling", "Mantra", "AI prompts"],
-      p3: "Bundles from $6.99 per 10 credits. Standard includes 60 credits — Deluxe includes 140.",
+      p3: "Each report costs 10 credits (basic) or 15 credits (extended). Standard includes 60 credits (4–6 reports) — Deluxe includes 140 credits (9–14 reports).",
       cta: "Explore the Skills Developer →", cardNote: "Hover to reveal your pattern",
     },
     testimonials: {
@@ -154,7 +152,7 @@ export const translations = {
       p1: "Most golfers spend years — and thousands on lessons — without ever addressing the real reason they plateau. In 15 minutes, the assessment tells you exactly what's holding you back.",
       p2: "Better scores. More enjoyment. More confidence on the first tee. It all starts with understanding your mental game.",
       btn: "Get Your Mental Routine Assessment →",
-      trust: ["Access within 2 minutes", "Standard $59 · Deluxe $129", "1,000+ golfers already assessed", "30-day money-back guarantee"],
+      trust: ["Access within 2 minutes", "Standard $59 · Deluxe $129", "Research base: 1,000+ golfers", "30-day money-back guarantee"],
     },
     earlyAccess: {
       badge: "Launching May 15th",
@@ -169,7 +167,8 @@ export const translations = {
       p1: "We're currently in a closed Beta programme with 100+ golfers, putting the finishing touches on the Mental Routine Assessment for international launch on May 15th.",
       p2: "Sign up now to guarantee your spot and lock in your exclusive early-bird discount — available only until June 1st.",
       offer: "Early Access pricing: Standard $49 (instead of $59) · Deluxe $99 (instead of $129) — plus 20 bonus credits on every plan.",
-      fields: { name: "Name", namePlaceholder: "Your name", handicap: "Golf Handicap", handicapPlaceholder: "e.g. 14.2", email: "Email", emailPlaceholder: "you@example.com", submit: "Lock In My Early-Bird Price →" },
+      fields: { name: "Name", namePlaceholder: "Your name", handicap: "Golf Handicap", handicapPlaceholder: "e.g. 14.2", email: "Email", emailPlaceholder: "you@example.com", planLabel: "I'm interested in", submit: "Lock In My Early-Bird Price →" },
+      socialProof: "Join golfers already on the early access list",
       success: { h3: "You're on the list!", p: "We'll notify you on May 15th with your exclusive early-bird link. Check your inbox for a confirmation." },
     },
     footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us" },
@@ -182,11 +181,10 @@ export const translations = {
     nav: { howItWorks: "Hoe Het Werkt", pricing: "Prijzen", testimonials: "Ervaringen", faq: "FAQ", contact: "Contact", cta: "Doe de Assessment" },
     hero: {
       badge: "Mentale Prestaties voor Golfers",
-      h1a: "Speel Beter.", h1b: "Geniet van Elke Ronde.",
+      h1a: "Beheers het Mentale Spel.", h1b: "Speel Je Beste Golf.",
       p1: "Inconsistente scores. Frustratie na een slechte hole. De controle verliezen onder druk. Het ontbrekende stuk is bijna nooit technisch — het is mentaal. En het is trainbaar.",
       p2: "De Mentale Routine Assessment brengt jouw mentale spel in kaart in 15 minuten — en geeft je een concreet plan om aan te pakken wat je slagen en plezier kost.",
-      trustBadge: "1.000+ golfers geassessed · 90% rapporteert meetbare verbetering",
-      allLevels: "Voor iedere golfer — van scratch tot handicap 54.",
+      heroBadge: "1.000+ golfers onderzocht · 100+ in de huidige besloten Beta",
       radarCaption: "Voorbeeldprofiel — jouw scores zullen afwijken",
       cta1: "Ontvang Mijn Mentale Prestatierapport", cta2: "Bekijk de 8 Factoren",
     },
@@ -204,9 +202,8 @@ export const translations = {
     stepLabel: "Stap",
     research: {
       label: "Het Onderzoek", h2a: "Je kunt niet trainen wat je", h2b: "niet van jezelf weet.",
-      p1: "In de afgelopen tien jaar deden we onderzoek met meer dan 1.000 golfers — waaronder velen met een handicap dicht bij nul. We verwachtten duidelijke technische of fysieke verschillen te ontdekken. Wat het onderzoek in plaats daarvan onthulde, was een reeks consistente mentale patronen: focus, concentratie, overtuiging, veerkracht onder druk, en het vermogen om een slechte slag te verwerken en verder te gaan.",
-      p2: "De cruciale inzicht: goede golfers scoren hoog op deze factoren — maar ze zijn er via jaren van onbewust trial-and-error aangekomen. De meeste golfers begrijpen nooit welke mentale patronen hen slagen kosten, omdat niemand dat ooit voor hen in kaart heeft gebracht.",
-      p3: "De Mentale Routine Assessment doet precies dat. Het geeft je een gepersonaliseerde kaart van je mentale golfprofiel — zodat je kunt stoppen met gissen en kunt beginnen met het verbeteren van de juiste dingen.",
+      p1: "Tien jaar onderzoek met 1.000+ golfers onthulde iets verrassends: het verschil tussen consistente en inconsistente spelers is niet technisch — het zijn mentale patronen zoals focus, overtuiging, veerkracht en het vermogen om een slechte slag los te laten.",
+      p2: "Goede golfers ontwikkelen deze patronen door jarenlang onbewust trial-and-error. De meeste golfers ontdekken nooit welke mentale gewoonten hen slagen kosten — omdat niemand het ooit voor hen in kaart heeft gebracht. Tot nu.",
       stats: [
         { num: "90%",   label: "van de golfprestaties op topniveau wordt breed toegeschreven aan het mentale spel — een cijfer dat door coaches en sportpsychologen wereldwijd wordt aangehaald" },
         { num: "1000+", label: "golfers onderzocht in het originele onderzoek uit 2016 dat de basis vormt van de assessmentmethodologie" },
@@ -270,7 +267,7 @@ export const translations = {
     },
     pricing: {
       label: "Prijzen", h2a: "Investeer in het deel van je spel", h2b: "dat je tot nu toe verwaarloosde",
-      note: "Bèta-prijsstelling — prijs stijgt wanneer de Skills Developer volledig wordt uitgebracht. Beide pakketten bevatten de Assessment (een digitale vragenlijst) + jouw gepersonaliseerde PDF-rapport + Skills Developer credits.", badge: "Meest Populair",
+      note: "Early Access prijzen — reguliere prijs geldt vanaf 1 juni. Beide pakketten bevatten de Assessment (een digitale vragenlijst) + jouw gepersonaliseerde PDF-rapport + Skills Developer credits.", badge: "Meest Populair",
       creditsNote: "1 Basic ontwikkelrapport = 10 credits. Aanvullende bundels vanaf $6,99 per 10 credits.",
       reportPreview: { label: "Jouw rapport bevat:", items: ["Scores op al jouw gemeten elementen", "Wat elke score betekent voor jouw spel", "Jouw top-3 ontwikkelpunten", "Aanbevolen Skills Developer rapporten"] },
       plans: [
@@ -283,7 +280,7 @@ export const translations = {
       p1: "Elk Skills Developer rapport is een sterk persoonlijk PDF van 5 pagina's — opgebouwd vanuit jouw assessmentresultaten, gebenchmarkt tegen vergelijkbare profielen en verrijkt door AI op data van 1.000+ golfers.",
       p2: "Elk rapport richt zich op één specifiek element — om een lage score te verbeteren of een sterkte verder te ontwikkelen. Elk rapport bevat:",
       p2items: ["Fysieke oefening", "Mentale oefening", "Expert inzicht", "Reflectie", "Storytelling", "Mantra", "AI-prompts"],
-      p3: "Bundels vanaf $6,99 per 10 credits. Standaard bevat 60 credits — Deluxe bevat 140.",
+      p3: "Elk rapport kost 10 credits (basis) of 15 credits (uitgebreid). Standaard bevat 60 credits (4–6 rapporten) — Deluxe bevat 140 credits (9–14 rapporten).",
       cta: "Ontdek de Skills Developer →", cardNote: "Beweeg je muis om je patroon te onthullen",
     },
     testimonials: {
@@ -326,7 +323,7 @@ export const translations = {
       p1: "De meeste golfers besteden jaren — en duizenden aan lessen — zonder ooit de echte reden van hun plafond aan te pakken. In 15 minuten vertelt de assessment precies wat je tegenhoudt.",
       p2: "Betere scores. Meer plezier. Meer zelfvertrouwen op de eerste tee. Het begint allemaal met inzicht in je mentale spel.",
       btn: "Haal Jouw Mentale Routine Assessment →",
-      trust: ["Toegang binnen 2 minuten", "Standaard $59 · Deluxe $129", "1.000+ golfers al geassessed", "30 dagen niet-goed-geld-terug"],
+      trust: ["Toegang binnen 2 minuten", "Standaard $59 · Deluxe $129", "Onderzoeksbasis: 1.000+ golfers", "30 dagen niet-goed-geld-terug"],
     },
     earlyAccess: {
       badge: "Lancering 15 mei",
@@ -341,7 +338,8 @@ export const translations = {
       p1: "We draaien momenteel een besloten Beta-programma met 100+ golfers, waarbij we de puntjes op de i zetten voor de internationale lancering op 15 mei.",
       p2: "Meld je nu aan om je plek te garanderen en jouw exclusieve early-bird korting vast te leggen — alleen beschikbaar tot 1 juni.",
       offer: "Early Access prijzen: Standaard $49 (i.p.v. $59) · Deluxe $99 (i.p.v. $129) — plus 20 bonus credits op elk plan.",
-      fields: { name: "Naam", namePlaceholder: "Jouw naam", handicap: "Golf Handicap", handicapPlaceholder: "bijv. 14,2", email: "E-mail", emailPlaceholder: "jij@voorbeeld.nl", submit: "Zeker Mijn Early-Bird Prijs →" },
+      fields: { name: "Naam", namePlaceholder: "Jouw naam", handicap: "Golf Handicap", handicapPlaceholder: "bijv. 14,2", email: "E-mail", emailPlaceholder: "jij@voorbeeld.nl", planLabel: "Ik ben geïnteresseerd in", submit: "Zeker Mijn Early-Bird Prijs →" },
+      socialProof: "Sluit je aan bij golfers op de early access lijst",
       success: { h3: "Je staat op de lijst!", p: "We sturen je op 15 mei jouw exclusieve early-bird link. Check je inbox voor een bevestiging." },
     },
     footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons" },
@@ -354,11 +352,10 @@ export const translations = {
     nav: { howItWorks: "Wie Es Funktioniert", pricing: "Preise", testimonials: "Erfahrungen", faq: "FAQ", contact: "Kontakt", cta: "Assessment Starten" },
     hero: {
       badge: "Mentale Leistung für Golfer",
-      h1a: "Besser spielen.", h1b: "Jede Runde genießen.",
+      h1a: "Das mentale Spiel meistern.", h1b: "Dein bestes Golf spielen.",
       p1: "Inkonsistente Scores. Frust nach einem schlechten Loch. Die Kontrolle unter Druck verlieren. Das fehlende Stück ist fast nie technisch — es ist mental. Und es ist trainierbar.",
       p2: "Das Mental Routine Assessment kartiert dein mentales Spiel in 15 Minuten — und gibt dir einen konkreten Plan, um zu beheben, was dir Schläge und Freude kostet.",
-      trustBadge: "Über 1.000 Golfer bewertet · 90% berichten messbare Verbesserung",
-      allLevels: "Für jeden Golfer — vom Scratch bis Handicap 54.",
+      heroBadge: "1.000+ Golfer untersucht · 100+ in der aktuellen geschlossenen Beta",
       radarCaption: "Beispielprofil — deine Werte werden abweichen",
       cta1: "Mein mentales Leistungsreport erhalten", cta2: "Die 8 Faktoren ansehen",
     },
@@ -376,9 +373,8 @@ export const translations = {
     stepLabel: "Schritt",
     research: {
       label: "Die Forschung dahinter", h2a: "Du kannst nicht trainieren, was", h2b: "du nicht über dich weißt.",
-      p1: "Im letzten Jahrzehnt haben wir eine Studie mit über 1.000 Golfern durchgeführt — darunter viele mit einem Handicap nahe null. Wir erwarteten klare technische oder körperliche Unterschiede. Was die Studie stattdessen enthüllte, waren konsistente mentale Muster: Fokus, Konzentration, Überzeugung, Resilienz unter Druck und die Fähigkeit, einen schlechten Schlag zu verarbeiten und weiterzumachen.",
-      p2: "Die entscheidende Erkenntnis: Gute Golfer erzielen in diesen Bereichen hohe Werte — aber sie haben das durch jahrelanges unbewusstes Trial-and-Error erreicht. Die meisten Golfer verstehen nie, welche mentalen Muster ihnen Schläge kosten, weil das noch niemand für sie aufgezeichnet hat.",
-      p3: "Das Mental Routine Assessment macht genau das. Es gibt dir eine personalisierte Karte deines mentalen Golfprofils — damit du aufhören kannst zu raten und anfängst, die richtigen Dinge zu verbessern.",
+      p1: "Ein Jahrzehnt Forschung mit 1.000+ Golfern enthüllte etwas Überraschendes: Der Unterschied zwischen konstanten und inkonstanten Spielern ist nicht technisch — es sind mentale Muster wie Fokus, Überzeugung, Resilienz und die Fähigkeit, einen schlechten Schlag loszulassen.",
+      p2: "Gute Golfer entwickeln diese Muster durch jahrelanges unbewusstes Trial-and-Error. Die meisten entdecken nie, welche mentalen Gewohnheiten sie Schläge kosten — weil das noch niemand für sie kartiert hat. Bis jetzt.",
       stats: [
         { num: "90%",   label: "der Golfleistung auf Topniveau wird dem mentalen Spiel weithin zugeschrieben — eine Zahl, die von Coaches und Sportpsychologen weltweit zitiert wird" },
         { num: "1000+", label: "Golfer wurden in der Studie aus dem Jahr 2016 untersucht, die die Grundlage der Assessment-Methodik bildet" },
@@ -442,7 +438,7 @@ export const translations = {
     },
     pricing: {
       label: "Preise", h2a: "Investiere in den Teil deines Spiels,", h2b: "den du vernachlässigt hast",
-      note: "Beta-Preise — der Preis steigt, wenn der Skills Developer vollständig veröffentlicht wird. Beide Pläne enthalten das Assessment (ein digitaler Fragebogen) + deinen personalisierten PDF-Bericht + Skills Developer Credits.", badge: "Am Beliebtesten",
+      note: "Early Access Preise — reguläre Preise gelten ab 1. Juni. Beide Pläne enthalten das Assessment (ein digitaler Fragebogen) + deinen personalisierten PDF-Bericht + Skills Developer Credits.", badge: "Am Beliebtesten",
       creditsNote: "1 Basic Entwicklungsbericht = 10 Credits. Zusätzliche Bundles ab $6,99 für 10 Credits.",
       reportPreview: { label: "Dein Bericht enthält:", items: ["Werte für alle deine gemessenen Elemente", "Was jeder Wert für dein Spiel bedeutet", "Deine Top-3-Entwicklungsprioritäten", "Empfohlene Skills Developer Berichte"] },
       plans: [
@@ -455,7 +451,7 @@ export const translations = {
       p1: "Jeder Skills Developer-Bericht ist ein hochpersönliches 5-seitiges PDF — aufgebaut auf deinen Ergebnissen, verglichen mit ähnlichen Golferprofilen und angereichert durch KI auf Daten von 1.000+ Profilen.",
       p2: "Jeder Bericht zielt auf ein spezifisches Element ab — um eine schwache Stelle zu verbessern oder eine Stärke weiter auszubauen. Jeder Bericht enthält:",
       p2items: ["Physische Übung", "Mentale Übung", "Experteneinblick", "Reflexion", "Storytelling", "Mantra", "KI-Prompts"],
-      p3: "Bundles ab $6,99 pro 10 Credits. Standard enthält 60 Credits — Deluxe enthält 140.",
+      p3: "Jeder Bericht kostet 10 Credits (Basis) oder 15 Credits (Erweitert). Standard enthält 60 Credits (4–6 Berichte) — Deluxe enthält 140 Credits (9–14 Berichte).",
       cta: "Den Skills Developer entdecken →", cardNote: "Bewege die Maus, um dein Muster zu enthüllen",
     },
     testimonials: {
@@ -498,7 +494,7 @@ export const translations = {
       p1: "Die meisten Golfer verbringen Jahre — und Tausende für Stunden — ohne jemals den wirklichen Grund ihres Plateaus anzugehen. In 15 Minuten sagt dir das Assessment genau, was dich aufhält.",
       p2: "Bessere Scores. Mehr Spaß. Mehr Selbstvertrauen am ersten Abschlag. Es beginnt alles mit dem Verständnis deines mentalen Spiels.",
       btn: "Dein Mental Routine Assessment holen →",
-      trust: ["Zugang in 2 Minuten", "Standard $59 · Deluxe $129", "Über 1.000 Golfer bereits bewertet", "30-Tage-Geld-zurück-Garantie"],
+      trust: ["Zugang in 2 Minuten", "Standard $59 · Deluxe $129", "Forschungsbasis: 1.000+ Golfer", "30-Tage-Geld-zurück-Garantie"],
     },
     earlyAccess: {
       badge: "Start am 15. Mai",
@@ -513,7 +509,8 @@ export const translations = {
       p1: "Wir führen derzeit ein geschlossenes Beta-Programm mit 100+ Golfern durch und legen den Feinschliff an für den internationalen Start am 15. Mai.",
       p2: "Melde dich jetzt an, um deinen Platz zu sichern und deinen exklusiven Early-Bird-Rabatt festzulegen — nur verfügbar bis 1. Juni.",
       offer: "Early Access Preise: Standard $49 (statt $59) · Deluxe $99 (statt $129) — plus 20 Bonus-Credits auf jeden Plan.",
-      fields: { name: "Name", namePlaceholder: "Dein Name", handicap: "Golf-Handicap", handicapPlaceholder: "z.B. 14,2", email: "E-Mail", emailPlaceholder: "du@beispiel.de", submit: "Meinen Early-Bird-Preis sichern →" },
+      fields: { name: "Name", namePlaceholder: "Dein Name", handicap: "Golf-Handicap", handicapPlaceholder: "z.B. 14,2", email: "E-Mail", emailPlaceholder: "du@beispiel.de", planLabel: "Ich interessiere mich für", submit: "Meinen Early-Bird-Preis sichern →" },
+      socialProof: "Schließe dich Golfern auf der Early Access Liste an",
       success: { h3: "Du stehst auf der Liste!", p: "Wir senden dir am 15. Mai deinen exklusiven Early-Bird-Link. Prüfe deinen Posteingang für eine Bestätigung." },
     },
     footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfehle das Assessment deinen Schülern →", socialLabel: "Folge uns" },
@@ -526,11 +523,10 @@ export const translations = {
     nav: { howItWorks: "Comment Ça Marche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "Mon Évaluation" },
     hero: {
       badge: "Performance Mentale pour Golfeurs",
-      h1a: "Jouez Mieux.", h1b: "Profitez de Chaque Partie.",
+      h1a: "Maîtrisez le Jeu Mental.", h1b: "Jouez Votre Meilleur Golf.",
       p1: "Des scores inconsistants. De la frustration après un mauvais trou. Perdre le contrôle sous pression. La pièce manquante est presque jamais technique — elle est mentale. Et elle est entraînable.",
       p2: "L'Évaluation de la Routine Mentale cartographie votre jeu mental en 15 minutes — et vous donne un plan concret pour corriger ce qui vous coûte des coups et du plaisir.",
-      trustBadge: "Plus de 1 000 golfeurs évalués · 90% rapportent une amélioration mesurable",
-      allLevels: "Pour chaque golfeur — du scratch au handicap 54.",
+      heroBadge: "1 000+ golfeurs étudiés · 100+ dans la Bêta fermée actuelle",
       radarCaption: "Profil exemple — vos scores seront différents",
       cta1: "Obtenir Mon Rapport de Performance Mentale", cta2: "Voir les 8 Facteurs",
     },
@@ -548,9 +544,8 @@ export const translations = {
     stepLabel: "Étape",
     research: {
       label: "La Recherche Derrière", h2a: "Vous ne pouvez pas entraîner", h2b: "ce que vous ne connaissez pas.",
-      p1: "Au cours de la dernière décennie, nous avons mené une recherche avec plus de 1 000 golfeurs — dont beaucoup avec un handicap proche de zéro. Nous attendions des différences techniques ou physiques claires. Ce que la recherche a révélé à la place était un ensemble de schémas mentaux constants : concentration, conviction, résilience sous pression et la capacité à traiter un mauvais coup et à passer à autre chose.",
-      p2: "L'insight crucial : les bons golfeurs obtiennent de bons scores dans ces domaines — mais ils y sont parvenus par des années d'essais et d'erreurs inconscients. La plupart des golfeurs ne comprennent jamais quels schémas mentaux leur coûtent des coups, parce que personne ne l'a jamais cartographié pour eux.",
-      p3: "L'Évaluation de la Routine Mentale fait exactement cela. Elle vous donne une carte personnalisée de votre profil mental de golf — pour que vous puissiez arrêter de deviner et commencer à améliorer les bonnes choses.",
+      p1: "Une décennie de recherche avec 1 000+ golfeurs a révélé quelque chose de surprenant : la différence entre joueurs constants et inconstants n'est pas technique — ce sont des schémas mentaux comme la concentration, la conviction, la résilience et la capacité à lâcher un mauvais coup.",
+      p2: "Les bons golfeurs développent ces schémas par des années d'essais et d'erreurs inconscients. La plupart ne découvrent jamais quelles habitudes mentales leur coûtent des coups — parce que personne ne les a jamais cartographiées. Jusqu'à maintenant.",
       stats: [
         { num: "90%",   label: "des performances golfiques au plus haut niveau sont largement attribuées au jeu mental — un chiffre régulièrement cité par les coachs et psychologues du sport dans le monde entier" },
         { num: "1000+", label: "golfeurs étudiés dans la recherche originale de 2016 qui constitue la base de la méthodologie d'évaluation" },
@@ -614,7 +609,7 @@ export const translations = {
     },
     pricing: {
       label: "Tarifs", h2a: "Investissez dans la partie de votre", h2b: "jeu que vous avez négligée",
-      note: "Tarifs bêta — le prix augmente lors de la sortie complète du Skills Developer. Les deux plans incluent l'Évaluation (un questionnaire numérique) + votre rapport PDF personnalisé + des crédits Skills Developer.", badge: "Le Plus Populaire",
+      note: "Tarifs Early Access — tarif régulier à partir du 1er juin. Les deux plans incluent l'Évaluation (un questionnaire numérique) + votre rapport PDF personnalisé + des crédits Skills Developer.", badge: "Le Plus Populaire",
       creditsNote: "1 rapport de développement Basic = 10 crédits. Forfaits supplémentaires dès $6,99 pour 10 crédits.",
       reportPreview: { label: "Votre rapport comprend :", items: ["Scores sur tous vos éléments mesurés", "Ce que chaque score signifie pour votre jeu", "Vos 3 priorités de développement principales", "Rapports Skills Developer recommandés"] },
       plans: [
@@ -627,7 +622,7 @@ export const translations = {
       p1: "Chaque rapport du Skills Developer est un PDF hautement personnel de 5 pages — construit sur vos résultats, comparé à des profils similaires et enrichi par l'IA sur les données de 1 000+ profils.",
       p2: "Chaque rapport cible un élément spécifique — pour améliorer un score faible ou renforcer un point fort. Chaque rapport contient :",
       p2items: ["Exercice physique", "Exercice mental", "Insight expert", "Réflexion", "Storytelling", "Mantra", "Prompts IA"],
-      p3: "Forfaits dès $6,99 pour 10 crédits. Standard inclut 60 crédits — Deluxe inclut 140.",
+      p3: "Chaque rapport coûte 10 crédits (basique) ou 15 crédits (étendu). Standard inclut 60 crédits (4–6 rapports) — Deluxe inclut 140 crédits (9–14 rapports).",
       cta: "Explorer le Skills Developer →", cardNote: "Survolez pour révéler votre schéma",
     },
     testimonials: {
@@ -670,7 +665,7 @@ export const translations = {
       p1: "La plupart des golfeurs passent des années — et dépensent des milliers en leçons — sans jamais s'attaquer à la vraie raison de leur plateau. En 15 minutes, l'évaluation vous dit exactement ce qui vous retient.",
       p2: "De meilleurs scores. Plus de plaisir. Plus de confiance au premier départ. Tout commence par la compréhension de votre jeu mental.",
       btn: "Obtenir votre Évaluation de la Routine Mentale →",
-      trust: ["Accès en 2 minutes", "Standard $59 · Deluxe $129", "Plus de 1 000 golfeurs déjà évalués", "Satisfait ou remboursé sous 30 jours"],
+      trust: ["Accès en 2 minutes", "Standard $59 · Deluxe $129", "Base de recherche : 1 000+ golfeurs", "Satisfait ou remboursé sous 30 jours"],
     },
     earlyAccess: {
       badge: "Lancement le 15 mai",
@@ -685,7 +680,8 @@ export const translations = {
       p1: "Nous menons actuellement un programme Bêta fermé avec 100+ golfeurs, peaufinant chaque détail pour le lancement international le 15 mai.",
       p2: "Inscrivez-vous maintenant pour garantir votre place et verrouiller votre réduction exclusive early-bird — disponible uniquement jusqu'au 1er juin.",
       offer: "Prix Early Access : Standard $49 (au lieu de $59) · Deluxe $99 (au lieu de $129) — plus 20 crédits bonus sur chaque plan.",
-      fields: { name: "Nom", namePlaceholder: "Votre nom", handicap: "Handicap de Golf", handicapPlaceholder: "ex. 14,2", email: "E-mail", emailPlaceholder: "vous@exemple.fr", submit: "Réserver mon prix Early-Bird →" },
+      fields: { name: "Nom", namePlaceholder: "Votre nom", handicap: "Handicap de Golf", handicapPlaceholder: "ex. 14,2", email: "E-mail", emailPlaceholder: "vous@exemple.fr", planLabel: "Je suis intéressé(e) par", submit: "Réserver mon prix Early-Bird →" },
+      socialProof: "Rejoignez les golfeurs déjà sur la liste early access",
       success: { h3: "Vous êtes sur la liste !", p: "Nous vous enverrons votre lien early-bird exclusif le 15 mai. Vérifiez votre boîte de réception pour une confirmation." },
     },
     footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Professionnel de l'enseignement ? Recommandez l'évaluation à vos élèves →", socialLabel: "Suivez-nous" },
@@ -698,11 +694,10 @@ export const translations = {
     nav: { howItWorks: "Cómo Funciona", pricing: "Precios", testimonials: "Testimonios", faq: "FAQ", contact: "Contacto", cta: "Mi Evaluación" },
     hero: {
       badge: "Rendimiento Mental para Golfistas",
-      h1a: "Juega Mejor.", h1b: "Disfruta Cada Ronda.",
+      h1a: "Domina el Juego Mental.", h1b: "Juega Tu Mejor Golf.",
       p1: "Puntuaciones inconsistentes. Frustración después de un mal hoyo. Perder el control bajo presión. La pieza que falta casi nunca es técnica — es mental. Y es entrenable.",
       p2: "La Evaluación de la Rutina Mental mapea tu juego mental en 15 minutos — y te da un plan concreto para corregir lo que te cuesta golpes y disfrute.",
-      trustBadge: "Más de 1.000 golfistas evaluados · el 90% reporta una mejora medible",
-      allLevels: "Para cada golfista — del scratch al hándicap 54.",
+      heroBadge: "1.000+ golfistas estudiados · 100+ en la Beta cerrada actual",
       radarCaption: "Perfil de ejemplo — tus puntuaciones serán diferentes",
       cta1: "Obtener Mi Informe de Rendimiento Mental", cta2: "Ver los 8 Factores",
     },
@@ -720,9 +715,8 @@ export const translations = {
     stepLabel: "Paso",
     research: {
       label: "La Investigación Detrás", h2a: "No puedes entrenar lo que", h2b: "no conoces de ti mismo.",
-      p1: "Durante la última década, realizamos una investigación con más de 1.000 golfistas — incluidos muchos con un hándicap cercano a cero. Esperábamos diferencias técnicas o físicas claras. Lo que la investigación reveló en cambio fue un conjunto de patrones mentales consistentes: enfoque, concentración, convicción, resiliencia bajo presión y la capacidad de procesar un mal golpe y seguir adelante.",
-      p2: "El insight crucial: los buenos golfistas obtienen buenas puntuaciones en estos factores — pero llegaron ahí a través de años de ensayo y error inconsciente. La mayoría de los golfistas nunca entienden qué patrones mentales les cuestan golpes, porque nadie lo ha mapeado para ellos.",
-      p3: "La Evaluación de la Rutina Mental hace exactamente eso. Te da un mapa personalizado de tu perfil mental de golf — para que puedas dejar de adivinar y empezar a mejorar las cosas correctas.",
+      p1: "Una década de investigación con 1.000+ golfistas reveló algo sorprendente: la diferencia entre jugadores constantes e inconstantes no es técnica — son patrones mentales como enfoque, convicción, resiliencia y la capacidad de soltar un mal golpe.",
+      p2: "Los buenos golfistas desarrollan estos patrones a través de años de ensayo y error inconsciente. La mayoría nunca descubre qué hábitos mentales les cuestan golpes — porque nadie los ha mapeado para ellos. Hasta ahora.",
       stats: [
         { num: "90%",   label: "del rendimiento en golf a nivel élite se atribuye ampliamente al juego mental — una cifra citada constantemente por entrenadores y psicólogos del deporte en todo el mundo" },
         { num: "1000+", label: "golfistas estudiados en la investigación original de 2016 que forma la base de la metodología de evaluación" },
@@ -786,7 +780,7 @@ export const translations = {
     },
     pricing: {
       label: "Precios", h2a: "Invierte en la parte de tu juego", h2b: "que has descuidado",
-      note: "Precios beta — el precio aumentará con el lanzamiento completo del Skills Developer. Ambos planes incluyen la Evaluación (un cuestionario digital) + tu informe PDF personalizado + créditos del Skills Developer.", badge: "Más Popular",
+      note: "Precios Early Access — precio regular a partir del 1 de junio. Ambos planes incluyen la Evaluación (un cuestionario digital) + tu informe PDF personalizado + créditos del Skills Developer.", badge: "Más Popular",
       creditsNote: "1 informe de desarrollo Basic = 10 créditos. Paquetes adicionales desde $6,99 por 10 créditos.",
       reportPreview: { label: "Tu informe incluye:", items: ["Puntuaciones en todos tus elementos medidos", "Qué significa cada puntuación para tu juego", "Tus 3 prioridades de desarrollo principales", "Informes Skills Developer recomendados"] },
       plans: [
@@ -799,7 +793,7 @@ export const translations = {
       p1: "Cada informe del Skills Developer es un PDF altamente personal de 5 páginas — construido sobre tus resultados, comparado con perfiles similares y enriquecido por IA sobre datos de 1.000+ perfiles.",
       p2: "Cada informe se dirige a un elemento específico — para mejorar una puntuación baja o potenciar una fortaleza. Cada informe contiene:",
       p2items: ["Ejercicio físico", "Ejercicio mental", "Insight experto", "Reflexión", "Storytelling", "Mantra", "Prompts de IA"],
-      p3: "Paquetes desde $6,99 por 10 créditos. Estándar incluye 60 créditos — Deluxe incluye 140.",
+      p3: "Cada informe cuesta 10 créditos (básico) o 15 créditos (extendido). Estándar incluye 60 créditos (4–6 informes) — Deluxe incluye 140 créditos (9–14 informes).",
       cta: "Explorar el Skills Developer →", cardNote: "Pasa el ratón para revelar tu patrón",
     },
     testimonials: {
@@ -842,7 +836,7 @@ export const translations = {
       p1: "La mayoría de los golfistas pasan años — y gastan miles en lecciones — sin abordar nunca la verdadera razón de su estancamiento. En 15 minutos, la evaluación te dice exactamente qué te frena.",
       p2: "Mejores puntuaciones. Más diversión. Más confianza en el primer tee. Todo empieza por entender tu juego mental.",
       btn: "Obtener Tu Evaluación de la Rutina Mental →",
-      trust: ["Acceso en 2 minutos", "Estándar $59 · Deluxe $129", "Más de 1.000 golfistas ya evaluados", "Garantía de devolución de 30 días"],
+      trust: ["Acceso en 2 minutos", "Estándar $59 · Deluxe $129", "Base de investigación: 1.000+ golfistas", "Garantía de devolución de 30 días"],
     },
     earlyAccess: {
       badge: "Lanzamiento 15 de mayo",
@@ -857,7 +851,8 @@ export const translations = {
       p1: "Actualmente llevamos a cabo un programa Beta cerrado con 100+ golfistas, ultimando cada detalle para el lanzamiento internacional el 15 de mayo.",
       p2: "Regístrate ahora para garantizar tu lugar y asegurar tu descuento exclusivo early-bird — disponible solo hasta el 1 de junio.",
       offer: "Precios Early Access: Estándar $49 (en vez de $59) · Deluxe $99 (en vez de $129) — más 20 créditos bonus en cada plan.",
-      fields: { name: "Nombre", namePlaceholder: "Tu nombre", handicap: "Hándicap de Golf", handicapPlaceholder: "ej. 14,2", email: "Correo electrónico", emailPlaceholder: "tu@ejemplo.es", submit: "Asegurar mi precio Early-Bird →" },
+      fields: { name: "Nombre", namePlaceholder: "Tu nombre", handicap: "Hándicap de Golf", handicapPlaceholder: "ej. 14,2", email: "Correo electrónico", emailPlaceholder: "tu@ejemplo.es", planLabel: "Me interesa", submit: "Asegurar mi precio Early-Bird →" },
+      socialProof: "Únete a los golfistas ya en la lista de early access",
       success: { h3: "¡Estás en la lista!", p: "Te enviaremos tu enlace early-bird exclusivo el 15 de mayo. Revisa tu bandeja de entrada para una confirmación." },
     },
     footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Profesional de la enseñanza? Recomienda la evaluación a tus alumnos →", socialLabel: "Síguenos" },
