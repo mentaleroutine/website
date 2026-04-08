@@ -250,7 +250,12 @@ function EarlyAccessSection() {
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mb-6" />
             <p className="text-green-200/70 leading-relaxed mb-4">{t.p1}</p>
-            <p className="text-green-200/50 text-sm leading-relaxed">{t.p2}</p>
+            <p className="text-green-200/50 text-sm leading-relaxed mb-6">{t.p2}</p>
+            {"offer" in t && (
+              <div className="rounded-xl bg-amber-400/[0.08] border border-amber-400/25 px-5 py-4">
+                <p className="text-sm text-amber-200/90 font-medium leading-relaxed">{(t as typeof t & { offer: string }).offer}</p>
+              </div>
+            )}
           </motion.div>
 
           {/* Right — form */}

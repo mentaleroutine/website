@@ -39,10 +39,17 @@ export async function POST(req: Request) {
       from: "MentalRoutine <contact@mentalroutine.com>",
       replyTo: "support@mentalroutine.com",
       to: email,
-      subject: "You're on the Early Access list!",
+      subject: "You're on the Early Access list — your early-bird price is locked in!",
       text: `Hi ${name},
 
-Thanks for signing up! We're currently in a closed Beta with 100+ golfers, fine-tuning everything for our international launch on May 15th. You'll be the first to know when we go live.
+Thanks for signing up! We're currently in a closed Beta with 100+ golfers, fine-tuning everything for our international launch on May 15th.
+
+Your exclusive Early Access pricing is locked in:
+
+  Standard: $49 (instead of $59) + 20 bonus credits
+  Deluxe:   $99 (instead of $129) + 20 bonus credits
+
+This offer is only available until June 1st. On May 15th, we'll send you a personal link to get started.
 
 In the meantime — keep enjoying the game.
 
