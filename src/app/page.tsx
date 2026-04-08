@@ -10,7 +10,7 @@ import { LangProvider, useLang } from "@/context/lang-context";
 import { translations } from "@/lib/translations";
 
 // ── Report Preview Modal ──────────────────────────────────────────────────────
-function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe"; onClose: () => void }) {
+function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe" | "training"; onClose: () => void }) {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
@@ -18,7 +18,8 @@ function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe"; on
     return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", onKey); };
   }, [onClose]);
 
-  const src = plan === "deluxe" ? "/reports/sample-deluxe.html" : "/reports/sample-standard.html";
+  const src = plan === "training" ? "/reports/sample-training-report.html" : plan === "deluxe" ? "/reports/sample-deluxe.html" : "/reports/sample-standard.html";
+  const label = plan === "training" ? "Training Report — Sample" : plan === "deluxe" ? "Deluxe — Sample Report" : "Standard — Sample Report";
 
   return (
     <motion.div
@@ -34,7 +35,7 @@ function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe"; on
         <div className="flex items-center justify-between px-5 py-3 bg-green-950 border-b border-white/10">
           <div className="flex items-center gap-3">
             <span className="text-xs font-bold tracking-widest uppercase text-amber-400">
-              {plan === "deluxe" ? "Deluxe" : "Standard"} — Sample Report
+              {label}
             </span>
           </div>
           <button onClick={onClose} className="w-8 h-8 rounded-lg flex items-center justify-center text-green-200/60 hover:text-white hover:bg-white/10 transition-colors">
@@ -311,7 +312,7 @@ function EarlyAccessSection() {
                     <p className="text-[11px] text-green-200/35 line-through">$129</p>
                   </div>
                 </div>
-                <p className="text-center text-xs text-amber-300/70">+ 20 bonus credits</p>
+                <p className="text-center text-xs text-amber-300/70">+ 2 extra training reports</p>
               </div>
             )}
           </motion.div>
@@ -383,7 +384,7 @@ function EarlyAccessSection() {
 function PageContent() {
   const { lang } = useLang();
   const T = translations[lang];
-  const [previewPlan, setPreviewPlan] = useState<"standard" | "deluxe" | null>(null);
+  const [previewPlan, setPreviewPlan] = useState<"standard" | "deluxe" | "training" | null>(null);
 
   const firstColumn  = T.testimonials.items.slice(0, 3);
   const secondColumn = T.testimonials.items.slice(3, 6);
@@ -720,7 +721,9 @@ function PageContent() {
           {"comparisonRows" in T.pricing && (
             <motion.div className="mt-12 max-w-2xl mx-auto" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}>
               <h3 className="text-center font-serif text-2xl font-semibold text-white mb-6">{(T.pricing as any).comparisonTitle}</h3>
-              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.04] overflow-hidden">
+
+              {/* Desktop table */}
+              <div className="hidden sm:block rounded-2xl border border-white/[0.08] bg-white/[0.04] overflow-hidden">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-white/[0.08]">
@@ -739,6 +742,25 @@ function PageContent() {
                     ))}
                   </tbody>
                 </table>
+              </div>
+
+              {/* Mobile cards */}
+              <div className="sm:hidden space-y-3">
+                {((T.pricing as any).comparisonRows as ReadonlyArray<{label: string; standard: string; deluxe: string}>).map((row, i) => (
+                  <div key={i} className="rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3">
+                    <p className="text-xs text-green-200/70 mb-2">{row.label}</p>
+                    <div className="flex gap-3">
+                      <div className="flex-1 text-center rounded-lg bg-white/[0.04] py-1.5">
+                        <p className="text-[10px] text-green-200/40 mb-0.5">Standard</p>
+                        <p className="text-sm text-white/80 font-medium">{row.standard}</p>
+                      </div>
+                      <div className="flex-1 text-center rounded-lg bg-amber-400/[0.06] border border-amber-400/15 py-1.5">
+                        <p className="text-[10px] text-amber-300/50 mb-0.5">Deluxe</p>
+                        <p className="text-sm text-white/80 font-medium">{row.deluxe}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </motion.div>
           )}
@@ -766,6 +788,19 @@ function PageContent() {
               <p className="text-xs text-amber-400/60 mt-2">
                 — {(T.pricing as typeof T.pricing & { pricingQuote: { text: string; name: string; role: string } }).pricingQuote.name}, {(T.pricing as typeof T.pricing & { pricingQuote: { text: string; name: string; role: string } }).pricingQuote.role}
               </p>
+            </motion.div>
+          )}
+
+          {/* ── QUIZ CTA — softer alternative after pricing ── */}
+          {"quizCta" in T.hero && (
+            <motion.div className="mt-10 text-center" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}>
+              <div className="inline-flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-6 py-4">
+                <svg viewBox="0 0 20 20" fill="none" stroke="#c4a043" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 shrink-0"><path d="M10 18.5a8.5 8.5 0 1 0 0-17 8.5 8.5 0 0 0 0 17z"/><path d="M7.2 7.2a2.8 2.8 0 0 1 5.1 1.4c0 1.9-2.8 2.5-2.8 2.5"/><circle cx="10" cy="14.5" r="0.5" fill="#c4a043"/></svg>
+                <div className="text-left">
+                  <p className="text-sm text-green-200/70">{"quizLine" in T.cta ? (T.cta as any).quizLine : "Not sure yet? Try the free quiz first."}</p>
+                  <a href="/quiz.html" className="text-xs text-amber-400 hover:text-amber-300 font-semibold transition-colors">{(T.hero as any).quizCta}</a>
+                </div>
+              </div>
             </motion.div>
           )}
         </div>
@@ -816,15 +851,15 @@ function PageContent() {
               </a>
             </motion.div>
 
-            {/* Skills Developer report mockup */}
-            <motion.div className="rounded-3xl overflow-hidden border border-green-900/15 shadow-xl shadow-green-900/10" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+            {/* Training Report preview card */}
+            <motion.div className="rounded-3xl overflow-hidden border border-green-900/15 shadow-xl shadow-green-900/10 cursor-pointer group" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} onClick={() => setPreviewPlan("training")}>
               {/* Report header */}
               <div className="bg-green-950 px-6 pt-6 pb-5">
                 <div className="flex items-start justify-between gap-3 mb-4">
                   <div>
-                    <p className="text-[9px] font-bold tracking-widest uppercase text-amber-400/60 mb-1">Skills Developer · Extended Report</p>
+                    <p className="text-[9px] font-bold tracking-widest uppercase text-amber-400/60 mb-1">Training Report · 5 pages</p>
                     <p className="text-lg font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Conviction Under Pressure</p>
-                    <p className="text-xs text-green-200/40 mt-0.5">Personalised for your profile · 15 credits</p>
+                    <p className="text-xs text-green-200/40 mt-0.5">Personalised for your profile</p>
                   </div>
                   <div className="w-9 h-9 rounded-xl bg-amber-400/15 border border-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#c4a043" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -861,6 +896,14 @@ function PageContent() {
                     </div>
                   </div>
                 ))}
+              </div>
+              {/* Preview button */}
+              <div className="bg-[#faf8f3] px-3.5 pb-3.5">
+                {"previewBtn" in T.skillBuilder && (
+                  <button className="w-full text-center py-2.5 rounded-lg text-xs font-medium text-amber-700 hover:text-amber-900 border border-amber-500/20 hover:border-amber-500/40 bg-amber-400/[0.06] hover:bg-amber-400/[0.12] transition-all group-hover:border-amber-500/40 group-hover:bg-amber-400/[0.12]">
+                    {(T.skillBuilder as any).previewBtn}
+                  </button>
+                )}
               </div>
             </motion.div>
           </div>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Report — Sample: Conviction Under Pressure</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #faf8f3; color: #1c2a1f; line-height: 1.6; }
+
+  /* ── Cover ── */
+  .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(160deg, #162b1e 0%, #1a3625 50%, #0d1f15 100%); color: #f6f1e7; padding: 3rem 2rem; text-align: center; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; border-radius: 50%; background: rgba(196,160,67,0.08); filter: blur(80px); }
+  .cover-logo { width: 64px; height: 64px; margin-bottom: 1.5rem; }
+  .cover h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 600; line-height: 1.2; margin-bottom: 0.5rem; }
+  .cover h1 em { color: #fbbf24; font-style: italic; }
+  .cover .subtitle { font-size: 0.85rem; color: rgba(246,241,231,0.5); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .cover .report-type { font-size: 0.7rem; color: rgba(251,191,36,0.7); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2rem; }
+  .cover .meta { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; font-size: 0.8rem; color: rgba(246,241,231,0.4); }
+  .cover .meta strong { color: #fbbf24; }
+  .cover .badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25); border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.7rem; color: rgba(251,191,36,0.8); margin-top: 2rem; }
+  .cover .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fbbf24; }
+
+  /* Score indicator */
+  .cover-score { margin: 2rem 0 1rem; }
+  .cover-score-bar { width: 200px; height: 8px; border-radius: 999px; background: rgba(255,255,255,0.1); overflow: hidden; margin: 0 auto 0.5rem; }
+  .cover-score-fill { height: 100%; width: 38%; border-radius: 999px; background: linear-gradient(90deg, #f87171, #ef4444); }
+  .cover-score-label { font-size: 1.2rem; font-weight: 700; color: #f87171; }
+  .cover-score-sub { font-size: 0.72rem; color: rgba(246,241,231,0.35); margin-top: 0.25rem; }
+
+  /* ── Pages ── */
+  .page { max-width: 700px; margin: 0 auto; padding: 3rem 2rem; border-bottom: 1px solid rgba(28,42,31,0.08); }
+  .page:last-child { border-bottom: none; }
+  .page-num { font-size: 0.65rem; color: rgba(28,42,31,0.25); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 2rem; }
+
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: #162b1e; margin-bottom: 1rem; line-height: 1.2; }
+  h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: #162b1e; margin-bottom: 0.75rem; }
+  p { font-size: 0.88rem; color: #57665a; margin-bottom: 1rem; }
+
+  /* ── Section cards ── */
+  .section-card { background: white; border: 1px solid rgba(28,42,31,0.07); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+  .section-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: #162b1e; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem; }
+
+  /* Coloured dots */
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-amber { background: #f59e0b; }
+  .dot-sky { background: #0ea5e9; }
+  .dot-green { background: #16a34a; }
+  .dot-rose { background: #f43f5e; }
+  .dot-violet { background: #8b5cf6; }
+  .dot-purple { background: #a855f7; }
+  .dot-blue { background: #3b82f6; }
+
+  /* Tag chips */
+  .tag { display: inline-flex; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 999px; }
+  .tag-physical { background: #fef3c7; color: #b45309; }
+  .tag-mental { background: #e0f2fe; color: #0369a1; }
+
+  /* Exercise detail */
+  .exercise-detail { background: #f0fdf4; border: 1px solid rgba(22,163,74,0.1); border-radius: 8px; padding: 1rem; margin: 0.75rem 0; }
+  .exercise-detail h5 { font-size: 0.78rem; font-weight: 700; color: #162b1e; margin-bottom: 0.4rem; }
+  .exercise-detail p { font-size: 0.82rem; color: #57665a; margin-bottom: 0.5rem; }
+  .exercise-detail .meta-line { font-size: 0.72rem; color: #9ca3af; }
+
+  /* Insight box */
+  .insight-box { background: rgba(251,191,36,0.08); border-left: 3px solid #fbbf24; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 0.75rem 0; }
+  .insight-box p { font-size: 0.82rem; color: #92400e; margin-bottom: 0; }
+
+  /* Quote/mantra */
+  .mantra { text-align: center; padding: 2rem 1.5rem; background: linear-gradient(135deg, #162b1e, #1a3625); border-radius: 12px; margin: 1rem 0; }
+  .mantra p { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: #fbbf24; font-style: italic; margin-bottom: 0.5rem; }
+  .mantra .sub { font-size: 0.72rem; color: rgba(246,241,231,0.4); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* Reflection questions */
+  .reflection-list { list-style: none; }
+  .reflection-list li { font-size: 0.85rem; color: #57665a; padding: 0.5rem 0; border-bottom: 1px solid rgba(28,42,31,0.06); display: flex; align-items: flex-start; gap: 0.5rem; }
+  .reflection-list li:last-child { border-bottom: none; }
+  .reflection-list li::before { content: '→'; color: #f59e0b; font-weight: 700; flex-shrink: 0; }
+
+  /* Benchmarked */
+  .benchmark { background: #f8fafc; border: 1px solid rgba(28,42,31,0.06); border-radius: 12px; padding: 1.25rem; margin: 1rem 0; }
+  .benchmark-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+  .benchmark-header h5 { font-size: 0.78rem; font-weight: 700; color: #162b1e; }
+  .benchmark-header .hcp-range { font-size: 0.7rem; color: #9ca3af; }
+  .bench-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+  .bench-label { font-size: 0.75rem; color: #57665a; width: 80px; flex-shrink: 0; }
+  .bench-bar { flex: 1; height: 6px; border-radius: 999px; background: rgba(28,42,31,0.06); overflow: hidden; }
+  .bench-fill { height: 100%; border-radius: 999px; }
+  .bench-fill.you { background: #f87171; }
+  .bench-fill.avg { background: #a3e635; opacity: 0.6; }
+  .bench-num { font-size: 0.72rem; font-weight: 600; width: 30px; text-align: right; flex-shrink: 0; }
+
+  /* ── Blurred section ── */
+  .blurred { position: relative; }
+  .blurred .blur-content { filter: blur(6px); user-select: none; pointer-events: none; }
+  .blurred .blur-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(250,248,243,0.7); backdrop-filter: blur(2px); border-radius: 12px; }
+  .blur-overlay .lock-icon { width: 48px; height: 48px; border-radius: 50%; background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
+  .blur-overlay p { font-size: 0.82rem; font-weight: 600; color: #162b1e; }
+  .blur-overlay .sub { font-size: 0.72rem; color: #57665a; margin-top: 0.25rem; font-weight: 400; }
+
+  /* ── Watermark ── */
+  .watermark { text-align: center; padding: 2rem; font-size: 0.7rem; color: rgba(28,42,31,0.2); letter-spacing: 0.1em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ COVER ═══════════ -->
+<div class="cover">
+  <img src="/logoMRpng.png" alt="MentalRoutine" class="cover-logo">
+  <div class="subtitle">Training Report</div>
+  <h1>Conviction<br><em>Under Pressure</em></h1>
+  <div class="report-type">Personal Training Report · 5 Pages</div>
+
+  <div class="cover-score">
+    <div class="cover-score-bar"><div class="cover-score-fill"></div></div>
+    <div class="cover-score-label">3.8 / 10</div>
+    <div class="cover-score-sub">Your current score · Top priority</div>
+  </div>
+
+  <div class="meta">
+    <span>Prepared for: <strong>Alex Johnson</strong></span>
+    <span>Handicap: <strong>14.2</strong> · Assessment date: March 2026</span>
+    <span>Benchmarked against golfers hcp 12–16</span>
+  </div>
+  <div class="badge">Sample Training Report — actual reports are personalised to your profile</div>
+</div>
+
+<!-- ═══════════ PAGE 1: WHY THIS MATTERS ═══════════ -->
+<div class="page">
+  <div class="page-num">Page 1 of 5 · Conviction Under Pressure</div>
+
+  <h2>Why Conviction Matters</h2>
+  <p>Conviction is the third step of the Mental Routine — the moment between deciding what you want to do and actually doing it. It's where "I think I can" becomes "I will." Without genuine conviction, the body hesitates. Doubt creates tension, and tension costs you distance, accuracy, and consistency.</p>
+
+  <p>Your assessment showed a Conviction score of <strong>3.8 / 10</strong>. This places you in the bottom 25% of golfers in your handicap range (12–16). The pattern is clear: your conviction drops most sharply when the stakes rise — first tee, competitive rounds, or after consecutive bad holes.</p>
+
+  <div class="insight-box">
+    <p><strong>Key insight:</strong> Your Conviction score under neutral conditions is 6.2 — above average. But under perceived pressure, it drops to 3.1. The gap of 3.1 points is the largest pressure-related decline in your entire profile. This is not a skill deficit. It is a pattern — and patterns are trainable.</p>
+  </div>
+
+  <div class="benchmark">
+    <div class="benchmark-header">
+      <h5>Your Conviction vs. Peer Group</h5>
+      <span class="hcp-range">Golfers hcp 12–16 · n = 247</span>
+    </div>
+    <div class="bench-row">
+      <span class="bench-label">You</span>
+      <div class="bench-bar"><div class="bench-fill you" style="width:38%"></div></div>
+      <span class="bench-num" style="color:#f87171;">3.8</span>
+    </div>
+    <div class="bench-row">
+      <span class="bench-label">Peer avg.</span>
+      <div class="bench-bar"><div class="bench-fill avg" style="width:62%"></div></div>
+      <span class="bench-num" style="color:#65a30d;">6.2</span>
+    </div>
+    <div class="bench-row">
+      <span class="bench-label">Top 10%</span>
+      <div class="bench-bar"><div class="bench-fill avg" style="width:84%"></div></div>
+      <span class="bench-num" style="color:#65a30d;">8.4</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 2: PHYSICAL EXERCISE ═══════════ -->
+<div class="page">
+  <div class="page-num">Page 2 of 5 · Physical Exercise</div>
+
+  <div class="section-card">
+    <h4><span class="dot dot-amber"></span> Physical Exercise <span class="tag tag-physical">Physical</span></h4>
+    <p>This exercise trains your body to commit fully — even when your mind isn't sure. Conviction starts in the body: your posture, your grip pressure, your tempo. When the body commits, the mind follows.</p>
+
+    <div class="exercise-detail">
+      <h5>The Commitment Drill</h5>
+      <p>On the driving range, hit 20 balls with this protocol:</p>
+      <p>1. Pick a specific target (not "somewhere over there").<br>
+      2. Go through your full pre-shot routine.<br>
+      3. Before you swing, say out loud (or to yourself): <em>"I'm hitting this to [target]. I commit."</em><br>
+      4. Swing without hesitation. No second thoughts, no mid-swing corrections.<br>
+      5. After the shot: evaluate honestly. Did you commit? Score yourself 1–10.</p>
+      <p>The goal is not perfection — it's commitment. A fully committed bad shot teaches your nervous system more than a hesitant good one.</p>
+      <div class="meta-line">Duration: 2 × 10 minutes · Location: driving range · Frequency: twice per week</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h4><span class="dot dot-sky"></span> Mental Exercise <span class="tag tag-mental">Mental</span></h4>
+    <p>Visualisation is the strongest tool for building conviction off the course. This exercise trains your brain to rehearse commitment before you need it.</p>
+
+    <div class="exercise-detail">
+      <h5>Pressure Visualisation Routine</h5>
+      <p>Sit quietly. Close your eyes. Visualise yourself on the first tee of your most pressured round — a club championship, a money match, or a round where you felt the eyes on you.</p>
+      <p>See the target. Feel the club. Hear the silence. Now rehearse the commitment: feel your body settle into position, feel the grip firm but not tight, and swing with full intention. Watch the ball fly exactly as planned.</p>
+      <p>Repeat for 3 different high-pressure scenarios. Each visualisation should last 60–90 seconds.</p>
+      <div class="meta-line">Duration: 10 minutes · Location: at home, quiet space · Frequency: 3 × per week</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 3: EXPERT INSIGHT + STORYTELLING ═══════════ -->
+<div class="page">
+  <div class="page-num">Page 3 of 5 · Expert Insight & Storytelling</div>
+
+  <div class="section-card">
+    <h4><span class="dot dot-green"></span> Expert Insight</h4>
+    <h3>Why Conviction Breaks Under Pressure</h3>
+    <p>Pressure doesn't destroy your swing. It destroys your conviction — and then your swing follows. Here's what happens neurologically:</p>
+    <p>Under stress, the prefrontal cortex (rational decision-making) becomes overactive while the motor cortex (fluid execution) is suppressed. You start <em>thinking</em> about the swing instead of <em>doing</em> the swing. This is the "paralysis by analysis" that coaches refer to — but it starts earlier than most golfers realise. It starts at the moment you fail to commit.</p>
+    <p>The antidote is not "try harder" or "just relax." It's building a reliable conviction trigger — a specific physical and mental cue that tells your nervous system: "The decision is made. Execute." Your pre-shot routine should end with this trigger every single time, regardless of the stakes.</p>
+
+    <div class="insight-box">
+      <p><strong>From the research:</strong> Golfers who use a consistent conviction trigger (a specific word, breath, or physical action before every shot) show 40% less performance decline under pressure than golfers who rely on "feeling ready." The trigger doesn't have to be complex — it just has to be consistent.</p>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h4><span class="dot dot-violet"></span> Storytelling</h4>
+    <h3>When Everything Said Miss — And He Hit It Anyway</h3>
+    <p>The 2019 Open Championship. Final round. Shane Lowry stands on the 15th tee with a 4-shot lead, rain pouring, the crowd electric. He later said: <em>"Standing on that tee, every voice in my head was telling me not to mess it up. But I'd practised this moment. I took my stance, I said my word, and I swung."</em></p>
+    <p>His "word" was a commitment trigger — something he'd rehearsed thousands of times on the range. In the moment of highest pressure, he didn't rely on confidence. He relied on conviction: a trained response that fired automatically because he'd built it into his routine.</p>
+    <p>You don't need a Claret Jug on the line. But the pattern is the same: the golfer who commits under pressure isn't braver — they're better prepared. And preparation is exactly what this training report gives you.</p>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 4: REFLECTION + MANTRA ═══════════ -->
+<div class="page">
+  <div class="page-num">Page 4 of 5 · Reflection & Mantra</div>
+
+  <div class="section-card">
+    <h4><span class="dot dot-rose"></span> Reflection</h4>
+    <p>Answer these questions honestly — in your head, on paper, or using the AI prompts on the next page. There are no right answers. The goal is awareness.</p>
+    <ul class="reflection-list">
+      <li>Think of your last round. On which shot did you feel the most hesitation? What was going through your mind?</li>
+      <li>When you stand over a shot and feel doubt — where in your body do you feel it first? Hands? Stomach? Chest?</li>
+      <li>Do you have a specific word, breath, or action that signals "I'm ready" before every shot? Or does it change?</li>
+      <li>After a round where you played with full conviction — even if the results weren't perfect — how did you feel walking off 18?</li>
+      <li>What would change in your game if you could commit to every shot with 8/10 conviction instead of your current average?</li>
+    </ul>
+  </div>
+
+  <div class="mantra">
+    <p>"I commit. I trust. I swing."</p>
+    <div class="sub">Your conviction mantra — repeat before every shot during practice</div>
+  </div>
+
+  <div class="section-card">
+    <h4><span class="dot dot-purple"></span> How to Use Your Mantra</h4>
+    <p>A mantra is not a magic spell — it's a pattern interrupt. When doubt creeps in, the mantra replaces the noise with a single, trained signal. Use it as the final step of your pre-shot routine:</p>
+    <p>1. Complete your read and club selection (Focus).<br>
+    2. Take your stance and settle (Concentration).<br>
+    3. Say the mantra — silently or aloud — once (Conviction).<br>
+    4. Swing (Performance).</p>
+    <p>The mantra works because it eliminates the gap between deciding and acting. Hesitation lives in that gap. Fill it with commitment.</p>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 5: AI PROMPTS + BENCHMARK (BLURRED) ═══════════ -->
+<div class="page">
+  <div class="page-num">Page 5 of 5 · AI Self-Coaching & Benchmark</div>
+
+  <div class="section-card">
+    <h4><span class="dot dot-blue"></span> AI Self-Coaching Prompts</h4>
+    <p>Use these prompts with any AI assistant (ChatGPT, Claude, etc.) to explore your conviction pattern further. Copy them as-is or adapt to your situation.</p>
+
+    <div class="blurred">
+      <div class="blur-content">
+        <div class="exercise-detail">
+          <p><strong>Prompt 1:</strong> "I'm a handicap 14 golfer. My conviction score under pressure dropped from 6.2 to 3.1. Help me design a 4-week practice plan that specifically targets conviction in high-pressure moments. I practise twice a week at the range."</p>
+          <p><strong>Prompt 2:</strong> "I notice I hesitate most on the first tee and on approach shots over water. My conviction mantra is 'I commit, I trust, I swing.' Help me design a mental rehearsal routine I can do the night before a round."</p>
+          <p><strong>Prompt 3:</strong> "Act as a sports psychologist. My conviction score is 3.8/10 under pressure. Ask me diagnostic questions to help identify the root cause — then give me 3 specific things to try this week."</p>
+        </div>
+      </div>
+      <div class="blur-overlay">
+        <div class="lock-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8952a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <p>Available in your personalised report</p>
+        <p class="sub">Purchase the assessment to unlock your AI coaching prompts</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h4>Extended Benchmark</h4>
+    <div class="blurred">
+      <div class="blur-content">
+        <div class="benchmark">
+          <div class="bench-row">
+            <span class="bench-label">Conviction</span>
+            <div class="bench-bar"><div class="bench-fill you" style="width:38%"></div></div>
+            <span class="bench-num">3.8</span>
+          </div>
+          <div class="bench-row">
+            <span class="bench-label">Under stress</span>
+            <div class="bench-bar"><div class="bench-fill you" style="width:31%"></div></div>
+            <span class="bench-num">3.1</span>
+          </div>
+          <div class="bench-row">
+            <span class="bench-label">Neutral</span>
+            <div class="bench-bar"><div class="bench-fill avg" style="width:62%"></div></div>
+            <span class="bench-num">6.2</span>
+          </div>
+        </div>
+      </div>
+      <div class="blur-overlay">
+        <div class="lock-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8952a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <p>Full benchmark in your report</p>
+        <p class="sub">See how you compare across all 8 steps and 6 dimensions</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ WATERMARK ═══════════ -->
+<div class="watermark">
+  Sample Training Report · MentalRoutine.com · Actual reports are personalised to your assessment results
+</div>
+
+</body>
+</html>

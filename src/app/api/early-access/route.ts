@@ -49,8 +49,8 @@ Thanks for signing up! We're currently in a closed Beta with 100+ golfers, fine-
 
 Your exclusive Early Access pricing is locked in:
 
-  Standard: $49 (instead of $59) + 20 bonus credits
-  Deluxe:   $99 (instead of $129) + 20 bonus credits
+  Standard: $49 (instead of $59) + 2 extra training reports
+  Deluxe:   $99 (instead of $129) + 2 extra training reports
 
 This offer is only available until June 1st. On May 15th, we'll send you a personal link to get started.
 
