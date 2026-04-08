@@ -252,6 +252,12 @@ function EarlyAccessSection() {
   const [submitted, setSubmitted] = React.useState(false);
   const [sending, setSending] = React.useState(false);
   const [error, setError] = React.useState(false);
+  const [spots, setSpots] = React.useState<{ spots: number; total: number } | null>(null);
+
+  // Fetch live spots count on mount
+  useEffect(() => {
+    fetch("/api/spots").then(r => r.json()).then(setSpots).catch(() => {});
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -265,6 +271,8 @@ function EarlyAccessSection() {
       });
       if (!res.ok) throw new Error();
       setSubmitted(true);
+      // Refresh spots count after successful signup
+      fetch("/api/spots").then(r => r.json()).then(setSpots).catch(() => {});
     } catch {
       setError(true);
     } finally {
@@ -320,10 +328,11 @@ function EarlyAccessSection() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="rounded-2xl p-8 bg-white/[0.06] border border-white/10 space-y-5">
-                {"spotsLeft" in t && (
-                  <div className="flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-amber-400/[0.08] border border-amber-400/20">
-                    <span className="text-lg font-bold text-amber-400" style={{ fontFamily: "'Cormorant Garamond', serif" }}>47</span>
-                    <span className="text-[11px] text-amber-300/70">{(t as typeof t & { spotsLeft: string }).spotsLeft}</span>
+                {spots && spots.spots < spots.total && (
+                  <div className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-amber-400/[0.08] border border-amber-400/20">
+                    <span className="text-xl font-bold text-amber-400" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{spots.spots}</span>
+                    <span className="text-[11px] text-green-200/40">/ {spots.total}</span>
+                    <span className="text-[11px] text-amber-300/70 ml-1">{"spotsLeft" in t ? (t as typeof t & { spotsLeft: string }).spotsLeft : "spots left"}</span>
                   </div>
                 )}
                 {"socialProof" in t && (
