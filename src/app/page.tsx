@@ -736,8 +736,8 @@ function PageContent() {
                   <thead>
                     <tr className="border-b border-white/[0.08]">
                       <th className="text-left py-3 px-4 text-green-200/50 font-normal"></th>
-                      <th className="py-3 px-4 text-amber-400 font-semibold text-center">Standard</th>
-                      <th className="py-3 px-4 text-amber-400 font-semibold text-center">Deluxe</th>
+                      <th className="py-3 px-4 text-amber-400 font-semibold text-center">{T.pricing.plans[0].plan}</th>
+                      <th className="py-3 px-4 text-amber-400 font-semibold text-center">{T.pricing.plans[1].plan}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -759,11 +759,11 @@ function PageContent() {
                     <p className="text-xs text-green-200/70 mb-2">{row.label}</p>
                     <div className="flex gap-3">
                       <div className="flex-1 text-center rounded-lg bg-white/[0.04] py-1.5">
-                        <p className="text-[10px] text-green-200/40 mb-0.5">Standard</p>
+                        <p className="text-[10px] text-green-200/40 mb-0.5">{T.pricing.plans[0].plan}</p>
                         <p className="text-sm text-white/80 font-medium">{row.standard}</p>
                       </div>
                       <div className="flex-1 text-center rounded-lg bg-amber-400/[0.06] border border-amber-400/15 py-1.5">
-                        <p className="text-[10px] text-amber-300/50 mb-0.5">Deluxe</p>
+                        <p className="text-[10px] text-amber-300/50 mb-0.5">{T.pricing.plans[1].plan}</p>
                         <p className="text-sm text-white/80 font-medium">{row.deluxe}</p>
                       </div>
                     </div>
