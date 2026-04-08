@@ -272,7 +272,7 @@ function EarlyAccessSection() {
       const res = await fetch("/api/early-access", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, lang }),
       });
       if (!res.ok) throw new Error();
       setSubmitted(true);

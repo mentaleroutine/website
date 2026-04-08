@@ -4,15 +4,122 @@ import { NextResponse } from "next/server";
 const resend = new Resend(process.env.RESEND_API_KEY);
 const AUDIENCE_ID = "8e40ab7a-eab7-470d-943f-03a312e98ebc";
 
+// Early access pricing — keep in sync with EA_PRICE_STD/DLX in page.tsx
+const EA_STD = 49;
+const EA_DLX = 99;
+const REG_STD = 59;
+const REG_DLX = 129;
+
+type Lang = "en" | "nl" | "de" | "fr" | "es";
+
+function confirmationEmail(name: string, lang: Lang) {
+  const emails: Record<Lang, { subject: string; body: string }> = {
+    en: {
+      subject: "You're on the Early Access list — your early-bird price is locked in!",
+      body: `Hi ${name},
+
+Thanks for signing up! We're currently in a closed Beta with 100+ golfers, fine-tuning everything for our international pre-launch on May 15th.
+
+Your exclusive Early Access pricing is locked in:
+
+  Standard: $${EA_STD} (instead of $${REG_STD}) + 2 extra training reports
+  Deluxe:   $${EA_DLX} (instead of $${REG_DLX}) + 2 extra training reports
+
+This offer is only available until June 1st. On May 15th, we'll send you a personal link to get started. Official launch and regular pricing from June 1st.
+
+In the meantime — keep enjoying the game.
+
+The MentalRoutine Team
+www.mentalroutine.com`,
+    },
+    nl: {
+      subject: "Je staat op de Early Access lijst — je early-bird prijs is vastgelegd!",
+      body: `Hoi ${name},
+
+Bedankt voor je aanmelding! We zitten momenteel in een gesloten Beta met 100+ golfers, en finetunen alles voor onze internationale pre-launch op 15 mei.
+
+Je exclusieve Early Access prijs is vastgelegd:
+
+  Standaard: $${EA_STD} (i.p.v. $${REG_STD}) + 2 extra trainingsrapporten
+  Deluxe:    $${EA_DLX} (i.p.v. $${REG_DLX}) + 2 extra trainingsrapporten
+
+Dit aanbod is alleen beschikbaar tot 1 juni. Op 15 mei sturen we je een persoonlijke link om te starten. Officiële lancering en reguliere prijzen vanaf 1 juni.
+
+In de tussentijd — veel plezier op de baan.
+
+Het MentalRoutine Team
+www.mentalroutine.com`,
+    },
+    de: {
+      subject: "Du stehst auf der Early Access Liste — dein Frühbucher-Preis ist gesichert!",
+      body: `Hallo ${name},
+
+Danke für deine Anmeldung! Wir befinden uns derzeit in einer geschlossenen Beta mit 100+ Golfern und optimieren alles für unseren internationalen Pre-Launch am 15. Mai.
+
+Dein exklusiver Early Access Preis ist gesichert:
+
+  Standard: $${EA_STD} (statt $${REG_STD}) + 2 extra Trainingsberichte
+  Deluxe:   $${EA_DLX} (statt $${REG_DLX}) + 2 extra Trainingsberichte
+
+Dieses Angebot gilt nur bis zum 1. Juni. Am 15. Mai senden wir dir einen persönlichen Link zum Starten. Offizieller Launch und reguläre Preise ab 1. Juni.
+
+In der Zwischenzeit — viel Spaß auf dem Platz.
+
+Das MentalRoutine Team
+www.mentalroutine.com`,
+    },
+    fr: {
+      subject: "Vous êtes sur la liste Early Access — votre tarif early-bird est verrouillé !",
+      body: `Bonjour ${name},
+
+Merci pour votre inscription ! Nous sommes actuellement en Bêta fermée avec 100+ golfeurs, peaufinant tout pour notre pré-lancement international le 15 mai.
+
+Votre tarif Early Access exclusif est verrouillé :
+
+  Standard : $${EA_STD} (au lieu de $${REG_STD}) + 2 rapports d'entraînement supplémentaires
+  Deluxe :   $${EA_DLX} (au lieu de $${REG_DLX}) + 2 rapports d'entraînement supplémentaires
+
+Cette offre n'est disponible que jusqu'au 1er juin. Le 15 mai, nous vous enverrons un lien personnel pour commencer. Lancement officiel et tarifs réguliers à partir du 1er juin.
+
+En attendant — profitez du parcours.
+
+L'équipe MentalRoutine
+www.mentalroutine.com`,
+    },
+    es: {
+      subject: "¡Estás en la lista Early Access — tu precio early-bird está asegurado!",
+      body: `Hola ${name},
+
+¡Gracias por registrarte! Actualmente estamos en una Beta cerrada con 100+ golfistas, perfeccionando todo para nuestro pre-lanzamiento internacional el 15 de mayo.
+
+Tu precio exclusivo de Early Access está asegurado:
+
+  Estándar: $${EA_STD} (en lugar de $${REG_STD}) + 2 informes de entrenamiento adicionales
+  Deluxe:   $${EA_DLX} (en lugar de $${REG_DLX}) + 2 informes de entrenamiento adicionales
+
+Esta oferta solo está disponible hasta el 1 de junio. El 15 de mayo te enviaremos un enlace personal para comenzar. Lanzamiento oficial y precios regulares a partir del 1 de junio.
+
+Mientras tanto — disfruta del campo.
+
+El equipo MentalRoutine
+www.mentalroutine.com`,
+    },
+  };
+
+  return emails[lang] ?? emails.en;
+}
+
 export async function POST(req: Request) {
   try {
-    const { name, email, handicap, plan } = await req.json();
+    const { name, email, handicap, plan, lang } = await req.json();
 
     if (!name || !email) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const planLabel = plan === "standard" ? "Standard ($49)" : "Deluxe ($99)";
+    const planLabel = plan === "standard" ? `Standard ($${EA_STD})` : `Deluxe ($${EA_DLX})`;
+    const emailLang: Lang = ["en", "nl", "de", "fr", "es"].includes(lang) ? lang : "en";
+    const confirmation = confirmationEmail(name, emailLang);
 
     // Add contact to Resend Audience
     await resend.contacts.create({
@@ -32,6 +139,7 @@ export async function POST(req: Request) {
           `Name: ${name}`,
           `Email: ${email}`,
           `Plan preference: ${planLabel}`,
+          `Language: ${emailLang}`,
           handicap ? `Golf Handicap: ${handicap}` : null,
         ]
           .filter(Boolean)
@@ -41,22 +149,8 @@ export async function POST(req: Request) {
         from: "MentalRoutine <contact@mentalroutine.com>",
         replyTo: "support@mentalroutine.com",
         to: email,
-        subject: "You're on the Early Access list — your early-bird price is locked in!",
-        text: `Hi ${name},
-
-Thanks for signing up! We're currently in a closed Beta with 100+ golfers, fine-tuning everything for our international launch on May 15th.
-
-Your exclusive Early Access pricing is locked in:
-
-  Standard: $49 (instead of $59) + 2 extra training reports
-  Deluxe:   $99 (instead of $129) + 2 extra training reports
-
-This offer is only available until June 1st. On May 15th, we'll send you a personal link to get started.
-
-In the meantime — keep enjoying the game.
-
-The MentalRoutine Team
-www.mentalroutine.com`,
+        subject: confirmation.subject,
+        text: confirmation.body,
       }),
     ]);
 
