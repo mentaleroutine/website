@@ -994,7 +994,7 @@ function PageContent() {
               </a>
 
               {"teachingPro" in T.footer && T.footer.teachingPro && (
-                <a href="#contact" className="inline-flex items-center gap-2 text-xs text-green-200/35 hover:text-amber-300 transition-colors mt-4 group">
+                <a href="/pro-program" className="inline-flex items-center gap-2 text-xs text-green-200/35 hover:text-amber-300 transition-colors mt-4 group">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5"/></svg>
                   <span>{T.footer.teachingPro}</span>
                 </a>
