@@ -95,10 +95,10 @@ public/
 | 5 | **Process** | `#steps` | `#f6f1e7` | 3 stappen: Assessment → Rapport → Actie, privacy note |
 | 6 | **Dimensions** | — | `#faf8f3` | 6 psychologische dimensies, Arnold Palmer quote |
 | 7 | **Why It Works** | — | `green-950` | 4 kolommen met iconen |
-| 8 | **Pricing** | `#pricing` | `green-950` | 2 plan-kaarten, report preview, guarantee, testimonial quote, credits note |
+| 8 | **Pricing** | `#pricing` | `green-950` | 2 plan-kaarten, vergelijkingstabel, report preview, guarantee, testimonial quote, credits note |
 | 9 | **Training Reports** | — | `#f6f1e7` | (voorheen Skills Developer) chips, mockup report card, report teller |
 | 10 | **Testimonials** | `#testimonials` | `#faf8f3` | 3 auto-scroll kolommen (9 testimonials), pull quotes |
-| 11 | **FAQ** | `#faq` | `#faf8f3` | Accordion via FaqsSection component |
+| 11 | **FAQ** | `#faq` | `#faf8f3` | 9 vragen, accordion via FaqsSection component |
 | 12 | **Early Access** | `#early-access` | `green-950` | Signup formulier, spots counter, pricing cards |
 | 13 | **Contact** | `#contact` | `#f6f1e7` | Contactformulier |
 | 14 | **Footer** | — | `#0d1f15` | Logo, menu, social links, teaching pro link |
@@ -112,7 +112,9 @@ public/
 
 **Extra trainingsrapporten**: vanaf $6,99 in de shop
 
-**Let op**: De term "Skills Developer" is in alle user-facing tekst hernoemd naar "Training Reports" / "Trainingsrapporten" etc. De interne property-namen in translations.ts heten nog steeds `skillBuilder.*` — dat is de technische key, de zichtbare labels zijn hernoemd.
+**Upgrade pad**: Standard → Deluxe voor $89 (gedocumenteerd in FAQ Q9, niet prominent op pricing cards om directe Deluxe-conversie niet te ondermijnen)
+
+**Let op**: De term "Skills Developer" is volledig verwijderd uit alle user-facing tekst (0 matches in zichtbare content). Hernoemd naar "Training Reports" / "Trainingsrapporten" etc. De interne property-namen in translations.ts heten nog steeds `skillBuilder.*` — dat is de technische key, de zichtbare labels zijn hernoemd.
 
 ## Sample Report Previews
 
@@ -170,6 +172,8 @@ public/
 - `quote` field wordt als vetgedrukte tekst boven de testimonial getoond in `TestimonialsColumn`
 - Weergave: 3 kolommen met auto-scroll animatie, masker gradient top/bottom
 - Kolom 2 verborgen op mobile, kolom 3 verborgen onder lg
+- **Volgorde**: positie 2 bevat bewust een hoog-handicap golfer (28+) voor beginners-aanspraak
+- Positie 2 per taal: EN Catherine Blake (31.4), NL Hanneke Mol (29.8), DE Petra Schmidt (32.5), FR François Bernard (30.2), ES Alejandro Díaz (30.2)
 
 ## Translations Structuur (per taal)
 
@@ -189,8 +193,10 @@ public/
   pricing: {
     label, h2a, h2b, note, badge, creditsNote,
     reportPreview: { label, items: [] },
-    previewBtn: string,                                    // ← nieuw
-    pricingQuote: { text, name, role },                    // ← nieuw
+    previewBtn: string,
+    pricingQuote: { text, name, role },
+    comparisonTitle: string,                               // ← nieuw (8 apr ronde 2)
+    comparisonRows: [{ label, standard, deluxe }],         // ← nieuw (6 rijen)
     plans: [{ plan, price, wasPrice, tagline, cta, features: [] }]  // 2 plans
   },
   skillBuilder: {
@@ -198,7 +204,7 @@ public/
     p3, extraCredits, cta, cardNote
   },
   testimonials: { label, h2, items: [{ quote, text, image, name, role }] },  // 9 items
-  faq: { label, h2, contactText, contactLink, items: [{ title, content }] },  // 8 items
+  faq: { label, h2, contactText, contactLink, items: [{ title, content }] },  // 9 items
   contact: {
     label, h2a, h2b, p1, p2,
     fields: { name, namePlaceholder, handicap, handicapPlaceholder, email, emailPlaceholder, message, messagePlaceholder, submit, note },
@@ -215,6 +221,20 @@ public/
   footer: { tagline, copyright, teachingPro, socialLabel }
 }
 ```
+
+## FAQ Overzicht (9 vragen)
+
+| # | Onderwerp (EN titel) | Notities |
+|---|---------------------|----------|
+| 1 | How long does the assessment take? | 15–25 min, elk apparaat |
+| 2 | What exactly is the Mental Routine Assessment? | Methodologie, 8 factoren + 6 dimensies |
+| 3 | What are the 8 steps of the Mental Routine? | Alle stappen uitgelegd |
+| 4 | What does the PDF report actually show me? | 6 dimensies, scores, aanbevelingen |
+| 5 | What are the Training Reports? | Voorheen "Skills Developer", met rapportaantallen |
+| 6 | Is this based on real research? | 1000+ golfers, Henk de Jong |
+| 7 | Is this also suitable for high-handicap golfers (28+)? | Ja, vaak meeste winst |
+| 8 | What is the difference between Standard and Deluxe? | Prijzen, features, rapport lengtes |
+| 9 | Can I upgrade from Standard to Deluxe later? | Ja, $89, nudge naar direct Deluxe |
 
 ## Kleurpalet
 
@@ -312,6 +332,20 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Na launch: wijzig naar `https://shop.mentalroutine.com` links
 - CTA tekst in `earlyAccess.pricingCta` en `earlyAccess.heroCta` aanpassen
 
+### Gratis Quiz (launch 20 april 2026)
+- URL: `https://mentalroutine.com/quiz.html`
+- Bestand: `public/quiz.html`
+- Na launch: link toevoegen op de hoofdpagina (bijv. in hero of CTA sectie)
+
+### Pricing Anker (na launch evalueren)
+- Extern vergelijkingspunt (bijv. "sessie bij golfpsycholoog: $150+") overwogen maar uitgesteld
+- Pas na launch evalueren of extra urgentie nodig is bovenop was-prijs + deadline + spots counter
+
+### Upgrade Pad Standard → Deluxe
+- Prijs: $89 (verschil $129 - $59 + $19 marge)
+- Gedocumenteerd in FAQ Q9, niet op pricing cards
+- Bij implementatie in shop: upgrade-flow bouwen die bestaande assessment-resultaten hergebruikt
+
 ## Recent Uitgevoerde Wijzigingen (8 april 2026)
 
 ### Expert Panel Feedback (4 panels, meerdere rondes)
@@ -359,3 +393,49 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Toegevoegd: "Official launch and regular pricing from June 1st" (alle 5 talen)
 - `earlyAccess.spotsLeft` key toegevoegd aan alle 5 talen
 - May 15 = pre-launch, June 1 = officiële launch
+
+### Expert Panel Ronde 2 (8 april 2026)
+
+**Terminologie-opschoning (alle 5 talen):**
+- Alle resterende "Skills Developer" referenties verwijderd uit zichtbare tekst (0 matches)
+- `pricing.note`: "Skills Developer credits" → "personal training reports"
+- `process` stap 3: herschreven van credits naar rapporten met aantallen (4–6 / 9–14)
+- `whyItWorks` item 3: "Skills Developer programs" → "training reports"
+- 10 testimonials (items 3 en 6 per taal): "Skills Developer" → "training reports"
+
+**FAQ updates (alle 5 talen):**
+- Q5 titel: "What is the Skills Developer?" → "What are the Training Reports?"
+- Q5 content: volledig herschreven zonder credits, met rapportaantallen
+- Q8 content: "60/140 Skills Developer credits" → "4-6/9-14 personal training reports"
+- Q9 (nieuw): "Can I upgrade from Standard to Deluxe later?" — ja voor $89, met subtiele nudge naar directe Deluxe ("$40 less than upgrading separately")
+
+**Early Access copy herschreven (alle 5 talen):**
+- h2a/h2b: van "We're almost ready. / Lock in your early-bird price." naar "Your mental game report / at the lowest price — ever."
+- p1: van beta-proces beschrijving naar wat de koper krijgt (15 min → rapport → training reports)
+- p2: urgentie-gericht ("spots are limited and this price won't return after June 1st")
+
+**Jargon-reductie (alle 5 talen):**
+- `dimensions.p1`: "6 psychological dimensions" → natuurlijke taal ("Your body, your mind, your routine, your decisions, your response to pressure, and how you practise")
+- `dimensions.p2`: academische toon → directe golftaal
+- `process` stap 1: "6 psychological dimensions: physical readiness, mental condition..." → "6 key areas: your body, your mind, your routine..."
+
+**Beginners beter aangesproken:**
+- Testimonial reorder: hoog-handicap golfer verplaatst naar positie 2 (zichtbaar in mobile kolom 1)
+  - EN: Catherine Blake (hcp 31.4), NL: Hanneke Mol (hcp 29.8), DE: Petra Schmidt (hcp 32.5), FR: François Bernard (hcp 30.2), ES: Alejandro Díaz (hcp 30.2)
+- heroBadge uitgebreid: "1,000+ golfers studied · handicap 0 to 36+ · 100+ in the current Beta"
+
+**Vergelijkingstabel (nieuw, alle 5 talen):**
+- Altijd zichtbare tabel onder pricing cards (geen toggle)
+- 6 rijen: Mental Routine, Additional areas, Mental factors, PDF report, Training reports, Money-back guarantee
+- Gestyled in green-950 thema (witte/amber tekst, subtiele borders)
+- `comparisonTitle` + `comparisonRows` toegevoegd aan `pricing` object in translations
+
+**Mobile hero i18n fix:**
+- Hardcoded Engelse labels ("Focus", "Concentration", etc.) → `T.routine.steps[n].label`
+- "Your Mental Performance Report" → `T.yourProfile`
+
+**Bewust uitgesteld:**
+- Pricing anker (extern vergelijkingspunt) → pas na launch evalueren
+- Video/animatie → binnenkort, niet nu
+- Sticky navigation bar → gebruiker wil dit niet
+- Gratis quiz link → launch 20 april 2026 op mentalroutine.com/quiz.html
