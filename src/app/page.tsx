@@ -243,7 +243,7 @@ function PageContent() {
             )}
 
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
-              <a href="https://mentalroutine.com/shop" className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
+              <a href="https://shop.mentalroutine.com" className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
                 {T.hero.cta1}
               </a>
               <a href="#mental-routine" className="px-8 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm">
@@ -473,7 +473,7 @@ function PageContent() {
                     </ul>
                   </div>
                 )}
-                <a href="https://mentalroutine.com/shop" className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 1 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
+                <a href="https://shop.mentalroutine.com" className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 1 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
                   {card.cta}
                 </a>
               </motion.div>
@@ -543,7 +543,7 @@ function PageContent() {
                 </div>
                 <span className="text-xs text-stone-400">from $6.99 / 10</span>
               </div>
-              <a href="https://mentalroutine.com/shop" className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
+              <a href="https://shop.mentalroutine.com" className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
                 {T.skillBuilder.cta}
               </a>
             </motion.div>
@@ -642,7 +642,7 @@ function PageContent() {
           <div className="w-12 h-0.5 bg-amber-500 mx-auto mb-8" />
           <p className="text-green-200/70 leading-relaxed mb-4 max-w-lg mx-auto">{T.cta.p1}</p>
           <p className="text-green-200/50 text-sm leading-relaxed mb-10 max-w-md mx-auto">{T.cta.p2}</p>
-          <a href="https://mentalroutine.com/shop" className="inline-flex items-center gap-2 px-10 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm tracking-wide">
+          <a href="https://shop.mentalroutine.com" className="inline-flex items-center gap-2 px-10 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm tracking-wide">
             {T.cta.btn}
           </a>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs text-green-200/40">
@@ -732,7 +732,7 @@ function PageContent() {
                 ))}
               </div>
 
-              <a href="https://mentalroutine.com/shop"
+              <a href="https://shop.mentalroutine.com"
                 className="inline-flex items-center gap-2 text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors group"
               >
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0">
@@ -740,7 +740,7 @@ function PageContent() {
                   <circle cx="6.5" cy="13" r="1"/>
                   <circle cx="12" cy="13" r="1"/>
                 </svg>
-                <span>mentalroutine.com/shop</span>
+                <span>shop.mentalroutine.com</span>
                 <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 group-hover:translate-x-0.5 transition-transform">
                   <path d="M1 6h10M6 1l5 5-5 5"/>
                 </svg>
