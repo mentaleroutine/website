@@ -5,7 +5,7 @@ export const translations = {
   // ENGLISH
   // ─────────────────────────────────────────────────────────────────
   en: {
-    nav: { howItWorks: "The Research", pricing: "Pricing", testimonials: "Testimonials", faq: "FAQ", contact: "Contact", cta: "Start Assessment" },
+    nav: { howItWorks: "The Research", pricing: "Pricing", testimonials: "Testimonials", faq: "FAQ", contact: "Contact", cta: "Start Assessment", openMenu: "Open menu", closeMenu: "Close menu", selectLang: "Select language" },
     hero: {
       badge: "The Mental Routine Assessment",
       h1a: "Find Out What's Really", h1b: "Costing You Strokes.",
@@ -13,6 +13,7 @@ export const translations = {
       p2: "The Mental Routine Assessment maps your mental game in 15 minutes — and gives you a concrete plan to fix what's costing you strokes and enjoyment.",
       heroBadge: "1,000+ golfers studied · handicap 0 to 36+ · 100+ in the current Beta",
       radarCaption: "Example profile — your scores will differ",
+      radarAriaLabel: "Radar chart showing example mental performance scores across 8 factors",
       cta1: "Get My Mental Performance Report", cta2: "See the 8 Factors",
       howItWorksLine: "15-minute questionnaire → personalised PDF report → targeted improvement plan",
       quizCta: "Or try the free quiz first →",
@@ -202,7 +203,7 @@ export const translations = {
   // DUTCH
   // ─────────────────────────────────────────────────────────────────
   nl: {
-    nav: { howItWorks: "Het Onderzoek", pricing: "Prijzen", testimonials: "Ervaringen", faq: "FAQ", contact: "Contact", cta: "Doe de Assessment" },
+    nav: { howItWorks: "Het Onderzoek", pricing: "Prijzen", testimonials: "Ervaringen", faq: "FAQ", contact: "Contact", cta: "Doe de Assessment", openMenu: "Menu openen", closeMenu: "Menu sluiten", selectLang: "Taal kiezen" },
     hero: {
       badge: "De Mental Routine Assessment",
       h1a: "Ontdek Wat Je Écht", h1b: "Slagen Kost.",
@@ -210,6 +211,7 @@ export const translations = {
       p2: "De Mentale Routine Assessment brengt jouw mentale spel in kaart in 15 minuten — en geeft je een concreet plan om aan te pakken wat je slagen en plezier kost.",
       heroBadge: "1.000+ golfers onderzocht · handicap 0 tot 36+ · 100+ in de huidige Beta",
       radarCaption: "Voorbeeldprofiel — jouw scores zullen afwijken",
+      radarAriaLabel: "Radardiagram met voorbeeldscores voor mentale prestaties over 8 factoren",
       cta1: "Ontvang Mijn Mentale Prestatierapport", cta2: "Bekijk de 8 Factoren",
       howItWorksLine: "15 minuten vragenlijst → persoonlijk PDF-rapport → gericht verbeterplan",
       quizCta: "Of probeer eerst de gratis quiz →",
@@ -397,7 +399,7 @@ export const translations = {
   // GERMAN
   // ─────────────────────────────────────────────────────────────────
   de: {
-    nav: { howItWorks: "Die Forschung", pricing: "Preise", testimonials: "Erfahrungen", faq: "FAQ", contact: "Kontakt", cta: "Assessment Starten" },
+    nav: { howItWorks: "Die Forschung", pricing: "Preise", testimonials: "Erfahrungen", faq: "FAQ", contact: "Kontakt", cta: "Assessment Starten", openMenu: "Menü öffnen", closeMenu: "Menü schließen", selectLang: "Sprache wählen" },
     hero: {
       badge: "Das Mental Routine Assessment",
       h1a: "Finde heraus, was dich", h1b: "wirklich Schläge kostet.",
@@ -405,6 +407,7 @@ export const translations = {
       p2: "Das Mental Routine Assessment kartiert dein mentales Spiel in 15 Minuten — und gibt dir einen konkreten Plan, um zu beheben, was dir Schläge und Freude kostet.",
       heroBadge: "1.000+ Golfer untersucht · Handicap 0 bis 36+ · 100+ in der aktuellen Beta",
       radarCaption: "Beispielprofil — deine Werte werden abweichen",
+      radarAriaLabel: "Radardiagramm mit Beispielwerten für mentale Leistung über 8 Faktoren",
       cta1: "Mein mentales Leistungsreport erhalten", cta2: "Die 8 Faktoren ansehen",
       howItWorksLine: "15-Minuten-Fragebogen → personalisierter PDF-Bericht → gezielter Verbesserungsplan",
       quizCta: "Oder probiere zuerst das kostenlose Quiz →",
@@ -592,7 +595,7 @@ export const translations = {
   // FRENCH
   // ─────────────────────────────────────────────────────────────────
   fr: {
-    nav: { howItWorks: "La Recherche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "Mon Évaluation" },
+    nav: { howItWorks: "La Recherche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "Mon Évaluation", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu", selectLang: "Choisir la langue" },
     hero: {
       badge: "Le Mental Routine Assessment",
       h1a: "Découvrez ce qui vous", h1b: "coûte vraiment des coups.",
@@ -600,6 +603,7 @@ export const translations = {
       p2: "L'Évaluation de la Routine Mentale cartographie votre jeu mental en 15 minutes — et vous donne un plan concret pour corriger ce qui vous coûte des coups et du plaisir.",
       heroBadge: "1 000+ golfeurs étudiés · handicap 0 à 36+ · 100+ dans la Bêta actuelle",
       radarCaption: "Profil exemple — vos scores seront différents",
+      radarAriaLabel: "Graphique radar montrant des scores de performance mentale sur 8 facteurs",
       cta1: "Obtenir Mon Rapport de Performance Mentale", cta2: "Voir les 8 Facteurs",
       howItWorksLine: "Questionnaire de 15 minutes → rapport PDF personnalisé → plan d'amélioration ciblé",
       quizCta: "Ou essayez d'abord le quiz gratuit →",
@@ -787,7 +791,7 @@ export const translations = {
   // SPANISH
   // ─────────────────────────────────────────────────────────────────
   es: {
-    nav: { howItWorks: "La Investigación", pricing: "Precios", testimonials: "Testimonios", faq: "FAQ", contact: "Contacto", cta: "Mi Evaluación" },
+    nav: { howItWorks: "La Investigación", pricing: "Precios", testimonials: "Testimonios", faq: "FAQ", contact: "Contacto", cta: "Mi Evaluación", openMenu: "Abrir menú", closeMenu: "Cerrar menú", selectLang: "Seleccionar idioma" },
     hero: {
       badge: "El Mental Routine Assessment",
       h1a: "Descubre qué te está", h1b: "costando golpes realmente.",
@@ -795,6 +799,7 @@ export const translations = {
       p2: "La Evaluación de la Rutina Mental mapea tu juego mental en 15 minutos — y te da un plan concreto para corregir lo que te cuesta golpes y disfrute.",
       heroBadge: "1.000+ golfistas estudiados · hándicap 0 a 36+ · 100+ en la Beta actual",
       radarCaption: "Perfil de ejemplo — tus puntuaciones serán diferentes",
+      radarAriaLabel: "Gráfico radar con puntuaciones de ejemplo de rendimiento mental en 8 factores",
       cta1: "Obtener Mi Informe de Rendimiento Mental", cta2: "Ver los 8 Factores",
       howItWorksLine: "Cuestionario de 15 minutos → informe PDF personalizado → plan de mejora específico",
       quizCta: "O prueba primero el quiz gratis →",

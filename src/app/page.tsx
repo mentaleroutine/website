@@ -69,7 +69,7 @@ function gridPath(lvl: number) {
 }
 const scoreColor = (s: number) => s >= 7 ? '#34d399' : s >= 4 ? '#fbbf24' : '#f87171';
 
-function HeroRadar({ steps, caption }: { steps: ReadonlyArray<{ label: string }>; caption?: string }) {
+function HeroRadar({ steps, caption, radarAriaLabel }: { steps: ReadonlyArray<{ label: string }>; caption?: string; radarAriaLabel?: string }) {
   const [scores, setScores] = useState(INITIAL_SCORES);
 
   useEffect(() => {
@@ -82,7 +82,7 @@ function HeroRadar({ steps, caption }: { steps: ReadonlyArray<{ label: string }>
   return (
     <motion.div className="flex-1 hidden md:flex flex-col items-center justify-center gap-3"
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.5 }}>
-      <svg viewBox="-15 -15 330 330" width={380} height={380} role="img" aria-label="Radar chart showing example mental performance scores across 8 factors">
+      <svg viewBox="-15 -15 330 330" width={380} height={380} role="img" aria-label={radarAriaLabel}>
 
         {/* Grid webs */}
         {[2, 4, 6, 8, 10].map(lvl => (
@@ -487,7 +487,7 @@ function PageContent() {
           </motion.div>
 
           {/* Radar chart — 8 Mental Routine steps, rotating scores every 3s */}
-          <HeroRadar steps={T.routine.steps} caption={T.hero.radarCaption} />
+          <HeroRadar steps={T.routine.steps} caption={T.hero.radarCaption} radarAriaLabel={T.hero.radarAriaLabel} />
         </div>
       </section>
 

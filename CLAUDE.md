@@ -193,8 +193,8 @@ public/
 
 ```typescript
 {
-  nav: { howItWorks, pricing, testimonials, faq, contact, cta },
-  hero: { badge, h1a, h1b, p1, p2, heroBadge, radarCaption, cta1, cta2, howItWorksLine, quizCta },
+  nav: { howItWorks, pricing, testimonials, faq, contact, cta, openMenu, closeMenu, selectLang },  // ← a11y labels nieuw (9 apr)
+  hero: { badge, h1a, h1b, p1, p2, heroBadge, radarCaption, radarAriaLabel, cta1, cta2, howItWorksLine, quizCta },
   heroCardLabels: [{ tag, insight }],  // 8 items
   yourProfile: string,
   stepLabel: string,
@@ -208,7 +208,7 @@ public/
     label, h2a, h2b, note, badge, creditsNote,
     reportPreview: { label, items: [] },
     previewBtn: string,
-    previewModal: { standard, deluxe, training },           // ← nieuw (9 apr)
+    previewModal: { standard, deluxe, training, closePreview, iframeTitle },  // ← nieuw (9 apr)
     pricingQuote: { text, name, role },
     comparisonTitle: string,                               // ← nieuw (8 apr ronde 2)
     comparisonRows: [{ label, standard, deluxe }],         // ← nieuw (6 rijen)
@@ -237,7 +237,7 @@ public/
     fields: { name, namePlaceholder, handicap, handicapPlaceholder, email, emailPlaceholder, planLabel, submit, sending, error },  // ← sending/error nieuw (9 apr)
     socialProof, success: { h3, p }
   },
-  footer: { tagline, copyright, teachingPro, socialLabel, quizLink, quoteText, quoteAuthor, methodBy }  // ← quote/method nieuw (9 apr)
+  footer: { tagline, copyright, teachingPro, socialLabel, quizLink, quoteText, quoteAuthor, methodBy, menuLabel }  // ← quote/method/menu nieuw (9 apr)
 }
 ```
 
@@ -611,3 +611,18 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 
 **Navbar accessibility (navbar.tsx):**
 - Mobile close button: `aria-label="Close menu"` toegevoegd
+
+### Final Polish (9 april 2026)
+
+**Laatste hardcoded strings vertaald (alle 5 talen):**
+- `footer.menuLabel`: "Menu" → vertaald (EN/NL/FR: "Menu", DE/ES: "Menü"/"Menú")
+- `pricing.previewModal.closePreview`: modal close button aria-label → vertaald
+- `pricing.previewModal.iframeTitle`: iframe title → vertaald
+
+**Accessibility aria-labels vertaald (alle 5 talen):**
+- `nav.openMenu`, `nav.closeMenu`, `nav.selectLang`: navbar aria-labels → vertaald
+- `hero.radarAriaLabel`: radar chart aria-label → vertaald, doorgegeven als prop aan HeroRadar
+- ReportPreviewModal close button: `aria-label` toegevoegd via `T.pricing.previewModal.closePreview`
+
+**Performance (early-access API):**
+- Notificatie + bevestiging emails nu parallel via `Promise.all` (scheelt ~200-400ms per signup)

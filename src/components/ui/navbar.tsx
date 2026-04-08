@@ -18,6 +18,7 @@ const LANG_OPTIONS: { code: Lang; name: string }[] = [
 // ── Language dropdown ────────────────────────────────────────────────────────
 function LangDropdown({ onSelect }: { onSelect?: () => void }) {
   const { lang, setLang } = useLang()
+  const t = translations[lang].nav
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
   const current = LANG_OPTIONS.find(l => l.code === lang) ?? LANG_OPTIONS[0]
@@ -43,7 +44,7 @@ function LangDropdown({ onSelect }: { onSelect?: () => void }) {
       <button
         onClick={() => setOpen(o => !o)}
         aria-expanded={open}
-        aria-label="Select language"
+        aria-label={t.selectLang}
         className={`group flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold tracking-widest uppercase transition-all duration-200 ${
           open
             ? "bg-white/10 text-amber-300"
@@ -172,7 +173,7 @@ const Navbar = () => {
         <button
           className="md:hidden flex items-center justify-center w-8 h-8 rounded-lg text-green-200/70 hover:text-green-100 hover:bg-white/5 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Open menu"
+          aria-label={t.openMenu}
         >
           <Menu className="h-5 w-5" />
         </button>
@@ -192,7 +193,7 @@ const Navbar = () => {
             <button
               className="absolute top-6 right-6 p-2 text-green-300 hover:text-white transition-colors"
               onClick={() => setIsOpen(false)}
-              aria-label="Close menu"
+              aria-label={t.closeMenu}
             >
               <X className="h-6 w-6" />
             </button>
