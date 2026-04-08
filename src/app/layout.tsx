@@ -141,6 +141,13 @@ export default function RootLayout({
             __html: JSON.stringify(jsonLdFaq),
           }}
         />
+        {/* Plausible Analytics — privacy-friendly, no cookies */}
+        <script async src="https://plausible.io/js/pa-ItBerh_Nl5g0FDj6e1den.js" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`,
+          }}
+        />
       </head>
       <body>{children}</body>
     </html>

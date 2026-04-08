@@ -35,6 +35,7 @@ function LangDropdown({ onSelect }: { onSelect?: () => void }) {
     setLang(code)
     setOpen(false)
     onSelect?.()
+    if (typeof window !== "undefined" && window.plausible) window.plausible("lang_switch", { props: { lang: code } })
   }
 
   return (

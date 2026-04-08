@@ -9,6 +9,10 @@ import { FaqsSection } from "@/components/ui/faqs";
 import { LangProvider, useLang } from "@/context/lang-context";
 import { translations, type Translation } from "@/lib/translations";
 
+// ── Plausible Analytics helper ───────────────────────────────────────────────
+declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
+function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
+
 // ── Report Preview Modal ──────────────────────────────────────────────────────
 function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe" | "training"; onClose: () => void }) {
   const { lang } = useLang();
@@ -276,6 +280,7 @@ function EarlyAccessSection() {
       });
       if (!res.ok) throw new Error();
       setSubmitted(true);
+      track("signup", { plan: form.plan, lang });
       // Refresh spots count after successful signup
       fetch("/api/spots").then(r => r.json()).then(setSpots).catch(() => {});
     } catch {
@@ -361,10 +366,10 @@ function EarlyAccessSection() {
                 <div>
                   <label className="block text-xs font-semibold text-green-100/80 mb-2.5 tracking-wide">{t.fields.planLabel}</label>
                   <div className="grid grid-cols-2 gap-3">
-                    <button type="button" onClick={() => setForm(f => ({ ...f, plan: "standard" }))} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "standard" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
+                    <button type="button" onClick={() => { setForm(f => ({ ...f, plan: "standard" })); track("plan_select", { plan: "standard" }); }} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "standard" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
                       {T.pricing.plans[0].plan} · <span className="text-amber-400">${EA_PRICE_STD}</span>
                     </button>
-                    <button type="button" onClick={() => setForm(f => ({ ...f, plan: "deluxe" }))} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "deluxe" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
+                    <button type="button" onClick={() => { setForm(f => ({ ...f, plan: "deluxe" })); track("plan_select", { plan: "deluxe" }); }} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "deluxe" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
                       {T.pricing.plans[1].plan} · <span className="text-amber-400">${EA_PRICE_DLX}</span>
                     </button>
                   </div>
@@ -439,7 +444,7 @@ function PageContent() {
             </motion.div>
 
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
-              <a href="#early-access" className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
+              <a href="#early-access" onClick={() => track("hero_cta_click")} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
                 {T.earlyAccess.heroCta.replace("{price}", `$${EA_PRICE_STD}`)}
               </a>
               <a href="#mental-routine" className="px-8 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm">
@@ -455,7 +460,7 @@ function PageContent() {
               {T.earlyAccess.heroUrgency}
             </motion.p>
 
-            <motion.a href="/quiz.html" className="inline-flex items-center gap-1.5 text-xs text-amber-300/70 hover:text-amber-300 transition-colors mt-3 mx-auto lg:mx-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.0 }}>
+            <motion.a href="/quiz.html" onClick={() => track("quiz_click", { source: "hero" })} className="inline-flex items-center gap-1.5 text-xs text-amber-300/70 hover:text-amber-300 transition-colors mt-3 mx-auto lg:mx-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.0 }}>
               {T.hero.quizCta}
             </motion.a>
           </div>
@@ -715,11 +720,11 @@ function PageContent() {
                   </div>
                 )}
                 {T.pricing.previewBtn && (
-                  <button onClick={() => setPreviewPlan(i === 0 ? "standard" : "deluxe")} className="w-full text-center py-2 mb-3 rounded-lg text-xs font-medium text-amber-300/70 hover:text-amber-300 border border-amber-400/20 hover:border-amber-400/40 bg-amber-400/[0.04] hover:bg-amber-400/[0.08] transition-all">
+                  <button onClick={() => { const p = i === 0 ? "standard" : "deluxe"; setPreviewPlan(p); track("report_preview", { type: p }); }} className="w-full text-center py-2 mb-3 rounded-lg text-xs font-medium text-amber-300/70 hover:text-amber-300 border border-amber-400/20 hover:border-amber-400/40 bg-amber-400/[0.04] hover:bg-amber-400/[0.08] transition-all">
                     {T.pricing.previewBtn}
                   </button>
                 )}
-                <a href="#early-access" className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 1 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
+                <a href="#early-access" onClick={() => track("pricing_cta_click", { plan: i === 0 ? "standard" : "deluxe" })} className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 1 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
                   {T.earlyAccess.pricingCta}
                 </a>
               </motion.div>
@@ -864,7 +869,7 @@ function PageContent() {
             </motion.div>
 
             {/* Training Report preview card */}
-            <motion.div className="rounded-3xl overflow-hidden border border-green-900/15 shadow-xl shadow-green-900/10 cursor-pointer group" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} onClick={() => setPreviewPlan("training")}>
+            <motion.div className="rounded-3xl overflow-hidden border border-green-900/15 shadow-xl shadow-green-900/10 cursor-pointer group" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} onClick={() => { setPreviewPlan("training"); track("report_preview", { type: "training" }); }}>
               {/* Report header */}
               <div className="bg-green-950 px-6 pt-6 pb-5">
                 <div className="flex items-start justify-between gap-3 mb-4">
