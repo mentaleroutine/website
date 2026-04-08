@@ -22,6 +22,7 @@ src/
     api/
       contact/route.ts          — POST → contactformulier e-mail via Resend
       early-access/route.ts     — POST → early access signup via Resend (audience + emails)
+      spots/route.ts            — GET → live spots counter via Resend Audience API
   lib/
     translations.ts             — alle tekst + vertalingen, 5 talen (as const)
     utils.ts                    — utility functies (cn helper)
@@ -136,10 +137,21 @@ public/
 2. Stuurt notificatie-email naar `support@mentalroutine.com` met naam, email, plan-voorkeur, handicap
 3. Stuurt bevestiging-email naar subscriber met early access pricing info
 
+### Live Spots Counter
+- **API endpoint**: `GET /api/spots` → `src/app/api/spots/route.ts`
+- **Bron**: Telt contacten in Resend Audience (`8e40ab7a-eab7-470d-943f-03a312e98ebc`)
+- **Berekening**: `spotsLeft = TOTAL_SPOTS (500) - FAKE_OFFSET (338) - contactCount`
+- **Startwaarde**: 162 / 500 (bij 0 echte signups)
+- **Revalidatie**: `next: { revalidate: 30 }` — cache 30 seconden
+- **Fallback bij fout**: Toont `500 / 500` (geen urgentie)
+- **Frontend**: `EarlyAccessSection` fetcht `/api/spots` bij mount + na elke succesvolle signup
+- **Weergave**: `{spots} / {total}` met `spotsLeft` label uit translations
+
 ### Urgentie-elementen
-- **Spots counter**: "47 spots left at early-bird pricing" — hardcoded getal in page.tsx (regel in EarlyAccessSection form)
+- **Spots counter**: Live via `/api/spots` (zie hierboven)
 - **Deadline**: "Available only until June 1st" — in translations
-- **Launch datum**: May 15th, 2026
+- **Pre-launch datum**: May 15th, 2026
+- **Officiële launch datum**: June 1st, 2026
 
 ## Contactformulier
 
@@ -290,10 +302,10 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
   3. Optioneel: voeg download-knop toe aan modal header
 - Huidige dummy HTML previews kunnen dan verwijderd of als fallback behouden worden
 
-### Spots Counter
-- Het getal "47" in de Early Access sectie is hardcoded
-- Kan later dynamisch worden via een API call of Vercel KV store
-- Locatie: `EarlyAccessSection` in page.tsx, zoek op `47`
+### Spots Counter ✅ (afgerond)
+- Live via `/api/spots` — haalt Resend Audience contacten op
+- FAKE_OFFSET = 338, TOTAL_SPOTS = 500 → start bij 162/500
+- Loopt automatisch af bij elke nieuwe signup
 
 ### Shop Integratie
 - Alle koop-CTA's linken nu naar `#early-access` (pre-launch)
@@ -332,5 +344,18 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Sample report previews (Standard 12p + Deluxe 20p) met modal viewer
 - "Preview sample report" knop op elke pricing card
 - Mini-testimonial quote in pricing sectie
-- Urgentie counter (47 spots) bij Early Access formulier
 - CTA-tekst geconsolideerd naar max 2 varianten per taal
+
+### Live Spots Counter (8 april 2026)
+- Nieuw API endpoint: `src/app/api/spots/route.ts`
+- Hardcoded "47 spots" vervangen door live `{spots} / {total}` teller
+- Telt echte Resend Audience contacten + FAKE_OFFSET (338)
+- Begint bij 162/500, loopt af bij elke signup
+- Frontend refresht na succesvolle inschrijving
+
+### Pre-launch Terminologie (8 april 2026)
+- "Launching May 15th" → "Pre-Launch May 15th" (alle 5 talen)
+- "international launch" → "international pre-launch" (alle 5 talen)
+- Toegevoegd: "Official launch and regular pricing from June 1st" (alle 5 talen)
+- `earlyAccess.spotsLeft` key toegevoegd aan alle 5 talen
+- May 15 = pre-launch, June 1 = officiële launch

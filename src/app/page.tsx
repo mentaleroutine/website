@@ -444,14 +444,14 @@ function PageContent() {
           <motion.div className="md:hidden w-full max-w-sm mx-auto mt-8 rounded-2xl overflow-hidden border border-white/10 shadow-xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.95 }}>
             <div className="bg-green-900/50 px-4 py-3 border-b border-white/[0.06]">
               <p className="text-[9px] font-bold tracking-widest uppercase text-amber-400/60">Mental Routine Assessment</p>
-              <p className="text-sm font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Your Mental Performance Report</p>
+              <p className="text-sm font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{T.yourProfile}</p>
             </div>
             <div className="bg-green-950/80 p-4 space-y-2">
               {[
-                { label: "Focus", score: 7.8, color: "bg-green-400" },
-                { label: "Concentration", score: 7.2, color: "bg-green-400" },
-                { label: "Conviction", score: 3.8, color: "bg-red-400" },
-                { label: "Acceptance", score: 3.2, color: "bg-red-400" },
+                { label: T.routine.steps[0].label, score: 7.8, color: "bg-green-400" },
+                { label: T.routine.steps[1].label, score: 7.2, color: "bg-green-400" },
+                { label: T.routine.steps[2].label, score: 3.8, color: "bg-red-400" },
+                { label: T.routine.steps[5].label, score: 3.2, color: "bg-red-400" },
               ].map((item, k) => (
                 <div key={k} className="flex items-center gap-2">
                   <span className="text-[10px] text-green-200/50 w-20 shrink-0">{item.label}</span>
@@ -708,6 +708,33 @@ function PageContent() {
             <p className="mt-5 text-center text-xs text-green-200/40">
               {T.pricing.creditsNote}
             </p>
+          )}
+
+          {/* ── COMPARISON TABLE ── */}
+          {"comparisonRows" in T.pricing && (
+            <motion.div className="mt-12 max-w-2xl mx-auto" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}>
+              <h3 className="text-center font-serif text-2xl font-semibold text-white mb-6">{(T.pricing as any).comparisonTitle}</h3>
+              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.04] overflow-hidden">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-white/[0.08]">
+                      <th className="text-left py-3 px-4 text-green-200/50 font-normal"></th>
+                      <th className="py-3 px-4 text-amber-400 font-semibold text-center">Standard</th>
+                      <th className="py-3 px-4 text-amber-400 font-semibold text-center">Deluxe</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {((T.pricing as any).comparisonRows as ReadonlyArray<{label: string; standard: string; deluxe: string}>).map((row, i) => (
+                      <tr key={i} className={i < ((T.pricing as any).comparisonRows as ReadonlyArray<unknown>).length - 1 ? "border-b border-white/[0.06]" : ""}>
+                        <td className="py-3 px-4 text-green-200/70">{row.label}</td>
+                        <td className="py-3 px-4 text-center text-white/80">{row.standard}</td>
+                        <td className="py-3 px-4 text-center text-white/80">{row.deluxe}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </motion.div>
           )}
 
           {/* ── GUARANTEE BANNER — inside pricing, below cards ── */}
