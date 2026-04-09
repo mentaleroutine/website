@@ -360,7 +360,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **Dynamic html lang**: `document.documentElement.lang` wordt gesynchroniseerd via `useEffect` in `LangProvider`
 
 ### Analytics (Plausible)
-- **Provider**: Plausible Analytics — Starter plan (€9/mo), privacy-friendly, cookieloos, GDPR-compliant
+- **Provider**: Plausible Analytics — Business plan ($19/mo), privacy-friendly, cookieloos, GDPR-compliant (geüpgraded van Starter €9/mo voor custom properties)
 - **Script**: `<script async src="/js/script.js" data-api="/api/event" data-domain="mentalroutine.com" />` in `layout.tsx`
 - **Proxy**: Vercel rewrites in `next.config.ts` — `/js/script.js` → Plausible CDN, `/api/event` → Plausible API (omzeilt adblockers)
 - **Extensions**: outbound-links (automatisch tracken externe links), file-downloads (automatisch tracken downloads)
@@ -844,7 +844,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 
 ### Microsoft Clarity (9 april 2026)
 
-- **Provider**: Microsoft Clarity — Business plan ($19/mo, custom properties, 13 maanden data retention)
+- **Provider**: Microsoft Clarity — gratis, onbeperkt, GDPR-compliant
 - **Project ID**: `w8rr4hfxpz`
 - **Doel**: Heatmaps, session recordings, dead click detection — kwalitatief inzicht naast Plausible's kwantitatieve data
 - **Script**: `(function(c,l,a,r,i,t,y){...})(window,document,"clarity","script","w8rr4hfxpz")`
