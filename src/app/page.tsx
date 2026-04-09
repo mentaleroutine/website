@@ -263,9 +263,12 @@ function EarlyAccessSection() {
   const [error, setError] = React.useState(false);
   const [spots, setSpots] = React.useState<{ spots: number; total: number } | null>(null);
 
-  // Fetch live spots count on mount
+  // Fetch live spots count on mount + listen for plan selection from pricing cards
   useEffect(() => {
     fetch("/api/spots").then(r => r.json()).then(setSpots).catch(() => {});
+    const onPlan = (e: Event) => { const plan = (e as CustomEvent).detail; if (plan === "standard" || plan === "deluxe") setForm(f => ({ ...f, plan })); };
+    window.addEventListener("select-plan", onPlan);
+    return () => window.removeEventListener("select-plan", onPlan);
   }, []);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -749,8 +752,8 @@ function PageContent() {
                     {T.pricing.previewBtn}
                   </button>
                 )}
-                <a href="#early-access" onClick={() => track("pricing_cta_click", { plan: i === 0 ? "standard" : "deluxe" })} className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 1 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
-                  {T.earlyAccess.pricingCta}
+                <a href="#early-access" onClick={() => { track("pricing_cta_click", { plan: i === 0 ? "standard" : "deluxe" }); window.dispatchEvent(new CustomEvent("select-plan", { detail: i === 0 ? "standard" : "deluxe" })); }} className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 1 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
+                  {i === 0 ? T.pricing.plans[0].cta : T.pricing.plans[1].cta}
                 </a>
               </motion.div>
             ))}
@@ -1131,7 +1134,7 @@ function PageContent() {
               <div className="flex items-center gap-2 w-full sm:w-auto">
                 <a
                   href="#early-access"
-                  onClick={() => track("hero_cta_click")}
+                  onClick={() => track("sticky_bar_click")}
                   className="flex-1 sm:flex-none text-center px-5 py-2 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all text-xs tracking-wide shadow-md shadow-amber-500/20"
                 >
                   {T.earlyAccess.pricingCta}

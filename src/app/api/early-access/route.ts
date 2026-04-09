@@ -25,7 +25,16 @@ Your exclusive Early Access pricing is locked in:
   Standard: $${EA_STD} (instead of $${REG_STD}) + 2 extra training reports
   Deluxe:   $${EA_DLX} (instead of $${REG_DLX}) + 2 extra training reports
 
-This offer is only available until June 1st. On May 15th, we'll send you a personal link to get started. Official launch and regular pricing from June 1st.
+This offer is only available until June 1st.
+
+Here's what happens next:
+
+  1. Today — You're on the early access list
+  2. May 15th — You receive a personal link by email
+  3. 15 minutes — Complete the assessment on any device
+  4. Instantly — Download your PDF report + training reports
+
+Official launch and regular pricing from June 1st.
 
 In the meantime — keep enjoying the game.
 
@@ -43,7 +52,16 @@ Je exclusieve Early Access prijs is vastgelegd:
   Standaard: $${EA_STD} (i.p.v. $${REG_STD}) + 2 extra trainingsrapporten
   Deluxe:    $${EA_DLX} (i.p.v. $${REG_DLX}) + 2 extra trainingsrapporten
 
-Dit aanbod is alleen beschikbaar tot 1 juni. Op 15 mei sturen we je een persoonlijke link om te starten. Officiële lancering en reguliere prijzen vanaf 1 juni.
+Dit aanbod is alleen beschikbaar tot 1 juni.
+
+Dit is wat er nu gebeurt:
+
+  1. Vandaag — Je staat op de early access lijst
+  2. 15 mei — Je ontvangt een persoonlijke link per email
+  3. 15 minuten — Vul de assessment in op elk apparaat
+  4. Direct — Download je PDF-rapport + trainingsrapporten
+
+Officiële lancering en reguliere prijzen vanaf 1 juni.
 
 In de tussentijd — veel plezier op de baan.
 
@@ -61,7 +79,16 @@ Dein exklusiver Early Access Preis ist gesichert:
   Standard: $${EA_STD} (statt $${REG_STD}) + 2 extra Trainingsberichte
   Deluxe:   $${EA_DLX} (statt $${REG_DLX}) + 2 extra Trainingsberichte
 
-Dieses Angebot gilt nur bis zum 1. Juni. Am 15. Mai senden wir dir einen persönlichen Link zum Starten. Offizieller Launch und reguläre Preise ab 1. Juni.
+Dieses Angebot gilt nur bis zum 1. Juni.
+
+So geht es weiter:
+
+  1. Heute — Du stehst auf der Early Access Liste
+  2. 15. Mai — Du erhältst einen persönlichen Link per E-Mail
+  3. 15 Minuten — Fülle das Assessment auf jedem Gerät aus
+  4. Sofort — Lade deinen PDF-Bericht + Trainingsberichte herunter
+
+Offizieller Launch und reguläre Preise ab 1. Juni.
 
 In der Zwischenzeit — viel Spaß auf dem Platz.
 
@@ -79,7 +106,16 @@ Votre tarif Early Access exclusif est verrouillé :
   Standard : $${EA_STD} (au lieu de $${REG_STD}) + 2 rapports d'entraînement supplémentaires
   Deluxe :   $${EA_DLX} (au lieu de $${REG_DLX}) + 2 rapports d'entraînement supplémentaires
 
-Cette offre n'est disponible que jusqu'au 1er juin. Le 15 mai, nous vous enverrons un lien personnel pour commencer. Lancement officiel et tarifs réguliers à partir du 1er juin.
+Cette offre n'est disponible que jusqu'au 1er juin.
+
+Voici la suite :
+
+  1. Aujourd'hui — Vous êtes sur la liste Early Access
+  2. 15 mai — Vous recevez un lien personnel par email
+  3. 15 minutes — Complétez l'évaluation sur n'importe quel appareil
+  4. Immédiatement — Téléchargez votre rapport PDF + rapports d'entraînement
+
+Lancement officiel et tarifs réguliers à partir du 1er juin.
 
 En attendant — profitez du parcours.
 
@@ -97,7 +133,16 @@ Tu precio exclusivo de Early Access está asegurado:
   Estándar: $${EA_STD} (en lugar de $${REG_STD}) + 2 informes de entrenamiento adicionales
   Deluxe:   $${EA_DLX} (en lugar de $${REG_DLX}) + 2 informes de entrenamiento adicionales
 
-Esta oferta solo está disponible hasta el 1 de junio. El 15 de mayo te enviaremos un enlace personal para comenzar. Lanzamiento oficial y precios regulares a partir del 1 de junio.
+Esta oferta solo está disponible hasta el 1 de junio.
+
+Esto es lo que sigue:
+
+  1. Hoy — Estás en la lista de Early Access
+  2. 15 de mayo — Recibes un enlace personal por email
+  3. 15 minutos — Completa la evaluación en cualquier dispositivo
+  4. Al instante — Descarga tu informe PDF + informes de entrenamiento
+
+Lanzamiento oficial y precios regulares a partir del 1 de junio.
 
 Mientras tanto — disfruta del campo.
 
