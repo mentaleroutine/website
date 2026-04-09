@@ -193,6 +193,7 @@ function ContactSection() {
       track("contact_submit", { lang });
     } catch {
       setError(true);
+      track("contact_error", { type: "api" });
     } finally {
       setSending(false);
     }
@@ -278,7 +279,7 @@ function EarlyAccessSection() {
 
   const [utm] = React.useState(() => captureUtmParams());
   const formStarted = React.useRef(false);
-  const pageLoadTime = React.useRef(performance.now());
+  const pageLoadTime = React.useRef(typeof performance !== "undefined" ? performance.timeOrigin : Date.now());
 
   // Fetch live spots count on mount + listen for plan selection from pricing cards
   useEffect(() => {
@@ -300,7 +301,7 @@ function EarlyAccessSection() {
       });
       if (!res.ok) throw new Error();
       setSubmitted(true);
-      const seconds = String(Math.round((performance.now() - pageLoadTime.current) / 1000));
+      const seconds = String(Math.round((Date.now() - pageLoadTime.current) / 1000));
       track("signup", { plan: form.plan, lang, seconds });
       // Refresh spots count after successful signup
       fetch("/api/spots").then(r => r.json()).then(setSpots).catch(() => {});
@@ -445,7 +446,7 @@ function PageContent() {
         }
       }
     }, { threshold: 0.3 });
-    for (const id of ["how-it-works", "mental-routine", "steps", "pricing", "testimonials", "faq", "early-access", "contact"]) {
+    for (const id of ["how-it-works", "mental-routine", "steps", "dimensions", "why-it-works", "pricing", "training-reports", "testimonials", "faq", "early-access", "contact"]) {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     }
@@ -681,7 +682,7 @@ function PageContent() {
       </section>
 
       {/* ── 6 TALENT DIMENSIONS ──────────────────────────────────────────── */}
-      <section className="py-28 px-6 bg-[#faf8f3]">
+      <section id="dimensions" className="py-28 px-6 bg-[#faf8f3]">
         <div className="container mx-auto max-w-5xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
@@ -719,7 +720,7 @@ function PageContent() {
       </section>
 
       {/* ── WHY IT WORKS ─────────────────────────────────────────────────── */}
-      <section className="py-20 px-6 bg-green-950">
+      <section id="why-it-works" className="py-20 px-6 bg-green-950">
         <div className="container mx-auto max-w-5xl">
           <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">{T.whyItWorks.label}</p>
@@ -899,7 +900,7 @@ function PageContent() {
               <svg viewBox="0 0 20 20" fill="none" stroke="#c4a043" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 shrink-0"><path d="M10 18.5a8.5 8.5 0 1 0 0-17 8.5 8.5 0 0 0 0 17z"/><path d="M7.2 7.2a2.8 2.8 0 0 1 5.1 1.4c0 1.9-2.8 2.5-2.8 2.5"/><circle cx="10" cy="14.5" r="0.5" fill="#c4a043"/></svg>
               <div className="text-left">
                 <p className="text-sm text-green-200/70">{T.cta.quizLine}</p>
-                <a href="/quiz.html" className="text-xs text-amber-400 hover:text-amber-300 font-semibold transition-colors">{T.hero.quizCta}</a>
+                <a href="/quiz.html" onClick={() => track("quiz_click", { source: "pricing" })} className="text-xs text-amber-400 hover:text-amber-300 font-semibold transition-colors">{T.hero.quizCta}</a>
               </div>
             </div>
           </motion.div>
@@ -915,7 +916,7 @@ function PageContent() {
       </section>
 
       {/* ── TRAINING REPORTS (formerly Skills Developer) ─────────────────── */}
-      <section className="py-28 px-6 bg-[#f6f1e7]">
+      <section id="training-reports" className="py-28 px-6 bg-[#f6f1e7]">
         <div className="container mx-auto max-w-5xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
@@ -1100,6 +1101,7 @@ function PageContent() {
                   <a
                     key={link.href}
                     href={link.href}
+                    onClick={link.href === "/quiz.html" ? () => track("quiz_click", { source: "footer" }) : undefined}
                     className="group flex items-center gap-2 text-sm text-green-200/50 hover:text-amber-300 transition-colors duration-200"
                   >
                     <span className="w-3 h-px bg-green-200/20 group-hover:bg-amber-400/60 group-hover:w-5 transition-all duration-300" />
@@ -1152,7 +1154,7 @@ function PageContent() {
               )}
 
               {T.footer.quizLink && (
-                <a href="/quiz.html" className="inline-flex items-center gap-2 text-xs text-green-200/35 hover:text-amber-300 transition-colors mt-3 group">
+                <a href="/quiz.html" onClick={() => track("quiz_click", { source: "footer" })} className="inline-flex items-center gap-2 text-xs text-green-200/35 hover:text-amber-300 transition-colors mt-3 group">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14z"/><path d="M5.8 5.8a2.2 2.2 0 0 1 4.1 1.1c0 1.5-2.2 2-2.2 2"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg>
                   <span>{T.footer.quizLink}</span>
                 </a>

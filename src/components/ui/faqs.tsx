@@ -3,8 +3,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/context/lang-context';
 import { translations, type Translation } from '@/lib/translations';
-
-declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
+// Window.plausible type declared globally in page.tsx
 
 const MOBILE_INITIAL_COUNT = 4;
 

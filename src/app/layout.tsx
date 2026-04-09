@@ -160,8 +160,8 @@ export default function RootLayout({
             __html: JSON.stringify(jsonLdFaq),
           }}
         />
-        {/* Plausible Analytics — privacy-friendly, no cookies */}
-        <script async src="https://plausible.io/js/pa-ItBerh_Nl5g0FDj6e1den.js" />
+        {/* Plausible Analytics — privacy-friendly, no cookies, outbound link + file download tracking */}
+        <script async src="https://plausible.io/js/script.outbound-links.file-downloads.js" data-domain="mentalroutine.com" />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`,
