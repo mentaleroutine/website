@@ -389,7 +389,8 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 | `pro_program_click` | `source: "process" \| "pricing" \| "footer"` | Pro-program link klik |
 | `report_preview_close` | `type, seconds` | Report preview modal gesloten (dwell time) |
 | `quiz_start` | — | Quiz gestart (quiz.html) |
-| `quiz_complete` | `seconds, score` | Quiz afgerond (invultijd + totaalscore) |
+| `quiz_hole` | `hole, seconds` | Per-hole tracking: hole nummer (1-9) + invultijd per hole |
+| `quiz_complete` | `seconds, score` | Quiz afgerond (totale invultijd + totaalscore) |
 | `quiz_optin` | `score` | Quiz opt-in formulier verstuurd |
 | `quiz_optin_error` | — | Quiz opt-in gefaald |
 | `pro_program_submit` | `country` | Pro-program aanmelding verstuurd |
@@ -797,10 +798,11 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 **Quiz tracking (quiz.html):**
 - Plausible script + proxy toegevoegd aan standalone HTML pagina
 - `quiz_start`: quiz begonnen (na klik op start knop)
-- `quiz_complete`: quiz afgerond met `seconds` (invultijd) + `score` (totaalscore 0-100)
+- `quiz_hole`: per-hole tracking met `hole` (1-9) + `seconds` (invultijd per hole) — toont waar gebruikers afhaken en welke holes lang duren
+- `quiz_complete`: quiz afgerond met `seconds` (totale invultijd) + `score` (totaalscore 0-100)
 - `quiz_optin`: opt-in formulier verstuurd met `score`
 - `quiz_optin_error`: opt-in API call gefaald
-- Quiz was volledig ongetrackt — nu volledige funnel: pageview → start → complete → optin
+- Quiz was volledig ongetrackt — nu volledige funnel: pageview → start → hole-by-hole → complete → optin
 
 **Pro-program API route + tracking (pro-program/page.tsx + api/pro-program/route.ts):**
 - Nieuw API endpoint: `POST /api/pro-program` — stuurt email naar support@mentalroutine.com via Resend
