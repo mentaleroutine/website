@@ -96,10 +96,10 @@ public/
 | 3 | **Research** | `#how-it-works` | `#f6f1e7` | Statistieken (90%, 1000+, 70+), Jack Nicklaus quote |
 | 4 | **8-Step Routine** | `#mental-routine` | `#faf8f3` | 8 kaarten in 4-kolom grid, footer note |
 | 5 | **Process** | `#steps` | `#f6f1e7` | 3 stappen: Assessment → Rapport → Actie, privacy note, coach sharing link → `/pro-program` |
-| 6 | **Dimensions** | — | `#faf8f3` | 6 psychologische dimensies, Arnold Palmer quote |
-| 7 | **Why It Works** | — | `green-950` | 4 kolommen met iconen |
+| 6 | **Dimensions** | `#dimensions` | `#faf8f3` | 6 psychologische dimensies, Arnold Palmer quote |
+| 7 | **Why It Works** | `#why-it-works` | `green-950` | 4 kolommen met iconen |
 | 8 | **Pricing** | `#pricing` | `green-950` | 2 plan-kaarten, vergelijkingstabel (responsive: tabel desktop / cards mobile), report preview, guarantee, testimonial quote, credits note, quiz CTA card |
-| 9 | **Training Reports** | — | `#f6f1e7` | (voorheen Skills Developer) chips, clickable report preview card (opent sample training report in modal), preview button, report teller |
+| 9 | **Training Reports** | `#training-reports` | `#f6f1e7` | (voorheen Skills Developer) chips, clickable report preview card (opent sample training report in modal), preview button, report teller |
 | 10 | **Testimonials** | `#testimonials` | `#faf8f3` | 3 auto-scroll kolommen (9 testimonials), pull quotes |
 | 11 | **FAQ** | `#faq` | `#faf8f3` | 9 vragen, accordion via FaqsSection component, mobile: eerste 4 + "show more" knop |
 | 12 | **Early Access** | `#early-access` | `green-950` | Signup formulier, spots counter, pricing cards |
@@ -357,23 +357,38 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **Dynamic html lang**: `document.documentElement.lang` wordt gesynchroniseerd via `useEffect` in `LangProvider`
 
 ### Analytics (Plausible)
-- **Provider**: Plausible Analytics — privacy-friendly, cookieloos, GDPR-compliant
-- **Script**: `<script async src="https://plausible.io/js/pa-ItBerh_Nl5g0FDj6e1den.js" />` in `layout.tsx`
+- **Provider**: Plausible Analytics — Starter plan (€9/mo), privacy-friendly, cookieloos, GDPR-compliant
+- **Script**: `<script async src="https://plausible.io/js/script.outbound-links.file-downloads.js" data-domain="mentalroutine.com" />` in `layout.tsx`
+- **Extensions**: outbound-links (automatisch tracken externe links), file-downloads (automatisch tracken downloads)
 - **Initialisatie**: `window.plausible` stub in `layout.tsx` (queues events vóór script geladen is)
 - **Helper**: `track()` functie in `page.tsx` — wrapper rond `window.plausible()`
-- **Global type**: `Window.plausible` gedeclareerd in page.tsx via `declare global`
-- **Custom events**:
+- **Global type**: `Window.plausible` gedeclareerd in page.tsx via `declare global` (1x, referenced in faqs.tsx)
+- **Custom events** (17 events):
 
 | Event | Props | Trigger |
 |-------|-------|---------|
-| `hero_cta_click` | — | Hero CTA knop klik |
-| `sticky_bar_click` | — | Sticky scroll CTA bar klik |
-| `quiz_click` | `source: "hero"` | Quiz link in hero |
+| `cta_click` | `source: "hero" \| "sticky"` | Hero CTA + sticky bar klik (unified) |
+| `quiz_click` | `source: "hero" \| "pricing" \| "footer"` | Quiz links (3 locaties) |
 | `plan_select` | `plan: "standard" \| "deluxe"` | Plan selector in early access |
 | `pricing_cta_click` | `plan: "standard" \| "deluxe"` | Pricing CTA knop klik |
 | `report_preview` | `type: "standard" \| "deluxe" \| "training"` | Sample report preview geopend |
-| `signup` | `plan, lang` | Succesvolle early access signup |
+| `signup` | `plan, lang, seconds` | Succesvolle early access signup (incl. time-to-signup) |
+| `signup_error` | `type: "api"` | Gefaalde signup |
 | `lang_switch` | `lang: "en" \| "nl" \| ...` | Taalwisselaar in navbar |
+| `form_start` | — | Eerste focus op early access formulier |
+| `faq_open` | `question: "1"–"9"` | FAQ vraag geopend |
+| `contact_submit` | `lang` | Contactformulier verstuurd |
+| `contact_error` | `type: "api"` | Gefaald contactformulier |
+| `scroll_depth` | `depth: "25" \| "50" \| "75" \| "100"` | Scroll milestones (eenmalig per sessie) |
+| `section_view` | `section` | Sectie komt in beeld (11 secties, threshold 0.3) |
+| `sticky_bar_impression` | — | Sticky bar verschijnt (eenmalig) |
+| `pro_program_click` | `source: "process" \| "pricing" \| "footer"` | Pro-program link klik |
+| + outbound-links | automatisch | Alle externe links (social media, shop, etc.) |
+| + file-downloads | automatisch | Bestandsdownloads |
+
+- **Section view tracking**: IntersectionObserver op 11 secties: `how-it-works`, `mental-routine`, `steps`, `dimensions`, `why-it-works`, `pricing`, `training-reports`, `testimonials`, `faq`, `early-access`, `contact`
+- **Time-to-signup**: meet vanaf `performance.timeOrigin` (echte pageload) tot signup submit
+- **UTM tracking**: `captureUtmParams()` vangt 5 UTM params op, persists via `sessionStorage`
 
 ### Bestanden die NOOIT gestaged worden
 - `.next/` — build output
@@ -732,3 +747,27 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - DALL-E 3 API → radar chart achtergrond op donkergroen (#162b1e)
 - Sharp composite → SVG tekst overlay (titel, subtitel, URL, gouden divider)
 - `og:image` + `twitter:image` meta tags toegevoegd aan layout.tsx
+
+### Analytics Uitbreiding (9 april 2026)
+
+**Ronde 1 — Funnel tracking (page.tsx + faqs.tsx):**
+- `form_start`: eerste focus op early access formulier (via `onFocus` + ref)
+- `signup_error`: API failures getrackt (was stil)
+- `faq_open`: welke FAQ vraag geopend (question nummer als prop)
+- `contact_submit`: contactformulier success tracking met taal
+- `scroll_depth`: 25/50/75/100% milestones (eenmalig per sessie, via bestaande scroll handler)
+- `section_view`: IntersectionObserver (threshold 0.3) op 8 secties
+- `sticky_bar_impression`: eenmalig bij eerste verschijning
+- `pro_program_click`: 3 locaties (process/pricing/footer) met source prop
+- `cta_click`: unified `hero_cta_click` + `sticky_bar_click` met `source` prop
+- `signup` uitgebreid met `seconds` prop (time-to-signup)
+
+**Ronde 2 — Verfijningen (layout.tsx + page.tsx + faqs.tsx):**
+- Plausible script upgraded: `script.outbound-links.file-downloads.js` → automatisch outbound link + download tracking
+- `id` toegevoegd aan 3 ontbrekende secties: `dimensions`, `why-it-works`, `training-reports`
+- IntersectionObserver uitgebreid naar 11 secties (was 8)
+- `quiz_click` uitgebreid: nu 3 sources (`hero`, `pricing`, `footer`)
+- `contact_error` toegevoegd (consistent met `signup_error`)
+- `time_to_signup` meet nu vanaf `performance.timeOrigin` (echte pageload, was component mount)
+- Dubbele `declare global` opgeruimd (alleen in page.tsx, comment in faqs.tsx)
+- **Let op**: Plausible script URL gewijzigd van custom proxy naar standaard CDN met extensions
