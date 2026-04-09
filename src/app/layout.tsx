@@ -25,12 +25,21 @@ export const metadata: Metadata = {
     siteName: "MentalRoutine",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://www.mentalroutine.com/og-image.png",
+        width: 1792,
+        height: 1024,
+        alt: "The Mental Routine Assessment for Golfers — Map your mental game in 15 minutes",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Mental Routine Assessment for Golfers",
     description:
       "Map your mental game in 15 minutes. Personalised PDF report + training reports. From $59.",
+    images: ["https://www.mentalroutine.com/og-image.png"],
   },
   robots: { index: true, follow: true },
 };
