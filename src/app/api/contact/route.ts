@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { rateLimit } from "@/lib/rate-limit";
+import { sanitize, validEmail, clamp } from "@/lib/validate";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -11,10 +12,17 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Too many requests" }, { status: 429 });
     }
 
-    const { name, email, handicap, message } = await req.json();
+    const raw = await req.json();
+    const name = clamp(sanitize(raw.name), 100);
+    const email = clamp(sanitize(raw.email), 254);
+    const handicap = clamp(sanitize(raw.handicap ?? ""), 20);
+    const message = clamp(sanitize(raw.message), 2000);
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+    if (!validEmail(email)) {
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
     await resend.emails.send({

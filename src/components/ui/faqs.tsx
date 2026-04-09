@@ -42,7 +42,7 @@ export function FaqsSection() {
             className={`mt-0.5 shrink-0 text-sm font-bold tabular-nums transition-colors duration-300 ${
               isOpen ? 'text-amber-400/60' : 'text-green-900/20'
             }`}
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem' }}
+            style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1rem' }}
           >
             {String(i + 1).padStart(2, '0')}
           </span>
@@ -109,7 +109,7 @@ export function FaqsSection() {
           <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-4">{t.label}</p>
           <h2
             className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            style={{ fontFamily: "var(--font-cormorant), serif" }}
           >
             {t.h2}
           </h2>

@@ -71,7 +71,7 @@ export function EarlyAccessSection({ eaPriceStd, eaPriceDlx }: { eaPriceStd: num
           {/* Left — copy */}
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">{t.sectionLabel}</p>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight mb-6" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               {t.h2a}<br /><em className="text-amber-300">{t.h2b}</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mb-6" />
@@ -82,12 +82,12 @@ export function EarlyAccessSection({ eaPriceStd, eaPriceDlx }: { eaPriceStd: num
                 <div className="grid grid-cols-2 gap-3">
                   <div className="rounded-lg bg-white/[0.05] border border-white/[0.08] p-3 text-center">
                     <p className="text-[10px] font-bold tracking-widest uppercase text-green-200/50 mb-1">{T.pricing.plans[0].plan}</p>
-                    <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}><sup className="text-sm align-super font-normal">$</sup>{eaPriceStd}</p>
+                    <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "var(--font-cormorant), serif" }}><sup className="text-sm align-super font-normal">$</sup>{eaPriceStd}</p>
                     <p className="text-[11px] text-green-200/35 line-through">${T.pricing.plans[0].price}</p>
                   </div>
                   <div className="rounded-lg bg-amber-400/[0.06] border border-amber-400/20 p-3 text-center">
                     <p className="text-[10px] font-bold tracking-widest uppercase text-amber-300/70 mb-1">{T.pricing.plans[1].plan}</p>
-                    <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}><sup className="text-sm align-super font-normal">$</sup>{eaPriceDlx}</p>
+                    <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "var(--font-cormorant), serif" }}><sup className="text-sm align-super font-normal">$</sup>{eaPriceDlx}</p>
                     <p className="text-[11px] text-green-200/35 line-through">${T.pricing.plans[1].price}</p>
                   </div>
                 </div>
@@ -99,11 +99,11 @@ export function EarlyAccessSection({ eaPriceStd, eaPriceDlx }: { eaPriceStd: num
           {/* Right — form */}
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             {submitted ? (
-              <div className="rounded-2xl p-10 bg-white/[0.06] border border-amber-400/20 text-center">
+              <div className="rounded-2xl p-10 bg-white/[0.06] border border-amber-400/20 text-center" role="status" aria-live="polite">
                 <div className="w-14 h-14 rounded-full bg-amber-400/15 flex items-center justify-center mx-auto mb-5">
                   <svg viewBox="0 0 24 24" fill="none" stroke="#c4a043" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7"><polyline points="4 12 9 17 20 6"/></svg>
                 </div>
-                <h3 className="text-xl font-semibold text-[#f6f1e7] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.success.h3}</h3>
+                <h3 className="text-xl font-semibold text-[#f6f1e7] mb-2" style={{ fontFamily: "var(--font-cormorant), serif" }}>{t.success.h3}</h3>
                 <p className="text-sm text-green-200/60 mb-5">{t.success.p}</p>
                 {t.success.timeline && (
                   <div className="space-y-2.5 text-left max-w-xs mx-auto">
@@ -123,7 +123,7 @@ export function EarlyAccessSection({ eaPriceStd, eaPriceDlx }: { eaPriceStd: num
               <form onSubmit={handleSubmit} onFocus={() => { if (!formStarted.current) { formStarted.current = true; track("form_start", { plan: form.plan }); } }} className="rounded-2xl p-8 bg-white/[0.06] border border-white/10 space-y-5">
                 {spots && spots.spots < spots.total && (
                   <div className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-amber-400/[0.08] border border-amber-400/20" role="status" aria-live="polite">
-                    <span className="text-xl font-bold text-amber-400" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{spots.spots}</span>
+                    <span className="text-xl font-bold text-amber-400" style={{ fontFamily: "var(--font-cormorant), serif" }}>{spots.spots}</span>
                     <span className="text-[11px] text-green-200/40">/ {spots.total}</span>
                     <span className="text-[11px] text-amber-300/70 ml-1">{t.spotsLeft}</span>
                   </div>
@@ -160,7 +160,7 @@ export function EarlyAccessSection({ eaPriceStd, eaPriceDlx }: { eaPriceStd: num
                 <button type="submit" disabled={sending} className="w-full py-3.5 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
                   {sending ? t.fields.sending : t.fields.submit}
                 </button>
-                {error && <p className="text-center text-xs text-red-400">{t.fields.error}</p>}
+                {error && <p className="text-center text-xs text-red-400" role="alert">{t.fields.error}</p>}
               </form>
             )}
           </motion.div>

@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { rateLimit } from "@/lib/rate-limit";
+import { sanitize, validEmail, clamp } from "@/lib/validate";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const AUDIENCE_ID = "8e40ab7a-eab7-470d-943f-03a312e98ebc";
@@ -162,10 +163,19 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Too many requests" }, { status: 429 });
     }
 
-    const { name, email, handicap, plan, lang, utm } = await req.json();
+    const raw = await req.json();
+    const name = clamp(sanitize(raw.name), 100);
+    const email = clamp(sanitize(raw.email), 254);
+    const handicap = clamp(sanitize(raw.handicap ?? ""), 20);
+    const plan = raw.plan === "standard" ? "standard" : "deluxe";
+    const lang = raw.lang;
+    const utm = typeof raw.utm === "object" && raw.utm !== null ? raw.utm : {};
 
     if (!name || !email) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+    if (!validEmail(email)) {
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
     const planLabel = plan === "standard" ? `Standard ($${EA_STD})` : `Deluxe ($${EA_DLX})`;

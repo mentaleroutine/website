@@ -105,7 +105,7 @@ function PageContent() {
               {T.hero.badge}
             </motion.span>
 
-            <motion.h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight text-[#f6f1e7] mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}>
+            <motion.h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight text-[#f6f1e7] mb-6" style={{ fontFamily: "var(--font-cormorant), serif" }} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}>
               {T.hero.h1a}<br />
               <span className="italic text-amber-300">{T.hero.h1b}</span>
             </motion.h1>
@@ -152,7 +152,7 @@ function PageContent() {
           <motion.div className="md:hidden w-full max-w-sm mx-auto mt-8 rounded-2xl overflow-hidden border border-white/10 shadow-xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.95 }}>
             <div className="bg-green-900/50 px-4 py-3 border-b border-white/[0.06]">
               <p className="text-[9px] font-bold tracking-widest uppercase text-amber-400/60">{T.hero.badge}</p>
-              <p className="text-sm font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{T.yourProfile}</p>
+              <p className="text-sm font-semibold text-[#f6f1e7]" style={{ fontFamily: "var(--font-cormorant), serif" }}>{T.yourProfile}</p>
             </div>
             <div className="bg-green-950/80 p-4 space-y-2">
               {[
@@ -189,7 +189,7 @@ function PageContent() {
           <motion.div className="grid lg:grid-cols-2 gap-16 items-center" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <div>
               <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.research.label}</p>
-              <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 mb-6 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
                 {T.research.h2a}<br /><em>{T.research.h2b}</em>
               </h2>
               <div className="w-12 h-0.5 bg-amber-500 mb-6" />
@@ -200,7 +200,7 @@ function PageContent() {
             <div className="bg-green-950 rounded-2xl p-10 text-[#f6f1e7] shadow-2xl shadow-green-950/30">
               {T.research.stats.map((stat, i) => (
                 <div key={i} className={`${i < T.research.stats.length - 1 ? 'mb-8 pb-8 border-b border-green-200/10' : ''}`}>
-                  <div className={`${stat.num.length > 5 ? 'text-4xl' : 'text-5xl'} font-semibold text-amber-400 mb-1`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>{stat.num}</div>
+                  <div className={`${stat.num.length > 5 ? 'text-4xl' : 'text-5xl'} font-semibold text-amber-400 mb-1`} style={{ fontFamily: "var(--font-cormorant), serif" }}>{stat.num}</div>
                   <div className="text-sm text-green-200/70 leading-relaxed">{stat.label}</div>
                 </div>
               ))}
@@ -208,7 +208,7 @@ function PageContent() {
           </motion.div>
 
           <motion.blockquote className="mt-16 border-l-2 border-amber-500 pl-6 max-w-2xl" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-xl text-green-950 italic leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{T.research.quote}</p>
+            <p className="text-xl text-green-950 italic leading-relaxed" style={{ fontFamily: "var(--font-cormorant), serif" }}>{T.research.quote}</p>
             <cite className="mt-3 block text-xs font-semibold tracking-widest uppercase text-amber-700 not-italic">{T.research.quoteAuthor}</cite>
           </motion.blockquote>
         </div>
@@ -219,7 +219,7 @@ function PageContent() {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.routine.label}</p>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               {T.routine.h2a}<br /><em>{T.routine.h2b}</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6 mb-6" />
@@ -229,9 +229,9 @@ function PageContent() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {T.routine.steps.map((step, i) => (
               <motion.div key={i} className="bg-white rounded-2xl p-6 border border-green-900/[0.07] shadow-lg shadow-green-900/5 hover:-translate-y-1.5 transition-transform duration-300 relative overflow-hidden" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.07 }}>
-                <span className="absolute -bottom-2 -right-1 text-7xl font-bold text-green-900/[0.04] leading-none pointer-events-none" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.num}</span>
+                <span className="absolute -bottom-2 -right-1 text-7xl font-bold text-green-900/[0.04] leading-none pointer-events-none" style={{ fontFamily: "var(--font-cormorant), serif" }}>{step.num}</span>
                 <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-2">{step.num}</p>
-                <h3 className="text-xl font-semibold text-green-950 mb-3 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.label}</h3>
+                <h3 className="text-xl font-semibold text-green-950 mb-3 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>{step.label}</h3>
                 <p className="text-sm text-stone-600 leading-relaxed relative z-10">{step.body}</p>
               </motion.div>
             ))}
@@ -248,7 +248,7 @@ function PageContent() {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.process.label}</p>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               {T.process.h2a}<br /><em>{T.process.h2b}</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
@@ -257,14 +257,14 @@ function PageContent() {
           <div className="grid md:grid-cols-3 gap-6" id="steps-grid">
             {T.process.steps.map((step, i) => (
               <motion.div key={i} className="bg-white rounded-2xl p-8 border border-green-900/[0.07] shadow-lg shadow-green-900/5 hover:-translate-y-1.5 transition-transform duration-300 relative overflow-hidden" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.12 }}>
-                <span className="absolute bottom-3 right-4 text-8xl font-bold text-green-900/[0.04]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.num}</span>
+                <span className="absolute bottom-3 right-4 text-8xl font-bold text-green-900/[0.04]" style={{ fontFamily: "var(--font-cormorant), serif" }}>{step.num}</span>
                 <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-6">
                   {i === 0 && <svg viewBox="0 0 24 24" fill="none" stroke="#234a32" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>}
                   {i === 1 && <svg viewBox="0 0 24 24" fill="none" stroke="#234a32" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg>}
                   {i === 2 && <svg viewBox="0 0 24 24" fill="none" stroke="#234a32" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>}
                 </div>
                 <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-2">{T.stepLabel} {step.num}</p>
-                <h3 className="text-2xl font-semibold text-green-950 mb-3 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.title}</h3>
+                <h3 className="text-2xl font-semibold text-green-950 mb-3 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>{step.title}</h3>
                 <p className="text-sm text-stone-600 leading-relaxed">{step.body}</p>
               </motion.div>
             ))}
@@ -286,14 +286,14 @@ function PageContent() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.dimensions.label}</p>
-              <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 mb-6 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
                 {T.dimensions.h2a}<br /><em>{T.dimensions.h2b}</em>
               </h2>
               <div className="w-12 h-0.5 bg-amber-500 mb-6" />
               <p className="text-stone-600 leading-relaxed mb-5">{T.dimensions.p1}</p>
               <p className="text-stone-600 leading-relaxed">{T.dimensions.p2}</p>
               <motion.blockquote className="mt-8 border-l-2 border-amber-500 pl-5" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}>
-                <p className="text-base text-green-950 italic leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{T.dimensions.quote}</p>
+                <p className="text-base text-green-950 italic leading-relaxed" style={{ fontFamily: "var(--font-cormorant), serif" }}>{T.dimensions.quote}</p>
                 <cite className="mt-2 block text-xs font-semibold tracking-widest uppercase text-amber-700 not-italic">{T.dimensions.quoteAuthor}</cite>
               </motion.blockquote>
             </motion.div>
@@ -323,7 +323,7 @@ function PageContent() {
         <div className="container mx-auto max-w-5xl">
           <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">{T.whyItWorks.label}</p>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               {T.whyItWorks.h2a}<br /><em className="text-amber-300">{T.whyItWorks.h2b}</em>
             </h2>
           </motion.div>
@@ -336,7 +336,7 @@ function PageContent() {
                   {i === 2 && <svg viewBox="0 0 24 24" fill="none" stroke="#c4a043" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>}
                   {i === 3 && <svg viewBox="0 0 24 24" fill="none" stroke="#c4a043" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
                 </div>
-                <h3 className="text-lg font-semibold text-[#f6f1e7] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{item.title}</h3>
+                <h3 className="text-lg font-semibold text-[#f6f1e7] mb-3" style={{ fontFamily: "var(--font-cormorant), serif" }}>{item.title}</h3>
                 <p className="text-sm text-green-200/60 leading-relaxed">{item.body}</p>
               </motion.div>
             ))}
@@ -354,7 +354,7 @@ function PageContent() {
         <div className="container mx-auto max-w-4xl relative z-10">
           <div className="text-center mb-16">
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">{T.pricing.label}</p>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               {T.pricing.h2a}<br /><em>{T.pricing.h2b}</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6 mb-4" />
@@ -377,7 +377,7 @@ function PageContent() {
                     <span className="text-green-200/25 text-xs mr-0.5">$</span>{card.wasPrice}
                   </p>
                 )}
-                <div className="text-6xl font-semibold text-[#f6f1e7] leading-none mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <div className="text-6xl font-semibold text-[#f6f1e7] leading-none mb-1" style={{ fontFamily: "var(--font-cormorant), serif" }}>
                   <sup className="text-2xl align-super font-normal">$</sup>{card.price}
                 </div>
                 <p className="text-xs text-green-200/50 mb-6 pb-6 border-b border-white/10">{card.tagline}</p>
@@ -485,7 +485,7 @@ function PageContent() {
 
           {/* Pricing testimonial */}
           <motion.div className="mt-6 max-w-md mx-auto text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}>
-            <p className="text-sm italic text-green-200/50 leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <p className="text-sm italic text-green-200/50 leading-relaxed" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               &ldquo;{T.pricing.pricingQuote.text}&rdquo;
             </p>
             <p className="text-xs text-amber-400/60 mt-2">
@@ -520,7 +520,7 @@ function PageContent() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.skillBuilder.label}</p>
-              <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 mb-6 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
                 {T.skillBuilder.h2a}<br /><em>{T.skillBuilder.h2b}</em>
               </h2>
               <div className="w-12 h-0.5 bg-amber-500 mb-6" />
@@ -566,7 +566,7 @@ function PageContent() {
                 <div className="flex items-start justify-between gap-3 mb-4">
                   <div>
                     <p className="text-[9px] font-bold tracking-widest uppercase text-amber-400/60 mb-1">{T.skillBuilder.mockup.tagline}</p>
-                    <p className="text-lg font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{T.skillBuilder.mockup.title}</p>
+                    <p className="text-lg font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>{T.skillBuilder.mockup.title}</p>
                     <p className="text-xs text-green-200/40 mt-0.5">{T.skillBuilder.mockup.subtitle}</p>
                   </div>
                   <div className="w-9 h-9 rounded-xl bg-amber-400/15 border border-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
@@ -623,7 +623,7 @@ function PageContent() {
         <div className="container mx-auto max-w-5xl">
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.testimonials.label}</p>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               <em>{T.testimonials.h2}</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
@@ -669,7 +669,7 @@ function PageContent() {
             <div className="md:col-span-1">
               <div className="flex items-center gap-3 mb-5">
                 <img src="/logoMRpng.png" alt="MentalRoutine logo" className="w-14 h-14 shrink-0 object-contain" />
-                <span className="text-xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <span className="text-xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "var(--font-cormorant), serif" }}>
                   Mental<span className="text-amber-400">Routine</span>
                 </span>
               </div>
@@ -678,7 +678,7 @@ function PageContent() {
 
               {/* Quote */}
               <blockquote className="border-l-2 border-amber-500/40 pl-4">
-                <p className="text-base italic text-green-200/60 leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <p className="text-base italic text-green-200/60 leading-relaxed" style={{ fontFamily: "var(--font-cormorant), serif" }}>
                   &ldquo;{T.footer.quoteText}&rdquo;
                 </p>
                 <cite className="mt-2 block text-xs text-amber-600/70 not-italic tracking-widest uppercase">{T.footer.quoteAuthor}</cite>

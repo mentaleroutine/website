@@ -1,5 +1,21 @@
 import type { Metadata } from "next";
+import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  display: "swap",
+  variable: "--font-dm-sans",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-cormorant",
+});
 
 export const metadata: Metadata = {
   title: "The Mental Routine Assessment for Golfers | MentalRoutine",
@@ -140,7 +156,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${dmSans.variable} ${cormorant.variable}`}>
       <head>
         <script
           type="application/ld+json"

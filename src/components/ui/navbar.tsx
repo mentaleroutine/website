@@ -140,7 +140,7 @@ const Navbar = () => {
         {/* ── Logo (left column) ── */}
         <a href="#hero" className="flex items-center gap-2.5 shrink-0 w-[180px]">
           <img src="/logoMRpng.png" alt="MentalRoutine logo" className="w-8 h-8 shrink-0 object-contain" />
-          <span className="font-semibold text-amber-100/90 tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.05rem" }}>
+          <span className="font-semibold text-amber-100/90 tracking-wide" style={{ fontFamily: "var(--font-cormorant), serif", fontSize: "1.05rem" }}>
             Mental<span className="text-amber-400">Routine</span>
           </span>
         </a>

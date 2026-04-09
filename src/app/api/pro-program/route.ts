@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { rateLimit } from "@/lib/rate-limit";
+import { sanitize, validEmail, clamp } from "@/lib/validate";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -11,10 +12,26 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Too many requests" }, { status: 429 });
     }
 
-    const data = await req.json();
+    const raw = await req.json();
+    const data = {
+      fullName: clamp(sanitize(raw.fullName), 100),
+      email: clamp(sanitize(raw.email), 254),
+      pgaNumber: clamp(sanitize(raw.pgaNumber ?? ""), 50),
+      pgaDivision: clamp(sanitize(raw.pgaDivision ?? ""), 100),
+      linkedIn: clamp(sanitize(raw.linkedIn ?? ""), 200),
+      country: clamp(sanitize(raw.country ?? ""), 100),
+      facility: clamp(sanitize(raw.facility ?? ""), 200),
+      activeStudents: clamp(sanitize(raw.activeStudents ?? ""), 50),
+      groupLessons: clamp(sanitize(raw.groupLessons ?? ""), 50),
+      mentalExperience: clamp(sanitize(raw.mentalExperience ?? ""), 500),
+      howFound: clamp(sanitize(raw.howFound ?? ""), 200),
+    };
 
     if (!data.fullName || !data.email) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+    if (!validEmail(data.email)) {
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
     // Send notification to support + confirmation to applicant in parallel

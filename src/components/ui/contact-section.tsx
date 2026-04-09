@@ -45,7 +45,7 @@ export function ContactSection() {
           transition={{ duration: 0.7 }}
         >
           <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{t.label}</p>
-          <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 mb-6 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
             {t.h2a}<br /><em>{t.h2b}</em>
           </h2>
           <div className="w-12 h-0.5 bg-amber-500 mb-6" />
@@ -60,13 +60,13 @@ export function ContactSection() {
           transition={{ duration: 0.7 }}
         >
           {submitted ? (
-            <div className="bg-white rounded-2xl p-10 border border-green-900/[0.07] shadow-lg shadow-green-900/5 text-center">
+            <div className="bg-white rounded-2xl p-10 border border-green-900/[0.07] shadow-lg shadow-green-900/5 text-center" role="status" aria-live="polite">
               <div className="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#234a32" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </div>
-              <h3 className="text-2xl font-semibold text-green-950 mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.success.h3}</h3>
+              <h3 className="text-2xl font-semibold text-green-950 mb-2" style={{ fontFamily: "var(--font-cormorant), serif" }}>{t.success.h3}</h3>
               <p className="text-stone-500 text-sm">{t.success.p}</p>
             </div>
           ) : (
@@ -92,7 +92,7 @@ export function ContactSection() {
               <button type="submit" disabled={sending} className="w-full py-3.5 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
                 {sending ? t.fields.sending : t.fields.submit}
               </button>
-              {error && <p className="text-center text-xs text-red-600">{t.fields.error}</p>}
+              {error && <p className="text-center text-xs text-red-600" role="alert">{t.fields.error}</p>}
               <p className="text-center text-xs text-stone-400">{t.fields.note}</p>
             </form>
           )}

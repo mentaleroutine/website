@@ -152,7 +152,7 @@ export default function ProProgramPage() {
 
             <motion.h1
               className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight text-[#f6f1e7] mb-6"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+              style={{ fontFamily: "var(--font-cormorant), serif" }}
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             >
               Add a New Revenue Stream<br />
@@ -211,7 +211,7 @@ export default function ProProgramPage() {
         <div className="container mx-auto max-w-5xl">
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">Free Program</p>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               Everything You Need<br /><em>to Start Earning Today</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
@@ -235,7 +235,7 @@ export default function ProProgramPage() {
                   {item.icon === "tag" && <svg viewBox="0 0 24 24" fill="none" stroke="#234a32" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" /><line x1="7" y1="7" x2="7.01" y2="7" /></svg>}
                   {item.icon === "kit" && <svg viewBox="0 0 24 24" fill="none" stroke="#234a32" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>}
                 </div>
-                <h3 className="text-lg font-semibold text-green-950 mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{item.title}</h3>
+                <h3 className="text-lg font-semibold text-green-950 mb-2" style={{ fontFamily: "var(--font-cormorant), serif" }}>{item.title}</h3>
                 <p className="text-sm text-stone-600 leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
@@ -254,7 +254,7 @@ export default function ProProgramPage() {
         <div className="container mx-auto max-w-5xl">
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">Your Earning Potential</p>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               $4,860+ Per Year.<br /><em className="text-amber-300">Here&apos;s the Math.</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
@@ -272,7 +272,7 @@ export default function ProProgramPage() {
                 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.12 }}
               >
                 <p className="text-xs font-semibold tracking-widest uppercase text-amber-400/80 mb-4">{item.label}</p>
-                <div className="text-5xl font-semibold text-[#f6f1e7] leading-none mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <div className="text-5xl font-semibold text-[#f6f1e7] leading-none mb-2" style={{ fontFamily: "var(--font-cormorant), serif" }}>
                   {item.total}
                 </div>
                 <p className="text-sm text-green-200/50 mb-1">{item.calc}</p>
@@ -287,7 +287,7 @@ export default function ProProgramPage() {
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}
           >
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-300 mb-2">Combined Annual Potential</p>
-            <div className="text-6xl font-semibold text-[#f6f1e7] leading-none" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <div className="text-6xl font-semibold text-[#f6f1e7] leading-none" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               $4,860<sup className="text-2xl align-super font-normal text-amber-300">+</sup>
             </div>
             <p className="text-sm text-green-200/50 mt-2">With ready-made materials and zero lesson prep</p>
@@ -306,7 +306,7 @@ export default function ProProgramPage() {
         <div className="container mx-auto max-w-5xl">
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">3 Simple Steps</p>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               Up and Running<br /><em>in Under a Week</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
@@ -323,11 +323,11 @@ export default function ProProgramPage() {
                 className="bg-white rounded-2xl p-8 border border-green-900/[0.07] shadow-lg shadow-green-900/5 relative overflow-hidden"
                 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.12 }}
               >
-                <span className="absolute bottom-3 right-4 text-8xl font-bold text-green-900/[0.04]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.num}</span>
+                <span className="absolute bottom-3 right-4 text-8xl font-bold text-green-900/[0.04]" style={{ fontFamily: "var(--font-cormorant), serif" }}>{step.num}</span>
                 <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-6">
                   <span className="text-sm font-bold text-green-800">{step.num}</span>
                 </div>
-                <h3 className="text-2xl font-semibold text-green-950 mb-3 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.title}</h3>
+                <h3 className="text-2xl font-semibold text-green-950 mb-3 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>{step.title}</h3>
                 <p className="text-sm text-stone-600 leading-relaxed relative z-10">{step.body}</p>
               </motion.div>
             ))}
@@ -341,7 +341,7 @@ export default function ProProgramPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">Ready to Go Deeper?</p>
-              <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 mb-6 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
                 Unlock the Full<br /><em>Teaching Toolkit</em>
               </h2>
               <div className="w-12 h-0.5 bg-amber-500 mb-6" />
@@ -386,7 +386,7 @@ export default function ProProgramPage() {
         <div className="container mx-auto max-w-4xl">
           <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">From Fellow Professionals</p>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               What Pro&apos;s Are<br /><em className="text-amber-300">Saying</em>
             </h2>
           </motion.div>
@@ -425,7 +425,7 @@ export default function ProProgramPage() {
         <div className="container mx-auto max-w-3xl">
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">Questions?</p>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               Frequently<br /><em>Asked</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
@@ -458,7 +458,7 @@ export default function ProProgramPage() {
         <div className="container mx-auto max-w-2xl">
           <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">Apply Now</p>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
               Join the Pro<br /><em>Program</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6 mb-4" />
@@ -475,7 +475,7 @@ export default function ProProgramPage() {
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-semibold text-green-950 mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Application Received!</h3>
+              <h3 className="text-2xl font-semibold text-green-950 mb-2" style={{ fontFamily: "var(--font-cormorant), serif" }}>Application Received!</h3>
               <p className="text-stone-500 text-sm mb-1">Thank you for your interest in the Pro Program.</p>
               <p className="text-stone-500 text-sm">We&apos;ll review your application and get back to you within 1-3 business days.</p>
             </motion.div>
@@ -597,7 +597,7 @@ export default function ProProgramPage() {
       <footer className="py-10 px-6 bg-green-950 border-t border-white/[0.06]">
         <div className="container mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <span className="font-semibold text-amber-100/90 tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.05rem" }}>
+            <span className="font-semibold text-amber-100/90 tracking-wide" style={{ fontFamily: "var(--font-cormorant), serif", fontSize: "1.05rem" }}>
               Mental<span className="text-amber-400">Routine</span>
             </span>
           </div>
