@@ -395,10 +395,13 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 | `quiz_optin_error` | — | Quiz opt-in gefaald |
 | `pro_program_submit` | `country` | Pro-program aanmelding verstuurd |
 | `pro_program_error` | `type: "api"` | Pro-program aanmelding gefaald |
+| `checkout_click` | `plan, source, seconds` | Checkout CTA klik op assessment/upgrade pagina's (incl. time-on-page) |
+| `upsell_click` | `from, to, source` | Cross-sell link klik (standaard→deluxe) |
 | + outbound-links | automatisch | Alle externe links (social media, shop, etc.) |
 | + file-downloads | automatisch | Bestandsdownloads |
 
-- **Section view tracking**: IntersectionObserver op 11 secties: `how-it-works`, `mental-routine`, `steps`, `dimensions`, `why-it-works`, `pricing`, `training-reports`, `testimonials`, `faq`, `early-access`, `contact`
+- **Section view tracking**: IntersectionObserver op 11 secties (hoofdpagina): `how-it-works`, `mental-routine`, `steps`, `dimensions`, `why-it-works`, `pricing`, `training-reports`, `testimonials`, `faq`, `early-access`, `contact`
+- **Assessment/upgrade page tracking**: `scroll_depth`, `section_view` (13 secties standaard, 13 deluxe, 8 upgrade), `faq_open`, `checkout_click` (met time-on-page), `upsell_click`
 - **Time-to-signup**: meet vanaf `performance.timeOrigin` (echte pageload) tot signup submit
 - **UTM tracking**: `captureUtmParams()` vangt 5 UTM params op, persists via `sessionStorage`
 - **Quiz tracking**: Plausible script + proxy in `quiz.html` (standalone HTML, zelfde proxy als hoofdpagina)
@@ -811,3 +814,16 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - `pro_program_error`: API fout
 - Submit button toont "Sending..." state + error message bij fout
 - Totaal: 24 custom events + 2 automatische Plausible extensions over 3 pagina's
+
+### Volledige Analytics Assessment + Upgrade Pagina's (9 april 2026)
+
+**Assessment Standaard + Deluxe + Upgrade pagina's — van 1 event naar 5 events per pagina:**
+- `checkout_click`: uitgebreid met `seconds` prop (time-on-page bij klik — purchase intent signal)
+- `scroll_depth`: 25/50/75/100% milestones met `page` prop (waar haken bezoekers af?)
+- `section_view`: IntersectionObserver (threshold 0.3) op alle secties met `page` prop
+  - Standaard: 13 secties (hero, social-proof, pain, how-it-works, what-you-get, for-who, mockup, breakdown, testimonials, team, pricing, faq, final-cta)
+  - Deluxe: 13 secties (hero, social-proof, pain, how-it-works, compare, features, breakdown, for-who, testimonials, team, pricing, faq, final-cta)
+  - Upgrade: 8 secties (hero, unlock, value-comparison, testimonials, team, pricing, faq, final-cta)
+- `faq_open`: welke FAQ vraag geopend met `question` nummer + `page` prop
+- `upsell_click`: cross-sell link standaard→deluxe met `from`, `to`, `source` props
+- Totaal: 30 custom events + 2 automatische Plausible extensions over 6 pagina's
