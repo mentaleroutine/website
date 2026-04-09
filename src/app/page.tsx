@@ -560,7 +560,7 @@ function PageContent() {
             </motion.div>
 
             {/* Training Report preview card */}
-            <motion.div className="rounded-3xl overflow-hidden border border-green-900/15 shadow-xl shadow-green-900/10 cursor-pointer group" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} onClick={() => { setPreviewPlan("training"); track("report_preview", { type: "training" }); }}>
+            <motion.div role="button" tabIndex={0} aria-label={T.skillBuilder.previewBtn} className="rounded-3xl overflow-hidden border border-green-900/15 shadow-xl shadow-green-900/10 cursor-pointer group" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} onClick={() => { setPreviewPlan("training"); track("report_preview", { type: "training" }); }} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setPreviewPlan("training"); track("report_preview", { type: "training" }); } }}>
               {/* Report header */}
               <div className="bg-green-950 px-6 pt-6 pb-5">
                 <div className="flex items-start justify-between gap-3 mb-4">

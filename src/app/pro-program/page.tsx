@@ -622,6 +622,8 @@ export default function ProProgramPage() {
 // ── FAQ ITEM COMPONENT ──────────────────────────────────────────────────────
 function FaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {
   const [open, setOpen] = useState(false);
+  const triggerId = `pro-faq-trigger-${index}`;
+  const panelId = `pro-faq-panel-${index}`;
 
   return (
     <motion.div
@@ -629,7 +631,10 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
       initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: index * 0.06 }}
     >
       <button
+        id={triggerId}
         onClick={() => setOpen(o => !o)}
+        aria-expanded={open}
+        aria-controls={panelId}
         className="w-full flex items-center justify-between px-6 py-5 text-left"
       >
         <span className="text-sm font-semibold text-green-950 pr-4">{question}</span>
@@ -641,7 +646,7 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
         </svg>
       </button>
       {open && (
-        <div className="px-6 pb-5">
+        <div id={panelId} role="region" aria-labelledby={triggerId} className="px-6 pb-5">
           <p className="text-sm text-stone-600 leading-relaxed">{answer}</p>
         </div>
       )}

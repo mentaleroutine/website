@@ -1,20 +1,14 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "motion/react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 export const TestimonialsColumn = (props: {
   className?: string;
   testimonials: Array<{ text: string; image: string; name: string; role: string; quote?: string }>;
   duration?: number;
 }) => {
-  const [reducedMotion, setReducedMotion] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
-    const onChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
+  const reducedMotion = useReducedMotion();
 
   return (
     <div className={props.className}>
