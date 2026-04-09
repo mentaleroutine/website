@@ -537,7 +537,7 @@
         <span class="header-mid-price">$59</span>
       </div>
       <!-- CHECKOUT URL PLACEHOLDER -->
-      <a href="https://mentaleroutine.com/checkout/standaard" class="btn btn-gold">Begin met vraag 1 →</a>
+      <a href="https://mentaleroutine.com/checkout/standaard" class="btn btn-gold" data-cta="header">Begin met vraag 1 →</a>
     </div>
   </div>
 </header>
@@ -549,7 +549,7 @@
     <span class="mobile-bottom-now">$59</span>
   </div>
   <!-- CHECKOUT URL PLACEHOLDER -->
-  <a href="https://mentaleroutine.com/checkout/standaard" class="btn btn-gold">Begin met vraag 1 →</a>
+  <a href="https://mentaleroutine.com/checkout/standaard" class="btn btn-gold" data-cta="mobile-sticky">Begin met vraag 1 →</a>
 </div>
 
 <!-- ═══ HERO (FIX #2: outcome-driven VP) ═══ -->
@@ -564,7 +564,7 @@
       <p class="hero-sub reveal d2">In 25 minuten weet je precies wat je tegenhoudt op de baan. Je krijgt een persoonlijk plan om meer te genieten van elke ronde — én structureel minder slagen te verliezen aan mentale onrust.</p>
       <div class="hero-cta-wrap reveal d3">
         <!-- CHECKOUT URL PLACEHOLDER -->
-        <a href="https://mentaleroutine.com/checkout/standaard" class="btn btn-gold btn-xl">Begin met vraag 1 → <strong style="margin-left:.3rem">$59</strong></a>
+        <a href="https://mentaleroutine.com/checkout/standaard" class="btn btn-gold btn-xl" data-cta="hero">Begin met vraag 1 → <strong style="margin-left:.3rem">$59</strong></a>
       </div>
       <div class="hero-badges reveal d4">
         <span class="hero-badge hero-badge-launch"><span class="hero-badge-dot hero-badge-dot-gold"></span>Vóór de internationale lancering (mei 2026)</span>
@@ -1075,7 +1075,7 @@
         </div>
 
         <!-- CHECKOUT URL PLACEHOLDER -->
-        <a href="https://mentaleroutine.com/checkout/standaard" class="btn btn-gold btn-xl pcta">Begin met vraag 1 →</a>
+        <a href="https://mentaleroutine.com/checkout/standaard" class="btn btn-gold btn-xl pcta" data-cta="pricing">Begin met vraag 1 →</a>
         <p class="pcta-sub">Gemiddeld 23 minuten · Sla op en ga later verder</p>
       </div>
     </div>
@@ -1168,7 +1168,7 @@
       <h2>Speel beter. Geniet meer.</h2>
       <p class="fcta-sub">1.247 golfers ontdekten wat hen tegenhield — en spelen sindsdien met meer plezier én betere scores.</p>
       <!-- CHECKOUT URL PLACEHOLDER -->
-      <a href="https://mentaleroutine.com/checkout/standaard" class="btn btn-gold btn-xl">Begin met vraag 1 → <strong style="margin-left:.4rem">$59</strong></a>
+      <a href="https://mentaleroutine.com/checkout/standaard" class="btn btn-gold btn-xl" data-cta="final-cta">Begin met vraag 1 → <strong style="margin-left:.4rem">$59</strong></a>
       <div class="fcta-badges">
         <span class="fcta-badge"><span class="fcta-badge-dot"></span>30 dagen geld-terug</span>
         <span class="fcta-badge"><span class="fcta-badge-dot"></span>Veilig betalen</span>
@@ -1226,12 +1226,13 @@
   var PAGE = 'assessment-standard';
   var PLAN = 'standard';
 
-  // ── Checkout CTA clicks (with time-on-page) ──
+  // ── Checkout CTA clicks (with time-on-page + source differentiation) ──
   document.querySelectorAll('a[href*="/checkout/"]').forEach(function(a) {
     a.addEventListener('click', function() {
       var seconds = Math.round((Date.now() - performance.timeOrigin) / 1000);
+      var cta = this.getAttribute('data-cta') || 'unknown';
       if (window.plausible) {
-        plausible('checkout_click', { props: { plan: PLAN, source: PAGE, seconds: String(seconds) } });
+        plausible('checkout_click', { props: { plan: PLAN, source: PAGE, cta: cta, seconds: String(seconds) } });
       }
     });
   });
@@ -1242,6 +1243,33 @@
       if (window.plausible) plausible('upsell_click', { props: { from: 'standard', to: 'deluxe', source: PAGE } });
     });
   });
+
+  // ── Bridge CTA click ("Klinkt dit bekend?") ──
+  document.querySelectorAll('.bridge-cta a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (window.plausible) plausible('bridge_cta_click', { props: { page: PAGE } });
+    });
+  });
+
+  // ── Guarantee & social proof view (conversion-critical elements) ──
+  if ('IntersectionObserver' in window) {
+    var criticalSeen = {};
+    var criticalObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        var name = e.target.getAttribute('data-track');
+        if (name && !criticalSeen[name]) {
+          criticalSeen[name] = true;
+          if (window.plausible) plausible(name + '_view', { props: { page: PAGE } });
+          criticalObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    var gb = document.querySelector('.guarantee-block');
+    if (gb) { gb.setAttribute('data-track', 'guarantee'); criticalObs.observe(gb); }
+    var sp = document.querySelector('.spbar');
+    if (sp) { sp.setAttribute('data-track', 'social_proof'); criticalObs.observe(sp); }
+  }
 
   // ── Scroll depth (25/50/75/100%) ──
   var scrollFired = {};

@@ -280,7 +280,7 @@
       <a href="https://mentaleroutine.com" class="logo">Mental<span>Routine</span></a>
       <span class="header-badge">Upgrade Standaard → Deluxe</span>
       <div class="header-cta-wrap">
-        <a href="https://mentaleroutine.com/checkout/upgrade" class="btn btn-upgrade">Upgrade — $79 →</a>
+        <a href="https://mentaleroutine.com/checkout/upgrade" class="btn btn-upgrade" data-cta="header">Upgrade — $79 →</a>
       </div>
     </div>
   </div>
@@ -302,7 +302,7 @@
         Je weet al wat er speelt. Eén stap verwijderd van een concreet actieplan, 60 extra credits en een uitgebreid rapport dat je vertelt <em>hoe</em> je het oplost.
       </p>
       <div class="hero-actions reveal d4">
-        <a href="https://mentaleroutine.com/checkout/upgrade" class="btn btn-upgrade btn-lg">Upgrade Nu naar Deluxe →</a>
+        <a href="https://mentaleroutine.com/checkout/upgrade" class="btn btn-upgrade btn-lg" data-cta="hero">Upgrade Nu naar Deluxe →</a>
         <div class="hero-price">
           <span class="hero-price-label">Eenmalige upgrade</span>
           <span class="hero-price-amount">$79</span>
@@ -637,7 +637,7 @@
           <div class="countdown-label">Pre-launch prijs · Internationale lancering mei 2026</div>
         </div>
 
-        <a href="https://mentaleroutine.com/checkout/upgrade" class="btn btn-upgrade btn-xl pricing-cta">
+        <a href="https://mentaleroutine.com/checkout/upgrade" class="btn btn-upgrade btn-xl pricing-cta" data-cta="pricing">
           Upgrade Nu naar Deluxe →
         </a>
 
@@ -739,7 +739,7 @@
     <div class="fcta-content reveal">
       <h2>Je hebt de data.<br><em>Nu het plan.</em></h2>
       <p class="lead">Het fundament staat. Voor $79 zet je het om in concrete actie.</p>
-      <a href="https://mentaleroutine.com/checkout/upgrade" class="btn btn-upgrade btn-xl">Upgrade Nu naar Deluxe →</a>
+      <a href="https://mentaleroutine.com/checkout/upgrade" class="btn btn-upgrade btn-xl" data-cta="final-cta">Upgrade Nu naar Deluxe →</a>
     </div>
   </div>
 </section>
@@ -796,15 +796,32 @@
   var PAGE = 'upgrade-page';
   var PLAN = 'upgrade';
 
-  // ── Checkout CTA clicks (with time-on-page) ──
+  // ── Checkout CTA clicks (with time-on-page + source differentiation) ──
   document.querySelectorAll('a[href*="/checkout/"]').forEach(function(a) {
     a.addEventListener('click', function() {
       var seconds = Math.round((Date.now() - performance.timeOrigin) / 1000);
+      var cta = this.getAttribute('data-cta') || 'unknown';
       if (window.plausible) {
-        plausible('checkout_click', { props: { plan: PLAN, source: PAGE, seconds: String(seconds) } });
+        plausible('checkout_click', { props: { plan: PLAN, source: PAGE, cta: cta, seconds: String(seconds) } });
       }
     });
   });
+
+  // ── Guarantee view (conversion-critical element) ──
+  if ('IntersectionObserver' in window) {
+    var guaranteeSeen = false;
+    var guaranteeObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting && !guaranteeSeen) {
+          guaranteeSeen = true;
+          if (window.plausible) plausible('guarantee_view', { props: { page: PAGE } });
+          guaranteeObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    var gb = document.querySelector('.guarantee-block');
+    if (gb) guaranteeObs.observe(gb);
+  }
 
   // ── Scroll depth (25/50/75/100%) ──
   var scrollFired = {};

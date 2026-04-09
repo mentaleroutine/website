@@ -404,7 +404,7 @@
         <span class="header-mid-name">Assessment Deluxe ✦</span>
         <span class="header-mid-price">$129</span>
       </div>
-      <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold">Start Deluxe →</a>
+      <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold" data-cta="header">Start Deluxe →</a>
     </div>
   </div>
 </header>
@@ -415,7 +415,7 @@
     <span class="mobile-bottom-was">Meest Compleet</span>
     <span class="mobile-bottom-now">$129</span>
   </div>
-  <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold">Start Deluxe →</a>
+  <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold" data-cta="mobile-sticky">Start Deluxe →</a>
 </div>
 
 <!-- HERO -->
@@ -429,7 +429,7 @@
       <h1 class="reveal d1">Jouw mentale spel,<br><em>volledig doorgrond.</em></h1>
       <p class="hero-sub reveal d2">In 25 minuten weet je precies wat je tegenhoudt — en met 20+ pagina's analyse en een persoonlijk actieplan weet je ook exact wat je morgen anders doet op de baan.</p>
       <div class="hero-cta-wrap reveal d3">
-        <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold btn-xl">Start jouw Deluxe Assessment → <strong style="margin-left:.3rem">$129</strong></a>
+        <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold btn-xl" data-cta="hero">Start jouw Deluxe Assessment → <strong style="margin-left:.3rem">$129</strong></a>
       </div>
       <div class="hero-badges reveal d4">
         <span class="hero-badge hero-badge-launch"><span class="hero-badge-dot hero-badge-dot-gold"></span>Vóór de internationale lancering (mei 2026)</span>
@@ -854,7 +854,7 @@
           </div>
         </div>
 
-        <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold btn-xl pcta">Start jouw Deluxe Assessment →</a>
+        <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold btn-xl pcta" data-cta="pricing">Start jouw Deluxe Assessment →</a>
         <p class="pcta-sub">Gemiddeld 25 minuten · Sla op en ga later verder</p>
       </div>
     </div>
@@ -959,7 +959,7 @@
     <div class="fcta-inner reveal">
       <h2>Klaar om écht inzicht te krijgen?</h2>
       <p class="fcta-sub">1.247 golfers ontdekten wat hen tegenhield. De assessment duurt 25 minuten. Het inzicht — en het actieplan — blijft je bij.</p>
-      <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold btn-xl">Start jouw Deluxe Assessment → <strong style="margin-left:.4rem">$129</strong></a>
+      <a href="https://mentaleroutine.com/checkout/deluxe" class="btn btn-gold btn-xl" data-cta="final-cta">Start jouw Deluxe Assessment → <strong style="margin-left:.4rem">$129</strong></a>
       <div class="fcta-badges">
         <span class="fcta-badge"><span class="fcta-badge-dot"></span>30 dagen geld-terug</span>
         <span class="fcta-badge"><span class="fcta-badge-dot"></span>Veilig betalen</span>
@@ -1022,15 +1022,43 @@
   var PAGE = 'assessment-deluxe';
   var PLAN = 'deluxe';
 
-  // ── Checkout CTA clicks (with time-on-page) ──
+  // ── Checkout CTA clicks (with time-on-page + source differentiation) ──
   document.querySelectorAll('a[href*="/checkout/"]').forEach(function(a) {
     a.addEventListener('click', function() {
       var seconds = Math.round((Date.now() - performance.timeOrigin) / 1000);
+      var cta = this.getAttribute('data-cta') || 'unknown';
       if (window.plausible) {
-        plausible('checkout_click', { props: { plan: PLAN, source: PAGE, seconds: String(seconds) } });
+        plausible('checkout_click', { props: { plan: PLAN, source: PAGE, cta: cta, seconds: String(seconds) } });
       }
     });
   });
+
+  // ── Bridge CTA click ("Klinkt dit bekend?") ──
+  document.querySelectorAll('.bridge-cta a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (window.plausible) plausible('bridge_cta_click', { props: { page: PAGE } });
+    });
+  });
+
+  // ── Guarantee & social proof view (conversion-critical elements) ──
+  if ('IntersectionObserver' in window) {
+    var criticalSeen = {};
+    var criticalObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        var name = e.target.getAttribute('data-track');
+        if (name && !criticalSeen[name]) {
+          criticalSeen[name] = true;
+          if (window.plausible) plausible(name + '_view', { props: { page: PAGE } });
+          criticalObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    var gb = document.querySelector('.guarantee-block');
+    if (gb) { gb.setAttribute('data-track', 'guarantee'); criticalObs.observe(gb); }
+    var sp = document.querySelector('.spbar');
+    if (sp) { sp.setAttribute('data-track', 'social_proof'); criticalObs.observe(sp); }
+  }
 
   // ── Scroll depth (25/50/75/100%) ──
   var scrollFired = {};
