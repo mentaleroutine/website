@@ -15,25 +15,31 @@
 src/
   app/
     layout.tsx                  — root layout (metadata, html/body)
-    page.tsx                    — hoofdpagina (alle secties + componenten)
+    page.tsx                    — hoofdpagina (secties + imports, ~814 regels)
     favicon.ico
-    globals.css                 — Tailwind imports + globale stijlen
+    globals.css                 — Tailwind imports + globale stijlen + prefers-reduced-motion
     pro-program/
       page.tsx                  — PGA Pro Program landing page
     api/
-      contact/route.ts          — POST → contactformulier e-mail via Resend
-      early-access/route.ts     — POST → early access signup via Resend (audience + emails)
-      pro-program/route.ts      — POST → pro-program aanmelding via Resend (email naar support)
-      spots/route.ts            — GET → live spots counter via Resend Audience API
+      contact/route.ts          — POST → contactformulier e-mail via Resend (rate-limited)
+      early-access/route.ts     — POST → early access signup via Resend (rate-limited, audience + emails)
+      pro-program/route.ts      — POST → pro-program aanmelding via Resend (rate-limited, notificatie + bevestiging email)
+      spots/route.ts            — GET → live spots counter via Resend Audience API (rate-limited)
   lib/
     translations.ts             — alle tekst + vertalingen, 5 talen (as const)
     utils.ts                    — utility functies (cn helper)
+    rate-limit.ts               — in-memory rate limiter per IP (sliding window, per route)
+    use-reduced-motion.ts       — React hook voor prefers-reduced-motion detectie
   context/
     lang-context.tsx            — taalwisselaar (LangProvider + useLang hook)
   components/ui/
     navbar.tsx                  — navigatie + LangDropdown (mobile + desktop)
     faqs.tsx                    — FAQ accordion (FaqsSection)
-    testimonials-columns.tsx    — testimonial kaarten in auto-scroll kolommen
+    testimonials-columns.tsx    — testimonial kaarten in auto-scroll kolommen (reduced-motion aware)
+    hero-radar.tsx              — SVG radar chart met 8 assen, roteert random scores (reduced-motion aware)
+    contact-section.tsx         — contactformulier (POST naar /api/contact), lazy-loaded
+    early-access-section.tsx    — early access signup formulier, lazy-loaded
+    report-preview-modal.tsx    — iframe modal voor sample reports, lazy-loaded
     spotlight.tsx               — achtergrond spotlight effect (hero)
     button.tsx                  — generieke button component
     evervault-card.tsx          — decoratief card component
@@ -81,12 +87,12 @@ public/
 
 ## Secties (volgorde in page.tsx)
 
-### Componenten bovenin page.tsx (vóór PageContent)
+### Geëxtraheerde componenten (lazy-loaded via `next/dynamic`)
 
-1. **HeroRadar** — SVG radar chart met 8 assen, roteert random scores elke 3s
-2. **ContactSection** — werkend contactformulier (POST naar `/api/contact`)
-3. **EarlyAccessSection** — signup formulier met plan-voorkeur (POST naar `/api/early-access`)
-4. **ReportPreviewModal** — iframe modal die sample reports toont (Standard, Deluxe, of Training Report)
+1. **HeroRadar** (`hero-radar.tsx`) — SVG radar chart met 8 assen, roteert random scores elke 3s, stopt bij `prefers-reduced-motion`
+2. **ContactSection** (`contact-section.tsx`) — werkend contactformulier (POST naar `/api/contact`), lazy-loaded `ssr: false`
+3. **EarlyAccessSection** (`early-access-section.tsx`) — signup formulier met plan-voorkeur, spots counter, UTM capture, lazy-loaded `ssr: false`. Ontvangt `eaPriceStd` en `eaPriceDlx` als props
+4. **ReportPreviewModal** (`report-preview-modal.tsx`) — iframe modal die sample reports toont, lazy-loaded `ssr: false`
 
 ### Secties in PageContent
 
@@ -130,7 +136,7 @@ public/
 - **Type**: Volledige HTML pagina's met eigen CSS (geen Tailwind), gestyled om een PDF-rapport te simuleren
 - **Assessment reports** (Standard + Deluxe): Cover page, score bars, deep dives per stap, geblurde secties (met lock icon), prioriteiten, aanbevelingen
 - **Training report** (5 pagina's): Cover met score indicator (3.8/10 Conviction Under Pressure), benchmark vergelijking, fysieke + mentale oefening, expert insight + storytelling (Shane Lowry), reflectievragen + mantra, geblurde AI self-coaching prompts + extended benchmark
-- **Geladen via**: `ReportPreviewModal` component in page.tsx — iframe in een modal overlay, ondersteunt 3 types: `"standard"` | `"deluxe"` | `"training"`
+- **Geladen via**: `ReportPreviewModal` component in `report-preview-modal.tsx` (lazy-loaded) — iframe in een modal overlay, ondersteunt 3 types: `"standard"` | `"deluxe"` | `"training"`
 - **Triggers**:
   - "Preview sample report →" knop onder elke pricing card (standard/deluxe)
   - Clickable mockup card in Training Reports sectie (training)
@@ -173,11 +179,14 @@ public/
 
 - **URL**: `https://mentalroutine.com/pro-program`
 - **Bestand**: `src/app/pro-program/page.tsx`
-- **API route**: `src/app/api/pro-program/route.ts` — POST → email naar support@mentalroutine.com via Resend
+- **API route**: `src/app/api/pro-program/route.ts` — POST → 2 emails via Resend (parallel via `Promise.all`)
 - **Doel**: Landing page voor PGA Teaching Professionals om het assessment aan te bieden aan hun leerlingen
 - **Taal**: alleen Engels (niet meertalig, niet in translations.ts)
 - **Toegang vanuit hoofdpagina**: footer link, pricing proCallout, process coachNote (alle 3 getrackt via `pro_program_click`)
 - **Bevat**: aanmeldformulier met velden voor PGA-nummer, divisie, land, faciliteit, actieve leerlingen, etc.
+- **Emails bij aanmelding**:
+  1. **Notificatie** naar `support@mentalroutine.com` — naam, email, PGA-nummer, land, etc.
+  2. **Bevestiging** naar aanmelder — bedankt, next-steps timeline (review → activatie → free Deluxe Assessment + affiliate code)
 - **Analytics**: `pro_program_submit` (succes + country) en `pro_program_error` (API fout)
 
 ## Contactformulier
@@ -300,7 +309,9 @@ public/
 - Alle secties gebruiken `motion.div` met `whileInView` trigger
 - `viewport={{ once: true }}` — animatie speelt maar 1x
 - Staggered delays: `delay: i * 0.07` tot `i * 0.15`
-- Radar chart: `setInterval` elke 3s met random scores 1-9
+- Radar chart: `setInterval` elke 3s met random scores 1-9 (stopt bij `prefers-reduced-motion`)
+- Testimonials: infinite auto-scroll (stopt bij `prefers-reduced-motion`)
+- **Reduced motion**: globale CSS rule + component-level checks via `useReducedMotion()` hook
 
 ## Deployment
 
@@ -336,7 +347,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Getypeerde destructuring: `const t: Translation["faq"] = translations[lang].faq` etc.
 
 ### Framer Motion imports
-- `page.tsx` en `faqs.tsx`: importeren uit `"framer-motion"`
+- `page.tsx`, `faqs.tsx`, `hero-radar.tsx`, `contact-section.tsx`, `early-access-section.tsx`, `report-preview-modal.tsx`: importeren uit `"framer-motion"`
 - `navbar.tsx` en `testimonials-columns.tsx`: importeren uit `"motion/react"`
 - **Niet mixen** binnen één bestand
 
@@ -358,6 +369,11 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **FAQ accordion**: WAI-ARIA accordion pattern — `aria-expanded`, `aria-controls` op trigger button, `role="region"` + `aria-labelledby` op content panel
 - **Navbar mobile**: close button heeft `aria-label="Close menu"`
 - **Dynamic html lang**: `document.documentElement.lang` wordt gesynchroniseerd via `useEffect` in `LangProvider`
+- **prefers-reduced-motion** (WCAG 2.1 AA):
+  - `useReducedMotion()` hook in `src/lib/use-reduced-motion.ts` — detecteert OS-instelling, luistert naar wijzigingen
+  - **Radar chart** (`hero-radar.tsx`): stopt `setInterval` rotatie bij reduced-motion
+  - **Testimonials** (`testimonials-columns.tsx`): stopt auto-scroll animatie bij reduced-motion
+  - **Globale CSS** (`globals.css`): `@media (prefers-reduced-motion: reduce)` zet `animation-duration`, `transition-duration` en `scroll-behavior` op minimaal voor alle elementen
 
 ### Analytics (Plausible)
 - **Provider**: Plausible Analytics — Business plan ($19/mo), privacy-friendly, cookieloos, GDPR-compliant (geüpgraded van Starter €9/mo voor custom properties)
@@ -410,6 +426,24 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **Quiz tracking**: Plausible script + proxy in `quiz.html` (standalone HTML, zelfde proxy als hoofdpagina)
 - **Pro-program tracking**: events in `pro-program/page.tsx`, API route `api/pro-program/route.ts`
 
+### API Security & Rate Limiting
+- **Bestand**: `src/lib/rate-limit.ts` — in-memory rate limiter
+- **Mechanisme**: sliding window per IP-adres per route (60 seconden window)
+- **IP detectie**: `x-forwarded-for` header (Vercel zet dit automatisch)
+- **Limieten per route**:
+
+| Route | Max requests / minuut |
+|-------|----------------------|
+| `contact` | 3 |
+| `early-access` | 5 |
+| `pro-program` | 3 |
+| `spots` | 30 |
+
+- **Cleanup**: bij >1000 entries in de Map worden verlopen timestamps opgeruimd
+- **HTTP response**: `429 Too Many Requests` bij limiet bereikt
+- **Error logging**: alle API routes loggen fouten via `console.error("[route] message:", err)` met route-prefix
+- **Let op**: in-memory rate limiting reset bij Vercel cold starts. Voor productie-grade bescherming: overweeg Vercel Rate Limiting of Redis-backed oplossing
+
 ### Bestanden die NOOIT gestaged worden
 - `.next/` — build output
 - `.claude/` — Claude projectdata
@@ -439,6 +473,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - URL: `https://mentalroutine.com/quiz.html`
 - Bestand: `public/quiz.html` (standalone HTML, eigen CSS, geen Tailwind/Next.js)
 - Taal: alleen Nederlands (niet meertalig)
+- **Taaldetectie**: `navigator.language` check — niet-NL bezoekers zien dismissible notice banner met link naar Engels assessment. Script direct na coming-soon-banner
 - **Links op hoofdpagina** (alvast actief, alsof quiz beschikbaar is):
   - Hero: "Of probeer eerst de gratis quiz →" (`hero.quizCta`, 5 talen)
   - Footer navigatie: "Free Quiz" / "Gratis Quiz" link (`footer.quizLink`, 5 talen)
@@ -446,6 +481,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **Coming soon banner**: bovenaan quiz.html, meldt dat quiz pas op 20 april beschikbaar is + link terug naar assessment
 - **Quiz geblokkeerd**: `QUIZ_LOCKED = true` flag in JS — alle "Start de quiz" knoppen scrollen naar coming soon banner met pulse-animatie i.p.v. quiz te starten
 - **Op 20 april**: (1) zet `QUIZ_LOCKED = false`, (2) verwijder `<div id="coming-soon-banner">` blok
+- **Toekomstig**: volledige 5-talige quiz (9 holes × 5 talen + alle UI tekst) — groot project, best na quiz launch
 
 ### OG Image ✅ (afgerond)
 - Gegenereerd via DALL-E 3 API (gouden radar chart op donkergroen) + Sharp SVG tekst overlay
@@ -467,6 +503,19 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Prijs: $89 (verschil $129 - $59 + $19 marge)
 - Gedocumenteerd in FAQ Q9, niet op pricing cards
 - Bij implementatie in shop: upgrade-flow bouwen die bestaande assessment-resultaten hergebruikt
+
+### Assessment/Upgrade Pagina's Migratie naar Next.js (gepland)
+- **Huidige situatie**: 3 standalone HTML pagina's (`assessment-standaard.html`, `assessment-deluxe.html`, `upgrade-standaard-deluxe.html`) met eigen CSS
+- **Probleem**: dubbel onderhoud (eigen CSS, eigen analytics setup, handmatige terminologie-sync)
+- **Doel**: migratie naar Next.js App Router → shared layout, Tailwind, i18n, betere performance
+- **Scope**: groot project (~3000 regels HTML → React componenten)
+- **Prioriteit**: medium-laag — niet urgent, maar voorkomt drift naarmate de site groeit
+- **Stappen bij migratie**:
+  1. Maak `src/app/assessment/standaard/page.tsx` etc.
+  2. Converteer CSS naar Tailwind klassen
+  3. Hergebruik bestaande componenten (Navbar? Footer?)
+  4. Verplaats analytics tracking naar shared utility
+  5. Verwijder oude HTML bestanden uit `/public/`
 
 ## Recent Uitgevoerde Wijzigingen (8 april 2026)
 
@@ -855,3 +904,97 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
   - `assessment-deluxe.html`
   - `upgrade-standaard-deluxe.html`
 - **Dashboard**: clarity.microsoft.com
+
+### Expert Panel Review Ronde 2 + Fixes (9 april 2026)
+
+**Expert panel review uitgevoerd** (5 deskundigen: Conversie Specialist, UX Designer, Frontend Engineer, SEO Specialist, Copywriter):
+- Totaalscore: **7.7 / 10** (stijging van 6.8 → 7.7 na vorige ronde fixes)
+- Top scores: Analytics (9.0), SEO (8.5), Meertaligheid (8.5), Visual Design (8.5)
+- Verbeterpunten: Performance (7.0), Assessment subsites (7.0), Quiz (6.5)
+
+**6 kritieke issues gefixt:**
+
+1. **Terminologie opgeschoond op assessment/upgrade HTML pagina's:**
+   - Alle "Skills Developer" → "trainingsrapporten" op `assessment-standaard.html`, `assessment-deluxe.html`, `upgrade-standaard-deluxe.html`
+   - Alle "credits" → rapportaantallen (4–6 / 9–14)
+   - FAQ's herschreven zonder credits-terminologie
+
+2. **Upgrade prijs gecorrigeerd:**
+   - $79 → $89 op `upgrade-standaard-deluxe.html` (8 locaties: meta, titel, header CTA, hero, pricing card, guarantee, FAQ, testimonial)
+
+3. **Domein gecorrigeerd op alle HTML pagina's:**
+   - `https://mentaleroutine.com` → `https://www.mentalroutine.com` op assessment-standaard (6 URLs), assessment-deluxe (6 URLs), upgrade (6 URLs)
+   - `support@mentaleroutine.com` → `support@mentalroutine.com` op alle 3 pagina's
+   - `portal.mentaleroutine.com` (quiz API endpoint) bewust ongemoeid gelaten
+
+4. **Quiz social proof gecorrigeerd:**
+   - "1.247 golfers deden de quiz al" → "1.000+ golfers onderzocht" (claim was misleidend want quiz is nog niet live)
+   - "1.247 golfers ontdekten al..." → "Gebaseerd op onderzoek met 1.000+ golfers..."
+
+5. **Rate limiting toegevoegd:**
+   - Nieuw bestand: `src/lib/rate-limit.ts` — in-memory sliding window per IP
+   - Alle 4 API routes voorzien van rate limiting (contact: 3/min, early-access: 5/min, pro-program: 3/min, spots: 30/min)
+
+6. **Error logging toegevoegd:**
+   - Alle API routes loggen fouten via `console.error("[route] message:", err)` met route-prefix
+   - Voorheen: stille catch met generieke error response
+
+### Performance Optimalisatie (9 april 2026)
+
+**page.tsx gesplitst van 1223 → 814 regels:**
+- 4 componenten geëxtraheerd naar eigen bestanden:
+  - `src/components/ui/hero-radar.tsx` — SVG radar chart (82 regels)
+  - `src/components/ui/contact-section.tsx` — contactformulier (94 regels)
+  - `src/components/ui/early-access-section.tsx` — early access signup (165 regels)
+  - `src/components/ui/report-preview-modal.tsx` — report preview modal (58 regels)
+- Shared utility: `src/lib/use-reduced-motion.ts` — React hook (13 regels)
+- Below-fold componenten lazy-loaded via `next/dynamic` met `ssr: false`:
+  ```tsx
+  const ContactSection = dynamic(() => import("@/components/ui/contact-section").then(m => ({ default: m.ContactSection })), { ssr: false });
+  const EarlyAccessSection = dynamic(() => import("@/components/ui/early-access-section").then(m => ({ default: m.EarlyAccessSection })), { ssr: false });
+  const ReportPreviewModal = dynamic(() => import("@/components/ui/report-preview-modal").then(m => ({ default: m.ReportPreviewModal })), { ssr: false });
+  ```
+- `EarlyAccessSection` ontvangt prijzen als props: `<EarlyAccessSection eaPriceStd={EA_PRICE_STD} eaPriceDlx={EA_PRICE_DLX} />`
+- UTM capture logic verplaatst van page.tsx naar early-access-section.tsx (enige consumer)
+
+### Accessibility: prefers-reduced-motion (9 april 2026)
+
+- **Hook**: `useReducedMotion()` in `src/lib/use-reduced-motion.ts`
+  - Detecteert `(prefers-reduced-motion: reduce)` media query
+  - Luistert naar wijzigingen (bijv. gebruiker verandert OS-instelling)
+  - Retourneert `boolean` — `true` als gebruiker minder beweging wil
+- **Radar chart** (`hero-radar.tsx`): `setInterval` wordt niet gestart bij `reducedMotion === true`
+- **Testimonials** (`testimonials-columns.tsx`): `animate` en `transition` worden lege objecten bij reduced-motion → geen scrollende kolommen
+- **Globale CSS** (`globals.css`): fallback voor alle andere animaties
+  ```css
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  ```
+
+### Quiz Taaldetectie (9 april 2026)
+
+- **Probleem**: quiz is alleen Nederlands, maar hoofdsite is 5-talig → internationale bezoekers kwamen op NL-only quiz terecht
+- **Oplossing**: browser-taaldetectie via `navigator.language`
+- **Implementatie**: `<div id="lang-notice">` banner direct na coming-soon-banner in `quiz.html`
+  - Alleen zichtbaar voor niet-NL browsers
+  - Tekst: "This quiz is currently only available in Dutch."
+  - Link: "Take the full assessment in English →" naar `/#early-access`
+  - Dismissible met × knop
+- **Toekomstig project**: volledige 5-talige quiz na launch op 20 april
+
+### Pro Program Bevestigings-email (9 april 2026)
+
+- **Route**: `src/app/api/pro-program/route.ts`
+- **Wijziging**: enkele notificatie-email → 2 emails parallel via `Promise.all`
+- **Nieuwe bevestiging-email naar aanmelder**:
+  - From: `MentalRoutine <contact@mentalroutine.com>`
+  - Reply-to: `support@mentalroutine.com`
+  - Subject: "Your Pro Program application has been received!"
+  - Content: bedankt, 3-stappen timeline (application in queue → review within 24h → approved: free Deluxe + affiliate code)
+  - Taal: Engels (consistent met de Engelstalige Pro Program pagina)
