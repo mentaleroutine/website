@@ -190,6 +190,7 @@ function ContactSection() {
       });
       if (!res.ok) throw new Error();
       setSubmitted(true);
+      track("contact_submit", { lang });
     } catch {
       setError(true);
     } finally {
@@ -276,6 +277,8 @@ function EarlyAccessSection() {
   const [spots, setSpots] = React.useState<{ spots: number; total: number } | null>(null);
 
   const [utm] = React.useState(() => captureUtmParams());
+  const formStarted = React.useRef(false);
+  const pageLoadTime = React.useRef(performance.now());
 
   // Fetch live spots count on mount + listen for plan selection from pricing cards
   useEffect(() => {
@@ -297,11 +300,13 @@ function EarlyAccessSection() {
       });
       if (!res.ok) throw new Error();
       setSubmitted(true);
-      track("signup", { plan: form.plan, lang });
+      const seconds = String(Math.round((performance.now() - pageLoadTime.current) / 1000));
+      track("signup", { plan: form.plan, lang, seconds });
       // Refresh spots count after successful signup
       fetch("/api/spots").then(r => r.json()).then(setSpots).catch(() => {});
     } catch {
       setError(true);
+      track("signup_error", { type: "api" });
     } finally {
       setSending(false);
     }
@@ -367,7 +372,7 @@ function EarlyAccessSection() {
                 )}
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="rounded-2xl p-8 bg-white/[0.06] border border-white/10 space-y-5">
+              <form onSubmit={handleSubmit} onFocus={() => { if (!formStarted.current) { formStarted.current = true; track("form_start"); } }} className="rounded-2xl p-8 bg-white/[0.06] border border-white/10 space-y-5">
                 {spots && spots.spots < spots.total && (
                   <div className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-amber-400/[0.08] border border-amber-400/20" role="status" aria-live="polite">
                     <span className="text-xl font-bold text-amber-400" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{spots.spots}</span>
@@ -428,12 +433,48 @@ function PageContent() {
   const [previewPlan, setPreviewPlan] = useState<"standard" | "deluxe" | "training" | null>(null);
   const [showStickyBar, setShowStickyBar] = useState(false);
 
+  // Section view tracking via IntersectionObserver
   useEffect(() => {
+    const seen = new Set<string>();
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        const id = entry.target.id;
+        if (entry.isIntersecting && id && !seen.has(id)) {
+          seen.add(id);
+          track("section_view", { section: id });
+        }
+      }
+    }, { threshold: 0.3 });
+    for (const id of ["how-it-works", "mental-routine", "steps", "pricing", "testimonials", "faq", "early-access", "contact"]) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
+  }, []);
+
+  // Sticky bar impression tracking
+  const stickyBarSeen = React.useRef(false);
+  useEffect(() => {
+    if (showStickyBar && !stickyBarSeen.current) {
+      stickyBarSeen.current = true;
+      track("sticky_bar_impression");
+    }
+  }, [showStickyBar]);
+
+  useEffect(() => {
+    const scrollMilestones = new Set<string>();
     const onScroll = () => {
       const scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
       const earlyAccessEl = document.getElementById("early-access");
       const inEarlyAccess = earlyAccessEl ? window.scrollY + window.innerHeight > earlyAccessEl.offsetTop && window.scrollY < earlyAccessEl.offsetTop + earlyAccessEl.offsetHeight : false;
       setShowStickyBar(scrollPct > 0.25 && scrollPct < 0.92 && !inEarlyAccess);
+      // Scroll depth tracking
+      for (const milestone of ["25", "50", "75", "100"] as const) {
+        if (scrollPct >= Number(milestone) / 100 && !scrollMilestones.has(milestone)) {
+          scrollMilestones.add(milestone);
+          track("scroll_depth", { depth: milestone });
+        }
+      }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -486,7 +527,7 @@ function PageContent() {
             </motion.div>
 
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
-              <a href="#early-access" onClick={() => track("hero_cta_click")} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
+              <a href="#early-access" onClick={() => track("cta_click", { source: "hero" })} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
                 {T.earlyAccess.heroCta.replace("{price}", `$${EA_PRICE_STD}`)}
               </a>
               <a href="#mental-routine" className="px-8 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm">
@@ -632,7 +673,7 @@ function PageContent() {
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><path d="M8 1l5.5 2.5v4c0 3-2.5 5.5-5.5 6.5C5 13 2.5 10.5 2.5 7.5v-4L8 1z"/></svg>
             {T.process.privacyNote}
           </motion.p>
-          <motion.a href="/pro-program" className="mt-3 text-center text-xs text-amber-700/70 hover:text-amber-700 transition-colors flex items-center justify-center gap-1.5" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+          <motion.a href="/pro-program" onClick={() => track("pro_program_click", { source: "process" })} className="mt-3 text-center text-xs text-amber-700/70 hover:text-amber-700 transition-colors flex items-center justify-center gap-1.5" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5"/></svg>
             {T.process.coachNote}
           </motion.a>
@@ -865,7 +906,7 @@ function PageContent() {
 
           {/* ── PRO CALLOUT — visible for teaching professionals ── */}
           <motion.div className="mt-4 text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.5 }}>
-            <a href="/pro-program" className="inline-flex items-center gap-2 text-xs text-green-200/40 hover:text-amber-300 transition-colors">
+            <a href="/pro-program" onClick={() => track("pro_program_click", { source: "pricing" })} className="inline-flex items-center gap-2 text-xs text-green-200/40 hover:text-amber-300 transition-colors">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5"/></svg>
               {T.pricing.proCallout}
             </a>
@@ -1104,7 +1145,7 @@ function PageContent() {
               </a>
 
               {T.footer.teachingPro && (
-                <a href="/pro-program" className="inline-flex items-center gap-2 text-xs text-green-200/35 hover:text-amber-300 transition-colors mt-4 group">
+                <a href="/pro-program" onClick={() => track("pro_program_click", { source: "footer" })} className="inline-flex items-center gap-2 text-xs text-green-200/35 hover:text-amber-300 transition-colors mt-4 group">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5"/></svg>
                   <span>{T.footer.teachingPro}</span>
                 </a>
@@ -1148,7 +1189,7 @@ function PageContent() {
               <div className="flex items-center gap-2 w-full sm:w-auto">
                 <a
                   href="#early-access"
-                  onClick={() => track("sticky_bar_click")}
+                  onClick={() => track("cta_click", { source: "sticky" })}
                   className="flex-1 sm:flex-none text-center px-5 py-2 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all text-xs tracking-wide shadow-md shadow-amber-500/20"
                 >
                   {T.earlyAccess.pricingCta}

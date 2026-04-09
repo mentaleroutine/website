@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/context/lang-context';
 import { translations, type Translation } from '@/lib/translations';
 
+declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
+
 const MOBILE_INITIAL_COUNT = 4;
 
 export function FaqsSection() {
@@ -32,7 +34,7 @@ export function FaqsSection() {
         <button
           className="flex w-full items-start gap-5 px-6 py-5 text-left"
           id={`${id}-trigger`}
-          onClick={() => setOpenId(isOpen ? '' : id)}
+          onClick={() => { setOpenId(isOpen ? '' : id); if (!isOpen && typeof window !== "undefined" && window.plausible) window.plausible("faq_open", { props: { question: String(i + 1) } }); }}
           aria-expanded={isOpen}
           aria-controls={`${id}-content`}
         >
