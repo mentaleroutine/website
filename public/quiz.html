@@ -425,6 +425,9 @@
     /* ── COMING SOON PULSE ── */
     @keyframes comingSoonPulse{0%,100%{background:linear-gradient(135deg,#1B3A2D 0%,#254D3A 100%)}50%{background:linear-gradient(135deg,#254D3A 0%,#3D7A5A 100%)}}
   </style>
+  <!-- Plausible Analytics — proxied via Vercel rewrite -->
+  <script async src="/js/script.js" data-api="/api/event" data-domain="mentalroutine.com"></script>
+  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}}; plausible.init();</script>
 </head>
 <body>
 
@@ -1315,6 +1318,7 @@
       calculateResults();
       buildResultScreen();
       showPhase('phase-results');
+      if (window.plausible) plausible('quiz_complete', { props: { seconds: String(elapsed), score: String(state.totalScore) } });
     }
   }
 
@@ -1586,6 +1590,7 @@
     initQuiz();
     showPhase('phase-quiz');
     renderHole(0);
+    if (window.plausible) plausible('quiz_start');
   }
 
   /* ── COMING SOON: block quiz start until launch ── */
@@ -1667,11 +1672,13 @@
       var thanks = document.getElementById('optin-thanks');
       thanks.classList.add('visible');
       thanks.focus();
+      if (window.plausible) plausible('quiz_optin', { props: { score: String(state.totalScore) } });
     })
     .catch(function(err) {
       console.error('[Quiz] Opt-in error:', err);
       btn.disabled = false;
       btn.textContent = 'Verstuur mijn uitslag \u2192';
+      if (window.plausible) plausible('quiz_optin_error');
       // Fallback: show thanks anyway so user isn't stuck
       document.getElementById('optin-form-wrap').style.display = 'none';
       var thanks = document.getElementById('optin-thanks');

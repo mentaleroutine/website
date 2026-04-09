@@ -3,6 +3,9 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 
+declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
+function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
+
 // ── FORM STATE ───────────────────────────────────────────────────────────────
 type FormData = {
   fullName: string;
@@ -93,6 +96,8 @@ function scrollToForm() {
 export default function ProProgramPage() {
   const [form, setForm] = useState<FormData>(INITIAL_FORM);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
   function update(field: keyof FormData) {
@@ -100,9 +105,25 @@ export default function ProProgramPage() {
       setForm(f => ({ ...f, [field]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch("/api/pro-program", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+      track("pro_program_submit", { country: form.country || "unknown" });
+    } catch {
+      setError(true);
+      track("pro_program_error", { type: "api" });
+    } finally {
+      setSending(false);
+    }
   }
 
   const inputCls = "w-full px-4 py-3 rounded-lg border border-green-900/15 bg-[#faf8f3] text-sm text-green-950 placeholder:text-stone-400 focus:outline-none focus:border-amber-500 transition-colors";
@@ -552,9 +573,10 @@ export default function ProProgramPage() {
                 </select>
               </div>
 
-              <button type="submit" className="w-full py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
-                Submit Application
+              <button type="submit" disabled={sending} className="w-full py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
+                {sending ? "Sending..." : "Submit Application"}
               </button>
+              {error && <p className="text-center text-xs text-red-500">Something went wrong. Please try again or email support@mentalroutine.com</p>}
 
               <div className="flex items-center justify-center gap-4 text-xs text-stone-400">
                 <span className="flex items-center gap-1.5">
