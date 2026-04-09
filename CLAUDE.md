@@ -6,7 +6,7 @@
 - **Animatie**: Framer Motion (`framer-motion` import in page.tsx/faqs.tsx, `motion/react` import in navbar.tsx/testimonials-columns.tsx)
 - **E-mail**: Resend SDK (contactformulier + early access signup)
 - **Analytics**: Plausible (privacy-friendly, cookieloos, GDPR-compliant) + Microsoft Clarity (heatmaps, session recordings)
-- **Fonts**: Google Fonts — Cormorant Garamond (headings, serif), Inter (body, sans-serif)
+- **Fonts**: `next/font` (self-hosted) — Cormorant Garamond (headings, serif), DM Sans (body, sans-serif)
 - **Runtime**: Node.js (lokaal in `C:\Program Files\nodejs\`, niet in standaard PATH)
 
 ## Projectstructuur
@@ -295,7 +295,7 @@ public/
 - **H1**: Cormorant Garamond, `text-5xl md:text-6xl lg:text-7xl`, font-semibold
 - **H2**: Cormorant Garamond, `text-4xl lg:text-5xl`, font-semibold
 - **H3**: Cormorant Garamond, `text-2xl`, font-semibold
-- **Body**: Inter (default), `text-sm` of `text-base`
+- **Body**: DM Sans (default), `text-sm` of `text-base`
 - **Labels**: `text-xs`, tracking-widest, uppercase, font-semibold
 
 ### Card stijl
