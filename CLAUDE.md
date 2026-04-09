@@ -5,7 +5,7 @@
 - **Styling**: Tailwind CSS v4
 - **Animatie**: Framer Motion (`framer-motion` import in page.tsx/faqs.tsx, `motion/react` import in navbar.tsx/testimonials-columns.tsx)
 - **E-mail**: Resend SDK (contactformulier + early access signup)
-- **Analytics**: Plausible (privacy-friendly, cookieloos, GDPR-compliant)
+- **Analytics**: Plausible (privacy-friendly, cookieloos, GDPR-compliant) + Microsoft Clarity (heatmaps, session recordings)
 - **Fonts**: Google Fonts — Cormorant Garamond (headings, serif), Inter (body, sans-serif)
 - **Runtime**: Node.js (lokaal in `C:\Program Files\nodejs\`, niet in standaard PATH)
 
@@ -830,3 +830,28 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - `faq_open`: welke FAQ vraag geopend met `question` nummer + `page` prop
 - `upsell_click`: cross-sell link standaard→deluxe met `from`, `to`, `source` props
 - Totaal: 35 custom events + 2 automatische Plausible extensions over 6 pagina's
+
+### Plausible Goals & Funnels (9 april 2026)
+
+**35 custom event goals geregistreerd in Plausible dashboard** (Settings → Goals)
+- Alle event names exact matching met code (lowercase, underscores)
+- Custom properties worden automatisch herkend zodra data binnenkomt
+
+**3 funnels geconfigureerd** (Settings → Funnels):
+1. **Early Access Signup**: `cta_click` → `form_start` → `plan_select` → `signup`
+2. **Quiz Funnel**: `quiz_click` → `quiz_start` → `quiz_complete` → `quiz_optin`
+3. **Assessment Checkout**: `section_view` → `faq_open` → `checkout_click`
+
+### Microsoft Clarity (9 april 2026)
+
+- **Provider**: Microsoft Clarity — gratis, onbeperkt, GDPR-compliant
+- **Project ID**: `w8rr4hfxpz`
+- **Doel**: Heatmaps, session recordings, dead click detection — kwalitatief inzicht naast Plausible's kwantitatieve data
+- **Script**: `(function(c,l,a,r,i,t,y){...})(window,document,"clarity","script","w8rr4hfxpz")`
+- **Geïnstalleerd op alle 6 pagina's**:
+  - `layout.tsx` (hoofdpagina + pro-program)
+  - `quiz.html`
+  - `assessment-standaard.html`
+  - `assessment-deluxe.html`
+  - `upgrade-standaard-deluxe.html`
+- **Dashboard**: clarity.microsoft.com
