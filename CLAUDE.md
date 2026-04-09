@@ -23,6 +23,7 @@ src/
     api/
       contact/route.ts          — POST → contactformulier e-mail via Resend
       early-access/route.ts     — POST → early access signup via Resend (audience + emails)
+      pro-program/route.ts      — POST → pro-program aanmelding via Resend (email naar support)
       spots/route.ts            — GET → live spots counter via Resend Audience API
   lib/
     translations.ts             — alle tekst + vertalingen, 5 talen (as const)
@@ -172,10 +173,12 @@ public/
 
 - **URL**: `https://mentalroutine.com/pro-program`
 - **Bestand**: `src/app/pro-program/page.tsx`
+- **API route**: `src/app/api/pro-program/route.ts` — POST → email naar support@mentalroutine.com via Resend
 - **Doel**: Landing page voor PGA Teaching Professionals om het assessment aan te bieden aan hun leerlingen
 - **Taal**: alleen Engels (niet meertalig, niet in translations.ts)
-- **Toegang vanuit hoofdpagina**: footer link "Teaching Professional? Recommend the assessment to your students →"
+- **Toegang vanuit hoofdpagina**: footer link, pricing proCallout, process coachNote (alle 3 getrackt via `pro_program_click`)
 - **Bevat**: aanmeldformulier met velden voor PGA-nummer, divisie, land, faciliteit, actieve leerlingen, etc.
+- **Analytics**: `pro_program_submit` (succes + country) en `pro_program_error` (API fout)
 
 ## Contactformulier
 
@@ -364,7 +367,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **Initialisatie**: `window.plausible` stub in `layout.tsx` (queues events vóór script geladen is)
 - **Helper**: `track()` functie in `page.tsx` — wrapper rond `window.plausible()`
 - **Global type**: `Window.plausible` gedeclareerd in page.tsx via `declare global` (1x, referenced in faqs.tsx)
-- **Custom events** (18 events):
+- **Custom events** (24 events, verspreid over 3 pagina's):
 
 | Event | Props | Trigger |
 |-------|-------|---------|
@@ -385,12 +388,20 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 | `sticky_bar_impression` | — | Sticky bar verschijnt (eenmalig) |
 | `pro_program_click` | `source: "process" \| "pricing" \| "footer"` | Pro-program link klik |
 | `report_preview_close` | `type, seconds` | Report preview modal gesloten (dwell time) |
+| `quiz_start` | — | Quiz gestart (quiz.html) |
+| `quiz_complete` | `seconds, score` | Quiz afgerond (invultijd + totaalscore) |
+| `quiz_optin` | `score` | Quiz opt-in formulier verstuurd |
+| `quiz_optin_error` | — | Quiz opt-in gefaald |
+| `pro_program_submit` | `country` | Pro-program aanmelding verstuurd |
+| `pro_program_error` | `type: "api"` | Pro-program aanmelding gefaald |
 | + outbound-links | automatisch | Alle externe links (social media, shop, etc.) |
 | + file-downloads | automatisch | Bestandsdownloads |
 
 - **Section view tracking**: IntersectionObserver op 11 secties: `how-it-works`, `mental-routine`, `steps`, `dimensions`, `why-it-works`, `pricing`, `training-reports`, `testimonials`, `faq`, `early-access`, `contact`
 - **Time-to-signup**: meet vanaf `performance.timeOrigin` (echte pageload) tot signup submit
 - **UTM tracking**: `captureUtmParams()` vangt 5 UTM params op, persists via `sessionStorage`
+- **Quiz tracking**: Plausible script + proxy in `quiz.html` (standalone HTML, zelfde proxy als hoofdpagina)
+- **Pro-program tracking**: events in `pro-program/page.tsx`, API route `api/pro-program/route.ts`
 
 ### Bestanden die NOOIT gestaged worden
 - `.next/` — build output
@@ -780,3 +791,21 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - `report_preview_close` nieuw event: dwell time in seconden + report type bij sluiten modal
 - `cta_click` uitgebreid: navbar CTA nu ook getrackt met `source: "nav"` (desktop + mobile)
 - Totaal: 18 custom events + 2 automatische Plausible extensions
+
+### Analytics Uitbreiding — Gehele dienstverlening (9 april 2026)
+
+**Quiz tracking (quiz.html):**
+- Plausible script + proxy toegevoegd aan standalone HTML pagina
+- `quiz_start`: quiz begonnen (na klik op start knop)
+- `quiz_complete`: quiz afgerond met `seconds` (invultijd) + `score` (totaalscore 0-100)
+- `quiz_optin`: opt-in formulier verstuurd met `score`
+- `quiz_optin_error`: opt-in API call gefaald
+- Quiz was volledig ongetrackt — nu volledige funnel: pageview → start → complete → optin
+
+**Pro-program API route + tracking (pro-program/page.tsx + api/pro-program/route.ts):**
+- Nieuw API endpoint: `POST /api/pro-program` — stuurt email naar support@mentalroutine.com via Resend
+- Formulier was display-only (deed niets bij submit) — nu werkend met API call
+- `pro_program_submit`: succesvolle aanmelding met `country`
+- `pro_program_error`: API fout
+- Submit button toont "Sending..." state + error message bij fout
+- Totaal: 24 custom events + 2 automatische Plausible extensions over 3 pagina's
