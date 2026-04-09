@@ -66,7 +66,7 @@ export const translations = {
         { num: "03", title: "Take Action",  body: "Use your included training reports to work on specific elements in your profile — each one a personalised 5-page PDF targeting a low score or building on a strength. Standard includes 4–6, Deluxe includes 9–14." },
       ],
       privacyNote: "Your responses are processed confidentially and never shared with third parties.",
-      coachNote: "Working with a coach? Share your report — it gives them an objective starting point.",
+      coachNote: "Working with a coach or sports psychologist? Your report gives them an objective starting point — and saves valuable session time.",
     },
     whyItWorks: {
       label: "Why It Works",
@@ -74,7 +74,7 @@ export const translations = {
       items: [
         { title: "Objectively measured", body: "Not based on how you feel about your game — based on your structured responses to a validated questionnaire. No gut feeling, no coach's interpretation." },
         { title: "Personalised to you", body: "Your report reflects your mental game, not a generic golfer's. Every recommendation targets the specific dimensions where your profile shows room to improve." },
-        { title: "On your terms", body: "No coach sessions, no fixed schedule. The assessment and training reports fit around your game, your pace, your life." },
+        { title: "On your terms", body: "Do most of the work yourself, at your own pace. And if you hit a wall — take your report to your coach, teaching pro, or sports psychologist for targeted guidance." },
         { title: "Designed for you, not the average golfer", body: "Generic tips improve the average golfer. This improves you — by targeting the specific dimensions where your mental profile shows the biggest gaps." },
       ],
     },
@@ -275,7 +275,7 @@ export const translations = {
         { num: "03", title: "Aan de Slag",  body: "Gebruik jouw inbegrepen trainingsrapporten om gericht aan specifieke elementen in je profiel te werken — elk rapport is een persoonlijk PDF van 5 pagina's, gericht op een lage score of het verder uitbouwen van een sterkte. Standaard bevat 4–6, Deluxe bevat 9–14." },
       ],
       privacyNote: "Je antwoorden worden vertrouwelijk verwerkt en nooit gedeeld met derden.",
-      coachNote: "Werk je met een coach? Deel je rapport — het geeft hen een objectief startpunt.",
+      coachNote: "Werk je met een coach of sportpsycholoog? Je rapport geeft hen een objectief startpunt — en bespaart waardevolle sessietijd.",
     },
     whyItWorks: {
       label: "Waarom Het Werkt",
@@ -283,7 +283,7 @@ export const translations = {
       items: [
         { title: "Objectief gemeten", body: "Niet gebaseerd op hoe jij je spel ervaart — maar op je gestructureerde antwoorden op een gevalideerde vragenlijst. Geen buikgevoel, geen interpretatie van een coach." },
         { title: "Gepersonaliseerd op jou", body: "Je rapport weerspiegelt jouw mentale spel, niet dat van een gemiddelde golfer. Elke aanbeveling richt zich op de specifieke dimensies waar jouw profiel ruimte toont om te groeien." },
-        { title: "Op jouw tempo", body: "Geen coachsessies, geen vast schema. De assessment en trainingsrapporten passen rondom jouw spel, jouw tempo, jouw leven." },
+        { title: "Op jouw tempo", body: "Doe het grootste deel zelf, op je eigen tempo. En loop je vast — neem je rapport mee naar je coach, teaching pro of sportpsycholoog voor gerichte begeleiding." },
         { title: "Voor jou, niet voor de gemiddelde golfer", body: "Generieke tips verbeteren gemiddelde golfers. Dit verbetert jou — door in te zoomen op de specifieke dimensies waar jouw mentale profiel de grootste ruimte toont." },
       ],
     },
@@ -483,7 +483,7 @@ export const translations = {
         { num: "03", title: "In Aktion treten",  body: "Nutze deine enthaltenen Trainingsberichte, um gezielt an bestimmten Elementen deines Profils zu arbeiten — jeder Bericht ist ein persönliches 5-seitiges PDF, das eine Schwachstelle verbessert oder eine Stärke ausbaut. Standard enthält 4–6, Deluxe enthält 9–14." },
       ],
       privacyNote: "Deine Antworten werden vertraulich verarbeitet und niemals an Dritte weitergegeben.",
-      coachNote: "Arbeitest du mit einem Coach? Teile deinen Bericht — er gibt ihnen einen objektiven Ausgangspunkt.",
+      coachNote: "Arbeitest du mit einem Coach oder Sportpsychologen? Dein Bericht gibt ihnen einen objektiven Ausgangspunkt — und spart wertvolle Sitzungszeit.",
     },
     whyItWorks: {
       label: "Warum Es Funktioniert",
@@ -491,7 +491,7 @@ export const translations = {
       items: [
         { title: "Objektiv gemessen", body: "Nicht basierend auf deinem Gefühl für dein Spiel — sondern auf deinen strukturierten Antworten auf einen validierten Fragebogen. Kein Bauchgefühl, keine Interpretation eines Coaches." },
         { title: "Personalisiert auf dich", body: "Dein Bericht spiegelt dein mentales Spiel wider, nicht das eines durchschnittlichen Golfers. Jede Empfehlung zielt auf die Dimensionen ab, wo dein Profil Verbesserungspotenzial zeigt." },
-        { title: "Zu deinen Bedingungen", body: "Keine Coach-Sessions, kein fester Zeitplan. Assessment und Trainingsberichte passen sich deinem Spiel, deinem Tempo und deinem Leben an." },
+        { title: "Zu deinen Bedingungen", body: "Erledige den Großteil selbst, in deinem Tempo. Und wenn du nicht weiterkommst — nimm deinen Bericht mit zu deinem Coach, Teaching Pro oder Sportpsychologen für gezielte Unterstützung." },
         { title: "Für dich, nicht für den Durchschnittsgolfer", body: "Allgemeine Tipps verbessern den Durchschnittsgolfer. Das hier verbessert dich — indem es die spezifischen Dimensionen anspricht, wo dein mentales Profil die größten Lücken zeigt." },
       ],
     },
@@ -691,7 +691,7 @@ export const translations = {
         { num: "03", title: "Passez à l'Action", body: "Utilisez vos rapports d'entraînement inclus pour travailler sur des éléments spécifiques de votre profil — chacun est un PDF personnalisé de 5 pages ciblant un score faible ou renforçant un point fort. Standard inclut 4–6, Deluxe inclut 9–14." },
       ],
       privacyNote: "Vos réponses sont traitées de façon confidentielle et ne sont jamais partagées avec des tiers.",
-      coachNote: "Vous travaillez avec un coach ? Partagez votre rapport — il leur donne un point de départ objectif.",
+      coachNote: "Vous travaillez avec un coach ou un psychologue du sport ? Votre rapport leur donne un point de départ objectif — et économise un temps de séance précieux.",
     },
     whyItWorks: {
       label: "Pourquoi Ça Marche",
@@ -699,7 +699,7 @@ export const translations = {
       items: [
         { title: "Mesuré objectivement", body: "Pas basé sur votre ressenti de votre jeu — mais sur vos réponses structurées à un questionnaire validé. Ni intuition, ni interprétation d'un coach." },
         { title: "Personnalisé pour vous", body: "Votre rapport reflète votre jeu mental, pas celui d'un golfeur générique. Chaque recommandation cible les dimensions spécifiques où votre profil montre des marges de progression." },
-        { title: "À votre rythme", body: "Pas de séances avec un coach, pas de calendrier fixe. L'évaluation et les rapports d'entraînement s'adaptent à votre jeu, votre rythme, votre vie." },
+        { title: "À votre rythme", body: "Faites l'essentiel vous-même, à votre rythme. Et si vous bloquez — apportez votre rapport à votre coach, teaching pro ou psychologue du sport pour un accompagnement ciblé." },
         { title: "Conçu pour vous, pas pour le golfeur moyen", body: "Les conseils génériques améliorent le golfeur moyen. Ceci vous améliore, vous — en ciblant les dimensions spécifiques où votre profil mental révèle les plus grands écarts." },
       ],
     },
@@ -899,7 +899,7 @@ export const translations = {
         { num: "03", title: "Actúa",           body: "Usa tus informes de entrenamiento incluidos para trabajar en elementos específicos de tu perfil — cada uno es un PDF personalizado de 5 páginas dirigido a una puntuación baja o a potenciar una fortaleza. Estándar incluye 4–6, Deluxe incluye 9–14." },
       ],
       privacyNote: "Tus respuestas se procesan de forma confidencial y nunca se comparten con terceros.",
-      coachNote: "¿Trabajas con un coach? Comparte tu informe — les da un punto de partida objetivo.",
+      coachNote: "¿Trabajas con un coach o psicólogo deportivo? Tu informe les da un punto de partida objetivo — y ahorra tiempo valioso de sesión.",
     },
     whyItWorks: {
       label: "Por Qué Funciona",
@@ -907,7 +907,7 @@ export const translations = {
       items: [
         { title: "Medido objetivamente", body: "No basado en cómo te sientes sobre tu juego — sino en tus respuestas estructuradas a un cuestionario validado. Sin corazonadas, sin interpretaciones de un entrenador." },
         { title: "Personalizado para ti", body: "Tu informe refleja tu juego mental, no el de un golfista genérico. Cada recomendación apunta a las dimensiones específicas donde tu perfil muestra margen de mejora." },
-        { title: "A tu ritmo", body: "Sin sesiones con entrenador, sin horario fijo. La evaluación y los informes de entrenamiento se adaptan a tu juego, tu ritmo, tu vida." },
+        { title: "A tu ritmo", body: "Haz la mayor parte por tu cuenta, a tu ritmo. Y si te bloqueas — lleva tu informe a tu coach, teaching pro o psicólogo deportivo para orientación específica." },
         { title: "Diseñado para ti, no para el golfista promedio", body: "Los consejos genéricos mejoran al golfista promedio. Esto te mejora a ti — apuntando a las dimensiones específicas donde tu perfil mental muestra las mayores brechas." },
       ],
     },

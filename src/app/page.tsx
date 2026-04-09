@@ -13,6 +13,18 @@ import { translations, type Translation } from "@/lib/translations";
 declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
 
+// ── UTM parameter capture ────────────────────────────────────────────────────
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"] as const;
+function captureUtmParams(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  const params = new URLSearchParams(window.location.search);
+  const utm: Record<string, string> = {};
+  for (const key of UTM_KEYS) { const v = params.get(key); if (v) utm[key] = v; }
+  // Persist in sessionStorage so UTMs survive navigation within the site
+  if (Object.keys(utm).length > 0) sessionStorage.setItem("utm", JSON.stringify(utm));
+  return Object.keys(utm).length > 0 ? utm : JSON.parse(sessionStorage.getItem("utm") || "{}");
+}
+
 // ── Report Preview Modal ──────────────────────────────────────────────────────
 function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe" | "training"; onClose: () => void }) {
   const { lang } = useLang();
@@ -263,6 +275,8 @@ function EarlyAccessSection() {
   const [error, setError] = React.useState(false);
   const [spots, setSpots] = React.useState<{ spots: number; total: number } | null>(null);
 
+  const [utm] = React.useState(() => captureUtmParams());
+
   // Fetch live spots count on mount + listen for plan selection from pricing cards
   useEffect(() => {
     fetch("/api/spots").then(r => r.json()).then(setSpots).catch(() => {});
@@ -279,7 +293,7 @@ function EarlyAccessSection() {
       const res = await fetch("/api/early-access", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, lang }),
+        body: JSON.stringify({ ...form, lang, ...(Object.keys(utm).length > 0 ? { utm } : {}) }),
       });
       if (!res.ok) throw new Error();
       setSubmitted(true);

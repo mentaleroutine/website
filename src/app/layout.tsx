@@ -6,7 +6,17 @@ export const metadata: Metadata = {
   description:
     "Map your mental game in 15 minutes. Get a personalised PDF report with scores on 70+ mental factors, targeted training reports, and a concrete improvement plan. From $59.",
   metadataBase: new URL("https://www.mentalroutine.com"),
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en": "/",
+      "nl": "/",
+      "de": "/",
+      "fr": "/",
+      "es": "/",
+      "x-default": "/",
+    },
+  },
   openGraph: {
     title: "The Mental Routine Assessment for Golfers",
     description:

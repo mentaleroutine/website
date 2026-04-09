@@ -156,7 +156,7 @@ www.mentalroutine.com`,
 
 export async function POST(req: Request) {
   try {
-    const { name, email, handicap, plan, lang } = await req.json();
+    const { name, email, handicap, plan, lang, utm } = await req.json();
 
     if (!name || !email) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -186,6 +186,7 @@ export async function POST(req: Request) {
           `Plan preference: ${planLabel}`,
           `Language: ${emailLang}`,
           handicap ? `Golf Handicap: ${handicap}` : null,
+          utm && Object.keys(utm).length > 0 ? `\nTraffic source:\n${Object.entries(utm).map(([k, v]) => `  ${k}: ${v}`).join("\n")}` : null,
         ]
           .filter(Boolean)
           .join("\n"),
