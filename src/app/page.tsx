@@ -334,7 +334,20 @@ function EarlyAccessSection() {
                   <svg viewBox="0 0 24 24" fill="none" stroke="#c4a043" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7"><polyline points="4 12 9 17 20 6"/></svg>
                 </div>
                 <h3 className="text-xl font-semibold text-[#f6f1e7] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.success.h3}</h3>
-                <p className="text-sm text-green-200/60">{t.success.p}</p>
+                <p className="text-sm text-green-200/60 mb-5">{t.success.p}</p>
+                {t.success.timeline && (
+                  <div className="space-y-2.5 text-left max-w-xs mx-auto">
+                    {(t.success.timeline as ReadonlyArray<string>).map((step, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <div className="flex flex-col items-center shrink-0 mt-1">
+                          <span className={`w-2 h-2 rounded-full ${i === 0 ? "bg-amber-400" : "bg-white/20"}`} />
+                          {i < 3 && <span className="w-px h-4 bg-white/10 mt-0.5" />}
+                        </div>
+                        <p className={`text-xs leading-relaxed ${i === 0 ? "text-amber-300" : "text-green-200/50"}`}>{step}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="rounded-2xl p-8 bg-white/[0.06] border border-white/10 space-y-5">
@@ -396,6 +409,18 @@ function PageContent() {
   const { lang } = useLang();
   const T: Translation = translations[lang];
   const [previewPlan, setPreviewPlan] = useState<"standard" | "deluxe" | "training" | null>(null);
+  const [showStickyBar, setShowStickyBar] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      const earlyAccessEl = document.getElementById("early-access");
+      const inEarlyAccess = earlyAccessEl ? window.scrollY + window.innerHeight > earlyAccessEl.offsetTop && window.scrollY < earlyAccessEl.offsetTop + earlyAccessEl.offsetHeight : false;
+      setShowStickyBar(scrollPct > 0.25 && scrollPct < 0.92 && !inEarlyAccess);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const firstColumn  = T.testimonials.items.slice(0, 3);
   const secondColumn = T.testimonials.items.slice(3, 6);
@@ -820,6 +845,14 @@ function PageContent() {
               </div>
             </div>
           </motion.div>
+
+          {/* ── PRO CALLOUT — visible for teaching professionals ── */}
+          <motion.div className="mt-4 text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.5 }}>
+            <a href="/pro-program" className="inline-flex items-center gap-2 text-xs text-green-200/40 hover:text-amber-300 transition-colors">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5"/></svg>
+              {T.pricing.proCallout}
+            </a>
+          </motion.div>
         </div>
       </section>
 
@@ -1082,6 +1115,32 @@ function PageContent() {
           </div>
         </div>
       </footer>
+
+      {/* ── STICKY SCROLL CTA BAR ── */}
+      <AnimatePresence>
+        {showStickyBar && (
+          <motion.div
+            className="fixed bottom-0 left-0 right-0 z-40 bg-green-950/95 backdrop-blur-lg border-t border-white/[0.08] shadow-xl shadow-black/30"
+            initial={{ y: 60, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 60, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+          >
+            <div className="container mx-auto max-w-4xl px-4 py-2.5 flex items-center justify-between gap-3">
+              <p className="text-xs text-green-200/60 hidden sm:block">{T.earlyAccess.stickyBar}</p>
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <a
+                  href="#early-access"
+                  onClick={() => track("hero_cta_click")}
+                  className="flex-1 sm:flex-none text-center px-5 py-2 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all text-xs tracking-wide shadow-md shadow-amber-500/20"
+                >
+                  {T.earlyAccess.pricingCta}
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
