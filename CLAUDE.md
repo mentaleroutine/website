@@ -844,7 +844,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 
 ### Microsoft Clarity (9 april 2026)
 
-- **Provider**: Microsoft Clarity — gratis, onbeperkt, GDPR-compliant
+- **Provider**: Microsoft Clarity — Business plan ($19/mo, custom properties, 13 maanden data retention)
 - **Project ID**: `w8rr4hfxpz`
 - **Doel**: Heatmaps, session recordings, dead click detection — kwalitatief inzicht naast Plausible's kwantitatieve data
 - **Script**: `(function(c,l,a,r,i,t,y){...})(window,document,"clarity","script","w8rr4hfxpz")`
