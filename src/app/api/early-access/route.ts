@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
+import { rateLimit } from "@/lib/rate-limit";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const AUDIENCE_ID = "8e40ab7a-eab7-470d-943f-03a312e98ebc";
@@ -156,6 +157,11 @@ www.mentalroutine.com`,
 
 export async function POST(req: Request) {
   try {
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0] ?? "unknown";
+    if (!rateLimit(ip, "early-access")) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     const { name, email, handicap, plan, lang, utm } = await req.json();
 
     if (!name || !email) {
@@ -201,7 +207,8 @@ export async function POST(req: Request) {
     ]);
 
     return NextResponse.json({ ok: true });
-  } catch {
+  } catch (err) {
+    console.error("[early-access] Failed to process signup:", err);
     return NextResponse.json({ error: "Failed to process signup" }, { status: 500 });
   }
 }
