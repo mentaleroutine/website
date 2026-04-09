@@ -39,6 +39,7 @@ src/
     splite.tsx                  — decoratief component
 
 public/
+  og-image.png                  — OG/social sharing image (1792×1024, DALL-E radar chart + tekst overlay)
   logoMRpng.png                 — hoofdlogo (gebruikt in navbar + footer)
   logoMRjpg.jpg                 — logo jpg variant
   logoMR.svg                    — logo svg (niet gecommit)
@@ -141,13 +142,13 @@ public/
 
 ### Frontendflow
 1. Bezoeker vult naam, email, handicap (optioneel), en plan-voorkeur (Standard/Deluxe) in
-2. POST naar `/api/early-access` met JSON body `{ name, email, handicap, plan }`
-3. Success: toont bevestigingsscherm
+2. POST naar `/api/early-access` met JSON body `{ name, email, handicap, plan, lang, utm }`
+3. Success: toont bevestigingsscherm met 4-stappen timeline
 
 ### Backend (`src/app/api/early-access/route.ts`)
 1. Voegt contact toe aan Resend Audience (`8e40ab7a-eab7-470d-943f-03a312e98ebc`)
-2. Stuurt notificatie-email naar `support@mentalroutine.com` met naam, email, plan-voorkeur, handicap, taal
-3. Stuurt meertalige bevestiging-email naar subscriber (5 talen, bepaald door frontend `lang` parameter)
+2. Stuurt notificatie-email naar `support@mentalroutine.com` met naam, email, plan-voorkeur, handicap, taal, UTM-data
+3. Stuurt meertalige bevestiging-email naar subscriber (5 talen, bepaald door frontend `lang` parameter, inclusief timeline)
 4. Emails parallel via `Promise.all` voor snelheid
 - **Pricing constanten**: `EA_STD = 49`, `EA_DLX = 99`, `REG_STD = 59`, `REG_DLX = 129` — bij launch alleen deze aanpassen
 
@@ -338,13 +339,14 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 
 ### SEO & Structured Data (`layout.tsx`)
 - **Metadata**: title, description, metadataBase (`https://www.mentalroutine.com`), canonical, robots
-- **Open Graph**: title, description, url, siteName, locale (`en_US`), type (`website`)
-- **Twitter Card**: `summary_large_image`, title, description
+- **Open Graph**: title, description, url, siteName, locale (`en_US`), type (`website`), **image** (`/og-image.png`, 1792×1024)
+- **Twitter Card**: `summary_large_image`, title, description, **image** (`/og-image.png`)
+- **hreflang alternates**: `en`, `nl`, `de`, `fr`, `es`, `x-default` — allemaal naar `/` (single-page, client-side i18n)
 - **JSON-LD** (3 blokken in `<head>`):
   1. `Organization` — naam, url, logo, sameAs (Instagram, TikTok, YouTube, X, LinkedIn)
   2. `Product` — 2 offers: Standard $59, Deluxe $129 (PreOrder availability)
   3. `FAQPage` — 5 meest relevante FAQ items voor Google rich snippets
-- **Ontbrekend**: OG image (`og:image` tag) — moet nog aangemaakt worden
+- **OG image** ✅: DALL-E gegenereerde radar chart achtergrond + tekst overlay via Sharp composite
 
 ### Accessibility
 - **Skip-to-content link**: `<a href="#hero" className="sr-only focus:not-sr-only ...">` vóór Navbar
@@ -365,6 +367,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 | Event | Props | Trigger |
 |-------|-------|---------|
 | `hero_cta_click` | — | Hero CTA knop klik |
+| `sticky_bar_click` | — | Sticky scroll CTA bar klik |
 | `quiz_click` | `source: "hero"` | Quiz link in hero |
 | `plan_select` | `plan: "standard" \| "deluxe"` | Plan selector in early access |
 | `pricing_cta_click` | `plan: "standard" \| "deluxe"` | Pricing CTA knop klik |
@@ -375,7 +378,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 ### Bestanden die NOOIT gestaged worden
 - `.next/` — build output
 - `.claude/` — Claude projectdata
-- `.env.local` — bevat `RESEND_API_KEY`
+- `.env.local` — bevat `RESEND_API_KEY` + `OPENAI_API_KEY`
 - Alle staan in `.gitignore`
 
 ## Lopende / Geplande Zaken
@@ -408,6 +411,17 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **Coming soon banner**: bovenaan quiz.html, meldt dat quiz pas op 20 april beschikbaar is + link terug naar assessment
 - **Quiz geblokkeerd**: `QUIZ_LOCKED = true` flag in JS — alle "Start de quiz" knoppen scrollen naar coming soon banner met pulse-animatie i.p.v. quiz te starten
 - **Op 20 april**: (1) zet `QUIZ_LOCKED = false`, (2) verwijder `<div id="coming-soon-banner">` blok
+
+### OG Image ✅ (afgerond)
+- Gegenereerd via DALL-E 3 API (gouden radar chart op donkergroen) + Sharp SVG tekst overlay
+- Bestand: `public/og-image.png` (1792×1024)
+- Meta tags: `og:image` + `twitter:image` in layout.tsx
+- Design: premium, minimalistisch, past bij site branding (donkergroen + goud)
+
+### Retargeting Pixels (wacht op account IDs)
+- Meta Pixel + Google Ads tag toevoegen aan `layout.tsx` `<head>`
+- Wanneer: zodra gebruiker pixel/tag IDs aanlevert
+- Patroon: zelfde als Plausible (async script + inline init)
 
 ### Pricing Anker ✅ (afgerond)
 - Geïmplementeerd als subtiele italic tekst onder pricing note
@@ -679,3 +693,42 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Script + stub in layout.tsx, `track()` helper + `declare global` in page.tsx
 - 7 custom events: hero_cta_click, quiz_click, plan_select, pricing_cta_click, report_preview, signup, lang_switch
 - Navbar: `lang_switch` event bij taalwisseling
+
+### Conversie + Tracking + Positionering (9 april 2026)
+
+**UTM parameter tracking (page.tsx + api/early-access/route.ts):**
+- `captureUtmParams()` functie vangt `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content` op
+- Persistentie via `sessionStorage` — overleeft in-page navigatie (hash links)
+- Meegestuurd in early access POST body → notificatie-email toont traffic source
+- Voorbereiding voor paid ads / retargeting campagnes
+
+**Sticky scroll CTA bar (page.tsx, alle 5 talen):**
+- Verschijnt na 25% scroll, verdwijnt bij early-access sectie + onderaan pagina
+- Amber achtergrond, tekst uit `earlyAccess.stickyBar` ("Early access from $49 — ends June 1st")
+- Eigen tracking event: `sticky_bar_click`
+- Link naar `#early-access`
+
+**Pricing plan passthrough (page.tsx):**
+- Pricing CTA knoppen dispatchen `CustomEvent("select-plan")` met plan type
+- `EarlyAccessSection` luistert en pre-selecteert plan in formulier
+- Elke pricing card heeft nu eigen CTA-tekst uit `T.pricing.plans[i].cta`
+
+**Post-signup timeline (page.tsx + translations.ts):**
+- Na succesvolle early access signup: visuele 4-stappen timeline
+- `earlyAccess.success.timeline` array in alle 5 talen
+- Dots + verbindingslijnen, consistent met bevestiging-email
+
+**Positionering: aanvullend t.o.v. professionals (translations.ts):**
+- `whyItWorks` item "On your terms": herschreven naar "doe het meeste zelf, neem rapport mee naar professional bij blokkades"
+- `process.coachNote`: noemt nu coaches, teaching pro's én sportpsychologen + "saves valuable session time"
+- `pricing.proCallout`: nieuwe link naar `/pro-program` onder quiz CTA in pricing sectie
+- Consistent boodschap: assessment is aanvullend, niet vervangend
+
+**hreflang SEO tags (layout.tsx):**
+- `metadata.alternates.languages`: en, nl, de, fr, es, x-default → allemaal naar `/`
+- Helpt zoekmachines de meertalige content correct te indexeren
+
+**OG image (layout.tsx + public/og-image.png):**
+- DALL-E 3 API → radar chart achtergrond op donkergroen (#162b1e)
+- Sharp composite → SVG tekst overlay (titel, subtitel, URL, gouden divider)
+- `og:image` + `twitter:image` meta tags toegevoegd aan layout.tsx
