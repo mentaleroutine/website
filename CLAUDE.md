@@ -358,16 +358,17 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 
 ### Analytics (Plausible)
 - **Provider**: Plausible Analytics — Starter plan (€9/mo), privacy-friendly, cookieloos, GDPR-compliant
-- **Script**: `<script async src="https://plausible.io/js/script.outbound-links.file-downloads.js" data-domain="mentalroutine.com" />` in `layout.tsx`
+- **Script**: `<script async src="/js/script.js" data-api="/api/event" data-domain="mentalroutine.com" />` in `layout.tsx`
+- **Proxy**: Vercel rewrites in `next.config.ts` — `/js/script.js` → Plausible CDN, `/api/event` → Plausible API (omzeilt adblockers)
 - **Extensions**: outbound-links (automatisch tracken externe links), file-downloads (automatisch tracken downloads)
 - **Initialisatie**: `window.plausible` stub in `layout.tsx` (queues events vóór script geladen is)
 - **Helper**: `track()` functie in `page.tsx` — wrapper rond `window.plausible()`
 - **Global type**: `Window.plausible` gedeclareerd in page.tsx via `declare global` (1x, referenced in faqs.tsx)
-- **Custom events** (17 events):
+- **Custom events** (18 events):
 
 | Event | Props | Trigger |
 |-------|-------|---------|
-| `cta_click` | `source: "hero" \| "sticky"` | Hero CTA + sticky bar klik (unified) |
+| `cta_click` | `source: "hero" \| "sticky" \| "nav"` | Hero CTA + sticky bar + navbar klik (unified) |
 | `quiz_click` | `source: "hero" \| "pricing" \| "footer"` | Quiz links (3 locaties) |
 | `plan_select` | `plan: "standard" \| "deluxe"` | Plan selector in early access |
 | `pricing_cta_click` | `plan: "standard" \| "deluxe"` | Pricing CTA knop klik |
@@ -375,7 +376,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 | `signup` | `plan, lang, seconds` | Succesvolle early access signup (incl. time-to-signup) |
 | `signup_error` | `type: "api"` | Gefaalde signup |
 | `lang_switch` | `lang: "en" \| "nl" \| ...` | Taalwisselaar in navbar |
-| `form_start` | — | Eerste focus op early access formulier |
+| `form_start` | `plan: "standard" \| "deluxe"` | Eerste focus op early access formulier (met pre-selected plan) |
 | `faq_open` | `question: "1"–"9"` | FAQ vraag geopend |
 | `contact_submit` | `lang` | Contactformulier verstuurd |
 | `contact_error` | `type: "api"` | Gefaald contactformulier |
@@ -383,6 +384,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 | `section_view` | `section` | Sectie komt in beeld (11 secties, threshold 0.3) |
 | `sticky_bar_impression` | — | Sticky bar verschijnt (eenmalig) |
 | `pro_program_click` | `source: "process" \| "pricing" \| "footer"` | Pro-program link klik |
+| `report_preview_close` | `type, seconds` | Report preview modal gesloten (dwell time) |
 | + outbound-links | automatisch | Alle externe links (social media, shop, etc.) |
 | + file-downloads | automatisch | Bestandsdownloads |
 
@@ -771,3 +773,10 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - `time_to_signup` meet nu vanaf `performance.timeOrigin` (echte pageload, was component mount)
 - Dubbele `declare global` opgeruimd (alleen in page.tsx, comment in faqs.tsx)
 - **Let op**: Plausible script URL gewijzigd van custom proxy naar standaard CDN met extensions
+
+**Ronde 3 — Proxy + verfijningen (next.config.ts + layout.tsx + page.tsx + navbar.tsx):**
+- Plausible proxy via Vercel rewrites: `/js/script.js` → CDN, `/api/event` → API (omzeilt adblockers, ~15-30% meer data)
+- `form_start` stuurt nu `plan` prop mee (welk plan pre-selected bij eerste interactie)
+- `report_preview_close` nieuw event: dwell time in seconden + report type bij sluiten modal
+- `cta_click` uitgebreid: navbar CTA nu ook getrackt met `source: "nav"` (desktop + mobile)
+- Totaal: 18 custom events + 2 automatische Plausible extensions
