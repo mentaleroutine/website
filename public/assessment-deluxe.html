@@ -1018,12 +1018,72 @@
   });
 </script>
 <script>
-  // Track checkout CTA clicks
+(function() {
+  var PAGE = 'assessment-deluxe';
+  var PLAN = 'deluxe';
+
+  // ── Checkout CTA clicks (with time-on-page) ──
   document.querySelectorAll('a[href*="/checkout/"]').forEach(function(a) {
     a.addEventListener('click', function() {
-      if (window.plausible) plausible('checkout_click', { props: { plan: 'deluxe', source: 'assessment-page' } });
+      var seconds = Math.round((Date.now() - performance.timeOrigin) / 1000);
+      if (window.plausible) {
+        plausible('checkout_click', { props: { plan: PLAN, source: PAGE, seconds: String(seconds) } });
+      }
     });
   });
+
+  // ── Scroll depth (25/50/75/100%) ──
+  var scrollFired = {};
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (docHeight <= 0) return;
+    var pct = Math.round((scrollTop / docHeight) * 100);
+    [25, 50, 75, 100].forEach(function(threshold) {
+      if (pct >= threshold && !scrollFired[threshold]) {
+        scrollFired[threshold] = true;
+        if (window.plausible) plausible('scroll_depth', { props: { depth: String(threshold), page: PAGE } });
+      }
+    });
+  }, { passive: true });
+
+  // ── Section view (IntersectionObserver) ──
+  var sectionMap = {
+    'hero': 'hero', 'spbar': 'social-proof', 'pain': 'pain', 'hiw': 'how-it-works',
+    'compare': 'compare', 'features': 'features', 'breakdown': 'breakdown',
+    'forwho-section': 'for-who', 'testi': 'testimonials', 'team-bar': 'team',
+    'pricing': 'pricing', 'faq': 'faq', 'fcta': 'final-cta'
+  };
+  var sectionSeen = {};
+  if ('IntersectionObserver' in window) {
+    var sectionObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        var cls = Object.keys(sectionMap).find(function(c) { return e.target.classList.contains(c); });
+        var name = cls ? sectionMap[cls] : null;
+        if (name && !sectionSeen[name]) {
+          sectionSeen[name] = true;
+          if (window.plausible) plausible('section_view', { props: { section: name, page: PAGE } });
+        }
+      });
+    }, { threshold: 0.3 });
+    Object.keys(sectionMap).forEach(function(cls) {
+      var el = document.querySelector('section.' + cls + ', div.' + cls + ', .' + cls);
+      if (el) sectionObs.observe(el);
+    });
+  }
+
+  // ── FAQ open tracking ──
+  document.querySelectorAll('.faq-q').forEach(function(btn, i) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      if (!isOpen && window.plausible) {
+        plausible('faq_open', { props: { question: String(i + 1), page: PAGE } });
+      }
+    });
+  });
+})();
 </script>
 
 </body>
