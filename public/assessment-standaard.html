@@ -521,6 +521,9 @@
     .cb-cost{display:inline-block;font-family:var(--font-s);font-size:.72rem;color:var(--gold);min-width:38px;font-weight:700;letter-spacing:.02em}
     .credits-breakdown-note{display:block;font-size:.7rem;color:var(--text-muted);font-style:italic;margin-top:.55rem;padding-top:.45rem;border-top:1px solid rgba(184,149,42,.15)}
   </style>
+  <!-- Plausible Analytics — proxied via Vercel rewrite -->
+  <script async src="/js/script.js" data-api="/api/event" data-domain="mentalroutine.com"></script>
+  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}}; plausible.init();</script>
 </head>
 <body>
 
@@ -1215,6 +1218,14 @@
         ans.style.maxHeight = ans.scrollHeight + 'px';
         this.setAttribute('aria-expanded', 'true');
       }
+    });
+  });
+</script>
+<script>
+  // Track checkout CTA clicks
+  document.querySelectorAll('a[href*="/checkout/"]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (window.plausible) plausible('checkout_click', { props: { plan: 'standard', source: 'assessment-page' } });
     });
   });
 </script>

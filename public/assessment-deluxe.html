@@ -386,6 +386,9 @@
     footer a{color:rgba(247,243,236,.4);text-decoration:none}
     footer a:hover{color:var(--gold)}
   </style>
+  <!-- Plausible Analytics — proxied via Vercel rewrite -->
+  <script async src="/js/script.js" data-api="/api/event" data-domain="mentalroutine.com"></script>
+  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}}; plausible.init();</script>
 </head>
 <body>
 
@@ -1011,6 +1014,14 @@
         ans.style.maxHeight = ans.scrollHeight + 'px';
         this.setAttribute('aria-expanded', 'true');
       }
+    });
+  });
+</script>
+<script>
+  // Track checkout CTA clicks
+  document.querySelectorAll('a[href*="/checkout/"]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (window.plausible) plausible('checkout_click', { props: { plan: 'deluxe', source: 'assessment-page' } });
     });
   });
 </script>
