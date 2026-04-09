@@ -29,13 +29,20 @@ function captureUtmParams(): Record<string, string> {
 function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe" | "training"; onClose: () => void }) {
   const { lang } = useLang();
   const T: Translation = translations[lang];
+  const openedAt = React.useRef(Date.now());
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") handleClose(); };
     window.addEventListener("keydown", onKey);
     return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", onKey); };
-  }, [onClose]);
+  }, [onClose]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleClose = () => {
+    const seconds = String(Math.round((Date.now() - openedAt.current) / 1000));
+    track("report_preview_close", { type: plan, seconds });
+    onClose();
+  };
 
   const src = plan === "training" ? "/reports/sample-training-report.html" : plan === "deluxe" ? "/reports/sample-deluxe.html" : "/reports/sample-standard.html";
   const label = T.pricing.previewModal[plan];
@@ -44,7 +51,7 @@ function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe" | "
     <motion.div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      onClick={onClose}
+      onClick={handleClose}
     >
       <motion.div
         className="relative w-full max-w-3xl h-[85vh] bg-[#faf8f3] rounded-2xl overflow-hidden shadow-2xl border border-green-900/10"
@@ -57,7 +64,7 @@ function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "deluxe" | "
               {label}
             </span>
           </div>
-          <button onClick={onClose} aria-label={T.pricing.previewModal.closePreview} className="w-8 h-8 rounded-lg flex items-center justify-center text-green-200/60 hover:text-white hover:bg-white/10 transition-colors">
+          <button onClick={handleClose} aria-label={T.pricing.previewModal.closePreview} className="w-8 h-8 rounded-lg flex items-center justify-center text-green-200/60 hover:text-white hover:bg-white/10 transition-colors">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>
@@ -373,7 +380,7 @@ function EarlyAccessSection() {
                 )}
               </div>
             ) : (
-              <form onSubmit={handleSubmit} onFocus={() => { if (!formStarted.current) { formStarted.current = true; track("form_start"); } }} className="rounded-2xl p-8 bg-white/[0.06] border border-white/10 space-y-5">
+              <form onSubmit={handleSubmit} onFocus={() => { if (!formStarted.current) { formStarted.current = true; track("form_start", { plan: form.plan }); } }} className="rounded-2xl p-8 bg-white/[0.06] border border-white/10 space-y-5">
                 {spots && spots.spots < spots.total && (
                   <div className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-amber-400/[0.08] border border-amber-400/20" role="status" aria-live="polite">
                     <span className="text-xl font-bold text-amber-400" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{spots.spots}</span>
