@@ -28,6 +28,7 @@ src/
   lib/
     translations.ts             — alle tekst + vertalingen, 5 talen (as const)
     utils.ts                    — utility functies (cn helper)
+    validate.ts                 — server-side input validatie (sanitize, validEmail, clamp)
     rate-limit.ts               — in-memory rate limiter per IP (sliding window, per route)
     use-reduced-motion.ts       — React hook voor prefers-reduced-motion detectie
   context/
@@ -346,6 +347,15 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Gebruik `const T: Translation = translations[lang]` in componenten — geen `as any` of `"key" in` guards meer nodig
 - Getypeerde destructuring: `const t: Translation["faq"] = translations[lang].faq` etc.
 
+### Fonts (`next/font`)
+- **Self-hosted** via `next/font` — geen externe Google Fonts CSS import, elimineert render-blocking request + DNS lookup
+- **Config in `layout.tsx`**: `DM_Sans` + `Cormorant_Garamond` met `subsets: ["latin"]`, `display: "swap"`, CSS variables
+- **CSS variables**: `--font-dm-sans` (body) en `--font-cormorant` (headings)
+- **Toepassing**: `<html className={`${dmSans.variable} ${cormorant.variable}`}>` in layout.tsx
+- **globals.css**: `body { font-family: var(--font-dm-sans), sans-serif; }`
+- **Inline styles**: alle `fontFamily` referenties in componenten gebruiken `"var(--font-cormorant), serif"` (niet hardcoded font naam)
+- **Bestanden met `fontFamily` verwijzingen**: page.tsx, pro-program/page.tsx, navbar.tsx, faqs.tsx, early-access-section.tsx
+
 ### Framer Motion imports
 - `page.tsx`, `faqs.tsx`, `hero-radar.tsx`, `contact-section.tsx`, `early-access-section.tsx`, `report-preview-modal.tsx`: importeren uit `"framer-motion"`
 - `navbar.tsx` en `testimonials-columns.tsx`: importeren uit `"motion/react"`
@@ -362,17 +372,36 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
   3. `FAQPage` — 5 meest relevante FAQ items voor Google rich snippets
 - **OG image** ✅: DALL-E gegenereerde radar chart achtergrond + tekst overlay via Sharp composite
 
+### SEO — HTML Subsites
+- **Assessment Standaard** (`assessment-standaard.html`): `<link rel="canonical">` + JSON-LD Product schema ($59, PreOrder)
+- **Assessment Deluxe** (`assessment-deluxe.html`): `<link rel="canonical">` + JSON-LD Product schema ($129, PreOrder)
+- **Upgrade** (`upgrade-standaard-deluxe.html`): `<link rel="canonical">` + JSON-LD Product schema ($89, PreOrder)
+- **Quiz** (`quiz.html`): `<meta name="robots" content="noindex, nofollow">` + canonical (coming-soon, niet indexeren)
+
 ### Accessibility
 - **Skip-to-content link**: `<a href="#hero" className="sr-only focus:not-sr-only ...">` vóór Navbar
 - **Radar chart**: `role="img"` + `aria-label` met beschrijving
 - **Spots counter**: `role="status"` + `aria-live="polite"` voor screenreader updates
-- **FAQ accordion**: WAI-ARIA accordion pattern — `aria-expanded`, `aria-controls` op trigger button, `role="region"` + `aria-labelledby` op content panel
+- **FAQ accordion** (hoofdpagina): WAI-ARIA accordion pattern — `aria-expanded`, `aria-controls` op trigger button, `role="region"` + `aria-labelledby` op content panel
+- **Pro Program FAQ accordion**: zelfde WAI-ARIA pattern — `id={triggerId}`, `aria-expanded`, `aria-controls` op button, `id={panelId}`, `role="region"`, `aria-labelledby` op panel
 - **Navbar mobile**: close button heeft `aria-label="Close menu"`
 - **Dynamic html lang**: `document.documentElement.lang` wordt gesynchroniseerd via `useEffect` in `LangProvider`
+- **Report preview modal** (`report-preview-modal.tsx`):
+  - `role="dialog"` + `aria-modal="true"` + `aria-label` op modal container
+  - **Focus trap**: Tab cycled door focusbare elementen (knoppen, iframe), Shift+Tab gaat achteruit
+  - **Focus restore**: vorige focus-element wordt opgeslagen en hersteld bij sluiten
+  - Close button krijgt auto-focus bij openen (`data-close` attribuut)
+- **Formulier feedback**: `role="status"` + `aria-live="polite"` op succes-berichten, `role="alert"` op foutmeldingen (contact-section + early-access-section)
+- **Training Reports mockup card**: `role="button"` + `tabIndex={0}` + `onKeyDown` handler (Enter/Space) + `aria-label` voor keyboard navigatie
+- **HTML subsites** (assessment-standaard, assessment-deluxe, upgrade, quiz):
+  - Skip-to-content links (inline styled, zichtbaar bij focus)
+  - `<main id="main-content">` landmarks
+  - `role="banner"` op headers, `role="contentinfo"` op footers
+  - Quiz: `role="main"` op phase-landing div
 - **prefers-reduced-motion** (WCAG 2.1 AA):
   - `useReducedMotion()` hook in `src/lib/use-reduced-motion.ts` — detecteert OS-instelling, luistert naar wijzigingen
   - **Radar chart** (`hero-radar.tsx`): stopt `setInterval` rotatie bij reduced-motion
-  - **Testimonials** (`testimonials-columns.tsx`): stopt auto-scroll animatie bij reduced-motion
+  - **Testimonials** (`testimonials-columns.tsx`): stopt auto-scroll animatie bij reduced-motion (gebruikt shared hook)
   - **Globale CSS** (`globals.css`): `@media (prefers-reduced-motion: reduce)` zet `animation-duration`, `transition-duration` en `scroll-behavior` op minimaal voor alle elementen
 
 ### Analytics (Plausible)
@@ -426,8 +455,26 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **Quiz tracking**: Plausible script + proxy in `quiz.html` (standalone HTML, zelfde proxy als hoofdpagina)
 - **Pro-program tracking**: events in `pro-program/page.tsx`, API route `api/pro-program/route.ts`
 
-### API Security & Rate Limiting
-- **Bestand**: `src/lib/rate-limit.ts` — in-memory rate limiter
+### API Security, Input Validation & Rate Limiting
+
+#### Input Validation (`src/lib/validate.ts`)
+- **`sanitize(input)`**: strip HTML tags + trim, retourneert `""` als input geen string is
+- **`validEmail(email)`**: RFC 5322 regex + max 254 tekens
+- **`clamp(str, max)`**: trunceert string tot maximale lengte
+- **Toegepast op alle 3 POST routes** (contact, early-access, pro-program):
+  - Alle inputs gesanitized via `sanitize()` + geclamped (naam: 100, email: 254, bericht: 2000, etc.)
+  - Email validatie retourneert 400 bij ongeldig formaat
+  - Pro-program: 11 velden geclamped (50-500 tekens per veld)
+  - Early-access: plan gewhitelist (`"standard"` of `"deluxe"`), UTM type-checked
+
+#### Security Headers (`next.config.ts`)
+- **4 headers** via `async headers()` op alle routes `"/(.*)"`:
+  - `X-Content-Type-Options: nosniff` — voorkomt MIME-sniffing
+  - `X-Frame-Options: SAMEORIGIN` — voorkomt clickjacking
+  - `Referrer-Policy: strict-origin-when-cross-origin` — beperkt referrer leaking
+  - `Permissions-Policy: camera=(), microphone=(), geolocation=()` — blokkeert onnodige browser APIs
+
+#### Rate Limiting (`src/lib/rate-limit.ts`)
 - **Mechanisme**: sliding window per IP-adres per route (60 seconden window)
 - **IP detectie**: `x-forwarded-for` header (Vercel zet dit automatisch)
 - **Limieten per route**:
@@ -998,3 +1045,47 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
   - Subject: "Your Pro Program application has been received!"
   - Content: bedankt, 3-stappen timeline (application in queue → review within 24h → approved: free Deluxe + affiliate code)
   - Taal: Engels (consistent met de Engelstalige Pro Program pagina)
+
+### Expert Panel Review Ronde 3 + Fixes (9 april 2026, avond)
+
+**Expert panel review uitgevoerd** (7 deskundigen: Conversie Specialist, UX Designer, Frontend Engineer, SEO Specialist, Copywriter, Security Engineer, Accessibility Expert):
+- Totaalscore: **8.2 / 10** → **8.4 / 10** (na fixes) → **8.5 / 10** (na laatste fixes)
+- Beoordeeld op 51 criteria verspreid over 7 categorieën
+- Top scores: Analytics (9.5), SEO (9.0), Meertaligheid (9.0)
+- Verbeterpunten na fixes: Assessment subsites migratie naar Next.js (gepland), quiz 5-talig (gepland)
+
+**5 issues geïdentificeerd en gefixt:**
+
+**1. Input Validation + Security Headers (nieuw bestand + 4 routes + config):**
+- Nieuw: `src/lib/validate.ts` — `sanitize()`, `validEmail()`, `clamp()` utilities
+- Alle 3 POST API routes (contact, early-access, pro-program) voorzien van server-side validatie
+- 4 security headers toegevoegd aan `next.config.ts` via `async headers()`
+- Voorkomt XSS, MIME-sniffing, clickjacking
+
+**2. Font Optimalisatie (Google Fonts CSS → `next/font`):**
+- Google Fonts CSS `@import` verwijderd uit `globals.css` — elimineerde render-blocking request
+- `next/font` self-hosted: `DM_Sans` + `Cormorant_Garamond` in `layout.tsx`
+- CSS variables (`--font-dm-sans`, `--font-cormorant`) i.p.v. hardcoded font names
+- Alle `fontFamily` referenties in 6 bestanden bijgewerkt naar `var(--font-cormorant)`
+
+**3. Modal Focus Trap (`report-preview-modal.tsx`):**
+- Volledige herschrijving met `role="dialog"`, `aria-modal="true"`, `aria-label`
+- Focus trap: Tab cycled binnen modal, Shift+Tab gaat achteruit
+- Focus restore: vorige focus-element opgeslagen via `previousFocus` ref, hersteld bij sluiten
+- Close button auto-focused bij openen via `data-close` attribuut
+
+**4. Form Feedback Accessibility (contact-section + early-access-section):**
+- Succes-berichten: `role="status"` + `aria-live="polite"` voor screenreader announcements
+- Foutmeldingen: `role="alert"` voor directe screenreader notificatie
+
+**5. HTML Subsite SEO + Accessibility (4 HTML bestanden):**
+- SEO: canonical URLs, JSON-LD Product schema (assessment-standaard $59, assessment-deluxe $129, upgrade $89)
+- Quiz: `noindex`/`nofollow` (coming-soon pagina niet indexeren)
+- Accessibility: skip-to-content links, `<main>` landmarks, `role="banner"`/`role="contentinfo"` op headers/footers
+- Alle 4 bestanden: assessment-standaard, assessment-deluxe, upgrade, quiz
+
+**Aanvullende fixes (ronde 2 + 3):**
+- CLAUDE.md font documentatie: "Inter" → "DM Sans" (was verouderd na font wijziging)
+- Training Reports mockup card: `role="button"` + `tabIndex={0}` + `onKeyDown` voor keyboard navigatie
+- `testimonials-columns.tsx`: duplicate `useState/useEffect/matchMedia` code (7 regels) → shared `useReducedMotion()` hook (1 import)
+- Pro Program FAQ: WAI-ARIA accordion pattern toegevoegd (`aria-expanded`, `aria-controls`, `role="region"`, `aria-labelledby`)
