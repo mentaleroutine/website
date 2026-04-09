@@ -395,13 +395,16 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 | `quiz_optin_error` | — | Quiz opt-in gefaald |
 | `pro_program_submit` | `country` | Pro-program aanmelding verstuurd |
 | `pro_program_error` | `type: "api"` | Pro-program aanmelding gefaald |
-| `checkout_click` | `plan, source, seconds` | Checkout CTA klik op assessment/upgrade pagina's (incl. time-on-page) |
+| `checkout_click` | `plan, source, cta, seconds` | Checkout CTA klik met positie (header/hero/pricing/mobile-sticky/final-cta) + time-on-page |
 | `upsell_click` | `from, to, source` | Cross-sell link klik (standaard→deluxe) |
+| `bridge_cta_click` | `page` | "Klinkt dit bekend?" tussenlink klik (assessment pagina's) |
+| `guarantee_view` | `page` | Garantie-blok in viewport (50% threshold) |
+| `social_proof_view` | `page` | Social proof bar in viewport (50% threshold) |
 | + outbound-links | automatisch | Alle externe links (social media, shop, etc.) |
 | + file-downloads | automatisch | Bestandsdownloads |
 
 - **Section view tracking**: IntersectionObserver op 11 secties (hoofdpagina): `how-it-works`, `mental-routine`, `steps`, `dimensions`, `why-it-works`, `pricing`, `training-reports`, `testimonials`, `faq`, `early-access`, `contact`
-- **Assessment/upgrade page tracking**: `scroll_depth`, `section_view` (13 secties standaard, 13 deluxe, 8 upgrade), `faq_open`, `checkout_click` (met time-on-page), `upsell_click`
+- **Assessment/upgrade page tracking**: `scroll_depth`, `section_view`, `faq_open`, `checkout_click` (met CTA-positie + time-on-page), `upsell_click`, `bridge_cta_click`, `guarantee_view`, `social_proof_view`
 - **Time-to-signup**: meet vanaf `performance.timeOrigin` (echte pageload) tot signup submit
 - **UTM tracking**: `captureUtmParams()` vangt 5 UTM params op, persists via `sessionStorage`
 - **Quiz tracking**: Plausible script + proxy in `quiz.html` (standalone HTML, zelfde proxy als hoofdpagina)
@@ -826,4 +829,4 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
   - Upgrade: 8 secties (hero, unlock, value-comparison, testimonials, team, pricing, faq, final-cta)
 - `faq_open`: welke FAQ vraag geopend met `question` nummer + `page` prop
 - `upsell_click`: cross-sell link standaard→deluxe met `from`, `to`, `source` props
-- Totaal: 30 custom events + 2 automatische Plausible extensions over 6 pagina's
+- Totaal: 35 custom events + 2 automatische Plausible extensions over 6 pagina's
