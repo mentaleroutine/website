@@ -17,27 +17,52 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    await resend.emails.send({
-      from: "MentalRoutine <contact@mentalroutine.com>",
-      to: "support@mentalroutine.com",
-      replyTo: data.email,
-      subject: `Pro Program inquiry: ${data.fullName}`,
-      text: [
-        `Name: ${data.fullName}`,
-        `Email: ${data.email}`,
-        data.pgaNumber ? `PGA Number: ${data.pgaNumber}` : null,
-        data.pgaDivision ? `PGA Division: ${data.pgaDivision}` : null,
-        data.linkedIn ? `LinkedIn: ${data.linkedIn}` : null,
-        data.country ? `Country: ${data.country}` : null,
-        data.facility ? `Facility: ${data.facility}` : null,
-        data.activeStudents ? `Active Students: ${data.activeStudents}` : null,
-        data.groupLessons ? `Group Lessons: ${data.groupLessons}` : null,
-        data.mentalExperience ? `Mental Training Experience: ${data.mentalExperience}` : null,
-        data.howFound ? `How Found: ${data.howFound}` : null,
-      ]
-        .filter(Boolean)
-        .join("\n"),
-    });
+    // Send notification to support + confirmation to applicant in parallel
+    await Promise.all([
+      resend.emails.send({
+        from: "MentalRoutine <contact@mentalroutine.com>",
+        to: "support@mentalroutine.com",
+        replyTo: data.email,
+        subject: `Pro Program inquiry: ${data.fullName}`,
+        text: [
+          `Name: ${data.fullName}`,
+          `Email: ${data.email}`,
+          data.pgaNumber ? `PGA Number: ${data.pgaNumber}` : null,
+          data.pgaDivision ? `PGA Division: ${data.pgaDivision}` : null,
+          data.linkedIn ? `LinkedIn: ${data.linkedIn}` : null,
+          data.country ? `Country: ${data.country}` : null,
+          data.facility ? `Facility: ${data.facility}` : null,
+          data.activeStudents ? `Active Students: ${data.activeStudents}` : null,
+          data.groupLessons ? `Group Lessons: ${data.groupLessons}` : null,
+          data.mentalExperience ? `Mental Training Experience: ${data.mentalExperience}` : null,
+          data.howFound ? `How Found: ${data.howFound}` : null,
+        ]
+          .filter(Boolean)
+          .join("\n"),
+      }),
+      resend.emails.send({
+        from: "MentalRoutine <contact@mentalroutine.com>",
+        replyTo: "support@mentalroutine.com",
+        to: data.email,
+        subject: "Your Pro Program application has been received!",
+        text: `Hi ${data.fullName},
+
+Thanks for applying to the MentalRoutine Pro Program! We've received your application and will review it shortly — usually within the same business day.
+
+Here's what happens next:
+
+  1. Today — Your application is in our queue
+  2. Within 24 hours — We verify your details and activate your account
+  3. Once approved — You receive your free Deluxe Assessment ($129 value) and personal affiliate code
+
+In the meantime, if you have any questions, just reply to this email.
+
+We look forward to working with you.
+
+The MentalRoutine Team
+www.mentalroutine.com`,
+      }),
+    ]);
 
     return NextResponse.json({ ok: true });
   } catch (err) {

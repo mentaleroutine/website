@@ -444,6 +444,23 @@
   </p>
 </div>
 
+<!-- Language notice for non-Dutch visitors -->
+<div id="lang-notice" style="display:none;background:#254D3A;color:#F7F3EC;text-align:center;padding:.8rem 1.5rem;font-family:var(--font-b);font-size:.82rem;border-bottom:1px solid rgba(255,255,255,.08);">
+  <span style="opacity:.8;">This quiz is currently only available in Dutch.</span>
+  <a href="https://www.mentalroutine.com/#early-access" style="color:#D4AF50;margin-left:.5rem;font-weight:600;text-decoration:underline;text-underline-offset:2px;">Take the full assessment in English →</a>
+  <button onclick="this.parentElement.style.display='none'" style="background:none;border:none;color:rgba(255,255,255,.5);cursor:pointer;margin-left:.8rem;font-size:1.1rem;vertical-align:middle;" aria-label="Close">×</button>
+</div>
+<script>
+  // Show language notice for non-Dutch browsers
+  (function() {
+    var lang = (navigator.language || '').toLowerCase();
+    if (lang && !lang.startsWith('nl')) {
+      var el = document.getElementById('lang-notice');
+      if (el) el.style.display = 'block';
+    }
+  })();
+</script>
+
 <!-- ═══════════════════════════════════════
      PHASE 1: PRE-QUIZ LANDING
 ═══════════════════════════════════════ -->
