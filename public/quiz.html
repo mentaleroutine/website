@@ -1039,6 +1039,7 @@
     state.segAnswers = [null, null, null];
     state.currentHole = 0;
     state.quizStartTime = Date.now();
+    state.holeStartTime = Date.now();
   }
 
   /* ══════════════════════════════════
@@ -1307,8 +1308,12 @@
      NAVIGATION
   ══════════════════════════════════ */
   function goToNextHole(holeIndex) {
+    // Track hole completion with per-hole timing
+    var holeSeconds = Math.round((Date.now() - state.holeStartTime) / 1000);
+    if (window.plausible) plausible('quiz_hole', { props: { hole: String(holeIndex + 1), seconds: String(holeSeconds) } });
     if (holeIndex < TOTAL_HOLES - 1) {
       state.currentHole = holeIndex + 1;
+      state.holeStartTime = Date.now();
       renderHole(state.currentHole);
     } else {
       // Last hole — calculate and show results
