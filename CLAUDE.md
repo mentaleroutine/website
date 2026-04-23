@@ -516,7 +516,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Na launch: wijzig naar `https://shop.mentalroutine.com` links
 - CTA tekst in `earlyAccess.pricingCta` en `earlyAccess.heroCta` aanpassen
 
-### Gratis Quiz (launch 20 april 2026)
+### Gratis Quiz (launch 15 mei 2026)
 - URL: `https://mentalroutine.com/quiz.html`
 - Bestand: `public/quiz.html` (standalone HTML, eigen CSS, geen Tailwind/Next.js)
 - Taal: alleen Nederlands (niet meertalig)
@@ -525,9 +525,9 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
   - Hero: "Of probeer eerst de gratis quiz →" (`hero.quizCta`, 5 talen)
   - Footer navigatie: "Free Quiz" / "Gratis Quiz" link (`footer.quizLink`, 5 talen)
   - Footer rechterkolom: quiz-link met vraagteken-icoon
-- **Coming soon banner**: bovenaan quiz.html, meldt dat quiz pas op 20 april beschikbaar is + link terug naar assessment
+- **Coming soon banner**: bovenaan quiz.html, meldt dat quiz pas op 15 mei beschikbaar is + link terug naar assessment
 - **Quiz geblokkeerd**: `QUIZ_LOCKED = true` flag in JS — alle "Start de quiz" knoppen scrollen naar coming soon banner met pulse-animatie i.p.v. quiz te starten
-- **Op 20 april**: (1) zet `QUIZ_LOCKED = false`, (2) verwijder `<div id="coming-soon-banner">` blok
+- **Op 15 mei**: (1) zet `QUIZ_LOCKED = false`, (2) verwijder `<div id="coming-soon-banner">` blok
 - **Toekomstig**: volledige 5-talige quiz (9 holes × 5 talen + alle UI tekst) — groot project, best na quiz launch
 
 ### OG Image ✅ (afgerond)
@@ -689,7 +689,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 ### Quiz integratie + Teaching Pro link fix (8 april 2026)
 - Quiz-links toegevoegd op hoofdpagina: hero (`quizCta`), footer nav (`quizLink`), footer col 3
 - Alle links wijzen naar `/quiz.html` (5 talen)
-- `quiz.html`: coming soon banner + `QUIZ_LOCKED = true` blokkeren quiz tot 20 april
+- `quiz.html`: coming soon banner + `QUIZ_LOCKED = true` blokkeren quiz tot 15 mei
 - Footer "Teaching Professional?" link gefixt: `#contact` → `/pro-program`
 
 ### Expert Panel Review — Ronde 3: Zelf-audit + fixes (8 april 2026)
@@ -1033,7 +1033,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
   - Tekst: "This quiz is currently only available in Dutch."
   - Link: "Take the full assessment in English →" naar `/#early-access`
   - Dismissible met × knop
-- **Toekomstig project**: volledige 5-talige quiz na launch op 20 april
+- **Toekomstig project**: volledige 5-talige quiz na launch op 15 mei
 
 ### Pro Program Bevestigings-email (9 april 2026)
 
