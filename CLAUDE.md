@@ -519,8 +519,16 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 ### Gratis Quiz (launch 15 mei 2026)
 - URL: `https://mentalroutine.com/quiz.html`
 - Bestand: `public/quiz.html` (standalone HTML, eigen CSS, geen Tailwind/Next.js)
-- Taal: alleen Nederlands (niet meertalig)
-- **Taaldetectie**: `navigator.language` check — niet-NL bezoekers zien dismissible notice banner met link naar Engels assessment. Script direct na coming-soon-banner
+- Taal: NL + EN (i18n via in-page `TRANSLATIONS` object). Default = `nl`.
+- **Taaldetectie**: `?lang=nl|en` URL param > `localStorage.mr_quiz_lang` > `navigator.language` (NL → nl, anders en) > `'nl'`
+- **Taal-toggle**: `.lang-toggle-btn` knop in alle 3 headers (landing, quiz, results); klik switcht NL↔EN, persist via localStorage, re-rendert active hole en result screen mid-flow
+- **i18n architectuur**:
+  - `TRANSLATIONS = { nl: {...}, en: {...} }` bevat alle UI-strings + 24 vraagpools (3 varianten per pool) + 3 segmentatie-holes + result-screen labels
+  - HTML statische tekst gebruikt `data-i18n="path.to.key"` (textContent) of `data-i18n-attr="attr:path"` (attribuut) — `applyI18n()` walks alle `[data-i18n*]` elements bij init en taalwissel
+  - JS-rendered content (holes, result cards, opt-in submit text) leest direct uit `T.*`
+  - Quiz state slaat `poolIdx + variantIdx` op (niet de tekst zelf), zodat taalwissel mid-quiz dezelfde vraag in andere taal toont
+  - Plausible event `quiz_lang_switch` met `lang` prop bij wisselen
+- **Toekomstig**: uitbreiden naar 5 talen (DE/FR/ES) — translations object structuur staat klaar, alleen extra keys toevoegen
 - **Links op hoofdpagina** (alvast actief, alsof quiz beschikbaar is):
   - Hero: "Of probeer eerst de gratis quiz →" (`hero.quizCta`, 5 talen)
   - Footer navigatie: "Free Quiz" / "Gratis Quiz" link (`footer.quizLink`, 5 talen)
@@ -528,7 +536,6 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **Coming soon banner**: bovenaan quiz.html, meldt dat quiz pas op 15 mei beschikbaar is + link terug naar assessment
 - **Quiz geblokkeerd**: `QUIZ_LOCKED = true` flag in JS — alle "Start de quiz" knoppen scrollen naar coming soon banner met pulse-animatie i.p.v. quiz te starten
 - **Op 15 mei**: (1) zet `QUIZ_LOCKED = false`, (2) verwijder `<div id="coming-soon-banner">` blok
-- **Toekomstig**: volledige 5-talige quiz (9 holes × 5 talen + alle UI tekst) — groot project, best na quiz launch
 
 ### OG Image ✅ (afgerond)
 - Gegenereerd via DALL-E 3 API (gouden radar chart op donkergroen) + Sharp SVG tekst overlay

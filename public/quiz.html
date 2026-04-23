@@ -440,33 +440,16 @@
 ═══════════════════════════════════════ -->
 <div id="coming-soon-banner" style="background:linear-gradient(135deg,#1B3A2D 0%,#254D3A 100%);color:#F7F3EC;text-align:center;padding:1.1rem 1.5rem;font-family:var(--font-b);position:relative;z-index:1000;">
   <p style="margin:0;font-size:.88rem;line-height:1.5;">
-    <strong style="color:#D4AF50;">🚀 Coming soon — 15 mei 2026</strong><br>
-    <span style="opacity:.7;font-size:.82rem;">Deze quiz is momenteel in de laatste testfase. Vanaf 15 mei kun je hem spelen. Wil je alvast je volledige mentale profiel?</span>
-    <a href="https://www.mentalroutine.com/#early-access" style="color:#D4AF50;margin-left:.4rem;font-weight:600;text-decoration:underline;text-underline-offset:2px;">Bekijk het assessment →</a>
+    <strong style="color:#D4AF50;" data-cs-strong>🚀 Coming soon — 15 mei 2026</strong><br>
+    <span style="opacity:.7;font-size:.82rem;" data-cs-body>Deze quiz is momenteel in de laatste testfase. Vanaf 15 mei kun je hem spelen. Wil je alvast je volledige mentale profiel?</span>
+    <a href="https://www.mentalroutine.com/#early-access" style="color:#D4AF50;margin-left:.4rem;font-weight:600;text-decoration:underline;text-underline-offset:2px;" data-cs-link>Bekijk het assessment →</a>
   </p>
 </div>
-
-<!-- Language notice for non-Dutch visitors -->
-<div id="lang-notice" style="display:none;background:#254D3A;color:#F7F3EC;text-align:center;padding:.8rem 1.5rem;font-family:var(--font-b);font-size:.82rem;border-bottom:1px solid rgba(255,255,255,.08);">
-  <span style="opacity:.8;">This quiz is currently only available in Dutch.</span>
-  <a href="https://www.mentalroutine.com/#early-access" style="color:#D4AF50;margin-left:.5rem;font-weight:600;text-decoration:underline;text-underline-offset:2px;">Take the full assessment in English →</a>
-  <button onclick="this.parentElement.style.display='none'" style="background:none;border:none;color:rgba(255,255,255,.5);cursor:pointer;margin-left:.8rem;font-size:1.1rem;vertical-align:middle;" aria-label="Close">×</button>
-</div>
-<script>
-  // Show language notice for non-Dutch browsers
-  (function() {
-    var lang = (navigator.language || '').toLowerCase();
-    if (lang && !lang.startsWith('nl')) {
-      var el = document.getElementById('lang-notice');
-      if (el) el.style.display = 'block';
-    }
-  })();
-</script>
 
 <!-- ═══════════════════════════════════════
      PHASE 1: PRE-QUIZ LANDING
 ═══════════════════════════════════════ -->
-<a href="#hero-h1" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:999" onfocus="this.style.cssText='position:fixed;top:8px;left:8px;z-index:9999;padding:.75rem 1.5rem;background:var(--gold);color:var(--forest);font-weight:700;border-radius:4px;text-decoration:none;font-size:.9rem'" onblur="this.style.cssText='position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden'">Naar hoofdinhoud</a>
+<a href="#hero-h1" class="skip-link" data-i18n="skipLink" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:999" onfocus="this.style.cssText='position:fixed;top:8px;left:8px;z-index:9999;padding:.75rem 1.5rem;background:var(--gold);color:var(--forest);font-weight:700;border-radius:4px;text-decoration:none;font-size:.9rem'" onblur="this.style.cssText='position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden'">Naar hoofdinhoud</a>
 
 <div id="phase-landing" class="phase" role="main">
 
@@ -475,7 +458,8 @@
     <div class="container">
       <div class="header-inner">
         <a href="https://www.mentalroutine.com" class="logo">Mental <span>Routine</span></a>
-        <div class="header-mid">9 holes &middot; 8 minuten &middot; Gratis</div>
+        <div class="header-mid" data-i18n="siteHeaderMid">9 holes &middot; 8 minuten &middot; Gratis</div>
+        <button type="button" class="lang-toggle-btn" aria-label="Switch language" style="background:rgba(184,149,42,.13);border:1px solid rgba(184,149,42,.3);color:var(--gold-light);padding:.35rem .7rem;border-radius:3px;font-family:var(--font-b);font-size:.72rem;font-weight:700;letter-spacing:.1em;cursor:pointer;text-transform:uppercase;flex-shrink:0">EN</button>
       </div>
     </div>
   </header>
@@ -486,29 +470,29 @@
       <div class="hero-content">
         <div class="hero-eyebrow reveal" aria-hidden="true">
           <svg width="7" height="7" viewBox="0 0 7 7" fill="currentColor"><circle cx="3.5" cy="3.5" r="3.5"/></svg>
-          Gratis quiz &middot; 9 holes &middot; 8 minuten
+          <span data-i18n="hero.eyebrow">Gratis quiz &middot; 9 holes &middot; 8 minuten</span>
         </div>
-        <h1 id="hero-h1" class="reveal d1">Welk mentaal patroon<br>kost jou de <em>meeste slagen?</em></h1>
-        <p class="hero-sub reveal d2">Speel 9 holes met ons en ontdek direct waar jouw mentale golfspel het sterkst en het zwakst is. Gebaseerd op 10 jaar onderzoek met 1.000+ golfers.</p>
+        <h1 id="hero-h1" class="reveal d1"><span data-i18n="hero.h1a">Welk mentaal patroon</span><br><span data-i18n="hero.h1b">kost jou de</span> <em data-i18n="hero.h1em">meeste slagen?</em></h1>
+        <p class="hero-sub reveal d2" data-i18n="hero.sub">Speel 9 holes met ons en ontdek direct waar jouw mentale golfspel het sterkst en het zwakst is. Gebaseerd op 10 jaar onderzoek met 1.000+ golfers.</p>
         <div class="hero-cta-wrap reveal d3">
-          <button class="btn btn-gold btn-xl start-quiz-btn" aria-label="Start de gratis quiz">Start de quiz &rarr;</button>
+          <button class="btn btn-gold btn-xl start-quiz-btn" data-i18n="hero.startBtn" data-i18n-attr="aria-label:hero.startBtnAria" aria-label="Start de gratis quiz">Start de quiz &rarr;</button>
         </div>
         <div class="hero-badges reveal d4">
-          <span class="hero-badge"><span class="hero-badge-dot"></span>9 holes &middot; 8 minuten</span>
-          <span class="hero-badge"><span class="hero-badge-dot"></span>Gebaseerd op 1.000+ golfers</span>
-          <span class="hero-badge"><span class="hero-badge-dot"></span>Direct resultaat</span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span><span data-i18n="hero.badges.0">9 holes &middot; 8 minuten</span></span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span><span data-i18n="hero.badges.1">Gebaseerd op 1.000+ golfers</span></span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span><span data-i18n="hero.badges.2">Direct resultaat</span></span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SOCIAL PROOF BAR -->
-  <div class="spbar" role="region" aria-label="Sociale bewijsvoering">
+  <div class="spbar" role="region" data-i18n-attr="aria-label:sp.regionLabel" aria-label="Sociale bewijsvoering">
     <div class="container">
       <div class="spbar-inner">
         <div class="sp-stars">
-          <span class="sp-stars-icons" aria-label="5 sterren">★★★★★</span>
-          <span class="sp-stars-text">4.9/5</span>
+          <span class="sp-stars-icons" data-i18n-attr="aria-label:sp.starsAria" aria-label="5 sterren">★★★★★</span>
+          <span class="sp-stars-text" data-i18n="sp.starsText">4.9/5</span>
         </div>
         <div class="sp-divider" aria-hidden="true"></div>
         <div class="sp-count">
@@ -517,19 +501,19 @@
             <div class="sp-avatar">M</div>
             <div class="sp-avatar">J</div>
           </div>
-          <span class="sp-count-text"><strong>1.000+ golfers</strong> onderzocht</span>
+          <span class="sp-count-text"><strong data-i18n="sp.countStrong">1.000+ golfers</strong> <span data-i18n="sp.countAfter">onderzocht</span></span>
         </div>
         <div class="sp-divider" aria-hidden="true"></div>
         <div class="sp-rec">
           <span class="sp-rec-icon" aria-hidden="true">&#10003;</span>
-          PGA-netwerk &middot; 10 jaar onderzoek
+          <span data-i18n="sp.rec">PGA-netwerk &middot; 10 jaar onderzoek</span>
         </div>
         <div class="sp-divider" aria-hidden="true"></div>
         <span class="sp-range-badge">
           <span aria-hidden="true">&#9971;</span>
-          Handicap 0 t/m 54
+          <span data-i18n="sp.rangeBadge">Handicap 0 t/m 54</span>
           <span class="sp-range-bar" role="presentation"></span>
-          Alle leeftijden
+          <span data-i18n="sp.ages">Alle leeftijden</span>
         </span>
       </div>
     </div>
@@ -539,92 +523,92 @@
   <section class="pain" aria-labelledby="pain-h2">
     <div class="container-sm">
       <div class="pain-intro reveal">
-        <span class="section-label">Herken je dit?</span>
-        <h2 id="pain-h2">Het zit niet<br>in je swing</h2>
+        <span class="section-label" data-i18n="pain.label">Herken je dit?</span>
+        <h2 id="pain-h2"><span data-i18n="pain.h2a">Het zit niet</span><br><span data-i18n="pain.h2b">in je swing</span></h2>
       </div>
       <ul class="pain-bullets">
-        <li class="reveal d1"><span class="pain-dash" aria-hidden="true">&#8212;</span>Op de range lukt alles &mdash; op de baan verdwijnt je swing zodra het telt.</li>
-        <li class="reveal d2"><span class="pain-dash" aria-hidden="true">&#8212;</span>&#201;&#233;n slechte hole en je hele ronde is verpest. Altijd weer.</li>
-        <li class="reveal d3"><span class="pain-dash" aria-hidden="true">&#8212;</span>Je hebt het talent voor beter &mdash; maar mentaal laat je slagen liggen.</li>
-        <li class="reveal d4"><span class="pain-dash" aria-hidden="true">&#8212;</span>Je wilt weten waarom. Niet vaag advies, maar een concreet antwoord.</li>
+        <li class="reveal d1"><span class="pain-dash" aria-hidden="true">&#8212;</span><span data-i18n="pain.bullets.0">Op de range lukt alles &mdash; op de baan verdwijnt je swing zodra het telt.</span></li>
+        <li class="reveal d2"><span class="pain-dash" aria-hidden="true">&#8212;</span><span data-i18n="pain.bullets.1">&#201;&#233;n slechte hole en je hele ronde is verpest. Altijd weer.</span></li>
+        <li class="reveal d3"><span class="pain-dash" aria-hidden="true">&#8212;</span><span data-i18n="pain.bullets.2">Je hebt het talent voor beter &mdash; maar mentaal laat je slagen liggen.</span></li>
+        <li class="reveal d4"><span class="pain-dash" aria-hidden="true">&#8212;</span><span data-i18n="pain.bullets.3">Je wilt weten waarom. Niet vaag advies, maar een concreet antwoord.</span></li>
       </ul>
     </div>
   </section>
 
   <div class="bridge-cta">
-    <a role="button" tabindex="0" class="start-quiz-btn" aria-label="Start de quiz">Speel 9 holes en ontdek in 8 minuten welk patroon jou de meeste slagen kost &rarr;</a>
+    <a role="button" tabindex="0" class="start-quiz-btn" data-i18n="bridge" data-i18n-attr="aria-label:bridgeAria" aria-label="Start de quiz">Speel 9 holes en ontdek in 8 minuten welk patroon jou de meeste slagen kost &rarr;</a>
   </div>
 
   <!-- WHAT YOU GET -->
   <section class="wyg" aria-labelledby="wyg-h2">
     <div class="container">
       <div class="wyg-hdr reveal">
-        <span class="section-label">Na de 9 holes</span>
-        <h2 id="wyg-h2">Dit krijg je &mdash; gratis</h2>
+        <span class="section-label" data-i18n="wyg.label">Na de 9 holes</span>
+        <h2 id="wyg-h2" data-i18n="wyg.h2">Dit krijg je &mdash; gratis</h2>
       </div>
       <div class="wyg-grid">
         <div class="wyg-card reveal d1">
           <div class="wyg-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           </div>
-          <h3>Jouw mentale profiel</h3>
-          <p>Radarchart met scores op de 3 fases van je Mentale Routine. Direct op je scherm zichtbaar na de 9e hole.</p>
+          <h3 data-i18n="wyg.cards.0.h3">Jouw mentale profiel</h3>
+          <p data-i18n="wyg.cards.0.p">Radarchart met scores op de 3 fases van je Mentale Routine. Direct op je scherm zichtbaar na de 9e hole.</p>
         </div>
         <div class="wyg-card reveal d2">
           <div class="wyg-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
           </div>
-          <h3>Je #1 sterkste en zwakste punt</h3>
-          <p>Concreet: welk domein kost jou de meeste slagen per ronde? En waar presteer je boven gemiddeld?</p>
+          <h3 data-i18n="wyg.cards.1.h3">Je #1 sterkste en zwakste punt</h3>
+          <p data-i18n="wyg.cards.1.p">Concreet: welk domein kost jou de meeste slagen per ronde? En waar presteer je boven gemiddeld?</p>
         </div>
         <div class="wyg-card reveal d3">
           <div class="wyg-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           </div>
-          <h3>Persoonlijke PDF per mail</h3>
-          <p>Volledige uitslag met uitleg, tips en oefeningen. Gratis, zonder verplichtingen.</p>
+          <h3 data-i18n="wyg.cards.2.h3">Persoonlijke PDF per mail</h3>
+          <p data-i18n="wyg.cards.2.p">Volledige uitslag met uitleg, tips en oefeningen. Gratis, zonder verplichtingen.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- TEAM BAR -->
-  <section class="team-bar" aria-label="Over het team">
+  <section class="team-bar" data-i18n-attr="aria-label:team.ariaLabel" aria-label="Over het team">
     <div class="container">
       <div class="team-bar-inner reveal">
         <div class="team-avatars">
           <div class="team-member">
             <div class="team-avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23365a47' width='100' height='100'/%3E%3Ccircle cx='50' cy='36' r='18' fill='%23c4b99a'/%3E%3Cellipse cx='50' cy='90' rx='30' ry='28' fill='%23c4b99a'/%3E%3Ccircle cx='50' cy='36' r='16' fill='%23ddd5c4'/%3E%3Cellipse cx='50' cy='90' rx='28' ry='26' fill='%23ddd5c4'/%3E%3Cpath d='M32 28c0-12 8-18 18-18s18 6 18 18c0 2-1 4-2 4-2-8-8-12-16-12s-14 4-16 12c-1 0-2-2-2-4z' fill='%23aaa'/%3E%3C/svg%3E" alt="Henk de Jong"></div>
-            <span class="team-member-name">Henk de Jong</span>
-            <span class="team-member-role">Golfer &middot; 40+ jaar</span>
-            <span class="team-member-role">PGA-netwerk</span>
+            <span class="team-member-name" data-i18n="team.members.0.name">Henk de Jong</span>
+            <span class="team-member-role" data-i18n="team.members.0.role1">Golfer &middot; 40+ jaar</span>
+            <span class="team-member-role" data-i18n="team.members.0.role2">PGA-netwerk</span>
           </div>
           <div class="team-member">
             <div class="team-avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23365a47' width='100' height='100'/%3E%3Ccircle cx='50' cy='36' r='18' fill='%23c4b99a'/%3E%3Cellipse cx='50' cy='90' rx='30' ry='28' fill='%23c4b99a'/%3E%3Ccircle cx='50' cy='36' r='16' fill='%23ddd5c4'/%3E%3Cellipse cx='50' cy='90' rx='28' ry='26' fill='%23ddd5c4'/%3E%3C/svg%3E" alt="Berend Jansen"></div>
-            <span class="team-member-name">Berend Jansen</span>
-            <span class="team-member-role">Psychometrisch expert</span>
-            <span class="team-member-role">Assessmentspecialist</span>
+            <span class="team-member-name" data-i18n="team.members.1.name">Berend Jansen</span>
+            <span class="team-member-role" data-i18n="team.members.1.role1">Psychometrisch expert</span>
+            <span class="team-member-role" data-i18n="team.members.1.role2">Assessmentspecialist</span>
           </div>
         </div>
         <div class="team-text-block">
-          <h3 class="team-bar-heading">15+ jaar ervaring. 10 jaar golf-specifiek onderzoek.</h3>
-          <p class="team-bar-body">Henk de Jong speelt 40+ jaar golf en bracht via zijn PGA-netwerk 1.000+ golfers bij het onderzoek. Berend Jansen is expert in psychometrische meetinstrumenten &mdash; het wetenschappelijk meten van waarom mensen doen wat ze doen. Samen bouwen zij al 15 jaar gedragsassessments. In 2016 startten zij MentalRoutine.com.</p>
+          <h3 class="team-bar-heading" data-i18n="team.heading">15+ jaar ervaring. 10 jaar golf-specifiek onderzoek.</h3>
+          <p class="team-bar-body" data-i18n="team.body">Henk de Jong speelt 40+ jaar golf en bracht via zijn PGA-netwerk 1.000+ golfers bij het onderzoek. Berend Jansen is expert in psychometrische meetinstrumenten &mdash; het wetenschappelijk meten van waarom mensen doen wat ze doen. Samen bouwen zij al 15 jaar gedragsassessments. In 2016 startten zij MentalRoutine.com.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FINAL CTA -->
-  <section class="fcta" aria-label="Afsluitende aanroep tot actie">
+  <section class="fcta" data-i18n-attr="aria-label:fcta.ariaLabel" aria-label="Afsluitende aanroep tot actie">
     <div class="container">
       <div class="fcta-inner">
-        <h2 class="reveal" style="color:var(--cream)">9 holes. 24 vragen.<br>Direct inzicht.</h2>
-        <p class="fcta-sub reveal d1">Gebaseerd op onderzoek met 1.000+ golfers — ontdek welk mentaal patroon jou slagen kost.</p>
-        <button class="btn btn-gold btn-xl reveal d2 start-quiz-btn" aria-label="Start de gratis quiz">Start de quiz &rarr;</button>
+        <h2 class="reveal" style="color:var(--cream)"><span data-i18n="fcta.h2a">9 holes. 24 vragen.</span><br><span data-i18n="fcta.h2b">Direct inzicht.</span></h2>
+        <p class="fcta-sub reveal d1" data-i18n="fcta.sub">Gebaseerd op onderzoek met 1.000+ golfers — ontdek welk mentaal patroon jou slagen kost.</p>
+        <button class="btn btn-gold btn-xl reveal d2 start-quiz-btn" data-i18n="hero.startBtn" data-i18n-attr="aria-label:hero.startBtnAria" aria-label="Start de gratis quiz">Start de quiz &rarr;</button>
         <div class="fcta-badges reveal d3">
-          <span class="fcta-badge"><span class="fcta-badge-dot"></span>Gratis</span>
-          <span class="fcta-badge"><span class="fcta-badge-dot"></span>9 holes &middot; 8 minuten</span>
-          <span class="fcta-badge"><span class="fcta-badge-dot"></span>Direct resultaat</span>
+          <span class="fcta-badge"><span class="fcta-badge-dot"></span><span data-i18n="fcta.badges.0">Gratis</span></span>
+          <span class="fcta-badge"><span class="fcta-badge-dot"></span><span data-i18n="fcta.badges.1">9 holes &middot; 8 minuten</span></span>
+          <span class="fcta-badge"><span class="fcta-badge-dot"></span><span data-i18n="fcta.badges.2">Direct resultaat</span></span>
         </div>
       </div>
     </div>
@@ -645,17 +629,18 @@
 <!-- ═══════════════════════════════════════
      PHASE 2: QUIZ
 ═══════════════════════════════════════ -->
-<div id="phase-quiz" class="phase hidden" role="main" aria-label="Quiz — 9 holes">
+<div id="phase-quiz" class="phase hidden" role="main" data-i18n-attr="aria-label:quizPhase.ariaLabel" aria-label="Quiz — 9 holes">
 
   <header class="quiz-header">
     <div class="quiz-header-inner">
-      <a href="https://www.mentalroutine.com" class="quiz-logo" aria-label="Mental Routine homepage">Mental <span>Routine</span></a>
+      <a href="https://www.mentalroutine.com" class="quiz-logo" data-i18n-attr="aria-label:quizHeader.logoAria" aria-label="Mental Routine homepage">Mental <span>Routine</span></a>
       <div class="quiz-progress-wrap">
         <span class="quiz-progress-label" id="quiz-progress-label" aria-live="polite">Hole 1 van 9</span>
         <div class="quiz-progress-track" role="progressbar" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100" aria-labelledby="quiz-progress-label">
           <div class="quiz-progress-fill" id="quiz-progress-fill" style="width:11%"></div>
         </div>
       </div>
+      <button type="button" class="lang-toggle-btn" aria-label="Switch language" style="background:rgba(184,149,42,.13);border:1px solid rgba(184,149,42,.3);color:var(--gold-light);padding:.35rem .7rem;border-radius:3px;font-family:var(--font-b);font-size:.72rem;font-weight:700;letter-spacing:.1em;cursor:pointer;text-transform:uppercase;flex-shrink:0">EN</button>
     </div>
   </header>
 
@@ -673,14 +658,15 @@
 <!-- ═══════════════════════════════════════
      PHASE 3: RESULTS
 ═══════════════════════════════════════ -->
-<div id="phase-results" class="phase hidden" role="main" aria-label="Jouw resultaten">
+<div id="phase-results" class="phase hidden" role="main" data-i18n-attr="aria-label:results.ariaLabel" aria-label="Jouw resultaten">
 
   <!-- STICKY HEADER (reuse site-header style) -->
   <header class="site-header">
     <div class="container">
       <div class="header-inner">
         <a href="https://www.mentalroutine.com" class="logo">Mental <span>Routine</span></a>
-        <div class="header-mid">Jouw mentale profiel</div>
+        <div class="header-mid" data-i18n="results.siteHeaderMid">Jouw mentale profiel</div>
+        <button type="button" class="lang-toggle-btn" aria-label="Switch language" style="background:rgba(184,149,42,.13);border:1px solid rgba(184,149,42,.3);color:var(--gold-light);padding:.35rem .7rem;border-radius:3px;font-family:var(--font-b);font-size:.72rem;font-weight:700;letter-spacing:.1em;cursor:pointer;text-transform:uppercase;flex-shrink:0">EN</button>
       </div>
     </div>
   </header>
@@ -688,9 +674,9 @@
   <!-- RESULT HERO -->
   <section class="result-hero" aria-labelledby="result-h2">
     <div class="result-hero-inner">
-      <span class="result-hero-label">Jouw Mentale Routine profiel</span>
-      <span class="result-score-big" id="result-score-display" aria-label="Totaalscore">--/100</span>
-      <p class="result-score-sub" id="result-score-subtitle">Berekening...</p>
+      <span class="result-hero-label" data-i18n="results.heroLabel">Jouw Mentale Routine profiel</span>
+      <span class="result-score-big" id="result-score-display" data-i18n-attr="aria-label:results.heroAria" aria-label="Totaalscore">--/100</span>
+      <p class="result-score-sub" id="result-score-subtitle" data-i18n="results.scoreCalc">Berekening...</p>
     </div>
   </section>
 
@@ -698,8 +684,8 @@
   <section class="result-radar-section" aria-labelledby="radar-h2">
     <div class="result-radar-inner">
       <div class="result-radar-hdr">
-        <span class="section-label">Jouw profiel</span>
-        <h2 id="radar-h2">Jouw Mentale Routine in 3 fases</h2>
+        <span class="section-label" data-i18n="results.radarLabel">Jouw profiel</span>
+        <h2 id="radar-h2" data-i18n="results.radarH2">Jouw Mentale Routine in 3 fases</h2>
       </div>
       <div class="radar-layout">
         <div class="radar-chart-wrap">
@@ -718,16 +704,16 @@
   <section class="result-domains" aria-labelledby="domains-h2">
     <div class="result-domains-inner">
       <div style="text-align:center;margin-bottom:2rem">
-        <span class="section-label">Jouw 8 domeinen</span>
-        <h2 id="domains-h2" style="font-size:clamp(1.5rem,2.8vw,2.2rem)">Hoe scoor je per domein?</h2>
+        <span class="section-label" data-i18n="results.domainsLabel">Jouw 8 domeinen</span>
+        <h2 id="domains-h2" style="font-size:clamp(1.5rem,2.8vw,2.2rem)" data-i18n="results.domainsH2">Hoe scoor je per domein?</h2>
       </div>
       <div class="domain-bars" id="domain-bars">
         <!-- Rendered by JS -->
       </div>
       <div class="domains-cta">
-        <p class="domains-cta-text">6 van je 8 scores zijn vergrendeld</p>
-        <a href="#optin-h2" class="btn btn-gold">Ontgrendel al je scores &rarr;</a>
-        <p class="domains-cta-sub">Gratis PDF met alle 8 scores, uitleg, tips en oefeningen</p>
+        <p class="domains-cta-text" data-i18n="results.domainsLocked">6 van je 8 scores zijn vergrendeld</p>
+        <a href="#optin-h2" class="btn btn-gold" data-i18n="results.domainsCta">Ontgrendel al je scores &rarr;</a>
+        <p class="domains-cta-sub" data-i18n="results.domainsCtaSub">Gratis PDF met alle 8 scores, uitleg, tips en oefeningen</p>
       </div>
     </div>
   </section>
@@ -736,41 +722,41 @@
   <section class="optin-section" aria-labelledby="optin-h2">
     <div class="optin-inner">
       <div class="optin-hdr">
-        <span class="section-label">Wil je weten wat dit betekent?</span>
-        <h2 id="optin-h2">Ontvang je volledige uitslag &mdash; gratis</h2>
-        <p>Je persoonlijke PDF met:</p>
+        <span class="section-label" data-i18n="optin.label">Wil je weten wat dit betekent?</span>
+        <h2 id="optin-h2" data-i18n="optin.h2">Ontvang je volledige uitslag &mdash; gratis</h2>
+        <p data-i18n="optin.intro">Je persoonlijke PDF met:</p>
       </div>
-      <ul class="optin-checklist" aria-label="Inhoud van de PDF">
-        <li><span class="optin-check" aria-hidden="true">&#10003;</span> Jouw 8 scores + uitleg</li>
-        <li><span class="optin-check" aria-hidden="true">&#10003;</span> 3 oefeningen die je direct kunt toepassen</li>
-        <li><span class="optin-check" aria-hidden="true">&#10003;</span> Persoonlijke tips op basis van jouw Mentale Routine profiel</li>
-        <li><span class="optin-check" aria-hidden="true">&#10003;</span> Kortingscoupon voor het volledige Assessment</li>
+      <ul class="optin-checklist" data-i18n-attr="aria-label:optin.checklistAria" aria-label="Inhoud van de PDF">
+        <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.0">Jouw 8 scores + uitleg</span></li>
+        <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.1">3 oefeningen die je direct kunt toepassen</span></li>
+        <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.2">Persoonlijke tips op basis van jouw Mentale Routine profiel</span></li>
+        <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.3">Kortingscoupon voor het volledige Assessment</span></li>
       </ul>
 
       <div id="optin-form-wrap">
         <form class="optin-form" id="optin-form" novalidate aria-labelledby="optin-h2">
           <div class="form-group">
-            <label for="input-naam">Voornaam</label>
-            <input type="text" id="input-naam" name="naam" placeholder="Jouw voornaam" autocomplete="given-name" required>
+            <label for="input-naam" data-i18n="optin.fields.name">Voornaam</label>
+            <input type="text" id="input-naam" name="naam" data-i18n-attr="placeholder:optin.fields.namePh" placeholder="Jouw voornaam" autocomplete="given-name" required>
           </div>
           <div class="form-group">
-            <label for="input-email">E-mailadres</label>
-            <input type="email" id="input-email" name="email" placeholder="jouw@email.nl" autocomplete="email" required>
+            <label for="input-email" data-i18n="optin.fields.email">E-mailadres</label>
+            <input type="email" id="input-email" name="email" data-i18n-attr="placeholder:optin.fields.emailPh" placeholder="jouw@email.nl" autocomplete="email" required>
           </div>
           <div class="form-group">
-            <label for="input-hcp">Exacte handicap</label>
-            <input type="number" id="input-hcp" name="handicap" placeholder="Bijv. 18.4" min="0" max="54" step="0.1" autocomplete="off">
+            <label for="input-hcp" data-i18n="optin.fields.hcp">Exacte handicap</label>
+            <input type="number" id="input-hcp" name="handicap" data-i18n-attr="placeholder:optin.fields.hcpPh" placeholder="Bijv. 18.4" min="0" max="54" step="0.1" autocomplete="off">
           </div>
-          <button type="submit" class="btn btn-gold form-submit">Verstuur mijn uitslag &rarr;</button>
-          <p class="form-sub">Je ontvangt je PDF binnen 5 minuten. Geen spam, geen verplichtingen.</p>
-          <p class="form-privacy">We delen je gegevens nooit met derden.</p>
+          <button type="submit" class="btn btn-gold form-submit" data-i18n="optin.submit">Verstuur mijn uitslag &rarr;</button>
+          <p class="form-sub" data-i18n="optin.sub">Je ontvangt je PDF binnen 5 minuten. Geen spam, geen verplichtingen.</p>
+          <p class="form-privacy" data-i18n="optin.privacy">We delen je gegevens nooit met derden.</p>
         </form>
       </div>
 
       <div class="optin-thanks" id="optin-thanks" role="alert" aria-live="polite">
         <span class="thanks-icon" aria-hidden="true">&#10003;</span>
-        <div class="thanks-title">Je uitslag is onderweg!</div>
-        <p class="thanks-body">Check je inbox (en eventueel je spam-map) binnen 5 minuten.<br><br>Wil je niet wachten? <a href="assessment-standaard.html" class="thanks-link">&rarr; Bekijk het volledige Assessment</a></p>
+        <div class="thanks-title" data-i18n="optin.thanksTitle">Je uitslag is onderweg!</div>
+        <p class="thanks-body"><span data-i18n="optin.thanksBody1">Check je inbox (en eventueel je spam-map) binnen 5 minuten.</span><br><br><span data-i18n="optin.thanksBody2">Wil je niet wachten?</span> <a href="assessment-standaard.html" class="thanks-link" data-i18n="optin.thanksLink">&rarr; Bekijk het volledige Assessment</a></p>
       </div>
     </div>
   </section>
@@ -778,21 +764,21 @@
   <!-- ASSESSMENT TEASER -->
   <section class="assess-teaser" aria-labelledby="assess-h2">
     <div class="assess-teaser-inner">
-      <span class="section-label" style="color:var(--gold-light)">Klaar voor het volledige plaatje?</span>
-      <h2 id="assess-h2" style="color:var(--cream);margin-bottom:1rem">Quiz vs. Assessment</h2>
+      <span class="section-label" style="color:var(--gold-light)" data-i18n="assess.label">Klaar voor het volledige plaatje?</span>
+      <h2 id="assess-h2" style="color:var(--cream);margin-bottom:1rem" data-i18n="assess.h2">Quiz vs. Assessment</h2>
       <div class="assess-compare">
         <div class="assess-compare-card">
-          <span class="assess-compare-label">Deze quiz</span>
-          <div class="assess-compare-title">Gratis sneldiagnose</div>
-          <div class="assess-compare-detail">8 domeinen &middot; 9 holes &middot; 24 vragen &middot; Globale indicatie &middot; 8 minuten</div>
+          <span class="assess-compare-label" data-i18n="assess.leftLabel">Deze quiz</span>
+          <div class="assess-compare-title" data-i18n="assess.leftTitle">Gratis sneldiagnose</div>
+          <div class="assess-compare-detail" data-i18n="assess.leftDetail">8 domeinen &middot; 9 holes &middot; 24 vragen &middot; Globale indicatie &middot; 8 minuten</div>
         </div>
         <div class="assess-compare-card assess-compare-card--highlight">
-          <span class="assess-compare-label">Assessment Standaard</span>
-          <div class="assess-compare-title">Volledig mentaal profiel</div>
-          <div class="assess-compare-detail">40+ factoren &middot; 18 holes &middot; 12 pagina&#8217;s PDF rapportage &middot; 25 minuten</div>
+          <span class="assess-compare-label" data-i18n="assess.rightLabel">Assessment Standaard</span>
+          <div class="assess-compare-title" data-i18n="assess.rightTitle">Volledig mentaal profiel</div>
+          <div class="assess-compare-detail" data-i18n="assess.rightDetail">40+ factoren &middot; 18 holes &middot; 12 pagina&#8217;s PDF rapportage &middot; 25 minuten</div>
         </div>
       </div>
-      <a href="assessment-standaard.html" class="btn btn-gold btn-lg">Bekijk het Assessment Standaard &rarr; $59</a>
+      <a href="assessment-standaard.html" class="btn btn-gold btn-lg" data-i18n="assess.cta">Bekijk het Assessment Standaard &rarr; $59</a>
     </div>
   </section>
 
@@ -813,19 +799,657 @@
   'use strict';
 
   /* ══════════════════════════════════
-     DOMAINS
+     I18N — TRANSLATIONS
+     Two languages: nl (default) and en.
+     Selection order: ?lang= URL param > localStorage > navigator.language > 'nl'
   ══════════════════════════════════ */
-  var DOMAINS = [
-    'Focus', 'Concentratie', 'Overtuiging', 'Vertrouwen',
-    'Beoordeling', 'Acceptatie', 'Analyse', 'Lering trekken'
-  ];
+  var TRANSLATIONS = {
+    nl: {
+      meta: {
+        title: 'Gratis Quiz — Welk mentaal patroon kost jou de meeste slagen? | Mental Routine',
+        description: 'Doe de gratis quiz en ontdek in 8 minuten welk mentaal patroon jou de meeste slagen kost. Speel 9 holes en ontdek direct je mentale profiel. Gebaseerd op 10 jaar onderzoek met 1.000+ golfers.',
+        htmlLang: 'nl'
+      },
+      coming: {
+        strong: '🚀 Coming soon — 15 mei 2026',
+        body: 'Deze quiz is momenteel in de laatste testfase. Vanaf 15 mei kun je hem spelen. Wil je alvast je volledige mentale profiel?',
+        link: 'Bekijk het assessment →'
+      },
+      langToggle: { other: 'EN', otherFull: 'English', current: 'NL' },
+      skipLink: 'Naar hoofdinhoud',
+      siteHeaderMid: '9 holes · 8 minuten · Gratis',
+      hero: {
+        eyebrow: 'Gratis quiz · 9 holes · 8 minuten',
+        h1a: 'Welk mentaal patroon',
+        h1b: 'kost jou de',
+        h1em: 'meeste slagen?',
+        sub: 'Speel 9 holes met ons en ontdek direct waar jouw mentale golfspel het sterkst en het zwakst is. Gebaseerd op 10 jaar onderzoek met 1.000+ golfers.',
+        startBtn: 'Start de quiz →',
+        startBtnAria: 'Start de gratis quiz',
+        badges: ['9 holes · 8 minuten', 'Gebaseerd op 1.000+ golfers', 'Direct resultaat']
+      },
+      sp: {
+        regionLabel: 'Sociale bewijsvoering',
+        starsAria: '5 sterren',
+        starsText: '4.9/5',
+        countText: 'golfers',
+        countStrong: '1.000+ golfers',
+        countAfter: 'onderzocht',
+        rec: 'PGA-netwerk · 10 jaar onderzoek',
+        rangeBadge: 'Handicap 0 t/m 54',
+        ages: 'Alle leeftijden'
+      },
+      pain: {
+        label: 'Herken je dit?',
+        h2a: 'Het zit niet',
+        h2b: 'in je swing',
+        bullets: [
+          'Op de range lukt alles — op de baan verdwijnt je swing zodra het telt.',
+          'Eén slechte hole en je hele ronde is verpest. Altijd weer.',
+          'Je hebt het talent voor beter — maar mentaal laat je slagen liggen.',
+          'Je wilt weten waarom. Niet vaag advies, maar een concreet antwoord.'
+        ]
+      },
+      bridge: 'Speel 9 holes en ontdek in 8 minuten welk patroon jou de meeste slagen kost →',
+      bridgeAria: 'Start de quiz',
+      wyg: {
+        label: 'Na de 9 holes',
+        h2: 'Dit krijg je — gratis',
+        cards: [
+          { h3: 'Jouw mentale profiel', p: 'Radarchart met scores op de 3 fases van je Mentale Routine. Direct op je scherm zichtbaar na de 9e hole.' },
+          { h3: 'Je #1 sterkste en zwakste punt', p: 'Concreet: welk domein kost jou de meeste slagen per ronde? En waar presteer je boven gemiddeld?' },
+          { h3: 'Persoonlijke PDF per mail', p: 'Volledige uitslag met uitleg, tips en oefeningen. Gratis, zonder verplichtingen.' }
+        ]
+      },
+      team: {
+        ariaLabel: 'Over het team',
+        members: [
+          { name: 'Henk de Jong', role1: 'Golfer · 40+ jaar', role2: 'PGA-netwerk' },
+          { name: 'Berend Jansen', role1: 'Psychometrisch expert', role2: 'Assessmentspecialist' }
+        ],
+        heading: '15+ jaar ervaring. 10 jaar golf-specifiek onderzoek.',
+        body: 'Henk de Jong speelt 40+ jaar golf en bracht via zijn PGA-netwerk 1.000+ golfers bij het onderzoek. Berend Jansen is expert in psychometrische meetinstrumenten — het wetenschappelijk meten van waarom mensen doen wat ze doen. Samen bouwen zij al 15 jaar gedragsassessments. In 2016 startten zij MentalRoutine.com.'
+      },
+      fcta: {
+        ariaLabel: 'Afsluitende aanroep tot actie',
+        h2a: '9 holes. 24 vragen.',
+        h2b: 'Direct inzicht.',
+        sub: 'Gebaseerd op onderzoek met 1.000+ golfers — ontdek welk mentaal patroon jou slagen kost.',
+        badges: ['Gratis', '9 holes · 8 minuten', 'Direct resultaat']
+      },
+      quizHeader: {
+        logoAria: 'Mental Routine homepage',
+        progressLabel: function(n) { return 'Hole ' + n + ' van 9'; }
+      },
+      quizPhase: { ariaLabel: 'Quiz — 9 holes' },
+      hole: {
+        pageAria: function(n) { return 'Hole ' + n + ' van 9'; },
+        holeLabel: function(n) { return 'Hole ' + n; },
+        questionsCount: '4 vragen',
+        scaleLeft: 'Helemaal niet',
+        scaleRight: 'Helemaal',
+        scaleAria: 'Score 1 tot 10',
+        scaleBtnAria: function(n) { return n + ' van 10'; },
+        backBtn: '← Vorige hole',
+        backBtnAria: 'Ga terug naar de vorige hole',
+        nextBtn: 'Volgende hole →',
+        nextBtnAria: 'Ga naar de volgende hole',
+        finishBtn: 'Bekijk mijn resultaten →',
+        finishBtnAria: 'Bekijk mijn resultaten',
+        answersAria: 'Antwoordopties'
+      },
+      domains: ['Focus', 'Concentratie', 'Overtuiging', 'Vertrouwen', 'Beoordeling', 'Acceptatie', 'Analyse', 'Lering trekken'],
+      questionPools: [
+        // Domain 0: Focus
+        ['Als ik boven de bal sta, ben ik met mijn gedachten volledig bij déze slag.',
+         'Tijdens het adresseren is mijn hoofd helemaal leeg — alleen de slag telt.',
+         'Ik ben volledig aanwezig bij elke slag die ik doe, zonder afleiding van binnenuit.'],
+        ['Ik kan gedachten aan eerdere holes of mijn score parkeren als ik een slag voorbereid.',
+         'Wat er op de vorige hole gebeurde, speelt niet door mijn hoofd als ik de volgende slag voorbereid.',
+         'Ik kan mijn score vergeten en me concentreren op de slag die voor me ligt.'],
+        ['Ik laat me niet afleiden door wat er na deze slag of na deze ronde komt.',
+         'Gedachten over het eindresultaat of de laatste holes storen me niet tijdens het spelen.',
+         'Ik denk niet vooruit naar wat er nog moet komen — ik ben bij de slag van nu.'],
+        // Domain 1: Concentratie
+        ['Ik kan geluiden, medespelers en beweging om me heen buitensluiten tijdens mijn slag.',
+         'Externe prikkels — een vogel, een golfkar, iemand die praat — halen me niet uit mijn concentratie.',
+         'Wat er om me heen gebeurt raakt me niet als ik eenmaal in mijn routine zit.'],
+        ['Als iemand praat of beweegt in mijn backswing, kan ik mijn concentratie vasthouden.',
+         'Onverwachte geluiden of bewegingen tijdens mijn swing brengen me niet van mijn stuk.',
+         'Zelfs als er iets onverwachts gebeurt net voor mijn slag, blijf ik gefocust.'],
+        ['Ik merk dat ik een hele ronde lang mijn concentratieniveau kan vasthouden, ook na 14 holes.',
+         'Mijn concentratie op hole 16 is even scherp als op hole 1.',
+         'Ik verlies geen scherpte naarmate de ronde vordert — ook niet als ik moe word.'],
+        // Domain 2: Overtuiging
+        ['Als ik mijn club heb gekozen, sta ik daar volledig achter — geen twijfel meer.',
+         'Zodra ik mijn club uit de bag trek, is mijn keuze definitief — ik twijfel niet meer.',
+         'Ik maak mijn clubkeuze en ga er vol vertrouwen mee door, zonder aarzeling.'],
+        ['Ik kies een slagtype (fade, draw, punch) en voer dat uit zonder halverwege te veranderen.',
+         'Als ik een slagtype heb gekozen, houd ik daaraan vast — ook als ik boven de bal twijfel voel opkomen.',
+         'Mijn slagkeuze wijzigt niet meer als ik eenmaal sta — ik commit volledig.'],
+        ['Bij een moeilijke slag vertrouw ik op mijn slagkeuze, ook als er een veiliger optie is.',
+         'Ik durf de slag te kiezen die het beste past, ook als die riskanter is.',
+         'Ik kies niet automatisch de veilige optie — ik speel de slag die ik vertrouw.'],
+        // Domain 3: Vertrouwen
+        ['Bij een belangrijke slag — eerste tee, cruciale putt — vertrouw ik volledig op mijn swing.',
+         'Op beslissende momenten — een matchplay-putt, de eerste afslag — blijft mijn swing hetzelfde.',
+         'Als het echt telt, vertrouw ik op mijn lichaam en mijn techniek zonder na te denken.'],
+        ['Na een paar slechte slagen behoud ik het vertrouwen dat de volgende goed kan zijn.',
+         'Een reeks slechte slagen ondermijnt mijn geloof in mijn swing niet fundamenteel.',
+         'Ik weet dat één slechte slag niets zegt over de volgende — mijn vertrouwen blijft intact.'],
+        ['Ik durf in wedstrijdsituaties dezelfde slagen te spelen als op de driving range.',
+         'Mijn wedstrijdswing is dezelfde als mijn range-swing — ik verander niets onder druk.',
+         'Wat ik op de range kan, breng ik ook op de baan — ongeacht de situatie.'],
+        // Domain 4: Beoordeling
+        ['Na een slechte slag kan ik objectief beoordelen wat er technisch misging.',
+         'Ik analyseer een mislukte slag met mijn hoofd, niet met mijn emoties.',
+         'Ik kan rustig vaststellen wat er fout ging bij een slechte slag, zonder frustratie.'],
+        ['Ik beoordeel een slag op de beslissing en de uitvoering — niet alleen op het resultaat.',
+         'Een goed geslagen bal die slecht uitpakt frustreert me niet — ik beoordeel het proces.',
+         'Ik weet het verschil tussen een slechte beslissing en pech — en dat beïnvloedt hoe ik reageer.'],
+        ['Ik kan het verschil zien tussen een mentale fout en een technische fout.',
+         'Na een slechte slag weet ik of het aan mijn hoofd lag of aan mijn techniek.',
+         'Ik herken wanneer een fout mentaal was en wanneer technisch — dat helpt me gericht verbeteren.'],
+        // Domain 5: Acceptatie
+        ['Na een dubbelbogey kan ik de volgende hole met een schone lei beginnen.',
+         'Een slechte hole laat ik achter me — als ik op de volgende tee sta is het verleden tijd.',
+         'Ik stap na een ramphole de volgende tee-box op alsof de ronde opnieuw begint.'],
+        ['Een slechte slag beïnvloedt mijn stemming voor de rest van de ronde niet.',
+         'Mijn humeur op de baan wordt niet bepaald door individuele slechte slagen.',
+         'Ik laat een slechte slag mijn plezier in de rest van de ronde niet vergallen.'],
+        ['Als ik drie holes achtereen slecht speel, raak ik niet in een neerwaartse spiraal.',
+         'Een reeks slechte holes betekent niet automatisch dat de hele ronde verloren is voor mij.',
+         'Ik kan een negatieve reeks doorbreken en weer positief de volgende hole ingaan.'],
+        // Domain 6: Analyse
+        ['Na een ronde neem ik bewust de tijd om te evalueren wat er goed en fout ging.',
+         'Ik sta na een ronde stil bij wat er goed ging en wat beter kan — dat is een vast moment.',
+         'Na het binnenlopen op 18 evalueer ik mijn ronde structureel, niet alleen als het slecht ging.'],
+        ['Ik weet na elke ronde precies welke holes en slagen het verschil maakten.',
+         'Ik kan na een ronde aanwijzen welke 3–4 momenten het scoreverschil hebben bepaald.',
+         'Ik herinner me niet alleen de slechte slagen, maar ook de beslissende goede slagen van een ronde.'],
+        ['Ik onderscheid patronen in mijn spel — bijvoorbeeld dat ik altijd op hole 14–16 inzak.',
+         'Ik herken terugkerende patronen over meerdere rondes heen — zoals altijd slecht starten of eindigen.',
+         'Als ik terugkijk op meerdere rondes, zie ik duidelijke trends in wanneer mijn spel inzakt.'],
+        // Domain 7: Lering trekken
+        ['Op basis van eerdere rondes pas ik mijn voorbereiding of strategie concreet aan.',
+         'Inzichten uit eerdere rondes vertaal ik naar concrete veranderingen in mijn aanpak.',
+         'Wat ik leer van een ronde gebruik ik actief in mijn voorbereiding op de volgende.'],
+        ['Als ik een terugkerend probleem herken (bijv. slechte start), werk ik er gericht aan.',
+         'Patronen die ik in mijn spel ontdek, pak ik bewust aan — niet hopen dat het vanzelf beter gaat.',
+         'Ik onderneem actie als ik merk dat hetzelfde probleem steeds terugkomt in mijn rondes.'],
+        ['Ik heb een duidelijk beeld van wat ik de afgelopen maanden heb verbeterd in mijn spel.',
+         'Als iemand me vraagt wat ik het afgelopen jaar in mijn spel heb verbeterd, kan ik concreet antwoorden.',
+         'Ik kan specifieke voorbeelden noemen van hoe mijn spel zich de laatste tijd heeft ontwikkeld.']
+      ],
+      seg: [
+        { title: 'Hole 7 — Jouw profiel', text: 'Wat beschrijft jouw golf het best?', answers: [
+          'Puur recreatief — het gaat om plezier en gezelligheid',
+          'Sociaal met een competitief randje',
+          'Competitief — ik speel wedstrijden en wil winnen',
+          'Serieus amateur — ik investeer actief in mijn spel'
+        ]},
+        { title: 'Hole 8 — Jouw ambitie', text: 'Wat wil je het meest verbeteren aan je mentale golfspel?', answers: [
+          'Consistentie — niet meer die enorme schommelingen per ronde',
+          'Scores — structureel lagere handicap',
+          'Plezier — minder frustratie, meer genieten',
+          'Drukbestendigheid — presteren als het er éécht om gaat'
+        ]},
+        { title: 'Hole 9 — Jouw golfleven', text: 'Hoe ziet jouw golfleven eruit?', answers: [
+          'Ik speel af en toe, wanneer het uitkomt',
+          'Ik speel wekelijks, vaste dag(en)',
+          'Ik speel meerdere keren per week',
+          'Ik speel én oefen structureel'
+        ]}
+      ],
+      results: {
+        ariaLabel: 'Jouw resultaten',
+        siteHeaderMid: 'Jouw mentale profiel',
+        heroAria: 'Totaalscore',
+        heroLabel: 'Jouw Mentale Routine profiel',
+        scoreCalc: 'Berekening...',
+        scoreSubs: [
+          { max: 30, text: 'Er is flink wat ruimte voor groei' },
+          { max: 50, text: 'Je laat nog veel slagen liggen' },
+          { max: 70, text: 'Een goede basis met duidelijke verbeterpunten' },
+          { max: 85, text: 'Sterk — maar er zit nog meer in' },
+          { max: 100, text: 'Uitstekend mentaal spel' }
+        ],
+        radarLabel: 'Jouw profiel',
+        radarH2: 'Jouw Mentale Routine in 3 fases',
+        domainsLabel: 'Jouw 8 domeinen',
+        domainsH2: 'Hoe scoor je per domein?',
+        domainsLocked: '6 van je 8 scores zijn vergrendeld',
+        domainsCta: 'Ontgrendel al je scores →',
+        domainsCtaSub: 'Gratis PDF met alle 8 scores, uitleg, tips en oefeningen',
+        tagStrong: 'Sterkste',
+        tagWeak: 'Zwakste',
+        phaseLabels: ['Pre-shot routine', 'De swing', 'Post-shot routine'],
+        phaseSubs: ['Focus & Concentratie', 'Overtuiging & Vertrouwen', 'Beoordeling, Acceptatie, Analyse & Lering'],
+        phaseDescs: [
+          'Hoe goed bereid je elke slag mentaal voor? Kun je afleidingen buitensluiten en volledig bij déze slag zijn?',
+          'Sta je achter je keuze en vertrouw je je lichaam op het moment dat het telt?',
+          'Hoe ga je om met het resultaat? Kun je loslaten, analyseren en leren — zonder emotie?'
+        ],
+        groupLabels: ['Pre-shot routine', 'De swing', 'Post-shot routine']
+      },
+      optin: {
+        label: 'Wil je weten wat dit betekent?',
+        h2: 'Ontvang je volledige uitslag — gratis',
+        intro: 'Je persoonlijke PDF met:',
+        checklist: [
+          'Jouw 8 scores + uitleg',
+          '3 oefeningen die je direct kunt toepassen',
+          'Persoonlijke tips op basis van jouw Mentale Routine profiel',
+          'Kortingscoupon voor het volledige Assessment'
+        ],
+        checklistAria: 'Inhoud van de PDF',
+        fields: {
+          name: 'Voornaam', namePh: 'Jouw voornaam',
+          email: 'E-mailadres', emailPh: 'jouw@email.nl',
+          hcp: 'Exacte handicap', hcpPh: 'Bijv. 18.4'
+        },
+        submit: 'Verstuur mijn uitslag →',
+        submitting: 'Bezig met versturen...',
+        sub: 'Je ontvangt je PDF binnen 5 minuten. Geen spam, geen verplichtingen.',
+        privacy: 'We delen je gegevens nooit met derden.',
+        thanksTitle: 'Je uitslag is onderweg!',
+        thanksBody1: 'Check je inbox (en eventueel je spam-map) binnen 5 minuten.',
+        thanksBody2: 'Wil je niet wachten?',
+        thanksLink: '→ Bekijk het volledige Assessment'
+      },
+      assess: {
+        label: 'Klaar voor het volledige plaatje?',
+        h2: 'Quiz vs. Assessment',
+        leftLabel: 'Deze quiz',
+        leftTitle: 'Gratis sneldiagnose',
+        leftDetail: '8 domeinen · 9 holes · 24 vragen · Globale indicatie · 8 minuten',
+        rightLabel: 'Assessment Standaard',
+        rightTitle: 'Volledig mentaal profiel',
+        rightDetail: '40+ factoren · 18 holes · 12 pagina’s PDF rapportage · 25 minuten',
+        cta: 'Bekijk het Assessment Standaard → $59'
+      },
+      footerContact: 'support@mentalroutine.com'
+    },
+    en: {
+      meta: {
+        title: 'Free Quiz — Which mental pattern is costing you the most strokes? | Mental Routine',
+        description: 'Take the free quiz and discover in 8 minutes which mental pattern is costing you the most strokes. Play 9 holes and see your mental profile instantly. Based on 10 years of research with 1,000+ golfers.',
+        htmlLang: 'en'
+      },
+      coming: {
+        strong: '🚀 Coming soon — May 15, 2026',
+        body: 'This quiz is currently in its final testing phase. From May 15 you can play it. Want your full mental profile already?',
+        link: 'See the assessment →'
+      },
+      langToggle: { other: 'NL', otherFull: 'Nederlands', current: 'EN' },
+      skipLink: 'Skip to main content',
+      siteHeaderMid: '9 holes · 8 minutes · Free',
+      hero: {
+        eyebrow: 'Free quiz · 9 holes · 8 minutes',
+        h1a: 'Which mental pattern',
+        h1b: 'is costing you the',
+        h1em: 'most strokes?',
+        sub: 'Play 9 holes with us and find out instantly where your mental golf game is strongest and weakest. Based on 10 years of research with 1,000+ golfers.',
+        startBtn: 'Start the quiz →',
+        startBtnAria: 'Start the free quiz',
+        badges: ['9 holes · 8 minutes', 'Based on 1,000+ golfers', 'Instant result']
+      },
+      sp: {
+        regionLabel: 'Social proof',
+        starsAria: '5 stars',
+        starsText: '4.9/5',
+        countText: 'golfers',
+        countStrong: '1,000+ golfers',
+        countAfter: 'studied',
+        rec: 'PGA network · 10 years of research',
+        rangeBadge: 'Handicap 0 to 54',
+        ages: 'All ages'
+      },
+      pain: {
+        label: 'Sound familiar?',
+        h2a: "It's not",
+        h2b: 'in your swing',
+        bullets: [
+          'On the range everything works — on the course your swing disappears the moment it counts.',
+          'One bad hole and your whole round is ruined. Every time.',
+          "You have the talent for better — but mentally you're leaving strokes on the table.",
+          'You want to know why. Not vague advice, but a concrete answer.'
+        ]
+      },
+      bridge: 'Play 9 holes and discover in 8 minutes which pattern is costing you the most strokes →',
+      bridgeAria: 'Start the quiz',
+      wyg: {
+        label: 'After the 9 holes',
+        h2: "Here's what you get — free",
+        cards: [
+          { h3: 'Your mental profile', p: 'Radar chart with scores on the 3 phases of your Mental Routine. Visible on your screen instantly after the 9th hole.' },
+          { h3: 'Your #1 strongest and weakest area', p: 'Concrete: which area is costing you the most strokes per round? And where do you perform above average?' },
+          { h3: 'Personal PDF by email', p: 'Full results with explanations, tips and exercises. Free, no obligations.' }
+        ]
+      },
+      team: {
+        ariaLabel: 'About the team',
+        members: [
+          { name: 'Henk de Jong', role1: 'Golfer · 40+ years', role2: 'PGA network' },
+          { name: 'Berend Jansen', role1: 'Psychometric expert', role2: 'Assessment specialist' }
+        ],
+        heading: '15+ years of experience. 10 years of golf-specific research.',
+        body: 'Henk de Jong has played golf for 40+ years and brought 1,000+ golfers into the research through his PGA network. Berend Jansen is an expert in psychometric measurement instruments — the science of why people do what they do. Together they have been building behavioral assessments for 15+ years. In 2016 they launched MentalRoutine.com.'
+      },
+      fcta: {
+        ariaLabel: 'Final call to action',
+        h2a: '9 holes. 24 questions.',
+        h2b: 'Instant insight.',
+        sub: 'Based on research with 1,000+ golfers — discover which mental pattern is costing you strokes.',
+        badges: ['Free', '9 holes · 8 minutes', 'Instant result']
+      },
+      quizHeader: {
+        logoAria: 'Mental Routine homepage',
+        progressLabel: function(n) { return 'Hole ' + n + ' of 9'; }
+      },
+      quizPhase: { ariaLabel: 'Quiz — 9 holes' },
+      hole: {
+        pageAria: function(n) { return 'Hole ' + n + ' of 9'; },
+        holeLabel: function(n) { return 'Hole ' + n; },
+        questionsCount: '4 questions',
+        scaleLeft: 'Not at all',
+        scaleRight: 'Completely',
+        scaleAria: 'Score 1 to 10',
+        scaleBtnAria: function(n) { return n + ' of 10'; },
+        backBtn: '← Previous hole',
+        backBtnAria: 'Go back to the previous hole',
+        nextBtn: 'Next hole →',
+        nextBtnAria: 'Go to the next hole',
+        finishBtn: 'See my results →',
+        finishBtnAria: 'See my results',
+        answersAria: 'Answer options'
+      },
+      domains: ['Focus', 'Concentration', 'Conviction', 'Trust', 'Judgement', 'Acceptance', 'Analysis', 'Learning'],
+      questionPools: [
+        // Domain 0: Focus
+        ["When I stand over the ball, my thoughts are completely on this shot.",
+         "When I'm addressing the ball my head is empty — only the shot matters.",
+         "I'm fully present for every shot I take, with no distraction from within."],
+        ["I can park thoughts about previous holes or my score when I'm preparing a shot.",
+         "What happened on the previous hole doesn't run through my head when I prepare the next shot.",
+         "I can forget my score and concentrate on the shot in front of me."],
+        ["I don't get distracted by what comes after this shot or this round.",
+         "Thoughts about the final result or remaining holes don't bother me while I'm playing.",
+         "I don't think ahead to what's still to come — I'm with the shot of right now."],
+        // Domain 1: Concentration
+        ["I can shut out sounds, playing partners and movement around me during my shot.",
+         "External stimuli — a bird, a golf cart, someone talking — don't pull me out of my concentration.",
+         "What's happening around me doesn't reach me once I'm in my routine."],
+        ["If someone talks or moves during my backswing, I can hold my concentration.",
+         "Unexpected sounds or movements during my swing don't throw me off.",
+         "Even when something unexpected happens just before my shot, I stay focused."],
+        ["I notice I can sustain my concentration level for a full round, even after 14 holes.",
+         "My concentration on hole 16 is just as sharp as on hole 1.",
+         "I don't lose sharpness as the round progresses — even when I get tired."],
+        // Domain 2: Conviction
+        ["Once I've chosen my club, I fully commit to it — no more doubt.",
+         "The moment I pull my club from the bag, my choice is final — no second-guessing.",
+         "I make my club choice and follow through with full confidence, no hesitation."],
+        ["I pick a shot type (fade, draw, punch) and execute it without changing mid-swing.",
+         "Once I've chosen a shot type, I stick with it — even when doubt creeps in over the ball.",
+         "My shot choice doesn't change once I'm set up — I commit fully."],
+        ["On a tough shot I trust my shot selection, even when there's a safer option.",
+         "I dare to play the shot that fits best, even when it's riskier.",
+         "I don't automatically pick the safe option — I play the shot I trust."],
+        // Domain 3: Trust
+        ["On an important shot — first tee, crucial putt — I fully trust my swing.",
+         "In decisive moments — a matchplay putt, the opening drive — my swing stays the same.",
+         "When it really counts, I trust my body and my technique without thinking."],
+        ["After a few bad shots I keep the trust that the next one can be good.",
+         "A run of bad shots doesn't fundamentally undermine my belief in my swing.",
+         "I know that one bad shot says nothing about the next — my trust stays intact."],
+        ["I dare to play the same shots in competition as on the driving range.",
+         "My competition swing is the same as my range swing — I don't change anything under pressure.",
+         "What I can do on the range, I bring to the course — regardless of the situation."],
+        // Domain 4: Judgement
+        ["After a bad shot I can objectively assess what went wrong technically.",
+         "I analyse a missed shot with my head, not with my emotions.",
+         "I can calmly identify what went wrong on a bad shot, without frustration."],
+        ["I judge a shot on the decision and the execution — not just on the outcome.",
+         "A well-struck ball that ends up badly doesn't frustrate me — I judge the process.",
+         "I know the difference between a bad decision and bad luck — and that shapes how I respond."],
+        ["I can see the difference between a mental error and a technical error.",
+         "After a bad shot, I know whether it was my head or my technique.",
+         "I recognise when a mistake was mental and when it was technical — that helps me improve in a focused way."],
+        // Domain 5: Acceptance
+        ["After a double bogey I can start the next hole with a clean slate.",
+         "I leave a bad hole behind me — by the time I'm on the next tee, it's history.",
+         "After a disaster hole I step onto the next tee box as if the round starts again."],
+        ["A bad shot doesn't affect my mood for the rest of the round.",
+         "My mood on the course isn't determined by individual bad shots.",
+         "I don't let one bad shot ruin my enjoyment of the rest of the round."],
+        ["If I play three holes badly in a row, I don't spiral downward.",
+         "A run of bad holes doesn't automatically mean the whole round is lost for me.",
+         "I can break a negative streak and step into the next hole with a positive mind."],
+        // Domain 6: Analysis
+        ["After a round I deliberately take time to evaluate what went well and what went wrong.",
+         "I pause after a round to reflect on what worked and what could improve — it's a fixed moment.",
+         "After walking off 18 I evaluate my round structurally, not just when it went badly."],
+        ["After every round I know exactly which holes and shots made the difference.",
+         "After a round I can identify the 3–4 moments that decided the score.",
+         "I remember not just the bad shots but also the decisive good shots of a round."],
+        ["I notice patterns in my game — for example that I always slip on holes 14–16.",
+         "I recognise recurring patterns across multiple rounds — like always starting or finishing badly.",
+         "When I look back over multiple rounds, I see clear trends in when my game falls apart."],
+        // Domain 7: Learning
+        ["Based on previous rounds I make concrete adjustments to my preparation or strategy.",
+         "Insights from previous rounds I translate into concrete changes in my approach.",
+         "What I learn from a round I actively use in my preparation for the next one."],
+        ["When I recognise a recurring problem (e.g. bad start), I work on it deliberately.",
+         "Patterns I discover in my game I tackle consciously — not hoping it will get better on its own.",
+         "I take action when I notice the same problem keeps coming back in my rounds."],
+        ["I have a clear picture of what I've improved in my game over the past months.",
+         "If someone asks me what I've improved in my game over the past year, I can answer concretely.",
+         "I can name specific examples of how my game has developed recently."]
+      ],
+      seg: [
+        { title: 'Hole 7 — Your profile', text: 'What describes your golf best?', answers: [
+          'Purely recreational — it’s about fun and friends',
+          'Social with a competitive edge',
+          'Competitive — I play tournaments and want to win',
+          'Serious amateur — I actively invest in my game'
+        ]},
+        { title: 'Hole 8 — Your ambition', text: 'What do you most want to improve about your mental golf game?', answers: [
+          'Consistency — no more big swings between rounds',
+          'Scores — structurally lower handicap',
+          'Enjoyment — less frustration, more pleasure',
+          'Pressure resilience — performing when it really counts'
+        ]},
+        { title: 'Hole 9 — Your golf life', text: 'What does your golf life look like?', answers: [
+          'I play occasionally, when it suits me',
+          'I play weekly, fixed day(s)',
+          'I play several times per week',
+          'I play AND practise structurally'
+        ]}
+      ],
+      results: {
+        ariaLabel: 'Your results',
+        siteHeaderMid: 'Your mental profile',
+        heroAria: 'Total score',
+        heroLabel: 'Your Mental Routine profile',
+        scoreCalc: 'Calculating...',
+        scoreSubs: [
+          { max: 30, text: 'Plenty of room to grow' },
+          { max: 50, text: "You're leaving lots of strokes on the table" },
+          { max: 70, text: 'A solid base with clear areas to improve' },
+          { max: 85, text: "Strong — but there's more in there" },
+          { max: 100, text: 'Outstanding mental game' }
+        ],
+        radarLabel: 'Your profile',
+        radarH2: 'Your Mental Routine across 3 phases',
+        domainsLabel: 'Your 8 areas',
+        domainsH2: 'How do you score per area?',
+        domainsLocked: '6 of your 8 scores are locked',
+        domainsCta: 'Unlock all your scores →',
+        domainsCtaSub: 'Free PDF with all 8 scores, explanations, tips and exercises',
+        tagStrong: 'Strongest',
+        tagWeak: 'Weakest',
+        phaseLabels: ['Pre-shot routine', 'The swing', 'Post-shot routine'],
+        phaseSubs: ['Focus & Concentration', 'Conviction & Trust', 'Judgement, Acceptance, Analysis & Learning'],
+        phaseDescs: [
+          'How well do you mentally prepare each shot? Can you shut out distractions and be fully with this shot?',
+          'Do you stand behind your choice and trust your body in the moment that counts?',
+          'How do you handle the outcome? Can you let go, analyse and learn — without emotion?'
+        ],
+        groupLabels: ['Pre-shot routine', 'The swing', 'Post-shot routine']
+      },
+      optin: {
+        label: 'Want to know what this means?',
+        h2: 'Get your full results — free',
+        intro: 'Your personal PDF with:',
+        checklist: [
+          'Your 8 scores + explanations',
+          '3 exercises you can apply right away',
+          'Personal tips based on your Mental Routine profile',
+          'Discount voucher for the full Assessment'
+        ],
+        checklistAria: 'Contents of the PDF',
+        fields: {
+          name: 'First name', namePh: 'Your first name',
+          email: 'Email address', emailPh: 'you@email.com',
+          hcp: 'Exact handicap', hcpPh: 'e.g. 18.4'
+        },
+        submit: 'Send me my results →',
+        submitting: 'Sending...',
+        sub: "You'll receive your PDF within 5 minutes. No spam, no obligations.",
+        privacy: 'We never share your data with third parties.',
+        thanksTitle: 'Your results are on the way!',
+        thanksBody1: 'Check your inbox (and possibly your spam folder) within 5 minutes.',
+        thanksBody2: "Don't want to wait?",
+        thanksLink: '→ See the full Assessment'
+      },
+      assess: {
+        label: 'Ready for the full picture?',
+        h2: 'Quiz vs. Assessment',
+        leftLabel: 'This quiz',
+        leftTitle: 'Free quick diagnosis',
+        leftDetail: '8 areas · 9 holes · 24 questions · Global indication · 8 minutes',
+        rightLabel: 'Standard Assessment',
+        rightTitle: 'Full mental profile',
+        rightDetail: '40+ factors · 18 holes · 12-page PDF report · 25 minutes',
+        cta: 'See the Standard Assessment → $59'
+      },
+      footerContact: 'support@mentalroutine.com'
+    }
+  };
+
+  /* ══════════════════════════════════
+     LANGUAGE DETECTION & STATE
+  ══════════════════════════════════ */
+  function detectLang() {
+    var url = new URLSearchParams(window.location.search);
+    var fromUrl = url.get('lang');
+    if (fromUrl && TRANSLATIONS[fromUrl]) return fromUrl;
+    try {
+      var stored = localStorage.getItem('mr_quiz_lang');
+      if (stored && TRANSLATIONS[stored]) return stored;
+    } catch (e) {}
+    var nav = (navigator.language || '').toLowerCase();
+    if (nav.startsWith('nl')) return 'nl';
+    return 'en';
+  }
+  var currentLang = detectLang();
+  var T = TRANSLATIONS[currentLang];
+
+  /* ══════════════════════════════════
+     I18N: APPLY TO STATIC HTML
+     - data-i18n="path.to.key" sets textContent
+     - data-i18n-html="path.to.key" sets innerHTML (use sparingly)
+     - data-i18n-attr="attrName:path,attrName:path" sets attributes
+  ══════════════════════════════════ */
+  function getByPath(obj, path) {
+    var parts = path.split('.');
+    var val = obj;
+    for (var i = 0; i < parts.length; i++) {
+      if (val == null) return undefined;
+      val = val[parts[i]];
+    }
+    return val;
+  }
+  function applyI18n() {
+    document.documentElement.lang = T.meta.htmlLang;
+    document.title = T.meta.title;
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', T.meta.description);
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var val = getByPath(T, el.getAttribute('data-i18n'));
+      if (typeof val === 'string') el.textContent = val;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var val = getByPath(T, el.getAttribute('data-i18n-html'));
+      if (typeof val === 'string') el.innerHTML = val;
+    });
+    document.querySelectorAll('[data-i18n-attr]').forEach(function(el) {
+      var spec = el.getAttribute('data-i18n-attr');
+      spec.split(',').forEach(function(pair) {
+        var bits = pair.split(':');
+        if (bits.length === 2) {
+          var val = getByPath(T, bits[1].trim());
+          if (typeof val === 'string') el.setAttribute(bits[0].trim(), val);
+        }
+      });
+    });
+  }
+
+  function setLang(lang) {
+    if (!TRANSLATIONS[lang]) return;
+    currentLang = lang;
+    T = TRANSLATIONS[lang];
+    try { localStorage.setItem('mr_quiz_lang', lang); } catch (e) {}
+    applyI18n();
+    // Re-render current quiz hole if quiz is active
+    var quizPhase = document.getElementById('phase-quiz');
+    if (quizPhase && !quizPhase.classList.contains('hidden')) {
+      renderHole(state.currentHole);
+    }
+    // Update result screen if showing
+    var resultsPhase = document.getElementById('phase-results');
+    if (resultsPhase && !resultsPhase.classList.contains('hidden')) {
+      buildResultScreen();
+    }
+    // Update language toggle button labels
+    document.querySelectorAll('.lang-toggle-btn').forEach(function(btn) {
+      btn.textContent = T.langToggle.other;
+      btn.setAttribute('aria-label', 'Switch to ' + T.langToggle.otherFull);
+    });
+    // Update coming-soon banner
+    updateComingSoonBanner();
+  }
+
+  function updateComingSoonBanner() {
+    var banner = document.getElementById('coming-soon-banner');
+    if (!banner) return;
+    var strong = banner.querySelector('[data-cs-strong]');
+    var body = banner.querySelector('[data-cs-body]');
+    var link = banner.querySelector('[data-cs-link]');
+    if (strong) strong.textContent = T.coming.strong;
+    if (body) body.textContent = T.coming.body;
+    if (link) link.textContent = T.coming.link;
+  }
+
+  /* ══════════════════════════════════
+     DOMAINS — derived from current language
+     (kept as a getter via T.domains; no more standalone array)
+  ══════════════════════════════════ */
 
   /* ══════════════════════════════════
      QUESTION POOLS
      8 domains x 3 questions x 3 variants = 72 variants total
      Each entry: { domain: 0-7, variants: [A, B, C] }
   ══════════════════════════════════ */
-  var QUESTION_POOLS = [
+  function getQuestionPools() {
+    return T.questionPools.map(function(variants, idx) {
+      return { domain: Math.floor(idx / 3), variants: variants };
+    });
+  }
+  /* eslint-disable */
+  var __unused_OLD_POOLS = [
     // Domain 0: Focus — Q1
     { domain: 0, variants: [
       'Als ik boven de bal sta, ben ik met mijn gedachten volledig bij d\u00e9ze slag.',
@@ -982,7 +1606,12 @@
   /* ══════════════════════════════════
      SEGMENTATION HOLES (7, 8, 9)
   ══════════════════════════════════ */
-  var SEG_HOLES = [
+  function getSegHoles() {
+    return T.seg.map(function(s, i) {
+      return { holeNum: 7 + i, title: s.title, text: s.text, answers: s.answers };
+    });
+  }
+  var __unused_OLD_SEG = [
     {
       holeNum: 7,
       title: 'Hole 7 \u2014 Jouw profiel',
@@ -1039,10 +1668,12 @@
      QUIZ INITIALIZATION
   ══════════════════════════════════ */
   function initQuiz() {
-    // Step 1: For each pool entry, pick 1 random variant
-    var selected = QUESTION_POOLS.map(function(pool) {
-      var idx = Math.floor(Math.random() * pool.variants.length);
-      return { domain: pool.domain, text: pool.variants[idx], answer: null };
+    // Step 1: For each pool, store poolIdx + a randomly chosen variantIdx.
+    // Text is re-resolved from T at render time so language switches mid-quiz work.
+    var pools = getQuestionPools();
+    var selected = pools.map(function(pool, i) {
+      var v = Math.floor(Math.random() * pool.variants.length);
+      return { domain: pool.domain, poolIdx: i, variantIdx: v, answer: null };
     });
 
     // Step 2: Shuffle the 24 selected questions (Fisher-Yates)
@@ -1090,7 +1721,7 @@
     var progressPct = Math.round(((holeIndex + 1) / TOTAL_HOLES) * 100);
     document.getElementById('quiz-progress-fill').style.width = progressPct + '%';
     var label = document.getElementById('quiz-progress-label');
-    label.textContent = 'Hole ' + (holeIndex + 1) + ' van ' + TOTAL_HOLES;
+    label.textContent = T.quizHeader.progressLabel(holeIndex + 1);
     var track = document.querySelector('.quiz-progress-track');
     if (track) track.setAttribute('aria-valuenow', progressPct);
   }
@@ -1120,6 +1751,7 @@
 
     var questionsHtml = questions.map(function(q, qIdx) {
       var savedVal = q.answer;
+      var qText = T.questionPools[q.poolIdx][q.variantIdx];
 
       var buttonsHtml = '';
       for (var n = 1; n <= 10; n++) {
@@ -1127,18 +1759,18 @@
         buttonsHtml += '<button class="scale-btn' + (isSelected ? ' selected' : '') + '" '
           + 'data-qidx="' + qIdx + '" data-val="' + n + '" '
           + 'aria-pressed="' + isSelected + '" '
-          + 'aria-label="' + n + ' van 10">'
+          + 'aria-label="' + T.hole.scaleBtnAria(n) + '">'
           + n
           + '</button>';
       }
 
       return '<div class="quiz-q-item" data-question-index="' + qIdx + '">'
-        + '<div class="quiz-q-item-text">' + q.text + '</div>'
+        + '<div class="quiz-q-item-text">' + qText + '</div>'
         + '<div class="scale-wrap">'
         + '<div class="scale-row">'
-        + '<span class="scale-label-text scale-label-left">Helemaal niet</span>'
-        + '<div class="scale-buttons" role="group" aria-label="Score 1 tot 10">' + buttonsHtml + '</div>'
-        + '<span class="scale-label-text scale-label-right">Helemaal</span>'
+        + '<span class="scale-label-text scale-label-left">' + T.hole.scaleLeft + '</span>'
+        + '<div class="scale-buttons" role="group" aria-label="' + T.hole.scaleAria + '">' + buttonsHtml + '</div>'
+        + '<span class="scale-label-text scale-label-right">' + T.hole.scaleRight + '</span>'
         + '</div>'
         + '</div>'
         + '</div>';
@@ -1146,18 +1778,18 @@
 
     var allAnswered = areAllHoleQuestionsAnswered(holeIndex);
 
-    var html = '<div class="quiz-page" aria-label="Hole ' + holeNum + ' van 9">'
+    var html = '<div class="quiz-page" aria-label="' + T.hole.pageAria(holeNum) + '">'
       + '<div class="quiz-domain-header">'
-      + '<div class="quiz-domain-number" aria-hidden="true">Hole ' + holeNum + '</div>'
-      + '<div class="quiz-domain-subtitle">4 vragen</div>'
+      + '<div class="quiz-domain-number" aria-hidden="true">' + T.hole.holeLabel(holeNum) + '</div>'
+      + '<div class="quiz-domain-subtitle">' + T.hole.questionsCount + '</div>'
       + '</div>'
       + '<div class="quiz-domain-questions">' + questionsHtml + '</div>'
       + '<div class="quiz-nav">'
-      + '<button class="quiz-back-btn" id="quiz-back-btn" style="' + (holeIndex === 0 ? 'visibility:hidden' : '') + '" aria-label="Ga terug naar de vorige hole">'
-      + '<span aria-hidden="true">\u2190</span> Vorige hole'
+      + '<button class="quiz-back-btn" id="quiz-back-btn" style="' + (holeIndex === 0 ? 'visibility:hidden' : '') + '" aria-label="' + T.hole.backBtnAria + '">'
+      + T.hole.backBtn
       + '</button>'
-      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (allAnswered ? '' : 'disabled') + ' aria-label="Ga naar de volgende hole">'
-      + 'Volgende hole \u2192'
+      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (allAnswered ? '' : 'disabled') + ' aria-label="' + T.hole.nextBtnAria + '">'
+      + T.hole.nextBtn
       + '</button>'
       + '</div>'
       + '</div>';
@@ -1171,7 +1803,7 @@
   ══════════════════════════════════ */
   function renderSegmentationHole(wrap, holeIndex) {
     var segIdx = holeIndex - 6; // 0, 1, 2
-    var seg = SEG_HOLES[segIdx];
+    var seg = T.seg[segIdx];
     var savedVal = state.segAnswers[segIdx];
     var isLastHole = (holeIndex === TOTAL_HOLES - 1);
 
@@ -1186,17 +1818,19 @@
     }).join('');
 
     var hasAnswer = savedVal !== null;
+    var nextLabel = isLastHole ? T.hole.finishBtn : T.hole.nextBtn;
+    var nextAria = isLastHole ? T.hole.finishBtnAria : T.hole.nextBtnAria;
 
     var html = '<div class="quiz-page" aria-label="' + seg.title + '">'
       + '<div class="quiz-seg-number" aria-hidden="true">' + seg.title + '</div>'
       + '<div class="quiz-seg-text">' + seg.text + '</div>'
-      + '<div class="quiz-answers" role="group" aria-label="Antwoordopties">' + answersHtml + '</div>'
+      + '<div class="quiz-answers" role="group" aria-label="' + T.hole.answersAria + '">' + answersHtml + '</div>'
       + '<div class="quiz-nav">'
-      + '<button class="quiz-back-btn" id="quiz-back-btn" aria-label="Ga terug naar de vorige hole">'
-      + '<span aria-hidden="true">\u2190</span> Vorige hole'
+      + '<button class="quiz-back-btn" id="quiz-back-btn" aria-label="' + T.hole.backBtnAria + '">'
+      + T.hole.backBtn
       + '</button>'
-      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (hasAnswer ? '' : 'disabled') + ' aria-label="' + (isLastHole ? 'Bekijk mijn resultaten' : 'Ga naar de volgende hole') + '">'
-      + (isLastHole ? 'Bekijk mijn resultaten \u2192' : 'Volgende hole \u2192')
+      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (hasAnswer ? '' : 'disabled') + ' aria-label="' + nextAria + '">'
+      + nextLabel
       + '</button>'
       + '</div>'
       + '</div>';
@@ -1421,11 +2055,10 @@
     document.getElementById('result-score-display').textContent = total + '/100';
 
     var sub = '';
-    if (total <= 30) sub = 'Er is flink wat ruimte voor groei';
-    else if (total <= 50) sub = 'Je laat nog veel slagen liggen';
-    else if (total <= 70) sub = 'Een goede basis met duidelijke verbeterpunten';
-    else if (total <= 85) sub = 'Sterk \u2014 maar er zit nog meer in';
-    else sub = 'Uitstekend mentaal spel';
+    var subs = T.results.scoreSubs;
+    for (var s = 0; s < subs.length; s++) {
+      if (total <= subs[s].max) { sub = subs[s].text; break; }
+    }
     document.getElementById('result-score-subtitle').textContent = sub;
 
     buildRadarSVG(state.phaseScores);
@@ -1437,7 +2070,7 @@
     var svg = document.getElementById('radar-svg');
     var cx = 170, cy = 160, maxR = 110;
     var n = 3;
-    var PHASE_LABELS = ['Pre-shot routine', 'De swing', 'Post-shot routine'];
+    var PHASE_LABELS = T.results.phaseLabels;
 
     function getPoint(index, radius) {
       var angle = (Math.PI * 2 * index / n) - (Math.PI / 2);
@@ -1506,13 +2139,16 @@
   }
 
   function buildPhaseCards(phaseScores) {
-    var PHASE_NAMES = ['Pre-shot routine', 'De swing', 'Post-shot routine'];
-    var PHASE_SUBS = [
+    var PHASE_NAMES = T.results.phaseLabels;
+    var PHASE_SUBS = T.results.phaseSubs;
+    var PHASE_DESCS = T.results.phaseDescs;
+    var __unused_OLD_PHASE_NAMES = ['Pre-shot routine', 'De swing', 'Post-shot routine'];
+    var __unused_OLD_PHASE_SUBS = [
       'Focus & Concentratie',
       'Overtuiging & Vertrouwen',
       'Beoordeling, Acceptatie, Analyse & Lering'
     ];
-    var PHASE_DESCS = [
+    var __unused_OLD_PHASE_DESCS = [
       'Hoe goed bereid je elke slag mentaal voor? Kun je afleidingen buitensluiten en volledig bij déze slag zijn?',
       'Sta je achter je keuze en vertrouw je je lichaam op het moment dat het telt?',
       'Hoe ga je om met het resultaat? Kun je loslaten, analyseren en leren \u2014 zonder emotie?'
@@ -1540,9 +2176,9 @@
     var LOCK_SVG = '<span class="domain-bar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>';
 
     var GROUPS = [
-      { label: 'Pre-shot routine', domains: [0, 1] },
-      { label: 'De swing', domains: [2, 3] },
-      { label: 'Post-shot routine', domains: [4, 5, 6, 7] }
+      { label: T.results.groupLabels[0], domains: [0, 1] },
+      { label: T.results.groupLabels[1], domains: [2, 3] },
+      { label: T.results.groupLabels[2], domains: [4, 5, 6, 7] }
     ];
 
     var html = '';
@@ -1560,8 +2196,8 @@
         var score = scores[i];
         var color = score >= 75 ? 'var(--fairway)' : (score >= 50 ? 'var(--gold)' : 'var(--red-soft)');
         var tag = '';
-        if (i === strongIdx) tag = '<span class="domain-bar-tag domain-bar-tag--strong">Sterkste</span>';
-        if (i === weakIdx) tag = '<span class="domain-bar-tag domain-bar-tag--weak">Zwakste</span>';
+        if (i === strongIdx) tag = '<span class="domain-bar-tag domain-bar-tag--strong">' + T.results.tagStrong + '</span>';
+        if (i === weakIdx) tag = '<span class="domain-bar-tag domain-bar-tag--weak">' + T.results.tagWeak + '</span>';
 
         var barWidth = isRevealed ? score : (30 + Math.round(Math.random() * 50));
         var barColor = isRevealed ? color : 'rgba(27,58,45,.15)';
@@ -1570,7 +2206,7 @@
           : '<span class="domain-bar-score">??</span>' + LOCK_SVG;
 
         html += '<div class="domain-bar' + lockedClass + '">'
-          + '<span class="domain-bar-name">' + DOMAINS[i] + '</span>'
+          + '<span class="domain-bar-name">' + T.domains[i] + '</span>'
           + '<div class="domain-bar-track"><div class="domain-bar-fill" data-width="' + barWidth + '" style="width:0%;background:' + barColor + '"></div></div>'
           + scoreArea
           + '</div>';
@@ -1682,7 +2318,7 @@
     // Disable button while sending
     var btn = e.target.querySelector('.form-submit');
     btn.disabled = true;
-    btn.textContent = 'Bezig met versturen...';
+    btn.textContent = T.optin.submitting;
 
     var API_URL = 'https://portal.mentaleroutine.com/api/quiz/optin';
 
@@ -1705,7 +2341,7 @@
     .catch(function(err) {
       console.error('[Quiz] Opt-in error:', err);
       btn.disabled = false;
-      btn.textContent = 'Verstuur mijn uitslag \u2192';
+      btn.textContent = T.optin.submit;
       if (window.plausible) plausible('quiz_optin_error');
       // Fallback: show thanks anyway so user isn't stuck
       document.getElementById('optin-form-wrap').style.display = 'none';
@@ -1716,10 +2352,30 @@
   });
 
   /* ══════════════════════════════════
-     INITIAL DISPLAY
+     LANGUAGE TOGGLE BUTTONS
+  ══════════════════════════════════ */
+  document.querySelectorAll('.lang-toggle-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var newLang = currentLang === 'nl' ? 'en' : 'nl';
+      setLang(newLang);
+      if (window.plausible) plausible('quiz_lang_switch', { props: { lang: newLang } });
+    });
+  });
+
+  /* ══════════════════════════════════
+     INITIAL DISPLAY + I18N APPLY
   ══════════════════════════════════ */
   document.getElementById('phase-quiz').style.display = 'none';
   document.getElementById('phase-results').style.display = 'none';
+
+  // Apply i18n to all static HTML based on detected language.
+  applyI18n();
+  // Sync toggle button label to "the OTHER language" (since clicking switches to it).
+  document.querySelectorAll('.lang-toggle-btn').forEach(function(btn) {
+    btn.textContent = T.langToggle.other;
+    btn.setAttribute('aria-label', 'Switch to ' + T.langToggle.otherFull);
+  });
+  updateComingSoonBanner();
 
 })();
 </script>
