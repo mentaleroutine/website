@@ -20,23 +20,23 @@ function confirmationEmail(name: string, lang: Lang) {
       subject: "You're on the Early Access list — your early-bird price is locked in!",
       body: `Hi ${name},
 
-Thanks for signing up! We're currently in a closed Beta with 100+ golfers, fine-tuning everything for our international pre-launch on May 15th.
+Thanks for signing up! We're currently in a closed Beta with 100+ golfers, fine-tuning everything for our international pre-launch on June 22nd.
 
 Your exclusive Early Access pricing is locked in:
 
   Standard: $${EA_STD} (instead of $${REG_STD}) + 2 extra training reports
   Deluxe:   $${EA_DLX} (instead of $${REG_DLX}) + 2 extra training reports
 
-This offer is only available until June 1st.
+This offer is only available until July 1st.
 
 Here's what happens next:
 
   1. Today — You're on the early access list
-  2. May 15th — You receive a personal link by email
+  2. June 22nd — You receive a personal link by email
   3. 15 minutes — Complete the assessment on any device
   4. Instantly — Download your PDF report + training reports
 
-Official launch and regular pricing from June 1st.
+Official launch and regular pricing from July 1st.
 
 In the meantime — keep enjoying the game.
 
@@ -47,23 +47,23 @@ www.mentalroutine.com`,
       subject: "Je staat op de Early Access lijst — je early-bird prijs is vastgelegd!",
       body: `Hoi ${name},
 
-Bedankt voor je aanmelding! We zitten momenteel in een gesloten Beta met 100+ golfers, en finetunen alles voor onze internationale pre-launch op 15 mei.
+Bedankt voor je aanmelding! We zitten momenteel in een gesloten Beta met 100+ golfers, en finetunen alles voor onze internationale pre-launch op 22 juni.
 
 Je exclusieve Early Access prijs is vastgelegd:
 
   Standaard: $${EA_STD} (i.p.v. $${REG_STD}) + 2 extra trainingsrapporten
   Deluxe:    $${EA_DLX} (i.p.v. $${REG_DLX}) + 2 extra trainingsrapporten
 
-Dit aanbod is alleen beschikbaar tot 1 juni.
+Dit aanbod is alleen beschikbaar tot 1 juli.
 
 Dit is wat er nu gebeurt:
 
   1. Vandaag — Je staat op de early access lijst
-  2. 15 mei — Je ontvangt een persoonlijke link per email
+  2. 22 juni — Je ontvangt een persoonlijke link per email
   3. 15 minuten — Vul de assessment in op elk apparaat
   4. Direct — Download je PDF-rapport + trainingsrapporten
 
-Officiële lancering en reguliere prijzen vanaf 1 juni.
+Officiële lancering en reguliere prijzen vanaf 1 juli.
 
 In de tussentijd — veel plezier op de baan.
 
@@ -74,23 +74,23 @@ www.mentalroutine.com`,
       subject: "Du stehst auf der Early Access Liste — dein Frühbucher-Preis ist gesichert!",
       body: `Hallo ${name},
 
-Danke für deine Anmeldung! Wir befinden uns derzeit in einer geschlossenen Beta mit 100+ Golfern und optimieren alles für unseren internationalen Pre-Launch am 15. Mai.
+Danke für deine Anmeldung! Wir befinden uns derzeit in einer geschlossenen Beta mit 100+ Golfern und optimieren alles für unseren internationalen Pre-Launch am 22. Juni.
 
 Dein exklusiver Early Access Preis ist gesichert:
 
   Standard: $${EA_STD} (statt $${REG_STD}) + 2 extra Trainingsberichte
   Deluxe:   $${EA_DLX} (statt $${REG_DLX}) + 2 extra Trainingsberichte
 
-Dieses Angebot gilt nur bis zum 1. Juni.
+Dieses Angebot gilt nur bis zum 1. Juli.
 
 So geht es weiter:
 
   1. Heute — Du stehst auf der Early Access Liste
-  2. 15. Mai — Du erhältst einen persönlichen Link per E-Mail
+  2. 22. Juni — Du erhältst einen persönlichen Link per E-Mail
   3. 15 Minuten — Fülle das Assessment auf jedem Gerät aus
   4. Sofort — Lade deinen PDF-Bericht + Trainingsberichte herunter
 
-Offizieller Launch und reguläre Preise ab 1. Juni.
+Offizieller Launch und reguläre Preise ab 1. Juli.
 
 In der Zwischenzeit — viel Spaß auf dem Platz.
 
@@ -101,23 +101,23 @@ www.mentalroutine.com`,
       subject: "Vous êtes sur la liste Early Access — votre tarif early-bird est verrouillé !",
       body: `Bonjour ${name},
 
-Merci pour votre inscription ! Nous sommes actuellement en Bêta fermée avec 100+ golfeurs, peaufinant tout pour notre pré-lancement international le 15 mai.
+Merci pour votre inscription ! Nous sommes actuellement en Bêta fermée avec 100+ golfeurs, peaufinant tout pour notre pré-lancement international le 22 juin.
 
 Votre tarif Early Access exclusif est verrouillé :
 
   Standard : $${EA_STD} (au lieu de $${REG_STD}) + 2 rapports d'entraînement supplémentaires
   Deluxe :   $${EA_DLX} (au lieu de $${REG_DLX}) + 2 rapports d'entraînement supplémentaires
 
-Cette offre n'est disponible que jusqu'au 1er juin.
+Cette offre n'est disponible que jusqu'au 1er juillet.
 
 Voici la suite :
 
   1. Aujourd'hui — Vous êtes sur la liste Early Access
-  2. 15 mai — Vous recevez un lien personnel par email
+  2. 22 juin — Vous recevez un lien personnel par email
   3. 15 minutes — Complétez l'évaluation sur n'importe quel appareil
   4. Immédiatement — Téléchargez votre rapport PDF + rapports d'entraînement
 
-Lancement officiel et tarifs réguliers à partir du 1er juin.
+Lancement officiel et tarifs réguliers à partir du 1er juillet.
 
 En attendant — profitez du parcours.
 
@@ -128,23 +128,23 @@ www.mentalroutine.com`,
       subject: "¡Estás en la lista Early Access — tu precio early-bird está asegurado!",
       body: `Hola ${name},
 
-¡Gracias por registrarte! Actualmente estamos en una Beta cerrada con 100+ golfistas, perfeccionando todo para nuestro pre-lanzamiento internacional el 15 de mayo.
+¡Gracias por registrarte! Actualmente estamos en una Beta cerrada con 100+ golfistas, perfeccionando todo para nuestro pre-lanzamiento internacional el 22 de junio.
 
 Tu precio exclusivo de Early Access está asegurado:
 
   Estándar: $${EA_STD} (en lugar de $${REG_STD}) + 2 informes de entrenamiento adicionales
   Deluxe:   $${EA_DLX} (en lugar de $${REG_DLX}) + 2 informes de entrenamiento adicionales
 
-Esta oferta solo está disponible hasta el 1 de junio.
+Esta oferta solo está disponible hasta el 1 de julio.
 
 Esto es lo que sigue:
 
   1. Hoy — Estás en la lista de Early Access
-  2. 15 de mayo — Recibes un enlace personal por email
+  2. 22 de junio — Recibes un enlace personal por email
   3. 15 minutos — Completa la evaluación en cualquier dispositivo
   4. Al instante — Descarga tu informe PDF + informes de entrenamiento
 
-Lanzamiento oficial y precios regulares a partir del 1 de junio.
+Lanzamiento oficial y precios regulares a partir del 1 de julio.
 
 Mientras tanto — disfruta del campo.
 

@@ -172,9 +172,9 @@ public/
 
 ### Urgentie-elementen
 - **Spots counter**: Live via `/api/spots` (zie hierboven)
-- **Deadline**: "Available only until June 1st" — in translations
-- **Pre-launch datum**: May 15th, 2026
-- **Officiële launch datum**: June 1st, 2026
+- **Deadline**: "Available only until July 1st" — in translations
+- **Pre-launch datum**: June 22nd, 2026
+- **Officiële launch datum**: July 1st, 2026
 
 ## Pro Program Pagina
 
@@ -516,7 +516,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Na launch: wijzig naar `https://shop.mentalroutine.com` links
 - CTA tekst in `earlyAccess.pricingCta` en `earlyAccess.heroCta` aanpassen
 
-### Gratis Quiz (launch 15 mei 2026)
+### Gratis Quiz (launch 22 juni 2026)
 - URL: `https://mentalroutine.com/quiz.html`
 - Bestand: `public/quiz.html` (standalone HTML, eigen CSS, geen Tailwind/Next.js)
 - Taal: NL + EN (i18n via in-page `TRANSLATIONS` object). Default = `nl`.
@@ -533,9 +533,9 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
   - Hero: "Of probeer eerst de gratis quiz →" (`hero.quizCta`, 5 talen)
   - Footer navigatie: "Free Quiz" / "Gratis Quiz" link (`footer.quizLink`, 5 talen)
   - Footer rechterkolom: quiz-link met vraagteken-icoon
-- **Coming soon banner**: bovenaan quiz.html, meldt dat quiz pas op 15 mei beschikbaar is + link terug naar assessment
+- **Coming soon banner**: bovenaan quiz.html, meldt dat quiz pas op 22 juni beschikbaar is + link terug naar assessment
 - **Quiz geblokkeerd**: `QUIZ_LOCKED = true` flag in JS — alle "Start de quiz" knoppen scrollen naar coming soon banner met pulse-animatie i.p.v. quiz te starten
-- **Op 15 mei**: (1) zet `QUIZ_LOCKED = false`, (2) verwijder `<div id="coming-soon-banner">` blok
+- **Op 22 juni**: (1) zet `QUIZ_LOCKED = false`, (2) verwijder `<div id="coming-soon-banner">` blok
 
 ### OG Image ✅ (afgerond)
 - Gegenereerd via DALL-E 3 API (gouden radar chart op donkergroen) + Sharp SVG tekst overlay
@@ -1040,7 +1040,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
   - Tekst: "This quiz is currently only available in Dutch."
   - Link: "Take the full assessment in English →" naar `/#early-access`
   - Dismissible met × knop
-- **Toekomstig project**: volledige 5-talige quiz na launch op 15 mei
+- **Toekomstig project**: volledige 5-talige quiz na launch op 22 juni
 
 ### Pro Program Bevestigings-email (9 april 2026)
 

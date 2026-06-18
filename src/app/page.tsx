@@ -23,7 +23,7 @@ function track(event: string, props?: Record<string, string>) { window.plausible
 
 
 // ── PAGE CONTENT ───────────────────────────────────────────────────────────────
-// Early access pricing — change these when early access ends (June 1st)
+// Early access pricing — change these when early access ends (July 1st)
 const EA_PRICE_STD = 49;
 const EA_PRICE_DLX = 99;
 
