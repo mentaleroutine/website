@@ -2019,6 +2019,7 @@
       var elapsed = Math.round((Date.now() - state.quizStartTime) / 1000);
       state.quizDurationSeconds = elapsed;
       calculateResults();
+      saveQuizResults();
       buildResultScreen();
       showPhase('phase-results');
       if (window.plausible) plausible('quiz_complete', { props: { seconds: String(elapsed), score: String(state.totalScore) } });
@@ -2091,6 +2092,50 @@
     });
     state.strongestDomain = strongIdx;
     state.weakestDomain = weakIdx;
+  }
+
+  /* ══════════════════════════════════
+     SAVE QUIZ RESULTS TO PORTAL
+  ══════════════════════════════════ */
+  function saveQuizResults() {
+    // Bouw antwoorden-object: { "focus_3b": 7, "concentratie_1a": 5, ... }
+    var antwoorden = {};
+    if (state.holeQuestions) {
+      state.holeQuestions.forEach(function(hole) {
+        hole.forEach(function(q) {
+          if (q.label && q.answer !== null && q.answer !== undefined) {
+            antwoorden[q.label] = q.answer;
+          }
+        });
+      });
+    }
+
+    var payload = {
+      geslacht: state.intakeAnswers ? state.intakeAnswers.geslacht : null,
+      geboortejaar: state.intakeAnswers ? state.intakeAnswers.geboortejaar : null,
+      handicap: state.intakeAnswers ? state.intakeAnswers.handicap : null,
+      lang: currentLang,
+      invultijd_seconden: state.quizDurationSeconds || null,
+      antwoorden: antwoorden,
+      totaalscore: state.totalScore,
+      domein_scores: state.domainScores,
+      fase_scores: state.phaseScores,
+      sterkste_domein: state.strongestDomain,
+      zwakste_domein: state.weakestDomain,
+    };
+
+    fetch('https://portal.mentaleroutine.com/api/quiz/results', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.ok ? res.json() : Promise.reject(res.status); })
+    .then(function(data) {
+      if (data.session_id) state.quizSessionId = data.session_id;
+    })
+    .catch(function(err) {
+      console.warn('[quiz] saveQuizResults failed:', err);
+    });
   }
 
   /* ══════════════════════════════════
@@ -2345,26 +2390,11 @@
       return;
     }
 
-    // Build full payload for backend
+    // Build opt-in payload — scores already saved via saveQuizResults(), only link naam+email
     var payload = {
+      session_id: state.quizSessionId || null,
       naam: naam,
       email: email,
-      handicap: handicap ? parseFloat(handicap) : null,
-      geslacht: state.intakeAnswers ? state.intakeAnswers.geslacht : null,
-      geboortejaar: state.intakeAnswers ? state.intakeAnswers.geboortejaar : null,
-      handicap_intake: state.intakeAnswers ? state.intakeAnswers.handicap : null,
-      totaalscore: state.totalScore,
-      domein_scores: state.domainScores,
-      fase_scores: state.phaseScores,
-      sterkste_index: state.strongestDomain,
-      zwakste_index: state.weakestDomain,
-      vraag_labels: state.holeQuestions ? state.holeQuestions.flat().map(function(q) { return q.label; }) : [],
-      segmentatie: {
-        profiel: state.segAnswers[0],
-        ambitie: state.segAnswers[1],
-        golfleven: state.segAnswers[2]
-      },
-      invultijd_seconden: state.quizDurationSeconds || null
     };
 
     // Disable button while sending
