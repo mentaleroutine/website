@@ -426,6 +426,17 @@
     .assess-compare-card--highlight .assess-compare-title{color:var(--gold-light)}
     /* ── COMING SOON PULSE ── */
     @keyframes comingSoonPulse{0%,100%{background:linear-gradient(135deg,#1B3A2D 0%,#254D3A 100%)}50%{background:linear-gradient(135deg,#254D3A 0%,#3D7A5A 100%)}}
+    .intake-radio-group { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; }
+    .intake-radio-label { display: flex; align-items: center; gap: 0.6rem; font-size: 1rem; color: var(--text-dark); cursor: pointer; }
+    .intake-radio-label input[type="radio"] { width: 1.1rem; height: 1.1rem; accent-color: var(--gold); cursor: pointer; }
+    .intake-select, .intake-input {
+      width: 100%; max-width: 320px; padding: 0.6rem 0.8rem;
+      background: #fff; border: 1.5px solid rgba(27,58,45,.15);
+      border-radius: 6px; color: var(--text-dark); font-size: 1rem;
+      font-family: var(--font-b); margin-top: 0.5rem;
+    }
+    .intake-select option { background: #fff; color: var(--text-dark); }
+    .intake-select:focus, .intake-input:focus { outline: 2px solid var(--gold); outline-offset: 2px; border-color: var(--gold); }
   </style>
   <!-- Plausible Analytics — proxied via Vercel rewrite -->
   <script async src="/js/script.js" data-api="/api/event" data-domain="mentalroutine.com"></script>
@@ -885,7 +896,7 @@
       hole: {
         pageAria: function(n) { return 'Hole ' + n + ' van 9'; },
         holeLabel: function(n) { return 'Hole ' + n; },
-        questionsCount: '4 vragen',
+        questionsCount: '5 vragen',
         scaleLeft: 'Helemaal niet',
         scaleRight: 'Helemaal',
         scaleAria: 'Score 1 tot 10',
@@ -900,86 +911,54 @@
       },
       domains: ['Focus', 'Concentratie', 'Overtuiging', 'Vertrouwen', 'Beoordeling', 'Acceptatie', 'Analyse', 'Lering trekken'],
       questionPools: [
-        // Domain 0: Focus
-        ['Als ik boven de bal sta, ben ik met mijn gedachten volledig bij déze slag.',
-         'Tijdens het adresseren is mijn hoofd helemaal leeg — alleen de slag telt.',
-         'Ik ben volledig aanwezig bij elke slag die ik doe, zonder afleiding van binnenuit.'],
-        ['Ik kan gedachten aan eerdere holes of mijn score parkeren als ik een slag voorbereid.',
-         'Wat er op de vorige hole gebeurde, speelt niet door mijn hoofd als ik de volgende slag voorbereid.',
-         'Ik kan mijn score vergeten en me concentreren op de slag die voor me ligt.'],
-        ['Ik laat me niet afleiden door wat er na deze slag of na deze ronde komt.',
-         'Gedachten over het eindresultaat of de laatste holes storen me niet tijdens het spelen.',
-         'Ik denk niet vooruit naar wat er nog moet komen — ik ben bij de slag van nu.'],
-        // Domain 1: Concentratie
-        ['Ik kan geluiden, medespelers en beweging om me heen buitensluiten tijdens mijn slag.',
-         'Externe prikkels — een vogel, een golfkar, iemand die praat — halen me niet uit mijn concentratie.',
-         'Wat er om me heen gebeurt raakt me niet als ik eenmaal in mijn routine zit.'],
-        ['Als iemand praat of beweegt in mijn backswing, kan ik mijn concentratie vasthouden.',
-         'Onverwachte geluiden of bewegingen tijdens mijn swing brengen me niet van mijn stuk.',
-         'Zelfs als er iets onverwachts gebeurt net voor mijn slag, blijf ik gefocust.'],
-        ['Ik merk dat ik een hele ronde lang mijn concentratieniveau kan vasthouden, ook na 14 holes.',
-         'Mijn concentratie op hole 16 is even scherp als op hole 1.',
-         'Ik verlies geen scherpte naarmate de ronde vordert — ook niet als ik moe word.'],
-        // Domain 2: Overtuiging
-        ['Als ik mijn club heb gekozen, sta ik daar volledig achter — geen twijfel meer.',
-         'Zodra ik mijn club uit de bag trek, is mijn keuze definitief — ik twijfel niet meer.',
-         'Ik maak mijn clubkeuze en ga er vol vertrouwen mee door, zonder aarzeling.'],
-        ['Ik kies een slagtype (fade, draw, punch) en voer dat uit zonder halverwege te veranderen.',
-         'Als ik een slagtype heb gekozen, houd ik daaraan vast — ook als ik boven de bal twijfel voel opkomen.',
-         'Mijn slagkeuze wijzigt niet meer als ik eenmaal sta — ik commit volledig.'],
-        ['Bij een moeilijke slag vertrouw ik op mijn slagkeuze, ook als er een veiliger optie is.',
-         'Ik durf de slag te kiezen die het beste past, ook als die riskanter is.',
-         'Ik kies niet automatisch de veilige optie — ik speel de slag die ik vertrouw.'],
-        // Domain 3: Vertrouwen
-        ['Bij een belangrijke slag — eerste tee, cruciale putt — vertrouw ik volledig op mijn swing.',
-         'Op beslissende momenten — een matchplay-putt, de eerste afslag — blijft mijn swing hetzelfde.',
-         'Als het echt telt, vertrouw ik op mijn lichaam en mijn techniek zonder na te denken.'],
-        ['Na een paar slechte slagen behoud ik het vertrouwen dat de volgende goed kan zijn.',
-         'Een reeks slechte slagen ondermijnt mijn geloof in mijn swing niet fundamenteel.',
-         'Ik weet dat één slechte slag niets zegt over de volgende — mijn vertrouwen blijft intact.'],
-        ['Ik durf in wedstrijdsituaties dezelfde slagen te spelen als op de driving range.',
-         'Mijn wedstrijdswing is dezelfde als mijn range-swing — ik verander niets onder druk.',
-         'Wat ik op de range kan, breng ik ook op de baan — ongeacht de situatie.'],
-        // Domain 4: Beoordeling
-        ['Na een slechte slag kan ik objectief beoordelen wat er technisch misging.',
-         'Ik analyseer een mislukte slag met mijn hoofd, niet met mijn emoties.',
-         'Ik kan rustig vaststellen wat er fout ging bij een slechte slag, zonder frustratie.'],
-        ['Ik beoordeel een slag op de beslissing en de uitvoering — niet alleen op het resultaat.',
-         'Een goed geslagen bal die slecht uitpakt frustreert me niet — ik beoordeel het proces.',
-         'Ik weet het verschil tussen een slechte beslissing en pech — en dat beïnvloedt hoe ik reageer.'],
-        ['Ik kan het verschil zien tussen een mentale fout en een technische fout.',
-         'Na een slechte slag weet ik of het aan mijn hoofd lag of aan mijn techniek.',
-         'Ik herken wanneer een fout mentaal was en wanneer technisch — dat helpt me gericht verbeteren.'],
-        // Domain 5: Acceptatie
-        ['Na een dubbelbogey kan ik de volgende hole met een schone lei beginnen.',
-         'Een slechte hole laat ik achter me — als ik op de volgende tee sta is het verleden tijd.',
-         'Ik stap na een ramphole de volgende tee-box op alsof de ronde opnieuw begint.'],
-        ['Een slechte slag beïnvloedt mijn stemming voor de rest van de ronde niet.',
-         'Mijn humeur op de baan wordt niet bepaald door individuele slechte slagen.',
-         'Ik laat een slechte slag mijn plezier in de rest van de ronde niet vergallen.'],
-        ['Als ik drie holes achtereen slecht speel, raak ik niet in een neerwaartse spiraal.',
-         'Een reeks slechte holes betekent niet automatisch dat de hele ronde verloren is voor mij.',
-         'Ik kan een negatieve reeks doorbreken en weer positief de volgende hole ingaan.'],
-        // Domain 6: Analyse
-        ['Na een ronde neem ik bewust de tijd om te evalueren wat er goed en fout ging.',
-         'Ik sta na een ronde stil bij wat er goed ging en wat beter kan — dat is een vast moment.',
-         'Na het binnenlopen op 18 evalueer ik mijn ronde structureel, niet alleen als het slecht ging.'],
-        ['Ik weet na elke ronde precies welke holes en slagen het verschil maakten.',
-         'Ik kan na een ronde aanwijzen welke 3–4 momenten het scoreverschil hebben bepaald.',
-         'Ik herinner me niet alleen de slechte slagen, maar ook de beslissende goede slagen van een ronde.'],
-        ['Ik onderscheid patronen in mijn spel — bijvoorbeeld dat ik altijd op hole 14–16 inzak.',
-         'Ik herken terugkerende patronen over meerdere rondes heen — zoals altijd slecht starten of eindigen.',
-         'Als ik terugkijk op meerdere rondes, zie ik duidelijke trends in wanneer mijn spel inzakt.'],
-        // Domain 7: Lering trekken
-        ['Op basis van eerdere rondes pas ik mijn voorbereiding of strategie concreet aan.',
-         'Inzichten uit eerdere rondes vertaal ik naar concrete veranderingen in mijn aanpak.',
-         'Wat ik leer van een ronde gebruik ik actief in mijn voorbereiding op de volgende.'],
-        ['Als ik een terugkerend probleem herken (bijv. slechte start), werk ik er gericht aan.',
-         'Patronen die ik in mijn spel ontdek, pak ik bewust aan — niet hopen dat het vanzelf beter gaat.',
-         'Ik onderneem actie als ik merk dat hetzelfde probleem steeds terugkomt in mijn rondes.'],
-        ['Ik heb een duidelijk beeld van wat ik de afgelopen maanden heb verbeterd in mijn spel.',
-         'Als iemand me vraagt wat ik het afgelopen jaar in mijn spel heb verbeterd, kan ik concreet antwoorden.',
-         'Ik kan specifieke voorbeelden noemen van hoe mijn spel zich de laatste tijd heeft ontwikkeld.']
+        // Focus
+        { domain:0, skill:1, variants:['Voor elke slag kies ik een concreet, haalbaar doelgebied.','Bij elke putt kies ik een duidelijk punt op de green als doel.','Op de afslagplaats kies ik altijd een specifiek doelgebied op de fairway.'] },
+        { domain:0, skill:2, variants:['Voor ik sla, zie ik de baan van de bal naar het doel al voor me.','Bij een bunkerslag zie ik de vlucht en landing van de bal al voor de swing.','Voordat ik putt, stel ik me de lijn van de bal naar de hole al voor.'] },
+        { domain:0, skill:3, variants:['Ik kies mijn club op mijn gemiddelde afstand, niet op mijn beste slag.','Bij een approach kies ik de club waarmee ik die afstand gemiddeld haal, niet de beste keer.','Ik baseer mijn keuze niet op die ene perfecte slag, maar op hoe ik het doorgaans doe.'] },
+        { domain:0, skill:4, variants:['Bij elke slag weeg ik af of de winst het risico op een misser waard is.','Bij een carry over water weeg ik af of de kortere route het risico waard is.','Als ik over bomen heen kan spelen, bedenk ik eerst wat een misser me kost.'] },
+        { domain:0, skill:5, variants:['Als ik gekozen heb, twijfel ik niet meer voordat ik sla.','Zodra ik mijn club gekozen heb, stap ik zonder twijfel op de bal in.','Na mijn beslissing over de lijn van de putt ga ik er volledig voor.'] },
+        // Concentratie
+        { domain:1, skill:1, variants:['Tijdens de swing denk ik alleen aan deze ene slag.','Tijdens een greenside chip ben ik alleen met die ene slag bezig.','Bij een lange putt houdt mijn aandacht precies bij die ene slag.'] },
+        { domain:1, skill:2, variants:['Vlak voor en tijdens de slag sluit ik alles om me heen uit.','Vlak voor een cruciale putt sluit ik het commentaar van mijn flight buiten.','Op een drukke afslagplaats trek ik me niets aan van wat er om me heen gebeurt.'] },
+        { domain:1, skill:3, variants:['Vlak voor de slag richt ik mijn blik op de bal.','Bij een bunkerslag fixeer ik mijn blik op het zand achter de bal.','Voordat ik chip, focus ik mijn ogen op de bal.'] },
+        { domain:1, skill:4, variants:['Als iemand beweegt of praat vlak voor mijn slag, start ik mijn routine opnieuw.','Bij afleiding van buitenaf stap ik terug en begin opnieuw.','Als er iets om me heen gebeurt net voor de slag, stap ik terug en herstart ik.'] },
+        { domain:1, skill:5, variants:['Tussen de slagen ontspan ik, in plaats van te blijven malen.','Tussen twee holes laat ik de vorige slag los en geniet ik van de wandeling.','Terwijl ik naar de green loop, zet ik de vorige slag uit mijn hoofd.'] },
+        // Overtuiging
+        { domain:2, skill:1, variants:['Vlak voor de slag geloof ik dat ik hem ga maken.','Op het moment dat ik putt, geloof ik dat de bal in de hole gaat.','Bij een lastige bunkerslag geloof ik dat ik hem dicht bij de pin krijg.'] },
+        { domain:2, skill:2, variants:['Ik geef elke slag mijn volle inzet, ook als het tegenzit.','Ook na twee slechte holes geef ik mijn afslagslag volle aandacht en energie.','Op een moeilijk par-3 zet ik me er volledig voor in, ook als de ronde tot dan toe tegenvalt.'] },
+        { domain:2, skill:3, variants:['Vlak voor de slag maak ik mezelf scherp en actief.','Vlak voor een afslag zet ik mezelf mentaal aan met een bewuste ademhaling of beweging.','Voor een lange putt activeer ik mezelf bewust voordat ik mijn routine inzet.'] },
+        { domain:2, skill:4, variants:['Een lastige slag zie ik als uitdaging, niet als bedreiging.','Een carry over water zie ik als een kans om mijn slag te laten zien, niet als bedreiging.','Een moeilijke bunker zie ik als uitdaging die ik aankan.'] },
+        { domain:2, skill:5, variants:['Ik haal een goede, vergelijkbare slag terug om mezelf vertrouwen te geven.','Voor een lange putt denk ik terug aan een vergelijkbare putt die ik al eens gemaakt heb.','Bij een lastige chip haal ik een soortgelijke slag terug waarop ik trots was.'] },
+        // Vertrouwen
+        { domain:3, skill:1, variants:['Tijdens de swing stuur ik de beweging niet bij.','Als ik eenmaal insla, laat ik de swing zijn gang gaan zonder bij te sturen.','Bij een putt stuur ik de putterbeweging niet bij zodra ik begonnen ben.'] },
+        { domain:3, skill:2, variants:['Als ik over de bal sta, denk ik niet meer aan mijn techniek.','Over de bal staand denk ik niet aan mijn gripstand of standbreedte.','Bij een greenside chip laat ik de techniek los en speel ik op gevoel.'] },
+        { domain:3, skill:3, variants:['Ik sla de slag zoals ik hem bedacht heb, zonder te aarzelen.','Ik putt de lijn zoals ik hem gelezen heb, zonder op het laatste moment te corrigeren.','Ik sla de approach zoals ik hem gepland heb, zonder van richting te veranderen.'] },
+        { domain:3, skill:4, variants:['Als het spannend wordt, blijf ik losjes in mijn grip.','In een wedstrijd voel ik geen extra spanning in mijn handen.','Op een beslissende putt houd ik mijn grip bewust ontspannen.'] },
+        { domain:3, skill:5, variants:['Ik train regelmatig en gericht, zodat ik mijn slagen ken.','Ik oefen mijn bunkerslag regelmatig, zodat ik hem op de baan vertrouw.','Ik bezoek de oefengreen regelmatig om mijn puttbeweging te kennen.'] },
+        // Beoordeling
+        { domain:4, skill:1, variants:['Na elke slag kijk ik nauwkeurig wat de bal doet.','Na mijn approach volg ik de vlucht en landing van de bal nauwkeurig.','Na een chip kijk ik precies waar de bal landt en hoe hij doorloopt.'] },
+        { domain:4, skill:2, variants:['Ik kan de afwijking van mijn doel nauwkeurig inschatten.','Na een afslag schat ik in hoeveel meter de bal van mijn doellijn afwijkt.','Na een putt zie ik precies hoe ver de bal links of rechts van de hole eindigde.'] },
+        { domain:4, skill:3, variants:['Ik beoordeel mijn slag nuchter, ook als ik baal of juist blij ben.','Na een slechte bunkerslag beoordeel ik rustig wat er gebeurde, zonder te overdrijven.','Na een birdie beoordeel ik de slag alsnog zakelijk op uitvoering.'] },
+        { domain:4, skill:4, variants:['Ik vergelijk waar de bal terechtkwam met waar ik hem wilde hebben.','Na een approach vergelijk ik de werkelijke landing met mijn geplande doelgebied.','Na een putt vergelijk ik de eindpositie van de bal met de lijn die ik had gekozen.'] },
+        { domain:4, skill:5, variants:['Ik beoordeel elke slag op dezelfde manier.','Na een bunkerslag doorloop ik altijd dezelfde stappen in mijn beoordeling.','Of het nu een afslag of een putt is, mijn beoordeling daarna volgt steeds dezelfde volgorde.'] },
+        // Acceptatie
+        { domain:5, skill:1, variants:['Na een slechte slag laat ik de frustratie los voor ik doorloop.','Na een bal in het water laat ik de ergernis los terwijl ik naar de volgende afslagplaats loop.','Na een gemiste korte putt schud ik de frustratie af voor ik doorloop naar de volgende tee.'] },
+        { domain:5, skill:2, variants:['Na een misser scheld ik niet op mezelf.','Na een slechte chip geef ik mezelf geen standje voor de rest van de ronde.','Na een gemiste korte putt ga ik niet negatief tegen mezelf praten.'] },
+        { domain:5, skill:3, variants:['Een slechte slag blaas ik niet op tot een ramp.','Een dubbelbogey op hole 5 betekent voor mij niet dat de hele ronde verpest is.','Een afslag die niet lukt zie ik als losse slag, niet als begin van een slechte ronde.'] },
+        { domain:5, skill:4, variants:['Ik richt me meteen op de nieuwe situatie en de volgende slag.','Na een bal in de rough richt ik me direct op de lie en de volgende keuze.','Na een three-putt kijk ik meteen vooruit naar de volgende hole.'] },
+        { domain:5, skill:5, variants:['Bij een goede slag sta ik even stil om ervan te genieten.','Na een geslaagde putt neem ik een moment om ervan te genieten.','Na een mooie recovery geniet ik even van het gevoel.'] },
+        // Analyse
+        { domain:6, skill:1, variants:['Na een misser vraag ik me af of het aan mijn voorbereiding of aan mijn uitvoering lag.','Na een slechte chip vraag ik me af of mijn voorbereiding klopte of dat de uitvoering haperde.','Na een gemiste afslag onderzoek ik of het aan mijn beslissing of aan mijn swinguitvoering lag.'] },
+        { domain:6, skill:2, variants:['Ik zoek de meest waarschijnlijke oorzaak, geen heel lijstje.','Na een slechte putt zoek ik de meest logische oorzaak in plaats van drie dingen tegelijk te corrigeren.','Na een afwijkende approach kies ik een meest waarschijnlijke oorzaak om op te focussen.'] },
+        { domain:6, skill:3, variants:['Ik merk het als dezelfde fout zich herhaalt.','Als ik op meerdere holes rechts mis, merk ik dat patroon op.','Als mijn putts steeds te kort blijven, herken ik dat als een terugkerende fout.'] },
+        { domain:6, skill:4, variants:['Ik geef niet automatisch de wind of de ondergrond de schuld.','Als mijn approach te kort valt, kijk ik eerst naar mijn uitvoering voor ik de wind de schuld geef.','Na een slechte bunkerslag zoek ik eerst bij mijn techniek, niet bij de ligging.'] },
+        { domain:6, skill:5, variants:['Ik vraag iemand om mee te kijken naar de oorzaak.','Als ik er zelf niet uitkom, vraag ik mijn medespeelster of -speler wat hij of zij van buitenaf zag.','Bij een terugkerende fout vraag ik een pro of hij mee wil kijken.'] },
+        // Leren
+        { domain:7, skill:1, variants:['Een fout zie ik als iets om van te leren, niet als bewijs dat ik het niet kan.','Een slechte putt zie ik als nuttige informatie, niet als bewijs van mijn onvermogen.','Een mislukte bunkerslag gebruik ik als leerstof, niet als reden om te twijfelen aan mijn kunnen.'] },
+        { domain:7, skill:2, variants:['Na een slag of ronde denk ik na over wat ik eruit kan leren.','Na een ronde neem ik even de tijd om te bedenken wat ik ervan geleerd heb.','Na een lastige hole denk ik kort terug op wat ik de volgende keer anders zou doen.'] },
+        { domain:7, skill:3, variants:['Een gemiste slag zet ik om in een concreet leerpunt.','Na een gemiste putt formuleer ik een concreet aandachtspunt voor de volgende keer.','Een slechte chip zet ik om in een duidelijk verbeterpunt voor mijn volgende oefensessie.'] },
+        { domain:7, skill:4, variants:['Ik bepaal concreet wat ik de volgende keer anders doe.','Na een slechte bunkerslag bepaal ik precies welke aanpassing ik de volgende keer maak.','Na een approach die steeds links uitkomt, bedenk ik concreet wat ik ga aanpassen.'] },
+        { domain:7, skill:5, variants:['Ik onthoud een concrete les voor de volgende keer.','Ik verlaat de baan met een duidelijke les in mijn hoofd voor de volgende ronde.','Na een oefensessie neem ik een concreet leerpunt mee naar de volgende keer dat ik speel.'] },
       ],
       seg: [
         { title: 'Hole 7 — Jouw profiel', text: 'Wat beschrijft jouw golf het best?', answers: [
@@ -1151,7 +1130,7 @@
       hole: {
         pageAria: function(n) { return 'Hole ' + n + ' of 9'; },
         holeLabel: function(n) { return 'Hole ' + n; },
-        questionsCount: '4 questions',
+        questionsCount: '5 questions',
         scaleLeft: 'Not at all',
         scaleRight: 'Completely',
         scaleAria: 'Score 1 to 10',
@@ -1166,86 +1145,54 @@
       },
       domains: ['Focus', 'Concentration', 'Conviction', 'Trust', 'Judgement', 'Acceptance', 'Analysis', 'Learning'],
       questionPools: [
-        // Domain 0: Focus
-        ["When I stand over the ball, my thoughts are completely on this shot.",
-         "When I'm addressing the ball my head is empty — only the shot matters.",
-         "I'm fully present for every shot I take, with no distraction from within."],
-        ["I can park thoughts about previous holes or my score when I'm preparing a shot.",
-         "What happened on the previous hole doesn't run through my head when I prepare the next shot.",
-         "I can forget my score and concentrate on the shot in front of me."],
-        ["I don't get distracted by what comes after this shot or this round.",
-         "Thoughts about the final result or remaining holes don't bother me while I'm playing.",
-         "I don't think ahead to what's still to come — I'm with the shot of right now."],
-        // Domain 1: Concentration
-        ["I can shut out sounds, playing partners and movement around me during my shot.",
-         "External stimuli — a bird, a golf cart, someone talking — don't pull me out of my concentration.",
-         "What's happening around me doesn't reach me once I'm in my routine."],
-        ["If someone talks or moves during my backswing, I can hold my concentration.",
-         "Unexpected sounds or movements during my swing don't throw me off.",
-         "Even when something unexpected happens just before my shot, I stay focused."],
-        ["I notice I can sustain my concentration level for a full round, even after 14 holes.",
-         "My concentration on hole 16 is just as sharp as on hole 1.",
-         "I don't lose sharpness as the round progresses — even when I get tired."],
-        // Domain 2: Conviction
-        ["Once I've chosen my club, I fully commit to it — no more doubt.",
-         "The moment I pull my club from the bag, my choice is final — no second-guessing.",
-         "I make my club choice and follow through with full confidence, no hesitation."],
-        ["I pick a shot type (fade, draw, punch) and execute it without changing mid-swing.",
-         "Once I've chosen a shot type, I stick with it — even when doubt creeps in over the ball.",
-         "My shot choice doesn't change once I'm set up — I commit fully."],
-        ["On a tough shot I trust my shot selection, even when there's a safer option.",
-         "I dare to play the shot that fits best, even when it's riskier.",
-         "I don't automatically pick the safe option — I play the shot I trust."],
-        // Domain 3: Trust
-        ["On an important shot — first tee, crucial putt — I fully trust my swing.",
-         "In decisive moments — a matchplay putt, the opening drive — my swing stays the same.",
-         "When it really counts, I trust my body and my technique without thinking."],
-        ["After a few bad shots I keep the trust that the next one can be good.",
-         "A run of bad shots doesn't fundamentally undermine my belief in my swing.",
-         "I know that one bad shot says nothing about the next — my trust stays intact."],
-        ["I dare to play the same shots in competition as on the driving range.",
-         "My competition swing is the same as my range swing — I don't change anything under pressure.",
-         "What I can do on the range, I bring to the course — regardless of the situation."],
-        // Domain 4: Judgement
-        ["After a bad shot I can objectively assess what went wrong technically.",
-         "I analyse a missed shot with my head, not with my emotions.",
-         "I can calmly identify what went wrong on a bad shot, without frustration."],
-        ["I judge a shot on the decision and the execution — not just on the outcome.",
-         "A well-struck ball that ends up badly doesn't frustrate me — I judge the process.",
-         "I know the difference between a bad decision and bad luck — and that shapes how I respond."],
-        ["I can see the difference between a mental error and a technical error.",
-         "After a bad shot, I know whether it was my head or my technique.",
-         "I recognise when a mistake was mental and when it was technical — that helps me improve in a focused way."],
-        // Domain 5: Acceptance
-        ["After a double bogey I can start the next hole with a clean slate.",
-         "I leave a bad hole behind me — by the time I'm on the next tee, it's history.",
-         "After a disaster hole I step onto the next tee box as if the round starts again."],
-        ["A bad shot doesn't affect my mood for the rest of the round.",
-         "My mood on the course isn't determined by individual bad shots.",
-         "I don't let one bad shot ruin my enjoyment of the rest of the round."],
-        ["If I play three holes badly in a row, I don't spiral downward.",
-         "A run of bad holes doesn't automatically mean the whole round is lost for me.",
-         "I can break a negative streak and step into the next hole with a positive mind."],
-        // Domain 6: Analysis
-        ["After a round I deliberately take time to evaluate what went well and what went wrong.",
-         "I pause after a round to reflect on what worked and what could improve — it's a fixed moment.",
-         "After walking off 18 I evaluate my round structurally, not just when it went badly."],
-        ["After every round I know exactly which holes and shots made the difference.",
-         "After a round I can identify the 3–4 moments that decided the score.",
-         "I remember not just the bad shots but also the decisive good shots of a round."],
-        ["I notice patterns in my game — for example that I always slip on holes 14–16.",
-         "I recognise recurring patterns across multiple rounds — like always starting or finishing badly.",
-         "When I look back over multiple rounds, I see clear trends in when my game falls apart."],
-        // Domain 7: Learning
-        ["Based on previous rounds I make concrete adjustments to my preparation or strategy.",
-         "Insights from previous rounds I translate into concrete changes in my approach.",
-         "What I learn from a round I actively use in my preparation for the next one."],
-        ["When I recognise a recurring problem (e.g. bad start), I work on it deliberately.",
-         "Patterns I discover in my game I tackle consciously — not hoping it will get better on its own.",
-         "I take action when I notice the same problem keeps coming back in my rounds."],
-        ["I have a clear picture of what I've improved in my game over the past months.",
-         "If someone asks me what I've improved in my game over the past year, I can answer concretely.",
-         "I can name specific examples of how my game has developed recently."]
+        // Focus
+        { domain:0, skill:1, variants:['For every shot I choose a concrete, realistic target area.','For every putt I pick a clear spot on the green as my target.','On the tee I always choose a specific target area on the fairway.'] },
+        { domain:0, skill:2, variants:['Before I swing, I already see the ball\'s path to the target in my mind.','For a bunker shot I picture the ball\'s flight and landing before I swing.','Before I putt, I visualise the ball\'s line to the hole.'] },
+        { domain:0, skill:3, variants:['I choose my club based on my average distance, not my best shot.','For an approach I pick the club that gets me there on average, not the best time.','I base my club choice on how I typically play, not that one perfect shot.'] },
+        { domain:0, skill:4, variants:['For every shot I weigh whether the gain is worth the risk of a miss.','On a carry over water I consider whether the shorter route is worth the risk.','When I can play over trees, I first think about what a miss would cost me.'] },
+        { domain:0, skill:5, variants:['Once I\'ve decided, I don\'t doubt myself before I swing.','As soon as I\'ve chosen my club, I step up without hesitation.','After deciding on my putt line, I commit fully.'] },
+        // Concentration
+        { domain:1, skill:1, variants:['During the swing I think only about this one shot.','During a greenside chip I focus only on that one shot.','On a long putt my attention stays with that one shot.'] },
+        { domain:1, skill:2, variants:['Just before and during the shot I block out everything around me.','Just before a crucial putt I shut out comments from my playing partners.','On a busy tee I ignore everything happening around me.'] },
+        { domain:1, skill:3, variants:['Just before the shot I focus my eyes on the ball.','For a bunker shot I fix my gaze on the sand behind the ball.','Before I chip, I focus my eyes on the ball.'] },
+        { domain:1, skill:4, variants:['If someone moves or talks just before my shot, I restart my routine.','When distracted by something outside, I step back and start again.','If something happens around me just before the shot, I step back and restart.'] },
+        { domain:1, skill:5, variants:['Between shots I relax instead of dwelling on the last one.','Between holes I let the previous shot go and enjoy the walk.','While walking to the green I clear the previous shot from my mind.'] },
+        // Conviction
+        { domain:2, skill:1, variants:['Just before the shot I believe I\'m going to make it.','When I putt, I believe the ball is going in.','On a tough bunker shot I believe I\'ll get it close to the pin.'] },
+        { domain:2, skill:2, variants:['I give every shot my full effort, even when things aren\'t going well.','Even after two bad holes I give my tee shot full attention and energy.','On a tough par-3 I commit fully, even if the round hasn\'t gone well so far.'] },
+        { domain:2, skill:3, variants:['Just before the shot I make myself sharp and ready.','Before a drive I activate myself mentally with a deliberate breath or movement.','Before a long putt I consciously activate myself before starting my routine.'] },
+        { domain:2, skill:4, variants:['I see a tough shot as a challenge, not a threat.','A carry over water is a chance to show my shot, not a threat.','A difficult bunker is a challenge I can handle.'] },
+        { domain:2, skill:5, variants:['I recall a good similar shot to build my confidence.','Before a long putt I think back to a similar putt I\'ve made before.','On a tough chip I recall a similar shot I was proud of.'] },
+        // Trust
+        { domain:3, skill:1, variants:['During the swing I don\'t try to steer the movement.','Once I start the swing, I let it go without steering.','On a putt I don\'t redirect the stroke once I\'ve started.'] },
+        { domain:3, skill:2, variants:['Standing over the ball, I\'m no longer thinking about my technique.','Over the ball I\'m not thinking about my grip or stance width.','On a greenside chip I let go of technique and play by feel.'] },
+        { domain:3, skill:3, variants:['I play the shot the way I planned it, without hesitation.','I roll the putt on the line I read, without correcting at the last moment.','I play the approach the way I planned it, without changing direction.'] },
+        { domain:3, skill:4, variants:['When it gets tense, I keep my grip relaxed.','In a competition I don\'t feel extra tension in my hands.','On a decisive putt I keep my grip consciously relaxed.'] },
+        { domain:3, skill:5, variants:['I practise regularly and purposefully so I know my shots.','I practise my bunker shot regularly so I trust it on the course.','I visit the practice green regularly to know my putting stroke.'] },
+        // Assessment
+        { domain:4, skill:1, variants:['After every shot I watch carefully what the ball does.','After my approach I follow the flight and landing of the ball closely.','After a chip I watch exactly where the ball lands and how it rolls.'] },
+        { domain:4, skill:2, variants:['I can accurately judge how far my shot deviated from my target.','After a drive I estimate how many metres the ball is from my target line.','After a putt I see exactly how far left or right of the hole the ball finished.'] },
+        { domain:4, skill:3, variants:['I assess my shot calmly, whether I\'m frustrated or pleased.','After a poor bunker shot I calmly review what happened without exaggerating.','After a birdie I still assess the shot objectively on execution.'] },
+        { domain:4, skill:4, variants:['I compare where the ball ended up with where I wanted it.','After an approach I compare the actual landing with my planned target area.','After a putt I compare the ball\'s final position with the line I chose.'] },
+        { domain:4, skill:5, variants:['I assess every shot the same way.','After a bunker shot I always go through the same steps in my review.','Whether it\'s a drive or a putt, my post-shot review always follows the same order.'] },
+        // Acceptance
+        { domain:5, skill:1, variants:['After a bad shot I release the frustration before I walk on.','After a ball in the water I let the frustration go while walking to the next tee.','After a missed short putt I shake off the frustration before moving to the next tee.'] },
+        { domain:5, skill:2, variants:['After a missed shot I don\'t criticise myself.','After a poor chip I don\'t give myself a hard time for the rest of the round.','After a missed short putt I don\'t talk negatively to myself.'] },
+        { domain:5, skill:3, variants:['I don\'t turn a bad shot into a disaster.','A double bogey on hole 5 doesn\'t mean the whole round is ruined for me.','A bad drive is one shot — not the start of a bad round.'] },
+        { domain:5, skill:4, variants:['I immediately focus on the new situation and the next shot.','After a ball in the rough I focus directly on the lie and the next decision.','After a three-putt I look straight ahead to the next hole.'] },
+        { domain:5, skill:5, variants:['After a good shot I take a moment to enjoy it.','After a successful putt I take a moment to enjoy it.','After a nice recovery I take a moment to enjoy the feeling.'] },
+        // Analysis
+        { domain:6, skill:1, variants:['After a missed shot I ask myself whether it was preparation or execution.','After a poor chip I consider whether my preparation was right or whether the execution went wrong.','After a missed drive I look at whether it was my decision or my swing execution.'] },
+        { domain:6, skill:2, variants:['I look for the one most likely cause, not a whole list.','After a poor putt I find the most logical cause rather than trying to fix three things at once.','After a wayward approach I pick one most likely cause to focus on.'] },
+        { domain:6, skill:3, variants:['I notice when the same mistake repeats itself.','If I miss right on several holes, I notice that pattern.','If my putts are consistently short, I recognise that as a recurring fault.'] },
+        { domain:6, skill:4, variants:['I don\'t automatically blame the wind or the ground conditions.','If my approach falls short, I look at my execution first before blaming the wind.','After a poor bunker shot I look at my technique first, not the lie.'] },
+        { domain:6, skill:5, variants:['I ask someone to watch and help identify the cause.','If I can\'t work it out myself, I ask my playing partner what they saw from outside.','For a recurring fault I ask a pro to have a look at the cause.'] },
+        // Learning
+        { domain:7, skill:1, variants:['I see a mistake as something to learn from, not as proof I can\'t do it.','A poor putt is useful information, not proof of my inability.','A failed bunker shot is material to learn from, not a reason to doubt my ability.'] },
+        { domain:7, skill:2, variants:['After a shot or round I think about what I can learn from it.','After a round I take a moment to think about what I\'ve learned.','After a tough hole I briefly reflect on what I\'d do differently next time.'] },
+        { domain:7, skill:3, variants:['I turn a missed shot into a concrete learning point.','After a missed putt I identify a concrete focus for my putting next time.','A poor chip becomes one clear improvement point for my next practice session.'] },
+        { domain:7, skill:4, variants:['I decide concretely what I\'ll do differently next time.','After a poor bunker shot I decide exactly what adjustment I\'ll make next time.','After an approach that keeps going left, I work out concretely what to change.'] },
+        { domain:7, skill:5, variants:['I take away one concrete lesson for next time.','I leave the course with one clear lesson in my head for the next round.','After a practice session I take one concrete point into the next time I play.'] },
       ],
       seg: [
         { title: 'Hole 7 — Your profile', text: 'What describes your golf best?', answers: [
@@ -1444,9 +1391,7 @@
      Each entry: { domain: 0-7, variants: [A, B, C] }
   ══════════════════════════════════ */
   function getQuestionPools() {
-    return T.questionPools.map(function(variants, idx) {
-      return { domain: Math.floor(idx / 3), variants: variants };
-    });
+    return T.questionPools;
   }
   /* eslint-disable */
   var __unused_OLD_POOLS = [
@@ -1647,17 +1592,16 @@
     }
   ];
 
-  var TOTAL_HOLES = 9; // 6 question holes + 3 segmentation holes
+  var TOTAL_HOLES = 9; // hole 0 = intake, holes 1-8 = 8 domeinen × 5 vragen
 
   /* ══════════════════════════════════
      STATE
   ══════════════════════════════════ */
   var state = {
-    currentHole: 0, // 0-indexed: 0-5 = question holes, 6-8 = segmentation holes
-    // selectedQuestions: array of 24 objects { domain, text, answer: null }
-    // shuffled into random order, split into 6 groups of 4
-    holeQuestions: [], // holeQuestions[0..5] = array of 4 question objects
-    segAnswers: [null, null, null], // for holes 7, 8, 9
+    currentHole: 0,
+    holeQuestions: [],
+    intakeAnswers: { geslacht: null, geboortejaar: null, handicap: null },
+    segAnswers: [null, null, null],
     domainScores: [],
     totalScore: 0,
     strongestDomain: 0,
@@ -1668,28 +1612,36 @@
      QUIZ INITIALIZATION
   ══════════════════════════════════ */
   function initQuiz() {
-    // Step 1: For each pool, store poolIdx + a randomly chosen variantIdx.
-    // Text is re-resolved from T at render time so language switches mid-quiz work.
     var pools = getQuestionPools();
-    var selected = pools.map(function(pool, i) {
-      var v = Math.floor(Math.random() * pool.variants.length);
-      return { domain: pool.domain, poolIdx: i, variantIdx: v, answer: null };
+
+    // Kies voor elke pool een willekeurige variant
+    var selected = pools.map(function(pool) {
+      var vIdx = Math.floor(Math.random() * pool.variants.length);
+      var domainNames = ['focus','concentratie','overtuiging','vertrouwen','beoordeling','acceptatie','analyse','leren'];
+      var variantLetters = ['a','b','c'];
+      return {
+        domain: pool.domain,
+        skill: pool.skill,
+        poolRef: pool, // referentie voor taalwissel
+        variantIdx: vIdx,
+        label: domainNames[pool.domain] + '_' + pool.skill + variantLetters[vIdx],
+        answer: null
+      };
     });
 
-    // Step 2: Shuffle the 24 selected questions (Fisher-Yates)
+    // Fisher-Yates shuffle
     for (var i = selected.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
-      var tmp = selected[i];
-      selected[i] = selected[j];
-      selected[j] = tmp;
+      var tmp = selected[i]; selected[i] = selected[j]; selected[j] = tmp;
     }
 
-    // Step 3: Split into 6 groups of 4
+    // Verdeel over 8 holes van 5 vragen elk (holes 1-8, 0-indexed)
     state.holeQuestions = [];
-    for (var h = 0; h < 6; h++) {
-      state.holeQuestions.push(selected.slice(h * 4, h * 4 + 4));
+    for (var h = 0; h < 8; h++) {
+      state.holeQuestions.push(selected.slice(h * 5, h * 5 + 5));
     }
 
+    state.intakeAnswers = { geslacht: null, geboortejaar: null, handicap: null };
     state.segAnswers = [null, null, null];
     state.currentHole = 0;
     state.quizStartTime = Date.now();
@@ -1732,18 +1684,110 @@
   function renderHole(holeIndex) {
     updateProgress(holeIndex);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
     var wrap = document.getElementById('quiz-page-wrap');
-
-    if (holeIndex < 6) {
-      renderQuestionHole(wrap, holeIndex);
+    if (holeIndex === 0) {
+      renderIntakeHole(wrap);
     } else {
-      renderSegmentationHole(wrap, holeIndex);
+      renderQuestionHole(wrap, holeIndex);
     }
   }
 
   /* ══════════════════════════════════
-     RENDER QUESTION HOLE (holes 1-6)
+     RENDER INTAKE HOLE (hole 0)
+  ══════════════════════════════════ */
+  function renderIntakeHole(wrap) {
+    var saved = state.intakeAnswers;
+    var isNL = (currentLang === 'nl');
+
+    // Geboortejaar opties 1930-2010
+    var yearOptions = '<option value="">' + (isNL ? 'Selecteer geboortejaar' : 'Select year of birth') + '</option>';
+    for (var y = 2010; y >= 1930; y--) {
+      yearOptions += '<option value="' + y + '"' + (saved.geboortejaar == y ? ' selected' : '') + '>' + y + '</option>';
+    }
+
+    var geslachtLabels = isNL
+      ? ['Man', 'Vrouw', 'Anders / wil ik niet zeggen']
+      : ['Male', 'Female', 'Other / prefer not to say'];
+    var geslachtValues = ['man', 'vrouw', 'anders'];
+
+    var radioHtml = geslachtLabels.map(function(label, i) {
+      var checked = saved.geslacht === geslachtValues[i] ? ' checked' : '';
+      return '<label class="intake-radio-label">'
+        + '<input type="radio" name="intake-geslacht" value="' + geslachtValues[i] + '"' + checked + '> '
+        + label
+        + '</label>';
+    }).join('');
+
+    var allFilled = saved.geslacht && saved.geboortejaar && saved.handicap !== null && saved.handicap !== '';
+
+    var html = '<div class="quiz-page" aria-label="' + (isNL ? 'Hole 1 — Jouw profiel' : 'Hole 1 — Your profile') + '">'
+      + '<div class="quiz-domain-header">'
+      + '<div class="quiz-domain-number" aria-hidden="true">' + (isNL ? 'Hole 1' : 'Hole 1') + '</div>'
+      + '<div class="quiz-domain-subtitle">' + (isNL ? '3 vragen' : '3 questions') + '</div>'
+      + '</div>'
+      + '<div class="quiz-domain-questions">'
+      // Geslacht
+      + '<div class="quiz-q-item">'
+      + '<div class="quiz-q-item-text">' + (isNL ? 'Wat is je geslacht?' : 'What is your gender?') + '</div>'
+      + '<div class="intake-radio-group">' + radioHtml + '</div>'
+      + '</div>'
+      // Geboortejaar
+      + '<div class="quiz-q-item">'
+      + '<div class="quiz-q-item-text">' + (isNL ? 'Wat is je geboortejaar?' : 'What is your year of birth?') + '</div>'
+      + '<select id="intake-jaar" class="intake-select">' + yearOptions + '</select>'
+      + '</div>'
+      // Handicap
+      + '<div class="quiz-q-item">'
+      + '<div class="quiz-q-item-text">' + (isNL ? 'Wat is je golfhandicap?' : 'What is your golf handicap?') + '</div>'
+      + '<input id="intake-hcp" type="number" min="-8" max="54" step="0.1" class="intake-input" placeholder="' + (isNL ? 'bijv. 14.2' : 'e.g. 14.2') + '" value="' + (saved.handicap !== null ? saved.handicap : '') + '">'
+      + '</div>'
+      + '</div>'
+      + '<div class="quiz-nav">'
+      + '<button class="quiz-back-btn" id="quiz-back-btn" style="visibility:hidden" aria-label="' + (isNL ? 'Vorige' : 'Back') + '">' + (isNL ? '← Vorige hole' : '← Previous hole') + '</button>'
+      + '<button class="quiz-next-btn" id="quiz-next-btn"' + (allFilled ? '' : ' disabled') + ' aria-label="' + (isNL ? 'Volgende hole' : 'Next hole') + '">' + (isNL ? 'Volgende hole →' : 'Next hole →') + '</button>'
+      + '</div>'
+      + '</div>';
+
+    wrap.innerHTML = html;
+    bindIntakeEvents();
+  }
+
+  function bindIntakeEvents() {
+    function checkComplete() {
+      var g = document.querySelector('input[name="intake-geslacht"]:checked');
+      var j = document.getElementById('intake-jaar');
+      var h = document.getElementById('intake-hcp');
+      var hVal = h ? h.value.trim() : '';
+      var hNum = parseFloat(hVal);
+      var hValid = hVal !== '' && !isNaN(hNum) && hNum >= -8 && hNum <= 54;
+      var allOk = g && j && j.value && hValid;
+      var nextBtn = document.getElementById('quiz-next-btn');
+      if (nextBtn) nextBtn.disabled = !allOk;
+      if (allOk) {
+        state.intakeAnswers.geslacht = g.value;
+        state.intakeAnswers.geboortejaar = parseInt(j.value, 10);
+        state.intakeAnswers.handicap = hNum;
+      }
+    }
+
+    document.querySelectorAll('input[name="intake-geslacht"]').forEach(function(radio) {
+      radio.addEventListener('change', checkComplete);
+    });
+    var jaarSel = document.getElementById('intake-jaar');
+    if (jaarSel) jaarSel.addEventListener('change', checkComplete);
+    var hcpInput = document.getElementById('intake-hcp');
+    if (hcpInput) hcpInput.addEventListener('input', checkComplete);
+
+    var nextBtn = document.getElementById('quiz-next-btn');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        if (!nextBtn.disabled) goToNextHole(0);
+      });
+    }
+  }
+
+  /* ══════════════════════════════════
+     RENDER QUESTION HOLE (holes 1-8)
   ══════════════════════════════════ */
   function renderQuestionHole(wrap, holeIndex) {
     var questions = state.holeQuestions[holeIndex];
@@ -1751,7 +1795,7 @@
 
     var questionsHtml = questions.map(function(q, qIdx) {
       var savedVal = q.answer;
-      var qText = T.questionPools[q.poolIdx][q.variantIdx];
+      var qText = q.poolRef.variants[q.variantIdx];
 
       var buttonsHtml = '';
       for (var n = 1; n <= 10; n++) {
@@ -1788,8 +1832,8 @@
       + '<button class="quiz-back-btn" id="quiz-back-btn" style="' + (holeIndex === 0 ? 'visibility:hidden' : '') + '" aria-label="' + T.hole.backBtnAria + '">'
       + T.hole.backBtn
       + '</button>'
-      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (allAnswered ? '' : 'disabled') + ' aria-label="' + T.hole.nextBtnAria + '">'
-      + T.hole.nextBtn
+      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (allAnswered ? '' : 'disabled') + ' aria-label="' + (holeIndex === 8 ? T.hole.finishBtnAria : T.hole.nextBtnAria) + '">'
+      + (holeIndex === 8 ? T.hole.finishBtn : T.hole.nextBtn)
       + '</button>'
       + '</div>'
       + '</div>';
@@ -1954,8 +1998,8 @@
 
   function areAllHoleQuestionsAnswered(holeIndex) {
     var questions = state.holeQuestions[holeIndex];
-    if (!questions || questions.length < 4) return false;
-    for (var i = 0; i < 4; i++) {
+    if (!questions || questions.length < 5) return false;
+    for (var i = 0; i < 5; i++) {
       if (questions[i].answer === null || questions[i].answer === undefined) return false;
     }
     return true;
@@ -1965,18 +2009,15 @@
      NAVIGATION
   ══════════════════════════════════ */
   function goToNextHole(holeIndex) {
-    // Track hole completion with per-hole timing
     var holeSeconds = Math.round((Date.now() - state.holeStartTime) / 1000);
-    if (window.plausible) plausible('quiz_hole', { props: { hole: String(holeIndex + 1), seconds: String(holeSeconds) } });
-    if (holeIndex < TOTAL_HOLES - 1) {
+    if (holeIndex > 0 && window.plausible) plausible('quiz_hole', { props: { hole: String(holeIndex), seconds: String(holeSeconds) } });
+    if (holeIndex < 8) {
       state.currentHole = holeIndex + 1;
       state.holeStartTime = Date.now();
       renderHole(state.currentHole);
     } else {
-      // Last hole — calculate and show results
       var elapsed = Math.round((Date.now() - state.quizStartTime) / 1000);
       state.quizDurationSeconds = elapsed;
-      console.log('[Quiz] Invultijd: ' + Math.floor(elapsed / 60) + ':' + ('0' + (elapsed % 60)).slice(-2) + ' (' + elapsed + 's)');
       calculateResults();
       buildResultScreen();
       showPhase('phase-results');
@@ -1990,11 +2031,10 @@
      score = ((avg - 1) / 9) * 100
   ══════════════════════════════════ */
   function calculateResults() {
-    // Collect all answered questions grouped by domain
     var domainSums = [0, 0, 0, 0, 0, 0, 0, 0];
     var domainCounts = [0, 0, 0, 0, 0, 0, 0, 0];
 
-    for (var h = 0; h < 6; h++) {
+    for (var h = 0; h < 8; h++) {
       var questions = state.holeQuestions[h];
       for (var q = 0; q < questions.length; q++) {
         var qObj = questions[q];
@@ -2004,8 +2044,6 @@
       }
     }
 
-    // S-curve to amplify contrast: pushes scores away from center
-    // so results feel more differentiated and interesting
     function amplify(raw) {
       var x = raw / 100;
       var curved = x < 0.5
@@ -2023,20 +2061,16 @@
     }
     state.domainScores = domainScores;
 
-    // Total
     var total = 0;
     for (var j = 0; j < domainScores.length; j++) total += domainScores[j];
     state.totalScore = Math.round(total / 8);
 
-    // Phase scores (for 3-axis radar)
     var preShot = Math.round((domainScores[0] + domainScores[1]) / 2);
     var swing = Math.round((domainScores[2] + domainScores[3]) / 2);
     var postShot = Math.round((domainScores[4] + domainScores[5] + domainScores[6] + domainScores[7]) / 4);
     state.phaseScores = [preShot, swing, postShot];
 
-    // Strongest & weakest
-    var maxScore = -1, minScore = 101;
-    var strongIdx = 0, weakIdx = 0;
+    var maxScore = -1, minScore = 101, strongIdx = 0, weakIdx = 0;
     domainScores.forEach(function(s, idx) {
       if (s > maxScore) { maxScore = s; strongIdx = idx; }
       if (s < minScore) { minScore = s; weakIdx = idx; }
@@ -2302,15 +2336,19 @@
       naam: naam,
       email: email,
       handicap: handicap ? parseFloat(handicap) : null,
+      geslacht: state.intakeAnswers ? state.intakeAnswers.geslacht : null,
+      geboortejaar: state.intakeAnswers ? state.intakeAnswers.geboortejaar : null,
+      handicap_intake: state.intakeAnswers ? state.intakeAnswers.handicap : null,
       totaalscore: state.totalScore,
       domein_scores: state.domainScores,
       fase_scores: state.phaseScores,
       sterkste_index: state.strongestDomain,
       zwakste_index: state.weakestDomain,
+      vraag_labels: state.holeQuestions ? state.holeQuestions.flat().map(function(q) { return q.label; }) : [],
       segmentatie: {
-        profiel: state.segAnswers[0],   // 0-3: recreatief/sociaal/competitief/serieus
-        ambitie: state.segAnswers[1],   // 0-3: consistentie/scores/plezier/drukbestendigheid
-        golfleven: state.segAnswers[2]  // 0-3: af en toe/wekelijks/meerdere keren/structureel
+        profiel: state.segAnswers[0],
+        ambitie: state.segAnswers[1],
+        golfleven: state.segAnswers[2]
       },
       invultijd_seconden: state.quizDurationSeconds || null
     };
