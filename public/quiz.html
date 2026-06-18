@@ -2044,20 +2044,34 @@
       }
     }
 
+    // Neutral S-curve (pivot 0.56, exp 1.3) + handicap correction.
+    // C (19-28) = reference group, scores on raw. Lower handicap = stricter, higher = more lenient.
     function amplify(raw) {
       var x = raw / 100;
-      var curved = x < 0.5
-        ? 0.5 * Math.pow(2 * x, 1.7)
-        : 1 - 0.5 * Math.pow(2 * (1 - x), 1.7);
-      return Math.max(0, Math.min(100, Math.round(curved * 100)));
+      var curved;
+      if (x >= 0.56) {
+        curved = 0.56 + 0.44 * Math.pow((x - 0.56) / 0.44, 1.3);
+      } else {
+        curved = 0.56 * Math.pow(x / 0.56, 1.1);
+      }
+      return Math.round(curved * 100);
     }
+
+    // Handicap correction: A=-5, B=-2, C=0, D=+3
+    var hcp = state.intakeAnswers ? state.intakeAnswers.handicap : null;
+    var hcpCorrection;
+    if (hcp !== null && hcp <= 9)       { hcpCorrection = -5; }
+    else if (hcp !== null && hcp <= 18) { hcpCorrection = -2; }
+    else if (hcp !== null && hcp <= 28) { hcpCorrection =  0; }
+    else                                { hcpCorrection = +3; }
 
     var domainScores = [];
     for (var i = 0; i < 8; i++) {
       var count = domainCounts[i] > 0 ? domainCounts[i] : 1;
       var avg = domainSums[i] / count;
-      var raw = Math.round(((avg - 1) / 9) * 100);
-      domainScores.push(amplify(raw));
+      var raw = Math.round((avg / 10) * 100);
+      var score = Math.max(0, Math.min(100, amplify(raw) + hcpCorrection));
+      domainScores.push(score);
     }
     state.domainScores = domainScores;
 
