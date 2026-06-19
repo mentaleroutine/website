@@ -889,6 +889,17 @@
     }
     .intake-select option { background: #fff; color: var(--text-dark); }
     .intake-select:focus, .intake-input:focus { outline: 2px solid var(--gold); outline-offset: 2px; border-color: var(--gold); }
+    /* ── IMPROVEMENT 1: score interpretation + phase bridge ── */
+    .result-score-interpretation{font-size:.95rem;color:rgba(247,243,236,.75);max-width:480px;margin:.9rem auto 0;line-height:1.65;text-align:center}
+    .result-phase-bridge{font-size:.85rem;color:var(--gold);font-weight:600;letter-spacing:.04em;text-align:center;margin-bottom:.5rem}
+    /* ── IMPROVEMENT 4: "what now" block after opt-in thanks ── */
+    .thanks-next-steps{margin-top:1.5rem;text-align:left;background:rgba(27,58,45,.05);border-radius:10px;padding:1.25rem 1.5rem}
+    .thanks-next-label{font-family:var(--font-b);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+    .thanks-steps-list{padding-left:1.2rem;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.2rem}
+    .thanks-steps-list li{font-size:.88rem;color:var(--text-dark);line-height:1.5}
+    .btn-outline-gold{background:transparent;border:1.5px solid var(--gold);color:var(--gold);padding:.6rem 1.25rem;border-radius:6px;font-family:var(--font-b);font-size:.82rem;font-weight:700;letter-spacing:.05em;text-decoration:none;display:inline-block;transition:background .2s,color .2s}
+    .btn-outline-gold:hover{background:var(--gold);color:#fff}
+    .thanks-assess-btn{font-size:.82rem}
   </style>
   <!-- Plausible Analytics — proxied via Vercel rewrite -->
   <script async src="/js/script.js" data-api="/api/event" data-domain="mentalroutine.com"></script>
@@ -1133,6 +1144,7 @@
         <span class="result-score-denom">/100</span>
       </div>
       <p class="result-score-sub" id="result-score-subtitle" data-i18n="results.scoreCalc">Berekening...</p>
+      <p class="result-score-interpretation" id="result-score-interpretation"></p>
       <div class="result-hero-divider" aria-hidden="true"></div>
       <div class="result-hero-badges">
         <span class="result-hero-badge"><span class="result-hero-badge-dot"></span><span data-i18n="results.heroBadge0">8 mentale domeinen</span></span>
@@ -1146,6 +1158,7 @@
   <section class="result-radar-section" aria-labelledby="radar-h2">
     <div class="result-radar-inner">
       <div class="result-radar-hdr">
+        <p class="result-phase-bridge" id="result-phase-bridge"></p>
         <span class="section-label" data-i18n="results.radarLabel">Jouw profiel</span>
         <h2 id="radar-h2" data-i18n="results.radarH2">Jouw Mentale Routine in 3 fases</h2>
         <p class="result-radar-intro" data-i18n="results.radarIntro">Elke slag bestaat uit 3 mentale fases. Hieronder zie je hoe jij scoort op elk van de drie.</p>
@@ -1198,7 +1211,7 @@
             <!-- Score row -->
             <div class="pdf-cover-score-row">
               <div>
-                <div class="pdf-cover-score-label">Totaalscore</div>
+                <div class="pdf-cover-score-label" id="pdf-cover-score-label">Totaalscore</div>
                 <div class="pdf-cover-score-denom">van 100</div>
               </div>
               <div>
@@ -1210,27 +1223,27 @@
             <div class="pdf-cover-bars">
               <div class="pdf-cover-bars-title">Jouw 8 domeinen</div>
               <div class="pdf-mini-bar">
-                <div class="pdf-mini-bar-name">Focus</div>
+                <div class="pdf-mini-bar-name" id="pdf-label-0"></div>
                 <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-0" style="width:65%;background:var(--fairway)"></div></div>
                 <div class="pdf-mini-bar-score" id="pdf-score-0">65</div>
               </div>
               <div class="pdf-mini-bar">
-                <div class="pdf-mini-bar-name">Concentratie</div>
+                <div class="pdf-mini-bar-name" id="pdf-label-1"></div>
                 <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-1" style="width:58%;background:var(--fairway)"></div></div>
                 <div class="pdf-mini-bar-score" id="pdf-score-1">58</div>
               </div>
               <div class="pdf-mini-bar">
-                <div class="pdf-mini-bar-name">Overtuiging</div>
+                <div class="pdf-mini-bar-name" id="pdf-label-2"></div>
                 <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-2" style="width:72%;background:var(--gold)"></div></div>
                 <div class="pdf-mini-bar-score" id="pdf-score-2">72</div>
               </div>
               <div class="pdf-mini-bar">
-                <div class="pdf-mini-bar-name">Vertrouwen</div>
+                <div class="pdf-mini-bar-name" id="pdf-label-3"></div>
                 <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-3" style="width:49%;background:rgba(192,57,43,.6)"></div></div>
                 <div class="pdf-mini-bar-score" id="pdf-score-3">49</div>
               </div>
               <div class="pdf-mini-bar">
-                <div class="pdf-mini-bar-name">Beoordeling</div>
+                <div class="pdf-mini-bar-name" id="pdf-label-4"></div>
                 <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-4" style="width:61%;background:var(--fairway)"></div></div>
                 <div class="pdf-mini-bar-score" id="pdf-score-4">61</div>
               </div>
@@ -1343,6 +1356,15 @@
         <span class="thanks-icon" aria-hidden="true">&#10003;</span>
         <div class="thanks-title" data-i18n="optin.thanksTitle">Je uitslag is onderweg!</div>
         <p class="thanks-body"><span data-i18n="optin.thanksBody1">Check je inbox (en eventueel je spam-map) binnen 5 minuten.</span></p>
+        <div class="thanks-next-steps">
+          <p class="thanks-next-label" data-i18n="optin.nextStepsLabel">Wat nu?</p>
+          <ol class="thanks-steps-list">
+            <li data-i18n="optin.nextStep1">Check je inbox — je PDF is onderweg (check ook spam)</li>
+            <li data-i18n="optin.nextStep2">Lees je profiel — besteed extra aandacht aan je zwakste domein</li>
+            <li data-i18n="optin.nextStep3">Klaar voor meer detail?</li>
+          </ol>
+          <a href="https://www.mentalroutine.com/assessment-standaard.html" class="btn btn-outline-gold thanks-assess-btn" data-i18n="optin.nextAssessBtn">Bekijk het volledige Assessment &#8594;</a>
+        </div>
       </div>
     </div>
   </section>
@@ -1450,7 +1472,8 @@
         ],
         cta: 'Stuur mij de PDF →',
         trust: 'Gratis · Geen spam · Altijd opzegbaar',
-        optinUrgency: 'Vul je naam en e-mail in — je PDF is binnen 5 minuten in je inbox'
+        optinUrgency: 'Vul je naam en e-mail in — je PDF is binnen 5 minuten in je inbox',
+        scoreLabel: 'Totaalscore'
       },
       fcta: {
         ariaLabel: 'Afsluitende aanroep tot actie',
@@ -1596,7 +1619,15 @@
           'Sta je achter je keuze en vertrouw je je lichaam op het moment dat het telt?',
           'Hoe ga je om met het resultaat? Kun je loslaten, analyseren en leren — zonder emotie?'
         ],
-        groupLabels: ['Pre-shot routine', 'De swing', 'Post-shot routine']
+        groupLabels: ['Pre-shot routine', 'De swing', 'Post-shot routine'],
+        scoreInterpretations: [
+          { max: 30, text: 'Jouw mentale routine kost je nu aantoonbaar slagen. De meeste winst voor jou zit in {weak} — dat domein trekt je totaalscore significant naar beneden.' },
+          { max: 50, text: 'Je hebt een functionerende basisroutine, maar {weak} is duidelijk je zwakke schakel. Dat is precies waar je PDF je mee helpt.' },
+          { max: 70, text: 'Je mentale basis is degelijk. Toch laat {weak} nog ruimte voor groei — en dat is waar de meeste winst voor jou ligt.' },
+          { max: 85, text: 'Je mentale spel is sterk. Ga je {weak} aanpakken, dan zit er nog een extra niveau in je spel.' },
+          { max: 100, text: 'Indrukwekkend mentaal profiel. Zelfs op dit niveau biedt {weak} nog een kleine marge voor verbetering.' }
+        ],
+        phaseBridge: 'Jouw totaalscore van {score}/100 bestaat uit 3 fases — elk meet een ander moment in jouw slagcyclus.'
       },
       optin: {
         label: 'Wil je weten wat dit betekent?',
@@ -1608,7 +1639,18 @@
           'Wat jouw profiel betekent voor jouw mentale spel',
           'Persoonlijk advies: waar de meeste winst voor jou zit'
         ],
+        checklistPersonal: [
+          'Waarom {weak} ({weakScore}/100) jou de meeste slagen kost — en hoe je dat verandert',
+          'Hoe je jouw sterkste domein ({strong}) als anker kunt gebruiken',
+          'Jouw persoonlijke 3-stappen plan voor direct toepasbare verbetering',
+          'Kortingscode voor het volledige Assessment'
+        ],
         checklistAria: 'Inhoud van de PDF',
+        nextStepsLabel: 'Wat nu?',
+        nextStep1: 'Check je inbox — je PDF is onderweg (check ook spam)',
+        nextStep2: 'Lees je profiel — besteed extra aandacht aan je zwakste domein',
+        nextStep3: 'Klaar voor meer detail?',
+        nextAssessBtn: 'Bekijk het volledige Assessment →',
         fields: {
           name: 'Voornaam', namePh: 'Jouw voornaam',
           email: 'E-mailadres', emailPh: 'jouw@email.nl',
@@ -1716,7 +1758,8 @@
         ],
         cta: 'Send me the PDF →',
         trust: 'Free · No spam · Cancel anytime',
-        optinUrgency: 'Enter your name and email — your PDF will be in your inbox within 5 minutes'
+        optinUrgency: 'Enter your name and email — your PDF will be in your inbox within 5 minutes',
+        scoreLabel: 'Total score'
       },
       fcta: {
         ariaLabel: 'Final call to action',
@@ -1862,7 +1905,15 @@
           'Do you stand behind your choice and trust your body in the moment that counts?',
           'How do you handle the outcome? Can you let go, analyse and learn — without emotion?'
         ],
-        groupLabels: ['Pre-shot routine', 'The swing', 'Post-shot routine']
+        groupLabels: ['Pre-shot routine', 'The swing', 'Post-shot routine'],
+        scoreInterpretations: [
+          { max: 30, text: 'Your mental routine is costing you strokes right now. The biggest gain for you is in {weak} — that area is pulling your total score down significantly.' },
+          { max: 50, text: 'You have a functioning base routine, but {weak} is clearly your weak link. That is exactly what your PDF will help you with.' },
+          { max: 70, text: 'Your mental foundation is solid. Still, {weak} has room to grow — and that is where the biggest gains lie for you.' },
+          { max: 85, text: 'Your mental game is strong. Work on {weak} and there is another level in your game.' },
+          { max: 100, text: 'Impressive mental profile. Even at this level, {weak} still offers a small margin for improvement.' }
+        ],
+        phaseBridge: 'Your total score of {score}/100 is made up of 3 phases — each measuring a different moment in your shot cycle.'
       },
       optin: {
         label: 'Want to know what this means?',
@@ -1874,7 +1925,18 @@
           'What your profile means for your mental game',
           'Personal advice: where the biggest gains are for you'
         ],
+        checklistPersonal: [
+          'Why {weak} ({weakScore}/100) is costing you the most strokes — and how to change that',
+          'How to use your strongest area ({strong}) as an anchor',
+          'Your personal 3-step plan for immediately actionable improvement',
+          'Discount code for the full Assessment'
+        ],
         checklistAria: 'Contents of the PDF',
+        nextStepsLabel: "What's next?",
+        nextStep1: 'Check your inbox — your PDF is on its way (check spam too)',
+        nextStep2: 'Read your profile — pay extra attention to your weakest area',
+        nextStep3: 'Ready for more detail?',
+        nextAssessBtn: 'See the full Assessment →',
         fields: {
           name: 'First name', namePh: 'Your first name',
           email: 'Email address', emailPh: 'you@email.com',
@@ -2787,9 +2849,49 @@
     }
     document.getElementById('result-score-subtitle').textContent = sub;
 
+    // Score interpretation (improvement 1)
+    var interpEl = document.getElementById('result-score-interpretation');
+    if (interpEl && T.results.scoreInterpretations) {
+      var weakName = T.domains[state.weakestDomain];
+      var interps = T.results.scoreInterpretations;
+      var interpText = '';
+      for (var si = 0; si < interps.length; si++) {
+        if (total <= interps[si].max) { interpText = interps[si].text; break; }
+      }
+      interpEl.textContent = interpText.replace('{weak}', weakName);
+    }
+
+    // Phase bridge text (improvement 1 + 5)
+    var bridgeEl = document.getElementById('result-phase-bridge');
+    if (bridgeEl && T.results.phaseBridge) {
+      bridgeEl.textContent = T.results.phaseBridge.replace('{score}', total);
+    }
+
     buildDonutCards(state.phaseScores);
     buildDomainBars(scores, state.strongestDomain, state.weakestDomain);
     updatePdfMockup(total, scores);
+    buildOptinChecklist();
+  }
+
+  /* Build personalised opt-in checklist (improvement 2) */
+  function buildOptinChecklist() {
+    var checklistEl = document.getElementById('optin-checklist');
+    if (!checklistEl || !T.optin.checklistPersonal) return;
+    var weakName = T.domains[state.weakestDomain];
+    var weakScore = state.domainScores[state.weakestDomain];
+    var strongName = T.domains[state.strongestDomain];
+    var templates = T.optin.checklistPersonal;
+    var items = [
+      templates[0].replace('{weak}', weakName).replace('{weakScore}', weakScore),
+      templates[1].replace('{strong}', strongName),
+      templates[2],
+      templates[3]
+    ];
+    var html = '';
+    items.forEach(function(text) {
+      html += '<li><span class="optin-check" aria-hidden="true">&#10003;</span> <span>' + text + '</span></li>';
+    });
+    checklistEl.innerHTML = html;
   }
 
   /* Update the PDF mockup cover with real scores */
@@ -2797,18 +2899,23 @@
     var mockupScore = document.getElementById('pdf-mockup-score');
     if (mockupScore) mockupScore.textContent = total;
 
+    // Update cover score label (improvement 3)
+    var coverScoreLabel = document.getElementById('pdf-cover-score-label');
+    if (coverScoreLabel && T.pdfPreview && T.pdfPreview.scoreLabel) {
+      coverScoreLabel.textContent = T.pdfPreview.scoreLabel;
+    }
+
     var domainNames = T.domains;
-    var colors = ['var(--fairway)', 'var(--fairway)', 'var(--gold)', 'rgba(192,57,43,.6)', 'var(--fairway)'];
     for (var i = 0; i < 5; i++) {
       var barEl = document.getElementById('pdf-bar-' + i);
       var scoreEl = document.getElementById('pdf-score-' + i);
-      var nameEl = barEl && barEl.closest('.pdf-mini-bar') ? barEl.closest('.pdf-mini-bar').querySelector('.pdf-mini-bar-name') : null;
+      var labelEl = document.getElementById('pdf-label-' + i);
       if (scores && scores[i] !== undefined) {
         var score = scores[i];
         var color = score >= 65 ? 'var(--fairway)' : score >= 45 ? 'var(--gold)' : 'rgba(192,57,43,.6)';
         if (barEl) { barEl.style.width = score + '%'; barEl.style.background = color; }
         if (scoreEl) scoreEl.textContent = score;
-        if (nameEl && domainNames && domainNames[i]) nameEl.textContent = domainNames[i];
+        if (labelEl && domainNames && domainNames[i]) labelEl.textContent = domainNames[i];
       }
     }
   }
