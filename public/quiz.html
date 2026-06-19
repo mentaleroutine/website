@@ -2013,7 +2013,7 @@
   function goToNextHole(holeIndex) {
     var holeSeconds = Math.round((Date.now() - state.holeStartTime) / 1000);
     if (holeIndex > 0 && window.plausible) plausible('quiz_hole', { props: { hole: String(holeIndex), seconds: String(holeSeconds) } });
-    if (holeIndex < 8) {
+    if (holeIndex < 9) {
       state.currentHole = holeIndex + 1;
       state.holeStartTime = Date.now();
       renderHole(state.currentHole);
