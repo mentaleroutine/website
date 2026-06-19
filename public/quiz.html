@@ -1346,6 +1346,7 @@
       var poolMap = {};
       newPools.forEach(function(p) { poolMap[p.domain + '_' + p.skill] = p; });
       state.holeQuestions.forEach(function(hole) {
+        if (!hole) return;
         hole.forEach(function(q) {
           var key = q.domain + '_' + q.skill;
           if (poolMap[key]) q.poolRef = poolMap[key];
@@ -1637,8 +1638,8 @@
       var tmp = selected[i]; selected[i] = selected[j]; selected[j] = tmp;
     }
 
-    // Verdeel over 8 holes van 5 vragen elk (holes 1-8, 0-indexed)
-    state.holeQuestions = [];
+    // Verdeel over holes 1-8: index 0 = leeg (intake), indices 1-8 = domeinvragen
+    state.holeQuestions = [null]; // index 0 placeholder voor intake
     for (var h = 0; h < 8; h++) {
       state.holeQuestions.push(selected.slice(h * 5, h * 5 + 5));
     }
@@ -1792,8 +1793,8 @@
      RENDER QUESTION HOLE (holes 1-8)
   ══════════════════════════════════ */
   function renderQuestionHole(wrap, holeIndex) {
-    var questions = state.holeQuestions[holeIndex - 1];
-    var holeNum = holeIndex;
+    var questions = state.holeQuestions[holeIndex];
+    var holeNum = holeIndex + 1;
 
     var questionsHtml = questions.map(function(q, qIdx) {
       var savedVal = q.answer;
@@ -1834,8 +1835,8 @@
       + '<button class="quiz-back-btn" id="quiz-back-btn" style="' + (holeIndex === 0 ? 'visibility:hidden' : '') + '" aria-label="' + T.hole.backBtnAria + '">'
       + T.hole.backBtn
       + '</button>'
-      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (allAnswered ? '' : 'disabled') + ' aria-label="' + (holeIndex === 9 ? T.hole.finishBtnAria : T.hole.nextBtnAria) + '">'
-      + (holeIndex === 9 ? T.hole.finishBtn : T.hole.nextBtn)
+      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (allAnswered ? '' : 'disabled') + ' aria-label="' + (holeIndex === 8 ? T.hole.finishBtnAria : T.hole.nextBtnAria) + '">'
+      + (holeIndex === 8 ? T.hole.finishBtn : T.hole.nextBtn)
       + '</button>'
       + '</div>'
       + '</div>';
@@ -1962,7 +1963,7 @@
     var val = parseInt(btn.getAttribute('data-val'), 10);
 
     // Store answer directly on the question object
-    state.holeQuestions[holeIndex - 1][qIdx].answer = val;
+    state.holeQuestions[holeIndex][qIdx].answer = val;
 
     // Update visual state for this question's row
     var questionItem = btn.closest('.quiz-q-item');
@@ -1999,7 +2000,7 @@
   }
 
   function areAllHoleQuestionsAnswered(holeIndex) {
-    var questions = state.holeQuestions[holeIndex - 1];
+    var questions = state.holeQuestions[holeIndex];
     if (!questions || questions.length < 5) return false;
     for (var i = 0; i < 5; i++) {
       if (questions[i].answer === null || questions[i].answer === undefined) return false;
@@ -2013,7 +2014,7 @@
   function goToNextHole(holeIndex) {
     var holeSeconds = Math.round((Date.now() - state.holeStartTime) / 1000);
     if (holeIndex > 0 && window.plausible) plausible('quiz_hole', { props: { hole: String(holeIndex), seconds: String(holeSeconds) } });
-    if (holeIndex < 9) {
+    if (holeIndex < 8) {
       state.currentHole = holeIndex + 1;
       state.holeStartTime = Date.now();
       renderHole(state.currentHole);
@@ -2037,7 +2038,7 @@
     var domainSums = [0, 0, 0, 0, 0, 0, 0, 0];
     var domainCounts = [0, 0, 0, 0, 0, 0, 0, 0];
 
-    for (var h = 0; h < 8; h++) {
+    for (var h = 1; h <= 8; h++) {
       var questions = state.holeQuestions[h];
       for (var q = 0; q < questions.length; q++) {
         var qObj = questions[q];
