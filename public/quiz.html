@@ -304,54 +304,19 @@
     ═══════════════════════════════ */
     #phase-results{background:var(--cream)}
 
-    /* Result hero */
-    .result-hero{background:var(--forest);padding:4.5rem 0 5rem;text-align:center;position:relative;overflow:hidden}
-    .result-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(61,122,90,.18) 0%,transparent 70%);pointer-events:none}
-    .result-hero-inner{position:relative;z-index:2}
-    .result-hero-label{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1rem}
-    .result-score-big{font-family:var(--font-s);font-size:clamp(5rem,14vw,9rem);color:var(--gold);line-height:1;display:block}
-    .result-score-sub{font-family:var(--font-d);font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(247,243,236,.78);font-style:italic;margin-top:.5rem}
+    /* Radar chart internals (layout, shapes) */
 
-    /* Radar section */
-    .result-radar-section{background:var(--cream);padding:4rem 0}
-    .result-radar-inner{max-width:680px;margin:0 auto;padding:0 1.5rem}
-    .result-radar-hdr{text-align:center;margin-bottom:2.5rem}
-    .result-radar-hdr h2{font-size:clamp(1.6rem,3vw,2.4rem)}
-
-    /* The radar chart */
-    .radar-layout{display:flex;align-items:center;gap:2.5rem}
-    @media(max-width:640px){.radar-layout{flex-direction:column;gap:1.5rem}}
-    .radar-chart-wrap{position:relative;width:260px;height:260px;flex-shrink:0}
-    @media(min-width:500px){.radar-chart-wrap{width:300px;height:300px}}
-    .radar-chart-svg{width:100%;height:100%;overflow:visible}
-    .radar-grid-polygon{fill:none;stroke:rgba(27,58,45,.09);stroke-width:1}
-    .radar-axis{stroke:rgba(27,58,45,.07);stroke-width:1}
-    .radar-shape-fill{fill:rgba(27,58,45,.14);stroke:var(--forest);stroke-width:2.5;stroke-linejoin:round}
-    .radar-label{font-family:var(--font-b);font-size:11px;fill:var(--text-body);font-weight:600;text-anchor:middle;dominant-baseline:central}
-
-    /* Phase score cards — vertical stack next to radar */
-    .radar-phase-scores{display:flex;flex-direction:column;gap:.65rem;flex:1;min-width:0}
-    @media(max-width:640px){.radar-phase-scores{width:100%;max-width:400px}}
-    .phase-score-card{background:#fff;border-radius:var(--rm);padding:.85rem 1rem;display:flex;align-items:flex-start;gap:.9rem;border:1px solid rgba(27,58,45,.08);box-shadow:var(--sh)}
-    .phase-score-left{flex-shrink:0;text-align:center;min-width:58px}
-    .phase-score-card .phase-val{font-family:var(--font-s);font-size:2rem;color:var(--forest);line-height:1}
-    .phase-score-card .phase-val-sub{font-size:.6rem;color:var(--text-muted);margin-top:.1rem}
-    .phase-score-right{flex:1;min-width:0}
-    .phase-score-card .phase-name{font-family:var(--font-b);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dark);margin-bottom:.15rem;line-height:1.2}
-    .phase-score-card .phase-sub{font-size:.68rem;color:var(--gold);font-weight:600;margin-bottom:.25rem}
-    .phase-score-card .phase-desc{font-size:.72rem;color:var(--text-muted);line-height:1.45}
     .score-val-res{font-family:var(--font-s);font-size:.82rem;color:var(--text-dark);min-width:28px;text-align:right}
 
-    /* Strongest & Weakest */
     /* 8-domain bars (2 revealed, 6 locked) */
-    .result-domains{background:var(--cream-dark);padding:3.5rem 0}
-    .result-domains-inner{max-width:620px;margin:0 auto;padding:0 1.5rem}
     .domain-bars{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
-    .domain-bar{display:flex;align-items:center;gap:.7rem;background:#fff;border-radius:var(--rm);padding:.7rem 1rem;border:1px solid rgba(27,58,45,.07);box-shadow:var(--sh);position:relative;overflow:hidden}
-    .domain-bar-name{font-family:var(--font-b);font-size:.8rem;font-weight:600;color:var(--text-dark);min-width:110px;flex-shrink:0}
-    .domain-bar-track{flex:1;height:10px;background:rgba(27,58,45,.07);border-radius:5px;overflow:hidden;position:relative}
+    .domain-bar{display:flex;flex-direction:column;gap:.35rem;background:#fff;border-radius:var(--rm);padding:.75rem 1rem .8rem;border:1px solid rgba(27,58,45,.07);box-shadow:var(--sh);position:relative;overflow:hidden}
+    .domain-bar-hdr{display:flex;align-items:center;gap:.7rem}
+    .domain-bar-name{font-family:var(--font-b);font-size:.8rem;font-weight:600;color:var(--text-dark);flex:1}
+    .domain-bar-desc{font-size:.73rem;color:var(--text-muted);line-height:1.45;padding:0 .1rem .15rem}
+    .domain-bar-track{height:10px;background:rgba(27,58,45,.07);border-radius:5px;overflow:hidden;position:relative}
     .domain-bar-fill{height:100%;border-radius:5px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
-    .domain-bar-score{font-family:var(--font-s);font-size:1.1rem;min-width:42px;text-align:right}
+    .domain-bar-score{font-family:var(--font-s);font-size:1.1rem;min-width:42px;text-align:right;flex-shrink:0}
     .domain-bar-tag{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .5rem;border-radius:3px;margin-left:.3rem;white-space:nowrap}
     .domain-bar-tag--strong{background:rgba(61,122,90,.12);color:var(--fairway)}
     .domain-bar-tag--weak{background:rgba(184,149,42,.15);color:var(--gold)}
@@ -361,6 +326,7 @@
     .domain-bar--locked .domain-bar-fill{background:rgba(27,58,45,.08) !important;filter:blur(6px)}
     .domain-bar--locked .domain-bar-score{color:rgba(27,58,45,.15);font-size:.85rem}
     .domain-bar--locked .domain-bar-name{color:var(--text-muted)}
+    .domain-bar--locked .domain-bar-hdr{opacity:.7}
     .domain-bar--locked{opacity:.72}
     .domain-bar-lock{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;flex-shrink:0;color:var(--text-muted);opacity:.55}
     .domain-bar-lock svg{width:14px;height:14px}
@@ -377,30 +343,6 @@
     .domains-cta-text{font-family:var(--font-d);font-size:clamp(1.1rem,2vw,1.4rem);color:var(--text-dark);font-weight:500;margin-bottom:.8rem;font-style:italic}
     .domains-cta-sub{font-size:.82rem;color:var(--text-muted);margin-top:.7rem}
 
-    /* ─── OPT-IN WALL ─── */
-    .optin-section{background:var(--cream-dark);padding:5rem 0}
-    .optin-inner{max-width:560px;margin:0 auto;padding:0 1.5rem}
-    .optin-hdr{text-align:center;margin-bottom:2.5rem}
-    .optin-hdr h2{font-size:clamp(1.8rem,3.2vw,2.8rem);margin-bottom:.8rem}
-    .optin-hdr p{color:var(--text-muted);font-size:.95rem}
-    .optin-checklist{list-style:none;margin-bottom:2rem;display:flex;flex-direction:column;gap:.7rem}
-    .optin-checklist li{display:flex;align-items:flex-start;gap:.7rem;font-size:.92rem;color:var(--text-body);line-height:1.5}
-    .optin-check{color:var(--fairway);font-weight:800;font-size:1rem;flex-shrink:0;margin-top:.05rem}
-
-    .optin-form{background:#fff;border-radius:var(--rl);padding:2.2rem 2rem;box-shadow:var(--shm);border:1px solid rgba(27,58,45,.08)}
-    .form-group{margin-bottom:1.2rem}
-    .form-group label{display:block;font-size:.78rem;font-weight:700;color:var(--text-dark);margin-bottom:.45rem;letter-spacing:.03em}
-    .form-group input{
-      width:100%;padding:.85rem 1rem;border:1.5px solid rgba(27,58,45,.15);border-radius:var(--rm);
-      font-family:var(--font-b);font-size:.92rem;color:var(--text-dark);background:#fff;
-      transition:border-color .22s;
-    }
-    .form-group input:focus{outline:none;border-color:var(--gold)}
-    .form-group input::placeholder{color:var(--text-muted);opacity:.7}
-    .form-submit{width:100%;padding:1.2rem;font-size:.92rem;border-radius:var(--rm);justify-content:center;margin-top:.5rem}
-    .form-sub{text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:.9rem;line-height:1.55}
-    .form-privacy{text-align:center;font-size:.7rem;color:var(--text-muted);margin-top:.5rem;opacity:.75}
-
     .optin-thanks{text-align:center;background:#fff;border-radius:var(--rl);padding:3rem 2rem;box-shadow:var(--sh);display:none}
     .optin-thanks.visible{display:block}
     .thanks-icon{font-size:2.5rem;margin-bottom:1rem;display:block}
@@ -408,6 +350,516 @@
     .thanks-body{font-size:.92rem;color:var(--text-muted);line-height:1.65;margin-bottom:1.4rem}
     .thanks-link{color:var(--gold);font-weight:600;text-decoration:underline;text-underline-offset:2px}
     .thanks-link:hover{color:var(--gold-light)}
+
+    /* ═══════════════════════════════
+       RESULT HERO — PREMIUM UPGRADE
+    ═══════════════════════════════ */
+    .result-hero{
+      background:var(--forest);
+      padding:5rem 0 5.5rem;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .result-hero::before{
+      content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 60% 80% at 50% 0%,rgba(61,122,90,.22) 0%,transparent 60%),
+        radial-gradient(ellipse 80% 50% at 50% 100%,rgba(184,149,42,.07) 0%,transparent 60%),
+        linear-gradient(175deg,#1B3A2D 0%,#111814 100%);
+      pointer-events:none;
+    }
+    .result-hero::after{
+      content:'';position:absolute;
+      left:50%;top:50%;
+      transform:translate(-50%,-50%);
+      width:700px;height:700px;border-radius:50%;
+      border:1px solid rgba(184,149,42,.06);
+      box-shadow:
+        0 0 0 80px rgba(184,149,42,.03),
+        0 0 0 180px rgba(184,149,42,.02),
+        0 0 0 300px rgba(184,149,42,.01);
+      pointer-events:none;
+    }
+    .result-hero-inner{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:0 1.5rem}
+    .result-hero-label{
+      display:inline-flex;align-items:center;gap:.5rem;
+      background:rgba(184,149,42,.13);border:1px solid rgba(184,149,42,.3);
+      color:var(--gold-light);padding:.3rem .9rem;border-radius:2px;
+      font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+      margin-bottom:1.8rem;
+    }
+    .result-score-wrap{margin-bottom:.6rem}
+    .result-score-big{
+      font-family:var(--font-s);
+      font-size:clamp(5.5rem,16vw,10rem);
+      color:var(--gold);
+      line-height:1;
+      display:block;
+      text-shadow:0 4px 40px rgba(184,149,42,.3);
+    }
+    .result-score-denom{
+      font-family:var(--font-b);
+      font-size:clamp(.9rem,2vw,1.1rem);
+      color:rgba(184,149,42,.5);
+      font-weight:600;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      display:block;
+      margin-top:-.3rem;
+      margin-bottom:.9rem;
+    }
+    .result-score-sub{
+      font-family:var(--font-d);
+      font-size:clamp(1.1rem,2.2vw,1.5rem);
+      color:rgba(247,243,236,.7);
+      font-style:italic;
+      margin-top:0;
+      margin-bottom:1.6rem;
+      line-height:1.4;
+    }
+    .result-hero-divider{
+      width:60px;height:2px;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent);
+      margin:0 auto 1.6rem;
+      opacity:.5;
+    }
+    .result-hero-badges{
+      display:flex;flex-wrap:wrap;justify-content:center;gap:1rem 2rem;
+    }
+    .result-hero-badge{
+      display:flex;align-items:center;gap:.4rem;
+      color:rgba(247,243,236,.45);font-size:.76rem;font-weight:500;
+    }
+    .result-hero-badge-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;opacity:.7}
+    @media(max-width:480px){.result-score-big{font-size:clamp(4.5rem,20vw,8rem)}}
+
+    /* ═══════════════════════════════
+       RADAR SECTION — IMPROVED
+    ═══════════════════════════════ */
+    .result-radar-section{
+      background:var(--cream);
+      padding:4.5rem 0 3.5rem;
+      position:relative;
+    }
+    .result-radar-section::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,transparent,rgba(184,149,42,.25),transparent);
+    }
+    .result-radar-inner{max-width:780px;margin:0 auto;padding:0 1.5rem}
+    .result-radar-hdr{text-align:center;margin-bottom:2.5rem}
+    .result-radar-hdr h2{font-size:clamp(1.6rem,3vw,2.4rem);color:var(--text-dark)}
+    .result-radar-intro{font-size:.95rem;color:var(--muted);max-width:540px;margin:.75rem auto 0;line-height:1.6}
+    .result-radar-footnote{font-size:.8rem;color:var(--muted);text-align:center;margin-top:2rem;font-style:italic}
+
+    /* ── HALF-DONUT FASE CARDS ── */
+    .donut-row{
+      display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;
+    }
+    .donut-card{
+      background:#fff;border-radius:16px;
+      border:1px solid var(--border);
+      box-shadow:0 2px 16px rgba(0,0,0,.06);
+      padding:1.5rem 1.25rem 1.25rem;
+      flex:1;min-width:190px;max-width:240px;
+      display:flex;flex-direction:column;align-items:center;
+      text-align:center;
+    }
+    .donut-card-label{
+      font-size:.68rem;font-weight:700;letter-spacing:.12em;
+      text-transform:uppercase;color:var(--muted);
+      margin-bottom:1rem;
+    }
+    .donut-svg-wrap{position:relative;width:120px;height:64px;margin-bottom:.5rem}
+    .donut-svg-wrap svg{overflow:visible}
+    .donut-score-overlay{
+      position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+      font-family:var(--font-h);font-size:1.9rem;font-weight:700;
+      line-height:1;color:var(--text-dark);white-space:nowrap;
+    }
+    .donut-score-overlay sup{font-size:.75rem;font-weight:400;color:var(--muted);vertical-align:super}
+    .donut-niveau{
+      font-size:.72rem;font-weight:700;letter-spacing:.1em;
+      text-transform:uppercase;margin:.5rem 0 .75rem;
+    }
+    .donut-domains-label{
+      font-size:.75rem;color:var(--muted);font-weight:600;
+      margin-bottom:.35rem;
+    }
+    .donut-domains-list{
+      font-size:.78rem;color:var(--text-dark);line-height:1.5;
+    }
+    .donut-desc{
+      font-size:.8rem;color:var(--muted);line-height:1.55;
+      margin-top:.6rem;border-top:1px solid var(--border);
+      padding-top:.6rem;text-align:left;
+    }
+    @media(max-width:520px){
+      .donut-row{flex-direction:column;align-items:center}
+      .donut-card{max-width:100%;width:100%}
+    }
+
+    /* ═══════════════════════════════
+       DOMAINS SECTION — IMPROVED
+    ═══════════════════════════════ */
+    .result-domains{
+      background:var(--cream-dark);
+      padding:4rem 0 4.5rem;
+      position:relative;
+    }
+    .result-domains-inner{max-width:640px;margin:0 auto;padding:0 1.5rem}
+    .result-domains-intro{font-size:.9rem;color:var(--muted);max-width:500px;margin:.6rem auto 0;line-height:1.6}
+
+    /* ═══════════════════════════════
+       PDF PREVIEW MOCKUP SECTION
+    ═══════════════════════════════ */
+    .pdf-preview-section{
+      background:var(--forest);
+      padding:5rem 0;
+      position:relative;
+      overflow:hidden;
+    }
+    .pdf-preview-section::before{
+      content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 70% 60% at 95% 20%,rgba(61,122,90,.2) 0%,transparent 60%),
+        radial-gradient(ellipse 50% 70% at 5% 80%,rgba(184,149,42,.07) 0%,transparent 55%),
+        linear-gradient(155deg,#1B3A2D 0%,#111814 100%);
+      pointer-events:none;
+    }
+    .pdf-preview-inner{
+      position:relative;z-index:2;
+      max-width:920px;margin:0 auto;padding:0 1.5rem;
+      text-align:center;
+    }
+    .pdf-preview-inner > .section-label{margin-bottom:.7rem}
+    .pdf-preview-inner > h2{
+      color:var(--cream);
+      font-size:clamp(1.8rem,3.5vw,3rem);
+      margin-bottom:.7rem;
+    }
+    .pdf-preview-inner > h2 em{color:var(--gold);font-style:italic}
+    .pdf-preview-subtitle{
+      color:rgba(247,243,236,.6);
+      font-size:.95rem;
+      margin-bottom:3rem;
+      max-width:520px;
+      margin-left:auto;margin-right:auto;
+      line-height:1.6;
+    }
+
+    /* Wrapper: mockup left, features right */
+    .pdf-mockup-wrap{
+      display:flex;
+      align-items:center;
+      gap:3rem;
+      text-align:left;
+      justify-content:center;
+    }
+    @media(max-width:680px){
+      .pdf-mockup-wrap{flex-direction:column;align-items:center;gap:2rem}
+      .pdf-preview-inner > h2,.pdf-preview-subtitle{text-align:center}
+    }
+
+    /* THE MOCKUP CARD */
+    .pdf-mockup{
+      position:relative;
+      flex-shrink:0;
+      width:220px;
+    }
+    @media(min-width:500px){.pdf-mockup{width:250px}}
+    .pdf-mockup-shadow{
+      position:absolute;
+      bottom:-18px;left:50%;
+      transform:translateX(-50%);
+      width:85%;height:30px;
+      background:rgba(0,0,0,.35);
+      filter:blur(16px);
+      border-radius:50%;
+    }
+    .pdf-mockup-cover{
+      position:relative;
+      width:100%;
+      border-radius:6px 6px 4px 4px;
+      overflow:hidden;
+      box-shadow:
+        0 2px 0 rgba(255,255,255,.07),
+        0 24px 60px rgba(0,0,0,.55),
+        inset 0 0 0 1px rgba(184,149,42,.2);
+      background:#0f2518;
+    }
+
+    /* Cover top — dark forest header */
+    .pdf-cover-top{
+      background:linear-gradient(160deg,#1B3A2D 0%,#0f2518 100%);
+      padding:1.1rem 1rem .9rem;
+      border-bottom:1px solid rgba(184,149,42,.2);
+      position:relative;
+    }
+    .pdf-cover-top::after{
+      content:'';
+      position:absolute;bottom:0;left:1rem;right:1rem;height:1px;
+      background:linear-gradient(90deg,transparent,rgba(184,149,42,.4),transparent);
+    }
+    .pdf-cover-logo{
+      font-family:var(--font-d);
+      font-size:.72rem;
+      font-weight:600;
+      color:rgba(247,243,236,.5);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:.6rem;
+    }
+    .pdf-cover-logo span{color:var(--gold)}
+    .pdf-cover-title{
+      font-family:var(--font-d);
+      font-size:1.05rem;
+      font-weight:600;
+      color:var(--cream);
+      line-height:1.2;
+      margin-bottom:.2rem;
+    }
+    .pdf-cover-subtitle{
+      font-family:var(--font-b);
+      font-size:.6rem;
+      color:rgba(184,149,42,.7);
+      font-weight:600;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    /* Cover score badge */
+    .pdf-cover-score-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:.7rem 1rem;
+      background:rgba(184,149,42,.06);
+      border-bottom:1px solid rgba(184,149,42,.1);
+    }
+    .pdf-cover-score-label{
+      font-family:var(--font-b);
+      font-size:.55rem;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:rgba(247,243,236,.4);
+    }
+    .pdf-cover-score-num{
+      font-family:var(--font-s);
+      font-size:1.6rem;
+      color:var(--gold);
+      line-height:1;
+    }
+    .pdf-cover-score-denom{
+      font-family:var(--font-b);
+      font-size:.5rem;
+      color:rgba(184,149,42,.5);
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+
+    /* Mini bar rows inside mockup */
+    .pdf-cover-bars{
+      padding:.75rem 1rem .5rem;
+    }
+    .pdf-cover-bars-title{
+      font-family:var(--font-b);
+      font-size:.52rem;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:rgba(247,243,236,.3);
+      margin-bottom:.55rem;
+    }
+    .pdf-mini-bar{
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+      margin-bottom:.45rem;
+    }
+    .pdf-mini-bar:last-child{margin-bottom:0}
+    .pdf-mini-bar-name{
+      font-family:var(--font-b);
+      font-size:.5rem;
+      color:rgba(247,243,236,.5);
+      min-width:52px;
+      flex-shrink:0;
+    }
+    .pdf-mini-bar-track{
+      flex:1;height:4px;
+      background:rgba(255,255,255,.07);
+      border-radius:2px;overflow:hidden;
+    }
+    .pdf-mini-bar-fill{
+      height:100%;border-radius:2px;
+    }
+    .pdf-mini-bar-score{
+      font-family:var(--font-s);
+      font-size:.65rem;
+      min-width:20px;text-align:right;
+      color:rgba(247,243,236,.4);
+    }
+
+    /* Cover locked sections */
+    .pdf-cover-locked{
+      padding:.6rem 1rem .8rem;
+      display:flex;
+      flex-direction:column;
+      gap:.35rem;
+    }
+    .pdf-locked-row{
+      display:flex;align-items:center;gap:.4rem;
+      background:rgba(255,255,255,.04);
+      border-radius:3px;padding:.35rem .5rem;
+    }
+    .pdf-locked-icon{
+      width:10px;height:10px;flex-shrink:0;opacity:.3;
+    }
+    .pdf-locked-text{
+      height:4px;border-radius:2px;
+      background:rgba(255,255,255,.1);
+      flex:1;filter:blur(1.5px);
+    }
+
+    /* Feature list next to mockup */
+    .pdf-feature-list{
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:.9rem;
+      max-width:340px;
+    }
+    @media(max-width:680px){
+      .pdf-feature-list{max-width:100%;width:100%}
+    }
+    .pdf-feature-item{
+      display:flex;
+      align-items:flex-start;
+      gap:.85rem;
+    }
+    .pdf-feature-icon{
+      width:32px;height:32px;
+      border-radius:var(--r);
+      background:rgba(184,149,42,.12);
+      border:1px solid rgba(184,149,42,.2);
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;
+      color:var(--gold-light);
+      font-size:.9rem;
+    }
+    .pdf-feature-text{}
+    .pdf-feature-title{
+      font-family:var(--font-b);
+      font-size:.82rem;
+      font-weight:700;
+      color:var(--cream);
+      margin-bottom:.2rem;
+      line-height:1.2;
+    }
+    .pdf-feature-desc{
+      font-family:var(--font-b);
+      font-size:.74rem;
+      color:rgba(247,243,236,.5);
+      line-height:1.5;
+    }
+    .pdf-preview-cta{
+      margin-top:2.8rem;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:.7rem;
+    }
+    .pdf-preview-trust{
+      font-size:.74rem;
+      color:rgba(247,243,236,.38);
+      font-weight:500;
+    }
+
+    /* ═══════════════════════════════
+       OPTIN SECTION — IMPROVED
+    ═══════════════════════════════ */
+    .optin-section{
+      background:var(--cream);
+      padding:5rem 0;
+      position:relative;
+    }
+    .optin-section::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,transparent,rgba(184,149,42,.3),transparent);
+    }
+    .optin-inner{max-width:520px;margin:0 auto;padding:0 1.5rem}
+    .optin-hdr{text-align:center;margin-bottom:2rem}
+    .optin-hdr h2{
+      font-size:clamp(1.8rem,3.2vw,2.6rem);
+      margin-bottom:.65rem;
+      color:var(--text-dark);
+    }
+    .optin-hdr p{color:var(--text-muted);font-size:.95rem}
+    .optin-checklist{
+      list-style:none;
+      margin-bottom:2rem;
+      display:flex;flex-direction:column;gap:.65rem;
+      background:rgba(27,58,45,.04);
+      border:1px solid rgba(27,58,45,.07);
+      border-radius:var(--rm);
+      padding:1.2rem 1.4rem;
+    }
+    .optin-checklist li{
+      display:flex;align-items:flex-start;gap:.7rem;
+      font-size:.88rem;color:var(--text-body);line-height:1.5;
+    }
+    .optin-check{color:var(--fairway);font-weight:800;font-size:.95rem;flex-shrink:0;margin-top:.05rem}
+
+    .optin-form{
+      background:#fff;
+      border-radius:var(--rl);
+      padding:2.2rem 2rem;
+      box-shadow:var(--shm);
+      border:1px solid rgba(27,58,45,.08);
+    }
+    .optin-urgency{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+      background:rgba(184,149,42,.1);
+      border:1px solid rgba(184,149,42,.25);
+      border-radius:var(--r);
+      padding:.65rem 1rem;
+      margin-bottom:1.4rem;
+    }
+    .optin-urgency-icon{
+      font-size:.9rem;
+      flex-shrink:0;
+    }
+    .optin-urgency-text{
+      font-family:var(--font-b);
+      font-size:.76rem;
+      font-weight:600;
+      color:var(--gold);
+      line-height:1.4;
+    }
+    .form-group{margin-bottom:1.2rem}
+    .form-group label{
+      display:block;font-size:.78rem;font-weight:700;
+      color:var(--text-dark);margin-bottom:.45rem;letter-spacing:.03em;
+    }
+    .form-group input{
+      width:100%;padding:.85rem 1rem;
+      border:1.5px solid rgba(27,58,45,.15);border-radius:var(--rm);
+      font-family:var(--font-b);font-size:.92rem;
+      color:var(--text-dark);background:#fff;
+      transition:border-color .22s;
+    }
+    .form-group input:focus{outline:none;border-color:var(--gold)}
+    .form-group input::placeholder{color:var(--text-muted);opacity:.7}
+    .form-submit{
+      width:100%;padding:1.2rem;font-size:.92rem;
+      border-radius:var(--rm);justify-content:center;margin-top:.5rem;
+    }
+    .form-sub{text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:.9rem;line-height:1.55}
+    .form-privacy{text-align:center;font-size:.7rem;color:var(--text-muted);margin-top:.5rem;opacity:.75}
 
     /* ─── ASSESSMENT TEASER ─── */
     .assess-teaser{background:var(--forest);padding:4.5rem 0;text-align:center;position:relative;overflow:hidden}
@@ -676,8 +1128,17 @@
   <section class="result-hero" aria-labelledby="result-h2">
     <div class="result-hero-inner">
       <span class="result-hero-label" data-i18n="results.heroLabel">Jouw Mentale Routine profiel</span>
-      <span class="result-score-big" id="result-score-display" data-i18n-attr="aria-label:results.heroAria" aria-label="Totaalscore">--/100</span>
+      <div class="result-score-wrap">
+        <span class="result-score-big" id="result-score-display" data-i18n-attr="aria-label:results.heroAria" aria-label="Totaalscore">--</span>
+        <span class="result-score-denom">/100</span>
+      </div>
       <p class="result-score-sub" id="result-score-subtitle" data-i18n="results.scoreCalc">Berekening...</p>
+      <div class="result-hero-divider" aria-hidden="true"></div>
+      <div class="result-hero-badges">
+        <span class="result-hero-badge"><span class="result-hero-badge-dot"></span><span data-i18n="results.heroBadge0">8 mentale domeinen</span></span>
+        <span class="result-hero-badge"><span class="result-hero-badge-dot"></span><span data-i18n="results.heroBadge1">3 fases geanalyseerd</span></span>
+        <span class="result-hero-badge"><span class="result-hero-badge-dot"></span><span data-i18n="results.heroBadge2">Gebaseerd op 1.000+ golfers</span></span>
+      </div>
     </div>
   </section>
 
@@ -687,17 +1148,12 @@
       <div class="result-radar-hdr">
         <span class="section-label" data-i18n="results.radarLabel">Jouw profiel</span>
         <h2 id="radar-h2" data-i18n="results.radarH2">Jouw Mentale Routine in 3 fases</h2>
+        <p class="result-radar-intro" data-i18n="results.radarIntro">Elke slag bestaat uit 3 mentale fases. Hieronder zie je hoe jij scoort op elk van de drie.</p>
       </div>
-      <div class="radar-layout">
-        <div class="radar-chart-wrap">
-          <svg class="radar-chart-svg" id="radar-svg" viewBox="0 0 340 320" aria-hidden="true">
-            <!-- Triangle radar rendered by JS -->
-          </svg>
-        </div>
-        <div class="radar-phase-scores" id="radar-phase-scores">
-          <!-- Phase score cards rendered by JS -->
-        </div>
+      <div class="donut-row" id="donut-row" aria-label="Fasescores">
+        <!-- Rendered by JS -->
       </div>
+      <p class="result-radar-footnote" data-i18n="results.radarFootnote">De scores zijn gebaseerd op jouw antwoorden en gecorrigeerd voor handicap. De volledige uitsplitsing per domein staat in je PDF.</p>
     </div>
   </section>
 
@@ -707,6 +1163,7 @@
       <div style="text-align:center;margin-bottom:2rem">
         <span class="section-label" data-i18n="results.domainsLabel">Jouw 8 domeinen</span>
         <h2 id="domains-h2" style="font-size:clamp(1.5rem,2.8vw,2.2rem)" data-i18n="results.domainsH2">Hoe scoor je per domein?</h2>
+        <p class="result-domains-intro" data-i18n="results.domainsIntro">De 8 domeinen zijn de bouwstenen van je mentale routine. Elk domein heeft direct invloed op hoe je presteert op de baan.</p>
       </div>
       <div class="domain-bars" id="domain-bars">
         <!-- Rendered by JS -->
@@ -715,6 +1172,134 @@
         <p class="domains-cta-text" data-i18n="results.domainsLocked">6 van je 8 scores zijn vergrendeld</p>
         <a href="#optin-h2" class="btn btn-gold" data-i18n="results.domainsCta">Ontgrendel al je scores &rarr;</a>
         <p class="domains-cta-sub" data-i18n="results.domainsCtaSub">Gratis PDF met alle 8 scores, uitleg, tips en oefeningen</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PDF PREVIEW MOCKUP -->
+  <section class="pdf-preview-section" aria-labelledby="pdf-preview-h2">
+    <div class="pdf-preview-inner">
+      <span class="section-label" data-i18n="pdfPreview.label">Dit ontvang je</span>
+      <h2 id="pdf-preview-h2"><span data-i18n="pdfPreview.h2a">Jouw Mentale Quickscan</span> <em data-i18n="pdfPreview.h2b">— als PDF</em></h2>
+      <p class="pdf-preview-subtitle" data-i18n="pdfPreview.subtitle">8 pagina's premium rapport. Persoonlijk op basis van jouw antwoorden. Gratis in je inbox.</p>
+
+      <div class="pdf-mockup-wrap">
+        <!-- GESTILEERDE RAPPORT COVER MOCKUP -->
+        <div class="pdf-mockup" aria-hidden="true">
+          <div class="pdf-mockup-cover">
+
+            <!-- Cover top -->
+            <div class="pdf-cover-top">
+              <div class="pdf-cover-logo">Mental <span>Routine</span></div>
+              <div class="pdf-cover-title">Mentale Quickscan</div>
+              <div class="pdf-cover-subtitle">Persoonlijk Rapport</div>
+            </div>
+
+            <!-- Score row -->
+            <div class="pdf-cover-score-row">
+              <div>
+                <div class="pdf-cover-score-label">Totaalscore</div>
+                <div class="pdf-cover-score-denom">van 100</div>
+              </div>
+              <div>
+                <div class="pdf-cover-score-num" id="pdf-mockup-score">--</div>
+              </div>
+            </div>
+
+            <!-- Mini bars -->
+            <div class="pdf-cover-bars">
+              <div class="pdf-cover-bars-title">Jouw 8 domeinen</div>
+              <div class="pdf-mini-bar">
+                <div class="pdf-mini-bar-name">Focus</div>
+                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-0" style="width:65%;background:var(--fairway)"></div></div>
+                <div class="pdf-mini-bar-score" id="pdf-score-0">65</div>
+              </div>
+              <div class="pdf-mini-bar">
+                <div class="pdf-mini-bar-name">Concentratie</div>
+                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-1" style="width:58%;background:var(--fairway)"></div></div>
+                <div class="pdf-mini-bar-score" id="pdf-score-1">58</div>
+              </div>
+              <div class="pdf-mini-bar">
+                <div class="pdf-mini-bar-name">Overtuiging</div>
+                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-2" style="width:72%;background:var(--gold)"></div></div>
+                <div class="pdf-mini-bar-score" id="pdf-score-2">72</div>
+              </div>
+              <div class="pdf-mini-bar">
+                <div class="pdf-mini-bar-name">Vertrouwen</div>
+                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-3" style="width:49%;background:rgba(192,57,43,.6)"></div></div>
+                <div class="pdf-mini-bar-score" id="pdf-score-3">49</div>
+              </div>
+              <div class="pdf-mini-bar">
+                <div class="pdf-mini-bar-name">Beoordeling</div>
+                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-4" style="width:61%;background:var(--fairway)"></div></div>
+                <div class="pdf-mini-bar-score" id="pdf-score-4">61</div>
+              </div>
+            </div>
+
+            <!-- Locked rows (simulating locked content) -->
+            <div class="pdf-cover-locked">
+              <div class="pdf-locked-row">
+                <svg class="pdf-locked-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(247,243,236,.4)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <div class="pdf-locked-text" style="width:65%"></div>
+              </div>
+              <div class="pdf-locked-row">
+                <svg class="pdf-locked-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(247,243,236,.4)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <div class="pdf-locked-text" style="width:80%"></div>
+              </div>
+              <div class="pdf-locked-row">
+                <svg class="pdf-locked-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(247,243,236,.4)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <div class="pdf-locked-text" style="width:55%"></div>
+              </div>
+            </div>
+
+          </div><!-- /pdf-mockup-cover -->
+          <div class="pdf-mockup-shadow"></div>
+        </div><!-- /pdf-mockup -->
+
+        <!-- FEATURE LIST -->
+        <ul class="pdf-feature-list" data-i18n-attr="aria-label:pdfPreview.featuresAria" aria-label="Inhoud van het PDF rapport">
+          <li class="pdf-feature-item">
+            <div class="pdf-feature-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+            </div>
+            <div class="pdf-feature-text">
+              <div class="pdf-feature-title" data-i18n="pdfPreview.features.0.title">Jouw 8 domeinscores + uitleg</div>
+              <div class="pdf-feature-desc" data-i18n="pdfPreview.features.0.desc">Sterkste en zwakste punt concreet benoemd</div>
+            </div>
+          </li>
+          <li class="pdf-feature-item">
+            <div class="pdf-feature-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="pdf-feature-text">
+              <div class="pdf-feature-title" data-i18n="pdfPreview.features.1.title">Profiel per fase uitgelegd</div>
+              <div class="pdf-feature-desc" data-i18n="pdfPreview.features.1.desc">Pre-shot, de swing, post-shot — waar zit de winst?</div>
+            </div>
+          </li>
+          <li class="pdf-feature-item">
+            <div class="pdf-feature-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+            </div>
+            <div class="pdf-feature-text">
+              <div class="pdf-feature-title" data-i18n="pdfPreview.features.2.title">Persoonlijk advies</div>
+              <div class="pdf-feature-desc" data-i18n="pdfPreview.features.2.desc">Waar de meeste slagenwinst voor jou zit</div>
+            </div>
+          </li>
+          <li class="pdf-feature-item">
+            <div class="pdf-feature-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="pdf-feature-text">
+              <div class="pdf-feature-title" data-i18n="pdfPreview.features.3.title">Kortingscode voor het Assessment</div>
+              <div class="pdf-feature-desc" data-i18n="pdfPreview.features.3.desc">Exclusief voor quiz-deelnemers</div>
+            </div>
+          </li>
+        </ul>
+      </div><!-- /pdf-mockup-wrap -->
+
+      <div class="pdf-preview-cta">
+        <a href="#optin-h2" class="btn btn-gold btn-lg" data-i18n="pdfPreview.cta">Stuur mij de PDF &rarr;</a>
+        <p class="pdf-preview-trust" data-i18n="pdfPreview.trust">Gratis &middot; Geen spam &middot; Altijd opzegbaar</p>
       </div>
     </div>
   </section>
@@ -736,6 +1321,10 @@
 
       <div id="optin-form-wrap">
         <form class="optin-form" id="optin-form" novalidate aria-labelledby="optin-h2">
+          <div class="optin-urgency" aria-hidden="true">
+            <span class="optin-urgency-icon">&#9993;</span>
+            <span class="optin-urgency-text" data-i18n="pdfPreview.optinUrgency">Vul je naam en e-mail in — je PDF is binnen 5 minuten in je inbox</span>
+          </div>
           <div class="form-group">
             <label for="input-naam" data-i18n="optin.fields.name">Voornaam</label>
             <input type="text" id="input-naam" name="naam" data-i18n-attr="placeholder:optin.fields.namePh" placeholder="Jouw voornaam" autocomplete="given-name" required>
@@ -847,6 +1436,22 @@
         heading: '15+ jaar ervaring. 10 jaar golf-specifiek onderzoek.',
         body: 'Henk de Jong speelt 40+ jaar golf en bracht via zijn PGA-netwerk 1.000+ golfers bij het onderzoek. Berend Jansen is expert in psychometrische meetinstrumenten — het wetenschappelijk meten van waarom mensen doen wat ze doen. Samen bouwen zij al 15 jaar gedragsassessments. In 2016 startten zij MentalRoutine.com.'
       },
+      pdfPreview: {
+        label: 'Dit ontvang je',
+        h2a: 'Jouw Mentale Quickscan',
+        h2b: '— als PDF',
+        subtitle: '8 pagina\'s premium rapport. Persoonlijk op basis van jouw antwoorden. Gratis in je inbox.',
+        featuresAria: 'Inhoud van het PDF rapport',
+        features: [
+          { title: 'Jouw 8 domeinscores + uitleg', desc: 'Sterkste en zwakste punt concreet benoemd' },
+          { title: 'Profiel per fase uitgelegd', desc: 'Pre-shot, de swing, post-shot — waar zit de winst?' },
+          { title: 'Persoonlijk advies', desc: 'Waar de meeste slagenwinst voor jou zit' },
+          { title: 'Kortingscode voor het Assessment', desc: 'Exclusief voor quiz-deelnemers' }
+        ],
+        cta: 'Stuur mij de PDF →',
+        trust: 'Gratis · Geen spam · Altijd opzegbaar',
+        optinUrgency: 'Vul je naam en e-mail in — je PDF is binnen 5 minuten in je inbox'
+      },
       fcta: {
         ariaLabel: 'Afsluitende aanroep tot actie',
         h2a: '9 holes. 40 vragen.',
@@ -876,6 +1481,16 @@
         answersAria: 'Antwoordopties'
       },
       domains: ['Focus', 'Concentratie', 'Overtuiging', 'Vertrouwen', 'Beoordeling', 'Acceptatie', 'Analyse', 'Lering trekken'],
+      domainDescs: [
+        'Jouw vermogen om een duidelijk, specifiek doel te kiezen voor elke slag.',
+        'Jouw vermogen om afleidingen buiten te sluiten en volledig aanwezig te zijn.',
+        'De mate waarin je volledig achter je slagkeuze staat — zonder twijfel.',
+        'Hoe sterk je je eigen techniek en instinct vertrouwt op het moment van de swing.',
+        'Hoe accuraat en realistisch je de kans en risico van een slag inschat.',
+        'Jouw vermogen om een slechte slag los te laten en niet mee te nemen naar de volgende.',
+        'Hoe objectief je je eigen spel evalueert om patronen en valkuilen te herkennen.',
+        'De mate waarin je inzichten na een ronde omzet in gerichte oefening.'
+      ],
       questionPools: [
         // Focus
         { domain:0, skill:1, variants:['Voor elke slag kies ik een concreet, haalbaar doelgebied.','Bij elke putt kies ik een duidelijk punt op de green als doel.','Op de afslagplaats kies ik altijd een specifiek doelgebied op de fairway.'] },
@@ -961,13 +1576,19 @@
         ],
         radarLabel: 'Jouw profiel',
         radarH2: 'Jouw Mentale Routine in 3 fases',
+        radarIntro: 'Elke slag bestaat uit 3 mentale fases. Hieronder zie je hoe jij scoort op elk van de drie — van voorbereiding tot afronding.',
+        radarFootnote: 'De scores zijn gebaseerd op jouw antwoorden en direct vergelijkbaar met de 8 domeinen in je PDF rapport.',
         domainsLabel: 'Jouw 8 domeinen',
         domainsH2: 'Hoe scoor je per domein?',
+        domainsIntro: 'De 8 domeinen zijn de bouwstenen van je mentale routine. Elk domein heeft direct invloed op hoe je presteert op de baan.',
         domainsLocked: '6 van je 8 scores zijn vergrendeld',
         domainsCta: 'Ontgrendel al je scores →',
         domainsCtaSub: 'Ontvang gratis je persoonlijke Mentale Quickscan PDF',
         tagStrong: 'Sterkste',
         tagWeak: 'Zwakste',
+        heroBadge0: '8 mentale domeinen',
+        heroBadge1: '3 fases geanalyseerd',
+        heroBadge2: 'Gebaseerd op 1.000+ golfers',
         phaseLabels: ['Pre-shot routine', 'De swing', 'Post-shot routine'],
         phaseSubs: ['Focus & Concentratie', 'Overtuiging & Vertrouwen', 'Beoordeling, Acceptatie, Analyse & Lering'],
         phaseDescs: [
@@ -1081,6 +1702,22 @@
         heading: '15+ years of experience. 10 years of golf-specific research.',
         body: 'Henk de Jong has played golf for 40+ years and brought 1,000+ golfers into the research through his PGA network. Berend Jansen is an expert in psychometric measurement instruments — the science of why people do what they do. Together they have been building behavioral assessments for 15+ years. In 2016 they launched MentalRoutine.com.'
       },
+      pdfPreview: {
+        label: "What you'll receive",
+        h2a: 'Your Mental Quickscan',
+        h2b: '— as a PDF',
+        subtitle: '8 pages of premium report. Personalised based on your answers. Free in your inbox.',
+        featuresAria: 'Contents of the PDF report',
+        features: [
+          { title: 'Your 8 domain scores + explanation', desc: 'Strongest and weakest area clearly named' },
+          { title: 'Profile per phase explained', desc: 'Pre-shot, the swing, post-shot — where are the gains?' },
+          { title: 'Personal advice', desc: 'Where the biggest stroke gains are for you' },
+          { title: 'Discount code for the Assessment', desc: 'Exclusive for quiz participants' }
+        ],
+        cta: 'Send me the PDF →',
+        trust: 'Free · No spam · Cancel anytime',
+        optinUrgency: 'Enter your name and email — your PDF will be in your inbox within 5 minutes'
+      },
       fcta: {
         ariaLabel: 'Final call to action',
         h2a: '9 holes. 40 questions.',
@@ -1110,6 +1747,16 @@
         answersAria: 'Answer options'
       },
       domains: ['Focus', 'Concentration', 'Conviction', 'Trust', 'Judgement', 'Acceptance', 'Analysis', 'Learning'],
+      domainDescs: [
+        'Your ability to choose a clear, specific target for every shot.',
+        'Your ability to block out distractions and be fully present in the moment.',
+        'The degree to which you fully commit to your shot choice — without doubt.',
+        'How strongly you trust your technique and instincts at the moment of the swing.',
+        'How accurately and realistically you assess the odds and risk of a shot.',
+        'Your ability to release a bad shot and not carry it into the next one.',
+        'How objectively you evaluate your own game to spot patterns and habits.',
+        'The degree to which you turn post-round insights into targeted practice.'
+      ],
       questionPools: [
         // Focus
         { domain:0, skill:1, variants:['For every shot I choose a concrete, realistic target area.','For every putt I pick a clear spot on the green as my target.','On the tee I always choose a specific target area on the fairway.'] },
@@ -1195,13 +1842,19 @@
         ],
         radarLabel: 'Your profile',
         radarH2: 'Your Mental Routine across 3 phases',
+        radarIntro: 'Every shot involves 3 mental phases. Below you can see how you score across each one — from preparation to recovery.',
+        radarFootnote: 'Scores are based on your answers and directly comparable to the 8 areas in your PDF report.',
         domainsLabel: 'Your 8 areas',
         domainsH2: 'How do you score per area?',
+        domainsIntro: 'The 8 areas are the building blocks of your mental routine. Each one directly affects how you perform on the course.',
         domainsLocked: '6 of your 8 scores are locked',
         domainsCta: 'Unlock all your scores →',
         domainsCtaSub: 'Receive your free personal Mental Quickscan PDF',
         tagStrong: 'Strongest',
         tagWeak: 'Weakest',
+        heroBadge0: '8 mental areas',
+        heroBadge1: '3 phases analysed',
+        heroBadge2: 'Based on 1,000+ golfers',
         phaseLabels: ['Pre-shot routine', 'The swing', 'Post-shot routine'],
         phaseSubs: ['Focus & Concentration', 'Conviction & Trust', 'Judgement, Acceptance, Analysis & Learning'],
         phaseDescs: [
@@ -2125,7 +2778,7 @@
     var total = state.totalScore;
     var scores = state.domainScores;
 
-    document.getElementById('result-score-display').textContent = total + '/100';
+    document.getElementById('result-score-display').textContent = total;
 
     var sub = '';
     var subs = T.results.scoreSubs;
@@ -2134,12 +2787,91 @@
     }
     document.getElementById('result-score-subtitle').textContent = sub;
 
-    buildRadarSVG(state.phaseScores);
-    buildPhaseCards(state.phaseScores);
+    buildDonutCards(state.phaseScores);
     buildDomainBars(scores, state.strongestDomain, state.weakestDomain);
+    updatePdfMockup(total, scores);
   }
 
-  function buildRadarSVG(phaseScores) {
+  /* Update the PDF mockup cover with real scores */
+  function updatePdfMockup(total, scores) {
+    var mockupScore = document.getElementById('pdf-mockup-score');
+    if (mockupScore) mockupScore.textContent = total;
+
+    var domainNames = T.domains;
+    var colors = ['var(--fairway)', 'var(--fairway)', 'var(--gold)', 'rgba(192,57,43,.6)', 'var(--fairway)'];
+    for (var i = 0; i < 5; i++) {
+      var barEl = document.getElementById('pdf-bar-' + i);
+      var scoreEl = document.getElementById('pdf-score-' + i);
+      var nameEl = barEl && barEl.closest('.pdf-mini-bar') ? barEl.closest('.pdf-mini-bar').querySelector('.pdf-mini-bar-name') : null;
+      if (scores && scores[i] !== undefined) {
+        var score = scores[i];
+        var color = score >= 65 ? 'var(--fairway)' : score >= 45 ? 'var(--gold)' : 'rgba(192,57,43,.6)';
+        if (barEl) { barEl.style.width = score + '%'; barEl.style.background = color; }
+        if (scoreEl) scoreEl.textContent = score;
+        if (nameEl && domainNames && domainNames[i]) nameEl.textContent = domainNames[i];
+      }
+    }
+  }
+
+  function buildDonutCards(phaseScores) {
+    var PHASE_NAMES = T.results.phaseLabels;
+    var PHASE_SUBS = T.results.phaseSubs;
+    var PHASE_DESCS = T.results.phaseDescs;
+    var COLORS = ['#B8952A', '#1B3A2D', '#2C6E49'];
+    var NIVEAUS_NL = ['Aandachtspunt','Gemiddeld','Goed','Sterk','Uitstekend'];
+    var NIVEAUS_EN = ['Needs work','Average','Good','Strong','Excellent'];
+    var NIVEAUS = currentLang === 'nl' ? NIVEAUS_NL : NIVEAUS_EN;
+
+    function getNiveau(score) {
+      if (score < 40) return NIVEAUS[0];
+      if (score < 55) return NIVEAUS[1];
+      if (score < 70) return NIVEAUS[2];
+      if (score < 85) return NIVEAUS[3];
+      return NIVEAUS[4];
+    }
+    function getNiveauColor(score) {
+      if (score < 40) return '#c0392b';
+      if (score < 55) return '#e67e22';
+      if (score < 70) return '#B8952A';
+      if (score < 85) return '#1B3A2D';
+      return '#2C6E49';
+    }
+
+    // Half-donut: path along top of semicircle, r=54, total arc length = π×54 ≈ 169.6
+    var HALF_CIRC = Math.PI * 54;
+
+    function makeDonutSVG(score, color) {
+      var filled = (score / 100) * HALF_CIRC;
+      return '<svg width="120" height="64" viewBox="0 0 120 64" aria-hidden="true">'
+        + '<path d="M6,60 A54,54 0 0,1 114,60" fill="none" stroke="#e8e2d8" stroke-width="10" stroke-linecap="round"/>'
+        + '<path d="M6,60 A54,54 0 0,1 114,60" fill="none" stroke="' + color + '" stroke-width="10" stroke-linecap="round"'
+        + ' stroke-dasharray="' + filled.toFixed(1) + ' ' + (HALF_CIRC * 2).toFixed(1) + '"'
+        + '/>'
+        + '</svg>';
+    }
+
+    var container = document.getElementById('donut-row');
+    var html = '';
+    for (var i = 0; i < 3; i++) {
+      var score = phaseScores[i];
+      var color = COLORS[i];
+      var niveau = getNiveau(score);
+      var niveauColor = getNiveauColor(score);
+      html += '<div class="donut-card">'
+        + '<div class="donut-card-label">' + PHASE_NAMES[i] + '</div>'
+        + '<div class="donut-svg-wrap">'
+        +   makeDonutSVG(score, color)
+        +   '<div class="donut-score-overlay">' + score + '<sup>/100</sup></div>'
+        + '</div>'
+        + '<div class="donut-niveau" style="color:' + niveauColor + '">' + niveau + '</div>'
+        + '<div class="donut-domains-label">' + PHASE_SUBS[i] + '</div>'
+        + '<div class="donut-desc">' + PHASE_DESCS[i] + '</div>'
+        + '</div>';
+    }
+    container.innerHTML = html;
+  }
+
+  function buildRadarSVG_UNUSED(phaseScores) {
     var svg = document.getElementById('radar-svg');
     var cx = 170, cy = 160, maxR = 110;
     var n = 3;
@@ -2211,7 +2943,7 @@
     svg.innerHTML = svgContent;
   }
 
-  function buildPhaseCards(phaseScores) {
+  function buildPhaseCards_UNUSED(phaseScores) {
     var PHASE_NAMES = T.results.phaseLabels;
     var PHASE_SUBS = T.results.phaseSubs;
     var PHASE_DESCS = T.results.phaseDescs;
@@ -2278,10 +3010,14 @@
           ? '<span class="domain-bar-score">' + score + '/100</span>' + tag
           : '<span class="domain-bar-score">??</span>' + LOCK_SVG;
 
+        var desc = (isRevealed && T.domainDescs) ? '<span class="domain-bar-desc">' + T.domainDescs[i] + '</span>' : '';
         html += '<div class="domain-bar' + lockedClass + '">'
+          + '<div class="domain-bar-hdr">'
           + '<span class="domain-bar-name">' + T.domains[i] + '</span>'
-          + '<div class="domain-bar-track"><div class="domain-bar-fill" data-width="' + barWidth + '" style="width:0%;background:' + barColor + '"></div></div>'
           + scoreArea
+          + '</div>'
+          + desc
+          + '<div class="domain-bar-track"><div class="domain-bar-fill" data-width="' + barWidth + '" style="width:0%;background:' + barColor + '"></div></div>'
           + '</div>';
       });
 
