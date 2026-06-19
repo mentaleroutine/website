@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
@@ -422,6 +422,10 @@
       display:block;
       margin-top:-.3rem;
       margin-bottom:.9rem;
+    }
+    .result-score-benchmark{
+      font-size:.75rem;color:rgba(247,243,236,.45);
+      margin-top:.2rem;letter-spacing:.02em;
     }
     .result-score-sub{
       font-family:var(--font-d);
@@ -1261,6 +1265,7 @@
       <div class="result-score-wrap">
         <span class="result-score-big" id="result-score-display" data-i18n-attr="aria-label:results.heroAria" aria-label="Totaalscore">--</span>
         <span class="result-score-denom">/100</span>
+              <p class="result-score-benchmark" id="result-score-benchmark"></p>
       </div>
       <p class="result-score-sub" id="result-score-subtitle" data-i18n="results.scoreCalc">Berekening...</p>
       <p class="result-score-interpretation" id="result-score-interpretation"></p>
@@ -1435,18 +1440,7 @@
 
       <div class="pdf-preview-cta">
         <a href="#optin-h2" class="btn btn-gold btn-lg" data-i18n="pdfPreview.cta">Stuur mij de PDF &rarr;</a>
-        <p class="pdf-preview-trust" data-i18n="pdfPreview.trust">Gratis &middot; Geen spam &middot; Altijd opzegbaar</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOCIAL SHARE — shown after opt-in success, hidden by default -->
-  <section class="share-section" id="share-section" aria-labelledby="share-h2" hidden>
-    <div class="share-inner">
-      <h2 id="share-h2" class="share-title"><span data-i18n="share.title">Deel je score</span></h2>
-      <p class="share-sub" data-i18n="share.sub">Benieuwd hoe jouw speelpartners scoren?</p>
-      <div class="share-buttons" id="share-buttons">
-        <!-- Rendered by JS with personalised score -->
+        <p class="pdf-preview-trust" data-i18n="pdfPreview.trust">Gratis &middot; Direct in je inbox &middot; Geen spam</p>
       </div>
     </div>
   </section>
@@ -1455,7 +1449,7 @@
   <section class="optin-section" aria-labelledby="optin-h2">
     <div class="optin-inner">
       <div class="optin-hdr">
-        <span class="section-label" data-i18n="optin.label">Wil je weten wat dit betekent?</span>
+        <span class="section-label" data-i18n="optin.label">Jouw persoonlijke rapport — gratis</span>
         <h2 id="optin-h2"><span data-i18n="optin.h2a">Ontvang je persoonlijke</span> <em data-i18n="optin.h2b">Mentale Quickscan</em></h2>
         <p data-i18n="optin.intro">Je persoonlijke PDF rapport met:</p>
       </div>
@@ -1482,7 +1476,7 @@
             <label for="input-email" data-i18n="optin.fields.email">E-mailadres</label>
             <input type="email" id="input-email" name="email" data-i18n-attr="placeholder:optin.fields.emailPh" placeholder="jouw@email.nl" autocomplete="email" required>
           </div>
-          <button type="submit" class="btn btn-gold form-submit" data-i18n="optin.submit">Verstuur mijn uitslag &rarr;</button>
+          <button type="submit" class="btn btn-gold form-submit" data-i18n="optin.submit">Stuur mij de gratis PDF &rarr;</button>
           <p class="form-sub" data-i18n="optin.sub">Je ontvangt je PDF binnen enkele minuten. Check ook je spam-map.</p>
           <p class="form-privacy" data-i18n="optin.privacy">We delen je gegevens nooit met derden.</p>
         </form>
@@ -1535,13 +1529,16 @@
             <li class="thanks-tl-item">
               <div class="thanks-tl-dot"></div>
               <div class="thanks-tl-content">
-                <div class="thanks-tl-when" data-i18n="optin.tl4when">Klaar voor meer?</div>
-                <div class="thanks-tl-what" data-i18n="optin.tl4what">Het volledige Assessment gaat 10× dieper — met persoonlijk actieplan en trainingsrapporten</div>
+                <div class="thanks-tl-when" data-i18n="optin.tl4when">Daarna</div>
+                <div class="thanks-tl-what" data-i18n="optin.tl4what">In je PDF zit ook een kortingscode voor het volledige Assessment — voor als je verder wilt</div>
               </div>
             </li>
           </ol>
-          <a href="https://www.mentalroutine.com/assessment-standaard.html" class="btn btn-gold thanks-assess-btn" data-i18n="optin.nextAssessBtn">Bekijk het volledige Assessment &rarr;</a>
         </div>
+      <div class="thanks-share" id="thanks-share" style="display:none;margin-top:1.5rem;text-align:center">
+        <p class="thanks-share-label" id="thanks-share-label" style="font-size:.78rem;color:var(--text-muted);margin-bottom:.75rem"></p>
+        <div class="share-buttons" id="share-buttons"></div>
+      </div>
       </div>
     </div>
   </section>
@@ -1648,7 +1645,7 @@
           { title: 'Kortingscode voor het Assessment', desc: 'Exclusief voor quiz-deelnemers' }
         ],
         cta: 'Stuur mij de PDF →',
-        trust: 'Gratis · Geen spam · Altijd opzegbaar',
+        trust: 'Gratis · Direct in je inbox · Geen spam',
         optinUrgency: 'Vul je naam en e-mail in — je PDF is binnen enkele minuten in je inbox',
         scoreLabel: 'Totaalscore'
       },
@@ -1807,7 +1804,7 @@
         phaseBridge: 'Jouw totaalscore van {score}/100 bestaat uit 3 fases — elk meet een ander moment in jouw slagcyclus.'
       },
       optin: {
-        label: 'Wil je weten wat dit betekent?',
+        label: 'Jouw persoonlijke rapport — gratis',
         h2: 'Ontvang je Mentale Quickscan — gratis',
         h2a: 'Ontvang je persoonlijke',
         h2b: 'Mentale Quickscan',
@@ -1839,14 +1836,14 @@
         tl2what: 'Lees je profiel — focus op je zwakste domein en kies 1 tip',
         tl3when: 'Volgende ronde',
         tl3what: 'Pas 1 mentale aanpak toe op de baan — merk het verschil',
-        tl4when: 'Klaar voor meer?',
-        tl4what: 'Het volledige Assessment gaat 10× dieper — met persoonlijk actieplan en trainingsrapporten',
+        tl4when: 'Daarna',
+        tl4what: 'In je PDF zit ook een kortingscode voor het volledige Assessment — voor als je verder wilt',
         fields: {
           name: 'Voornaam', namePh: 'Jouw voornaam',
           email: 'E-mailadres', emailPh: 'jouw@email.nl',
           hcp: 'Exacte handicap', hcpPh: 'Bijv. 18.4'
         },
-        submit: 'Verstuur mijn uitslag →',
+        submit: 'Stuur mij de gratis PDF →',
         submitting: 'Bezig met versturen...',
         sub: 'Je ontvangt je PDF binnen enkele minuten. Check ook je spam-map.',
         privacy: 'We delen je gegevens nooit met derden.',
@@ -1951,7 +1948,7 @@
           { title: 'Discount code for the Assessment', desc: 'Exclusive for quiz participants' }
         ],
         cta: 'Send me the PDF →',
-        trust: 'Free · No spam · Cancel anytime',
+        trust: 'Free · Straight to your inbox · No spam',
         optinUrgency: 'Enter your name and email — your PDF will be in your inbox within minutes',
         scoreLabel: 'Total score'
       },
@@ -2110,7 +2107,7 @@
         phaseBridge: 'Your total score of {score}/100 is made up of 3 phases — each measuring a different moment in your shot cycle.'
       },
       optin: {
-        label: 'Want to know what this means?',
+        label: 'Your personal report — free',
         h2: 'Get your Mental Quickscan — free',
         h2a: 'Get your personal',
         h2b: 'Mental Quickscan',
@@ -2142,14 +2139,14 @@
         tl2what: 'Read your profile — focus on your weakest domain and pick 1 tip',
         tl3when: 'Next round',
         tl3what: 'Apply 1 mental strategy on the course — feel the difference',
-        tl4when: 'Ready for more?',
-        tl4what: 'The full Assessment goes 10× deeper — with a personal action plan and training reports',
+        tl4when: 'After that',
+        tl4what: 'Your PDF includes a discount code for the full Assessment — whenever you\'re ready',
         fields: {
           name: 'First name', namePh: 'Your first name',
           email: 'Email address', emailPh: 'you@email.com',
           hcp: 'Exact handicap', hcpPh: 'e.g. 18.4'
         },
-        submit: 'Send me my results →',
+        submit: 'Send me my free PDF →',
         submitting: 'Sending...',
         sub: "You'll receive your PDF within minutes. Check your spam folder too.",
         privacy: 'We never share your data with third parties.',
@@ -2265,6 +2262,11 @@
     if (resultsPhase && !resultsPhase.classList.contains('hidden')) {
       buildResultScreen();
     }
+    // Re-build share section if visible (fixes lang switch bug)
+    var shareEl = document.getElementById('thanks-share');
+    if (shareEl && shareEl.style.display !== 'none') {
+      buildShareSection(state.totalScore);
+    }
     // Update language toggle button labels
     document.querySelectorAll('.lang-toggle-btn').forEach(function(btn) {
       btn.textContent = T.langToggle.other;
@@ -2298,160 +2300,6 @@
   function getQuestionPools() {
     return T.questionPools;
   }
-  /* eslint-disable */
-  var __unused_OLD_POOLS = [
-    // Domain 0: Focus — Q1
-    { domain: 0, variants: [
-      'Als ik boven de bal sta, ben ik met mijn gedachten volledig bij d\u00e9ze slag.',
-      'Tijdens het adresseren is mijn hoofd helemaal leeg \u2014 alleen de slag telt.',
-      'Ik ben volledig aanwezig bij elke slag die ik doe, zonder afleiding van binnenuit.'
-    ]},
-    // Domain 0: Focus — Q2
-    { domain: 0, variants: [
-      'Ik kan gedachten aan eerdere holes of mijn score parkeren als ik een slag voorbereid.',
-      'Wat er op de vorige hole gebeurde, speelt niet door mijn hoofd als ik de volgende slag voorbereid.',
-      'Ik kan mijn score vergeten en me concentreren op de slag die voor me ligt.'
-    ]},
-    // Domain 0: Focus — Q3
-    { domain: 0, variants: [
-      'Ik laat me niet afleiden door wat er na deze slag of na deze ronde komt.',
-      'Gedachten over het eindresultaat of de laatste holes storen me niet tijdens het spelen.',
-      'Ik denk niet vooruit naar wat er nog moet komen \u2014 ik ben bij de slag van nu.'
-    ]},
-
-    // Domain 1: Concentratie — Q1
-    { domain: 1, variants: [
-      'Ik kan geluiden, medespelers en beweging om me heen buitensluiten tijdens mijn slag.',
-      'Externe prikkels \u2014 een vogel, een golfkar, iemand die praat \u2014 halen me niet uit mijn concentratie.',
-      'Wat er om me heen gebeurt raakt me niet als ik eenmaal in mijn routine zit.'
-    ]},
-    // Domain 1: Concentratie — Q2
-    { domain: 1, variants: [
-      'Als iemand praat of beweegt in mijn backswing, kan ik mijn concentratie vasthouden.',
-      'Onverwachte geluiden of bewegingen tijdens mijn swing brengen me niet van mijn stuk.',
-      'Zelfs als er iets onverwachts gebeurt net voor mijn slag, blijf ik gefocust.'
-    ]},
-    // Domain 1: Concentratie — Q3
-    { domain: 1, variants: [
-      'Ik merk dat ik een hele ronde lang mijn concentratieniveau kan vasthouden, ook na 14 holes.',
-      'Mijn concentratie op hole 16 is even scherp als op hole 1.',
-      'Ik verlies geen scherpte naarmate de ronde vordert \u2014 ook niet als ik moe word.'
-    ]},
-
-    // Domain 2: Overtuiging — Q1
-    { domain: 2, variants: [
-      'Als ik mijn club heb gekozen, sta ik daar volledig achter \u2014 geen twijfel meer.',
-      'Zodra ik mijn club uit de bag trek, is mijn keuze definitief \u2014 ik twijfel niet meer.',
-      'Ik maak mijn clubkeuze en ga er vol vertrouwen mee door, zonder aarzeling.'
-    ]},
-    // Domain 2: Overtuiging — Q2
-    { domain: 2, variants: [
-      'Ik kies een slagtype (fade, draw, punch) en voer dat uit zonder halverwege te veranderen.',
-      'Als ik een slagtype heb gekozen, houd ik daaraan vast \u2014 ook als ik boven de bal twijfel voel opkomen.',
-      'Mijn slagkeuze wijzigt niet meer als ik eenmaal sta \u2014 ik commit volledig.'
-    ]},
-    // Domain 2: Overtuiging — Q3
-    { domain: 2, variants: [
-      'Bij een moeilijke slag vertrouw ik op mijn slagkeuze, ook als er een veiliger optie is.',
-      'Ik durf de slag te kiezen die het beste past, ook als die riskanter is.',
-      'Ik kies niet automatisch de veilige optie \u2014 ik speel de slag die ik vertrouw.'
-    ]},
-
-    // Domain 3: Vertrouwen — Q1
-    { domain: 3, variants: [
-      'Bij een belangrijke slag \u2014 eerste tee, cruciale putt \u2014 vertrouw ik volledig op mijn swing.',
-      'Op beslissende momenten \u2014 een matchplay-putt, de eerste afslag \u2014 blijft mijn swing hetzelfde.',
-      'Als het echt telt, vertrouw ik op mijn lichaam en mijn techniek zonder na te denken.'
-    ]},
-    // Domain 3: Vertrouwen — Q2
-    { domain: 3, variants: [
-      'Na een paar slechte slagen behoud ik het vertrouwen dat de volgende goed kan zijn.',
-      'Een reeks slechte slagen ondermijnt mijn geloof in mijn swing niet fundamenteel.',
-      'Ik weet dat \u00e9\u00e9n slechte slag niets zegt over de volgende \u2014 mijn vertrouwen blijft intact.'
-    ]},
-    // Domain 3: Vertrouwen — Q3
-    { domain: 3, variants: [
-      'Ik durf in wedstrijdsituaties dezelfde slagen te spelen als op de driving range.',
-      'Mijn wedstrijdswing is dezelfde als mijn range-swing \u2014 ik verander niets onder druk.',
-      'Wat ik op de range kan, breng ik ook op de baan \u2014 ongeacht de situatie.'
-    ]},
-
-    // Domain 4: Beoordeling — Q1
-    { domain: 4, variants: [
-      'Na een slechte slag kan ik objectief beoordelen wat er technisch misging.',
-      'Ik analyseer een mislukte slag met mijn hoofd, niet met mijn emoties.',
-      'Ik kan rustig vaststellen wat er fout ging bij een slechte slag, zonder frustratie.'
-    ]},
-    // Domain 4: Beoordeling — Q2
-    { domain: 4, variants: [
-      'Ik beoordeel een slag op de beslissing en de uitvoering \u2014 niet alleen op het resultaat.',
-      'Een goed geslagen bal die slecht uitpakt frustreert me niet \u2014 ik beoordeel het proces.',
-      'Ik weet het verschil tussen een slechte beslissing en pech \u2014 en dat be\u00efnvloedt hoe ik reageer.'
-    ]},
-    // Domain 4: Beoordeling — Q3
-    { domain: 4, variants: [
-      'Ik kan het verschil zien tussen een mentale fout en een technische fout.',
-      'Na een slechte slag weet ik of het aan mijn hoofd lag of aan mijn techniek.',
-      'Ik herken wanneer een fout mentaal was en wanneer technisch \u2014 dat helpt me gericht verbeteren.'
-    ]},
-
-    // Domain 5: Acceptatie — Q1
-    { domain: 5, variants: [
-      'Na een dubbelbogey kan ik de volgende hole met een schone lei beginnen.',
-      'Een slechte hole laat ik achter me \u2014 als ik op de volgende tee sta is het verleden tijd.',
-      'Ik stap na een ramphole de volgende tee-box op alsof de ronde opnieuw begint.'
-    ]},
-    // Domain 5: Acceptatie — Q2
-    { domain: 5, variants: [
-      'Een slechte slag be\u00efnvloedt mijn stemming voor de rest van de ronde niet.',
-      'Mijn humeur op de baan wordt niet bepaald door individuele slechte slagen.',
-      'Ik laat een slechte slag mijn plezier in de rest van de ronde niet vergallen.'
-    ]},
-    // Domain 5: Acceptatie — Q3
-    { domain: 5, variants: [
-      'Als ik drie holes achtereen slecht speel, raak ik niet in een neerwaartse spiraal.',
-      'Een reeks slechte holes betekent niet automatisch dat de hele ronde verloren is voor mij.',
-      'Ik kan een negatieve reeks doorbreken en weer positief de volgende hole ingaan.'
-    ]},
-
-    // Domain 6: Analyse — Q1
-    { domain: 6, variants: [
-      'Na een ronde neem ik bewust de tijd om te evalueren wat er goed en fout ging.',
-      'Ik sta na een ronde stil bij wat er goed ging en wat beter kan \u2014 dat is een vast moment.',
-      'Na het binnenlopen op 18 evalueer ik mijn ronde structureel, niet alleen als het slecht ging.'
-    ]},
-    // Domain 6: Analyse — Q2
-    { domain: 6, variants: [
-      'Ik weet na elke ronde precies welke holes en slagen het verschil maakten.',
-      'Ik kan na een ronde aanwijzen welke 3\u20134 momenten het scoreverschil hebben bepaald.',
-      'Ik herinner me niet alleen de slechte slagen, maar ook de beslissende goede slagen van een ronde.'
-    ]},
-    // Domain 6: Analyse — Q3
-    { domain: 6, variants: [
-      'Ik onderscheid patronen in mijn spel \u2014 bijvoorbeeld dat ik altijd op hole 14\u201316 inzak.',
-      'Ik herken terugkerende patronen over meerdere rondes heen \u2014 zoals altijd slecht starten of eindigen.',
-      'Als ik terugkijk op meerdere rondes, zie ik duidelijke trends in wanneer mijn spel inzakt.'
-    ]},
-
-    // Domain 7: Lering trekken — Q1
-    { domain: 7, variants: [
-      'Op basis van eerdere rondes pas ik mijn voorbereiding of strategie concreet aan.',
-      'Inzichten uit eerdere rondes vertaal ik naar concrete veranderingen in mijn aanpak.',
-      'Wat ik leer van een ronde gebruik ik actief in mijn voorbereiding op de volgende.'
-    ]},
-    // Domain 7: Lering trekken — Q2
-    { domain: 7, variants: [
-      'Als ik een terugkerend probleem herken (bijv. slechte start), werk ik er gericht aan.',
-      'Patronen die ik in mijn spel ontdek, pak ik bewust aan \u2014 niet hopen dat het vanzelf beter gaat.',
-      'Ik onderneem actie als ik merk dat hetzelfde probleem steeds terugkomt in mijn rondes.'
-    ]},
-    // Domain 7: Lering trekken — Q3
-    { domain: 7, variants: [
-      'Ik heb een duidelijk beeld van wat ik de afgelopen maanden heb verbeterd in mijn spel.',
-      'Als iemand me vraagt wat ik het afgelopen jaar in mijn spel heb verbeterd, kan ik concreet antwoorden.',
-      'Ik kan specifieke voorbeelden noemen van hoe mijn spel zich de laatste tijd heeft ontwikkeld.'
-    ]}
-  ];
 
   /* ══════════════════════════════════
      SEGMENTATION HOLES (7, 8, 9)
@@ -2461,41 +2309,6 @@
       return { holeNum: 7 + i, title: s.title, text: s.text, answers: s.answers };
     });
   }
-  var __unused_OLD_SEG = [
-    {
-      holeNum: 7,
-      title: 'Hole 7 \u2014 Jouw profiel',
-      text: 'Wat beschrijft jouw golf het best?',
-      answers: [
-        'Puur recreatief \u2014 het gaat om plezier en gezelligheid',
-        'Sociaal met een competitief randje',
-        'Competitief \u2014 ik speel wedstrijden en wil winnen',
-        'Serieus amateur \u2014 ik investeer actief in mijn spel'
-      ]
-    },
-    {
-      holeNum: 8,
-      title: 'Hole 8 \u2014 Jouw ambitie',
-      text: 'Wat wil je het meest verbeteren aan je mentale golfspel?',
-      answers: [
-        'Consistentie \u2014 niet meer die enorme schommelingen per ronde',
-        'Scores \u2014 structureel lagere handicap',
-        'Plezier \u2014 minder frustratie, meer genieten',
-        'Drukbestendigheid \u2014 presteren als het er \u00e9\u00e9cht om gaat'
-      ]
-    },
-    {
-      holeNum: 9,
-      title: 'Hole 9 \u2014 Jouw golfleven',
-      text: 'Hoe ziet jouw golfleven eruit?',
-      answers: [
-        'Ik speel af en toe, wanneer het uitkomt',
-        'Ik speel wekelijks, vaste dag(en)',
-        'Ik speel meerdere keren per week',
-        'Ik speel \u00e9n oefen structureel'
-      ]
-    }
-  ];
 
   var TOTAL_HOLES = 9; // hole 0 = intake, holes 1-8 = 8 domeinen × 5 vragen
 
@@ -2506,7 +2319,6 @@
     currentHole: 0,
     holeQuestions: [],
     intakeAnswers: { geslacht: null, geboortejaar: null, handicap: null },
-    segAnswers: [null, null, null],
     domainScores: [],
     totalScore: 0,
     strongestDomain: 0,
@@ -2547,7 +2359,6 @@
     }
 
     state.intakeAnswers = { geslacht: null, geboortejaar: null, handicap: null };
-    state.segAnswers = [null, null, null];
     state.currentHole = 0;
     state.quizStartTime = Date.now();
     state.holeStartTime = Date.now();
@@ -2747,46 +2558,6 @@
     bindQuestionHoleEvents(holeIndex);
   }
 
-  /* ══════════════════════════════════
-     RENDER SEGMENTATION HOLE (holes 7-9)
-  ══════════════════════════════════ */
-  function renderSegmentationHole(wrap, holeIndex) {
-    var segIdx = holeIndex - 6; // 0, 1, 2
-    var seg = T.seg[segIdx];
-    var savedVal = state.segAnswers[segIdx];
-    var isLastHole = (holeIndex === TOTAL_HOLES - 1);
-
-    var LETTERS = ['A', 'B', 'C', 'D'];
-    var answersHtml = seg.answers.map(function(label, i) {
-      var isSelected = savedVal === i;
-      return '<button class="quiz-answer-btn' + (isSelected ? ' selected' : '') + '" '
-        + 'data-index="' + i + '" aria-pressed="' + isSelected + '">'
-        + '<span class="qa-letter" aria-hidden="true">' + LETTERS[i] + '</span>'
-        + '<span>' + label + '</span>'
-        + '</button>';
-    }).join('');
-
-    var hasAnswer = savedVal !== null;
-    var nextLabel = isLastHole ? T.hole.finishBtn : T.hole.nextBtn;
-    var nextAria = isLastHole ? T.hole.finishBtnAria : T.hole.nextBtnAria;
-
-    var html = '<div class="quiz-page" aria-label="' + seg.title + '">'
-      + '<div class="quiz-seg-number" aria-hidden="true">' + seg.title + '</div>'
-      + '<div class="quiz-seg-text">' + seg.text + '</div>'
-      + '<div class="quiz-answers" role="group" aria-label="' + T.hole.answersAria + '">' + answersHtml + '</div>'
-      + '<div class="quiz-nav">'
-      + '<button class="quiz-back-btn" id="quiz-back-btn" aria-label="' + T.hole.backBtnAria + '">'
-      + T.hole.backBtn
-      + '</button>'
-      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (hasAnswer ? '' : 'disabled') + ' aria-label="' + nextAria + '">'
-      + nextLabel
-      + '</button>'
-      + '</div>'
-      + '</div>';
-
-    wrap.innerHTML = html;
-    bindSegmentationHoleEvents(holeIndex, segIdx);
-  }
 
   /* ══════════════════════════════════
      EVENT BINDING
@@ -2824,38 +2595,6 @@
     }
   }
 
-  function bindSegmentationHoleEvents(holeIndex, segIdx) {
-    var wrap = document.getElementById('quiz-page-wrap');
-
-    wrap.querySelectorAll('.quiz-answer-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        handleSegAnswer(btn, segIdx);
-      });
-      btn.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleSegAnswer(btn, segIdx);
-        }
-      });
-    });
-
-    var backBtn = document.getElementById('quiz-back-btn');
-    if (backBtn) {
-      backBtn.addEventListener('click', function() {
-        state.currentHole = holeIndex - 1;
-        renderHole(state.currentHole);
-      });
-    }
-
-    var nextBtn = document.getElementById('quiz-next-btn');
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function() {
-        if (!nextBtn.disabled) {
-          goToNextHole(holeIndex);
-        }
-      });
-    }
-  }
 
   /* ══════════════════════════════════
      ANSWER HANDLERS
@@ -2885,21 +2624,6 @@
     }
   }
 
-  function handleSegAnswer(btn, segIdx) {
-    var answerIndex = parseInt(btn.getAttribute('data-index'), 10);
-    state.segAnswers[segIdx] = answerIndex;
-
-    var allBtns = btn.closest('.quiz-answers').querySelectorAll('.quiz-answer-btn');
-    allBtns.forEach(function(b) {
-      b.classList.remove('selected');
-      b.setAttribute('aria-pressed', 'false');
-    });
-    btn.classList.add('selected');
-    btn.setAttribute('aria-pressed', 'true');
-
-    var nextBtn = document.getElementById('quiz-next-btn');
-    if (nextBtn) nextBtn.disabled = false;
-  }
 
   function areAllHoleQuestionsAnswered(holeIndex) {
     var questions = state.holeQuestions[holeIndex];
@@ -2924,10 +2648,10 @@
       var elapsed = Math.round((Date.now() - state.quizStartTime) / 1000);
       state.quizDurationSeconds = elapsed;
       calculateResults();
-      saveQuizResults();
       buildResultScreen();
       showPhase('phase-results');
-      if (window.plausible) plausible('quiz_complete', { props: { seconds: String(elapsed), score: String(state.totalScore) } });
+      if (window.plausible) plausible('quiz_complete', { props: { seconds: String(elapsed), score: String(state.totalScore), lang: currentLang } });
+      saveQuizResults();
     }
   }
 
@@ -3015,6 +2739,17 @@
         });
       });
     }
+    // Store scores locally so opt-in can include them if session_id never arrives
+    try {
+      sessionStorage.setItem('mr_quiz_scores', JSON.stringify({
+        totaalscore: state.totalScore,
+        domein_scores: state.domainScores,
+        fase_scores: state.phaseScores,
+        sterkste_domein: state.strongestDomain,
+        zwakste_domein: state.weakestDomain,
+        lang: currentLang
+      }));
+    } catch(e) {}
 
     var payload = {
       geslacht: state.intakeAnswers ? state.intakeAnswers.geslacht : null,
@@ -3071,6 +2806,13 @@
       }
       interpEl.textContent = interpText.replace('{weak}', weakName);
     }
+    var bench = document.getElementById('result-score-benchmark');
+    if (bench) {
+      var avgLine = currentLang === 'nl'
+        ? 'Gemiddelde golfer: 52 · Top 25%: 68+'
+        : 'Average golfer: 52 · Top 25%: 68+';
+      bench.textContent = avgLine;
+    }
 
     // Phase bridge text (improvement 1 + 5)
     var bridgeEl = document.getElementById('result-phase-bridge');
@@ -3085,9 +2827,11 @@
   }
 
   function buildShareSection(score) {
-    var section = document.getElementById('share-section');
+    var section = document.getElementById('thanks-share');
     if (!section) return;
-    section.removeAttribute('hidden');
+    section.style.display = 'block';
+    var labelEl = document.getElementById('thanks-share-label');
+    if (labelEl) labelEl.textContent = currentLang === 'nl' ? 'Benieuwd hoe jouw speelpartners scoren?' : 'Curious how your playing partners score?';
     var msgNl = 'Ik scoorde ' + score + '/100 op de gratis Mentale Golf Quiz van MentalRoutine. Wat is jouw score? 👉 mentalroutine.com/quiz.html';
     var msgEn = 'I scored ' + score + '/100 on the free Mental Golf Quiz by MentalRoutine. What\'s yours? 👉 mentalroutine.com/quiz.html';
     var msg = currentLang === 'nl' ? msgNl : msgEn;
@@ -3222,110 +2966,7 @@
     container.innerHTML = html;
   }
 
-  function buildRadarSVG_UNUSED(phaseScores) {
-    var svg = document.getElementById('radar-svg');
-    var cx = 170, cy = 160, maxR = 110;
-    var n = 3;
-    var PHASE_LABELS = T.results.phaseLabels;
 
-    function getPoint(index, radius) {
-      var angle = (Math.PI * 2 * index / n) - (Math.PI / 2);
-      return {
-        x: cx + radius * Math.cos(angle),
-        y: cy + radius * Math.sin(angle)
-      };
-    }
-
-    function polygonPoints(radius) {
-      var pts = [];
-      for (var i = 0; i < n; i++) {
-        var p = getPoint(i, radius);
-        pts.push(p.x.toFixed(2) + ',' + p.y.toFixed(2));
-      }
-      return pts.join(' ');
-    }
-
-    var svgContent = '';
-
-    // Grid triangles
-    var gridLevels = [0.2, 0.4, 0.6, 0.8, 1.0];
-    gridLevels.forEach(function(level) {
-      svgContent += '<polygon class="radar-grid-polygon" points="' + polygonPoints(maxR * level) + '"/>';
-    });
-
-    // Axes
-    for (var i = 0; i < n; i++) {
-      var outer = getPoint(i, maxR);
-      svgContent += '<line class="radar-axis" x1="' + cx + '" y1="' + cy + '" x2="' + outer.x.toFixed(2) + '" y2="' + outer.y.toFixed(2) + '"/>';
-    }
-
-    // Score shape
-    var shapePoints = [];
-    for (var d = 0; d < n; d++) {
-      var normalized = phaseScores[d] / 100;
-      var p = getPoint(d, maxR * Math.max(normalized, 0.05));
-      shapePoints.push(p.x.toFixed(2) + ',' + p.y.toFixed(2));
-    }
-    svgContent += '<polygon class="radar-shape-fill" points="' + shapePoints.join(' ') + '"/>';
-
-    // Score dots
-    for (var dd = 0; dd < n; dd++) {
-      var norm = phaseScores[dd] / 100;
-      var dp = getPoint(dd, maxR * Math.max(norm, 0.05));
-      svgContent += '<circle cx="' + dp.x.toFixed(2) + '" cy="' + dp.y.toFixed(2) + '" r="5" fill="var(--forest)" stroke="#fff" stroke-width="2"/>';
-    }
-
-    // Labels
-    var labelRadius = maxR + 28;
-    for (var li = 0; li < n; li++) {
-      var lp = getPoint(li, labelRadius);
-      var anchor = 'middle';
-      var lx = lp.x;
-      var ly = lp.y;
-      if (li === 0) { ly -= 6; }
-      if (li === 1) { lx += 8; anchor = 'start'; }
-      if (li === 2) { lx -= 8; anchor = 'end'; }
-      svgContent += '<text class="radar-label" x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" text-anchor="' + anchor + '">' + PHASE_LABELS[li] + '</text>';
-      // Score under label
-      var sy = ly + 15;
-      svgContent += '<text class="radar-label" x="' + lx.toFixed(1) + '" y="' + sy.toFixed(1) + '" text-anchor="' + anchor + '" style="font-size:13px;fill:var(--forest);font-weight:700">' + phaseScores[li] + '/100</text>';
-    }
-
-    svg.innerHTML = svgContent;
-  }
-
-  function buildPhaseCards_UNUSED(phaseScores) {
-    var PHASE_NAMES = T.results.phaseLabels;
-    var PHASE_SUBS = T.results.phaseSubs;
-    var PHASE_DESCS = T.results.phaseDescs;
-    var __unused_OLD_PHASE_NAMES = ['Pre-shot routine', 'De swing', 'Post-shot routine'];
-    var __unused_OLD_PHASE_SUBS = [
-      'Focus & Concentratie',
-      'Overtuiging & Vertrouwen',
-      'Beoordeling, Acceptatie, Analyse & Lering'
-    ];
-    var __unused_OLD_PHASE_DESCS = [
-      'Hoe goed bereid je elke slag mentaal voor? Kun je afleidingen buitensluiten en volledig bij déze slag zijn?',
-      'Sta je achter je keuze en vertrouw je je lichaam op het moment dat het telt?',
-      'Hoe ga je om met het resultaat? Kun je loslaten, analyseren en leren \u2014 zonder emotie?'
-    ];
-    var container = document.getElementById('radar-phase-scores');
-    var html = '';
-    for (var i = 0; i < 3; i++) {
-      html += '<div class="phase-score-card">'
-        + '<div class="phase-score-left">'
-        +   '<div class="phase-val">' + phaseScores[i] + '</div>'
-        +   '<div class="phase-val-sub">/100</div>'
-        + '</div>'
-        + '<div class="phase-score-right">'
-        +   '<div class="phase-name">' + PHASE_NAMES[i] + '</div>'
-        +   '<div class="phase-sub">' + PHASE_SUBS[i] + '</div>'
-        +   '<div class="phase-desc">' + PHASE_DESCS[i] + '</div>'
-        + '</div>'
-        + '</div>';
-    }
-    container.innerHTML = html;
-  }
 
   function buildDomainBars(scores, strongIdx, weakIdx) {
     var container = document.getElementById('domain-bars');
@@ -3439,17 +3080,23 @@
     var email = document.getElementById('input-email').value.trim();
     var handicap = (state.intakeAnswers && state.intakeAnswers.handicap !== null) ? String(state.intakeAnswers.handicap) : '';
 
-    if (!naam || !email) {
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!naam || !email || !emailOk) {
       if (!naam) document.getElementById('input-naam').focus();
       else document.getElementById('input-email').focus();
       return;
     }
 
-    // Build opt-in payload — scores already saved via saveQuizResults(), only link naam+email
+    // Build opt-in payload — link naam+email to session; include scores as fallback if session not yet saved
+    var fallbackScores = null;
+    if (!state.quizSessionId) {
+      try { fallbackScores = JSON.parse(sessionStorage.getItem('mr_quiz_scores') || 'null'); } catch(e) {}
+    }
     var payload = {
       session_id: state.quizSessionId || null,
       naam: naam,
       email: email,
+      scores: fallbackScores,
     };
 
     // Disable button while sending
