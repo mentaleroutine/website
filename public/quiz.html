@@ -17,10 +17,13 @@
       --cream:#F7F3EC;--cream-dark:#EDE8DF;
       --gold:#B8952A;--gold-light:#D4AF50;
       --charcoal:#111814;--text-dark:#1A2E22;--text-body:#3A4A3E;--text-muted:#6B7A6E;
+      --muted:#6B7A6E;
+      --border:rgba(27,58,45,.1);
       --red-soft:#C0392B;
       --font-d:'Cormorant Garamond',Georgia,serif;
       --font-b:'DM Sans',system-ui,sans-serif;
       --font-s:'Bebas Neue',sans-serif;
+      --font-h:'DM Sans',system-ui,sans-serif;
       --r:4px;--rm:10px;--rl:18px;
       --sh:0 2px 12px rgba(27,58,45,.09);--shm:0 8px 36px rgba(27,58,45,.15);--shl:0 24px 64px rgba(27,58,45,.22);
       --t:.35s cubic-bezier(.4,0,.2,1);
@@ -343,11 +346,22 @@
     .domains-cta-text{font-family:var(--font-d);font-size:clamp(1.1rem,2vw,1.4rem);color:var(--text-dark);font-weight:500;margin-bottom:.8rem;font-style:italic}
     .domains-cta-sub{font-size:.82rem;color:var(--text-muted);margin-top:.7rem}
 
-    .optin-thanks{text-align:center;background:#fff;border-radius:var(--rl);padding:3rem 2rem;box-shadow:var(--sh);display:none}
+    .optin-thanks{
+      text-align:center;background:#fff;border-radius:20px;
+      padding:2.8rem 2.2rem 2.4rem;
+      box-shadow:0 32px 80px rgba(0,0,0,.4),0 0 0 1px rgba(184,149,42,.15);
+      display:none;
+    }
     .optin-thanks.visible{display:block}
-    .thanks-icon{font-size:2.5rem;margin-bottom:1rem;display:block}
-    .thanks-title{font-family:var(--font-d);font-size:1.7rem;font-weight:600;color:var(--forest);margin-bottom:.6rem}
-    .thanks-body{font-size:.92rem;color:var(--text-muted);line-height:1.65;margin-bottom:1.4rem}
+    .thanks-icon{
+      font-size:0;display:inline-flex;align-items:center;justify-content:center;
+      width:52px;height:52px;border-radius:50%;
+      background:rgba(44,110,73,.12);border:2px solid rgba(44,110,73,.3);
+      color:#2C6E49;margin-bottom:1.2rem;
+    }
+    .thanks-icon::before{content:'✓';font-size:1.5rem;font-weight:800;line-height:1}
+    .thanks-title{font-family:var(--font-d);font-size:2rem;font-weight:600;color:var(--forest);margin-bottom:.5rem;line-height:1.15}
+    .thanks-body{font-size:.9rem;color:var(--text-muted);line-height:1.65;margin-bottom:0}
     .thanks-link{color:var(--gold);font-weight:600;text-decoration:underline;text-underline-offset:2px}
     .thanks-link:hover{color:var(--gold-light)}
 
@@ -454,49 +468,72 @@
 
     /* ── HALF-DONUT FASE CARDS ── */
     .donut-row{
-      display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;
+      display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;
     }
     .donut-card{
       background:#fff;border-radius:16px;
-      border:1px solid var(--border);
-      box-shadow:0 2px 16px rgba(0,0,0,.06);
-      padding:1.5rem 1.25rem 1.25rem;
-      flex:1;min-width:190px;max-width:240px;
+      border:1px solid rgba(27,58,45,.09);
+      box-shadow:0 4px 24px rgba(27,58,45,.08);
+      padding:1.5rem 1.25rem 1.35rem;
+      flex:1;min-width:200px;max-width:230px;
       display:flex;flex-direction:column;align-items:center;
       text-align:center;
+      transition:transform .25s,box-shadow .25s;
     }
+    .donut-card:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(27,58,45,.13)}
     .donut-card-label{
-      font-size:.68rem;font-weight:700;letter-spacing:.12em;
-      text-transform:uppercase;color:var(--muted);
-      margin-bottom:1rem;
+      font-size:.66rem;font-weight:700;letter-spacing:.13em;
+      text-transform:uppercase;color:var(--text-muted);
+      margin-bottom:1.1rem;
     }
-    .donut-svg-wrap{position:relative;width:120px;height:64px;margin-bottom:.5rem}
-    .donut-svg-wrap svg{overflow:visible}
-    .donut-score-overlay{
-      position:absolute;bottom:0;left:50%;transform:translateX(-50%);
-      font-family:var(--font-h);font-size:1.9rem;font-weight:700;
-      line-height:1;color:var(--text-dark);white-space:nowrap;
+    /* SVG wrap: 120×70px, score number lives below the arc */
+    .donut-svg-wrap{
+      width:120px;height:70px;
+      position:relative;
+      margin-bottom:0;
     }
-    .donut-score-overlay sup{font-size:.75rem;font-weight:400;color:var(--muted);vertical-align:super}
+    .donut-svg-wrap svg{display:block}
+    /* Score sits in the flat bottom area of the half-donut */
+    .donut-score-num{
+      font-family:var(--font-s);
+      font-size:2.2rem;
+      line-height:1;
+      color:var(--text-dark);
+      margin-top:.15rem;
+    }
+    .donut-score-denom{
+      font-size:.65rem;font-weight:600;
+      color:var(--text-muted);letter-spacing:.06em;
+      text-transform:uppercase;margin-top:.1rem;margin-bottom:.45rem;
+    }
     .donut-niveau{
-      font-size:.72rem;font-weight:700;letter-spacing:.1em;
-      text-transform:uppercase;margin:.5rem 0 .75rem;
+      font-size:.68rem;font-weight:700;letter-spacing:.1em;
+      text-transform:uppercase;
+      padding:.25rem .7rem;border-radius:20px;
+      margin-bottom:.9rem;
     }
+    .donut-niveau-low{background:rgba(192,57,43,.1);color:#c0392b}
+    .donut-niveau-med{background:rgba(230,126,34,.1);color:#e67e22}
+    .donut-niveau-good{background:rgba(184,149,42,.12);color:#8a6a10}
+    .donut-niveau-strong{background:rgba(27,58,45,.1);color:#1B3A2D}
+    .donut-niveau-top{background:rgba(44,110,73,.12);color:#2C6E49}
+    .donut-divider{width:32px;height:1px;background:rgba(27,58,45,.1);margin:0 auto .75rem}
     .donut-domains-label{
-      font-size:.75rem;color:var(--muted);font-weight:600;
-      margin-bottom:.35rem;
-    }
-    .donut-domains-list{
-      font-size:.78rem;color:var(--text-dark);line-height:1.5;
+      font-size:.7rem;color:var(--text-muted);font-weight:600;letter-spacing:.04em;
+      margin-bottom:.3rem;
     }
     .donut-desc{
-      font-size:.8rem;color:var(--muted);line-height:1.55;
-      margin-top:.6rem;border-top:1px solid var(--border);
-      padding-top:.6rem;text-align:left;
+      font-size:.78rem;color:var(--text-muted);line-height:1.55;
+      padding:0 .1rem;text-align:center;
     }
-    @media(max-width:520px){
-      .donut-row{flex-direction:column;align-items:center}
-      .donut-card{max-width:100%;width:100%}
+    @media(max-width:560px){
+      .donut-row{flex-direction:column;align-items:stretch;gap:1rem}
+      .donut-card{max-width:100%;flex-direction:row;text-align:left;padding:1.1rem 1.25rem;align-items:flex-start;gap:1.1rem}
+      .donut-card-label{margin-bottom:.3rem}
+      .donut-svg-wrap{width:90px;height:52px;flex-shrink:0}
+      .donut-score-num{font-size:1.7rem}
+      .donut-desc{text-align:left}
+      .donut-divider{display:none}
     }
 
     /* ═══════════════════════════════
@@ -778,88 +815,130 @@
     }
 
     /* ═══════════════════════════════
-       OPTIN SECTION — IMPROVED
+       OPTIN SECTION — HIGH-CONVERSION
     ═══════════════════════════════ */
     .optin-section{
-      background:var(--cream);
-      padding:5rem 0;
+      background:var(--forest);
+      padding:5.5rem 0 6rem;
       position:relative;
+      overflow:hidden;
     }
     .optin-section::before{
-      content:'';position:absolute;top:0;left:0;right:0;height:3px;
-      background:linear-gradient(90deg,transparent,rgba(184,149,42,.3),transparent);
+      content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 65% 70% at 50% 0%,rgba(61,122,90,.2) 0%,transparent 60%),
+        radial-gradient(ellipse 80% 50% at 50% 110%,rgba(184,149,42,.09) 0%,transparent 55%),
+        linear-gradient(175deg,#1B3A2D 0%,#0f1f16 100%);
+      pointer-events:none;
     }
-    .optin-inner{max-width:520px;margin:0 auto;padding:0 1.5rem}
-    .optin-hdr{text-align:center;margin-bottom:2rem}
+    /* Subtle ring decoration */
+    .optin-section::after{
+      content:'';position:absolute;left:50%;top:50%;
+      transform:translate(-50%,-50%);
+      width:900px;height:900px;border-radius:50%;
+      border:1px solid rgba(184,149,42,.05);
+      box-shadow:0 0 0 120px rgba(184,149,42,.025),0 0 0 280px rgba(184,149,42,.015);
+      pointer-events:none;
+    }
+    .optin-inner{position:relative;z-index:2;max-width:560px;margin:0 auto;padding:0 1.5rem}
+
+    /* Header */
+    .optin-hdr{text-align:center;margin-bottom:1.8rem}
+    .optin-hdr .section-label{color:var(--gold-light)}
     .optin-hdr h2{
-      font-size:clamp(1.8rem,3.2vw,2.6rem);
-      margin-bottom:.65rem;
-      color:var(--text-dark);
+      font-size:clamp(2rem,4vw,3.2rem);
+      margin-bottom:.7rem;
+      color:var(--cream);
     }
-    .optin-hdr p{color:var(--text-muted);font-size:.95rem}
+    .optin-hdr h2 em{color:var(--gold);font-style:italic}
+    .optin-hdr p{color:rgba(247,243,236,.65);font-size:.95rem;line-height:1.65}
+
+    /* Checklist — outside the form, dark bg */
     .optin-checklist{
       list-style:none;
       margin-bottom:2rem;
-      display:flex;flex-direction:column;gap:.65rem;
-      background:rgba(27,58,45,.04);
-      border:1px solid rgba(27,58,45,.07);
+      display:flex;flex-direction:column;gap:.7rem;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(184,149,42,.2);
       border-radius:var(--rm);
-      padding:1.2rem 1.4rem;
+      padding:1.3rem 1.5rem;
     }
     .optin-checklist li{
-      display:flex;align-items:flex-start;gap:.7rem;
-      font-size:.88rem;color:var(--text-body);line-height:1.5;
+      display:flex;align-items:flex-start;gap:.75rem;
+      font-size:.9rem;color:rgba(247,243,236,.88);line-height:1.5;
     }
-    .optin-check{color:var(--fairway);font-weight:800;font-size:.95rem;flex-shrink:0;margin-top:.05rem}
+    .optin-check{
+      width:18px;height:18px;
+      border-radius:50%;
+      background:rgba(184,149,42,.2);
+      border:1px solid rgba(184,149,42,.5);
+      display:inline-flex;align-items:center;justify-content:center;
+      flex-shrink:0;margin-top:.1rem;
+      color:var(--gold-light);font-size:.65rem;font-weight:800;
+    }
 
+    /* The form card */
     .optin-form{
       background:#fff;
-      border-radius:var(--rl);
-      padding:2.2rem 2rem;
-      box-shadow:var(--shm);
-      border:1px solid rgba(27,58,45,.08);
+      border-radius:20px;
+      padding:2.4rem 2.2rem 2rem;
+      box-shadow:0 32px 80px rgba(0,0,0,.4),0 0 0 1px rgba(184,149,42,.15);
     }
     .optin-urgency{
       display:flex;
       align-items:center;
-      gap:.6rem;
+      gap:.65rem;
       background:rgba(184,149,42,.1);
-      border:1px solid rgba(184,149,42,.25);
+      border:1px solid rgba(184,149,42,.3);
       border-radius:var(--r);
-      padding:.65rem 1rem;
-      margin-bottom:1.4rem;
+      padding:.7rem 1rem;
+      margin-bottom:1.5rem;
     }
-    .optin-urgency-icon{
-      font-size:.9rem;
-      flex-shrink:0;
-    }
+    .optin-urgency-icon{font-size:1rem;flex-shrink:0}
     .optin-urgency-text{
       font-family:var(--font-b);
-      font-size:.76rem;
+      font-size:.78rem;
       font-weight:600;
       color:var(--gold);
       line-height:1.4;
     }
-    .form-group{margin-bottom:1.2rem}
+    .form-group{margin-bottom:1.25rem}
     .form-group label{
       display:block;font-size:.78rem;font-weight:700;
-      color:var(--text-dark);margin-bottom:.45rem;letter-spacing:.03em;
+      color:var(--text-dark);margin-bottom:.5rem;letter-spacing:.03em;
     }
     .form-group input{
-      width:100%;padding:.85rem 1rem;
-      border:1.5px solid rgba(27,58,45,.15);border-radius:var(--rm);
-      font-family:var(--font-b);font-size:.92rem;
-      color:var(--text-dark);background:#fff;
-      transition:border-color .22s;
+      width:100%;padding:.95rem 1.1rem;
+      border:2px solid rgba(27,58,45,.12);border-radius:var(--rm);
+      font-family:var(--font-b);font-size:.95rem;
+      color:var(--text-dark);background:#fafaf8;
+      transition:border-color .22s,background .22s,box-shadow .22s;
     }
-    .form-group input:focus{outline:none;border-color:var(--gold)}
-    .form-group input::placeholder{color:var(--text-muted);opacity:.7}
+    .form-group input:focus{
+      outline:none;border-color:var(--gold);
+      background:#fff;
+      box-shadow:0 0 0 3px rgba(184,149,42,.15);
+    }
+    .form-group input::placeholder{color:var(--text-muted);opacity:.65}
     .form-submit{
-      width:100%;padding:1.2rem;font-size:.92rem;
-      border-radius:var(--rm);justify-content:center;margin-top:.5rem;
+      width:100%;padding:1.3rem;font-size:.95rem;letter-spacing:.08em;
+      border-radius:var(--rm);justify-content:center;margin-top:.65rem;
+      box-shadow:0 8px 32px rgba(184,149,42,.45);
     }
-    .form-sub{text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:.9rem;line-height:1.55}
-    .form-privacy{text-align:center;font-size:.7rem;color:var(--text-muted);margin-top:.5rem;opacity:.75}
+    .form-submit:hover{transform:translateY(-2px);box-shadow:0 14px 48px rgba(184,149,42,.55)}
+    .form-sub{text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:1rem;line-height:1.55}
+    .form-privacy{text-align:center;font-size:.7rem;color:var(--text-muted);margin-top:.5rem;opacity:.7}
+
+    /* Trust strip under form */
+    .optin-trust-strip{
+      display:flex;justify-content:center;gap:1.5rem;
+      margin-top:1.6rem;flex-wrap:wrap;
+    }
+    .optin-trust-item{
+      display:flex;align-items:center;gap:.4rem;
+      font-size:.74rem;color:rgba(247,243,236,.45);font-weight:500;
+    }
+    .optin-trust-item svg{opacity:.5;flex-shrink:0}
 
     /* ─── ASSESSMENT TEASER ─── */
     .assess-teaser{background:var(--forest);padding:4.5rem 0;text-align:center;position:relative;overflow:hidden}
@@ -893,8 +972,8 @@
     .result-score-interpretation{font-size:.95rem;color:rgba(247,243,236,.75);max-width:480px;margin:.9rem auto 0;line-height:1.65;text-align:center}
     .result-phase-bridge{font-size:.85rem;color:var(--gold);font-weight:600;letter-spacing:.04em;text-align:center;margin-bottom:.5rem}
     /* ── IMPROVEMENT 4: "what now" block after opt-in thanks ── */
-    .thanks-next-steps{margin-top:1.5rem;text-align:left;background:rgba(27,58,45,.05);border-radius:10px;padding:1.25rem 1.5rem}
-    .thanks-next-label{font-family:var(--font-b);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+    .thanks-next-steps{margin-top:1.5rem;text-align:left;background:rgba(27,58,45,.04);border:1px solid rgba(27,58,45,.08);border-radius:12px;padding:1.25rem 1.5rem}
+    .thanks-next-label{font-family:var(--font-b);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:block}
     .thanks-steps-list{padding-left:1.2rem;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.2rem}
     .thanks-steps-list li{font-size:.88rem;color:var(--text-dark);line-height:1.5}
     .btn-outline-gold{background:transparent;border:1.5px solid var(--gold);color:var(--gold);padding:.6rem 1.25rem;border-radius:6px;font-family:var(--font-b);font-size:.82rem;font-weight:700;letter-spacing:.05em;text-decoration:none;display:inline-block;transition:background .2s,color .2s}
@@ -1322,14 +1401,16 @@
     <div class="optin-inner">
       <div class="optin-hdr">
         <span class="section-label" data-i18n="optin.label">Wil je weten wat dit betekent?</span>
-        <h2 id="optin-h2" data-i18n="optin.h2">Ontvang je volledige uitslag &mdash; gratis</h2>
-        <p data-i18n="optin.intro">Je persoonlijke PDF met:</p>
+        <h2 id="optin-h2"><span data-i18n="optin.h2a">Ontvang je persoonlijke</span> <em data-i18n="optin.h2b">Mentale Quickscan</em></h2>
+        <p data-i18n="optin.intro">Je persoonlijke PDF rapport met:</p>
       </div>
-      <ul class="optin-checklist" data-i18n-attr="aria-label:optin.checklistAria" aria-label="Inhoud van de PDF">
-        <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.0">Jouw 8 scores + uitleg</span></li>
-        <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.1">3 oefeningen die je direct kunt toepassen</span></li>
-        <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.2">Persoonlijke tips op basis van jouw Mentale Routine profiel</span></li>
-        <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.3">Kortingscoupon voor het volledige Assessment</span></li>
+
+      <ul class="optin-checklist" id="optin-checklist" data-i18n-attr="aria-label:optin.checklistAria" aria-label="Inhoud van de PDF">
+        <!-- Rendered by JS (personalised) — fallback static below -->
+        <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.0">Jouw totaalscore en 3 fasescores</span></li>
+        <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.1">Jouw sterkste en zwakste domein uitgelicht</span></li>
+        <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.2">Persoonlijk 3-stappen verbeterplan</span></li>
+        <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.3">Kortingscode voor het volledige Assessment</span></li>
       </ul>
 
       <div id="optin-form-wrap">
@@ -1352,6 +1433,22 @@
         </form>
       </div>
 
+      <!-- Trust strip -->
+      <div class="optin-trust-strip" aria-hidden="true">
+        <span class="optin-trust-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span data-i18n="optin.trustPrivacy">Privé &amp; veilig</span>
+        </span>
+        <span class="optin-trust-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span data-i18n="optin.trustTime">Binnen 5 minuten</span>
+        </span>
+        <span class="optin-trust-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <span data-i18n="optin.trustNoSpam">Geen spam</span>
+        </span>
+      </div>
+
       <div class="optin-thanks" id="optin-thanks" role="alert" aria-live="polite">
         <span class="thanks-icon" aria-hidden="true">&#10003;</span>
         <div class="thanks-title" data-i18n="optin.thanksTitle">Je uitslag is onderweg!</div>
@@ -1363,7 +1460,7 @@
             <li data-i18n="optin.nextStep2">Lees je profiel — besteed extra aandacht aan je zwakste domein</li>
             <li data-i18n="optin.nextStep3">Klaar voor meer detail?</li>
           </ol>
-          <a href="https://www.mentalroutine.com/assessment-standaard.html" class="btn btn-outline-gold thanks-assess-btn" data-i18n="optin.nextAssessBtn">Bekijk het volledige Assessment &#8594;</a>
+          <a href="https://www.mentalroutine.com/assessment-standaard.html" class="btn btn-gold thanks-assess-btn" data-i18n="optin.nextAssessBtn">Bekijk het volledige Assessment &rarr;</a>
         </div>
       </div>
     </div>
@@ -1632,7 +1729,12 @@
       optin: {
         label: 'Wil je weten wat dit betekent?',
         h2: 'Ontvang je Mentale Quickscan — gratis',
+        h2a: 'Ontvang je persoonlijke',
+        h2b: 'Mentale Quickscan',
         intro: 'Je persoonlijke PDF rapport met:',
+        trustPrivacy: 'Privé & veilig',
+        trustTime: 'Binnen 5 minuten',
+        trustNoSpam: 'Geen spam',
         checklist: [
           'Jouw totaalscore en 3 fasescores (Pre-Shot, Swing, Post-Shot)',
           'Jouw sterkste en zwakste domein uitgelicht',
@@ -1918,7 +2020,12 @@
       optin: {
         label: 'Want to know what this means?',
         h2: 'Get your Mental Quickscan — free',
+        h2a: 'Get your personal',
+        h2b: 'Mental Quickscan',
         intro: 'Your personal PDF report with:',
+        trustPrivacy: 'Private & secure',
+        trustTime: 'Within 5 minutes',
+        trustNoSpam: 'No spam',
         checklist: [
           'Your total score and 3 phase scores (Pre-Shot, Swing, Post-Shot)',
           'Your strongest and weakest domain highlighted',
@@ -2924,35 +3031,34 @@
     var PHASE_NAMES = T.results.phaseLabels;
     var PHASE_SUBS = T.results.phaseSubs;
     var PHASE_DESCS = T.results.phaseDescs;
+    // Colors match the three phases: gold (pre-shot), forest (swing), green (post-shot)
     var COLORS = ['#B8952A', '#1B3A2D', '#2C6E49'];
     var NIVEAUS_NL = ['Aandachtspunt','Gemiddeld','Goed','Sterk','Uitstekend'];
     var NIVEAUS_EN = ['Needs work','Average','Good','Strong','Excellent'];
     var NIVEAUS = currentLang === 'nl' ? NIVEAUS_NL : NIVEAUS_EN;
+    var NIVEAU_CLASSES = ['donut-niveau-low','donut-niveau-med','donut-niveau-good','donut-niveau-strong','donut-niveau-top'];
 
-    function getNiveau(score) {
-      if (score < 40) return NIVEAUS[0];
-      if (score < 55) return NIVEAUS[1];
-      if (score < 70) return NIVEAUS[2];
-      if (score < 85) return NIVEAUS[3];
-      return NIVEAUS[4];
-    }
-    function getNiveauColor(score) {
-      if (score < 40) return '#c0392b';
-      if (score < 55) return '#e67e22';
-      if (score < 70) return '#B8952A';
-      if (score < 85) return '#1B3A2D';
-      return '#2C6E49';
+    function getNiveauIdx(score) {
+      if (score < 40) return 0;
+      if (score < 55) return 1;
+      if (score < 70) return 2;
+      if (score < 85) return 3;
+      return 4;
     }
 
-    // Half-donut: path along top of semicircle, r=54, total arc length = π×54 ≈ 169.6
-    var HALF_CIRC = Math.PI * 54;
+    // Half-donut SVG: semicircle from left to right across top
+    // r=50, cx=60, cy=60 → arc from (10,60) to (110,60) going up
+    // Arc length = π × 50 ≈ 157.08
+    var R = 50, HALF_CIRC = Math.PI * R;
 
     function makeDonutSVG(score, color) {
       var filled = (score / 100) * HALF_CIRC;
-      return '<svg width="120" height="64" viewBox="0 0 120 64" aria-hidden="true">'
-        + '<path d="M6,60 A54,54 0 0,1 114,60" fill="none" stroke="#e8e2d8" stroke-width="10" stroke-linecap="round"/>'
-        + '<path d="M6,60 A54,54 0 0,1 114,60" fill="none" stroke="' + color + '" stroke-width="10" stroke-linecap="round"'
-        + ' stroke-dasharray="' + filled.toFixed(1) + ' ' + (HALF_CIRC * 2).toFixed(1) + '"'
+      return '<svg width="120" height="58" viewBox="0 0 120 58" aria-hidden="true">'
+        // Track
+        + '<path d="M10,55 A50,50 0 0,1 110,55" fill="none" stroke="#e8e2d8" stroke-width="11" stroke-linecap="round"/>'
+        // Fill
+        + '<path d="M10,55 A50,50 0 0,1 110,55" fill="none" stroke="' + color + '" stroke-width="11" stroke-linecap="round"'
+        + ' stroke-dasharray="' + filled.toFixed(1) + ' ' + (HALF_CIRC * 2 + 20).toFixed(1) + '"'
         + '/>'
         + '</svg>';
     }
@@ -2962,15 +3068,16 @@
     for (var i = 0; i < 3; i++) {
       var score = phaseScores[i];
       var color = COLORS[i];
-      var niveau = getNiveau(score);
-      var niveauColor = getNiveauColor(score);
+      var nIdx = getNiveauIdx(score);
+      var nClass = NIVEAU_CLASSES[nIdx];
+      var niveau = NIVEAUS[nIdx];
       html += '<div class="donut-card">'
         + '<div class="donut-card-label">' + PHASE_NAMES[i] + '</div>'
-        + '<div class="donut-svg-wrap">'
-        +   makeDonutSVG(score, color)
-        +   '<div class="donut-score-overlay">' + score + '<sup>/100</sup></div>'
-        + '</div>'
-        + '<div class="donut-niveau" style="color:' + niveauColor + '">' + niveau + '</div>'
+        + '<div class="donut-svg-wrap">' + makeDonutSVG(score, color) + '</div>'
+        + '<div class="donut-score-num">' + score + '</div>'
+        + '<div class="donut-score-denom">/100</div>'
+        + '<span class="donut-niveau ' + nClass + '">' + niveau + '</span>'
+        + '<div class="donut-divider"></div>'
         + '<div class="donut-domains-label">' + PHASE_SUBS[i] + '</div>'
         + '<div class="donut-desc">' + PHASE_DESCS[i] + '</div>'
         + '</div>';
