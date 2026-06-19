@@ -1793,7 +1793,7 @@
   ══════════════════════════════════ */
   function renderQuestionHole(wrap, holeIndex) {
     var questions = state.holeQuestions[holeIndex - 1];
-    var holeNum = holeIndex + 1;
+    var holeNum = holeIndex;
 
     var questionsHtml = questions.map(function(q, qIdx) {
       var savedVal = q.answer;
@@ -1834,8 +1834,8 @@
       + '<button class="quiz-back-btn" id="quiz-back-btn" style="' + (holeIndex === 0 ? 'visibility:hidden' : '') + '" aria-label="' + T.hole.backBtnAria + '">'
       + T.hole.backBtn
       + '</button>'
-      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (allAnswered ? '' : 'disabled') + ' aria-label="' + (holeIndex === 8 ? T.hole.finishBtnAria : T.hole.nextBtnAria) + '">'
-      + (holeIndex === 8 ? T.hole.finishBtn : T.hole.nextBtn)
+      + '<button class="quiz-next-btn" id="quiz-next-btn" ' + (allAnswered ? '' : 'disabled') + ' aria-label="' + (holeIndex === 9 ? T.hole.finishBtnAria : T.hole.nextBtnAria) + '">'
+      + (holeIndex === 9 ? T.hole.finishBtn : T.hole.nextBtn)
       + '</button>'
       + '</div>'
       + '</div>';
