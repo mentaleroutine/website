@@ -2124,7 +2124,7 @@
       zwakste_domein: state.weakestDomain,
     };
 
-    fetch('https://portal.mentaleroutine.com/api/quiz/results', {
+    fetch('https://portal.mentalroutine.com/api/quiz/results', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -2402,7 +2402,7 @@
     btn.disabled = true;
     btn.textContent = T.optin.submitting;
 
-    var API_URL = 'https://portal.mentaleroutine.com/api/quiz/optin';
+    var API_URL = 'https://portal.mentalroutine.com/api/quiz/optin';
 
     fetch(API_URL, {
       method: 'POST',
