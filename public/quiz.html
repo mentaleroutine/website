@@ -2105,6 +2105,7 @@
     var antwoorden = {};
     if (state.holeQuestions) {
       state.holeQuestions.forEach(function(hole) {
+        if (!hole) return;
         hole.forEach(function(q) {
           if (q.label && q.answer !== null && q.answer !== undefined) {
             antwoorden[q.label] = q.answer;
