@@ -744,10 +744,6 @@
             <label for="input-email" data-i18n="optin.fields.email">E-mailadres</label>
             <input type="email" id="input-email" name="email" data-i18n-attr="placeholder:optin.fields.emailPh" placeholder="jouw@email.nl" autocomplete="email" required>
           </div>
-          <div class="form-group">
-            <label for="input-hcp" data-i18n="optin.fields.hcp">Exacte handicap</label>
-            <input type="number" id="input-hcp" name="handicap" data-i18n-attr="placeholder:optin.fields.hcpPh" placeholder="Bijv. 18.4" min="0" max="54" step="0.1" autocomplete="off">
-          </div>
           <button type="submit" class="btn btn-gold form-submit" data-i18n="optin.submit">Verstuur mijn uitslag &rarr;</button>
           <p class="form-sub" data-i18n="optin.sub">Je ontvangt je PDF binnen 5 minuten. Geen spam, geen verplichtingen.</p>
           <p class="form-privacy" data-i18n="optin.privacy">We delen je gegevens nooit met derden.</p>
@@ -757,31 +753,11 @@
       <div class="optin-thanks" id="optin-thanks" role="alert" aria-live="polite">
         <span class="thanks-icon" aria-hidden="true">&#10003;</span>
         <div class="thanks-title" data-i18n="optin.thanksTitle">Je uitslag is onderweg!</div>
-        <p class="thanks-body"><span data-i18n="optin.thanksBody1">Check je inbox (en eventueel je spam-map) binnen 5 minuten.</span><br><br><span data-i18n="optin.thanksBody2">Wil je niet wachten?</span> <a href="assessment-standaard.html" class="thanks-link" data-i18n="optin.thanksLink">&rarr; Bekijk het volledige Assessment</a></p>
+        <p class="thanks-body"><span data-i18n="optin.thanksBody1">Check je inbox (en eventueel je spam-map) binnen 5 minuten.</span></p>
       </div>
     </div>
   </section>
 
-  <!-- ASSESSMENT TEASER -->
-  <section class="assess-teaser" aria-labelledby="assess-h2">
-    <div class="assess-teaser-inner">
-      <span class="section-label" style="color:var(--gold-light)" data-i18n="assess.label">Klaar voor het volledige plaatje?</span>
-      <h2 id="assess-h2" style="color:var(--cream);margin-bottom:1rem" data-i18n="assess.h2">Quiz vs. Assessment</h2>
-      <div class="assess-compare">
-        <div class="assess-compare-card">
-          <span class="assess-compare-label" data-i18n="assess.leftLabel">Deze quiz</span>
-          <div class="assess-compare-title" data-i18n="assess.leftTitle">Gratis sneldiagnose</div>
-          <div class="assess-compare-detail" data-i18n="assess.leftDetail">8 domeinen &middot; 9 holes &middot; 40 vragen &middot; Globale indicatie &middot; 8 minuten</div>
-        </div>
-        <div class="assess-compare-card assess-compare-card--highlight">
-          <span class="assess-compare-label" data-i18n="assess.rightLabel">Assessment Standaard</span>
-          <div class="assess-compare-title" data-i18n="assess.rightTitle">Volledig mentaal profiel</div>
-          <div class="assess-compare-detail" data-i18n="assess.rightDetail">40+ factoren &middot; 18 holes &middot; 12 pagina&#8217;s PDF rapportage &middot; 25 minuten</div>
-        </div>
-      </div>
-      <a href="assessment-standaard.html" class="btn btn-gold btn-lg" data-i18n="assess.cta">Bekijk het Assessment Standaard &rarr; $59</a>
-    </div>
-  </section>
 
   <!-- FOOTER -->
   <footer role="contentinfo">
@@ -2374,7 +2350,7 @@
     e.preventDefault();
     var naam = document.getElementById('input-naam').value.trim();
     var email = document.getElementById('input-email').value.trim();
-    var handicap = document.getElementById('input-hcp').value.trim();
+    var handicap = (state.intakeAnswers && state.intakeAnswers.handicap !== null) ? String(state.intakeAnswers.handicap) : '';
 
     if (!naam || !email) {
       if (!naam) document.getElementById('input-naam').focus();
