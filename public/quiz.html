@@ -1340,6 +1340,18 @@
     T = TRANSLATIONS[lang];
     try { localStorage.setItem('mr_quiz_lang', lang); } catch (e) {}
     applyI18n();
+    // Update poolRef for all questions to new language pools
+    if (state.holeQuestions && state.holeQuestions.length) {
+      var newPools = T.questionPools;
+      var poolMap = {};
+      newPools.forEach(function(p) { poolMap[p.domain + '_' + p.skill] = p; });
+      state.holeQuestions.forEach(function(hole) {
+        hole.forEach(function(q) {
+          var key = q.domain + '_' + q.skill;
+          if (poolMap[key]) q.poolRef = poolMap[key];
+        });
+      });
+    }
     // Re-render current quiz hole if quiz is active
     var quizPhase = document.getElementById('phase-quiz');
     if (quizPhase && !quizPhase.classList.contains('hidden')) {
