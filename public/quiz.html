@@ -1792,7 +1792,7 @@
      RENDER QUESTION HOLE (holes 1-8)
   ══════════════════════════════════ */
   function renderQuestionHole(wrap, holeIndex) {
-    var questions = state.holeQuestions[holeIndex];
+    var questions = state.holeQuestions[holeIndex - 1];
     var holeNum = holeIndex + 1;
 
     var questionsHtml = questions.map(function(q, qIdx) {
@@ -1962,7 +1962,7 @@
     var val = parseInt(btn.getAttribute('data-val'), 10);
 
     // Store answer directly on the question object
-    state.holeQuestions[holeIndex][qIdx].answer = val;
+    state.holeQuestions[holeIndex - 1][qIdx].answer = val;
 
     // Update visual state for this question's row
     var questionItem = btn.closest('.quiz-q-item');
@@ -1999,7 +1999,7 @@
   }
 
   function areAllHoleQuestionsAnswered(holeIndex) {
-    var questions = state.holeQuestions[holeIndex];
+    var questions = state.holeQuestions[holeIndex - 1];
     if (!questions || questions.length < 5) return false;
     for (var i = 0; i < 5; i++) {
       if (questions[i].answer === null || questions[i].answer === undefined) return false;
