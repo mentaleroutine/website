@@ -5,7 +5,7 @@ export const translations = {
   // ENGLISH
   // ─────────────────────────────────────────────────────────────────
   en: {
-    nav: { howItWorks: "The Research", pricing: "Pricing", testimonials: "Testimonials", faq: "FAQ", contact: "Contact", cta: "Start Assessment", openMenu: "Open menu", closeMenu: "Close menu", selectLang: "Select language", skipToContent: "Skip to content" },
+    nav: { howItWorks: "The Research", pricing: "Pricing", testimonials: "Testimonials", faq: "FAQ", contact: "Contact", cta: "Try Free Quiz", openMenu: "Open menu", closeMenu: "Close menu", selectLang: "Select language", skipToContent: "Skip to content" },
     hero: {
       badge: "The Mental Routine Assessment",
       h1a: "Find Out What's Really", h1b: "Costing You Strokes.",
@@ -215,7 +215,7 @@ export const translations = {
   // DUTCH
   // ─────────────────────────────────────────────────────────────────
   nl: {
-    nav: { howItWorks: "Het Onderzoek", pricing: "Prijzen", testimonials: "Ervaringen", faq: "FAQ", contact: "Contact", cta: "Doe de Assessment", openMenu: "Menu openen", closeMenu: "Menu sluiten", selectLang: "Taal kiezen", skipToContent: "Ga naar inhoud" },
+    nav: { howItWorks: "Het Onderzoek", pricing: "Prijzen", testimonials: "Ervaringen", faq: "FAQ", contact: "Contact", cta: "Probeer Gratis Quiz", openMenu: "Menu openen", closeMenu: "Menu sluiten", selectLang: "Taal kiezen", skipToContent: "Ga naar inhoud" },
     hero: {
       badge: "De Mental Routine Assessment",
       h1a: "Ontdek Wat Je Écht", h1b: "Slagen Kost.",
@@ -423,7 +423,7 @@ export const translations = {
   // GERMAN
   // ─────────────────────────────────────────────────────────────────
   de: {
-    nav: { howItWorks: "Die Forschung", pricing: "Preise", testimonials: "Erfahrungen", faq: "FAQ", contact: "Kontakt", cta: "Assessment Starten", openMenu: "Menü öffnen", closeMenu: "Menü schließen", selectLang: "Sprache wählen", skipToContent: "Zum Inhalt springen" },
+    nav: { howItWorks: "Die Forschung", pricing: "Preise", testimonials: "Erfahrungen", faq: "FAQ", contact: "Kontakt", cta: "Kostenloses Quiz", openMenu: "Menü öffnen", closeMenu: "Menü schließen", selectLang: "Sprache wählen", skipToContent: "Zum Inhalt springen" },
     hero: {
       badge: "Das Mental Routine Assessment",
       h1a: "Finde heraus, was dich", h1b: "wirklich Schläge kostet.",
@@ -631,7 +631,7 @@ export const translations = {
   // FRENCH
   // ─────────────────────────────────────────────────────────────────
   fr: {
-    nav: { howItWorks: "La Recherche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "Mon Évaluation", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu", selectLang: "Choisir la langue", skipToContent: "Aller au contenu" },
+    nav: { howItWorks: "La Recherche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "Quiz Gratuit", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu", selectLang: "Choisir la langue", skipToContent: "Aller au contenu" },
     hero: {
       badge: "Le Mental Routine Assessment",
       h1a: "Découvrez ce qui vous", h1b: "coûte vraiment des coups.",
@@ -839,7 +839,7 @@ export const translations = {
   // SPANISH
   // ─────────────────────────────────────────────────────────────────
   es: {
-    nav: { howItWorks: "La Investigación", pricing: "Precios", testimonials: "Testimonios", faq: "FAQ", contact: "Contacto", cta: "Mi Evaluación", openMenu: "Abrir menú", closeMenu: "Cerrar menú", selectLang: "Seleccionar idioma", skipToContent: "Ir al contenido" },
+    nav: { howItWorks: "La Investigación", pricing: "Precios", testimonials: "Testimonios", faq: "FAQ", contact: "Contacto", cta: "Quiz Gratis", openMenu: "Abrir menú", closeMenu: "Cerrar menú", selectLang: "Seleccionar idioma", skipToContent: "Ir al contenido" },
     hero: {
       badge: "El Mental Routine Assessment",
       h1a: "Descubre qué te está", h1b: "costando golpes realmente.",
