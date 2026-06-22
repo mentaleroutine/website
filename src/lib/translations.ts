@@ -5,7 +5,7 @@ export const translations = {
   // ENGLISH
   // ─────────────────────────────────────────────────────────────────
   en: {
-    nav: { howItWorks: "The Research", pricing: "Pricing", testimonials: "Testimonials", faq: "FAQ", contact: "Contact", cta: "Try Free Quiz", openMenu: "Open menu", closeMenu: "Close menu", selectLang: "Select language", skipToContent: "Skip to content" },
+    nav: { howItWorks: "The Research", pricing: "Pricing", testimonials: "Testimonials", faq: "FAQ", contact: "Contact", cta: "Free QuickScan", openMenu: "Open menu", closeMenu: "Close menu", selectLang: "Select language", skipToContent: "Skip to content" },
     hero: {
       badge: "The Mental Routine Assessment",
       h1a: "Find Out What's Really", h1b: "Costing You Strokes.",
@@ -16,7 +16,7 @@ export const translations = {
       radarAriaLabel: "Radar chart showing example mental performance scores across 8 factors",
       cta1: "Get My Mental Performance Report", cta2: "See the 8 Factors",
       howItWorksLine: "15-minute questionnaire → personalised PDF report → targeted improvement plan",
-      quizCta: "Or try the free quiz first →",
+      quizCta: "Or try the free QuickScan first →",
     },
     heroCardLabels: [
       { tag: "Focus",            insight: "Target selection is strong. Visualisation consistent before each shot." },
@@ -175,7 +175,7 @@ export const translations = {
       p1: "Most golfers spend years — and thousands on lessons — without ever addressing the real reason they plateau. In 15 minutes, the assessment tells you exactly what's holding you back.",
       p2: "Better scores. More enjoyment. More confidence on the first tee. It all starts with understanding your mental game.",
       btn: "Get Your Mental Routine Assessment →",
-      quizLine: "Not sure yet? Try the free 8-minute quiz first.",
+      quizLine: "Not sure yet? Try the free 8-minute QuickScan first.",
       trust: ["Access within 2 minutes", "Foundation $59 · Mastery upgrade $89", "Research base: 1,000+ golfers", "30-day money-back guarantee"],
     },
     earlyAccess: {
@@ -208,14 +208,14 @@ export const translations = {
         ],
       },
     },
-    footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free Quiz", quoteText: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong", methodBy: "Method by Henk de Jong", menuLabel: "Menu" },
+    footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free QuickScan", quoteText: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong", methodBy: "Method by Henk de Jong", menuLabel: "Menu" },
   },
 
   // ─────────────────────────────────────────────────────────────────
   // DUTCH
   // ─────────────────────────────────────────────────────────────────
   nl: {
-    nav: { howItWorks: "Het Onderzoek", pricing: "Prijzen", testimonials: "Ervaringen", faq: "FAQ", contact: "Contact", cta: "Probeer Gratis Quiz", openMenu: "Menu openen", closeMenu: "Menu sluiten", selectLang: "Taal kiezen", skipToContent: "Ga naar inhoud" },
+    nav: { howItWorks: "Het Onderzoek", pricing: "Prijzen", testimonials: "Ervaringen", faq: "FAQ", contact: "Contact", cta: "Gratis QuickScan", openMenu: "Menu openen", closeMenu: "Menu sluiten", selectLang: "Taal kiezen", skipToContent: "Ga naar inhoud" },
     hero: {
       badge: "De Mental Routine Assessment",
       h1a: "Ontdek Wat Je Écht", h1b: "Slagen Kost.",
@@ -226,7 +226,7 @@ export const translations = {
       radarAriaLabel: "Radardiagram met voorbeeldscores voor mentale prestaties over 8 factoren",
       cta1: "Ontvang Mijn Mentale Prestatierapport", cta2: "Bekijk de 8 Factoren",
       howItWorksLine: "15 minuten vragenlijst → persoonlijk PDF-rapport → gericht verbeterplan",
-      quizCta: "Of probeer eerst de gratis quiz →",
+      quizCta: "Of probeer eerst de gratis QuickScan →",
     },
     heroCardLabels: [
       { tag: "Focus",           insight: "Doelselectie is sterk. Visualisatie consistent voor elke slag." },
@@ -383,7 +383,7 @@ export const translations = {
       p1: "De meeste golfers besteden jaren — en duizenden aan lessen — zonder ooit de echte reden van hun plafond aan te pakken. In 15 minuten vertelt de assessment precies wat je tegenhoudt.",
       p2: "Betere scores. Meer plezier. Meer zelfvertrouwen op de eerste tee. Het begint allemaal met inzicht in je mentale spel.",
       btn: "Haal Jouw Mentale Routine Assessment →",
-      quizLine: "Nog niet zeker? Probeer eerst de gratis 8-minuten quiz.",
+      quizLine: "Nog niet zeker? Probeer eerst de gratis QuickScan (8 min).",
       trust: ["Toegang binnen 2 minuten", "Foundation $59 · Mastery upgrade $89", "Onderzoeksbasis: 1.000+ golfers", "30 dagen niet-goed-geld-terug"],
     },
     earlyAccess: {
@@ -416,14 +416,14 @@ export const translations = {
         ],
       },
     },
-    footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis Quiz", quoteText: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong", methodBy: "Methode van Henk de Jong", menuLabel: "Menu" },
+    footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis QuickScan", quoteText: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong", methodBy: "Methode van Henk de Jong", menuLabel: "Menu" },
   },
 
   // ─────────────────────────────────────────────────────────────────
   // GERMAN
   // ─────────────────────────────────────────────────────────────────
   de: {
-    nav: { howItWorks: "Die Forschung", pricing: "Preise", testimonials: "Erfahrungen", faq: "FAQ", contact: "Kontakt", cta: "Kostenloses Quiz", openMenu: "Menü öffnen", closeMenu: "Menü schließen", selectLang: "Sprache wählen", skipToContent: "Zum Inhalt springen" },
+    nav: { howItWorks: "Die Forschung", pricing: "Preise", testimonials: "Erfahrungen", faq: "FAQ", contact: "Kontakt", cta: "Kostenloser QuickScan", openMenu: "Menü öffnen", closeMenu: "Menü schließen", selectLang: "Sprache wählen", skipToContent: "Zum Inhalt springen" },
     hero: {
       badge: "Das Mental Routine Assessment",
       h1a: "Finde heraus, was dich", h1b: "wirklich Schläge kostet.",
@@ -434,7 +434,7 @@ export const translations = {
       radarAriaLabel: "Radardiagramm mit Beispielwerten für mentale Leistung über 8 Faktoren",
       cta1: "Mein mentales Leistungsreport erhalten", cta2: "Die 8 Faktoren ansehen",
       howItWorksLine: "15-Minuten-Fragebogen → personalisierter PDF-Bericht → gezielter Verbesserungsplan",
-      quizCta: "Oder probiere zuerst das kostenlose Quiz →",
+      quizCta: "Oder probiere zuerst den kostenlosen QuickScan →",
     },
     heroCardLabels: [
       { tag: "Fokus",            insight: "Zielauswahl ist stark. Visualisierung konsistent vor jedem Schlag." },
@@ -591,7 +591,7 @@ export const translations = {
       p1: "Die meisten Golfer verbringen Jahre — und Tausende für Stunden — ohne jemals den wirklichen Grund ihres Plateaus anzugehen. In 15 Minuten sagt dir das Assessment genau, was dich aufhält.",
       p2: "Bessere Scores. Mehr Spaß. Mehr Selbstvertrauen am ersten Abschlag. Es beginnt alles mit dem Verständnis deines mentalen Spiels.",
       btn: "Dein Mental Routine Assessment holen →",
-      quizLine: "Noch nicht sicher? Probiere zuerst das kostenlose 8-Minuten-Quiz.",
+      quizLine: "Noch nicht sicher? Probiere zuerst den kostenlosen QuickScan (8 Min).",
       trust: ["Zugang in 2 Minuten", "Foundation $59 · Mastery Upgrade $89", "Forschungsbasis: 1.000+ Golfer", "30-Tage-Geld-zurück-Garantie"],
     },
     earlyAccess: {
@@ -624,14 +624,14 @@ export const translations = {
         ],
       },
     },
-    footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfehle das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloses Quiz", quoteText: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong", methodBy: "Methode von Henk de Jong", menuLabel: "Menü" },
+    footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfehle das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloser QuickScan", quoteText: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong", methodBy: "Methode von Henk de Jong", menuLabel: "Menü" },
   },
 
   // ─────────────────────────────────────────────────────────────────
   // FRENCH
   // ─────────────────────────────────────────────────────────────────
   fr: {
-    nav: { howItWorks: "La Recherche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "Quiz Gratuit", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu", selectLang: "Choisir la langue", skipToContent: "Aller au contenu" },
+    nav: { howItWorks: "La Recherche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "QuickScan Gratuit", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu", selectLang: "Choisir la langue", skipToContent: "Aller au contenu" },
     hero: {
       badge: "Le Mental Routine Assessment",
       h1a: "Découvrez ce qui vous", h1b: "coûte vraiment des coups.",
@@ -642,7 +642,7 @@ export const translations = {
       radarAriaLabel: "Graphique radar montrant des scores de performance mentale sur 8 facteurs",
       cta1: "Obtenir Mon Rapport de Performance Mentale", cta2: "Voir les 8 Facteurs",
       howItWorksLine: "Questionnaire de 15 minutes → rapport PDF personnalisé → plan d'amélioration ciblé",
-      quizCta: "Ou essayez d'abord le quiz gratuit →",
+      quizCta: "Ou essayez d'abord le QuickScan gratuit →",
     },
     heroCardLabels: [
       { tag: "Focus",             insight: "Sélection d'objectif solide. Visualisation constante avant chaque coup." },
@@ -799,7 +799,7 @@ export const translations = {
       p1: "La plupart des golfeurs passent des années — et dépensent des milliers en leçons — sans jamais s'attaquer à la vraie raison de leur plateau. En 15 minutes, l'évaluation vous dit exactement ce qui vous retient.",
       p2: "De meilleurs scores. Plus de plaisir. Plus de confiance au premier départ. Tout commence par la compréhension de votre jeu mental.",
       btn: "Obtenir votre Évaluation de la Routine Mentale →",
-      quizLine: "Pas encore sûr ? Essayez d'abord le quiz gratuit de 8 minutes.",
+      quizLine: "Pas encore sûr ? Essayez d'abord le QuickScan gratuit (8 min).",
       trust: ["Accès en 2 minutes", "Foundation $59 · Upgrade Mastery $89", "Base de recherche : 1 000+ golfeurs", "Satisfait ou remboursé sous 30 jours"],
     },
     earlyAccess: {
@@ -832,14 +832,14 @@ export const translations = {
         ],
       },
     },
-    footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Professionnel de l'enseignement ? Recommandez l'évaluation à vos élèves →", socialLabel: "Suivez-nous", quizLink: "Quiz Gratuit", quoteText: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong", methodBy: "Méthode de Henk de Jong", menuLabel: "Menu" },
+    footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Professionnel de l'enseignement ? Recommandez l'évaluation à vos élèves →", socialLabel: "Suivez-nous", quizLink: "QuickScan Gratuit", quoteText: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong", methodBy: "Méthode de Henk de Jong", menuLabel: "Menu" },
   },
 
   // ─────────────────────────────────────────────────────────────────
   // SPANISH
   // ─────────────────────────────────────────────────────────────────
   es: {
-    nav: { howItWorks: "La Investigación", pricing: "Precios", testimonials: "Testimonios", faq: "FAQ", contact: "Contacto", cta: "Quiz Gratis", openMenu: "Abrir menú", closeMenu: "Cerrar menú", selectLang: "Seleccionar idioma", skipToContent: "Ir al contenido" },
+    nav: { howItWorks: "La Investigación", pricing: "Precios", testimonials: "Testimonios", faq: "FAQ", contact: "Contacto", cta: "QuickScan Gratis", openMenu: "Abrir menú", closeMenu: "Cerrar menú", selectLang: "Seleccionar idioma", skipToContent: "Ir al contenido" },
     hero: {
       badge: "El Mental Routine Assessment",
       h1a: "Descubre qué te está", h1b: "costando golpes realmente.",
@@ -850,7 +850,7 @@ export const translations = {
       radarAriaLabel: "Gráfico radar con puntuaciones de ejemplo de rendimiento mental en 8 factores",
       cta1: "Obtener Mi Informe de Rendimiento Mental", cta2: "Ver los 8 Factores",
       howItWorksLine: "Cuestionario de 15 minutos → informe PDF personalizado → plan de mejora específico",
-      quizCta: "O prueba primero el quiz gratis →",
+      quizCta: "O prueba primero el QuickScan gratis →",
     },
     heroCardLabels: [
       { tag: "Enfoque",              insight: "Selección de objetivo sólida. Visualización consistente antes de cada golpe." },
@@ -1007,7 +1007,7 @@ export const translations = {
       p1: "La mayoría de los golfistas pasan años — y gastan miles en lecciones — sin abordar nunca la verdadera razón de su estancamiento. En 15 minutos, la evaluación te dice exactamente qué te frena.",
       p2: "Mejores puntuaciones. Más diversión. Más confianza en el primer tee. Todo empieza por entender tu juego mental.",
       btn: "Obtener Tu Evaluación de la Rutina Mental →",
-      quizLine: "¿Aún no estás seguro? Prueba primero el quiz gratis de 8 minutos.",
+      quizLine: "¿Aún no estás seguro? Prueba primero el QuickScan gratis (8 min).",
       trust: ["Acceso en 2 minutos", "Foundation $59 · Upgrade Mastery $89", "Base de investigación: 1.000+ golfistas", "Garantía de devolución de 30 días"],
     },
     earlyAccess: {
@@ -1040,7 +1040,7 @@ export const translations = {
         ],
       },
     },
-    footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Profesional de la enseñanza? Recomienda la evaluación a tus alumnos →", socialLabel: "Síguenos", quizLink: "Quiz Gratis", quoteText: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong", methodBy: "Método de Henk de Jong", menuLabel: "Menú" },
+    footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Profesional de la enseñanza? Recomienda la evaluación a tus alumnos →", socialLabel: "Síguenos", quizLink: "QuickScan Gratis", quoteText: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong", methodBy: "Método de Henk de Jong", menuLabel: "Menú" },
   },
 } as const;
 
