@@ -6,37 +6,28 @@ import { sanitize, validEmail, clamp } from "@/lib/validate";
 const resend = new Resend(process.env.RESEND_API_KEY);
 const AUDIENCE_ID = "8e40ab7a-eab7-470d-943f-03a312e98ebc";
 
-// Early access pricing — keep in sync with EA_PRICE_STD/DLX in page.tsx
-const EA_STD = 49;
-const EA_DLX = 99;
-const REG_STD = 59;
-const REG_DLX = 129;
+// Early access pricing — keep in sync with EA_PRICE_STD/MST in page.tsx
+const EA_STD = 49;   // Foundation early access
+const EA_MST = 69;   // Mastery upgrade early access
+const REG_STD = 59;  // Foundation regular
+const REG_MST = 89;  // Mastery upgrade regular
 
 type Lang = "en" | "nl" | "de" | "fr" | "es";
 
 function confirmationEmail(name: string, lang: Lang) {
   const emails: Record<Lang, { subject: string; body: string }> = {
     en: {
-      subject: "You're on the Early Access list — your early-bird price is locked in!",
+      subject: "You're on the Early Access list — your discount code is coming on July 1st",
       body: `Hi ${name},
 
-Thanks for signing up! We're currently in a closed Beta with 100+ golfers, fine-tuning everything for our international pre-launch on June 22nd.
+Thanks for signing up! MentalRoutine Foundation launches on July 1st.
 
-Your exclusive Early Access pricing is locked in:
+On July 1st you'll receive a personal discount code by email. Here's what to expect:
 
-  Standard: $${EA_STD} (instead of $${REG_STD}) + 2 extra training reports
-  Deluxe:   $${EA_DLX} (instead of $${REG_DLX}) + 2 extra training reports
+  MentalRoutine Foundation: $${EA_STD} (instead of $${REG_STD}) + 2 extra training reports
+  MentalRoutine Mastery upgrade: $${EA_MST} (instead of $${REG_MST}) — only available after completing Foundation
 
-This offer is only available until July 1st.
-
-Here's what happens next:
-
-  1. Today — You're on the early access list
-  2. June 22nd — You receive a personal link by email
-  3. 15 minutes — Complete the assessment on any device
-  4. Instantly — Download your PDF report + training reports
-
-Official launch and regular pricing from July 1st.
+Your code will be valid for 7 days after launch.
 
 In the meantime — keep enjoying the game.
 
@@ -44,26 +35,17 @@ The MentalRoutine Team
 www.mentalroutine.com`,
     },
     nl: {
-      subject: "Je staat op de Early Access lijst — je early-bird prijs is vastgelegd!",
+      subject: "Je staat op de Early Access lijst — je kortingscode komt op 1 juli",
       body: `Hoi ${name},
 
-Bedankt voor je aanmelding! We zitten momenteel in een gesloten Beta met 100+ golfers, en finetunen alles voor onze internationale pre-launch op 22 juni.
+Bedankt voor je aanmelding! MentalRoutine Foundation lanceert op 1 juli.
 
-Je exclusieve Early Access prijs is vastgelegd:
+Op 1 juli ontvang je een persoonlijke kortingscode per email. Dit zijn de prijzen:
 
-  Standaard: $${EA_STD} (i.p.v. $${REG_STD}) + 2 extra trainingsrapporten
-  Deluxe:    $${EA_DLX} (i.p.v. $${REG_DLX}) + 2 extra trainingsrapporten
+  MentalRoutine Foundation: $${EA_STD} (i.p.v. $${REG_STD}) + 2 extra trainingsrapporten
+  MentalRoutine Mastery upgrade: $${EA_MST} (i.p.v. $${REG_MST}) — alleen beschikbaar na Foundation
 
-Dit aanbod is alleen beschikbaar tot 1 juli.
-
-Dit is wat er nu gebeurt:
-
-  1. Vandaag — Je staat op de early access lijst
-  2. 22 juni — Je ontvangt een persoonlijke link per email
-  3. 15 minuten — Vul de assessment in op elk apparaat
-  4. Direct — Download je PDF-rapport + trainingsrapporten
-
-Officiële lancering en reguliere prijzen vanaf 1 juli.
+Je code is 7 dagen geldig na de lancering.
 
 In de tussentijd — veel plezier op de baan.
 
@@ -71,26 +53,17 @@ Het MentalRoutine Team
 www.mentalroutine.com`,
     },
     de: {
-      subject: "Du stehst auf der Early Access Liste — dein Frühbucher-Preis ist gesichert!",
+      subject: "Du stehst auf der Early Access Liste — dein Rabattcode kommt am 1. Juli",
       body: `Hallo ${name},
 
-Danke für deine Anmeldung! Wir befinden uns derzeit in einer geschlossenen Beta mit 100+ Golfern und optimieren alles für unseren internationalen Pre-Launch am 22. Juni.
+Danke für deine Anmeldung! MentalRoutine Foundation startet am 1. Juli.
 
-Dein exklusiver Early Access Preis ist gesichert:
+Am 1. Juli erhältst du einen persönlichen Rabattcode per E-Mail. Die Preise im Überblick:
 
-  Standard: $${EA_STD} (statt $${REG_STD}) + 2 extra Trainingsberichte
-  Deluxe:   $${EA_DLX} (statt $${REG_DLX}) + 2 extra Trainingsberichte
+  MentalRoutine Foundation: $${EA_STD} (statt $${REG_STD}) + 2 extra Trainingsberichte
+  MentalRoutine Mastery Upgrade: $${EA_MST} (statt $${REG_MST}) — nur nach Foundation verfügbar
 
-Dieses Angebot gilt nur bis zum 1. Juli.
-
-So geht es weiter:
-
-  1. Heute — Du stehst auf der Early Access Liste
-  2. 22. Juni — Du erhältst einen persönlichen Link per E-Mail
-  3. 15 Minuten — Fülle das Assessment auf jedem Gerät aus
-  4. Sofort — Lade deinen PDF-Bericht + Trainingsberichte herunter
-
-Offizieller Launch und reguläre Preise ab 1. Juli.
+Dein Code ist 7 Tage nach dem Launch gültig.
 
 In der Zwischenzeit — viel Spaß auf dem Platz.
 
@@ -98,26 +71,17 @@ Das MentalRoutine Team
 www.mentalroutine.com`,
     },
     fr: {
-      subject: "Vous êtes sur la liste Early Access — votre tarif early-bird est verrouillé !",
+      subject: "Vous êtes sur la liste Early Access — votre code de réduction arrive le 1er juillet",
       body: `Bonjour ${name},
 
-Merci pour votre inscription ! Nous sommes actuellement en Bêta fermée avec 100+ golfeurs, peaufinant tout pour notre pré-lancement international le 22 juin.
+Merci pour votre inscription ! MentalRoutine Foundation sera lancé le 1er juillet.
 
-Votre tarif Early Access exclusif est verrouillé :
+Le 1er juillet vous recevrez un code de réduction personnel par email. Voici les tarifs :
 
-  Standard : $${EA_STD} (au lieu de $${REG_STD}) + 2 rapports d'entraînement supplémentaires
-  Deluxe :   $${EA_DLX} (au lieu de $${REG_DLX}) + 2 rapports d'entraînement supplémentaires
+  MentalRoutine Foundation : $${EA_STD} (au lieu de $${REG_STD}) + 2 rapports d'entraînement supplémentaires
+  Upgrade MentalRoutine Mastery : $${EA_MST} (au lieu de $${REG_MST}) — uniquement disponible après Foundation
 
-Cette offre n'est disponible que jusqu'au 1er juillet.
-
-Voici la suite :
-
-  1. Aujourd'hui — Vous êtes sur la liste Early Access
-  2. 22 juin — Vous recevez un lien personnel par email
-  3. 15 minutes — Complétez l'évaluation sur n'importe quel appareil
-  4. Immédiatement — Téléchargez votre rapport PDF + rapports d'entraînement
-
-Lancement officiel et tarifs réguliers à partir du 1er juillet.
+Votre code sera valable 7 jours après le lancement.
 
 En attendant — profitez du parcours.
 
@@ -125,26 +89,17 @@ L'équipe MentalRoutine
 www.mentalroutine.com`,
     },
     es: {
-      subject: "¡Estás en la lista Early Access — tu precio early-bird está asegurado!",
+      subject: "¡Estás en la lista Early Access — tu código de descuento llega el 1 de julio!",
       body: `Hola ${name},
 
-¡Gracias por registrarte! Actualmente estamos en una Beta cerrada con 100+ golfistas, perfeccionando todo para nuestro pre-lanzamiento internacional el 22 de junio.
+¡Gracias por registrarte! MentalRoutine Foundation se lanza el 1 de julio.
 
-Tu precio exclusivo de Early Access está asegurado:
+El 1 de julio recibirás un código de descuento personal por email. Estos son los precios:
 
-  Estándar: $${EA_STD} (en lugar de $${REG_STD}) + 2 informes de entrenamiento adicionales
-  Deluxe:   $${EA_DLX} (en lugar de $${REG_DLX}) + 2 informes de entrenamiento adicionales
+  MentalRoutine Foundation: $${EA_STD} (en lugar de $${REG_STD}) + 2 informes de entrenamiento adicionales
+  Upgrade MentalRoutine Mastery: $${EA_MST} (en lugar de $${REG_MST}) — solo disponible después de Foundation
 
-Esta oferta solo está disponible hasta el 1 de julio.
-
-Esto es lo que sigue:
-
-  1. Hoy — Estás en la lista de Early Access
-  2. 22 de junio — Recibes un enlace personal por email
-  3. 15 minutos — Completa la evaluación en cualquier dispositivo
-  4. Al instante — Descarga tu informe PDF + informes de entrenamiento
-
-Lanzamiento oficial y precios regulares a partir del 1 de julio.
+Tu código será válido durante 7 días tras el lanzamiento.
 
 Mientras tanto — disfruta del campo.
 
@@ -167,7 +122,7 @@ export async function POST(req: Request) {
     const name = clamp(sanitize(raw.name), 100);
     const email = clamp(sanitize(raw.email), 254);
     const handicap = clamp(sanitize(raw.handicap ?? ""), 20);
-    const plan = raw.plan === "standard" ? "standard" : "deluxe";
+    const plan = raw.plan === "foundation" ? "foundation" : "mastery";
     const lang = raw.lang;
     const utm = typeof raw.utm === "object" && raw.utm !== null ? raw.utm : {};
 
@@ -178,7 +133,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
-    const planLabel = plan === "standard" ? `Standard ($${EA_STD})` : `Deluxe ($${EA_DLX})`;
+    const planLabel = plan === "foundation" ? `Foundation ($${EA_STD})` : `Mastery upgrade ($${EA_MST})`;
     const emailLang: Lang = ["en", "nl", "de", "fr", "es"].includes(lang) ? lang : "en";
     const confirmation = confirmationEmail(name, emailLang);
 

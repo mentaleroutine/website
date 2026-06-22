@@ -16,11 +16,11 @@ function captureUtmParams(): Record<string, string> {
   return Object.keys(utm).length > 0 ? utm : JSON.parse(sessionStorage.getItem("utm") || "{}");
 }
 
-export function EarlyAccessSection({ eaPriceStd, eaPriceDlx }: { eaPriceStd: number; eaPriceDlx: number }) {
+export function EarlyAccessSection({ eaPriceStd, eaPriceMst }: { eaPriceStd: number; eaPriceMst: number }) {
   const { lang } = useLang();
   const T: Translation = translations[lang];
   const t: Translation["earlyAccess"] = T.earlyAccess;
-  const [form, setForm] = useState({ name: "", email: "", handicap: "", plan: "deluxe" });
+  const [form, setForm] = useState({ name: "", email: "", handicap: "", plan: "foundation" });
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState(false);
@@ -32,7 +32,7 @@ export function EarlyAccessSection({ eaPriceStd, eaPriceDlx }: { eaPriceStd: num
 
   useEffect(() => {
     fetch("/api/spots").then(r => r.json()).then(setSpots).catch(() => {});
-    const onPlan = (e: Event) => { const plan = (e as CustomEvent).detail; if (plan === "standard" || plan === "deluxe") setForm(f => ({ ...f, plan })); };
+    const onPlan = (e: Event) => { const plan = (e as CustomEvent).detail; if (plan === "foundation" || plan === "mastery") setForm(f => ({ ...f, plan })); };
     window.addEventListener("select-plan", onPlan);
     return () => window.removeEventListener("select-plan", onPlan);
   }, []);
@@ -80,14 +80,14 @@ export function EarlyAccessSection({ eaPriceStd, eaPriceDlx }: { eaPriceStd: num
             {t.offer && (
               <div className="rounded-xl bg-amber-400/[0.08] border border-amber-400/25 p-5 space-y-3">
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="rounded-lg bg-white/[0.05] border border-white/[0.08] p-3 text-center">
-                    <p className="text-[10px] font-bold tracking-widest uppercase text-green-200/50 mb-1">{T.pricing.plans[0].plan}</p>
+                  <div className="rounded-lg bg-amber-400/[0.06] border border-amber-400/20 p-3 text-center">
+                    <p className="text-[10px] font-bold tracking-widest uppercase text-amber-300/70 mb-1">Foundation</p>
                     <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "var(--font-cormorant), serif" }}><sup className="text-sm align-super font-normal">$</sup>{eaPriceStd}</p>
                     <p className="text-[11px] text-green-200/35 line-through">${T.pricing.plans[0].price}</p>
                   </div>
-                  <div className="rounded-lg bg-amber-400/[0.06] border border-amber-400/20 p-3 text-center">
-                    <p className="text-[10px] font-bold tracking-widest uppercase text-amber-300/70 mb-1">{T.pricing.plans[1].plan}</p>
-                    <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "var(--font-cormorant), serif" }}><sup className="text-sm align-super font-normal">$</sup>{eaPriceDlx}</p>
+                  <div className="rounded-lg bg-white/[0.05] border border-white/[0.08] p-3 text-center">
+                    <p className="text-[10px] font-bold tracking-widest uppercase text-green-200/50 mb-1">Mastery upgrade</p>
+                    <p className="text-2xl font-semibold text-[#f6f1e7]" style={{ fontFamily: "var(--font-cormorant), serif" }}><sup className="text-sm align-super font-normal">$</sup>{eaPriceMst}</p>
                     <p className="text-[11px] text-green-200/35 line-through">${T.pricing.plans[1].price}</p>
                   </div>
                 </div>
@@ -149,11 +149,11 @@ export function EarlyAccessSection({ eaPriceStd, eaPriceDlx }: { eaPriceStd: num
                 <div>
                   <label className="block text-xs font-semibold text-green-100/80 mb-2.5 tracking-wide">{t.fields.planLabel}</label>
                   <div className="grid grid-cols-2 gap-3">
-                    <button type="button" onClick={() => { setForm(f => ({ ...f, plan: "standard" })); track("plan_select", { plan: "standard" }); }} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "standard" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
-                      {T.pricing.plans[0].plan} · <span className="text-amber-400">${eaPriceStd}</span>
+                    <button type="button" onClick={() => { setForm(f => ({ ...f, plan: "foundation" })); track("plan_select", { plan: "foundation" }); }} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "foundation" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
+                      Foundation · <span className="text-amber-400">${eaPriceStd}</span>
                     </button>
-                    <button type="button" onClick={() => { setForm(f => ({ ...f, plan: "deluxe" })); track("plan_select", { plan: "deluxe" }); }} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "deluxe" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
-                      {T.pricing.plans[1].plan} · <span className="text-amber-400">${eaPriceDlx}</span>
+                    <button type="button" onClick={() => { setForm(f => ({ ...f, plan: "mastery" })); track("plan_select", { plan: "mastery" }); }} className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all border ${form.plan === "mastery" ? "bg-amber-400/15 border-amber-400/50 text-amber-300" : "bg-white/[0.04] border-white/10 text-green-200/60 hover:border-white/25"}`}>
+                      Mastery · <span className="text-amber-400">${eaPriceMst}</span>
                     </button>
                   </div>
                 </div>

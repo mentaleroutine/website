@@ -70,7 +70,7 @@ Here's what happens next:
 
   1. Today — Your application is in our queue
   2. Within 24 hours — We verify your details and activate your account
-  3. Once approved — You receive your free Deluxe Assessment ($129 value) and personal affiliate code
+  3. Once approved — You receive your free Foundation Assessment ($59 value) and personal affiliate code
 
 In the meantime, if you have any questions, just reply to this email.
 

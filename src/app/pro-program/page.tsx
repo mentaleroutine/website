@@ -219,9 +219,9 @@ export default function ProProgramPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { title: "Free Deluxe Assessment", desc: "Experience the full product yourself — a $129 value, completely free.", icon: "gift" },
+              { title: "Free Foundation Assessment", desc: "Experience the full product yourself — a $59 value, completely free.", icon: "gift" },
               { title: "$20 Per Sale", desc: "Earn a flat $20 commission for every assessment sold through your personal code.", icon: "dollar" },
-              { title: "Discount Codes", desc: "Give your students $15 off Standard or $30 off Deluxe — they save, you earn.", icon: "tag" },
+              { title: "Discount Codes", desc: "Give your students $10 off Foundation — they save, you earn.", icon: "tag" },
               { title: "Affiliate Kit", desc: "Ready-made sales copy, emails, and social posts to share with your student base.", icon: "kit" },
             ].map((item, i) => (
               <motion.div
@@ -315,7 +315,7 @@ export default function ProProgramPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { num: "01", title: "Apply & Get Approved", body: "Fill in the form below. We verify your PGA credentials and send you access — usually within the same day." },
-              { num: "02", title: "Experience It Yourself", body: "Take the free Deluxe Assessment ($129 value). See exactly what your students will discover about their mental game." },
+              { num: "02", title: "Experience It Yourself", body: "Take the free Foundation Assessment ($59 value). See exactly what your students will discover about their mental game." },
               { num: "03", title: "Share & Earn", body: "Share your personal discount code with your students. Every sale earns you $20 — automatically tracked and paid monthly." },
             ].map((step, i) => (
               <motion.div
@@ -433,7 +433,7 @@ export default function ProProgramPage() {
 
           <div className="space-y-4">
             {[
-              { q: "Is it really free to join?", a: "Yes. The free program gives you a complimentary Deluxe Assessment ($129 value), personal discount codes for your students, and $20 commission per sale. No costs, no obligations." },
+              { q: "Is it really free to join?", a: "Yes. The free program gives you a complimentary Foundation Assessment ($59 value), personal discount codes for your students, and $20 commission per sale. No costs, no obligations." },
               { q: "How do I get paid?", a: "Commissions are paid monthly via PayPal, as long as your balance is $100 or more. Below that, it rolls over to the next month. Every sale is automatically tracked through your personal code." },
               { q: "Do I need to be a PGA member?", a: "Yes. We verify PGA credentials to ensure quality and credibility for both you and your students. All PGA divisions worldwide are welcome." },
               { q: "How much time does this take?", a: "The free program takes virtually zero time — just share your code. If you upgrade to the full toolkit, the clinic runs itself with our turnkey curriculum (2.5 hours including prep)." },

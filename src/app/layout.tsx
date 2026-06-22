@@ -86,7 +86,7 @@ const jsonLdProduct = {
   offers: [
     {
       "@type": "Offer",
-      name: "Standard",
+      name: "MentalRoutine Foundation",
       price: "59.00",
       priceCurrency: "USD",
       availability: "https://schema.org/PreOrder",
@@ -94,8 +94,8 @@ const jsonLdProduct = {
     },
     {
       "@type": "Offer",
-      name: "Deluxe",
-      price: "129.00",
+      name: "MentalRoutine Mastery (upgrade)",
+      price: "89.00",
       priceCurrency: "USD",
       availability: "https://schema.org/PreOrder",
       url: "https://www.mentalroutine.com/#pricing",
@@ -125,10 +125,10 @@ const jsonLdFaq = {
     },
     {
       "@type": "Question",
-      name: "What is the difference between Standard and Deluxe?",
+      name: "What is MentalRoutine Mastery?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Standard ($59): 8 Mental Routine steps, 40+ factors, 12-page PDF report, 4–6 training reports. Deluxe ($129): all 8 steps + 5 additional areas, 70+ factors, 20-page PDF report, 9–14 training reports. Both include a 30-day money-back guarantee.",
+        text: "Mastery is an upgrade available exclusively to Foundation owners. It adds 35 extra mental factors, 24 additional report pages, and 90 more credits — giving you a deeper profile and more training reports to work with.",
       },
     },
     {
@@ -141,10 +141,10 @@ const jsonLdFaq = {
     },
     {
       "@type": "Question",
-      name: "Can I upgrade from Standard to Deluxe later?",
+      name: "How does the upgrade to Mastery work?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. You can upgrade to Deluxe for $89 — no need to retake the assessment. Your original results carry over.",
+        text: "Once you've completed Foundation ($59), you can upgrade to Mastery for $89. No need to retake the assessment — your original results carry over and Mastery adds the deeper analysis on top.",
       },
     },
   ],

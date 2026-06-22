@@ -24,13 +24,13 @@ function track(event: string, props?: Record<string, string>) { window.plausible
 
 // ── PAGE CONTENT ───────────────────────────────────────────────────────────────
 // Early access pricing — change these when early access ends (July 1st)
-const EA_PRICE_STD = 49;
-const EA_PRICE_DLX = 99;
+const EA_PRICE_STD = 49;  // Foundation early access price
+const EA_PRICE_MST = 69;  // Mastery upgrade early access price
 
 function PageContent() {
   const { lang } = useLang();
   const T: Translation = translations[lang];
-  const [previewPlan, setPreviewPlan] = useState<"standard" | "deluxe" | "training" | null>(null);
+  const [previewPlan, setPreviewPlan] = useState<"standard" | "mastery" | "training" | null>(null);
   const [showStickyBar, setShowStickyBar] = useState(false);
 
   // Section view tracking via IntersectionObserver
@@ -403,11 +403,11 @@ function PageContent() {
                   </div>
                 )}
                 {T.pricing.previewBtn && (
-                  <button onClick={() => { const p = i === 0 ? "standard" : "deluxe"; setPreviewPlan(p); track("report_preview", { type: p }); }} className="w-full text-center py-2 mb-3 rounded-lg text-xs font-medium text-amber-300/70 hover:text-amber-300 border border-amber-400/20 hover:border-amber-400/40 bg-amber-400/[0.04] hover:bg-amber-400/[0.08] transition-all">
+                  <button onClick={() => { const p = i === 0 ? "standard" : "mastery"; setPreviewPlan(p); track("report_preview", { type: p }); }} className="w-full text-center py-2 mb-3 rounded-lg text-xs font-medium text-amber-300/70 hover:text-amber-300 border border-amber-400/20 hover:border-amber-400/40 bg-amber-400/[0.04] hover:bg-amber-400/[0.08] transition-all">
                     {T.pricing.previewBtn}
                   </button>
                 )}
-                <a href="#early-access" onClick={() => { track("pricing_cta_click", { plan: i === 0 ? "standard" : "deluxe" }); window.dispatchEvent(new CustomEvent("select-plan", { detail: i === 0 ? "standard" : "deluxe" })); }} className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 1 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
+                <a href="#early-access" onClick={() => { track("pricing_cta_click", { plan: i === 0 ? "foundation" : "mastery" }); window.dispatchEvent(new CustomEvent("select-plan", { detail: i === 0 ? "foundation" : "mastery" })); }} className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 0 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
                   {i === 0 ? T.pricing.plans[0].cta : T.pricing.plans[1].cta}
                 </a>
               </motion.div>
@@ -645,7 +645,7 @@ function PageContent() {
       </section>
 
       {/* ── EARLY ACCESS SIGNUP ──────────────────────────────────────────── */}
-      <EarlyAccessSection eaPriceStd={EA_PRICE_STD} eaPriceDlx={EA_PRICE_DLX} />
+      <EarlyAccessSection eaPriceStd={EA_PRICE_STD} eaPriceMst={EA_PRICE_MST} />
 
       {/* ── CONTACT FORM ─────────────────────────────────────────────────── */}
       <ContactSection />
