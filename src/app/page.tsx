@@ -13,7 +13,6 @@ import { translations, type Translation } from "@/lib/translations";
 
 // Lazy-load below-fold interactive components
 const ContactSection = dynamic(() => import("@/components/ui/contact-section").then(m => ({ default: m.ContactSection })), { ssr: false });
-const EarlyAccessSection = dynamic(() => import("@/components/ui/early-access-section").then(m => ({ default: m.EarlyAccessSection })), { ssr: false });
 const ReportPreviewModal = dynamic(() => import("@/components/ui/report-preview-modal").then(m => ({ default: m.ReportPreviewModal })), { ssr: false });
 
 // ── Plausible Analytics helper ───────────────────────────────────────────────
@@ -23,9 +22,6 @@ function track(event: string, props?: Record<string, string>) { window.plausible
 
 
 // ── PAGE CONTENT ───────────────────────────────────────────────────────────────
-// Early access pricing — change these when early access ends (July 1st)
-const EA_PRICE_STD = 49;  // Foundation early access price
-const EA_PRICE_MST = 69;  // Mastery upgrade early access price
 
 function PageContent() {
   const { lang } = useLang();
@@ -45,29 +41,18 @@ function PageContent() {
         }
       }
     }, { threshold: 0.3 });
-    for (const id of ["how-it-works", "mental-routine", "steps", "dimensions", "why-it-works", "pricing", "training-reports", "testimonials", "faq", "early-access", "contact"]) {
+    for (const id of ["how-it-works", "mental-routine", "steps", "dimensions", "why-it-works", "pricing", "training-reports", "testimonials", "faq", "contact"]) {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     }
     return () => observer.disconnect();
   }, []);
 
-  // Sticky bar impression tracking
-  const stickyBarSeen = React.useRef(false);
-  useEffect(() => {
-    if (showStickyBar && !stickyBarSeen.current) {
-      stickyBarSeen.current = true;
-      track("sticky_bar_impression");
-    }
-  }, [showStickyBar]);
-
   useEffect(() => {
     const scrollMilestones = new Set<string>();
     const onScroll = () => {
       const scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-      const earlyAccessEl = document.getElementById("early-access");
-      const inEarlyAccess = earlyAccessEl ? window.scrollY + window.innerHeight > earlyAccessEl.offsetTop && window.scrollY < earlyAccessEl.offsetTop + earlyAccessEl.offsetHeight : false;
-      setShowStickyBar(scrollPct > 0.25 && scrollPct < 0.92 && !inEarlyAccess);
+      setShowStickyBar(scrollPct > 0.25 && scrollPct < 0.92);
       // Scroll depth tracking
       for (const milestone of ["25", "50", "75", "100"] as const) {
         if (scrollPct >= Number(milestone) / 100 && !scrollMilestones.has(milestone)) {
@@ -127,8 +112,8 @@ function PageContent() {
             </motion.div>
 
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
-              <a href="#early-access" onClick={() => track("cta_click", { source: "hero" })} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
-                {T.earlyAccess.heroCta.replace("{price}", `$${EA_PRICE_STD}`)}
+              <a href="#pricing" onClick={() => track("cta_click", { source: "hero" })} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
+                {T.hero.cta1}
               </a>
               <a href="#mental-routine" className="px-8 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm">
                 {T.hero.cta2}
@@ -137,10 +122,6 @@ function PageContent() {
 
             <motion.p className="text-xs text-green-200/40 max-w-md mx-auto lg:mx-0 mt-5 tracking-wide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.9 }}>
               {T.hero.howItWorksLine}
-            </motion.p>
-
-            <motion.p className="text-xs text-amber-300/60 max-w-md mx-auto lg:mx-0 mt-2 tracking-wide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.95 }}>
-              {T.earlyAccess.heroUrgency}
             </motion.p>
 
             <motion.a href="/quiz.html" onClick={() => track("quiz_click", { source: "hero" })} className="inline-flex items-center gap-1.5 text-xs text-amber-300/70 hover:text-amber-300 transition-colors mt-3 mx-auto lg:mx-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.0 }}>
@@ -360,18 +341,17 @@ function PageContent() {
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6 mb-4" />
             <p className="text-green-200/60 text-sm">{T.pricing.note}</p>
             <p className="mt-2 text-xs text-green-200/35 italic">{T.pricing.pricingAnchor}</p>
-            <p className="mt-3 text-xs text-amber-300/70">{T.earlyAccess.pricingBanner}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             {T.pricing.plans.map((card, i) => (
-              <motion.div key={i} className={`rounded-2xl p-8 relative ${i === 1 ? "bg-amber-500/10 border border-amber-400/50" : "bg-white/5 border border-white/10"} hover:-translate-y-1 transition-transform duration-300`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.15 }}>
-                {i === 1 && (
+              <motion.div key={i} className={`rounded-2xl p-8 relative ${i === 0 ? "bg-amber-500/10 border border-amber-400/50" : "bg-white/5 border border-white/10"} hover:-translate-y-1 transition-transform duration-300`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.15 }}>
+                {i === 0 && (
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-400 text-green-950 text-xs font-bold tracking-widest uppercase px-4 py-1 rounded-full">
                     {T.pricing.badge}
                   </div>
                 )}
-                <p className={`text-xs font-semibold tracking-widest uppercase mb-3 ${i === 1 ? "text-amber-300" : "text-amber-400/80"}`}>{card.plan}</p>
+                <p className={`text-xs font-semibold tracking-widest uppercase mb-3 ${i === 0 ? "text-amber-300" : "text-amber-400/80"}`}>{card.plan}</p>
                 {"wasPrice" in card && card.wasPrice && (
                   <p className="text-sm text-green-200/35 line-through mb-0.5 tracking-wide">
                     <span className="text-green-200/25 text-xs mr-0.5">$</span>{card.wasPrice}
@@ -407,7 +387,7 @@ function PageContent() {
                     {T.pricing.previewBtn}
                   </button>
                 )}
-                <a href="#early-access" onClick={() => { track("pricing_cta_click", { plan: i === 0 ? "foundation" : "mastery" }); window.dispatchEvent(new CustomEvent("select-plan", { detail: i === 0 ? "foundation" : "mastery" })); }} className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 0 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
+                <a href="#contact" onClick={() => track("pricing_cta_click", { plan: i === 0 ? "foundation" : "mastery" })} className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 ${i === 0 ? "bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30" : "border border-white/25 text-[#f6f1e7] hover:border-white/60 hover:bg-white/5"}`}>
                   {i === 0 ? T.pricing.plans[0].cta : T.pricing.plans[1].cta}
                 </a>
               </motion.div>
@@ -554,8 +534,8 @@ function PageContent() {
                 </div>
                 <span className="text-xs text-stone-400">{T.skillBuilder.extraCredits}</span>
               </div>
-              <a href="#early-access" className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
-                {T.earlyAccess.ctaBtn}
+              <a href="#pricing" className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
+                {T.hero.cta1}
               </a>
             </motion.div>
 
@@ -644,9 +624,6 @@ function PageContent() {
         </div>
       </section>
 
-      {/* ── EARLY ACCESS SIGNUP ──────────────────────────────────────────── */}
-      <EarlyAccessSection eaPriceStd={EA_PRICE_STD} eaPriceMst={EA_PRICE_MST} />
-
       {/* ── CONTACT FORM ─────────────────────────────────────────────────── */}
       <ContactSection />
 
@@ -733,13 +710,13 @@ function PageContent() {
                 ))}
               </div>
 
-              <a href="#early-access"
+              <a href="#pricing"
                 className="inline-flex items-center gap-2 text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors group"
               >
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0">
                   <path d="M8 1v14M1 8l7-7 7 7"/>
                 </svg>
-                <span>{T.earlyAccess.ctaBtn}</span>
+                <span>{T.nav.pricing}</span>
                 <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 group-hover:translate-x-0.5 transition-transform">
                   <path d="M1 6h10M6 1l5 5-5 5"/>
                 </svg>
@@ -786,14 +763,14 @@ function PageContent() {
             transition={{ duration: 0.25, ease: "easeOut" }}
           >
             <div className="container mx-auto max-w-4xl px-4 py-2.5 flex items-center justify-between gap-3">
-              <p className="text-xs text-green-200/60 hidden sm:block">{T.earlyAccess.stickyBar}</p>
+              <p className="text-xs text-green-200/60 hidden sm:block">{T.hero.howItWorksLine}</p>
               <div className="flex items-center gap-2 w-full sm:w-auto">
                 <a
-                  href="#early-access"
+                  href="#pricing"
                   onClick={() => track("cta_click", { source: "sticky" })}
                   className="flex-1 sm:flex-none text-center px-5 py-2 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all text-xs tracking-wide shadow-md shadow-amber-500/20"
                 >
-                  {T.earlyAccess.pricingCta}
+                  {T.hero.cta1}
                 </a>
               </div>
             </div>

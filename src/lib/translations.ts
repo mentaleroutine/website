@@ -99,7 +99,7 @@ export const translations = {
     },
     pricing: {
       label: "Pricing", h2a: "Invest in the part of your", h2b: "game you've neglected",
-      note: "Early Access pricing — regular pricing applies from July 1st. Foundation includes the Assessment + 20-page PDF report + 60 credits. Mastery is an upgrade for Foundation owners (+24 pages + 90 credits).", badge: "Start Here",
+      note: "Foundation includes the Assessment + 20-page PDF report + 60 credits. Mastery is an upgrade for Foundation owners (+24 pages + 90 credits).", badge: "Start Here",
       pricingAnchor: "For comparison: a single session with a golf psychologist typically costs $150–$300.",
       proCallout: "Teaching Professional? See how to offer this to your students →",
       creditsNote: "Credits included — use them for training reports. Extra credits available in the shop.",
@@ -308,7 +308,7 @@ export const translations = {
     },
     pricing: {
       label: "Prijzen", h2a: "Investeer in het deel van je spel", h2b: "dat je tot nu toe verwaarloosde",
-      note: "Early Access prijzen — reguliere prijs geldt vanaf 1 juli. Foundation bevat de Assessment + 20-pagina PDF-rapport + 60 credits. Mastery is een upgrade voor Foundation-gebruikers (+24 pag. + 90 credits).", badge: "Begin hier",
+      note: "Foundation bevat de Assessment + 20-pagina PDF-rapport + 60 credits. Mastery is een upgrade voor Foundation-gebruikers (+24 pag. + 90 credits).", badge: "Begin hier",
       pricingAnchor: "Ter vergelijking: één sessie bij een golfpsycholoog kost al snel €150–€300.",
       proCallout: "Teaching Professional? Bekijk hoe je dit aan je leerlingen kunt aanbieden →",
       creditsNote: "Credits inbegrepen — gebruik ze voor trainingsrapporten. Extra credits beschikbaar in de shop.",
@@ -516,7 +516,7 @@ export const translations = {
     },
     pricing: {
       label: "Preise", h2a: "Investiere in den Teil deines Spiels,", h2b: "den du vernachlässigt hast",
-      note: "Early Access Preise — reguläre Preise gelten ab 1. Juli. Foundation enthält das Assessment + 20-seitigen PDF-Bericht + 60 Credits. Mastery ist ein Upgrade für Foundation-Nutzer (+24 Seiten + 90 Credits).", badge: "Hier starten",
+      note: "Foundation enthält das Assessment + 20-seitigen PDF-Bericht + 60 Credits. Mastery ist ein Upgrade für Foundation-Nutzer (+24 Seiten + 90 Credits).", badge: "Hier starten",
       pricingAnchor: "Zum Vergleich: Eine einzelne Sitzung bei einem Golfpsychologen kostet in der Regel 150–300 €.",
       proCallout: "Teaching Professional? Erfahre, wie du das Assessment deinen Schülern anbieten kannst →",
       creditsNote: "Credits enthalten — für Trainingsberichte verwendbar. Zusätzliche Credits im Shop verfügbar.",
@@ -724,7 +724,7 @@ export const translations = {
     },
     pricing: {
       label: "Tarifs", h2a: "Investissez dans la partie de votre", h2b: "jeu que vous avez négligée",
-      note: "Tarifs Early Access — tarif régulier à partir du 1er juillet. Foundation inclut l'Évaluation + rapport PDF 20 pages + 60 crédits. Mastery est un upgrade pour les propriétaires de Foundation (+24 pages + 90 crédits).", badge: "Commencer ici",
+      note: "Foundation inclut l'Évaluation + rapport PDF 20 pages + 60 crédits. Mastery est un upgrade pour les propriétaires de Foundation (+24 pages + 90 crédits).", badge: "Commencer ici",
       pricingAnchor: "À titre de comparaison : une seule séance chez un psychologue du golf coûte généralement 150 à 300 €.",
       proCallout: "Professionnel de l'enseignement ? Découvrez comment proposer ceci à vos élèves →",
       creditsNote: "Crédits inclus — à utiliser pour les rapports d'entraînement. Crédits supplémentaires disponibles dans la boutique.",
@@ -932,7 +932,7 @@ export const translations = {
     },
     pricing: {
       label: "Precios", h2a: "Invierte en la parte de tu juego", h2b: "que has descuidado",
-      note: "Precios Early Access — precio regular a partir del 1 de julio. Foundation incluye la Evaluación + informe PDF 20 páginas + 60 créditos. Mastery es un upgrade para propietarios de Foundation (+24 pág. + 90 créditos).", badge: "Empieza aquí",
+      note: "Foundation incluye la Evaluación + informe PDF 20 páginas + 60 créditos. Mastery es un upgrade para propietarios de Foundation (+24 pág. + 90 créditos).", badge: "Empieza aquí",
       pricingAnchor: "Para comparar: una sola sesión con un psicólogo de golf suele costar entre $150 y $300.",
       proCallout: "¿Profesional de la enseñanza? Descubre cómo ofrecer esto a tus alumnos →",
       creditsNote: "Créditos incluidos — úsalos para informes de entrenamiento. Créditos adicionales disponibles en la tienda.",
