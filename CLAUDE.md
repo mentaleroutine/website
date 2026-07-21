@@ -53,12 +53,11 @@ public/
   logoMR.svg                    — logo svg (niet gecommit)
   logo-icon.svg                 — icon-only logo
   reports/
-    sample-standard.html        — dummy voorbeeldrapport Standard (12 pagina's)
-    sample-deluxe.html          — dummy voorbeeldrapport Deluxe (20 pagina's)
+    sample-standard.html        — dummy voorbeeldrapport Foundation (12 pagina's)
+    sample-mastery.html         — dummy voorbeeldrapport Mastery (44 pagina's) [voorheen sample-deluxe.html]
     sample-training-report.html — sample trainingsrapport (5 pagina's, clickable preview)
-  assessment-standaard.html     — assessment landingspagina (standaard)
-  assessment-deluxe.html        — assessment landingspagina (deluxe)
-  upgrade-standaard-deluxe.html — upgrade landingspagina
+  assessment-foundation.html    — assessment landingspagina Foundation [voorheen assessment-standaard.html]
+  assessment-mastery.html       — Mastery-uitlegpagina (in-portal credit-upgrade) [voorheen assessment-deluxe.html]
   quiz.html                     — quiz funnel pagina
   *.svg                         — Next.js default icons
 ```
@@ -116,14 +115,20 @@ public/
 
 ## Pricing (huidige waarden)
 
+**Let op — verkoopmodel gewijzigd (juli 2026):** de shop verkoopt alleen nog **Foundation**
+(voorheen "Standard") + credit-bundels. **"Mastery"** (voorheen "Deluxe") is geen los
+shop-product meer, maar een **in-portal credit-upgrade** (180 credits, beschikbaar vanaf
+1 aug 2026). Zie de portal-repo `docs/MASTERY_UPGRADE.md`. De $89 hieronder is de
+dollar-equivalente waarde die de website communiceert; de portal int in credits.
+
 | Plan | Prijs | Was-prijs | Inclusief | Early Access |
 |------|-------|-----------|-----------|-------------|
-| Standard | $59 | $79 | 12p PDF rapport + 4–6 trainingsrapporten | $49 + 2 extra training reports |
-| Deluxe | $129 | $179 | 20p PDF rapport + 9–14 trainingsrapporten | $99 + 2 extra training reports |
+| Foundation | $59 | $79 | 20p PDF rapport + 60 credits (2–6 trainingsrapporten) | $49 + 2 extra training reports |
+| Mastery (upgrade) | +$89 (180 credits) | $129 | +24p rapport (44 totaal) + 35 extra factoren + 90 credits (150 totaal) | $69 upgrade |
 
-**Extra trainingsrapporten**: vanaf $6,99 in de shop
+**Extra trainingsrapporten**: credit-bundels vanaf $6,99 (10 credits) in de shop
 
-**Upgrade pad**: Standard → Deluxe voor $89 (gedocumenteerd in FAQ Q9, niet prominent op pricing cards om directe Deluxe-conversie niet te ondermijnen)
+**Upgrade pad**: Foundation → Mastery met 180 credits in de portal (niet los te kopen; Foundation komt eerst). Bestandsnamen op de website: `assessment-mastery.html` (uitleg), de losse upgrade-pagina is verwijderd.
 
 **Early access prijzen zijn dynamisch**: `EA_PRICE_STD` (49) en `EA_PRICE_DLX` (99) constanten in page.tsx. Bij launch: verander alleen deze 2 waarden + de constanten in `api/early-access/route.ts` (`EA_STD`, `EA_DLX`). De `heroCta` translation gebruikt `{price}` template die at render time wordt ingevuld.
 
@@ -133,13 +138,13 @@ public/
 
 ## Sample Report Previews
 
-- **Locatie**: `public/reports/sample-standard.html`, `public/reports/sample-deluxe.html`, `public/reports/sample-training-report.html`
+- **Locatie**: `public/reports/sample-standard.html`, `public/reports/sample-mastery.html`, `public/reports/sample-training-report.html`
 - **Type**: Volledige HTML pagina's met eigen CSS (geen Tailwind), gestyled om een PDF-rapport te simuleren
-- **Assessment reports** (Standard + Deluxe): Cover page, score bars, deep dives per stap, geblurde secties (met lock icon), prioriteiten, aanbevelingen
+- **Assessment reports** (Foundation + Mastery): Cover page, score bars, deep dives per stap, geblurde secties (met lock icon), prioriteiten, aanbevelingen
 - **Training report** (5 pagina's): Cover met score indicator (3.8/10 Conviction Under Pressure), benchmark vergelijking, fysieke + mentale oefening, expert insight + storytelling (Shane Lowry), reflectievragen + mantra, geblurde AI self-coaching prompts + extended benchmark
-- **Geladen via**: `ReportPreviewModal` component in `report-preview-modal.tsx` (lazy-loaded) — iframe in een modal overlay, ondersteunt 3 types: `"standard"` | `"deluxe"` | `"training"`
+- **Geladen via**: `ReportPreviewModal` component in `report-preview-modal.tsx` (lazy-loaded) — iframe in een modal overlay, ondersteunt 3 types: `"standard"` | `"mastery"` | `"training"` (plan `"mastery"` → `sample-mastery.html`)
 - **Triggers**:
-  - "Preview sample report →" knop onder elke pricing card (standard/deluxe)
+  - "Preview sample report →" knop onder elke pricing card (Foundation/Mastery)
   - Clickable mockup card in Training Reports sectie (training)
   - "Preview sample training report →" knop in Training Reports sectie (`skillBuilder.previewBtn`)
 - **Status**: Dit zijn dummy/placeholder rapporten. Wanneer echte PDF's beschikbaar zijn, vervang je deze door:
@@ -273,8 +278,8 @@ public/
 | 5 | What are the Training Reports? | Voorheen "Skills Developer", met rapportaantallen |
 | 6 | Is this based on real research? | 1000+ golfers, Henk de Jong |
 | 7 | Is this also suitable for high-handicap golfers (28+)? | Ja, vaak meeste winst |
-| 8 | What is the difference between Standard and Deluxe? | Prijzen, features, rapport lengtes |
-| 9 | Can I upgrade from Standard to Deluxe later? | Ja, $89, nudge naar direct Deluxe |
+| 8 | What is MentalRoutine Mastery? | Upgrade voor Foundation-eigenaren: +35 factoren, +24 pag., +90 credits |
+| 9 | How does the upgrade to Mastery work? | In-portal credit-upgrade (~$89 / 180 credits), Foundation-resultaten hergebruikt |
 
 ## Kleurpalet
 
@@ -368,15 +373,15 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - **hreflang alternates**: `en`, `nl`, `de`, `fr`, `es`, `x-default` — allemaal naar `/` (single-page, client-side i18n)
 - **JSON-LD** (3 blokken in `<head>`):
   1. `Organization` — naam, url, logo, sameAs (Instagram, TikTok, YouTube, X, LinkedIn)
-  2. `Product` — 2 offers: Standard $59, Deluxe $129 (PreOrder availability)
+  2. `Product` — 2 offers: Foundation $59, Mastery $89 (upgrade, PreOrder availability)
   3. `FAQPage` — 5 meest relevante FAQ items voor Google rich snippets
 - **OG image** ✅: DALL-E gegenereerde radar chart achtergrond + tekst overlay via Sharp composite
 
 ### SEO — HTML Subsites
-- **Assessment Standaard** (`assessment-standaard.html`): `<link rel="canonical">` + JSON-LD Product schema ($59, PreOrder)
-- **Assessment Deluxe** (`assessment-deluxe.html`): `<link rel="canonical">` + JSON-LD Product schema ($129, PreOrder)
-- **Upgrade** (`upgrade-standaard-deluxe.html`): `<link rel="canonical">` + JSON-LD Product schema ($89, PreOrder)
+- **Assessment Foundation** (`assessment-foundation.html`): `<link rel="canonical">` + JSON-LD Product schema ($59, PreOrder). [Voorheen `assessment-standaard.html`]
+- **Mastery-uitlegpagina** (`assessment-mastery.html`): `<link rel="canonical">` + JSON-LD Product schema ($89 upgrade, PreOrder). [Voorheen `assessment-deluxe.html`]
 - **Quiz** (`quiz.html`): `<meta name="robots" content="noindex, nofollow">` + canonical (coming-soon, niet indexeren)
+- **Verwijderd**: `upgrade-standaard-deluxe.html` (was dubbelop met de Mastery-uitlegpagina). Oude URLs (assessment-deluxe/standaard/upgrade + sample-deluxe) geven nu 404 (harde cut, geen redirects — pre-launch).
 
 ### Accessibility
 - **Skip-to-content link**: `<a href="#hero" className="sr-only focus:not-sr-only ...">` vóór Navbar
@@ -393,7 +398,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
   - Close button krijgt auto-focus bij openen (`data-close` attribuut)
 - **Formulier feedback**: `role="status"` + `aria-live="polite"` op succes-berichten, `role="alert"` op foutmeldingen (contact-section + early-access-section)
 - **Training Reports mockup card**: `role="button"` + `tabIndex={0}` + `onKeyDown` handler (Enter/Space) + `aria-label` voor keyboard navigatie
-- **HTML subsites** (assessment-standaard, assessment-deluxe, upgrade, quiz):
+- **HTML subsites** (assessment-foundation, assessment-mastery, quiz):
   - Skip-to-content links (inline styled, zichtbaar bij focus)
   - `<main id="main-content">` landmarks
   - `role="banner"` op headers, `role="contentinfo"` op footers
@@ -553,27 +558,40 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - "For comparison: a single session with a golf psychologist typically costs $150–$300." (5 talen, € voor NL/DE/FR)
 - Key: `pricing.pricingAnchor` in translations
 
-### Upgrade Pad Standard → Deluxe
-- Prijs: $89 (verschil $129 - $59 + $19 marge)
-- Gedocumenteerd in FAQ Q9, niet op pricing cards
-- Bij implementatie in shop: upgrade-flow bouwen die bestaande assessment-resultaten hergebruikt
+### Upgrade Pad Foundation → Mastery (in-portal credit-upgrade)
+- Mastery is geen los shop-product meer, maar een **in-portal upgrade met credits** (180 credits ≈ $89 waarde), beschikbaar vanaf 1 aug 2026. Gebouwd in de portal-repo (fase 1); zie portal `docs/MASTERY_UPGRADE.md`.
+- Website communiceert de $89-waarde; de portal int in credits. Fase 2 (nog te doen): 16 extra Mastery-factoren + vragenlijst + rekenmodule + rapportsecties + knop activeren.
 
-### Assessment/Upgrade Pagina's Migratie naar Next.js (gepland)
-- **Huidige situatie**: 3 standalone HTML pagina's (`assessment-standaard.html`, `assessment-deluxe.html`, `upgrade-standaard-deluxe.html`) met eigen CSS
+### Assessment Pagina's Migratie naar Next.js (gepland)
+- **Huidige situatie**: 2 standalone HTML pagina's (`assessment-foundation.html`, `assessment-mastery.html`) met eigen CSS. (De losse upgrade-pagina is verwijderd; de sample-report is `reports/sample-mastery.html`.)
 - **Probleem**: dubbel onderhoud (eigen CSS, eigen analytics setup, handmatige terminologie-sync)
 - **Doel**: migratie naar Next.js App Router → shared layout, Tailwind, i18n, betere performance
-- **Scope**: groot project (~3000 regels HTML → React componenten)
+- **Scope**: groot project (~2400 regels HTML → React componenten)
 - **Prioriteit**: medium-laag — niet urgent, maar voorkomt drift naarmate de site groeit
 - **Stappen bij migratie**:
-  1. Maak `src/app/assessment/standaard/page.tsx` etc.
+  1. Maak `src/app/assessment/foundation/page.tsx` etc.
   2. Converteer CSS naar Tailwind klassen
   3. Hergebruik bestaande componenten (Navbar? Footer?)
   4. Verplaats analytics tracking naar shared utility
   5. Verwijder oude HTML bestanden uit `/public/`
 
-## Recent Uitgevoerde Wijzigingen (8 april 2026)
+## Recent Uitgevoerde Wijzigingen
 
-### Expert Panel Feedback (4 panels, meerdere rondes)
+> **Terminologie-noot:** entries hieronder gedateerd vóór juli 2026 gebruiken de oude termen
+> "Standard" en "Deluxe". Die zijn sinds juli 2026 hernoemd naar **Foundation** en **Mastery**,
+> en Deluxe/Mastery is van een los shop-product veranderd in een in-portal credit-upgrade.
+> De historische entries zijn bewust ongewijzigd gelaten (ze documenteren wat er toen gebeurde);
+> zie de "Pricing" + "SEO — HTML Subsites" secties hierboven voor de actuele staat.
+
+### Verkoopmodel-wijziging: Foundation-only shop + Mastery-upgrade (juli 2026)
+- Shop verkoopt alleen nog Foundation + credit-bundels. "Deluxe" → "Mastery", nu een in-portal
+  credit-upgrade (180 credits, vanaf 1 aug 2026) i.p.v. los product. Zie portal `docs/MASTERY_UPGRADE.md`.
+- Next.js-hoofdsite was al Foundation/Mastery. HTML-subsites herschreven naar het nieuwe model +
+  hernoemd: `assessment-deluxe.html` → `assessment-mastery.html`, `assessment-standaard.html` →
+  `assessment-foundation.html`, `reports/sample-deluxe.html` → `reports/sample-mastery.html`.
+  `upgrade-standaard-deluxe.html` verwijderd (was dubbelop). Oude URLs → 404 (harde cut, pre-launch).
+
+### Expert Panel Feedback (4 panels, meerdere rondes) — 8 april 2026
 
 **Panel 1 — Conversie Specialisten:**
 - Early access signup met plan-voorkeur (Standard/Deluxe)
