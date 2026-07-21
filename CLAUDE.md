@@ -69,7 +69,7 @@ public/
 | `www.mentalroutine.com` | Productie (primair) |
 | `mentalroutine.com` | 307 redirect → `www.mentalroutine.com` |
 | `mentaleroutine.com` | 301 redirect → `www.mentalroutine.com` (oud domein) |
-| `shop.mentalroutine.com` | Externe webshop (alle CTA-links wijzen hiernaar) |
+| `shop.mentalroutine.com` | Externe Shopify-webshop (LIVE). Koop-CTA's wijzen hiernaar — zie hieronder |
 
 - **Domeinregistrar**: TransIP
 - **Hosting**: Vercel — auto-deploy op elke push naar `main`
@@ -517,9 +517,15 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Loopt automatisch af bij elke nieuwe signup
 
 ### Shop Integratie
-- Alle koop-CTA's linken nu naar `#early-access` (pre-launch)
-- Na launch: wijzig naar `https://shop.mentalroutine.com` links
-- CTA tekst in `earlyAccess.pricingCta` en `earlyAccess.heroCta` aanpassen
+- **Koop-CTA's wijzen naar de LIVE shop** (juli 2026, commit eed4a3b). Bestemmingen via
+  constanten in `page.tsx`: `SHOP_FOUNDATION_URL` (= `shop.mentalroutine.com/products/mentalroutine-standard-assessment`)
+  voor hero/pricing-Foundation/training-reports/sticky-CTA; `MASTERY_INFO_URL` (= `/assessment-mastery.html`)
+  voor de Mastery-pricingkaart (Mastery is geen shop-product, in-portal upgrade). HTML-subsites
+  (`assessment-foundation.html`, `assessment-mastery.html`) linken ook naar het Foundation-shopproduct.
+- **NB (historie):** de vroegere `#early-access`-flow bestaat NIET meer — `EarlyAccessSection`
+  wordt niet gerenderd in `page.tsx`, en de `earlyAccess.*`-translations worden op de hoofdpagina
+  niet gebruikt (wél nog in de losse component + api/early-access). Navigatie-links (footer/navbar
+  "Prijzen" → `#pricing`, hero `cta2` → uitleg, quiz/pro-program) zijn bewust GEEN shop-links.
 - **De Shopify-shop zelf** (storefront-thema, design, producten) is LIVE en herontworpen
   (21 juli 2026, premium redesign passend bij deze hoofdsite). Gedocumenteerd in de
   PORTAL-repo: `NewAssessmentPortal/docs/SHOP_THEMA.md` (thema/CLI/afbeeldingen) +
