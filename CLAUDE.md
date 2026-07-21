@@ -520,6 +520,13 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Alle koop-CTA's linken nu naar `#early-access` (pre-launch)
 - Na launch: wijzig naar `https://shop.mentalroutine.com` links
 - CTA tekst in `earlyAccess.pricingCta` en `earlyAccess.heroCta` aanpassen
+- **De Shopify-shop zelf** (storefront-thema, design, producten) is LIVE en herontworpen
+  (21 juli 2026, premium redesign passend bij deze hoofdsite). Gedocumenteerd in de
+  PORTAL-repo: `NewAssessmentPortal/docs/SHOP_THEMA.md` (thema/CLI/afbeeldingen) +
+  `docs/CREDIT_PRIJZEN.md` (credit-bedragen shop↔portal). Shop verkoopt Foundation +
+  6 credit-bundels; Mastery = in-portal credit-upgrade. Lokale themacode:
+  `C:/Users/beren/Documents/mentalroutine-shop-live/` (los, geen git-repo, gaat via
+  Shopify CLI).
 
 ### Gratis Quiz (launch 22 juni 2026)
 - URL: `https://mentalroutine.com/quiz.html`
