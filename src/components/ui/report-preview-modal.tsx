@@ -47,7 +47,7 @@ export function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "mast
     };
   }, [handleClose]);
 
-  const src = plan === "training" ? "/reports/sample-training-report.html" : plan === "mastery" ? "/reports/sample-deluxe.html" : "/reports/sample-standard.html";
+  const src = plan === "training" ? "/reports/sample-training-report.html" : plan === "mastery" ? "/reports/sample-mastery.html" : "/reports/sample-standard.html";
   const label = T.pricing.previewModal[plan];
 
   return (

@@ -522,8 +522,8 @@
     .credits-breakdown-note{display:block;font-size:.7rem;color:var(--text-muted);font-style:italic;margin-top:.55rem;padding-top:.45rem;border-top:1px solid rgba(184,149,42,.15)}
   </style>
   <!-- Plausible Analytics — proxied via Vercel rewrite -->
-  <link rel="canonical" href="https://www.mentalroutine.com/assessment-standaard.html">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Mental Routine Assessment Foundation","description":"Ontdek in 25 minuten welke mentale patronen je slagen kosten. Persoonlijk rapport, 60 credits (2–6 trainingsrapporten), 30 dagen geld-terug.","brand":{"@type":"Brand","name":"MentalRoutine"},"offers":{"@type":"Offer","price":"59.00","priceCurrency":"USD","availability":"https://schema.org/PreOrder","url":"https://www.mentalroutine.com/assessment-standaard.html"}}</script>
+  <link rel="canonical" href="https://www.mentalroutine.com/assessment-foundation.html">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Mental Routine Assessment Foundation","description":"Ontdek in 25 minuten welke mentale patronen je slagen kosten. Persoonlijk rapport, 60 credits (2–6 trainingsrapporten), 30 dagen geld-terug.","brand":{"@type":"Brand","name":"MentalRoutine"},"offers":{"@type":"Offer","price":"59.00","priceCurrency":"USD","availability":"https://schema.org/PreOrder","url":"https://www.mentalroutine.com/assessment-foundation.html"}}</script>
   <script async src="/js/script.js" data-api="/api/event" data-domain="mentalroutine.com"></script>
   <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}}; plausible.init();</script>
   <!-- Microsoft Clarity — heatmaps + session recordings -->
@@ -1090,7 +1090,7 @@
 
     <!-- FIX #10: Upsell hint to Mastery -->
     <div class="upsell-hint reveal d2">
-      <p>Wil je later dieper? Upgrade in de portal naar Mastery — 35 extra factoren en +90 credits. <a href="assessment-deluxe.html">Ontdek Mastery →</a></p>
+      <p>Wil je later dieper? Upgrade in de portal naar Mastery — 35 extra factoren en +90 credits. <a href="assessment-mastery.html">Ontdek Mastery →</a></p>
     </div>
   </div>
 </section>
@@ -1248,7 +1248,7 @@
   });
 
   // ── Upsell click (Standard → Deluxe) ──
-  document.querySelectorAll('a[href*="assessment-deluxe"]').forEach(function(a) {
+  document.querySelectorAll('a[href*="assessment-mastery"]').forEach(function(a) {
     a.addEventListener('click', function() {
       if (window.plausible) plausible('upsell_click', { props: { from: 'standard', to: 'deluxe', source: PAGE } });
     });
