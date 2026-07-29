@@ -20,11 +20,10 @@ declare global { interface Window { plausible?: (event: string, options?: { prop
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
 
 // ── Shop / koop-bestemmingen ─────────────────────────────────────────────────
-// Alle koop-CTA's wijzen naar de live Shopify-shop (shop.mentalroutine.com).
-// Foundation = het instapproduct; Mastery is geen shop-product (in-portal
-// credit-upgrade) → wijst naar de uitlegpagina.
-const SHOP_FOUNDATION_URL = "https://shop.mentalroutine.com/products/mentalroutine-standard-assessment";
-const MASTERY_INFO_URL = "/assessment-mastery.html";
+// Koop-CTA's wijzen naar de live Shopify-shop (shop.mentalroutine.com). Later
+// omzetten naar de Lemon Squeezy-overlay. Er is nog één product (de assessment,
+// $79); de homepage verkoopt niet meer zelf — de koopknop staat op /assessment.
+const SHOP_ASSESSMENT_URL = "https://shop.mentalroutine.com/products/mentalroutine-standard-assessment";
 
 
 
@@ -118,22 +117,23 @@ function PageContent() {
               </span>
             </motion.div>
 
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
-              <a href={SHOP_FOUNDATION_URL} onClick={() => track("cta_click", { source: "hero" })} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
+            {/* Three equal doors — the homepage explains, it doesn't sell.
+                The buy button lives on /assessment. */}
+            <motion.div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
+              <a href="/quickscan" onClick={() => track("quiz_click", { source: "hero" })} className="px-6 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide text-center">
+                {T.nav.cta}
+              </a>
+              <a href="/assessment" onClick={() => track("cta_click", { source: "hero" })} className="px-6 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm text-center">
                 {T.hero.cta1}
               </a>
-              <a href="#mental-routine" className="px-8 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm">
-                {T.hero.cta2}
+              <a href="/pro-program" onClick={() => track("pro_program_click", { source: "hero" })} className="px-6 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm text-center">
+                {T.hero.proDoor}
               </a>
             </motion.div>
 
             <motion.p className="text-xs text-green-200/40 max-w-md mx-auto lg:mx-0 mt-5 tracking-wide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.9 }}>
               {T.hero.howItWorksLine}
             </motion.p>
-
-            <motion.a href="/quiz.html" onClick={() => track("quiz_click", { source: "hero" })} className="inline-flex items-center gap-1.5 text-xs text-amber-300/70 hover:text-amber-300 transition-colors mt-3 mx-auto lg:mx-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.0 }}>
-              {T.hero.quizCta}
-            </motion.a>
           </div>
 
           {/* Mobile-only mini report mockup */}
@@ -383,7 +383,7 @@ function PageContent() {
                     {T.pricing.previewBtn}
                   </button>
                 )}
-                <a href={SHOP_FOUNDATION_URL} onClick={() => track("pricing_cta_click", { plan: "foundation" })} className="block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
+                <a href={SHOP_ASSESSMENT_URL} onClick={() => track("pricing_cta_click", { plan: "foundation" })} className="block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
                   {T.pricing.plans[0].cta}
                 </a>
               </div>
@@ -484,7 +484,7 @@ function PageContent() {
                 </div>
                 <span className="text-xs text-stone-400">{T.skillBuilder.extraCredits}</span>
               </div>
-              <a href={SHOP_FOUNDATION_URL} className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
+              <a href={SHOP_ASSESSMENT_URL} className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
                 {T.hero.cta1}
               </a>
             </motion.div>
@@ -716,7 +716,7 @@ function PageContent() {
               <p className="text-xs text-green-200/60 hidden sm:block">{T.hero.howItWorksLine}</p>
               <div className="flex items-center gap-2 w-full sm:w-auto">
                 <a
-                  href={SHOP_FOUNDATION_URL}
+                  href={SHOP_ASSESSMENT_URL}
                   onClick={() => track("cta_click", { source: "sticky" })}
                   className="flex-1 sm:flex-none text-center px-5 py-2 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all text-xs tracking-wide shadow-md shadow-amber-500/20"
                 >

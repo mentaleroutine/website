@@ -19,6 +19,7 @@ const en = {
       cta1: "See My Player Profile", cta2: "See the 8 Steps",
       howItWorksLine: "15-minute questionnaire → personalised PDF profile → targeted improvement plan",
       quizCta: "Or try the free QuickScan first →",
+      proDoor: "Teaching professional?",
     },
     heroCardLabels: [
       { tag: "Focus",            insight: "Target selection is strong. Visualisation consistent before each shot." },
@@ -225,6 +226,7 @@ export const translations = {
       cta1: "Bekijk Mijn Spelersprofiel", cta2: "Bekijk de 8 Stappen",
       howItWorksLine: "15 minuten vragenlijst → persoonlijk PDF-profiel → gericht verbeterplan",
       quizCta: "Of probeer eerst de gratis QuickScan →",
+      proDoor: "Teaching professional?",
     },
     heroCardLabels: [
       { tag: "Focus",           insight: "Doelselectie is sterk. Visualisatie consistent voor elke slag." },
