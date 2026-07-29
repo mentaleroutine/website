@@ -20,7 +20,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "The Mental Routine Assessment for Golfers | MentalRoutine",
   description:
-    "Map your mental game in 15 minutes. Get a personalised PDF report with scores on 70+ mental factors, targeted training reports, and a concrete improvement plan. From $59.",
+    "Map your mental game in 15 minutes. Get a personalised PDF player profile across the 8 routine steps and 4 influencing factors, three training reports of your choice, and a concrete improvement plan. $79.",
   metadataBase: new URL("https://mentalroutine.com"),
   alternates: {
     canonical: "/",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Mental Routine Assessment for Golfers",
     description:
-      "Map your mental game in 15 minutes. Personalised PDF report + training reports. From $59.",
+      "Map your mental game in 15 minutes. Personalised PDF player profile + three training reports. $79.",
     images: ["https://mentalroutine.com/og-image.png"],
   },
   robots: { index: true, follow: true },
@@ -81,24 +81,16 @@ const jsonLdProduct = {
   "@type": "Product",
   name: "Mental Routine Assessment",
   description:
-    "A digital assessment that maps your mental golf game across 8 routine steps and 6 psychological dimensions, delivered as a personalised PDF report with targeted training reports.",
+    "A digital assessment that maps your mental golf game across the 8 routine steps and the 4 factors that influence them, delivered as a personalised PDF player profile with three training reports of your choice from twelve.",
   brand: { "@type": "Brand", name: "MentalRoutine" },
   offers: [
     {
       "@type": "Offer",
-      name: "MentalRoutine Foundation",
-      price: "59.00",
+      name: "The MentalRoutine Assessment",
+      price: "79.00",
       priceCurrency: "USD",
       availability: "https://schema.org/PreOrder",
-      url: "https://mentalroutine.com/#pricing",
-    },
-    {
-      "@type": "Offer",
-      name: "MentalRoutine Mastery (upgrade)",
-      price: "89.00",
-      priceCurrency: "USD",
-      availability: "https://schema.org/PreOrder",
-      url: "https://mentalroutine.com/#pricing",
+      url: "https://mentalroutine.com/assessment",
     },
   ],
 };
@@ -120,15 +112,15 @@ const jsonLdFaq = {
       name: "What exactly is the Mental Routine Assessment?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A structured digital questionnaire grounded in over a decade of research with 1,000+ golfers. It measures your mental performance across 8 routine factors and 6 psychological dimensions.",
+        text: "A structured digital questionnaire grounded in over a decade of research with 1,000+ golfers. It measures your mental game across the 8 routine steps and the 4 factors that influence them — focus, conviction, pressure, resilience and more — delivered as a personalised PDF player profile.",
       },
     },
     {
       "@type": "Question",
-      name: "What is MentalRoutine Mastery?",
+      name: "What do I get with the assessment?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Mastery is an upgrade available exclusively to Foundation owners. It adds 35 extra mental factors, 24 additional report pages, and 90 more credits — giving you a deeper profile and more training reports to work with.",
+        text: "Your complete player profile as a personalised PDF, plus three training reports of your choice from twelve — one for each of the eight steps and four factors. Your profile recommends which three to start with.",
       },
     },
     {
@@ -137,14 +129,6 @@ const jsonLdFaq = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "Absolutely. Golfers with higher handicaps often gain the most — because frustration, inconsistency, and lost enjoyment are almost always mental rather than technical at that stage.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How does the upgrade to Mastery work?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Once you've completed Foundation ($59), you can upgrade to Mastery for $89. No need to retake the assessment — your original results carry over and Mastery adds the deeper analysis on top.",
       },
     },
   ],
