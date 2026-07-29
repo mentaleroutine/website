@@ -1,5 +1,52 @@
 # Project: The Mental Routine for Golfers — Landing Page
 
+## ⚠️ ACTUELE STAAT — VERSIMPELD MODEL (juli 2026, LIVE op www.mentalroutine.com)
+
+> **Grote herziening uitgevoerd + live.** De secties verderop in dit bestand beschrijven
+> deels het OUDE model (Foundation/Mastery/credits/6 dimensies/2 producten). Dat is HISTORIE.
+> Hieronder staat wat er NU op de site staat. Bij tegenspraak wint deze sectie.
+
+**Het model (8 stappen in 3 fases die golfers kennen):**
+- **Pre-shot:** Focus · Concentration
+- **Swing:** Conviction · **Trust** (was "Performance"; NL "Vertrouwen")
+- **Post-shot:** Evaluation · Acceptance · Analysis · **Transfer** (was "Learning Transfer")
+- **4 beïnvloedende factoren** (apart blok, GEEN stappen, eromheen): Pressure & stress ·
+  Practice quality · Risk appetite · Resilience. Vervangt de oude "6 psychologische dimensies".
+- Structuur-som: 8 stappen × 5 + 4 factoren × 4 = **56** interventiepunten (afgeleid presenteren).
+
+**Product & prijs (ÉÉN product, geen tiers):**
+- De **MentalRoutine Assessment** = **$79** (USD wereldwijd, GEEN was-prijs, GEEN €).
+  Code-prijs $59 via pro/affiliate — NIET publiek noemen. Geen Foundation/Mastery/credits meer.
+- Inbegrepen: het complete **player profile** (PDF) + **3 training reports naar keuze uit 12**
+  (= 8 stappen + 4 factoren; presenteer als "8+4"). Extra reports $19 · 3 reports $49 ·
+  repeat $39 · course booklet $9.
+- Terminologie: eerste rapport = **profile** (NL spelersprofiel), vervolg = **training reports**.
+  Scoreschaal overal **0–10, 1 decimaal**.
+
+**Pagina's/URLs:**
+- `/` homepage — LEGT UIT, verkoopt niet. Hero: geen prijs/koopknop, **3 gelijkwaardige deuren**
+  (QuickScan `/quickscan` · assessment `/assessment` · pro `/pro-program`).
+- `/assessment` = NIEUWE Next.js-pagina (`src/app/assessment/page.tsx`) — het betaalde product,
+  koopknop → Shopify. Meertalig via `translations.assessmentPage`.
+- `/quickscan` = de standalone quiz (rewrite → `public/quiz.html` in next.config; was `/quiz.html`).
+- **Redirects (next.config.ts):** `/quiz.html`→`/quickscan`, `/assessment-mastery.html`→`/assessment`,
+  `/assessment-foundation.html`→`/assessment` (die 2 HTML-bestanden zijn VERWIJDERD).
+- **Canonieke host: www.mentalroutine.com** (Vercel serveert www; canonicals/metadata op www).
+
+**Meertaligheid NU:** alleen **EN + NL** actief. **DE/FR/ES verborgen** uit de taalwisselaar
+(navbar.tsx LANG_OPTIONS: de/fr/es uitgecommend) — ze verwijzen in translations.ts naar het
+EN-object (`de: en, fr: en, es: en`) als tijdelijke placeholder tot vertaald. `en` is een losse
+`const ... as const`; `translations = {en, nl, de:en, fr:en, es:en} satisfies Record<Lang, Translation>`;
+`Translation = Widen<typeof en>`. Nieuwe key = in en+nl beide toevoegen.
+
+**Koopknoppen:** wijzen NOG naar Shopify (`SHOP_ASSESSMENT_URL` in page.tsx + assessment/pro).
+Later → Lemon Squeezy (openstaand).
+
+**Openstaand (niet gedaan):** Lemon Squeezy-migratie · testimonials-foto's/authenticiteit
+(randomuser.me, overleg compagnon) · UTM-meetbaarheid PGA-mailing · DE/FR/ES vertalen ·
+tekstuele finetuning · `sample-mastery.html` heeft nog "Mastery Edition"-cosmetica (dood bestand,
+niet getoond) · `assessment/page.tsx`-copy is grotendeels mijn formulering (mag bijgestuurd).
+
 ## Stack
 - **Framework**: Next.js 16.2.0 (App Router, TypeScript)
 - **Styling**: Tailwind CSS v4
