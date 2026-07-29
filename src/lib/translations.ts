@@ -33,6 +33,16 @@ const en = {
     ],
     yourProfile: "Your profile",
     stepLabel: "Step",
+    assessmentPage: {
+      badge: "The Assessment",
+      h1a: "One assessment.", h1b: "Your whole mental game.",
+      intro: "Fifteen minutes maps your complete player profile across the eight steps and the four factors that shape them — and hands you three training reports of your choice from twelve to start improving right away.",
+      whatYouGetLabel: "What you get",
+      durationLabel: "How long it takes", duration: "15–25 minutes, on any device. Your profile is ready to download the moment you finish.",
+      guaranteeInline: "30-day money-back guarantee — if you don't find one insight that changes how you think about your game, we refund every cent.",
+      backHome: "← Back to home",
+      faqLabel: "About the assessment",
+    },
     research: {
       label: "The Research Behind It",
       h2a: "You can't train what", h2b: "you're not aware of.",
@@ -240,6 +250,16 @@ export const translations = {
     ],
     yourProfile: "Jouw profiel",
     stepLabel: "Stap",
+    assessmentPage: {
+      badge: "De Assessment",
+      h1a: "Eén assessment.", h1b: "Je hele mentale spel.",
+      intro: "In vijftien minuten breng je je complete spelersprofiel in kaart over de acht stappen en de vier factoren die ze vormen — en je krijgt drie trainingsrapporten naar keuze uit twaalf om meteen mee aan de slag te gaan.",
+      whatYouGetLabel: "Wat je krijgt",
+      durationLabel: "Hoe lang het duurt", duration: "15–25 minuten, op elk apparaat. Je profiel staat klaar om te downloaden zodra je klaar bent.",
+      guaranteeInline: "30 dagen niet-goed-geld-terug — vind je niet één inzicht dat verandert hoe je over je spel denkt, dan betalen we alles terug.",
+      backHome: "← Terug naar home",
+      faqLabel: "Over de assessment",
+    },
     research: {
       label: "Het Onderzoek", h2a: "Je kunt niet trainen wat je", h2b: "niet van jezelf weet.",
       p1: "Tien jaar onderzoek met 1.000+ golfers onthulde iets verrassends: het verschil tussen consistente en inconsistente spelers is niet technisch — het zijn mentale patronen zoals focus, overtuiging, veerkracht en het vermogen om een slechte slag los te laten.",
