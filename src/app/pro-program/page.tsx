@@ -155,23 +155,23 @@ export default function ProProgramPage() {
               style={{ fontFamily: "var(--font-cormorant), serif" }}
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             >
-              Add a New Revenue Stream<br />
-              <span className="italic text-amber-300">to Your Teaching Practice</span>
+              A Second Lesson Offer<br />
+              <span className="italic text-amber-300">for the Students You Already Have</span>
             </motion.h1>
 
             <motion.p
               className="text-lg text-green-200/75 max-w-2xl mx-auto mb-4 leading-relaxed"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
             >
-              Join the Mental Routine Pro Program and earn <strong className="text-amber-300">$4,860+ per year</strong> with
-              ready-made materials — no extra lesson prep required.
+              Turn the mental game into a <strong className="text-amber-300">natural extension of your teaching practice</strong>.
+              Every golfer you already coach is a potential mental-game student.
             </motion.p>
 
             <motion.p
               className="text-base text-green-200/55 max-w-xl mx-auto mb-8 leading-relaxed"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
             >
-              Earn $20 per assessment sold through your personal code. Run clinics with our turnkey curriculum. Keep 100% of your lesson package revenue.
+              Give your students an objective picture of their mental game, then build individual and group lesson programs around it — with ready-made materials, so there&apos;s no extra prep.
             </motion.p>
 
             <motion.div
@@ -182,7 +182,7 @@ export default function ProProgramPage() {
                 onClick={scrollToForm}
                 className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide"
               >
-                Apply for Free Access
+                Apply for Access
               </button>
               <a
                 href="#how-it-works"
@@ -199,7 +199,7 @@ export default function ProProgramPage() {
             >
               <span className="inline-flex items-center gap-2 bg-white/[0.06] border border-white/[0.1] rounded-full px-4 py-1.5 text-xs text-green-200/65">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-                Free to join · No obligations · Available worldwide
+                Free for approved pros · By application · Available worldwide
               </span>
             </motion.div>
           </div>
@@ -210,19 +210,19 @@ export default function ProProgramPage() {
       <section className="py-24 px-6 bg-[#f6f1e7]">
         <div className="container mx-auto max-w-5xl">
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">Free Program</p>
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">Free for Approved Pros</p>
             <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-              Everything You Need<br /><em>to Start Earning Today</em>
+              Everything You Need<br /><em>to Add the Mental Game</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { title: "Free Foundation Assessment", desc: "Experience the full product yourself — a $59 value, completely free.", icon: "gift" },
-              { title: "$20 Per Sale", desc: "Earn a flat $20 commission for every assessment sold through your personal code.", icon: "dollar" },
-              { title: "Discount Codes", desc: "Give your students $10 off Foundation — they save, you earn.", icon: "tag" },
-              { title: "Affiliate Kit", desc: "Ready-made sales copy, emails, and social posts to share with your student base.", icon: "kit" },
+              { title: "Your Own Assessment", desc: "Take the full Mental Routine Assessment yourself — a $79 value, free once you're approved.", icon: "gift" },
+              { title: "Clinic Outline & Materials", desc: "A ready-to-run clinic outline plus six printable A4 pages you can hand out on the day.", icon: "kit" },
+              { title: "Marketing Toolkit", desc: "Sales copy, emails, and social posts to introduce the assessment to your student base.", icon: "tag" },
+              { title: "Personal Discount Code", desc: "A code that gives your students a discount on Foundation — a natural reason to reach out.", icon: "dollar" },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -241,30 +241,38 @@ export default function ProProgramPage() {
             ))}
           </div>
 
-          <motion.div className="text-center mt-10" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
+          <motion.p
+            className="text-center text-sm text-stone-500 max-w-2xl mx-auto mt-10 leading-relaxed"
+            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            You also get <strong className="text-green-900">access to the Pro portal</strong> and can build your own
+            individual and group lesson programs around each assessment — your <strong className="text-green-900">first five programs are free</strong>.
+          </motion.p>
+
+          <motion.div className="text-center mt-8" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
             <button onClick={scrollToForm} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
-              Apply for Free Access
+              Apply for Access
             </button>
           </motion.div>
         </div>
       </section>
 
-      {/* ── THE NUMBERS ───────────────────────────────────────────────────── */}
+      {/* ── WHY IT FITS YOUR PRACTICE ─────────────────────────────────────── */}
       <section className="py-24 px-6 bg-green-950">
         <div className="container mx-auto max-w-5xl">
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">Your Earning Potential</p>
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">Why It Fits Your Practice</p>
             <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-              $4,860+ Per Year.<br /><em className="text-amber-300">Here&apos;s the Math.</em>
+              Your Students Are<br /><em className="text-amber-300">Already Here.</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {[
-              { label: "Assessment Commissions", calc: "50 students × $20", total: "$1,000", sub: "per year, passive income" },
-              { label: "Clinic Revenue", calc: "4 clinics × 10 students × $59", total: "$2,360", sub: "per year, your own pricing" },
-              { label: "Lesson Packages", calc: "Upsell 3- and 5-lesson packs", total: "$1,500+", sub: "per year, 100% yours" },
+              { label: "One Assessment", title: "A Clear Starting Point", sub: "Every golfer you coach gets an objective picture of their mental game — and a reason to work on it with you." },
+              { label: "Two Lesson Formats", title: "Individual & Group", sub: "Build private lesson programs or run a clinic. The material is ready; you bring the coaching." },
+              { label: "One Student Base", title: "No New Audience Needed", sub: "You already have the relationships. This simply gives you a second, natural thing to teach." },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -272,30 +280,28 @@ export default function ProProgramPage() {
                 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.12 }}
               >
                 <p className="text-xs font-semibold tracking-widest uppercase text-amber-400/80 mb-4">{item.label}</p>
-                <div className="text-5xl font-semibold text-[#f6f1e7] leading-none mb-2" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-                  {item.total}
+                <div className="text-2xl font-semibold text-[#f6f1e7] leading-tight mb-3" style={{ fontFamily: "var(--font-cormorant), serif" }}>
+                  {item.title}
                 </div>
-                <p className="text-sm text-green-200/50 mb-1">{item.calc}</p>
-                <p className="text-xs text-green-200/35">{item.sub}</p>
+                <p className="text-sm text-green-200/50">{item.sub}</p>
               </motion.div>
             ))}
           </div>
 
-          {/* Total */}
+          {/* Highlight */}
           <motion.div
-            className="mt-8 max-w-3xl mx-auto rounded-2xl border border-amber-400/30 bg-amber-500/10 px-8 py-6 text-center"
+            className="mt-8 max-w-3xl mx-auto rounded-2xl border border-amber-400/30 bg-amber-500/10 px-8 py-7 text-center"
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <p className="text-xs font-semibold tracking-widest uppercase text-amber-300 mb-2">Combined Annual Potential</p>
-            <div className="text-6xl font-semibold text-[#f6f1e7] leading-none" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-              $4,860<sup className="text-2xl align-super font-normal text-amber-300">+</sup>
-            </div>
-            <p className="text-sm text-green-200/50 mt-2">With ready-made materials and zero lesson prep</p>
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-300 mb-3">The Idea in One Line</p>
+            <p className="text-xl md:text-2xl font-semibold text-[#f6f1e7] leading-snug" style={{ fontFamily: "var(--font-cormorant), serif" }}>
+              A second lesson offer, built on the students you already have — with the materials ready and zero extra prep.
+            </p>
           </motion.div>
 
           <motion.div className="text-center mt-10" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.5 }}>
             <button onClick={scrollToForm} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
-              Start Earning — Apply Now
+              Apply Now
             </button>
           </motion.div>
         </div>
@@ -307,16 +313,16 @@ export default function ProProgramPage() {
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">3 Simple Steps</p>
             <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-              Up and Running<br /><em>in Under a Week</em>
+              Apply, Get Approved,<br /><em>Then Get Started</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { num: "01", title: "Apply & Get Approved", body: "Fill in the form below. We verify your PGA credentials and send you access — usually within the same day." },
-              { num: "02", title: "Experience It Yourself", body: "Take the free Foundation Assessment ($59 value). See exactly what your students will discover about their mental game." },
-              { num: "03", title: "Share & Earn", body: "Share your personal discount code with your students. Every sale earns you $20 — automatically tracked and paid monthly." },
+              { num: "01", title: "Apply", body: "Fill in the form below. It only takes a few minutes and tells us about your teaching practice." },
+              { num: "02", title: "We Screen Your Application", body: "We review every application by hand and verify your PGA credentials. It's a deliberate quality gate — so the program stays credible for you and your students." },
+              { num: "03", title: "Get Access", body: "Once you're approved, your Pro portal, free assessment, clinic materials, and personal code are unlocked. From there you can build lesson programs around each student." },
             ].map((step, i) => (
               <motion.div
                 key={i}
@@ -340,28 +346,28 @@ export default function ProProgramPage() {
         <div className="container mx-auto max-w-5xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-              <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">Ready to Go Deeper?</p>
+              <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">When You&apos;re Ready to Scale</p>
               <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 mb-6 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-                Unlock the Full<br /><em>Teaching Toolkit</em>
+                The Lesson Program<br /><em>Generator</em>
               </h2>
               <div className="w-12 h-0.5 bg-amber-500 mb-6" />
               <p className="text-stone-600 leading-relaxed mb-5">
-                Once you&apos;re active in the free program, you can upgrade to the full Pro Toolkit — with video training, a complete clinic curriculum, and lesson programs you can sell under your own name.
+                Every approved pro can build individual and group lesson programs from their students&apos; assessments — and your <strong className="text-green-900">first five programs are free</strong>.
               </p>
               <p className="text-stone-600 leading-relaxed mb-6">
-                Start free. Upgrade when you&apos;re ready. No pressure, no deadlines.
+                After that, the lesson program generator continues at <strong className="text-green-900">$199 per year</strong>. There&apos;s an <strong className="text-green-900">introductory rate for the first twenty paying pros</strong> — lock it in and you keep that rate for as long as you keep renewing.
               </p>
               <button onClick={scrollToForm} className="px-6 py-3 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
-                Get Started Free First
+                Apply for Access
               </button>
             </motion.div>
 
             <motion.div className="space-y-4" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               {[
-                { icon: <IconPlay />, title: "22 Training Videos", desc: "8 process videos + 14 deep-dives into every Mental Routine element (5-10 min each)" },
-                { icon: <IconUsers />, title: "Complete Clinic Curriculum", desc: "Fully scripted 2.5-hour workshop with slides, handouts, and email templates" },
-                { icon: <IconDollar />, title: "Lesson Programs", desc: "Ready-made 3-lesson ($199) and 5-lesson ($329) packages — 100% your revenue" },
-                { icon: <IconShield />, title: "Pro Portal Access", desc: "Dedicated resources, updates, and support in your private dashboard" },
+                { icon: <IconUsers />, title: "Individual & Group Programs", desc: "Generate structured lesson programs for private students and clinics, built around each assessment" },
+                { icon: <IconPlay />, title: "First Five Programs Free", desc: "Try the generator on real students before it ever costs you anything" },
+                { icon: <IconDollar />, title: "$199 Per Year After That", desc: "Introductory rate for the first twenty paying pros — kept for as long as you keep renewing" },
+                { icon: <IconShield />, title: "Pro Portal Access", desc: "Your assessment, clinic materials, marketing toolkit, and lesson programs, all in one place" },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -375,7 +381,7 @@ export default function ProProgramPage() {
                   </div>
                 </motion.div>
               ))}
-              <p className="text-xs text-stone-400 pl-14">Available as upgrade: $99/year or $199 lifetime</p>
+              <p className="text-xs text-stone-400 pl-14">Introductory rate — first twenty paying pros only</p>
             </motion.div>
           </div>
         </div>
@@ -393,9 +399,9 @@ export default function ProProgramPage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { quote: "I shared my code with 30 students in the first week. Six bought the assessment without me having to pitch anything.", name: "Teaching Pro", location: "Florida, USA" },
-              { quote: "The clinic curriculum saved me hours of preparation. My students loved the interactive format and 4 signed up for follow-up lessons.", name: "Head Professional", location: "Surrey, UK" },
-              { quote: "Finally a mental game tool I can recommend with confidence. The assessment gives me concrete data to work with in my lessons.", name: "PGA Coach", location: "Noord-Holland, NL" },
+              { quote: "The assessment gave me a natural reason to talk mental game with students I'd only ever coached on technique. Several booked follow-up sessions off the back of it.", name: "Teaching Pro", location: "Florida, USA" },
+              { quote: "The clinic outline and printable materials saved me hours of preparation. My students loved the format and a handful signed up for a lesson program afterwards.", name: "Head Professional", location: "Surrey, UK" },
+              { quote: "Finally a mental game tool I can recommend with confidence. The assessment gives me concrete data to build a lesson program around.", name: "PGA Coach", location: "Noord-Holland, NL" },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -433,13 +439,13 @@ export default function ProProgramPage() {
 
           <div className="space-y-4">
             {[
-              { q: "Is it really free to join?", a: "Yes. The free program gives you a complimentary Foundation Assessment ($59 value), personal discount codes for your students, and $20 commission per sale. No costs, no obligations." },
-              { q: "How do I get paid?", a: "Commissions are paid monthly via PayPal, as long as your balance is $100 or more. Below that, it rolls over to the next month. Every sale is automatically tracked through your personal code." },
+              { q: "What do I get once I'm approved?", a: "Everything in the free program: your own Mental Routine Assessment (a $79 value), a clinic outline with six printable A4 pages, a marketing toolkit, a personal discount code for your students, and Pro portal access. You can also build individual and group lesson programs — your first five are free." },
+              { q: "Do I have to apply first, or can I start straight away?", a: "You apply first. We review every application by hand and verify your PGA credentials before granting access — including access to the free assessment. It's a deliberate quality gate, so the program stays credible for you and your students." },
               { q: "Do I need to be a PGA member?", a: "Yes. We verify PGA credentials to ensure quality and credibility for both you and your students. All PGA divisions worldwide are welcome." },
-              { q: "How much time does this take?", a: "The free program takes virtually zero time — just share your code. If you upgrade to the full toolkit, the clinic runs itself with our turnkey curriculum (2.5 hours including prep)." },
-              { q: "What's the difference between free and paid?", a: "Free = affiliate (earn commissions by sharing your code). Paid ($99/year or $199 lifetime) = full teaching toolkit with 22 training videos, clinic curriculum, lesson programs, and Pro Portal access." },
-              { q: "Can I set my own prices for clinics and lessons?", a: "Absolutely. We provide suggested pricing ($59 per clinic, $199/$329 for lesson packages), but you set whatever price works for your market. 100% of clinic and lesson revenue is yours." },
-              { q: "How fast will I get approved?", a: "Usually within the same business day. Maximum 2-3 business days. Once approved, you receive your free assessment code and discount codes immediately." },
+              { q: "What's free and what's paid?", a: "Once you're approved, the assessment, clinic outline and materials, marketing toolkit, discount code, portal access, and your first five lesson programs are all free. After the first five, the lesson program generator continues at $199 per year." },
+              { q: "Tell me more about the $199 per year.", a: "That covers the lesson program generator once you've used your five free programs. There's an introductory rate for the first twenty paying pros — if you're among them, you keep that rate for as long as you keep renewing." },
+              { q: "Can I set my own prices for clinics and lessons?", a: "Absolutely. You teach your students and set whatever price works for your market — that arrangement is entirely between you and them. The Pro Program simply gives you the assessment, materials, and lesson programs to build on." },
+              { q: "How fast will I get approved?", a: "We aim to review applications within 1-3 business days. Once approved, your assessment, discount code, clinic materials, and portal access are unlocked." },
             ].map((item, i) => (
               <FaqItem key={i} question={item.q} answer={item.a} index={i} />
             ))}
@@ -447,7 +453,7 @@ export default function ProProgramPage() {
 
           <motion.div className="text-center mt-12" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <button onClick={scrollToForm} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
-              Apply for Free Access
+              Apply for Access
             </button>
           </motion.div>
         </div>
@@ -581,7 +587,7 @@ export default function ProProgramPage() {
               <div className="flex items-center justify-center gap-4 text-xs text-stone-400">
                 <span className="flex items-center gap-1.5">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5"><path d="M8 1l5.5 2.5v4c0 3-2.5 5.5-5.5 6.5C5 13 2.5 10.5 2.5 7.5v-4L8 1z" /></svg>
-                  100% free
+                  Free to apply
                 </span>
                 <span>·</span>
                 <span>No obligations</span>
@@ -611,7 +617,7 @@ export default function ProProgramPage() {
           onClick={scrollToForm}
           className="w-full py-3.5 bg-amber-400 text-green-950 font-bold rounded-lg text-sm tracking-wide shadow-lg shadow-amber-500/30"
         >
-          Apply for Free Access
+          Apply for Access
         </button>
       </div>
 
