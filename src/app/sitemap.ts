@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 // Canonical host is non-www (mentalroutine.com). www redirects here.
-const BASE = "https://mentalroutine.com";
+const BASE = "https://www.mentalroutine.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

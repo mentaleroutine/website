@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: "The Mental Routine Assessment for Golfers | MentalRoutine",
   description:
     "Map your mental game in 15 minutes. Get a personalised PDF player profile across the 8 routine steps and 4 influencing factors, three training reports of your choice, and a concrete improvement plan. $79.",
-  metadataBase: new URL("https://mentalroutine.com"),
+  metadataBase: new URL("https://www.mentalroutine.com"),
   alternates: {
     canonical: "/",
     languages: {
@@ -37,13 +37,13 @@ export const metadata: Metadata = {
     title: "The Mental Routine Assessment for Golfers",
     description:
       "Inconsistent scores? Frustration after a bad hole? The missing piece is almost never technical — it's mental. Map your mental game in 15 minutes and get a concrete plan.",
-    url: "https://mentalroutine.com",
+    url: "https://www.mentalroutine.com",
     siteName: "MentalRoutine",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://mentalroutine.com/og-image.png",
+        url: "https://www.mentalroutine.com/og-image.png",
         width: 1792,
         height: 1024,
         alt: "The Mental Routine Assessment for Golfers — Map your mental game in 15 minutes",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: "The Mental Routine Assessment for Golfers",
     description:
       "Map your mental game in 15 minutes. Personalised PDF player profile + three training reports. $79.",
-    images: ["https://mentalroutine.com/og-image.png"],
+    images: ["https://www.mentalroutine.com/og-image.png"],
   },
   robots: { index: true, follow: true },
 };
@@ -65,8 +65,8 @@ const jsonLdOrganization = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "MentalRoutine",
-  url: "https://mentalroutine.com",
-  logo: "https://mentalroutine.com/logoMRpng.png",
+  url: "https://www.mentalroutine.com",
+  logo: "https://www.mentalroutine.com/logoMRpng.png",
   sameAs: [
     "https://instagram.com/mentalroutine",
     "https://tiktok.com/@mentalroutine",
@@ -90,7 +90,7 @@ const jsonLdProduct = {
       price: "79.00",
       priceCurrency: "USD",
       availability: "https://schema.org/PreOrder",
-      url: "https://mentalroutine.com/assessment",
+      url: "https://www.mentalroutine.com/assessment",
     },
   ],
 };

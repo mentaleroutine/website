@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mentalroutine.com/sitemap.xml
+Sitemap: https://www.mentalroutine.com/sitemap.xml
