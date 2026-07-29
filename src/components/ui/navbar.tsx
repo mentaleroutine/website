@@ -7,12 +7,15 @@ import { Menu, X, ChevronDown } from "lucide-react"
 import { useLang, Lang } from "@/context/lang-context"
 import { translations } from "@/lib/translations"
 
+// EN + NL zijn vertaald naar het versimpelde model. DE/FR/ES tonen tijdelijk de
+// Engelse placeholder-tekst (zie translations.ts) en zijn daarom verborgen uit de
+// wisselaar tot ze vertaald zijn. Terugzetten = de regels hieronder ontcommenten.
 const LANG_OPTIONS: { code: Lang; name: string }[] = [
   { code: "en", name: "English"   },
   { code: "nl", name: "Nederlands"},
-  { code: "de", name: "Deutsch"   },
-  { code: "fr", name: "Français"  },
-  { code: "es", name: "Español"   },
+  // { code: "de", name: "Deutsch"   },
+  // { code: "fr", name: "Français"  },
+  // { code: "es", name: "Español"   },
 ]
 
 // ── Language dropdown ────────────────────────────────────────────────────────

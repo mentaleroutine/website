@@ -20,11 +20,10 @@ declare global { interface Window { plausible?: (event: string, options?: { prop
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
 
 // ── Shop / koop-bestemmingen ─────────────────────────────────────────────────
-// Alle koop-CTA's wijzen naar de live Shopify-shop (shop.mentalroutine.com).
-// Foundation = het instapproduct; Mastery is geen shop-product (in-portal
-// credit-upgrade) → wijst naar de uitlegpagina.
-const SHOP_FOUNDATION_URL = "https://shop.mentalroutine.com/products/mentalroutine-standard-assessment";
-const MASTERY_INFO_URL = "/assessment-mastery.html";
+// Koop-CTA's wijzen naar de live Shopify-shop (shop.mentalroutine.com). Later
+// omzetten naar de Lemon Squeezy-overlay. Er is nog één product (de assessment,
+// $79); de homepage verkoopt niet meer zelf — de koopknop staat op /assessment.
+const SHOP_ASSESSMENT_URL = "https://shop.mentalroutine.com/products/mentalroutine-standard-assessment";
 
 
 
@@ -118,22 +117,23 @@ function PageContent() {
               </span>
             </motion.div>
 
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
-              <a href={SHOP_FOUNDATION_URL} onClick={() => track("cta_click", { source: "hero" })} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
+            {/* Three equal doors — the homepage explains, it doesn't sell.
+                The buy button lives on /assessment. */}
+            <motion.div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
+              <a href="/quickscan" onClick={() => track("quiz_click", { source: "hero" })} className="px-6 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide text-center">
+                {T.nav.cta}
+              </a>
+              <a href="/assessment" onClick={() => track("cta_click", { source: "hero" })} className="px-6 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm text-center">
                 {T.hero.cta1}
               </a>
-              <a href="#mental-routine" className="px-8 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm">
-                {T.hero.cta2}
+              <a href="/pro-program" onClick={() => track("pro_program_click", { source: "hero" })} className="px-6 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm text-center">
+                {T.hero.proDoor}
               </a>
             </motion.div>
 
             <motion.p className="text-xs text-green-200/40 max-w-md mx-auto lg:mx-0 mt-5 tracking-wide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.9 }}>
               {T.hero.howItWorksLine}
             </motion.p>
-
-            <motion.a href="/quiz.html" onClick={() => track("quiz_click", { source: "hero" })} className="inline-flex items-center gap-1.5 text-xs text-amber-300/70 hover:text-amber-300 transition-colors mt-3 mx-auto lg:mx-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.0 }}>
-              {T.hero.quizCta}
-            </motion.a>
           </div>
 
           {/* Mobile-only mini report mockup */}
@@ -368,9 +368,6 @@ function PageContent() {
                   </div>
                   <p className="text-xs text-green-200/50 mt-1">{T.pricing.plans[0].tagline}</p>
                 </div>
-                <div className="w-10 h-10 rounded-full bg-amber-400/15 border border-amber-400/30 flex items-center justify-center shrink-0 mt-1">
-                  <span className="text-amber-400 font-bold text-sm">1</span>
-                </div>
               </div>
               <div className="mt-6 pt-6 border-t border-white/10">
                 <ul className="space-y-3 mb-6">
@@ -386,59 +383,12 @@ function PageContent() {
                     {T.pricing.previewBtn}
                   </button>
                 )}
-                <a href={SHOP_FOUNDATION_URL} onClick={() => track("pricing_cta_click", { plan: "foundation" })} className="block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
+                <a href={SHOP_ASSESSMENT_URL} onClick={() => track("pricing_cta_click", { plan: "foundation" })} className="block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
                   {T.pricing.plans[0].cta}
                 </a>
               </div>
             </motion.div>
 
-            {/* ── CONNECTOR ARROW ── */}
-            <motion.div className="flex flex-col items-center py-3 z-10" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
-              <div className="w-px h-6 bg-gradient-to-b from-amber-400/40 to-white/10" />
-              <div className="my-1 px-3 py-1 rounded-full bg-green-900/60 border border-white/[0.08] text-[10px] text-green-200/40 tracking-widest uppercase">then</div>
-              <div className="w-px h-6 bg-gradient-to-b from-white/10 to-white/5" />
-              <svg viewBox="0 0 10 8" fill="none" className="w-2.5 h-2.5 text-white/15"><path d="M1 1l4 6 4-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </motion.div>
-
-            {/* ── STEP 2: Mastery ── */}
-            <motion.div className="w-full rounded-2xl p-8 relative bg-white/[0.04] border border-white/[0.12] hover:-translate-y-1 transition-transform duration-300" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-xs font-semibold tracking-widest uppercase mb-2 text-amber-400/70">{T.pricing.plans[1].plan}</p>
-                  {"wasPrice" in T.pricing.plans[1] && T.pricing.plans[1].wasPrice && (
-                    <p className="text-sm text-green-200/25 line-through mb-0.5 tracking-wide"><span className="text-green-200/20 text-xs mr-0.5">$</span>{T.pricing.plans[1].wasPrice}</p>
-                  )}
-                  <div className="text-6xl font-semibold text-[#f6f1e7]/80 leading-none mb-1" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-                    <sup className="text-2xl align-super font-normal">$</sup>{T.pricing.plans[1].price}
-                  </div>
-                  <p className="text-xs text-green-200/40 mt-1">{T.pricing.plans[1].tagline}</p>
-                </div>
-                <div className="flex flex-col items-center gap-1 shrink-0 mt-1">
-                  <div className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/[0.12] flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-green-200/30"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                  </div>
-                  <span className="text-[9px] text-green-200/25 tracking-wide">step 2</span>
-                </div>
-              </div>
-              <div className="mt-6 pt-6 border-t border-white/[0.06]">
-                <ul className="space-y-3 mb-6">
-                  {T.pricing.plans[1].features.map((f, j) => (
-                    <li key={j} className="flex items-start gap-3 text-sm text-green-100/60">
-                      <svg viewBox="0 0 16 16" fill="none" stroke="#c4a043" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mt-0.5 shrink-0 opacity-50"><polyline points="2 8 6 12 14 4"/></svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                {T.pricing.previewBtn && (
-                  <button onClick={() => { setPreviewPlan("mastery"); track("report_preview", { type: "mastery" }); }} className="w-full text-center py-2 mb-3 rounded-lg text-xs font-medium text-green-200/30 hover:text-green-200/60 border border-white/[0.06] hover:border-white/15 bg-white/[0.02] hover:bg-white/[0.04] transition-all">
-                    {T.pricing.previewBtn}
-                  </button>
-                )}
-                <a href={MASTERY_INFO_URL} onClick={() => track("pricing_cta_click", { plan: "mastery" })} className="block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 border border-white/20 text-[#f6f1e7]/60 hover:border-white/40 hover:text-[#f6f1e7] hover:bg-white/5">
-                  {T.pricing.plans[1].cta}
-                </a>
-              </div>
-            </motion.div>
           </div>
 
           {/* ── CREDITS NOTE ── */}
@@ -448,53 +398,6 @@ function PageContent() {
             </p>
           )}
 
-          {/* ── COMPARISON TABLE ── */}
-          {T.pricing.comparisonRows && (
-            <motion.div className="mt-12 max-w-lg mx-auto" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}>
-              <h3 className="text-center font-serif text-2xl font-semibold text-white mb-6">{T.pricing.comparisonTitle}</h3>
-
-              {/* Desktop table */}
-              <div className="hidden sm:block rounded-2xl border border-white/[0.08] bg-white/[0.04] overflow-hidden">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-white/[0.08]">
-                      <th className="text-left py-3 px-4 text-green-200/50 font-normal"></th>
-                      <th className="py-3 px-4 text-amber-400 font-semibold text-center">{T.pricing.plans[0].plan}</th>
-                      <th className="py-3 px-4 text-amber-400 font-semibold text-center">{T.pricing.plans[1].plan}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {T.pricing.comparisonRows.map((row, i) => (
-                      <tr key={i} className={i < T.pricing.comparisonRows.length - 1 ? "border-b border-white/[0.06]" : ""}>
-                        <td className="py-3 px-4 text-green-200/70">{row.label}</td>
-                        <td className="py-3 px-4 text-center text-white/80">{row.standard}</td>
-                        <td className="py-3 px-4 text-center text-white/80">{row.deluxe}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              {/* Mobile cards */}
-              <div className="sm:hidden space-y-3">
-                {T.pricing.comparisonRows.map((row, i) => (
-                  <div key={i} className="rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3">
-                    <p className="text-xs text-green-200/70 mb-2">{row.label}</p>
-                    <div className="flex gap-3">
-                      <div className="flex-1 text-center rounded-lg bg-white/[0.04] py-1.5">
-                        <p className="text-[10px] text-green-200/40 mb-0.5">{T.pricing.plans[0].plan}</p>
-                        <p className="text-sm text-white/80 font-medium">{row.standard}</p>
-                      </div>
-                      <div className="flex-1 text-center rounded-lg bg-amber-400/[0.06] border border-amber-400/15 py-1.5">
-                        <p className="text-[10px] text-amber-300/50 mb-0.5">{T.pricing.plans[1].plan}</p>
-                        <p className="text-sm text-white/80 font-medium">{row.deluxe}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          )}
 
           {/* ── GUARANTEE BANNER — inside pricing, below cards ── */}
           <motion.div className="mt-10 max-w-lg mx-auto rounded-2xl border border-amber-400/20 bg-white/[0.04] px-7 py-5 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.35 }}>
@@ -576,12 +479,12 @@ function PageContent() {
               )}
               <div className="flex items-center gap-3 mb-8 p-3.5 rounded-xl bg-green-950/[0.05] border border-green-900/10">
                 <div className="flex gap-2">
-                  <span className="px-2.5 py-1 rounded-lg bg-white border border-green-900/10 text-xs font-semibold text-green-900 shadow-sm">{T.pricing.plans[0].plan} · {T.skillBuilder.reportCountStd}</span>
-                  <span className="px-2.5 py-1 rounded-lg bg-green-950 text-xs font-semibold text-amber-300 shadow-sm">{T.pricing.plans[1].plan} · {T.skillBuilder.reportCountDlx}</span>
+                  <span className="px-2.5 py-1 rounded-lg bg-white border border-green-900/10 text-xs font-semibold text-green-900 shadow-sm">{T.skillBuilder.reportCountStd}</span>
+                  <span className="px-2.5 py-1 rounded-lg bg-green-950 text-xs font-semibold text-amber-300 shadow-sm">{T.skillBuilder.reportCountDlx}</span>
                 </div>
                 <span className="text-xs text-stone-400">{T.skillBuilder.extraCredits}</span>
               </div>
-              <a href={SHOP_FOUNDATION_URL} className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
+              <a href={SHOP_ASSESSMENT_URL} className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
                 {T.hero.cta1}
               </a>
             </motion.div>
@@ -813,7 +716,7 @@ function PageContent() {
               <p className="text-xs text-green-200/60 hidden sm:block">{T.hero.howItWorksLine}</p>
               <div className="flex items-center gap-2 w-full sm:w-auto">
                 <a
-                  href={SHOP_FOUNDATION_URL}
+                  href={SHOP_ASSESSMENT_URL}
                   onClick={() => track("cta_click", { source: "sticky" })}
                   className="flex-1 sm:flex-none text-center px-5 py-2 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all text-xs tracking-wide shadow-md shadow-amber-500/20"
                 >

@@ -6,105 +6,105 @@ import { sanitize, validEmail, clamp } from "@/lib/validate";
 const resend = new Resend(process.env.RESEND_API_KEY);
 const AUDIENCE_ID = "8e40ab7a-eab7-470d-943f-03a312e98ebc";
 
-// Early access pricing — keep in sync with EA_PRICE_STD/MST in page.tsx
-const EA_STD = 49;   // Foundation early access
-const EA_MST = 69;   // Mastery upgrade early access
-const REG_STD = 59;  // Foundation regular
-const REG_MST = 89;  // Mastery upgrade regular
+// Assessment pricing. One product now (was Foundation/Mastery). Early-access
+// discount price vs. regular price. NB: the early-access signup form is no longer
+// rendered on the site; these emails only fire if the API route is triggered.
+const EA_STD = 59;   // assessment early-access price
+const REG_STD = 79;  // assessment regular price
 
 type Lang = "en" | "nl" | "de" | "fr" | "es";
 
 function confirmationEmail(name: string, lang: Lang) {
   const emails: Record<Lang, { subject: string; body: string }> = {
     en: {
-      subject: "You're on the Early Access list — your discount code is coming on July 1st",
+      subject: "You're on the Early Access list — your discount code is coming on launch day",
       body: `Hi ${name},
 
-Thanks for signing up! MentalRoutine Foundation launches on July 1st.
+Thanks for signing up! The MentalRoutine Assessment is launching soon.
 
-On July 1st you'll receive a personal discount code by email. Here's what to expect:
+On launch day you'll receive a personal discount code by email. Here's what to expect:
 
-  MentalRoutine Foundation: $${EA_STD} (instead of $${REG_STD}) + 2 extra training reports
-  MentalRoutine Mastery upgrade: $${EA_MST} (instead of $${REG_MST}) — only available after completing Foundation
+  The MentalRoutine Assessment: $${EA_STD} (instead of $${REG_STD}) + extra training reports
+  Your complete player profile + three training reports of your choice from twelve
 
 Your code will be valid for 7 days after launch.
 
 In the meantime — keep enjoying the game.
 
 The MentalRoutine Team
-www.mentalroutine.com`,
+mentalroutine.com`,
     },
     nl: {
-      subject: "Je staat op de Early Access lijst — je kortingscode komt op 1 juli",
+      subject: "Je staat op de Early Access lijst — je kortingscode komt op de lanceerdag",
       body: `Hoi ${name},
 
-Bedankt voor je aanmelding! MentalRoutine Foundation lanceert op 1 juli.
+Bedankt voor je aanmelding! De MentalRoutine Assessment lanceert binnenkort.
 
-Op 1 juli ontvang je een persoonlijke kortingscode per email. Dit zijn de prijzen:
+Op de lanceerdag ontvang je een persoonlijke kortingscode per email. Dit zijn de prijzen:
 
-  MentalRoutine Foundation: $${EA_STD} (i.p.v. $${REG_STD}) + 2 extra trainingsrapporten
-  MentalRoutine Mastery upgrade: $${EA_MST} (i.p.v. $${REG_MST}) — alleen beschikbaar na Foundation
+  De MentalRoutine Assessment: $${EA_STD} (i.p.v. $${REG_STD}) + extra trainingsrapporten
+  Je complete spelersprofiel + drie trainingsrapporten naar keuze uit twaalf
 
 Je code is 7 dagen geldig na de lancering.
 
 In de tussentijd — veel plezier op de baan.
 
 Het MentalRoutine Team
-www.mentalroutine.com`,
+mentalroutine.com`,
     },
     de: {
-      subject: "Du stehst auf der Early Access Liste — dein Rabattcode kommt am 1. Juli",
+      subject: "Du stehst auf der Early Access Liste — dein Rabattcode kommt am Launch-Tag",
       body: `Hallo ${name},
 
-Danke für deine Anmeldung! MentalRoutine Foundation startet am 1. Juli.
+Danke für deine Anmeldung! Die MentalRoutine Assessment startet bald.
 
-Am 1. Juli erhältst du einen persönlichen Rabattcode per E-Mail. Die Preise im Überblick:
+Am Launch-Tag erhältst du einen persönlichen Rabattcode per E-Mail. Die Preise im Überblick:
 
-  MentalRoutine Foundation: $${EA_STD} (statt $${REG_STD}) + 2 extra Trainingsberichte
-  MentalRoutine Mastery Upgrade: $${EA_MST} (statt $${REG_MST}) — nur nach Foundation verfügbar
+  Die MentalRoutine Assessment: $${EA_STD} (statt $${REG_STD}) + zusätzliche Trainingsberichte
+  Dein komplettes Spielerprofil + drei Trainingsberichte deiner Wahl aus zwölf
 
 Dein Code ist 7 Tage nach dem Launch gültig.
 
 In der Zwischenzeit — viel Spaß auf dem Platz.
 
 Das MentalRoutine Team
-www.mentalroutine.com`,
+mentalroutine.com`,
     },
     fr: {
-      subject: "Vous êtes sur la liste Early Access — votre code de réduction arrive le 1er juillet",
+      subject: "Vous êtes sur la liste Early Access — votre code de réduction arrive le jour du lancement",
       body: `Bonjour ${name},
 
-Merci pour votre inscription ! MentalRoutine Foundation sera lancé le 1er juillet.
+Merci pour votre inscription ! La MentalRoutine Assessment sera lancée prochainement.
 
-Le 1er juillet vous recevrez un code de réduction personnel par email. Voici les tarifs :
+Le jour du lancement vous recevrez un code de réduction personnel par email. Voici les tarifs :
 
-  MentalRoutine Foundation : $${EA_STD} (au lieu de $${REG_STD}) + 2 rapports d'entraînement supplémentaires
-  Upgrade MentalRoutine Mastery : $${EA_MST} (au lieu de $${REG_MST}) — uniquement disponible après Foundation
+  La MentalRoutine Assessment : $${EA_STD} (au lieu de $${REG_STD}) + des rapports d'entraînement supplémentaires
+  Votre profil de joueur complet + trois rapports d'entraînement de votre choix parmi douze
 
 Votre code sera valable 7 jours après le lancement.
 
 En attendant — profitez du parcours.
 
 L'équipe MentalRoutine
-www.mentalroutine.com`,
+mentalroutine.com`,
     },
     es: {
-      subject: "¡Estás en la lista Early Access — tu código de descuento llega el 1 de julio!",
+      subject: "¡Estás en la lista Early Access — tu código de descuento llega el día del lanzamiento!",
       body: `Hola ${name},
 
-¡Gracias por registrarte! MentalRoutine Foundation se lanza el 1 de julio.
+¡Gracias por registrarte! La MentalRoutine Assessment se lanza pronto.
 
-El 1 de julio recibirás un código de descuento personal por email. Estos son los precios:
+El día del lanzamiento recibirás un código de descuento personal por email. Estos son los precios:
 
-  MentalRoutine Foundation: $${EA_STD} (en lugar de $${REG_STD}) + 2 informes de entrenamiento adicionales
-  Upgrade MentalRoutine Mastery: $${EA_MST} (en lugar de $${REG_MST}) — solo disponible después de Foundation
+  La MentalRoutine Assessment: $${EA_STD} (en lugar de $${REG_STD}) + informes de entrenamiento adicionales
+  Tu perfil de jugador completo + tres informes de entrenamiento a tu elección de doce
 
 Tu código será válido durante 7 días tras el lanzamiento.
 
 Mientras tanto — disfruta del campo.
 
 El equipo MentalRoutine
-www.mentalroutine.com`,
+mentalroutine.com`,
     },
   };
 
@@ -133,7 +133,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
-    const planLabel = plan === "foundation" ? `Foundation ($${EA_STD})` : `Mastery upgrade ($${EA_MST})`;
+    const planLabel = `Assessment ($${EA_STD} early access)`;
     const emailLang: Lang = ["en", "nl", "de", "fr", "es"].includes(lang) ? lang : "en";
     const confirmation = confirmationEmail(name, emailLang);
 
