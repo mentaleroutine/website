@@ -32,7 +32,7 @@ const SHOP_ASSESSMENT_URL = "https://shop.mentalroutine.com/products/mentalrouti
 function PageContent() {
   const { lang } = useLang();
   const T: Translation = translations[lang];
-  const [previewPlan, setPreviewPlan] = useState<"standard" | "mastery" | "training" | null>(null);
+  const [previewPlan, setPreviewPlan] = useState<"standard" | "training" | null>(null);
   const [showStickyBar, setShowStickyBar] = useState(false);
 
   // Section view tracking via IntersectionObserver

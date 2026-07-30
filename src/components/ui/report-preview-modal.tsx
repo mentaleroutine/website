@@ -6,7 +6,7 @@ import { translations, type Translation } from "@/lib/translations";
 
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
 
-export function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "mastery" | "training"; onClose: () => void }) {
+export function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "training"; onClose: () => void }) {
   const { lang } = useLang();
   const T: Translation = translations[lang];
   const openedAt = useRef(Date.now());
@@ -47,7 +47,7 @@ export function ReportPreviewModal({ plan, onClose }: { plan: "standard" | "mast
     };
   }, [handleClose]);
 
-  const src = plan === "training" ? "/reports/sample-training-report.html" : plan === "mastery" ? "/reports/sample-mastery.html" : "/reports/sample-standard.html";
+  const src = plan === "training" ? "/reports/sample-training-report.html" : "/reports/sample-standard.html";
   const label = T.pricing.previewModal[plan];
 
   return (
