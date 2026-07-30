@@ -83,7 +83,7 @@ const en = {
         { num: "02", title: "Your Profile", body: "Receive a detailed PDF profile with your scores across all 8 routine steps and 4 influencing factors, plain-language explanations of what each score means for your game, and specific recommendations for which to prioritise. Yours to keep and return to." },
         { num: "03", title: "Take Action",  body: "Your profile recommends three training reports to start with — you choose which, one at a time, at your own pace. Each is a personalised 5-page PDF targeting a low score or building on a strength. Three are included; the rest of the twelve are there when you're ready." },
       ],
-      privacyNote: "Your responses are processed confidentially and never shared with third parties.",
+      privacyNote: "Your responses are processed confidentially and never shared without your consent.",
       coachNote: "Working with a coach or sports psychologist? Your report gives them an objective starting point — and saves valuable session time.",
     },
     whyItWorks: {
@@ -299,7 +299,7 @@ export const translations = {
         { num: "02", title: "Jouw Profiel", body: "Ontvang een gedetailleerd PDF-profiel met je scores op alle 8 routinestappen en 4 beïnvloedende factoren, begrijpelijke uitleg van wat elke score betekent voor jouw spel, en specifieke aanbevelingen voor welke je prioriteit moet geven. Van jou om te bewaren en op terug te vallen." },
         { num: "03", title: "Aan de Slag",  body: "Je profiel adviseert drie trainingsrapporten om mee te beginnen — jij kiest welke, één voor één, in je eigen tempo. Elk is een persoonlijk PDF van 5 pagina's, gericht op een lage score of het uitbouwen van een sterkte. Drie zijn inbegrepen; de rest van de twaalf staat klaar wanneer je eraan toe bent." },
       ],
-      privacyNote: "Je antwoorden worden vertrouwelijk verwerkt en nooit gedeeld met derden.",
+      privacyNote: "Je antwoorden worden vertrouwelijk verwerkt en nooit gedeeld zonder jouw toestemming.",
       coachNote: "Werk je met een coach of sportpsycholoog? Je rapport geeft hen een objectief startpunt — en bespaart waardevolle sessietijd.",
     },
     whyItWorks: {
