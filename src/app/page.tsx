@@ -19,11 +19,13 @@ const ReportPreviewModal = dynamic(() => import("@/components/ui/report-preview-
 declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
 
-// ── Shop / koop-bestemmingen ─────────────────────────────────────────────────
-// Koop-CTA's wijzen naar de live Shopify-shop (shop.mentalroutine.com). Later
-// omzetten naar de Lemon Squeezy-overlay. Er is nog één product (de assessment,
-// $79); de homepage verkoopt niet meer zelf — de koopknop staat op /assessment.
-const SHOP_ASSESSMENT_URL = "https://shop.mentalroutine.com/products/mentalroutine-standard-assessment";
+// ── Koop-bestemming ──────────────────────────────────────────────────────────
+// Koop-CTA's wijzen naar de Lemon Squeezy-checkout (live sinds 30-7-2026; Lemon is
+// merchant of record). Eén product: de MentalRoutine Assessment ($79). De bezoeker
+// is hier NIET ingelogd op de portal, dus koppeling gebeurt op het e-mailadres dat
+// bij de Lemon-checkout wordt ingevuld (de webhook koppelt daarop aan het account).
+// Bij wijziging van de variant: nieuwe checkout-UUID via Lemon → Store → Products → Share.
+const CHECKOUT_ASSESSMENT_URL = "https://mentalroutinegolf.lemonsqueezy.com/checkout/buy/91ec251f-2df6-481b-b2e1-6f9aadaaf6fc";
 
 
 
@@ -383,7 +385,7 @@ function PageContent() {
                     {T.pricing.previewBtn}
                   </button>
                 )}
-                <a href={SHOP_ASSESSMENT_URL} onClick={() => track("pricing_cta_click", { plan: "foundation" })} className="block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
+                <a href={CHECKOUT_ASSESSMENT_URL} target="_blank" rel="noopener" onClick={() => track("checkout_click", { plan: "assessment", source: "pricing" })} className="block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
                   {T.pricing.plans[0].cta}
                 </a>
               </div>
@@ -484,7 +486,7 @@ function PageContent() {
                 </div>
                 <span className="text-xs text-stone-400">{T.skillBuilder.extraCredits}</span>
               </div>
-              <a href={SHOP_ASSESSMENT_URL} className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
+              <a href={CHECKOUT_ASSESSMENT_URL} target="_blank" rel="noopener" onClick={() => track("checkout_click", { plan: "assessment", source: "training-reports" })} className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
                 {T.hero.cta1}
               </a>
             </motion.div>
@@ -716,8 +718,10 @@ function PageContent() {
               <p className="text-xs text-green-200/60 hidden sm:block">{T.hero.howItWorksLine}</p>
               <div className="flex items-center gap-2 w-full sm:w-auto">
                 <a
-                  href={SHOP_ASSESSMENT_URL}
-                  onClick={() => track("cta_click", { source: "sticky" })}
+                  href={CHECKOUT_ASSESSMENT_URL}
+                  target="_blank"
+                  rel="noopener"
+                  onClick={() => track("checkout_click", { plan: "assessment", source: "sticky" })}
                   className="flex-1 sm:flex-none text-center px-5 py-2 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all text-xs tracking-wide shadow-md shadow-amber-500/20"
                 >
                   {T.hero.cta1}

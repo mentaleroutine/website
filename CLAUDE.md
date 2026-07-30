@@ -27,7 +27,7 @@
 - `/` homepage — LEGT UIT, verkoopt niet. Hero: geen prijs/koopknop, **3 gelijkwaardige deuren**
   (QuickScan `/quickscan` · assessment `/assessment` · pro `/pro-program`).
 - `/assessment` = NIEUWE Next.js-pagina (`src/app/assessment/page.tsx`) — het betaalde product,
-  koopknop → Shopify. Meertalig via `translations.assessmentPage`.
+  koopknop → **Lemon Squeezy-checkout** (live). Meertalig via `translations.assessmentPage`.
 - `/quickscan` = de standalone quiz (rewrite → `public/quiz.html` in next.config; was `/quiz.html`).
 - **Redirects (next.config.ts):** `/quiz.html`→`/quickscan`, `/assessment-mastery.html`→`/assessment`,
   `/assessment-foundation.html`→`/assessment` (die 2 HTML-bestanden zijn VERWIJDERD).
@@ -39,8 +39,13 @@ EN-object (`de: en, fr: en, es: en`) als tijdelijke placeholder tot vertaald. `e
 `const ... as const`; `translations = {en, nl, de:en, fr:en, es:en} satisfies Record<Lang, Translation>`;
 `Translation = Widen<typeof en>`. Nieuwe key = in en+nl beide toevoegen.
 
-**Koopknoppen:** wijzen NOG naar Shopify (`SHOP_ASSESSMENT_URL` in page.tsx + assessment/pro).
-Later → Lemon Squeezy (openstaand).
+**Koopknoppen → Lemon Squeezy (LIVE sinds 30-7-2026).** Constante `CHECKOUT_ASSESSMENT_URL`
+(= `mentalroutinegolf.lemonsqueezy.com/checkout/buy/91ec251f-2df6-481b-b2e1-6f9aadaaf6fc`) in
+`page.tsx` (3 CTA's: pricing/training-reports/sticky) + `assessment/page.tsx` (1 CTA), alle 4 met
+`target="_blank"` + `checkout_click`-event. Bezoeker is NIET ingelogd op de portal → koppeling gebeurt
+op het e-mailadres dat bij de Lemon-checkout wordt ingevuld (webhook koppelt daarop). De portal-2C-
+integratie is live + bewezen (echte order+refund); zie portal-repo `docs/LEMON_2C_INTEGRATIE.md`.
+Variant wijzigen = nieuwe checkout-UUID via Lemon → Store → Products → Share.
 
 **GEDAAN (juli 2026):** ✅ **DE/FR/ES volledig vertaald + LIVE** (translations.ts heeft nu echte
 `de`/`fr`/`es`-objecten i.p.v. `de: en`; alle 3 zichtbaar in de taalwisselaar; navbar.tsx
@@ -569,12 +574,15 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - FAKE_OFFSET = 338, TOTAL_SPOTS = 500 → start bij 162/500
 - Loopt automatisch af bij elke nieuwe signup
 
-### Shop Integratie
-- **Koop-CTA's wijzen naar de LIVE shop** (juli 2026, commit eed4a3b). Bestemmingen via
-  constanten in `page.tsx`: `SHOP_FOUNDATION_URL` (= `shop.mentalroutine.com/products/mentalroutine-standard-assessment`)
-  voor hero/pricing-Foundation/training-reports/sticky-CTA; `MASTERY_INFO_URL` (= `/assessment-mastery.html`)
-  voor de Mastery-pricingkaart (Mastery is geen shop-product, in-portal upgrade). HTML-subsites
-  (`assessment-foundation.html`, `assessment-mastery.html`) linken ook naar het Foundation-shopproduct.
+### Betaal-integratie (Lemon Squeezy, LIVE sinds 30-7-2026)
+- **Koop-CTA's wijzen naar de Lemon Squeezy-checkout** (was Shopify tot 30-7-2026). Eén constante
+  `CHECKOUT_ASSESSMENT_URL` (Lemon checkout-UUID van de $79 assessment) in `page.tsx` (3 CTA's:
+  pricing/training-reports/sticky) + `assessment/page.tsx` (1 CTA). Alle 4 `target="_blank"` +
+  `checkout_click`-event. Koppeling op het checkout-e-mailadres (bezoeker niet ingelogd op de portal).
+  De 2C-webhookverwerking in de portal is live + bewezen; zie portal `docs/LEMON_2C_INTEGRATIE.md`.
+- **Historie:** vroeger wezen de CTA's naar de Shopify-shop (`SHOP_FOUNDATION_URL`, commit eed4a3b);
+  dat is vervangen door Lemon. De Shopify-shop-storefront bestaat mogelijk nog los (zie onder) maar de
+  website verkoopt nu via Lemon.
 - **NB (historie):** de vroegere `#early-access`-flow bestaat NIET meer — `EarlyAccessSection`
   wordt niet gerenderd in `page.tsx`, en de `earlyAccess.*`-translations worden op de hoofdpagina
   niet gebruikt (wél nog in de losse component + api/early-access). Navigatie-links (footer/navbar

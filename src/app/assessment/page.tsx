@@ -15,8 +15,10 @@ const ReportPreviewModal = dynamic(
 declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
 
-// Koop-CTA naar de live Shopify-shop (later → Lemon Squeezy).
-const SHOP_ASSESSMENT_URL = "https://shop.mentalroutine.com/products/mentalroutine-standard-assessment";
+// Koop-CTA naar de Lemon Squeezy-checkout (live sinds 30-7-2026). Koppeling gebeurt op
+// het e-mailadres dat bij de Lemon-checkout wordt ingevuld (de bezoeker is hier niet
+// ingelogd op de portal). Variant wijzigen → nieuwe checkout-UUID via Lemon → Share.
+const CHECKOUT_ASSESSMENT_URL = "https://mentalroutinegolf.lemonsqueezy.com/checkout/buy/91ec251f-2df6-481b-b2e1-6f9aadaaf6fc";
 
 function AssessmentContent() {
   const { lang } = useLang();
@@ -76,7 +78,7 @@ function AssessmentContent() {
               <sup className="text-2xl align-super font-normal">$</sup>{plan.price}
             </div>
             <p className="text-xs text-green-200/50 mt-1 mb-6">{plan.tagline}</p>
-            <a href={SHOP_ASSESSMENT_URL} onClick={() => track("checkout_click", { plan: "assessment", source: "assessment-page" })} className="block text-center py-3.5 rounded-lg text-sm font-bold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
+            <a href={CHECKOUT_ASSESSMENT_URL} target="_blank" rel="noopener" onClick={() => track("checkout_click", { plan: "assessment", source: "assessment-page" })} className="block text-center py-3.5 rounded-lg text-sm font-bold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
               {plan.cta}
             </a>
             {/* Guarantee — right at the buy button, per brief */}
