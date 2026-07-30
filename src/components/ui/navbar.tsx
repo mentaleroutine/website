@@ -13,9 +13,9 @@ import { translations } from "@/lib/translations"
 const LANG_OPTIONS: { code: Lang; name: string }[] = [
   { code: "en", name: "English"   },
   { code: "nl", name: "Nederlands"},
-  // { code: "de", name: "Deutsch"   },
-  // { code: "fr", name: "Français"  },
-  // { code: "es", name: "Español"   },
+  { code: "de", name: "Deutsch"   },
+  { code: "fr", name: "Français"  },
+  { code: "es", name: "Español"   },
 ]
 
 // ── Language dropdown ────────────────────────────────────────────────────────
