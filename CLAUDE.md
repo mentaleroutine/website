@@ -42,10 +42,16 @@ EN-object (`de: en, fr: en, es: en`) als tijdelijke placeholder tot vertaald. `e
 **Koopknoppen:** wijzen NOG naar Shopify (`SHOP_ASSESSMENT_URL` in page.tsx + assessment/pro).
 Later → Lemon Squeezy (openstaand).
 
+**GEDAAN (juli 2026):** ✅ **DE/FR/ES volledig vertaald + LIVE** (translations.ts heeft nu echte
+`de`/`fr`/`es`-objecten i.p.v. `de: en`; alle 3 zichtbaar in de taalwisselaar; navbar.tsx
+LANG_OPTIONS niet meer uitgecommend). ✅ **`sample-mastery.html` VERWIJDERD** + het dode
+`mastery`-preview-pad uit report-preview-modal/page.tsx/previewModal-keys (product bestaat niet
+meer). ✅ privacyNote "nooit gedeeld zonder jouw toestemming".
+
 **Openstaand (niet gedaan):** Lemon Squeezy-migratie · testimonials-foto's/authenticiteit
-(randomuser.me, overleg compagnon) · UTM-meetbaarheid PGA-mailing · DE/FR/ES vertalen ·
-tekstuele finetuning · `sample-mastery.html` heeft nog "Mastery Edition"-cosmetica (dood bestand,
-niet getoond) · `assessment/page.tsx`-copy is grotendeels mijn formulering (mag bijgestuurd).
+(randomuser.me, overleg compagnon) · UTM-meetbaarheid PGA-mailing · DE/FR/ES-vertaling is
+AI-gegenereerd (idiomatisch, tsc+build schoon) maar niet menselijk gereviewd op toon/nuance ·
+tekstuele finetuning · `assessment/page.tsx`-copy is grotendeels mijn formulering (mag bijgestuurd).
 
 ## Stack
 - **Framework**: Next.js 16.2.0 (App Router, TypeScript)
