@@ -656,9 +656,11 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - "For comparison: a single session with a golf psychologist typically costs $150–$300." (5 talen, € voor NL/DE/FR)
 - Key: `pricing.pricingAnchor` in translations
 
-### Upgrade Pad Foundation → Mastery (in-portal credit-upgrade)
-- Mastery is geen los shop-product meer, maar een **in-portal upgrade met credits** (180 credits ≈ $89 waarde), beschikbaar vanaf 1 aug 2026. Gebouwd in de portal-repo (fase 1); zie portal `docs/MASTERY_UPGRADE.md`.
-- Website communiceert de $89-waarde; de portal int in credits. Fase 2 (nog te doen): 16 extra Mastery-factoren + vragenlijst + rekenmodule + rapportsecties + knop activeren.
+### ~~Upgrade Pad Foundation → Mastery~~ — GESCHRAPT (historie)
+- ⚠️ **ACHTERHAALD.** Er is geen Foundation/Mastery/credit-upgrade meer: het verkoopmodel is **één
+  product ($79)** (zie de actuele-staat-sectie bovenaan + de DRIFT-CORRECTIE-sectie). De Mastery-tak
+  is in de portal volledig geschrapt (portal-repo `docs/MASTERY_SCHRAPPING.md`). Dit blok blijft alleen
+  als spoor van wat er ooit gepland was; er staat niets van "nog te doen" open.
 
 ### Assessment Pagina's Migratie naar Next.js (gepland)
 - **Huidige situatie**: 2 standalone HTML pagina's (`assessment-foundation.html`, `assessment-mastery.html`) met eigen CSS. (De losse upgrade-pagina is verwijderd; de sample-report is `reports/sample-mastery.html`.)
@@ -943,6 +945,9 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - Notificatie-email toont ook de taal van de subscriber
 
 **Plausible Analytics integratie (layout.tsx + page.tsx + navbar.tsx):**
+> ⚠️ Historische entry (9 apr). De hier genoemde events (`plan_select`, `pricing_cta_click`, `signup`,
+> `hero_cta_click`) zijn later VERWIJDERD/hernoemd. **Actuele event-set = de eventtabel in de
+> "Analytics (Plausible) — bijgewerkt aug 2026"-sectie** (die is geverifieerd tegen de code).
 - Privacy-friendly, cookieloos, GDPR-compliant analytics
 - Script + stub in layout.tsx, `track()` helper + `declare global` in page.tsx
 - 7 custom events: hero_cta_click, quiz_click, plan_select, pricing_cta_click, report_preview, signup, lang_switch
