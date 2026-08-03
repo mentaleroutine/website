@@ -6,9 +6,7 @@ const requests = new Map<string, number[]>();
 const WINDOW_MS = 60_000; // 1 minute
 const MAX_REQUESTS: Record<string, number> = {
   contact: 3,
-  "early-access": 5,
   "pro-program": 3,
-  spots: 30,
 };
 
 export function rateLimit(ip: string, route: string): boolean {
