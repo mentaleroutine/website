@@ -78,6 +78,8 @@ function AssessmentContent() {
               <sup className="text-2xl align-super font-normal">$</sup>{plan.price}
             </div>
             <p className="text-xs text-green-200/50 mt-1 mb-6">{plan.tagline}</p>
+            {/* QuickScan-brug + prijsanker — pal bij de knop, per funnel-advies (Optie B) */}
+            <p className="text-xs text-green-200/60 leading-relaxed mb-5 pb-5 border-b border-white/10">{A.bridge}</p>
             <a href={CHECKOUT_ASSESSMENT_URL} target="_blank" rel="noopener" onClick={() => track("checkout_click", { plan: "assessment", source: "assessment-page" })} className="block text-center py-3.5 rounded-lg text-sm font-bold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
               {plan.cta}
             </a>

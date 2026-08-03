@@ -155,8 +155,8 @@ export default function ProProgramPage() {
               style={{ fontFamily: "var(--font-cormorant), serif" }}
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             >
-              A Second Lesson Offer<br />
-              <span className="italic text-amber-300">for the Students You Already Have</span>
+              A Second Revenue Stream<br />
+              <span className="italic text-amber-300">from the Students You Already Teach</span>
             </motion.h1>
 
             <motion.p
@@ -219,7 +219,7 @@ export default function ProProgramPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { title: "Your Own Assessment", desc: "Take the full Mental Routine Assessment yourself — a $79 value, free once you're approved.", icon: "gift" },
+              { title: "Do It Yourself First", desc: "Take the full assessment yourself — free ($79 value). You'll teach it far better once you've felt it.", icon: "gift" },
               { title: "Clinic Outline & Materials", desc: "A ready-to-run clinic outline plus six printable A4 pages you can hand out on the day.", icon: "kit" },
               { title: "Marketing Toolkit", desc: "Sales copy, emails, and social posts to introduce the assessment to your student base.", icon: "tag" },
               { title: "Personal Discount Code", desc: "A code that gives your students a discount on Foundation — a natural reason to reach out.", icon: "dollar" },
@@ -352,10 +352,10 @@ export default function ProProgramPage() {
               </h2>
               <div className="w-12 h-0.5 bg-amber-500 mb-6" />
               <p className="text-stone-600 leading-relaxed mb-5">
-                Every approved pro can build individual and group lesson programs from their students&apos; assessments — and your <strong className="text-green-900">first five programs are free</strong>.
+                Every approved pro can build individual and group lesson programs from their students&apos; assessments — and your <strong className="text-green-900">first five programs are free</strong>. Try it on real students before it costs you anything.
               </p>
               <p className="text-stone-600 leading-relaxed mb-6">
-                After that, the lesson program generator continues at <strong className="text-green-900">$199 per year</strong>. There&apos;s an <strong className="text-green-900">introductory rate for the first twenty paying pros</strong> — lock it in and you keep that rate for as long as you keep renewing.
+                After that, it&apos;s <strong className="text-green-900">$199 per year</strong>, at an introductory rate. <strong className="text-green-900">Most pros cover it with a single student.</strong>
               </p>
               <button onClick={scrollToForm} className="px-6 py-3 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
                 Apply for Access
@@ -366,7 +366,7 @@ export default function ProProgramPage() {
               {[
                 { icon: <IconUsers />, title: "Individual & Group Programs", desc: "Generate structured lesson programs for private students and clinics, built around each assessment" },
                 { icon: <IconPlay />, title: "First Five Programs Free", desc: "Try the generator on real students before it ever costs you anything" },
-                { icon: <IconDollar />, title: "$199 Per Year After That", desc: "Introductory rate for the first twenty paying pros — kept for as long as you keep renewing" },
+                { icon: <IconDollar />, title: "$199 Per Year After That", desc: "Introductory rate — most pros cover it with a single student" },
                 { icon: <IconShield />, title: "Pro Portal Access", desc: "Your assessment, clinic materials, marketing toolkit, and lesson programs, all in one place" },
               ].map((item, i) => (
                 <motion.div
@@ -381,7 +381,7 @@ export default function ProProgramPage() {
                   </div>
                 </motion.div>
               ))}
-              <p className="text-xs text-stone-400 pl-14">Introductory rate — first twenty paying pros only</p>
+              <p className="text-xs text-stone-400 pl-14">Introductory rate — locked in for as long as you keep renewing</p>
             </motion.div>
           </div>
         </div>
@@ -443,7 +443,7 @@ export default function ProProgramPage() {
               { q: "Do I have to apply first, or can I start straight away?", a: "You apply first. We review every application by hand and verify your PGA credentials before granting access — including access to the free assessment. It's a deliberate quality gate, so the program stays credible for you and your students." },
               { q: "Do I need to be a PGA member?", a: "Yes. We verify PGA credentials to ensure quality and credibility for both you and your students. All PGA divisions worldwide are welcome." },
               { q: "What's free and what's paid?", a: "Once you're approved, the assessment, clinic outline and materials, marketing toolkit, discount code, portal access, and your first five lesson programs are all free. After the first five, the lesson program generator continues at $199 per year." },
-              { q: "Tell me more about the $199 per year.", a: "That covers the lesson program generator once you've used your five free programs. There's an introductory rate for the first twenty paying pros — if you're among them, you keep that rate for as long as you keep renewing." },
+              { q: "Tell me more about the $199 per year.", a: "That covers the lesson program generator once you've used your five free programs. It's at an introductory rate you keep for as long as you keep renewing — and most pros cover it with a single student." },
               { q: "Can I set my own prices for clinics and lessons?", a: "Absolutely. You teach your students and set whatever price works for your market — that arrangement is entirely between you and them. The Pro Program simply gives you the assessment, materials, and lesson programs to build on." },
               { q: "How fast will I get approved?", a: "We aim to review applications within 1-3 business days. Once approved, your assessment, discount code, clinic materials, and portal access are unlocked." },
             ].map((item, i) => (
