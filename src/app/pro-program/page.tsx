@@ -222,7 +222,7 @@ export default function ProProgramPage() {
               { title: "Do It Yourself First", desc: "Take the full assessment yourself — free ($79 value). You'll teach it far better once you've felt it.", icon: "gift" },
               { title: "Clinic Outline & Materials", desc: "A ready-to-run clinic outline plus six printable A4 pages you can hand out on the day.", icon: "kit" },
               { title: "Marketing Toolkit", desc: "Sales copy, emails, and social posts to introduce the assessment to your student base.", icon: "tag" },
-              { title: "Personal Discount Code", desc: "A code that gives your students a discount on Foundation — a natural reason to reach out.", icon: "dollar" },
+              { title: "Personal Discount Code", desc: "A code that gives your students a discount on the assessment — a natural reason to reach out.", icon: "dollar" },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -351,11 +351,8 @@ export default function ProProgramPage() {
                 The Lesson Program<br /><em>Generator</em>
               </h2>
               <div className="w-12 h-0.5 bg-amber-500 mb-6" />
-              <p className="text-stone-600 leading-relaxed mb-5">
-                Every approved pro can build individual and group lesson programs from their students&apos; assessments — and your <strong className="text-green-900">first five programs are free</strong>. Try it on real students before it costs you anything.
-              </p>
               <p className="text-stone-600 leading-relaxed mb-6">
-                After that, it&apos;s <strong className="text-green-900">$199 per year</strong>, at an introductory rate. <strong className="text-green-900">Most pros cover it with a single student.</strong>
+                Build individual and group lesson programs directly from your students&apos; assessments — the structure and materials are generated for you. Your first five are free to try on real students; after that, a flat introductory rate you lock in for as long as you renew. You set your own lesson price, so a single program earns it back many times over.
               </p>
               <button onClick={scrollToForm} className="px-6 py-3 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
                 Apply for Access
@@ -365,8 +362,8 @@ export default function ProProgramPage() {
             <motion.div className="space-y-4" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               {[
                 { icon: <IconUsers />, title: "Individual & Group Programs", desc: "Generate structured lesson programs for private students and clinics, built around each assessment" },
-                { icon: <IconPlay />, title: "First Five Programs Free", desc: "Try the generator on real students before it ever costs you anything" },
-                { icon: <IconDollar />, title: "$199 Per Year After That", desc: "Introductory rate — most pros cover it with a single student" },
+                { icon: <IconPlay />, title: "First Five Programs Free", desc: "Try the generator on real students at no cost" },
+                { icon: <IconDollar />, title: "$199 Per Year After That", desc: "A flat introductory rate — you set your own lesson prices" },
                 { icon: <IconShield />, title: "Pro Portal Access", desc: "Your assessment, clinic materials, marketing toolkit, and lesson programs, all in one place" },
               ].map((item, i) => (
                 <motion.div
@@ -381,45 +378,37 @@ export default function ProProgramPage() {
                   </div>
                 </motion.div>
               ))}
-              <p className="text-xs text-stone-400 pl-14">Introductory rate — locked in for as long as you keep renewing</p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── SOCIAL PROOF ──────────────────────────────────────────────────── */}
+      {/* ── WAT HET JE OPLEVERT (eerlijke waarde-statements, geen fictieve reviews) ── */}
       <section className="py-20 px-6 bg-green-950">
         <div className="container mx-auto max-w-4xl">
           <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">From Fellow Professionals</p>
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">Why Pros Add It</p>
             <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-              What Pro&apos;s Are<br /><em className="text-amber-300">Saying</em>
+              What It Does<br /><em className="text-amber-300">for Your Practice</em>
             </h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { quote: "The assessment gave me a natural reason to talk mental game with students I'd only ever coached on technique. Several booked follow-up sessions off the back of it.", name: "Teaching Pro", location: "Florida, USA" },
-              { quote: "The clinic outline and printable materials saved me hours of preparation. My students loved the format and a handful signed up for a lesson program afterwards.", name: "Head Professional", location: "Surrey, UK" },
-              { quote: "Finally a mental game tool I can recommend with confidence. The assessment gives me concrete data to build a lesson program around.", name: "PGA Coach", location: "Noord-Holland, NL" },
+              { title: "A reason to reach out", body: "It gives you a natural opening to talk mental game with students you've only ever coached on technique." },
+              { title: "Zero extra prep", body: "The clinic outline and printable materials are ready to run — you bring the coaching, not the preparation." },
+              { title: "Data to build on", body: "Every assessment gives you an objective picture of a student's mental game to design a lesson program around." },
             ].map((item, i) => (
               <motion.div
                 key={i}
                 className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-7"
                 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, s) => (
-                    <svg key={s} viewBox="0 0 20 20" fill="#c4a043" className="w-4 h-4">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
+                <div className="w-9 h-9 rounded-lg bg-amber-400/15 flex items-center justify-center mb-4">
+                  <span className="text-amber-300 text-sm font-bold">{i + 1}</span>
                 </div>
-                <p className="text-sm text-green-100/80 leading-relaxed mb-5 italic">&ldquo;{item.quote}&rdquo;</p>
-                <div>
-                  <p className="text-sm font-semibold text-[#f6f1e7]">{item.name}</p>
-                  <p className="text-xs text-green-200/40">{item.location}</p>
-                </div>
+                <p className="text-base font-semibold text-[#f6f1e7] mb-2" style={{ fontFamily: "var(--font-cormorant), serif" }}>{item.title}</p>
+                <p className="text-sm text-green-100/70 leading-relaxed">{item.body}</p>
               </motion.div>
             ))}
           </div>
@@ -442,8 +431,7 @@ export default function ProProgramPage() {
               { q: "What do I get once I'm approved?", a: "Everything in the free program: your own Mental Routine Assessment (a $79 value), a clinic outline with six printable A4 pages, a marketing toolkit, a personal discount code for your students, and Pro portal access. You can also build individual and group lesson programs — your first five are free." },
               { q: "Do I have to apply first, or can I start straight away?", a: "You apply first. We review every application by hand and verify your PGA credentials before granting access — including access to the free assessment. It's a deliberate quality gate, so the program stays credible for you and your students." },
               { q: "Do I need to be a PGA member?", a: "Yes. We verify PGA credentials to ensure quality and credibility for both you and your students. All PGA divisions worldwide are welcome." },
-              { q: "What's free and what's paid?", a: "Once you're approved, the assessment, clinic outline and materials, marketing toolkit, discount code, portal access, and your first five lesson programs are all free. After the first five, the lesson program generator continues at $199 per year." },
-              { q: "Tell me more about the $199 per year.", a: "That covers the lesson program generator once you've used your five free programs. It's at an introductory rate you keep for as long as you keep renewing — and most pros cover it with a single student." },
+              { q: "What's free, what's paid, and what's the $199?", a: "Once you're approved, the assessment, clinic outline and materials, marketing toolkit, discount code, portal access, and your first five lesson programs are all free. After those five, the lesson program generator continues at $199 per year — an introductory rate you keep for as long as you renew. You set your own lesson prices, so a single program typically earns it back many times over." },
               { q: "Can I set my own prices for clinics and lessons?", a: "Absolutely. You teach your students and set whatever price works for your market — that arrangement is entirely between you and them. The Pro Program simply gives you the assessment, materials, and lesson programs to build on." },
               { q: "How fast will I get approved?", a: "We aim to review applications within 1-3 business days. Once approved, your assessment, discount code, clinic materials, and portal access are unlocked." },
             ].map((item, i) => (

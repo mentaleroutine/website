@@ -50,7 +50,7 @@ const en = {
       p1: "A decade of research with 1,000+ golfers revealed something surprising: the difference between consistent and inconsistent players isn't technical — it's a set of mental patterns including focus, conviction, resilience, and the ability to let go of a bad shot.",
       p2: "Good golfers develop these patterns through years of unconscious trial and error. Most never discover which mental habits are costing them strokes — because nobody has mapped it for them. Until now.",
       stats: [
-        { num: "90%",   label: "of golf performance at the top level is widely attributed to the mental game — a figure consistently cited by coaches and sports psychologists worldwide" },
+        { num: "90%",   label: "of what separates golfers at the same skill level is widely attributed to the mental game rather than technique — the premise this entire assessment is built on" },
         { num: "1000+", label: "golfers studied over the last decade, forming the research base of the assessment methodology" },
         { num: "56",    label: "distinct intervention points — eight steps with five entries each, plus four influencing factors with four entries each" },
       ],
@@ -237,8 +237,8 @@ export const translations = {
       p1: "Tien jaar onderzoek met 1.000+ golfers onthulde iets verrassends: het verschil tussen consistente en inconsistente spelers is niet technisch — het zijn mentale patronen zoals focus, overtuiging, veerkracht en het vermogen om een slechte slag los te laten.",
       p2: "Goede golfers ontwikkelen deze patronen door jarenlang onbewust trial-and-error. De meeste golfers ontdekken nooit welke mentale gewoonten hen slagen kosten — omdat niemand het ooit voor hen in kaart heeft gebracht. Tot nu.",
       stats: [
-        { num: "90%",   label: "van de golfprestaties op topniveau wordt breed toegeschreven aan het mentale spel — een cijfer dat door coaches en sportpsychologen wereldwijd wordt aangehaald" },
-        { num: "1000+", label: "golfers onderzocht in het originele onderzoek uit 2016 dat de basis vormt van de assessmentmethodologie" },
+        { num: "90%",   label: "van wat golfers van gelijk niveau onderscheidt, wordt breed toegeschreven aan het mentale spel in plaats van techniek — het uitgangspunt waarop deze hele assessment rust" },
+        { num: "1000+", label: "golfers onderzocht in het afgelopen decennium — de basis van de assessmentmethodologie" },
         { num: "56",    label: "unieke interventiepunten — acht stappen met elk vijf ingangen, plus vier beïnvloedende factoren met elk vier ingangen" },
       ],
       quote: "\"Ik sla nooit een bal, zelfs niet op de oefenbaan, zonder een heel scherp, helder beeld ervan in mijn hoofd te hebben. Het is als een kleurenfilm.\"",

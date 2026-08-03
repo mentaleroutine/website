@@ -88,6 +88,11 @@ function AssessmentContent() {
               <svg viewBox="0 0 24 24" fill="none" stroke="#c4a043" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mt-0.5 shrink-0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
               {A.guaranteeInline}
             </p>
+            {/* Eén rustige social-proof regel op het koopmoment */}
+            <p className="mt-5 pt-4 border-t border-white/10 text-xs text-green-200/60 italic leading-relaxed">
+              &ldquo;{T.pricing.pricingQuote.text}&rdquo;
+              <span className="not-italic text-green-200/40"> — {T.pricing.pricingQuote.name}, {T.pricing.pricingQuote.role}</span>
+            </p>
           </motion.div>
         </div>
       </section>
