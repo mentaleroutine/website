@@ -470,6 +470,42 @@
     .result-hero-badge-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;opacity:.7}
     @media(max-width:480px){.result-score-big{font-size:clamp(4.5rem,20vw,8rem)}}
 
+    /* Print / bewaar-knop op het resultaatscherm */
+    .result-print-btn{margin-top:1.6rem;background:transparent;border:1px solid rgba(247,243,236,.25);color:rgba(247,243,236,.7);font-family:var(--font-b);font-size:.76rem;font-weight:600;letter-spacing:.03em;padding:.5rem 1.1rem;border-radius:4px;cursor:pointer;transition:all .2s}
+    .result-print-btn:hover{border-color:var(--gold);color:var(--gold-light)}
+
+    /* ═══════════════════════════════
+       PRINT — alleen het waardevolle resultaat, geen opt-in-muur/knoppen/preview
+       ═══════════════════════════════ */
+    @media print {
+      /* Verberg alles behalve het resultaatscherm */
+      body > *:not(#phase-results),
+      .site-header, .quiz-header, .coming-soon-banner, #coming-soon-banner,
+      .lang-toggle-btn, .no-print,
+      .pdf-preview-section, .optin-section, .assess-teaser,
+      #result-share, .domains-cta, .share-buttons,
+      .lang-notice { display:none !important; }
+
+      #phase-results { position:static !important; }
+      #phase-results.hidden { display:block !important; }
+
+      /* Licht, inkt-vriendelijk maken */
+      html, body, #phase-results, .result-hero, .result-radar-section, .result-domains {
+        background:#fff !important; color:#1a1a1a !important;
+      }
+      .result-hero-label, .result-score-denom, .result-score-sub,
+      .result-score-interpretation, .result-hero-badge, .result-radar-intro,
+      .result-radar-footnote, .result-domains-intro, .section-label {
+        color:#333 !important;
+      }
+      .result-score-big { color:#1B3A2D !important; }
+      .result-hero-divider, .result-hero-badge-dot { opacity:.4 !important; }
+      /* Nette pagina-marges + geen afgekapte secties */
+      @page { margin:1.5cm; }
+      .result-hero, .result-radar-section, .result-domains { padding:1.2rem 0 !important; page-break-inside:avoid; }
+      .domain-bar--locked { opacity:.5 !important; }
+    }
+
     /* ═══════════════════════════════
        RADAR SECTION — IMPROVED
     ═══════════════════════════════ */
@@ -775,6 +811,8 @@
     .pdf-locked-icon{width:10px;height:11px;flex-shrink:0}
     .pdf-locked-text{height:6px;background:rgba(247,243,236,.15);border-radius:3px;flex:1}
     .pdf-locked-dots{font-size:.65rem;color:rgba(247,243,236,.25);letter-spacing:.1em;flex-shrink:0}
+    .pdf-cover-extras{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;padding:.7rem 1rem .3rem;border-top:1px solid rgba(247,243,236,.08)}
+    .pdf-cover-extra-chip{font-size:.56rem;font-weight:600;letter-spacing:.03em;color:rgba(247,243,236,.7);background:rgba(184,149,42,.14);border:1px solid rgba(184,149,42,.25);border-radius:3px;padding:.18rem .45rem;white-space:nowrap}
 
     /* Feature list next to mockup */
     .pdf-feature-list{
@@ -987,6 +1025,8 @@
     .form-submit:hover{transform:translateY(-2px);box-shadow:0 14px 48px rgba(184,149,42,.55)}
     .form-sub{text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:1rem;line-height:1.55}
     .form-privacy{text-align:center;font-size:.7rem;color:var(--text-muted);margin-top:.5rem;opacity:.7}
+    .optin-buy-escape{display:block;text-align:center;font-size:.78rem;color:var(--text-muted);margin-top:1.4rem;padding-top:1.1rem;border-top:1px solid rgba(27,58,45,.08);text-decoration:none;line-height:1.5;transition:color .2s}
+    .optin-buy-escape:hover{color:var(--gold)}
 
     /* Trust strip under form */
     .optin-trust-strip{
@@ -1306,6 +1346,7 @@
         <span class="result-hero-badge"><span class="result-hero-badge-dot"></span><span data-i18n="results.heroBadge1">3 fases geanalyseerd</span></span>
         <span class="result-hero-badge"><span class="result-hero-badge-dot"></span><span data-i18n="results.heroBadge2">Gebaseerd op 1.000+ golfers</span></span>
       </div>
+      <button type="button" class="result-print-btn no-print" onclick="window.print()" data-i18n="results.printBtn">Print of bewaar je resultaat →</button>
     </div>
   </section>
 
@@ -1316,12 +1357,12 @@
         <p class="result-phase-bridge" id="result-phase-bridge"></p>
         <span class="section-label" data-i18n="results.radarLabel">Jouw profiel</span>
         <h2 id="radar-h2" data-i18n="results.radarH2">Jouw Mentale Routine in 3 fases</h2>
-        <p class="result-radar-intro" data-i18n="results.radarIntro">Elke slag bestaat uit 3 mentale fases. Hieronder zie je hoe jij scoort op elk van de drie.</p>
+        <p class="result-radar-intro" data-i18n="results.radarIntro">Elke slag bestaat uit 3 mentale fases. Hier zie je in één oogopslag hoe jij scoort per fase — je momentopname van voorbereiding tot afronding.</p>
       </div>
       <div class="donut-row" id="donut-row" aria-label="Fasescores">
         <!-- Rendered by JS -->
       </div>
-      <p class="result-radar-footnote" data-i18n="results.radarFootnote">De scores zijn gebaseerd op jouw antwoorden en gecorrigeerd voor handicap. De volledige uitsplitsing per domein staat in je PDF.</p>
+      <p class="result-radar-footnote" data-i18n="results.radarFootnote">Je scores zijn gebaseerd op jouw antwoorden en gecorrigeerd voor handicap. In je gratis PDF werken we je sterkste punt en je twee grootste groeikansen volledig uit.</p>
     </div>
   </section>
 
@@ -1337,9 +1378,9 @@
         <!-- Rendered by JS -->
       </div>
       <div class="domains-cta">
-        <p class="domains-cta-text" data-i18n="results.domainsLocked">6 van je 8 scores zijn vergrendeld</p>
-        <a href="#optin-h2" class="btn btn-gold" data-i18n="results.domainsCta">Bekijk je volledige profiel — gratis &rarr;</a>
-        <p class="domains-cta-sub" data-i18n="results.domainsCtaSub">Je volledige duiding, actieplan en concrete oefeningen — gratis in je inbox</p>
+        <p class="domains-cta-text" data-i18n="results.domainsLocked">Je ziet nu je sterkste punt en je grootste groeikans</p>
+        <a href="#optin-h2" class="btn btn-gold" data-i18n="results.domainsCta">Ontvang je uitgewerkte plan — gratis &rarr;</a>
+        <p class="domains-cta-sub" data-i18n="results.domainsCtaSub">In je gratis PDF: een extra groeikans erbij (3 domeinen uitgewerkt), plus duiding, mantra en actieplan — in je inbox</p>
       </div>
 
       <!-- Share op de euforie-piek — vóór de e-mailmuur (funnel-fix Optie B) -->
@@ -1380,39 +1421,29 @@
               </div>
             </div>
 
-            <!-- Mini bars -->
+            <!-- Mini bars: 3 uitgewerkte domeinen (sterkste + 2 groeikansen), eerlijk -->
             <div class="pdf-cover-bars">
-              <div class="pdf-cover-bars-title">Jouw 8 domeinen</div>
+              <div class="pdf-cover-bars-title" id="pdf-bars-title">3 domeinen volledig uitgewerkt</div>
               <div class="pdf-mini-bar">
                 <div class="pdf-mini-bar-name" id="pdf-label-0"></div>
-                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-0" style="width:65%;background:var(--fairway)"></div></div>
-                <div class="pdf-mini-bar-score" id="pdf-score-0">65</div>
+                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-0" style="width:72%;background:var(--gold)"></div></div>
+                <div class="pdf-mini-bar-score" id="pdf-score-0">72</div>
               </div>
               <div class="pdf-mini-bar">
                 <div class="pdf-mini-bar-name" id="pdf-label-1"></div>
-                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-1" style="width:58%;background:var(--fairway)"></div></div>
-                <div class="pdf-mini-bar-score" id="pdf-score-1">58</div>
+                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-1" style="width:49%;background:rgba(192,57,43,.6)"></div></div>
+                <div class="pdf-mini-bar-score" id="pdf-score-1">49</div>
               </div>
               <div class="pdf-mini-bar">
                 <div class="pdf-mini-bar-name" id="pdf-label-2"></div>
-                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-2" style="width:72%;background:var(--gold)"></div></div>
-                <div class="pdf-mini-bar-score" id="pdf-score-2">72</div>
-              </div>
-              <div class="pdf-mini-bar">
-                <div class="pdf-mini-bar-name" id="pdf-label-3"></div>
-                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-3" style="width:49%;background:rgba(192,57,43,.6)"></div></div>
-                <div class="pdf-mini-bar-score" id="pdf-score-3">49</div>
-              </div>
-              <div class="pdf-mini-bar">
-                <div class="pdf-mini-bar-name" id="pdf-label-4"></div>
-                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-4" style="width:61%;background:var(--fairway)"></div></div>
-                <div class="pdf-mini-bar-score" id="pdf-score-4">61</div>
+                <div class="pdf-mini-bar-track"><div class="pdf-mini-bar-fill" id="pdf-bar-2" style="width:55%;background:rgba(192,57,43,.6)"></div></div>
+                <div class="pdf-mini-bar-score" id="pdf-score-2">55</div>
               </div>
             </div>
 
-            <!-- 3 locked domain rows — matching the 5 visible above, total = 8 -->
+            <!-- 5 vergrendelde domeinen (voor het volledige assessment) -->
             <div class="pdf-cover-locked">
-              <div class="pdf-cover-bars-title pdf-locked-more-label" id="pdf-locked-label">+ 3 meer in jouw PDF</div>
+              <div class="pdf-cover-bars-title pdf-locked-more-label" id="pdf-locked-label">5 domeinen op slot — in het volledige assessment</div>
               <div class="pdf-locked-row">
                 <svg class="pdf-locked-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(247,243,236,.3)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 <div class="pdf-locked-text" style="width:60%"></div>
@@ -1428,6 +1459,13 @@
                 <div class="pdf-locked-text" style="width:50%"></div>
                 <div class="pdf-locked-dots">···</div>
               </div>
+            </div>
+
+            <!-- Inhouds-glimp: wat er verder in de PDF zit -->
+            <div class="pdf-cover-extras" id="pdf-cover-extras">
+              <span class="pdf-cover-extra-chip" data-i18n="pdfPreview.chipMantra">✎ Jouw mantra</span>
+              <span class="pdf-cover-extra-chip" data-i18n="pdfPreview.chipPlan">◆ Actieplan</span>
+              <span class="pdf-cover-extra-chip" data-i18n="pdfPreview.chipAi">✦ AI-prompts</span>
             </div>
 
           </div><!-- /pdf-mockup-cover -->
@@ -1517,6 +1555,8 @@
           <p class="form-sub" data-i18n="optin.sub">Je ontvangt je PDF binnen enkele minuten. Check ook je spam-map.</p>
           <p class="form-privacy" data-i18n="optin.privacy">We delen je gegevens nooit met derden.</p>
         </form>
+        <!-- Koop-escape: warme koper mag direct door (secundair onder de gratis opt-in) -->
+        <a href="https://shop.mentalroutine.com/discount/QUICKSCAN10" target="_blank" rel="noopener" class="optin-buy-escape" data-i18n="optin.buyEscape" onclick="if(window.plausible)plausible('checkout_click',{props:{source:'quiz-optin-escape'}})">Al overtuigd? Sla de wachttijd over — ga direct naar het volledige assessment (met code QUICKSCAN10) →</a>
       </div>
 
       <!-- Trust strip -->
@@ -1684,7 +1724,10 @@
         trust: 'Gratis · Binnen enkele minuten in je inbox · Nooit spam',
         sampleLink: 'Of bekijk eerst een voorbeeld-trainingsrapport →',
         optinUrgency: 'Je deed 8 minuten het werk — het volledige rapport is ons bedankje. Eén minuut, klaar.',
-        scoreLabel: 'Totaalscore'
+        scoreLabel: 'Totaalscore',
+        chipMantra: '✎ Jouw mantra',
+        chipPlan: '◆ Actieplan',
+        chipAi: '✦ AI-prompts'
       },
       fcta: {
         ariaLabel: 'Afsluitende aanroep tot actie',
@@ -1810,19 +1853,20 @@
         ],
         radarLabel: 'Jouw profiel',
         radarH2: 'Jouw Mentale Routine in 3 fases',
-        radarIntro: 'Elke slag bestaat uit 3 mentale fases. Hieronder zie je hoe jij scoort op elk van de drie — van voorbereiding tot afronding.',
-        radarFootnote: 'De scores zijn gebaseerd op jouw antwoorden en direct vergelijkbaar met de 8 domeinen in je PDF rapport.',
+        radarIntro: 'Elke slag bestaat uit 3 mentale fases. Hier zie je in één oogopslag hoe jij scoort per fase — je momentopname van voorbereiding tot afronding.',
+        radarFootnote: 'Je scores zijn gebaseerd op jouw antwoorden en gecorrigeerd voor handicap. In je gratis PDF werken we je sterkste punt en je twee grootste groeikansen volledig uit.',
         domainsLabel: 'Jouw 8 domeinen',
         domainsH2: 'Hoe scoor je per domein?',
         domainsIntro: 'De 8 domeinen zijn de bouwstenen van je mentale routine. Elk domein heeft direct invloed op hoe je presteert op de baan.',
-        domainsLocked: '6 van je 8 scores zijn vergrendeld',
-        domainsCta: 'Bekijk je volledige profiel — gratis →',
-        domainsCtaSub: 'Je volledige duiding, actieplan en concrete oefeningen — gratis in je inbox',
+        domainsLocked: 'Je ziet nu je sterkste punt en je grootste groeikans',
+        domainsCta: 'Ontvang je uitgewerkte plan — gratis →',
+        domainsCtaSub: 'In je gratis PDF: een extra groeikans erbij (3 domeinen uitgewerkt), plus duiding, mantra en actieplan — in je inbox',
         tagStrong: 'Sterkste',
         tagWeak: 'Zwakste',
         heroBadge0: '8 mentale domeinen',
         heroBadge1: '3 fases geanalyseerd',
         heroBadge2: 'Gebaseerd op 1.000+ golfers',
+        printBtn: 'Print of bewaar je resultaat →',
         phaseLabels: ['Pre-shot routine', 'De swing', 'Post-shot routine'],
         phaseSubs: ['Focus & Concentratie', 'Overtuiging & Vertrouwen', 'Beoordeling, Acceptatie, Analyse & Lering'],
         phaseDescs: [
@@ -1852,21 +1896,21 @@
         trustTime: 'Binnen enkele minuten',
         trustNoSpam: 'Geen spam',
         checklist: [
-          'Je sterkste én zwakste punt volledig uitgelegd — met 3 concrete tips per punt',
+          'Je sterkste punt én je twee grootste groeikansen — elk volledig uitgewerkt met 3 tips',
+          'Oefeningen op maat van jouw handicap — geen algemene tips',
           'Je profiel per fase: pre-shot, swing, post-shot — waar zit jouw winst?',
           'Een persoonlijk mantra voor op de baan',
           'Kant-en-klare AI-coachingprompts — plak ze in ChatGPT of Claude',
           'Je actieplan voor vóór, tijdens en ná de ronde',
-          'Een scherpe reflectievraag + een quote die past bij jouw spel',
           'Je kortingscode voor de volledige assessment — mocht je verder willen'
         ],
         checklistPersonal: [
-          'Waarom {weak} nu jouw grootste groeikans is — met 3 concrete tips',
+          'Je twee grootste groeikansen ({weak} + nog één) — elk uitgewerkt met 3 tips',
           'Hoe je jouw sterkste punt ({strong}) inzet als anker in je spel',
+          'Oefeningen op maat van jouw handicap — geen algemene tips',
           'Een persoonlijk mantra voor op de baan',
           'Kant-en-klare AI-coachingprompts — plak ze in ChatGPT of Claude',
           'Je actieplan voor vóór, tijdens en ná de ronde',
-          'Een scherpe reflectievraag + een quote die past bij jouw spel',
           'Je kortingscode voor de volledige assessment — mocht je verder willen'
         ],
         checklistAria: 'Inhoud van de PDF',
@@ -1892,6 +1936,7 @@
         submitting: 'Bezig met versturen...',
         sub: 'Je ontvangt je PDF binnen enkele minuten. Check ook je spam-map.',
         privacy: 'We delen je gegevens nooit met derden.',
+        buyEscape: 'Al overtuigd? Sla de wachttijd over — ga direct naar het volledige assessment (met code QUICKSCAN10) →',
         thanksTitle: 'Je uitslag is onderweg!',
         thanksBody1: 'Check je inbox binnen enkele minuten. Niet gevonden? Kijk ook even in je spam-map.',
         thanksBody2: 'Wil je niet wachten?',
@@ -1995,7 +2040,10 @@
         trust: 'Free · In your inbox in minutes · No spam, ever',
         sampleLink: 'Or preview a sample training report first →',
         optinUrgency: 'You did the 8-minute work — the full report is our thank-you. One minute, done.',
-        scoreLabel: 'Total score'
+        scoreLabel: 'Total score',
+        chipMantra: '✎ Your mantra',
+        chipPlan: '◆ Action plan',
+        chipAi: '✦ AI prompts'
       },
       fcta: {
         ariaLabel: 'Final call to action',
@@ -2121,19 +2169,20 @@
         ],
         radarLabel: 'Your profile',
         radarH2: 'Your Mental Routine across 3 phases',
-        radarIntro: 'Every shot involves 3 mental phases. Below you can see how you score across each one — from preparation to recovery.',
-        radarFootnote: 'Scores are based on your answers and directly comparable to the 8 areas in your PDF report.',
+        radarIntro: 'Every shot involves 3 mental phases. Here you can see at a glance how you score per phase — your snapshot from preparation to recovery.',
+        radarFootnote: 'Your scores are based on your answers and corrected for handicap. In your free PDF we fully work out your strongest point and your two biggest growth opportunities.',
         domainsLabel: 'Your 8 areas',
         domainsH2: 'How do you score per area?',
         domainsIntro: 'The 8 areas are the building blocks of your mental routine. Each one directly affects how you perform on the course.',
-        domainsLocked: '6 of your 8 scores are locked',
-        domainsCta: 'See your full profile — free →',
-        domainsCtaSub: 'Your full read, action plan and concrete exercises — free in your inbox',
+        domainsLocked: 'You now see your strongest point and your biggest growth opportunity',
+        domainsCta: 'Get your worked-out plan — free →',
+        domainsCtaSub: 'In your free PDF: one extra growth opportunity (3 domains worked out), plus interpretation, mantra and action plan — in your inbox',
         tagStrong: 'Strongest',
         tagWeak: 'Weakest',
         heroBadge0: '8 mental areas',
         heroBadge1: '3 phases analysed',
         heroBadge2: 'Based on 1,000+ golfers',
+        printBtn: 'Print or save your result →',
         phaseLabels: ['Pre-shot routine', 'The swing', 'Post-shot routine'],
         phaseSubs: ['Focus & Concentration', 'Conviction & Trust', 'Judgement, Acceptance, Analysis & Learning'],
         phaseDescs: [
@@ -2163,21 +2212,21 @@
         trustTime: 'Within minutes',
         trustNoSpam: 'No spam',
         checklist: [
-          'Your strongest and weakest point fully explained — with 3 concrete tips each',
+          'Your strongest point and your two biggest growth opportunities — each fully worked out with 3 tips',
+          'Exercises tailored to your handicap — no generic tips',
           'Your profile per phase: pre-shot, swing, post-shot — where are your gains?',
           'A personal mantra for the course',
           'Ready-to-use AI coaching prompts — paste them into ChatGPT or Claude',
           'Your action plan for before, during and after your round',
-          'A sharp reflection question + a quote that fits your game',
           'Your discount code for the full assessment — should you want to go deeper'
         ],
         checklistPersonal: [
-          'Why {weak} is now your biggest growth opportunity — with 3 concrete tips',
+          'Your two biggest growth opportunities ({weak} + one more) — each worked out with 3 tips',
           'How to use your strongest point ({strong}) as an anchor in your game',
+          'Exercises tailored to your handicap — no generic tips',
           'A personal mantra for the course',
           'Ready-to-use AI coaching prompts — paste them into ChatGPT or Claude',
           'Your action plan for before, during and after your round',
-          'A sharp reflection question + a quote that fits your game',
           'Your discount code for the full assessment — should you want to go deeper'
         ],
         checklistAria: 'Contents of the PDF',
@@ -2203,6 +2252,7 @@
         submitting: 'Sending...',
         sub: "You'll receive your PDF within minutes. Check your spam folder too.",
         privacy: 'We never share your data with third parties.',
+        buyEscape: 'Already convinced? Skip the wait — go straight to the full assessment (with code QUICKSCAN10) →',
         thanksTitle: 'Your results are on the way!',
         thanksBody1: 'Check your inbox in the next few minutes. Not there? Check your spam folder.',
         thanksBody2: "Don't want to wait?",
@@ -2985,16 +3035,25 @@
     }
 
     var domainNames = T.domains;
-    for (var i = 0; i < 5; i++) {
+    // Toon exact de 3 domeinen die de PDF uitwerkt: sterkste + de 2 laagste
+    // (dezelfde selectie als de portal). Geen willekeurige scores[0..4] meer.
+    var mockIdx = [];
+    if (scores && scores.length) {
+      var order = scores.map(function(s, i) { return i; }).sort(function(a, b) { return scores[a] - scores[b]; });
+      var lowTwo = order.filter(function(i) { return i !== state.strongestDomain; }).slice(0, 2);
+      mockIdx = [state.strongestDomain].concat(lowTwo);
+    }
+    for (var i = 0; i < 3; i++) {
       var barEl = document.getElementById('pdf-bar-' + i);
       var scoreEl = document.getElementById('pdf-score-' + i);
       var labelEl = document.getElementById('pdf-label-' + i);
-      if (scores && scores[i] !== undefined) {
-        var score = scores[i];
+      var di = mockIdx[i];
+      if (di !== undefined && scores && scores[di] !== undefined) {
+        var score = scores[di];
         var color = score >= 65 ? 'var(--fairway)' : score >= 45 ? 'var(--gold)' : 'rgba(192,57,43,.6)';
         if (barEl) { barEl.style.width = score + '%'; barEl.style.background = color; }
         if (scoreEl) scoreEl.textContent = fmt10(score);
-        if (labelEl && domainNames && domainNames[i]) labelEl.textContent = domainNames[i];
+        if (labelEl && domainNames && domainNames[di]) labelEl.textContent = domainNames[di];
       }
     }
   }
