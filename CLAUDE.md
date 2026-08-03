@@ -33,11 +33,13 @@
   `/assessment-foundation.html`→`/assessment` (die 2 HTML-bestanden zijn VERWIJDERD).
 - **Canonieke host: www.mentalroutine.com** (Vercel serveert www; canonicals/metadata op www).
 
-**Meertaligheid NU:** alleen **EN + NL** actief. **DE/FR/ES verborgen** uit de taalwisselaar
-(navbar.tsx LANG_OPTIONS: de/fr/es uitgecommend) — ze verwijzen in translations.ts naar het
-EN-object (`de: en, fr: en, es: en`) als tijdelijke placeholder tot vertaald. `en` is een losse
-`const ... as const`; `translations = {en, nl, de:en, fr:en, es:en} satisfies Record<Lang, Translation>`;
-`Translation = Widen<typeof en>`. Nieuwe key = in en+nl beide toevoegen.
+**Meertaligheid NU:** **alle 5 talen (EN·NL·DE·FR·ES) LIVE + volledig vertaald** en zichtbaar in de
+taalwisselaar (navbar.tsx `LANG_OPTIONS` = alle 5 actief, niets uitgecommend). translations.ts heeft
+ECHTE `de`/`fr`/`es`-objecten (geen `de: en`-placeholders meer). `en` is een losse `const ... as const`;
+`Translation = Widen<typeof en>`; elk taalobject `satisfies Translation`. **Nieuwe key = in ALLE 5 talen
+toevoegen.** ⚠️ Uitzondering: de losse **quiz.html** is nog steeds alleen NL + EN (eigen in-page
+`TRANSLATIONS`; DE/FR/ES = toekomstig). NB: de comment bovenaan navbar.tsx (~regel 10-12) over
+"DE/FR/ES verborgen/placeholder" is zelf verouderd t.o.v. de code eronder — negeren/opruimen.
 
 **Koopknoppen → Lemon Squeezy (LIVE sinds 30-7-2026).** Constante `CHECKOUT_ASSESSMENT_URL`
 (= `mentalroutinegolf.lemonsqueezy.com/checkout/buy/91ec251f-2df6-481b-b2e1-6f9aadaaf6fc`) in
@@ -53,16 +55,47 @@ LANG_OPTIONS niet meer uitgecommend). ✅ **`sample-mastery.html` VERWIJDERD** +
 `mastery`-preview-pad uit report-preview-modal/page.tsx/previewModal-keys (product bestaat niet
 meer). ✅ privacyNote "nooit gedeeld zonder jouw toestemming".
 
-**Openstaand (niet gedaan):** Lemon Squeezy-migratie · testimonials-foto's/authenticiteit
-(randomuser.me, overleg compagnon) · UTM-meetbaarheid PGA-mailing · DE/FR/ES-vertaling is
-AI-gegenereerd (idiomatisch, tsc+build schoon) maar niet menselijk gereviewd op toon/nuance ·
-tekstuele finetuning · `assessment/page.tsx`-copy is grotendeels mijn formulering (mag bijgestuurd).
+**Openstaand (niet gedaan):** testimonials-foto's/authenticiteit (randomuser.me, overleg compagnon) ·
+UTM-meetbaarheid PGA-mailing · DE/FR/ES-vertaling is AI-gegenereerd (idiomatisch, tsc+build schoon)
+maar niet menselijk gereviewd op toon/nuance · tekstuele finetuning · `assessment/page.tsx`-copy is
+grotendeels mijn formulering (mag bijgestuurd).
+
+## ⚠️ DRIFT-CORRECTIE (aug 2026) — deze secties hieronder liepen achter op de code
+> De secties verderop (Projectstructuur, Pricing, Secties-tabel, FAQ-overzicht, Early Access Systeem,
+> SEO — HTML Subsites, Domeinen-tabel) bevatten OUDE info. Waar dit blok en een lagere sectie
+> botsen, wint dit blok. Geverifieerd tegen de code (aug 2026):
+
+- **Bestanden VERWIJDERD** (staan nog fout in Projectstructuur/SEO/Sample-Previews): `early-access-
+  section.tsx`, `api/early-access/route.ts`, `api/spots/route.ts`, `reports/sample-mastery.html`,
+  `assessment-foundation.html`, `assessment-mastery.html`, `upgrade-standaard-deluxe.html`,
+  `sample-deluxe.html`. **NIEUW/ongedocumenteerd**: `src/lib/traffic-warmth.ts` (Optie-B warmte-hero-
+  logica), `src/app/sitemap.ts`, `public/robots.txt`, `public/social/` (3 PNG's), `public/logoMR.svg`.
+- **Early Access Systeem + Live Spots Counter = VOLLEDIG DOOD.** `EarlyAccessSection` wordt niet
+  gerenderd, geen api-early-access/spots-route, geen Resend-audience-flow, geen `EA_PRICE_*`/`REG_*`-
+  constanten. De nav-CTA is nu **"Free QuickScan"** (→ `/quickscan`), niet "Early Access".
+- **Pricing = ÉÉN product $79** (translations `plans[0]`: `price:"79"`, geen was-prijs, geen tiers,
+  geen credits). GEEN Foundation/Mastery, GEEN vergelijkingstabel (`comparisonRows: []` leeg), GEEN
+  2 plan-kaarten. De "Pricing (huidige waarden)"-tabel + "Upgrade pad" verderop zijn HISTORIE.
+- **Sample-preview modal** accepteert alleen **`"standard" | "training"`** (geen `"mastery"`).
+- **Secties in page.tsx** (13 incl. navbar/footer, GEEN `#early-access`): hero = **3 deuren, geen
+  prijs/koopknop**; Research-stats = **90% / 1000+ / 56** (niet 70+); `#dimensions` toont nu de
+  **4 beïnvloedende factoren** (niet "6 dimensies"); pricing = 1 kaart.
+- **FAQ = 7 vragen** (geen 9; de 2 Mastery-vragen zijn weg). JSON-LD (layout.tsx) = **1 offer $79
+  PreOrder** + **4** FAQPage-items (niet "2 offers Foundation/Mastery" + 5).
+- **Koop-CTA's → Lemon Squeezy** (`CHECKOUT_ASSESSMENT_URL`), NIET Shopify. De Domeinen-tabel-rij
+  "shop.mentalroutine.com … koop-CTA's wijzen hiernaar" + het "Betaal-integratie (Shopify)"-blok zijn
+  achterhaald. quiz.html-escape-link → Lemon (aug 2026 gefixt). Geen `shop.`-verwijzing meer in src.
+- **quiz.html**: `QUIZ_LOCKED`/coming-soon-banner = WEG (quiz is niet meer gelockt); linkt naar
+  Lemon-checkout met code QUICKSCAN10.
+- **Rate-limiting / input-validatie**: nog **2** POST-routes (contact 3/min, pro-program 3/min) —
+  early-access (5) + spots (30) bestaan niet meer.
+- **Meertaligheid**: alle 5 talen LIVE (zie de bijgewerkte "Meertaligheid NU"-alinea hierboven).
 
 ## Stack
 - **Framework**: Next.js 16.2.0 (App Router, TypeScript)
 - **Styling**: Tailwind CSS v4
 - **Animatie**: Framer Motion (`framer-motion` import in page.tsx/faqs.tsx, `motion/react` import in navbar.tsx/testimonials-columns.tsx)
-- **E-mail**: Resend SDK (contactformulier + early access signup)
+- **E-mail**: Resend SDK (contactformulier + pro-program-aanmelding; de early-access-flow is verwijderd)
 - **Analytics**: Plausible (privacy-friendly, cookieloos, GDPR-compliant) + Microsoft Clarity (heatmaps, session recordings)
 - **Fonts**: `next/font` (self-hosted) — Cormorant Garamond (headings, serif), DM Sans (body, sans-serif)
 - **Runtime**: Node.js (lokaal in `C:\Program Files\nodejs\`, niet in standaard PATH)
@@ -72,52 +105,51 @@ tekstuele finetuning · `assessment/page.tsx`-copy is grotendeels mijn formuleri
 ```
 src/
   app/
-    layout.tsx                  — root layout (metadata, html/body)
-    page.tsx                    — hoofdpagina (secties + imports, ~814 regels)
+    layout.tsx                  — root layout (metadata, JSON-LD, Plausible+Clarity, html/body)
+    page.tsx                    — hoofdpagina (secties + imports)
+    sitemap.ts                  — dynamische sitemap
     favicon.ico
     globals.css                 — Tailwind imports + globale stijlen + prefers-reduced-motion
-    pro-program/
-      page.tsx                  — PGA Pro Program landing page
+    assessment/page.tsx         — /assessment (betaald product, Lemon-checkout-CTA)
+    pro-program/page.tsx        — PGA Pro Program landing page
     api/
       contact/route.ts          — POST → contactformulier e-mail via Resend (rate-limited)
-      early-access/route.ts     — POST → early access signup via Resend (rate-limited, audience + emails)
-      pro-program/route.ts      — POST → pro-program aanmelding via Resend (rate-limited, notificatie + bevestiging email)
-      spots/route.ts            — GET → live spots counter via Resend Audience API (rate-limited)
+      pro-program/route.ts      — POST → pro-program aanmelding via Resend (rate-limited)
+      (early-access/ + spots/ zijn VERWIJDERD — early-access-flow bestaat niet meer)
   lib/
     translations.ts             — alle tekst + vertalingen, 5 talen (as const)
+    traffic-warmth.ts           — Optie-B: herkomst-warmte-detectie (drijft de warme hero)
     utils.ts                    — utility functies (cn helper)
     validate.ts                 — server-side input validatie (sanitize, validEmail, clamp)
-    rate-limit.ts               — in-memory rate limiter per IP (sliding window, per route)
+    rate-limit.ts               — in-memory rate limiter per IP (contact + pro-program)
     use-reduced-motion.ts       — React hook voor prefers-reduced-motion detectie
   context/
     lang-context.tsx            — taalwisselaar (LangProvider + useLang hook)
   components/ui/
-    navbar.tsx                  — navigatie + LangDropdown (mobile + desktop)
+    navbar.tsx                  — navigatie + LangDropdown (5 talen, mobile + desktop)
     faqs.tsx                    — FAQ accordion (FaqsSection)
     testimonials-columns.tsx    — testimonial kaarten in auto-scroll kolommen (reduced-motion aware)
-    hero-radar.tsx              — SVG radar chart met 8 assen, roteert random scores (reduced-motion aware)
+    hero-radar.tsx              — SVG radar chart, roteert random scores (reduced-motion aware)
     contact-section.tsx         — contactformulier (POST naar /api/contact), lazy-loaded
-    early-access-section.tsx    — early access signup formulier, lazy-loaded
-    report-preview-modal.tsx    — iframe modal voor sample reports, lazy-loaded
+    report-preview-modal.tsx    — iframe modal voor sample reports (types: standard|training), lazy-loaded
     spotlight.tsx               — achtergrond spotlight effect (hero)
     button.tsx                  — generieke button component
     evervault-card.tsx          — decoratief card component
     splite.tsx                  — decoratief component
+    (early-access-section.tsx is VERWIJDERD)
 
 public/
-  og-image.png                  — OG/social sharing image (1792×1024, DALL-E radar chart + tekst overlay)
-  logoMRpng.png                 — hoofdlogo (gebruikt in navbar + footer)
-  logoMRjpg.jpg                 — logo jpg variant
-  logoMR.svg                    — logo svg (niet gecommit)
-  logo-icon.svg                 — icon-only logo
+  og-image.png                  — OG/social sharing image (1792×1024)
+  robots.txt                    — crawler-regels
+  logoMRpng.png / logoMRjpg.jpg / logoMR.svg / logo-icon.svg — logo-varianten
+  social/                       — 3 social-PNG's
   reports/
-    sample-standard.html        — dummy voorbeeldrapport Foundation (12 pagina's)
-    sample-mastery.html         — dummy voorbeeldrapport Mastery (44 pagina's) [voorheen sample-deluxe.html]
-    sample-training-report.html — sample trainingsrapport (5 pagina's, clickable preview)
-  assessment-foundation.html    — assessment landingspagina Foundation [voorheen assessment-standaard.html]
-  assessment-mastery.html       — Mastery-uitlegpagina (in-portal credit-upgrade) [voorheen assessment-deluxe.html]
-  quiz.html                     — quiz funnel pagina
+    sample-standard.html        — dummy voorbeeldrapport (clickable preview)
+    sample-training-report.html — sample trainingsrapport (clickable preview)
+  quiz.html                     — de QuickScan (rewrite van /quickscan)
   *.svg                         — Next.js default icons
+  (VERWIJDERD: reports/sample-mastery.html, assessment-foundation.html, assessment-mastery.html,
+   upgrade-standaard-deluxe.html — oude URLs → 301 naar /assessment via next.config.ts)
 ```
 
 ## Domeinen & Hosting
@@ -127,7 +159,8 @@ public/
 | `www.mentalroutine.com` | Productie (primair) |
 | `mentalroutine.com` | 307 redirect → `www.mentalroutine.com` |
 | `mentaleroutine.com` | 301 redirect → `www.mentalroutine.com` (oud domein) |
-| `shop.mentalroutine.com` | Externe Shopify-webshop (LIVE). Koop-CTA's wijzen hiernaar — zie hieronder |
+| `portal.mentalroutine.com` | De PORTAL (betaald assessment + golfer-omgeving, aparte repo) |
+| ~~`shop.mentalroutine.com`~~ | ⚠️ ACHTERHAALD: koop-CTA's wijzen NIET meer hiernaar. Alle checkout-CTA's → **Lemon Squeezy** (`CHECKOUT_ASSESSMENT_URL`). De Shopify-shop is verlaten als koopkanaal. |
 
 - **Domeinregistrar**: TransIP
 - **Hosting**: Vercel — auto-deploy op elke push naar `main`
@@ -467,56 +500,47 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
   - **Testimonials** (`testimonials-columns.tsx`): stopt auto-scroll animatie bij reduced-motion (gebruikt shared hook)
   - **Globale CSS** (`globals.css`): `@media (prefers-reduced-motion: reduce)` zet `animation-duration`, `transition-duration` en `scroll-behavior` op minimaal voor alle elementen
 
-### Analytics (Plausible)
-- **Provider**: Plausible Analytics — Business plan ($19/mo), privacy-friendly, cookieloos, GDPR-compliant (geüpgraded van Starter €9/mo voor custom properties)
-- **Script**: `<script async src="/js/script.js" data-api="/api/event" data-domain="mentalroutine.com" />` in `layout.tsx`
-- **Proxy**: Vercel rewrites in `next.config.ts` — `/js/script.js` → Plausible CDN, `/api/event` → Plausible API (omzeilt adblockers)
-- **Extensions**: outbound-links (automatisch tracken externe links), file-downloads (automatisch tracken downloads)
-- **Initialisatie**: `window.plausible` stub in `layout.tsx` (queues events vóór script geladen is)
-- **Helper**: `track()` functie in `page.tsx` — wrapper rond `window.plausible()`
-- **Global type**: `Window.plausible` gedeclareerd in page.tsx via `declare global` (1x, referenced in faqs.tsx)
-- **Custom events** (24 events, verspreid over 3 pagina's):
+### Analytics (Plausible) — bijgewerkt aug 2026
+> ⚠️ De vorige eventtabel was zwaar verouderd (Early-Access- + HTML-subsite-events die niet meer
+> bestaan). Hieronder de GEVERIFIEERDE, actuele set. De code is opgeschoond; alleen dit doc liep achter.
 
-| Event | Props | Trigger |
-|-------|-------|---------|
-| `cta_click` | `source: "hero" \| "sticky" \| "nav"` | Hero CTA + sticky bar + navbar klik (unified) |
-| `quiz_click` | `source: "hero" \| "pricing" \| "footer"` | Quiz links (3 locaties) |
-| `plan_select` | `plan: "standard" \| "deluxe"` | Plan selector in early access |
-| `pricing_cta_click` | `plan: "standard" \| "deluxe"` | Pricing CTA knop klik |
-| `report_preview` | `type: "standard" \| "deluxe" \| "training"` | Sample report preview geopend |
-| `signup` | `plan, lang, seconds` | Succesvolle early access signup (incl. time-to-signup) |
-| `signup_error` | `type: "api"` | Gefaalde signup |
-| `lang_switch` | `lang: "en" \| "nl" \| ...` | Taalwisselaar in navbar |
-| `form_start` | `plan: "standard" \| "deluxe"` | Eerste focus op early access formulier (met pre-selected plan) |
-| `faq_open` | `question: "1"–"9"` | FAQ vraag geopend |
-| `contact_submit` | `lang` | Contactformulier verstuurd |
-| `contact_error` | `type: "api"` | Gefaald contactformulier |
-| `scroll_depth` | `depth: "25" \| "50" \| "75" \| "100"` | Scroll milestones (eenmalig per sessie) |
-| `section_view` | `section` | Sectie komt in beeld (11 secties, threshold 0.3) |
-| `sticky_bar_impression` | — | Sticky bar verschijnt (eenmalig) |
-| `pro_program_click` | `source: "process" \| "pricing" \| "footer"` | Pro-program link klik |
-| `report_preview_close` | `type, seconds` | Report preview modal gesloten (dwell time) |
-| `quiz_start` | — | Quiz gestart (quiz.html) |
-| `quiz_hole` | `hole, seconds` | Per-hole tracking: hole nummer (1-9) + invultijd per hole |
-| `quiz_complete` | `seconds, score` | Quiz afgerond (totale invultijd + totaalscore) |
-| `quiz_optin` | `score` | Quiz opt-in formulier verstuurd |
-| `quiz_optin_error` | — | Quiz opt-in gefaald |
-| `pro_program_submit` | `country` | Pro-program aanmelding verstuurd |
-| `pro_program_error` | `type: "api"` | Pro-program aanmelding gefaald |
-| `checkout_click` | `plan, source, cta, seconds` | Checkout CTA klik met positie (header/hero/pricing/mobile-sticky/final-cta) + time-on-page |
-| `upsell_click` | `from, to, source` | Cross-sell link klik (standaard→deluxe) |
-| `bridge_cta_click` | `page` | "Klinkt dit bekend?" tussenlink klik (assessment pagina's) |
-| `guarantee_view` | `page` | Garantie-blok in viewport (50% threshold) |
-| `social_proof_view` | `page` | Social proof bar in viewport (50% threshold) |
-| + outbound-links | automatisch | Alle externe links (social media, shop, etc.) |
-| + file-downloads | automatisch | Bestandsdownloads |
+- **Provider**: Plausible (Business plan), cookieloos/GDPR. + **Microsoft Clarity** (`w8rr4hfxpz`) voor
+  heatmaps/sessie-opnames.
+- **Script**: `<script async src="/js/script.js" data-api="/api/event" data-domain="mentalroutine.com" />`
+  in `layout.tsx`, geproxied via Vercel-rewrites (`/js/script.js`→CDN, `/api/event`→API, omzeilt adblockers)
+  + extensies outbound-links/file-downloads. `window.plausible`-stub in layout.
+- **Helper**: `track()` — 4× gedupliceerd (page.tsx, assessment/page.tsx, pro-program/page.tsx,
+  contact-section.tsx, report-preview-modal.tsx), `Window.plausible` 3× `declare global`. navbar.tsx +
+  faqs.tsx + quiz.html gebruiken directe `window.plausible(...)`-calls.
+- **4 pagina's met tracking**: `/` (page.tsx), `/assessment`, `/pro-program`, `quiz.html`. (De oude
+  assessment-standaard/deluxe/upgrade-HTML-subsites bestaan NIET meer.)
 
-- **Section view tracking**: IntersectionObserver op 11 secties (hoofdpagina): `how-it-works`, `mental-routine`, `steps`, `dimensions`, `why-it-works`, `pricing`, `training-reports`, `testimonials`, `faq`, `early-access`, `contact`
-- **Assessment/upgrade page tracking**: `scroll_depth`, `section_view`, `faq_open`, `checkout_click` (met CTA-positie + time-on-page), `upsell_click`, `bridge_cta_click`, `guarantee_view`, `social_proof_view`
-- **Time-to-signup**: meet vanaf `performance.timeOrigin` (echte pageload) tot signup submit
-- **UTM tracking**: `captureUtmParams()` vangt 5 UTM params op, persists via `sessionStorage`
-- **Quiz tracking**: Plausible script + proxy in `quiz.html` (standalone HTML, zelfde proxy als hoofdpagina)
-- **Pro-program tracking**: events in `pro-program/page.tsx`, API route `api/pro-program/route.ts`
+**Custom events die ECHT vuren** (~15 hoofdsite + 6 quiz):
+
+| Event | Props | Waar / trigger |
+|-------|-------|----------------|
+| `cta_click` | `source: "hero"`, `warmth` | Hero assessment-deur (→ /assessment) |
+| `quiz_click` | `source: "hero"\|"pricing"\|"footer"\|"nav"`, `warmth` | QuickScan-deur (5 locaties) |
+| `pro_program_click` | `source: "hero"\|"process"\|"pricing"\|"footer"` | Pro-deur |
+| `checkout_click` | `plan: "assessment"`, `source: "pricing"\|"training-reports"\|"sticky"\|"assessment-page"\|"quiz-optin-escape"` | **Lemon-checkout** CTA's (allemaal) |
+| `report_preview` | `type: "standard"\|"training"` | Sample-report preview geopend |
+| `report_preview_close` | `type, seconds` | Modal gesloten (dwell time) |
+| `section_view` | `section` | IntersectionObserver op **10 secties** (threshold 0.3) |
+| `scroll_depth` | `depth: "25"\|"50"\|"75"\|"100"` | Scroll-milestones |
+| `hero_warmth` | `warmth: "warm"` | Bij warm traffic (Optie-B warmte-hero, `traffic-warmth.ts`) |
+| `faq_open` | `question: "1"–"7"` | FAQ-vraag geopend |
+| `contact_submit` / `contact_error` | `lang` / `type:"api"` | Contactformulier |
+| `pro_program_submit` / `pro_program_error` | `country` / `type:"api"` | Pro-program-aanmelding |
+| `lang_switch` | `lang` | Taalwisselaar navbar |
+| **quiz.html:** `quiz_start` · `quiz_hole` (`hole,seconds`) · `quiz_complete` (`seconds,score,lang`) · `quiz_optin` (`score`) · `quiz_optin_error` · `quiz_lang_switch` (`lang`) | | Quiz-funnel |
+| + outbound-links · file-downloads | automatisch | Plausible-extensies |
+
+- **`section_view` = 10 secties**: `how-it-works, mental-routine, steps, dimensions, why-it-works,
+  pricing, training-reports, testimonials, faq, contact` (GEEN `early-access` meer).
+- **VERWIJDERD uit de code (stonden nog fout in dit doc)**: `plan_select`, `pricing_cta_click`,
+  `signup(_error)`, `form_start`, `sticky_bar_impression/click`, `upsell_click`, `bridge_cta_click`,
+  `guarantee_view`, `social_proof_view` — allemaal Early-Access-/subsite-restanten, bestaan niet meer.
+- **UTM tracking**: `captureUtmParams()` (5 params, sessionStorage) — bestaat nog.
 
 ### API Security, Input Validation & Rate Limiting
 
@@ -1026,14 +1050,15 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 - `upsell_click`: cross-sell link standaard→deluxe met `from`, `to`, `source` props
 - Totaal: 35 custom events + 2 automatische Plausible extensions over 6 pagina's
 
-### Plausible Goals & Funnels (9 april 2026)
+### Plausible Goals & Funnels (9 april 2026 — deels ACHTERHAALD, zie noot)
+> ⚠️ **Actueel (aug 2026):** de dode "Early Access Signup"-funnel is verwijderd; de goals zijn
+> opgeschoond naar de werkelijke event-set (zie de Analytics-sectie). De 2 actieve funnels nu:
+> **Quiz Funnel** (5-step) `quiz_click → quiz_start → quiz_complete → quiz_optin → checkout_click`
+> en **Assessment Checkout** (2-step) `section_view → checkout_click`. De onderstaande april-entry
+> is historie.
 
-**35 custom event goals geregistreerd in Plausible dashboard** (Settings → Goals)
-- Alle event names exact matching met code (lowercase, underscores)
-- Custom properties worden automatisch herkend zodra data binnenkomt
-
-**3 funnels geconfigureerd** (Settings → Funnels):
-1. **Early Access Signup**: `cta_click` → `form_start` → `plan_select` → `signup`
+**(historie, apr 2026)** 35 custom event goals geregistreerd (Settings → Goals). 3 funnels:
+1. **Early Access Signup**: `cta_click` → `form_start` → `plan_select` → `signup` (VERWIJDERD — dode events)
 2. **Quiz Funnel**: `quiz_click` → `quiz_start` → `quiz_complete` → `quiz_optin`
 3. **Assessment Checkout**: `section_view` → `faq_open` → `checkout_click`
 
