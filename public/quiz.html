@@ -480,7 +480,7 @@
     @media print {
       /* Verberg alles behalve het resultaatscherm */
       body > *:not(#phase-results),
-      .site-header, .quiz-header, .coming-soon-banner, #coming-soon-banner,
+      .site-header, .quiz-header,
       .lang-toggle-btn, .no-print,
       .pdf-preview-section, .optin-section, .assess-teaser,
       #result-share, .domains-cta, .share-buttons,
@@ -1055,7 +1055,6 @@
     .assess-compare-card--highlight .assess-compare-label{color:var(--gold-light)}
     .assess-compare-card--highlight .assess-compare-title{color:var(--gold-light)}
     /* ── COMING SOON PULSE ── */
-    @keyframes comingSoonPulse{0%,100%{background:linear-gradient(135deg,#1B3A2D 0%,#254D3A 100%)}50%{background:linear-gradient(135deg,#254D3A 0%,#3D7A5A 100%)}}
     .intake-radio-group { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; }
     .intake-radio-label { display: flex; align-items: center; gap: 0.6rem; font-size: 1rem; color: var(--text-dark); cursor: pointer; }
     .intake-radio-label input[type="radio"] { width: 1.1rem; height: 1.1rem; accent-color: var(--gold); cursor: pointer; }
@@ -1649,11 +1648,6 @@
         description: 'Doe de gratis QuickScan en ontdek in 8 minuten welk mentaal patroon jou de meeste slagen kost. Speel 9 holes en ontdek direct je mentale profiel. Gebaseerd op 10 jaar onderzoek met 1.000+ golfers.',
         htmlLang: 'nl'
       },
-      coming: {
-        strong: '⛳ Speel de gratis QuickScan',
-        body: 'Ontdek in 8 minuten welk mentaal patroon jou de meeste slagen kost. Wil je meer? Bekijk het volledige assessment.',
-        link: 'Bekijk het assessment →'
-      },
       langToggle: { other: 'EN', otherFull: 'English', current: 'NL' },
       skipLink: 'Naar hoofdinhoud',
       siteHeaderMid: '9 holes · 8 minuten · Gratis',
@@ -1964,11 +1958,6 @@
         title: 'Free QuickScan — Which mental pattern is costing you the most strokes? | Mental Routine',
         description: 'Take the free QuickScan and discover in 8 minutes which mental pattern is costing you the most strokes. Play 9 holes and see your mental profile instantly. Based on 10 years of research with 1,000+ golfers.',
         htmlLang: 'en'
-      },
-      coming: {
-        strong: '⛳ Play the free QuickScan',
-        body: 'Discover in 8 minutes which mental pattern is costing you the most strokes. Want more? Explore the full assessment.',
-        link: 'See the assessment →'
       },
       langToggle: { other: 'NL', otherFull: 'Nederlands', current: 'EN' },
       skipLink: 'Skip to main content',
@@ -2379,19 +2368,6 @@
       btn.textContent = T.langToggle.other;
       btn.setAttribute('aria-label', 'Switch to ' + T.langToggle.otherFull);
     });
-    // Update coming-soon banner
-    updateComingSoonBanner();
-  }
-
-  function updateComingSoonBanner() {
-    var banner = document.getElementById('coming-soon-banner');
-    if (!banner) return;
-    var strong = banner.querySelector('[data-cs-strong]');
-    var body = banner.querySelector('[data-cs-body]');
-    var link = banner.querySelector('[data-cs-link]');
-    if (strong) strong.textContent = T.coming.strong;
-    if (body) body.textContent = T.coming.body;
-    if (link) link.textContent = T.coming.link;
   }
 
   /* ══════════════════════════════════
@@ -3318,7 +3294,6 @@
     btn.textContent = T.langToggle.other;
     btn.setAttribute('aria-label', 'Switch to ' + T.langToggle.otherFull);
   });
-  updateComingSoonBanner();
 
 })();
 </script>
