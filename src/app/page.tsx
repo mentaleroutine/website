@@ -10,6 +10,7 @@ import { FaqsSection } from "@/components/ui/faqs";
 import { HeroRadar } from "@/components/ui/hero-radar";
 import { LangProvider, useLang } from "@/context/lang-context";
 import { translations, type Translation } from "@/lib/translations";
+import { detectWarmth, type Warmth } from "@/lib/traffic-warmth";
 
 // Lazy-load below-fold interactive components
 const ContactSection = dynamic(() => import("@/components/ui/contact-section").then(m => ({ default: m.ContactSection })), { ssr: false });
@@ -36,6 +37,16 @@ function PageContent() {
   const T: Translation = translations[lang];
   const [previewPlan, setPreviewPlan] = useState<"standard" | "training" | null>(null);
   const [showStickyBar, setShowStickyBar] = useState(false);
+
+  // Herkomst-gevoelige hero (Optie B): default "cold" = QuickScan dominant (veilige,
+  // server-rendered stand). Warm verkeer (merk/retargeting/e-mail/pro/QuickScan-terug)
+  // krijgt de $79-koopknop dominant. Detectie client-side na mount → hooguit een wissel
+  // richting warm, nooit een flikker voor het koude gros.
+  const [warmth, setWarmth] = useState<Warmth>("cold");
+  useEffect(() => {
+    const w = detectWarmth();
+    if (w === "warm") { setWarmth("warm"); track("hero_warmth", { warmth: "warm" }); }
+  }, []);
 
   // Section view tracking via IntersectionObserver
   useEffect(() => {
@@ -119,19 +130,32 @@ function PageContent() {
               </span>
             </motion.div>
 
-            {/* Three equal doors — the homepage explains, it doesn't sell.
-                The buy button lives on /assessment. */}
-            <motion.div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
-              <a href="/quickscan" onClick={() => track("quiz_click", { source: "hero" })} className="px-6 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide text-center">
-                {T.nav.cta}
-              </a>
-              <a href="/assessment" onClick={() => track("cta_click", { source: "hero" })} className="px-6 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm text-center">
-                {T.hero.cta1}
-              </a>
-              <a href="/pro-program" onClick={() => track("pro_program_click", { source: "hero" })} className="px-6 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm text-center">
-                {T.hero.proDoor}
-              </a>
-            </motion.div>
+            {/* Herkomst-gevoelige deuren (Optie B): koud → QuickScan dominant,
+                warm → $79-assessment dominant. Pro blijft een rustige derde deur.
+                Alleen de knopstijl wisselt, niet de layout → geen flikker/CLS. */}
+            {(() => {
+              const goldBtn = "px-6 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide text-center";
+              const outlineBtn = "px-6 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm text-center";
+              const warm = warmth === "warm";
+              // De dominante (goud) deur staat visueel eerst via CSS order; DOM-volgorde
+              // blijft gelijk zodat tracking/structuur stabiel is.
+              return (
+                <motion.div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}>
+                  {/* Assessment ($79) — dominant bij warm verkeer */}
+                  <a href="/assessment" onClick={() => track("cta_click", { source: "hero", warmth })} className={`${warm ? goldBtn : outlineBtn} ${warm ? "order-first" : "order-2"}`}>
+                    {T.hero.cta1}
+                  </a>
+                  {/* QuickScan (gratis) — dominant bij koud verkeer */}
+                  <a href="/quickscan" onClick={() => track("quiz_click", { source: "hero", warmth })} className={`${warm ? outlineBtn : goldBtn} ${warm ? "order-2" : "order-first"}`}>
+                    {T.nav.cta}
+                  </a>
+                  {/* Pro — altijd een rustige derde deur */}
+                  <a href="/pro-program" onClick={() => track("pro_program_click", { source: "hero" })} className={`${outlineBtn} order-3`}>
+                    {T.hero.proDoor}
+                  </a>
+                </motion.div>
+              );
+            })()}
 
             <motion.p className="text-xs text-green-200/40 max-w-md mx-auto lg:mx-0 mt-5 tracking-wide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.9 }}>
               {T.hero.howItWorksLine}
