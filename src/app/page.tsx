@@ -218,6 +218,18 @@ function PageContent() {
                   <div className="text-sm text-green-200/70 leading-relaxed">{stat.label}</div>
                 </div>
               ))}
+
+              {/* The stats above make claims — this is where they're substantiated */}
+              <a
+                href="/methodology"
+                onClick={() => track("methodology_click", { source: "research" })}
+                className="group mt-8 pt-8 border-t border-green-200/10 flex items-center gap-2 text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors"
+              >
+                <span>{T.research.methodologyLink}</span>
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 group-hover:translate-x-0.5 transition-transform shrink-0">
+                  <path d="M1 6h10M6 1l5 5-5 5" />
+                </svg>
+              </a>
             </div>
           </motion.div>
 
@@ -649,6 +661,7 @@ function PageContent() {
                   { label: T.nav.faq,          href: '#faq'           },
                   { label: T.nav.contact,      href: '#contact'       },
                   { label: T.footer.quizLink, href: '/quiz.html' },
+                  { label: T.footer.methodology, href: '/methodology' },
                 ].map(link => (
                   <a
                     key={link.href}

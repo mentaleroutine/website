@@ -56,6 +56,7 @@ const en = {
       ],
       quote: "\"I never hit a shot, even in practice, without having a very sharp, in-focus picture of it in my head. It's like a color movie.\"",
       quoteAuthor: "— Jack Nicklaus",
+      methodologyLink: "Read the full methodology",
     },
     routine: {
       label: "The Core Framework", h2a: "Every shot. Eight steps.", h2b: "Three phases you already know.",
@@ -185,7 +186,7 @@ const en = {
       quizLine: "Still on the fence? See your weakest link free — 8 minutes, no card needed.",
       trust: ["In your inbox shortly after", "One assessment — $79", "Research base: 1,000+ golfers", "30-day money-back guarantee"],
     },
-        footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free QuickScan", quoteText: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong", methodBy: "Method by Henk de Jong", menuLabel: "Menu" },
+        footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free QuickScan", methodology: "The methodology", quoteText: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong", methodBy: "Method by Henk de Jong", menuLabel: "Menu" },
 } as const;
 
 export const translations = {
@@ -243,6 +244,7 @@ export const translations = {
       ],
       quote: "\"Ik sla nooit een bal, zelfs niet op de oefenbaan, zonder een heel scherp, helder beeld ervan in mijn hoofd te hebben. Het is als een kleurenfilm.\"",
       quoteAuthor: "— Jack Nicklaus",
+      methodologyLink: "Lees de volledige methodologie",
     },
     routine: {
       label: "Het Kernraamwerk", h2a: "Elke slag. Acht stappen.", h2b: "Drie fases die je al kent.",
@@ -371,7 +373,7 @@ export const translations = {
       quizLine: "Nog aan het twijfelen? Zie je zwakste schakel gratis — 8 minuten, geen betaalgegevens nodig.",
       trust: ["Kort daarna in je inbox", "Eén assessment — $79", "Onderzoeksbasis: 1.000+ golfers", "30 dagen geld terug"],
     },
-        footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis QuickScan", quoteText: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong", methodBy: "Methode van Henk de Jong", menuLabel: "Menu" },
+        footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis QuickScan", methodology: "De methodiek", quoteText: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong", methodBy: "Methode van Henk de Jong", menuLabel: "Menu" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -431,6 +433,7 @@ export const translations = {
       ],
       quote: "\"I never hit a shot, even in practice, without having a very sharp, in-focus picture of it in my head. It's like a color movie.\"",
       quoteAuthor: "— Jack Nicklaus",
+      methodologyLink: "Die vollständige Methodik lesen",
     },
     routine: {
       label: "Das Kern-Framework", h2a: "Jeder Schlag. Acht Schritte.", h2b: "Drei Phasen, die du längst kennst.",
@@ -560,7 +563,7 @@ export const translations = {
       quizLine: "Noch unsicher? Sieh deinen schwächsten Punkt gratis — 8 Minuten, keine Kartendaten nötig.",
       trust: ["Kurz danach in deinem Posteingang", "Ein Assessment — $79", "Forschungsbasis: 1.000+ Golfer", "30 Tage Geld-zurück-Garantie"],
     },
-        footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfiehl das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloser QuickScan", quoteText: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong", methodBy: "Methode von Henk de Jong", menuLabel: "Menü" },
+        footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfiehl das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloser QuickScan", methodology: "Die Methodik", quoteText: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong", methodBy: "Methode von Henk de Jong", menuLabel: "Menü" },
 },
   fr: {
     nav: { howItWorks: "La recherche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "QuickScan gratuit", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu", selectLang: "Choisir la langue", skipToContent: "Aller au contenu" },
@@ -612,6 +615,7 @@ export const translations = {
       ],
       quote: "\"Je ne joue jamais un coup, même à l'entraînement, sans avoir dans la tête une image très nette et bien mise au point. C'est comme un film en couleur.\"",
       quoteAuthor: "— Jack Nicklaus",
+      methodologyLink: "Lire la méthodologie complète",
     },
     routine: {
       label: "Le cadre central", h2a: "Chaque coup. Huit étapes.", h2b: "Trois phases que vous connaissez déjà.",
@@ -741,7 +745,7 @@ export const translations = {
       quizLine: "Vous hésitez encore ? Voyez votre maillon faible gratuitement — 8 minutes, sans carte bancaire.",
       trust: ["Dans votre boîte de réception peu après", "Un seul assessment — $79", "Base de recherche : 1 000+ golfeurs", "Garantie satisfait ou remboursé de 30 jours"],
     },
-        footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Enseignant PGA ? Recommandez l'assessment à vos élèves →", socialLabel: "Suivez-nous", quizLink: "QuickScan gratuit", quoteText: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong", methodBy: "Méthode de Henk de Jong", menuLabel: "Menu" },
+        footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Enseignant PGA ? Recommandez l'assessment à vos élèves →", socialLabel: "Suivez-nous", quizLink: "QuickScan gratuit", methodology: "La méthodologie", quoteText: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong", methodBy: "Méthode de Henk de Jong", menuLabel: "Menu" },
 },
   es: {
     nav: { howItWorks: "La Investigación", pricing: "Precios", testimonials: "Testimonios", faq: "Preguntas", contact: "Contacto", cta: "QuickScan gratis", openMenu: "Abrir menú", closeMenu: "Cerrar menú", selectLang: "Seleccionar idioma", skipToContent: "Saltar al contenido" },
@@ -793,6 +797,7 @@ export const translations = {
       ],
       quote: "\"Nunca ejecuto un golpe, ni siquiera en la práctica, sin tener una imagen muy nítida y enfocada de él en mi cabeza. Es como una película en color.\"",
       quoteAuthor: "— Jack Nicklaus",
+      methodologyLink: "Leer la metodología completa",
     },
     routine: {
       label: "El Marco Central", h2a: "Cada golpe. Ocho pasos.", h2b: "Tres fases que ya conoces.",
@@ -922,7 +927,7 @@ export const translations = {
       quizLine: "¿Aún dudando? Mira tu eslabón más débil gratis — 8 minutos, sin tarjeta.",
       trust: ["En tu bandeja de entrada poco después", "Un assessment — $79", "Base de investigación: 1000+ golfistas", "Garantía de devolución de 30 días"],
     },
-        footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Eres Teaching Professional? Recomienda el assessment a tus alumnos →", socialLabel: "Síguenos", quizLink: "QuickScan gratis", quoteText: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong", methodBy: "Método de Henk de Jong", menuLabel: "Menú" },
+        footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Eres Teaching Professional? Recomienda el assessment a tus alumnos →", socialLabel: "Síguenos", quizLink: "QuickScan gratis", methodology: "La metodología", quoteText: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong", methodBy: "Método de Henk de Jong", menuLabel: "Menú" },
 },
 } satisfies Record<Lang, Translation>;
 

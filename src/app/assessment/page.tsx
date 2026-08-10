@@ -112,8 +112,15 @@ function AssessmentContent() {
               </details>
             ))}
           </div>
-          <div className="text-center mt-12">
+          <div className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-3">
             <a href="/" className="text-sm text-stone-500 hover:text-green-950 transition-colors">{A.backHome}</a>
+            <a
+              href="/methodology"
+              onClick={() => track("methodology_click", { source: "assessment" })}
+              className="text-sm text-amber-700 hover:text-amber-800 transition-colors underline underline-offset-4"
+            >
+              {T.research.methodologyLink}
+            </a>
           </div>
         </div>
       </section>
