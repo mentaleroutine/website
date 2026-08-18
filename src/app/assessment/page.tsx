@@ -20,6 +20,13 @@ function track(event: string, props?: Record<string, string>) { window.plausible
 // ingelogd op de portal). Variant wijzigen → nieuwe checkout-UUID via Lemon → Share.
 const CHECKOUT_ASSESSMENT_URL = "https://mentalroutinegolf.lemonsqueezy.com/checkout/buy/91ec251f-2df6-481b-b2e1-6f9aadaaf6fc";
 
+// See page.tsx: the portal reads `custom_data.lang` to set the buyer's account language.
+// Reports ship in NL and EN only, so any other UI language buys the EN edition.
+function checkoutUrl(lang: string) {
+  const reportLang = lang === "nl" ? "nl" : "en";
+  return `${CHECKOUT_ASSESSMENT_URL}?checkout[custom][lang]=${reportLang}`;
+}
+
 function AssessmentContent() {
   const { lang } = useLang();
   const T: Translation = translations[lang];
@@ -80,7 +87,7 @@ function AssessmentContent() {
             <p className="text-xs text-green-200/50 mt-1 mb-6">{plan.tagline}</p>
             {/* QuickScan-brug + prijsanker — pal bij de knop, per funnel-advies (Optie B) */}
             <p className="text-xs text-green-200/60 leading-relaxed mb-5 pb-5 border-b border-white/10">{A.bridge}</p>
-            <a href={CHECKOUT_ASSESSMENT_URL} target="_blank" rel="noopener" onClick={() => track("checkout_click", { plan: "assessment", source: "assessment-page" })} className="block text-center py-3.5 rounded-lg text-sm font-bold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
+            <a href={checkoutUrl(lang)} target="_blank" rel="noopener" onClick={() => track("checkout_click", { plan: "assessment", source: "assessment-page" })} className="block text-center py-3.5 rounded-lg text-sm font-bold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
               {plan.cta}
             </a>
             {/* Guarantee — right at the buy button, per brief */}

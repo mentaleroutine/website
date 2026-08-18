@@ -28,6 +28,15 @@ function track(event: string, props?: Record<string, string>) { window.plausible
 // Bij wijziging van de variant: nieuwe checkout-UUID via Lemon → Store → Products → Share.
 const CHECKOUT_ASSESSMENT_URL = "https://mentalroutinegolf.lemonsqueezy.com/checkout/buy/91ec251f-2df6-481b-b2e1-6f9aadaaf6fc";
 
+// The portal reads `custom_data.lang` from the Lemon webhook to set the language on a
+// new buyer's account (lemon_service._provision_user). Without it every buyer silently
+// falls back to "en" — which is how an English customer ended up with a Dutch report.
+// Reports currently ship in NL and EN only, so anything else buys the EN edition.
+function checkoutUrl(lang: string) {
+  const reportLang = lang === "nl" ? "nl" : "en";
+  return `${CHECKOUT_ASSESSMENT_URL}?checkout[custom][lang]=${reportLang}`;
+}
+
 
 
 // ── PAGE CONTENT ───────────────────────────────────────────────────────────────
@@ -421,7 +430,7 @@ function PageContent() {
                     {T.pricing.previewBtn}
                   </button>
                 )}
-                <a href={CHECKOUT_ASSESSMENT_URL} target="_blank" rel="noopener" onClick={() => track("checkout_click", { plan: "assessment", source: "pricing" })} className="block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
+                <a href={checkoutUrl(lang)} target="_blank" rel="noopener" onClick={() => track("checkout_click", { plan: "assessment", source: "pricing" })} className="block text-center py-3 rounded-lg text-sm font-semibold transition-all hover:-translate-y-0.5 bg-amber-400 text-green-950 hover:bg-amber-300 shadow-lg shadow-amber-500/30">
                   {T.pricing.plans[0].cta}
                 </a>
               </div>
@@ -522,7 +531,7 @@ function PageContent() {
                 </div>
                 <span className="text-xs text-stone-400">{T.skillBuilder.extraCredits}</span>
               </div>
-              <a href={CHECKOUT_ASSESSMENT_URL} target="_blank" rel="noopener" onClick={() => track("checkout_click", { plan: "assessment", source: "training-reports" })} className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
+              <a href={checkoutUrl(lang)} target="_blank" rel="noopener" onClick={() => track("checkout_click", { plan: "assessment", source: "training-reports" })} className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-green-950 rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/25 text-sm font-bold tracking-wide">
                 {T.hero.cta1}
               </a>
             </motion.div>
@@ -755,7 +764,7 @@ function PageContent() {
               <p className="text-xs text-green-200/60 hidden sm:block">{T.hero.howItWorksLine}</p>
               <div className="flex items-center gap-2 w-full sm:w-auto">
                 <a
-                  href={CHECKOUT_ASSESSMENT_URL}
+                  href={checkoutUrl(lang)}
                   target="_blank"
                   rel="noopener"
                   onClick={() => track("checkout_click", { plan: "assessment", source: "sticky" })}
