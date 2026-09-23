@@ -11,7 +11,8 @@
 //   · Conviction sits in the SWING phase, not Pre-Shot (site + portal model)
 //   · Handicap range is "0 to 36+", matching heroBadge elsewhere
 //   · The question count is given as a duration, not a number we can't verify
-//   · The factor keeps its long-form name ("geoefendheid" / practice experience)
+//   · The four factors follow the portal's 4×4 lens model (Sep 2026): risk appetite · pressure ·
+//     resilience · readiness, each seen through knowledge · context · dialogue · self
 // The APA reference list is intentionally NOT translated — citations stay in
 // their published form in every language.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -75,7 +76,7 @@ const nl = {
     },
     {
       k: "Wat je terugkrijgt",
-      v: "Elk domein krijgt een rapportcijfer van 0 tot 10. Je acht domeinscores worden samengevat in één Mental Index. Daarnaast zie je vier factoren — druk & stress, geoefendheid, risicogeneigdheid en incasseringsvermogen — die laten zien onder welke omstandigheden jouw routine standhoudt.",
+      v: "Elk domein krijgt een rapportcijfer van 0 tot 10. Je acht domeinscores worden samengevat in één Mental Index. Daarnaast zie je vier factoren — risicobereidheid, druk, veerkracht en paraatheid — die laten zien onder welke omstandigheden jouw routine standhoudt.",
     },
     {
       k: "Hoe scherp dat gemeten wordt",
@@ -146,10 +147,10 @@ const nl = {
 
     factorsQ: "Wat zijn de vier beïnvloedende factoren, en hoe verschillen ze van de domeinen?",
     factorsA: [
-      "Rond de acht domeinen liggen vier factoren: druk & stress, geoefendheid, risicogeneigdheid en incasseringsvermogen. Dit zijn geen stappen in je routine — ze zijn de omstandigheden die bepalen of je routine standhoudt wanneer het spannend wordt.",
-      "Ze tellen niet mee in je Mental Index, maar verklaren voor een groot deel wélke domeinen bij jou onder druk het eerst wankelen. Elke factor heeft zelf weer een aantal deelfactoren.",
+      "Rond de acht domeinen liggen vier factoren: risicobereidheid, druk, veerkracht en paraatheid. Dit zijn geen stappen in je routine — ze zijn de omstandigheden die bepalen of je routine standhoudt wanneer het spannend wordt.",
+      "Ze tellen niet mee in je Mental Index, maar verklaren voor een groot deel wélke domeinen bij jou onder druk het eerst wankelen. Elke factor bekijken we door dezelfde vier lenzen — kennis, context, dialoog en zelf — wat zestien deelfactoren oplevert.",
     ],
-    factors: ["Druk & stress", "Geoefendheid", "Risicogeneigdheid", "Incasseringsvermogen"],
+    factors: ["Risicobereidheid", "Druk", "Veerkracht", "Paraatheid"],
     factorsCaption: "De vier factoren omringen je routine — ze zijn er onderdeel van, maar geen stap erin.",
 
     layersQ: "Waar bouwen de domeinen en factoren op voort?",
@@ -162,7 +163,7 @@ const nl = {
     diagramLabel: "Twee niveaus",
     diagramTitle: "Waar je het ziet, en waar je het traint",
     diagramIntro:
-      "Dat onderscheid tussen twee lagen is niet alleen een meettechnisch detail — het bepaalt ook waar je daadwerkelijk kunt trainen. Een domein als Vertrouwen of een factor als Druk & stress is zelf geen trainbare eenheid; het is een verzamelnaam, een optelling van onderliggende skills. Je kunt niet rechtstreeks “aan Vertrouwen werken” zoals je aan een spier zou werken — het begrip is te abstract om ergens aan te grijpen.",
+      "Dat onderscheid tussen twee lagen is niet alleen een meettechnisch detail — het bepaalt ook waar je daadwerkelijk kunt trainen. Een domein als Vertrouwen of een factor als Druk is zelf geen trainbare eenheid; het is een verzamelnaam, een optelling van onderliggende skills. Je kunt niet rechtstreeks “aan Vertrouwen werken” zoals je aan een spier zou werken — het begrip is te abstract om ergens aan te grijpen.",
     diagramTopLabel: "Diagnostisch niveau",
     diagramTopCaption: "Acht domeinen en vier factoren. Hier zie je wáár het schuurt.",
     diagramTopNodes: ["Focus", "Vertrouwen", "Acceptatie"],
@@ -306,32 +307,32 @@ const nl = {
 
     factorItems: [
       {
-        name: "Druk & stress",
-        tradition: "Catastrophe model",
-        cite: "Hardy, 1990 · Lazarus & Folkman, 1984",
-        golf: false,
-        body: "Prestatie neemt niet geleidelijk af naarmate spanning toeneemt, maar stort bij hoge cognitieve anxiety plotseling in — een abrupte “catastrofe” in plaats van een geleidelijke daling. Breder ligt hier ook appraisal-theorie onder: hoe iemand een drukvolle situatie inschat, bepaalt mede of hij die aankan.",
-      },
-      {
-        name: "Geoefendheid",
-        tradition: "Deliberate practice",
-        cite: "Ericsson, Krampe & Tesch-Römer, 1993",
-        golf: false,
-        body: "Niet de hoeveelheid oefening, maar de kwaliteit — gericht, met directe feedback, net buiten de eigen comfortzone — verklaart het verschil tussen expert en amateur. Oorspronkelijk breder onderzoek (muziek, schaken), sindsdien specifiek op sport toegepast.",
-      },
-      {
-        name: "Risicogeneigdheid",
+        name: "Risicobereidheid",
         tradition: "Prospect theory",
         cite: "Kahneman & Tversky, 1979 · Pope & Schweitzer, 2011",
         golf: true,
         body: "Mensen wegen verlies zwaarder dan winst. Golf-specifiek toont onderzoek op 2,5 miljoen laser-gemeten putts op de PGA Tour dat zelfs de beste golfers ter wereld nauwkeuriger putten voor par dan voor birdie — omdat een bogey als verlies aanvoelt en een birdie als winst.",
       },
       {
-        name: "Incasseringsvermogen",
+        name: "Druk",
+        tradition: "Catastrophe model",
+        cite: "Hardy, 1990 · Lazarus & Folkman, 1984",
+        golf: false,
+        body: "Prestatie neemt niet geleidelijk af naarmate spanning toeneemt, maar stort bij hoge cognitieve anxiety plotseling in — een abrupte “catastrofe” in plaats van een geleidelijke daling. Breder ligt hier ook appraisal-theorie onder: hoe iemand een drukvolle situatie inschat, bepaalt mede of hij die aankan.",
+      },
+      {
+        name: "Veerkracht",
         tradition: "Psychological resilience",
         cite: "Fletcher & Sarkar, 2012",
         golf: false,
         body: "Wat succesvolle topsporters onderscheidt is niet de afwezigheid van tegenslag, maar hoe ze protectieve factoren inzetten om na een tegenslag terug te keren naar hun basisniveau.",
+      },
+      {
+        name: "Paraatheid",
+        tradition: "Deliberate practice",
+        cite: "Ericsson, Krampe & Tesch-Römer, 1993",
+        golf: false,
+        body: "Paraatheid rust op wat je werkelijk hebt opgebouwd. Niet de hoeveelheid oefening, maar de kwaliteit — gericht, met directe feedback, net buiten de eigen comfortzone — verklaart het verschil tussen expert en amateur. Oorspronkelijk breder onderzoek (muziek, schaken), sindsdien specifiek op sport toegepast.",
       },
     ],
 
@@ -406,7 +407,7 @@ const en = {
     },
     {
       k: "What you get back",
-      v: "Every domain gets a score from 0 to 10. Your eight domain scores are summarised into a single Mental Index. You also see four factors — pressure & stress, practice experience, risk appetite and resilience — that show under which conditions your routine holds up.",
+      v: "Every domain gets a score from 0 to 10. Your eight domain scores are summarised into a single Mental Index. You also see four factors — risk appetite, pressure, resilience and readiness — that show under which conditions your routine holds up.",
     },
     {
       k: "How sharply it's measured",
@@ -475,10 +476,10 @@ const en = {
 
     factorsQ: "What are the four influencing factors, and how do they differ from the domains?",
     factorsA: [
-      "Around the eight domains sit four factors: pressure & stress, practice experience, risk appetite and resilience. These are not steps in your routine — they are the conditions that determine whether your routine holds up when it matters.",
-      "They don't count towards your Mental Index, but they explain much of which domains wobble first for you under pressure. Each factor has a number of sub-factors of its own.",
+      "Around the eight domains sit four factors: risk appetite, pressure, resilience and readiness. These are not steps in your routine — they are the conditions that determine whether your routine holds up when it matters.",
+      "They don't count towards your Mental Index, but they explain much of which domains wobble first for you under pressure. We look at each factor through the same four lenses — knowledge, context, dialogue and self — which gives sixteen sub-factors.",
     ],
-    factors: ["Pressure & stress", "Practice experience", "Risk appetite", "Resilience"],
+    factors: ["Risk appetite", "Pressure", "Resilience", "Readiness"],
     factorsCaption: "The four factors surround your routine — part of it, but never a step within it.",
 
     layersQ: "What do the domains and factors build on?",
@@ -491,7 +492,7 @@ const en = {
     diagramLabel: "Two levels",
     diagramTitle: "Where you see it, and where you train it",
     diagramIntro:
-      "That distinction between two layers isn't just a measurement detail — it also determines where you can actually train. A domain like Trust, or a factor like Pressure & stress, isn't a trainable unit in itself; it's a collective name, a sum of underlying skills. You can't work on Trust directly the way you'd work on a muscle — the concept is too abstract to get hold of.",
+      "That distinction between two layers isn't just a measurement detail — it also determines where you can actually train. A domain like Trust, or a factor like Pressure, isn't a trainable unit in itself; it's a collective name, a sum of underlying skills. You can't work on Trust directly the way you'd work on a muscle — the concept is too abstract to get hold of.",
     diagramTopLabel: "Diagnostic level",
     diagramTopCaption: "Eight domains and four factors. This is where you see what's rubbing.",
     diagramTopNodes: ["Focus", "Trust", "Acceptance"],
@@ -633,20 +634,6 @@ const en = {
 
     factorItems: [
       {
-        name: "Pressure & stress",
-        tradition: "Catastrophe model",
-        cite: "Hardy, 1990 · Lazarus & Folkman, 1984",
-        golf: false,
-        body: "Performance doesn't decline gradually as tension rises; under high cognitive anxiety it collapses suddenly — an abrupt “catastrophe” rather than a gradual slide. Appraisal theory sits underneath this too: how someone reads a high-pressure situation partly determines whether they can handle it.",
-      },
-      {
-        name: "Practice experience",
-        tradition: "Deliberate practice",
-        cite: "Ericsson, Krampe & Tesch-Römer, 1993",
-        golf: false,
-        body: "Not the amount of practice but its quality — targeted, with immediate feedback, just outside your comfort zone — explains the difference between expert and amateur. Originally broader research (music, chess), since applied specifically to sport.",
-      },
-      {
         name: "Risk appetite",
         tradition: "Prospect theory",
         cite: "Kahneman & Tversky, 1979 · Pope & Schweitzer, 2011",
@@ -654,11 +641,25 @@ const en = {
         body: "People weigh losses more heavily than gains. Golf-specifically, research on 2.5 million laser-measured putts on the PGA Tour shows that even the best golfers in the world putt more accurately for par than for birdie — because a bogey feels like a loss and a birdie like a gain.",
       },
       {
+        name: "Pressure",
+        tradition: "Catastrophe model",
+        cite: "Hardy, 1990 · Lazarus & Folkman, 1984",
+        golf: false,
+        body: "Performance doesn't decline gradually as tension rises; under high cognitive anxiety it collapses suddenly — an abrupt “catastrophe” rather than a gradual slide. Appraisal theory sits underneath this too: how someone reads a high-pressure situation partly determines whether they can handle it.",
+      },
+      {
         name: "Resilience",
         tradition: "Psychological resilience",
         cite: "Fletcher & Sarkar, 2012",
         golf: false,
         body: "What sets successful elite athletes apart isn't the absence of setbacks, but how they deploy protective factors to return to their baseline afterwards.",
+      },
+      {
+        name: "Readiness",
+        tradition: "Deliberate practice",
+        cite: "Ericsson, Krampe & Tesch-Römer, 1993",
+        golf: false,
+        body: "Readiness rests on what you have genuinely built up. Not the amount of practice but its quality — targeted, with immediate feedback, just outside your comfort zone — explains the difference between expert and amateur. Originally broader research (music, chess), since applied specifically to sport.",
       },
     ],
 
@@ -729,7 +730,7 @@ const de = {
     },
     {
       k: "Was du zurückbekommst",
-      v: "Jede Domäne erhält eine Note von 0 bis 10. Deine acht Domänenwerte werden zu einem einzigen Mental Index zusammengefasst. Dazu siehst du vier Faktoren — Druck & Stress, Übungserfahrung, Risikobereitschaft und Resilienz —, die zeigen, unter welchen Bedingungen deine Routine standhält.",
+      v: "Jede Domäne erhält eine Note von 0 bis 10. Deine acht Domänenwerte werden zu einem einzigen Mental Index zusammengefasst. Dazu siehst du vier Faktoren — Risikobereitschaft, Druck, Resilienz und Spielbereitschaft —, die zeigen, unter welchen Bedingungen deine Routine standhält.",
     },
     {
       k: "Wie scharf das gemessen wird",
@@ -798,10 +799,10 @@ const de = {
 
     factorsQ: "Was sind die vier beeinflussenden Faktoren, und wie unterscheiden sie sich von den Domänen?",
     factorsA: [
-      "Rund um die acht Domänen liegen vier Faktoren: Druck & Stress, Übungserfahrung, Risikobereitschaft und Resilienz. Das sind keine Schritte in deiner Routine — es sind die Bedingungen, die darüber entscheiden, ob deine Routine standhält, wenn es darauf ankommt.",
-      "Sie zählen nicht in deinen Mental Index hinein, erklären aber zu einem großen Teil, welche Domänen bei dir unter Druck zuerst ins Wanken geraten. Jeder Faktor hat seinerseits mehrere Teilfaktoren.",
+      "Rund um die acht Domänen liegen vier Faktoren: Risikobereitschaft, Druck, Resilienz und Spielbereitschaft. Das sind keine Schritte in deiner Routine — es sind die Bedingungen, die darüber entscheiden, ob deine Routine standhält, wenn es darauf ankommt.",
+      "Sie zählen nicht in deinen Mental Index hinein, erklären aber zu einem großen Teil, welche Domänen bei dir unter Druck zuerst ins Wanken geraten. Jeden Faktor betrachten wir durch dieselben vier Linsen — Wissen, Kontext, Dialog und Selbst —, was sechzehn Teilfaktoren ergibt.",
     ],
-    factors: ["Druck & Stress", "Übungserfahrung", "Risikobereitschaft", "Resilienz"],
+    factors: ["Risikobereitschaft", "Druck", "Resilienz", "Spielbereitschaft"],
     factorsCaption: "Die vier Faktoren umgeben deine Routine — sie gehören dazu, sind aber nie ein Schritt darin.",
 
     layersQ: "Worauf bauen die Domänen und Faktoren auf?",
@@ -814,7 +815,7 @@ const de = {
     diagramLabel: "Zwei Ebenen",
     diagramTitle: "Wo du es siehst, und wo du es trainierst",
     diagramIntro:
-      "Dieser Unterschied zwischen zwei Ebenen ist nicht nur ein messtechnisches Detail — er bestimmt auch, wo du tatsächlich trainieren kannst. Eine Domäne wie Vertrauen oder ein Faktor wie Druck & Stress ist selbst keine trainierbare Einheit; es ist ein Sammelbegriff, eine Summe zugrunde liegender Skills. Du kannst nicht direkt „an Vertrauen arbeiten“, so wie du an einem Muskel arbeiten würdest — der Begriff ist zu abstrakt, um daran anzusetzen.",
+      "Dieser Unterschied zwischen zwei Ebenen ist nicht nur ein messtechnisches Detail — er bestimmt auch, wo du tatsächlich trainieren kannst. Eine Domäne wie Vertrauen oder ein Faktor wie Druck ist selbst keine trainierbare Einheit; es ist ein Sammelbegriff, eine Summe zugrunde liegender Skills. Du kannst nicht direkt „an Vertrauen arbeiten“, so wie du an einem Muskel arbeiten würdest — der Begriff ist zu abstrakt, um daran anzusetzen.",
     diagramTopLabel: "Diagnostische Ebene",
     diagramTopCaption: "Acht Domänen und vier Faktoren. Hier siehst du, wo es hakt.",
     diagramTopNodes: ["Fokus", "Vertrauen", "Akzeptanz"],
@@ -956,20 +957,6 @@ const de = {
 
     factorItems: [
       {
-        name: "Druck & Stress",
-        tradition: "Catastrophe model",
-        cite: "Hardy, 1990 · Lazarus & Folkman, 1984",
-        golf: false,
-        body: "Die Leistung nimmt mit steigender Anspannung nicht allmählich ab; bei hoher kognitiver Angst bricht sie plötzlich ein — eine abrupte „Katastrophe“ statt eines langsamen Abfalls. Darunter liegt auch die Appraisal-Theorie: Wie jemand eine Drucksituation einschätzt, bestimmt mit, ob er ihr gewachsen ist.",
-      },
-      {
-        name: "Übungserfahrung",
-        tradition: "Deliberate practice",
-        cite: "Ericsson, Krampe & Tesch-Römer, 1993",
-        golf: false,
-        body: "Nicht die Menge des Übens, sondern dessen Qualität — gezielt, mit unmittelbarem Feedback, knapp außerhalb der eigenen Komfortzone — erklärt den Unterschied zwischen Experte und Amateur. Ursprünglich breitere Forschung (Musik, Schach), seither speziell auf den Sport angewandt.",
-      },
-      {
         name: "Risikobereitschaft",
         tradition: "Prospect theory",
         cite: "Kahneman & Tversky, 1979 · Pope & Schweitzer, 2011",
@@ -977,11 +964,25 @@ const de = {
         body: "Menschen gewichten Verluste stärker als Gewinne. Golfspezifisch zeigt eine Untersuchung von 2,5 Millionen lasergemessenen Putts auf der PGA Tour, dass selbst die besten Golfer der Welt für Par genauer putten als für Birdie — weil sich ein Bogey wie ein Verlust anfühlt und ein Birdie wie ein Gewinn.",
       },
       {
+        name: "Druck",
+        tradition: "Catastrophe model",
+        cite: "Hardy, 1990 · Lazarus & Folkman, 1984",
+        golf: false,
+        body: "Die Leistung nimmt mit steigender Anspannung nicht allmählich ab; bei hoher kognitiver Angst bricht sie plötzlich ein — eine abrupte „Katastrophe“ statt eines langsamen Abfalls. Darunter liegt auch die Appraisal-Theorie: Wie jemand eine Drucksituation einschätzt, bestimmt mit, ob er ihr gewachsen ist.",
+      },
+      {
         name: "Resilienz",
         tradition: "Psychological resilience",
         cite: "Fletcher & Sarkar, 2012",
         golf: false,
         body: "Was erfolgreiche Spitzensportler auszeichnet, ist nicht das Ausbleiben von Rückschlägen, sondern wie sie schützende Faktoren einsetzen, um danach auf ihr Ausgangsniveau zurückzukehren.",
+      },
+      {
+        name: "Spielbereitschaft",
+        tradition: "Deliberate practice",
+        cite: "Ericsson, Krampe & Tesch-Römer, 1993",
+        golf: false,
+        body: "Spielbereitschaft beruht auf dem, was du wirklich aufgebaut hast. Nicht die Menge des Übens, sondern dessen Qualität — gezielt, mit unmittelbarem Feedback, knapp außerhalb der eigenen Komfortzone — erklärt den Unterschied zwischen Experte und Amateur. Ursprünglich breitere Forschung (Musik, Schach), seither speziell auf den Sport angewandt.",
       },
     ],
 
@@ -1052,7 +1053,7 @@ const fr = {
     },
     {
       k: "Ce que tu reçois",
-      v: "Chaque domaine reçoit une note de 0 à 10. Tes huit scores de domaine sont résumés en un seul Mental Index. Tu vois aussi quatre facteurs — pression & stress, qualité d'entraînement, appétence au risque et résilience — qui montrent dans quelles conditions ta routine tient bon.",
+      v: "Chaque domaine reçoit une note de 0 à 10. Tes huit scores de domaine sont résumés en un seul Mental Index. Tu vois aussi quatre facteurs — appétence au risque, pression, résilience et disponibilité — qui montrent dans quelles conditions ta routine tient bon.",
     },
     {
       k: "Avec quelle précision c'est mesuré",
@@ -1121,10 +1122,10 @@ const fr = {
 
     factorsQ: "Quels sont les quatre facteurs d'influence, et en quoi diffèrent-ils des domaines ?",
     factorsA: [
-      "Autour des huit domaines se trouvent quatre facteurs : pression & stress, qualité d'entraînement, appétence au risque et résilience. Ce ne sont pas des étapes de ta routine — ce sont les conditions qui déterminent si ta routine tient bon quand ça compte.",
-      "Ils n'entrent pas dans le calcul de ton Mental Index, mais ils expliquent en grande partie quels domaines vacillent en premier chez toi sous la pression. Chaque facteur possède lui-même plusieurs sous-facteurs.",
+      "Autour des huit domaines se trouvent quatre facteurs : appétence au risque, pression, résilience et disponibilité. Ce ne sont pas des étapes de ta routine — ce sont les conditions qui déterminent si ta routine tient bon quand ça compte.",
+      "Ils n'entrent pas dans le calcul de ton Mental Index, mais ils expliquent en grande partie quels domaines vacillent en premier chez toi sous la pression. Chaque facteur est examiné à travers les mêmes quatre prismes — connaissance, contexte, dialogue et soi — ce qui donne seize sous-facteurs.",
     ],
-    factors: ["Pression & stress", "Qualité d'entraînement", "Appétence au risque", "Résilience"],
+    factors: ["Appétence au risque", "Pression", "Résilience", "Disponibilité"],
     factorsCaption: "Les quatre facteurs entourent ta routine — ils en font partie, mais ne constituent jamais une étape à l'intérieur.",
 
     layersQ: "Sur quoi s'appuient les domaines et les facteurs ?",
@@ -1137,7 +1138,7 @@ const fr = {
     diagramLabel: "Deux niveaux",
     diagramTitle: "Là où tu le vois, et là où tu l'entraînes",
     diagramIntro:
-      "Cette distinction entre deux couches n'est pas qu'un détail de mesure — elle détermine aussi où tu peux réellement t'entraîner. Un domaine comme la Confiance, ou un facteur comme Pression & stress, n'est pas en soi une unité entraînable ; c'est un nom collectif, la somme de compétences sous-jacentes. Tu ne peux pas « travailler la Confiance » directement comme tu travaillerais un muscle — la notion est trop abstraite pour offrir une prise.",
+      "Cette distinction entre deux couches n'est pas qu'un détail de mesure — elle détermine aussi où tu peux réellement t'entraîner. Un domaine comme la Confiance, ou un facteur comme Pression, n'est pas en soi une unité entraînable ; c'est un nom collectif, la somme de compétences sous-jacentes. Tu ne peux pas « travailler la Confiance » directement comme tu travaillerais un muscle — la notion est trop abstraite pour offrir une prise.",
     diagramTopLabel: "Niveau diagnostique",
     diagramTopCaption: "Huit domaines et quatre facteurs. C'est là que tu vois ce qui coince.",
     diagramTopNodes: ["Focus", "Confiance", "Acceptation"],
@@ -1279,20 +1280,6 @@ const fr = {
 
     factorItems: [
       {
-        name: "Pression & stress",
-        tradition: "Catastrophe model",
-        cite: "Hardy, 1990 · Lazarus & Folkman, 1984",
-        golf: false,
-        body: "La performance ne décline pas progressivement à mesure que la tension monte ; sous une anxiété cognitive élevée, elle s'effondre brutalement — une « catastrophe » abrupte plutôt qu'une baisse graduelle. La théorie de l'appraisal se trouve également en dessous : la façon dont quelqu'un évalue une situation de forte pression détermine en partie s'il pourra y faire face.",
-      },
-      {
-        name: "Qualité d'entraînement",
-        tradition: "Deliberate practice",
-        cite: "Ericsson, Krampe & Tesch-Römer, 1993",
-        golf: false,
-        body: "Ce n'est pas la quantité d'entraînement mais sa qualité — ciblé, avec un retour immédiat, juste en dehors de ta zone de confort — qui explique la différence entre l'expert et l'amateur. Recherche à l'origine plus large (musique, échecs), appliquée depuis spécifiquement au sport.",
-      },
-      {
         name: "Appétence au risque",
         tradition: "Prospect theory",
         cite: "Kahneman & Tversky, 1979 · Pope & Schweitzer, 2011",
@@ -1300,11 +1287,25 @@ const fr = {
         body: "Les gens accordent plus de poids aux pertes qu'aux gains. Côté golf, une étude portant sur 2,5 millions de putts mesurés au laser sur le PGA Tour montre que même les meilleurs golfeurs du monde puttent plus précisément pour le par que pour le birdie — parce qu'un bogey est ressenti comme une perte et un birdie comme un gain.",
       },
       {
+        name: "Pression",
+        tradition: "Catastrophe model",
+        cite: "Hardy, 1990 · Lazarus & Folkman, 1984",
+        golf: false,
+        body: "La performance ne décline pas progressivement à mesure que la tension monte ; sous une anxiété cognitive élevée, elle s'effondre brutalement — une « catastrophe » abrupte plutôt qu'une baisse graduelle. La théorie de l'appraisal se trouve également en dessous : la façon dont quelqu'un évalue une situation de forte pression détermine en partie s'il pourra y faire face.",
+      },
+      {
         name: "Résilience",
         tradition: "Psychological resilience",
         cite: "Fletcher & Sarkar, 2012",
         golf: false,
         body: "Ce qui distingue les sportifs de haut niveau qui réussissent n'est pas l'absence de revers, mais la façon dont ils mobilisent des facteurs protecteurs pour revenir ensuite à leur niveau de base.",
+      },
+      {
+        name: "Disponibilité",
+        tradition: "Deliberate practice",
+        cite: "Ericsson, Krampe & Tesch-Römer, 1993",
+        golf: false,
+        body: "La disponibilité repose sur ce que vous avez réellement construit. Ce n'est pas la quantité d'entraînement mais sa qualité — ciblé, avec un retour immédiat, juste en dehors de ta zone de confort — qui explique la différence entre l'expert et l'amateur. Recherche à l'origine plus large (musique, échecs), appliquée depuis spécifiquement au sport.",
       },
     ],
 
@@ -1375,7 +1376,7 @@ const es = {
     },
     {
       k: "Qué recibes",
-      v: "Cada dominio recibe una puntuación de 0 a 10. Tus ocho puntuaciones de dominio se resumen en un único Mental Index. Además ves cuatro factores — presión y estrés, calidad de entrenamiento, apetito de riesgo y resiliencia — que muestran en qué condiciones tu rutina aguanta.",
+      v: "Cada dominio recibe una puntuación de 0 a 10. Tus ocho puntuaciones de dominio se resumen en un único Mental Index. Además ves cuatro factores — apetito de riesgo, presión, resiliencia y disponibilidad — que muestran en qué condiciones tu rutina aguanta.",
     },
     {
       k: "Con qué precisión se mide",
@@ -1444,10 +1445,10 @@ const es = {
 
     factorsQ: "¿Cuáles son los cuatro factores de influencia y en qué se diferencian de los dominios?",
     factorsA: [
-      "Alrededor de los ocho dominios se sitúan cuatro factores: presión y estrés, calidad de entrenamiento, apetito de riesgo y resiliencia. No son pasos de tu rutina — son las condiciones que determinan si tu rutina aguanta cuando la cosa se pone seria.",
-      "No cuentan para tu Mental Index, pero explican en buena medida qué dominios se tambalean primero en ti bajo presión. Cada factor tiene a su vez una serie de subfactores.",
+      "Alrededor de los ocho dominios se sitúan cuatro factores: apetito de riesgo, presión, resiliencia y disponibilidad. No son pasos de tu rutina — son las condiciones que determinan si tu rutina aguanta cuando la cosa se pone seria.",
+      "No cuentan para tu Mental Index, pero explican en buena medida qué dominios se tambalean primero en ti bajo presión. Cada factor se analiza con las mismas cuatro lentes — conocimiento, contexto, diálogo y uno mismo —, lo que da dieciséis subfactores.",
     ],
-    factors: ["Presión y estrés", "Calidad de entrenamiento", "Apetito de riesgo", "Resiliencia"],
+    factors: ["Apetito de riesgo", "Presión", "Resiliencia", "Disponibilidad"],
     factorsCaption: "Los cuatro factores rodean tu rutina — forman parte de ella, pero nunca son un paso dentro de ella.",
 
     layersQ: "¿Sobre qué se construyen los dominios y los factores?",
@@ -1460,7 +1461,7 @@ const es = {
     diagramLabel: "Dos niveles",
     diagramTitle: "Dónde lo ves y dónde lo entrenas",
     diagramIntro:
-      "Esa distinción entre dos capas no es solo un detalle técnico de medición — también determina dónde puedes entrenar de verdad. Un dominio como Confianza, o un factor como Presión y estrés, no es en sí mismo una unidad entrenable; es un nombre colectivo, la suma de habilidades subyacentes. No puedes «trabajar la Confianza» directamente como trabajarías un músculo — el concepto es demasiado abstracto para agarrarse a algo.",
+      "Esa distinción entre dos capas no es solo un detalle técnico de medición — también determina dónde puedes entrenar de verdad. Un dominio como Confianza, o un factor como Presión, no es en sí mismo una unidad entrenable; es un nombre colectivo, la suma de habilidades subyacentes. No puedes «trabajar la Confianza» directamente como trabajarías un músculo — el concepto es demasiado abstracto para agarrarse a algo.",
     diagramTopLabel: "Nivel diagnóstico",
     diagramTopCaption: "Ocho dominios y cuatro factores. Aquí ves dónde roza.",
     diagramTopNodes: ["Enfoque", "Confianza", "Aceptación"],
@@ -1602,20 +1603,6 @@ const es = {
 
     factorItems: [
       {
-        name: "Presión y estrés",
-        tradition: "Catastrophe model",
-        cite: "Hardy, 1990 · Lazarus & Folkman, 1984",
-        golf: false,
-        body: "El rendimiento no baja de forma gradual a medida que aumenta la tensión; con una ansiedad cognitiva alta se desploma de golpe — una «catástrofe» abrupta en lugar de una caída progresiva. Debajo también está la teoría del appraisal: cómo interpreta alguien una situación de mucha presión determina en parte si es capaz de manejarla.",
-      },
-      {
-        name: "Calidad de entrenamiento",
-        tradition: "Deliberate practice",
-        cite: "Ericsson, Krampe & Tesch-Römer, 1993",
-        golf: false,
-        body: "No es la cantidad de práctica sino su calidad — dirigida, con feedback inmediato, justo fuera de la propia zona de confort — lo que explica la diferencia entre experto y aficionado. Originalmente investigación más amplia (música, ajedrez), desde entonces aplicada específicamente al deporte.",
-      },
-      {
         name: "Apetito de riesgo",
         tradition: "Prospect theory",
         cite: "Kahneman & Tversky, 1979 · Pope & Schweitzer, 2011",
@@ -1623,11 +1610,25 @@ const es = {
         body: "Las personas pesan más las pérdidas que las ganancias. En concreto en golf, un estudio sobre 2,5 millones de putts medidos con láser en el PGA Tour muestra que incluso los mejores golfistas del mundo puttean con más precisión para par que para birdie — porque un bogey se siente como una pérdida y un birdie como una ganancia.",
       },
       {
+        name: "Presión",
+        tradition: "Catastrophe model",
+        cite: "Hardy, 1990 · Lazarus & Folkman, 1984",
+        golf: false,
+        body: "El rendimiento no baja de forma gradual a medida que aumenta la tensión; con una ansiedad cognitiva alta se desploma de golpe — una «catástrofe» abrupta en lugar de una caída progresiva. Debajo también está la teoría del appraisal: cómo interpreta alguien una situación de mucha presión determina en parte si es capaz de manejarla.",
+      },
+      {
         name: "Resiliencia",
         tradition: "Psychological resilience",
         cite: "Fletcher & Sarkar, 2012",
         golf: false,
         body: "Lo que distingue a los deportistas de élite exitosos no es la ausencia de contratiempos, sino cómo despliegan factores protectores para volver después a su nivel de base.",
+      },
+      {
+        name: "Disponibilidad",
+        tradition: "Deliberate practice",
+        cite: "Ericsson, Krampe & Tesch-Römer, 1993",
+        golf: false,
+        body: "La disponibilidad se apoya en lo que de verdad has construido. No es la cantidad de práctica sino su calidad — dirigida, con feedback inmediato, justo fuera de la propia zona de confort — lo que explica la diferencia entre experto y aficionado. Originalmente investigación más amplia (música, ajedrez), desde entonces aplicada específicamente al deporte.",
       },
     ],
 

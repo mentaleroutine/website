@@ -10,8 +10,14 @@
 - **Pre-shot:** Focus · Concentration
 - **Swing:** Conviction · **Trust** (was "Performance"; NL "Vertrouwen")
 - **Post-shot:** Evaluation · Acceptance · Analysis · **Transfer** (was "Learning Transfer")
-- **4 beïnvloedende factoren** (apart blok, GEEN stappen, eromheen): Pressure & stress ·
-  Practice quality · Risk appetite · Resilience. Vervangt de oude "6 psychologische dimensies".
+- **4 beïnvloedende factoren** (apart blok, GEEN stappen, eromheen), sinds 23-9-2026 volgens het
+  **4×4-lenzenmodel** van de portal (portal-repo `docs/FACTOREN_4X4_LENZEN.md`), in de volgorde van de
+  slag: **Risk appetite** (Risicobereidheid, pre-shot) · **Pressure** (Druk, swing) · **Resilience**
+  (Veerkracht, post-shot) · **Readiness** (Paraatheid, hele routine). Elke factor × de lenzen
+  Kennis · Context · Dialoog · Zelf = 16 deelfactoren. Was: Pressure & stress · Practice quality ·
+  Risk appetite · Resilience. DE/FR/ES: Risikobereitschaft · Druck · Resilienz · Spielbereitschaft /
+  Appétence au risque · Pression · Résilience · Disponibilité / Apetito de riesgo · Presión ·
+  Resiliencia · Disponibilidad (gelijk aan de portal).
 - Structuur-som: 8 stappen × 5 + 4 factoren × 4 = **56** interventiepunten (afgeleid presenteren).
 
 **Product & prijs (ÉÉN product, geen tiers):**
