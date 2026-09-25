@@ -568,7 +568,7 @@ function PageContent() {
                   { dot: "bg-violet-500",    label: T.skillBuilder.mockup.storytelling,   body: T.skillBuilder.mockup.exStorytelling },
                   { dot: "bg-purple-400",    label: T.skillBuilder.mockup.mantra,         body: T.skillBuilder.mockup.exMantra },
                   { dot: "bg-blue-500/70",   label: T.skillBuilder.mockup.aiPrompt,       body: T.skillBuilder.mockup.exAiPrompt },
-                  { dot: "bg-stone-400",     label: T.skillBuilder.mockup.benchmarked,    body: T.skillBuilder.mockup.exBenchmarked },
+                  { dot: "bg-stone-400",     label: T.skillBuilder.mockup.plan,           body: T.skillBuilder.mockup.exPlan },
                 ] as Array<{ dot: string; tag?: string; tagColor?: string; label: string; body: string }>).map((row, k) => (
                   <div key={k} className="flex items-center gap-2.5 bg-white rounded-lg px-3 py-2 border border-green-900/[0.06] shadow-sm">
                     <span className={`w-1.5 h-1.5 rounded-full ${row.dot} shrink-0`} />
