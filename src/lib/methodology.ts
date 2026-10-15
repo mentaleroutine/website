@@ -376,9 +376,8 @@ const nl = {
     label: "Aan de slag",
     h2a: "Nu weet je hoe het werkt.",
     h2b: "Benieuwd wat eruit komt?",
-    body: "Begin gratis met de QuickScan, of neem de volledige assessment en krijg je complete spelersprofiel.",
+    body: "Begin gratis met de QuickScan: 9 holes, 8 minuten, en je ziet direct waar jouw kracht zit en waar je kunt groeien.",
     primary: "Doe de gratis QuickScan",
-    secondary: "Bekijk de assessment",
   },
 } as const;
 
@@ -701,9 +700,8 @@ const en = {
     label: "Get started",
     h2a: "Now you know how it works.",
     h2b: "Curious what comes out?",
-    body: "Start free with the QuickScan, or take the full assessment and get your complete player profile.",
+    body: "Start free with the QuickScan: 9 holes, 8 minutes, and you'll see right away where your strength lies and where you can grow.",
     primary: "Take the free QuickScan",
-    secondary: "See the assessment",
   },
 } satisfies MethodologyCopy;
 
@@ -1024,9 +1022,8 @@ const de = {
     label: "Loslegen",
     h2a: "Jetzt weißt du, wie es funktioniert.",
     h2b: "Neugierig, was dabei herauskommt?",
-    body: "Starte kostenlos mit dem QuickScan, oder mach das vollständige Assessment und erhalte dein komplettes Spielerprofil.",
+    body: "Starte kostenlos mit dem QuickScan: 9 Löcher, 8 Minuten, und du siehst sofort, wo deine Stärke liegt und wo du wachsen kannst.",
     primary: "Kostenlosen QuickScan machen",
-    secondary: "Assessment ansehen",
   },
 } satisfies MethodologyCopy;
 
@@ -1347,9 +1344,8 @@ const fr = {
     label: "C'est parti",
     h2a: "Maintenant tu sais comment ça marche.",
     h2b: "Curieux de voir ce qui en sort ?",
-    body: "Commence gratuitement avec le QuickScan, ou passe l'assessment complet et obtiens ton profil de joueur intégral.",
+    body: "Commence gratuitement avec le QuickScan : 9 trous, 8 minutes, et tu vois tout de suite où se trouve ta force et où tu peux progresser.",
     primary: "Faire le QuickScan gratuit",
-    secondary: "Voir l'assessment",
   },
 } satisfies MethodologyCopy;
 
@@ -1670,9 +1666,8 @@ const es = {
     label: "Manos a la obra",
     h2a: "Ya sabes cómo funciona.",
     h2b: "¿Con ganas de ver qué sale?",
-    body: "Empieza gratis con el QuickScan, o haz la evaluación completa y consigue tu perfil de jugador al completo.",
+    body: "Empieza gratis con el QuickScan: 9 hoyos, 8 minutos, y verás enseguida dónde está tu fuerza y dónde puedes crecer.",
     primary: "Haz el QuickScan gratuito",
-    secondary: "Ver la evaluación",
   },
 } satisfies MethodologyCopy;
 

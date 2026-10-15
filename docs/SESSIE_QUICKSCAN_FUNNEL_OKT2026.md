@@ -74,6 +74,9 @@ Bestanden:
   (alleen geldige `[PED][1-4](.[1-4])?`, anders `'none'`) → Plausible-props `route` op `quiz_start`/
   `quiz_complete`/`quiz_optin` + `entry_route` in de `POST /api/quiz/results`-payload.
 
+`/methodology`: de koopdeur naar `/assessment` onderaan is verwijderd; de CTA start de QuickScan direct
+(tekst in 5 talen: alleen nog QuickScan).
+
 Analytics (Plausible): `quiz_click{source,route}` · `narrative_click{route}` · `hero_route{route}` ·
 `section_view` · `scroll_depth` · `methodology_click` · `pro_program_click`.
 
@@ -131,5 +134,10 @@ gereviewd**. De QuickScan zelf blijft NL/EN (DE/FR/ES-bezoekers krijgen `lang=en
    (`/assessment` gebruikt een deel; hergebruik zie archiefdoc); opruimen kan later.
 7. **Server**: bij inloggen meldde Ubuntu "System restart required" (OS-updates, los van deze deploy) —
    `sudo reboot` op een rustig moment, daarna `/api/health` checken.
+9. **Franse aanspreekvorm inconsistent**: homepage FR = "vous" (bestaande site-objecten), `/methodology`
+   FR = "tu". Kiezen en gelijktrekken (native reviewer).
+10. **Plausible-dashboard** (handmatig): property `route` toevoegen; goals `narrative_click` + `hero_route`
+   erbij, `hero_warmth` weg; funnel "Herkenning" (`narrative_click → quiz_start → quiz_complete → quiz_optin`);
+   "Assessment Checkout" → pageview `/assessment` → `checkout_click`.
 8. De untracked geneste map `Claude website MR 01/Claude website MR 01/` geeft lokale tsc-fouten
    (niet in git, niet op Vercel) — opruimen of in `tsconfig` excluden.

@@ -7,6 +7,7 @@ import { Navbar } from "@/components/ui/navbar";
 import { LangProvider, useLang } from "@/context/lang-context";
 import { translations, type Translation } from "@/lib/translations";
 import { methodology, REFERENCES, type MethodologyCopy } from "@/lib/methodology";
+import { quickscanUrl } from "@/lib/quickscan";
 
 const MethodLayers = dynamic(
   () => import("@/components/ui/method-layers").then((m) => ({ default: m.MethodLayers })),
@@ -499,18 +500,11 @@ function MethodologyContent() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href="/quickscan"
+              href={quickscanUrl(lang, null)}
               onClick={() => track("quiz_click", { source: "methodology" })}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-amber-400 px-7 py-3.5 text-sm font-bold text-green-950 shadow-lg shadow-amber-500/25 hover:bg-amber-300 hover:-translate-y-0.5 transition-all"
             >
               {M.cta.primary}
-            </a>
-            <a
-              href="/assessment"
-              onClick={() => track("cta_click", { source: "methodology" })}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 px-7 py-3.5 text-sm font-semibold text-green-100 hover:bg-white/5 hover:border-white/25 transition-all"
-            >
-              {M.cta.secondary}
             </a>
           </div>
         </div>
