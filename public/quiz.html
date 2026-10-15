@@ -3216,11 +3216,6 @@
     });
   });
 
-  if (new URLSearchParams(window.location.search).get('start') === '1') {
-    startQuiz();
-    window.scrollTo(0, 0);
-  }
-
   /* ══════════════════════════════════
      OPT-IN FORM
   ══════════════════════════════════ */
@@ -3310,6 +3305,18 @@
     btn.textContent = T.langToggle.other;
     btn.setAttribute('aria-label', 'Switch to ' + T.langToggle.otherFull);
   });
+
+  // ?start=1 (links from the homepage, which is the QuickScan's landing now): open hole 1
+  // directly. Must run LAST — the initial-display block above hides #phase-quiz on load.
+  // If anything fails, fall back to the landing so the visitor never sees a blank page.
+  if (new URLSearchParams(window.location.search).get('start') === '1') {
+    try {
+      startQuiz();
+    } catch (e) {
+      showPhase('phase-landing');
+      if (window.console) console.error('[quickscan] auto-start failed', e);
+    }
+  }
 
 })();
 </script>
