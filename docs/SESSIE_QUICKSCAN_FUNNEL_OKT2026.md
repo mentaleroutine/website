@@ -42,6 +42,7 @@ overclaiming** (geen "strokes lost by mindset"-claims zonder meetdata); handicap
 | 16 | Henks golfer-voice-review (PDF "Golfer-voice alternatives") | **Overgenomen**: groepsregels, 12 narratives, 48 sub-narratives in golferstaal | Hooks bleven v1.5. P2 = "It's not my swing that costs me shots." (golfer zegt het zelf → herkenning, geen MR-claim; alternatief A "I throw shots away without hitting a bad one." indien voorzichtiger gewenst). |
 | 17 | NL-vertalingen | **Goedgekeurd door Henk** | Lijst `docs/NL_TEKSTEN_HOMEPAGE_HENK.md`. |
 | 18 | Route-ID naar portal + nurture | **Gebouwd** (portal migratie 025) | Conversie per narrative meetbaar; mail 1 sluit aan bij wat de golfer herkende. |
+| 19 | Eén narrative aanklikken of meerdere aanvinken? | **Checkboxes + één startknop**; alle aangevinkte narratives gaan mee (`?route=P1,E2,D3`) en worden opgeslagen (portal migratie 026, kolom 64 tekens) | Rijkere info over de golfer; mensen herkennen zich vaak in meerdere narratives (framework: "één golfer kan op meerdere narratives resoneren"). |
 
 ## 2. Eindtoestand website (`src/app/page.tsx`)
 
@@ -62,7 +63,9 @@ waar elk blok staat + hergebruik-ideeën.
 Bestanden:
 - `src/lib/narratives.ts` — 3 groepen · 12 narratives · 48 subs · 48 hooks, **5 talen** (`Text` =
   `{en,nl,de,fr,es}`), `resolveRoute()` (`P4.2` of `P4` → hook), `pick()`, `DEFAULT_ROUTE = "P1.1"`.
-- `src/lib/quickscan.ts` — `quickscanUrl(lang, route)` → `/quickscan?start=1&lang=nl|en[&route=]`.
+- `src/lib/quickscan.ts` — `quickscanUrl(lang, route)` → `/quickscan?start=1&lang=nl|en[&route=P1,E2]` (komma leesbaar).
+- `#recognise`: checkboxes (state `picked`, klikvolgorde), knop disabled tot ≥1 vinkje, teller "{n} selected";
+  per vinkje `narrative_click{route}`, de startknop `quiz_click{source:"recognise",route:"P1,E2",count}`.
 - `src/lib/translations.ts` — `home.*` in 5 talen; nav = How it works · FAQ · Contact (+ QuickScan-knop);
   Henk-omschrijving + NogBeterGolfen gecorrigeerd in alle 5 talen; hoog-handicap-FAQ afgezwakt.
 - `src/components/ui/faqs.tsx` — optionele `content`-prop (homepage toont `home.faq`, `/assessment`
@@ -85,8 +88,11 @@ gereviewd**. De QuickScan zelf blijft NL/EN (DE/FR/ES-bezoekers krijgen `lang=en
 
 ## 3. Portal (repo `mentaleroutine/portal`, commit `26d0e6b`)
 
-- **Migratie 025** `quiz_sessions.entry_route` (String(8), nullable, index). Gedraaid op de server
-  (`alembic current` = `025_quiz_entry_route (head)`).
+- **Migratie 025** `quiz_sessions.entry_route` (String(8), nullable, index). Gedraaid op de server.
+- **Migratie 026** `entry_route` → String(64): meerdere aangevinkte narratives komma-gescheiden (`P1,E2,D3`).
+  `normalize_route` valideert per code, ontdubbelt, max 12; `narrative_ids()`/`statements()` voor lijsten.
+  Nurture-profiel noemt alle zinnen ("…" (P3); "…" (E1)); prompt: mail 1 = rode draad, latere mails pakken
+  de andere zinnen op. Funnel: golfer telt in élke aangevinkte rij; `per_route_totaal` telt uniek + `met_meerdere`.
 - `services/entry_narratives.py` — 12 statements NL/EN (kopie van website-`narratives.ts`; bij wijziging
   daar ook hier bijwerken), `normalize_route`, `narrative_id`, `statement`.
 - `routers/quiz.py` — `QuizResultsRequest.entry_route` (gevalideerd) → opgeslagen bij `/quiz/results`
@@ -101,7 +107,21 @@ gereviewd**. De QuickScan zelf blijft NL/EN (DE/FR/ES-bezoekers krijgen `lang=en
 - Docs: portal `CLAUDE.md` (nurture-sectie + blokkentabel), `docs/NURTURE_CAMPAGNE_UITVOERING.md`,
   `docs/TESTS.md`, `TIJDREGISTRATIE.md`.
 
+## 3b. Incident: lege QuickScan-pagina (15-10-2026, opgelost in `396fe8a`)
+
+Vanaf `c167d73` gaf elke QuickScan-link vanaf de homepage (`?start=1`) een **lege pagina**: de autostart
+draaide vóór het "INITIAL DISPLAY"-blok aan het eind van het quiz-script, dat `#phase-quiz` weer verborg
+(landing al verborgen door `showPhase`). Fix: autostart als allerlaatste stap in de IIFE + vangnet (bij
+een fout terug naar de landing). Getest in jsdom (EN/NL hole 1, zonder params = landing).
+**Gevolg voor de data van die dag:** `quiz_start` vuurde wél (vóór het verbergen) → Plausible telt voor
+15-10 te veel QuickScan-starts; `quiz_complete`/`quiz_optin` zijn wel betrouwbaar. Les: wijzigingen in
+quiz.html altijd eerst in jsdom draaien.
+
 ## 4. Commits & terugrollen
+
+> Latere commits (zelfde dag): `396fe8a` (fix lege QuickScan), checkbox-multi-select (website + portal
+> migratie 026) — zie `git log`.
+
 
 | Repo | Commit | Wat |
 |---|---|---|

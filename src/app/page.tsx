@@ -54,6 +54,14 @@ function PageContent() {
   const [heroA, heroB] = splitHook(heroHook);
   const heroHref = quickscanUrl(lang, route);
 
+  // "Sound familiar?": visitors tick every narrative they recognise (in click order).
+  const [picked, setPicked] = useState<string[]>([]);
+  const toggleNarrative = (id: string) => {
+    const on = !picked.includes(id);
+    if (on) track("narrative_click", { route: id }); // per tick → counts per narrative
+    setPicked(prev => (on ? [...prev.filter(x => x !== id), id] : prev.filter(x => x !== id)));
+  };
+
   // Section view tracking via IntersectionObserver
   useEffect(() => {
     const seen = new Set<string>();
@@ -159,26 +167,48 @@ function PageContent() {
               <motion.div key={group.id} className="bg-white rounded-2xl p-6 border border-green-900/[0.07] shadow-lg shadow-green-900/5" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: gi * 0.1 }}>
                 <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-1">{pick(group.name, lang)}</p>
                 <h3 className="text-xl font-semibold text-green-950 mb-5 leading-tight" style={serif}>{pick(group.tagline, lang)}</h3>
-                <ul className="space-y-2">
-                  {group.narratives.map(n => (
-                    <li key={n.id}>
-                      <a
-                        href={quickscanUrl(lang, n.id)}
-                        onClick={() => track("narrative_click", { route: n.id })}
-                        className="group flex items-start gap-3 rounded-xl px-3 py-3 -mx-3 text-sm text-stone-700 leading-snug hover:bg-amber-50 hover:text-green-950 transition-colors"
-                      >
-                        <span className="mt-1 w-1.5 h-1.5 rounded-full bg-amber-500/60 group-hover:bg-amber-500 shrink-0" />
-                        <span className="flex-1">{pick(n.statement, lang)}</span>
-                        <span aria-hidden="true" className="text-amber-600 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity">→</span>
-                      </a>
-                    </li>
-                  ))}
+                <ul className="space-y-1">
+                  {group.narratives.map(n => {
+                    const checked = picked.includes(n.id);
+                    return (
+                      <li key={n.id}>
+                        <label className={`flex items-start gap-3 rounded-xl px-3 py-3 -mx-3 text-sm leading-snug cursor-pointer transition-colors ${checked ? "bg-amber-50 text-green-950" : "text-stone-700 hover:bg-amber-50/60 hover:text-green-950"}`}>
+                          <input
+                            type="checkbox"
+                            checked={checked}
+                            onChange={() => toggleNarrative(n.id)}
+                            className="mt-0.5 w-4 h-4 shrink-0 accent-amber-500 cursor-pointer"
+                          />
+                          <span className="flex-1">{pick(n.statement, lang)}</span>
+                        </label>
+                      </li>
+                    );
+                  })}
                 </ul>
               </motion.div>
             ))}
           </div>
 
-          <p className="mt-8 text-center text-sm text-stone-500">{H.recognise.footnote}</p>
+          {/* One start button for everything that was ticked: all selected narratives
+              travel to the QuickScan as ?route=P1,E2,… and are stored in the portal. */}
+          <div className="mt-10 flex flex-col items-center gap-3">
+            {picked.length > 0 ? (
+              <a
+                href={quickscanUrl(lang, picked.join(","))}
+                onClick={() => track("quiz_click", { source: "recognise", route: picked.join(","), count: String(picked.length) })}
+                className={goldBtn}
+              >
+                {H.recognise.start} <span aria-hidden="true">→</span>
+              </a>
+            ) : (
+              <span aria-disabled="true" className={`${goldBtn} opacity-40 cursor-not-allowed hover:translate-y-0 hover:bg-amber-400`}>
+                {H.recognise.start} <span aria-hidden="true">→</span>
+              </span>
+            )}
+            <p className="text-sm text-stone-500" aria-live="polite">
+              {picked.length > 0 ? H.recognise.selected.replace("{n}", String(picked.length)) : H.recognise.footnote}
+            </p>
+          </div>
         </div>
       </section>
 

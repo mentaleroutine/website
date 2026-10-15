@@ -15,9 +15,9 @@ const en = {
         trust: "Research with 1,000+ golfers since 2016 · every handicap",
       },
       recognise: {
-        label: "Sound familiar?", h2a: "Which of these", h2b: "sounds like you?",
-        intro: "Pick the one that fits best. The QuickScan then looks at the pattern behind it — in 8 minutes.",
-        footnote: "Recognise more than one? That's common. Start with any of them.",
+        label: "Sound familiar?", h2a: "Which of these", h2b: "sound like you?",
+        intro: "Tick everything that sounds like you — recognising yourself in several is common. The QuickScan then looks at the pattern behind it, in 8 minutes.",
+        footnote: "Tick at least one to start.", start: "Start the QuickScan", selected: "{n} selected",
       },
       phases: {
         label: "The MentalRoutine", h2a: "Every shot has", h2b: "three moments.",
@@ -236,8 +236,8 @@ export const translations = {
       },
       recognise: {
         label: "Herken je dit?", h2a: "Welke hiervan", h2b: "herken jij?",
-        intro: "Kies wat het best bij je past. De QuickScan kijkt daarna naar het patroon erachter — in 8 minuten.",
-        footnote: "Herken je er meer? Dat is heel gewoon. Begin waar je wilt.",
+        intro: "Vink alles aan wat je herkent — dat het er meer zijn is heel gewoon. De QuickScan kijkt daarna naar het patroon erachter, in 8 minuten.",
+        footnote: "Vink er minstens één aan om te beginnen.", start: "Start de QuickScan", selected: "{n} aangevinkt",
       },
       phases: {
         label: "De MentalRoutine", h2a: "Elke slag kent", h2b: "drie momenten.",
@@ -452,9 +452,9 @@ export const translations = {
         trust: "Forschung mit 1.000+ Golfern seit 2016 · jedes Handicap",
       },
       recognise: {
-        label: "Kommt dir das bekannt vor?", h2a: "Welcher dieser Sätze", h2b: "klingt nach dir?",
-        intro: "Wähl den, der am besten passt. Der QuickScan schaut sich dann das Muster dahinter an — in 8 Minuten.",
-        footnote: "Erkennst du dich in mehreren wieder? Das ist ganz normal. Fang einfach mit einem davon an.",
+        label: "Kommt dir das bekannt vor?", h2a: "Welche dieser Sätze", h2b: "klingen nach dir?",
+        intro: "Kreuz alles an, was du wiedererkennst — dass es mehrere sind, ist ganz normal. Der QuickScan schaut sich dann das Muster dahinter an, in 8 Minuten.",
+        footnote: "Kreuz mindestens einen an, um zu starten.", start: "QuickScan starten", selected: "{n} ausgewählt",
       },
       phases: {
         label: "Die MentalRoutine", h2a: "Jeder Schlag hat", h2b: "drei Momente.",
@@ -665,9 +665,9 @@ export const translations = {
         trust: "Recherche avec 1 000+ golfeurs depuis 2016 · tous les handicaps",
       },
       recognise: {
-        label: "Ça vous parle ?", h2a: "Laquelle de ces phrases", h2b: "vous ressemble ?",
-        intro: "Choisissez celle qui vous correspond le mieux. Le QuickScan examine ensuite le schéma qui se cache derrière — en 8 minutes.",
-        footnote: "Vous vous reconnaissez dans plusieurs ? C'est fréquent. Commencez par n'importe laquelle.",
+        label: "Ça vous parle ?", h2a: "Lesquelles de ces phrases", h2b: "vous ressemblent ?",
+        intro: "Cochez tout ce qui vous parle — se reconnaître dans plusieurs, c'est fréquent. Le QuickScan examine ensuite le schéma qui se cache derrière, en 8 minutes.",
+        footnote: "Cochez-en au moins une pour commencer.", start: "Lancer le QuickScan", selected: "{n} cochée(s)",
       },
       phases: {
         label: "La MentalRoutine", h2a: "Chaque coup se joue en", h2b: "trois moments.",
@@ -878,9 +878,9 @@ export const translations = {
         trust: "Investigación con 1000+ golfistas desde 2016 · cualquier handicap",
       },
       recognise: {
-        label: "¿Te suena?", h2a: "¿Cuál de estas frases", h2b: "va contigo?",
-        intro: "Elige la que mejor encaje contigo. Después, el QuickScan analiza el patrón que hay detrás — en 8 minutos.",
-        footnote: "¿Te reconoces en más de una? Es muy normal. Empieza por cualquiera.",
+        label: "¿Te suena?", h2a: "¿Cuáles de estas frases", h2b: "van contigo?",
+        intro: "Marca todo lo que te suene — reconocerse en varias es muy normal. Después, el QuickScan analiza el patrón que hay detrás, en 8 minutos.",
+        footnote: "Marca al menos una para empezar.", start: "Empezar el QuickScan", selected: "{n} marcadas",
       },
       phases: {
         label: "La MentalRoutine", h2a: "Cada golpe tiene", h2b: "tres momentos.",

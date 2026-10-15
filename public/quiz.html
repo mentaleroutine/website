@@ -3189,11 +3189,17 @@
   /* ══════════════════════════════════
      INIT: START QUIZ BUTTONS
   ══════════════════════════════════ */
-  // Entry Narrative route (e.g. "P2", "P4.2") from the homepage or an ad; sent
-  // along with the funnel events so conversion can be compared per route.
+  // Entry Narrative route(s) from the homepage (every ticked narrative, "P1,E2,D3") or an
+  // ad ("P4.2"); sent with the funnel events and stored in the portal (entry_route).
+  // Only valid codes survive, de-duplicated, max 12; nothing valid → 'none'.
   var MR_ROUTE = (function () {
-    var r = (new URLSearchParams(window.location.search).get('route') || '').toUpperCase();
-    return /^[PED][1-4](\.[1-4])?$/.test(r) ? r : 'none';
+    var raw = (new URLSearchParams(window.location.search).get('route') || '').toUpperCase().split(',');
+    var out = [];
+    for (var i = 0; i < raw.length && out.length < 12; i++) {
+      var r = raw[i].trim();
+      if (/^[PED][1-4](\.[1-4])?$/.test(r) && out.indexOf(r) === -1) out.push(r);
+    }
+    return out.length ? out.join(',') : 'none';
   })();
 
   function startQuiz() {

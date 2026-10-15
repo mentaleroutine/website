@@ -14,8 +14,8 @@
   Groepsregels, narratives en sub-narratives = **Henks golfer-voice-keuzes (okt 2026)**; hooks = v1.5.
   Regels: herkennen, niet diagnosticeren; **geen "strokes lost by mindset"-claims**; de 4 factoren
   blijven **onder water** (niet als navigatie); geen persona's.
-- **Secties `/`:** hero (hook P1.1) · `#recognise` "Herken je dit?" (12 narratives → QuickScan met
-  `?route=P1`…) · `#how-it-works` 3 momenten (pre-shot/swing/post-shot, géén stappen/factoren/aantallen)
+- **Secties `/`:** hero (hook P1.1) · `#recognise` "Herken je dit?" (12 narratives als **checkboxes** +
+  één startknop → QuickScan met alle aangevinkte routes `?route=P1,E2,D3`) · `#how-it-works` 3 momenten (pre-shot/swing/post-shot, géén stappen/factoren/aantallen)
   · `#team` Henk + Berend · `#faq` QuickScan-vragen (`home.faq`, ook JSON-LD) · contact · footer.
 - **`?route=P4.2`** (of `P4`) op `/` toont de hook van die route in de hero (advertenties). De route
   gaat mee naar de QuickScan → Plausible-props `route` op `quiz_click`/`narrative_click`/`quiz_start`/
@@ -560,9 +560,9 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 
 | Event | Props | Waar / trigger |
 |-------|-------|----------------|
-| `narrative_click` | `route: "P1"…"D4"` | **NIEUW** — klik op een van de 12 herkenningszinnen (homepage `#recognise`) |
+| `narrative_click` | `route: "P1"…"D4"` | **NIEUW** — vinkje aan bij een van de 12 herkenningszinnen (per vinkje 1 event → telling per zin) |
 | `hero_route` | `route: "P4.2"` e.d. | **NIEUW** — bezoeker kwam binnen met `?route=` (advertentie) → hero toont die hook |
-| `quiz_click` | `source: "hero"\|"final"\|"sticky"\|"footer"\|"nav"\|"methodology"`, `route` (home) | QuickScan-knoppen |
+| `quiz_click` | `source: "hero"\|"recognise"\|"final"\|"sticky"\|"footer"\|"nav"\|"methodology"`, `route` (home; bij `recognise` de lijst `"P1,E2"` + `count`) | QuickScan-knoppen |
 | `methodology_click` | `source: "phases"\|"assessment"` | Link naar `/methodology` |
 | `pro_program_click` | `source: "footer"` | Enige pro-link op de homepage |
 | `checkout_click` | `plan`, `source: "assessment-page"\|"quiz-optin-escape"` | Lemon-checkout (homepage heeft GEEN koopknop meer) |
