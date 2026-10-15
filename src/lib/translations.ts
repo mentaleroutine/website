@@ -291,7 +291,7 @@ export const translations = {
       { tag: "Transfer",  insight: "Reflectie na de slag ontbreekt. Leerlus incompleet na elke ronde." },
       { tag: "Concentratie",    insight: "Focus houdt goed stand voor de meeste slagen. Breekt af bij lange carries over water." },
       { tag: "Veerkracht",      insight: "Herstel na een double bogey duurt gemiddeld 2–3 holes. Patroon is trainbaar." },
-      { tag: "Aanvaarding",     insight: "Lage loslating na bogeys. Slechte slagen dragen door naar de volgende hole." },
+      { tag: "Acceptatie",     insight: "Lage loslating na bogeys. Slechte slagen dragen door naar de volgende hole." },
       { tag: "Druk",            insight: "Scores op de eerste tee lopen gemiddeld +1,4 boven de rest van de ronde." },
       { tag: "Risicobeheer",    insight: "Agressief op par 5s. Risicobereidheid iets boven optimaal." },
     ],
@@ -328,7 +328,7 @@ export const translations = {
       phases: [
         { label: "Pre-shot routine", steps: "Focus · Concentratie" },
         { label: "Swing", steps: "Overtuiging · Vertrouwen" },
-        { label: "Post-shot routine", steps: "Beoordeling · Aanvaarding · Analyse · Transfer" },
+        { label: "Post-shot routine", steps: "Beoordeling · Acceptatie · Analyse · Transfer" },
       ],
       steps: [
         { num: "01", label: "Focus",          body: "Bepaal je doelzone, kies je club, beoordeel wind en ligging. Visualiseer de vliegbaan en de landing. Stel exact vast wat je wilt bereiken — en zorg dat het realistisch is." },
@@ -336,7 +336,7 @@ export const translations = {
         { num: "03", label: "Overtuiging",    body: "Ik wil het, ik kan het, ik doe het — met volledige toewijding. Zonder echte overtuiging is de slag al een compromis voordat de club beweegt. Twijfel is niet neutraal." },
         { num: "04", label: "Vertrouwen",     body: "Laat het gebeuren. Je voorbereiding is klaar — nu geef je je eraan over, zonder in te grijpen. Niet halverwege bijsturen, geen correctie op het laatste moment. Je vertrouwt op het plan en laat de slag gaan." },
         { num: "05", label: "Beoordeling",    body: "Observeer het volledige resultaat: vliegbaan, contactgevoel, landing, rol, eindpositie. Verzamel de data. Vergelijk met wat je beoogde. Dit is de basis van verbetering." },
-        { num: "06", label: "Aanvaarding",    body: "Het is zoals het is. De slag is gedaan. Verwerk je emotie — goed of slecht — geef het een plek, en ga verder. Onverwerkte emotie besmet de volgende slag." },
+        { num: "06", label: "Acceptatie",    body: "Het is zoals het is. De slag is gedaan. Verwerk je emotie — goed of slecht — geef het een plek, en ga verder. Onverwerkte emotie besmet de volgende slag." },
         { num: "07", label: "Analyse",        body: "Wat week af, en waardoor? Was het technisch of mentaal? Maak een korte mentale notitie. Je hoeft nu niet alles op te lossen — benoem alleen de hoofdoorzaak en leg het opzij." },
         { num: "08", label: "Transfer",       body: "Sla op wat je hebt geleerd voor na de ronde. Niet midden in de hole. Dit sluit de cirkel en transformeert ervaring in blijvende verbetering — zonder je volgende slag te verstoren." },
       ],
@@ -411,7 +411,7 @@ export const translations = {
       items: [
         { title: "Hoe lang duurt het assessment?", content: "Het assessment duurt 20–25 minuten om in te vullen. Zodra je het hebt ingediend, wordt jouw persoonlijke PDF-profiel gegenereerd en komt het kort daarna in je inbox — het is een grondig rapport, die korte wachttijd waard." },
         { title: "Wat is de Mentale Routine Assessment precies?", content: "De Mentale Routine Assessment is een gestructureerde digitale vragenlijst gebaseerd op meer dan tien jaar onderzoek met meer dan 1.000 golfers. Het meet je mentale spel over de 8 routinestappen en de 4 factoren die ze beïnvloeden — waaronder focus, overtuiging, druk en veerkracht. Het resultaat is een gepersonaliseerd PDF-profiel dat precies laat zien waar jouw mentale spel je slagen kost." },
-        { title: "Wat zijn de 8 stappen van de Mentale Routine?", content: "De Mentale Routine is een 8-staps raamwerk ontwikkeld door Henk de Jong, gegroepeerd in de drie fases die je al kent. Pre-shot: Focus (selecteer je doel) en Concentratie (één taak). Swing: Overtuiging (volledig committen) en Vertrouwen (laat het gebeuren). Post-shot: Beoordeling (resultaat observeren), Aanvaarding (loslaten), Analyse (wat week af en waarom?) en Transfer (sla op wat je hebt geleerd voor later). De meeste golfers slaan de post-shot stappen over — precies daar liggen de grootste winsten." },
+        { title: "Wat zijn de 8 stappen van de Mentale Routine?", content: "De Mentale Routine is een 8-staps raamwerk ontwikkeld door Henk de Jong, gegroepeerd in de drie fases die je al kent. Pre-shot: Focus (selecteer je doel) en Concentratie (één taak). Swing: Overtuiging (volledig committen) en Vertrouwen (laat het gebeuren). Post-shot: Beoordeling (resultaat observeren), Acceptatie (loslaten), Analyse (wat week af en waarom?) en Transfer (sla op wat je hebt geleerd voor later). De meeste golfers slaan de post-shot stappen over — precies daar liggen de grootste winsten." },
         { title: "Wat staat er in het PDF-profiel?", content: "Je profiel brengt je scores in kaart over alle 8 routinestappen en de 4 beïnvloedende factoren: risicobereidheid, druk, veerkracht en paraatheid. Het belicht je sterkste mentale gebieden, identificeert de specifieke patronen die je slagen of plezier kosten, en geeft gerichte aanbevelingen voor je mentale ontwikkeling." },
         { title: "Wat zijn de Trainingsrapporten?", content: "Trainingsrapporten zijn persoonlijke werkboeken (PDF) van zo'n tien pagina's, opgebouwd vanuit jouw assessmentscores en je handicap — elk gericht op één stap of factor in jouw profiel, zoals Overtuiging of Acceptatie. Elk rapport werkt vijf invalshoeken uit, elk met een oefening op de baan, thuis en op de range, plus een 4-wekenplan, een actieplan voor, tijdens en na de ronde, een inzicht en een verhaal uit de praktijk, waar je bij anderen op let, een mantra en baancue, en AI-coachingprompts. Er zijn er twaalf in totaal — één voor elk van de acht stappen en de vier factoren. Je assessment bevat er drie naar keuze; je profiel adviseert met welke drie je begint." },
         { title: "Is dit gebaseerd op echt onderzoek?", content: "Ja. De methodologie is ontwikkeld op initiatief van Henk de Jong via onderzoek met meer dan 1.000 golfers vanaf 2016. De centrale bevinding: 90% van de golfers die consequent een gestructureerde mentale routine toepassen, rapporteert meetbare verbetering in zowel prestaties als plezier — ongeacht handicap." },
