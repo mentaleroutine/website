@@ -1382,11 +1382,6 @@
         <p class="domains-cta-sub" data-i18n="results.domainsCtaSub">In je gratis PDF: een extra groeikans erbij (3 stappen uitgewerkt), plus duiding, mantra en actieplan — in je inbox</p>
       </div>
 
-      <!-- Share op de euforie-piek — vóór de e-mailmuur (funnel-fix Optie B) -->
-      <div class="thanks-share" id="result-share" style="display:none;margin-top:2.5rem;text-align:center">
-        <p class="thanks-share-label" id="result-share-label" style="font-size:.85rem;color:var(--text-muted);margin-bottom:.75rem"></p>
-        <div class="share-buttons" id="result-share-buttons"></div>
-      </div>
     </div>
   </section>
 
@@ -2913,7 +2908,7 @@
     buildDomainBars(scores, state.strongestDomain, state.weakestDomain);
     updatePdfMockup(total, scores);
     buildOptinChecklist();
-    buildShareSection(total, 'result-'); // delen op de euforie-piek, vóór de e-mailmuur
+    // No share buttons on the result screen either (okt 2026, opdrachtgever).
   }
 
   // suffix: '' = thanks-blok (na opt-in), 'result-' = resultaatscherm (vóór de e-mailmuur)
