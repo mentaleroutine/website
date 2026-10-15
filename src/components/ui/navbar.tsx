@@ -6,10 +6,8 @@ import { motion, AnimatePresence } from "motion/react"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { useLang, Lang } from "@/context/lang-context"
 import { translations } from "@/lib/translations"
+import { quickscanUrl } from "@/lib/quickscan"
 
-// EN + NL zijn vertaald naar het versimpelde model. DE/FR/ES tonen tijdelijk de
-// Engelse placeholder-tekst (zie translations.ts) en zijn daarom verborgen uit de
-// wisselaar tot ze vertaald zijn. Terugzetten = de regels hieronder ontcommenten.
 const LANG_OPTIONS: { code: Lang; name: string }[] = [
   { code: "en", name: "English"   },
   { code: "nl", name: "Nederlands"},
@@ -120,13 +118,14 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
+  // Absolute "/#…" so the links also work from /assessment and /methodology.
   const navLinks = [
-    { label: t.howItWorks,   href: "#how-it-works" },
-    { label: t.pricing,      href: "#pricing"       },
-    { label: t.testimonials, href: "#testimonials"  },
-    { label: t.faq,          href: "#faq"           },
-    { label: t.contact,      href: "#contact"       },
+    { label: t.howItWorks,   href: "/#how-it-works" },
+    { label: t.faq,          href: "/#faq"          },
+    { label: t.contact,      href: "/#contact"      },
   ]
+  // The homepage is the QuickScan's landing, so the button starts the quiz at hole 1.
+  const quickscanHref = quickscanUrl(lang, null)
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-5">
@@ -141,7 +140,7 @@ const Navbar = () => {
         }`}
       >
         {/* ── Logo (left column) ── */}
-        <a href="#hero" className="flex items-center gap-2.5 shrink-0 w-[180px]">
+        <a href="/" className="flex items-center gap-2.5 shrink-0 w-[180px]">
           <img src="/logoMRpng.png" alt="MentalRoutine logo" className="w-8 h-8 shrink-0 object-contain" />
           <span className="font-semibold text-amber-100/90 tracking-wide" style={{ fontFamily: "var(--font-cormorant), serif", fontSize: "1.05rem" }}>
             Mental<span className="text-amber-400">Routine</span>
@@ -166,7 +165,7 @@ const Navbar = () => {
           <LangDropdown />
           <div className="w-px h-4 bg-white/10" />
           <a
-            href="/quiz.html"
+            href={quickscanHref}
             onClick={() => { if (typeof window !== "undefined" && window.plausible) window.plausible("quiz_click", { props: { source: "nav" } }); }}
             className="inline-flex items-center gap-1.5 rounded-xl bg-amber-400 px-4 py-2 text-xs font-bold text-green-950 tracking-wide shadow-md shadow-amber-500/20 transition-all duration-200 hover:bg-amber-300 hover:-translate-y-px hover:shadow-lg hover:shadow-amber-500/30 whitespace-nowrap"
           >
@@ -224,7 +223,7 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="/quiz.html"
+                href={quickscanHref}
                 className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-amber-400 px-5 py-3.5 text-base font-bold text-green-950 mt-4 shadow-lg shadow-amber-500/20 hover:bg-amber-300 transition-colors"
                 onClick={() => { setIsOpen(false); if (typeof window !== "undefined" && window.plausible) window.plausible("quiz_click", { props: { source: "nav" } }); }}
                 initial={{ opacity: 0, y: 20 }}

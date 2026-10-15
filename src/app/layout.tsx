@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import { translations } from "@/lib/translations";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -17,10 +18,13 @@ const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
 });
 
+const SITE_TITLE = "MentalRoutine for Golfers — Free QuickScan of your mental game";
+const SITE_DESCRIPTION =
+  "You hit plenty of good shots. So why does the scorecard still tell a different story? Take the free 8-minute QuickScan and see how you handle the moments before, during and after every shot.";
+
 export const metadata: Metadata = {
-  title: "The Mental Routine Assessment for Golfers | MentalRoutine",
-  description:
-    "Map your mental game in 15 minutes. Get a personalised PDF player profile across the 8 routine steps and 4 influencing factors, three training reports of your choice, and a concrete improvement plan. $79.",
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   metadataBase: new URL("https://www.mentalroutine.com"),
   alternates: {
     canonical: "/",
@@ -34,9 +38,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "The Mental Routine Assessment for Golfers",
-    description:
-      "Inconsistent scores? Frustration after a bad hole? The missing piece is almost never technical — it's mental. Map your mental game in 15 minutes and get a concrete plan.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     url: "https://www.mentalroutine.com",
     siteName: "MentalRoutine",
     locale: "en_US",
@@ -46,15 +49,14 @@ export const metadata: Metadata = {
         url: "https://www.mentalroutine.com/og-image.png",
         width: 1792,
         height: 1024,
-        alt: "The Mental Routine Assessment for Golfers — Map your mental game in 15 minutes",
+        alt: SITE_TITLE,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Mental Routine Assessment for Golfers",
-    description:
-      "Map your mental game in 15 minutes. Personalised PDF player profile + three training reports. $79.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: ["https://www.mentalroutine.com/og-image.png"],
   },
   robots: { index: true, follow: true },
@@ -95,43 +97,15 @@ const jsonLdProduct = {
   ],
 };
 
+// Mirrors the homepage FAQ (translations.home.faq, EN): the QuickScan questions.
 const jsonLdFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "How long does the assessment take?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The assessment takes 15–25 minutes. You can complete it on any device. Once submitted, your personalised PDF report is available for download immediately.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What exactly is the Mental Routine Assessment?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A structured digital questionnaire grounded in over a decade of research with 1,000+ golfers. It measures your mental game across the 8 routine steps and the 4 factors that influence them — focus, conviction, pressure, resilience and more — delivered as a personalised PDF player profile.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What do I get with the assessment?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Your complete player profile as a personalised PDF, plus three training reports of your choice from twelve — one for each of the eight steps and four factors. Your profile recommends which three to start with.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is this suitable for high-handicap golfers?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Absolutely. Golfers with higher handicaps often gain the most — because frustration, inconsistency, and lost enjoyment are almost always mental rather than technical at that stage.",
-      },
-    },
-  ],
+  mainEntity: translations.en.home.faq.items.map(item => ({
+    "@type": "Question",
+    name: item.title,
+    acceptedAnswer: { "@type": "Answer", text: item.content },
+  })),
 };
 
 export default function RootLayout({

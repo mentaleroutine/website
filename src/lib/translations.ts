@@ -7,7 +7,53 @@ export type Lang = "en" | "nl" | "de" | "fr" | "es";
 // with a real translated object when ready — the structure must stay identical.
 // ─────────────────────────────────────────────────────────────────
 const en = {
-    nav: { howItWorks: "The Research", pricing: "Pricing", testimonials: "Testimonials", faq: "FAQ", contact: "Contact", cta: "Free QuickScan", openMenu: "Open menu", closeMenu: "Close menu", selectLang: "Select language", skipToContent: "Skip to content" },
+    nav: { howItWorks: "How it works", faq: "FAQ", contact: "Contact", cta: "Free QuickScan", openMenu: "Open menu", closeMenu: "Close menu", selectLang: "Select language", skipToContent: "Skip to content" },
+    home: {
+      hero: {
+        badge: "Free MentalRoutine QuickScan",
+        sub: "A round is more than your swings. The free QuickScan looks at how you handle the moments before, during and after each shot.",
+        cta: "Take the free QuickScan",
+        meta: "9 holes · 8 minutes · free · your report by email",
+        trust: "Research with 1,000+ golfers since 2016 · every handicap",
+      },
+      recognise: {
+        label: "Sound familiar?", h2a: "Which of these", h2b: "sounds like you?",
+        intro: "Pick the one that fits best. The QuickScan then looks at the pattern behind it — in 8 minutes.",
+        footnote: "Recognise more than one? That's common. Start with any of them.",
+      },
+      phases: {
+        label: "The MentalRoutine", h2a: "Every shot has", h2b: "three moments.",
+        intro: "You probably have a pre-shot routine for your body. MentalRoutine is the same idea for your head — before, during and after every shot.",
+        items: [
+          { label: "Pre-shot", body: "Choosing your shot — and being fully there for it." },
+          { label: "Swing", body: "Committing to your choice — and letting the shot go." },
+          { label: "Post-shot", body: "Dealing with the outcome — and taking only what helps into the next shot." },
+        ],
+        link: "How the method works",
+      },
+      team: {
+        label: "Who's behind it", h2a: "The people behind", h2b: "MentalRoutine",
+        members: [
+          { name: "Henk de Jong", role: "Initiator of MentalRoutine · golfer for 40+ years" },
+          { name: "Berend Jansen", role: "Psychometric expert · assessment specialist" },
+        ],
+        body: "Henk de Jong has played golf for over 40 years and, through his PGA network, brought more than 1,000 golfers into the research. Berend Jansen is an expert in psychometric instruments — measuring why people do what they do. Together they have built behavioural assessments for over 15 years, and in 2016 they started MentalRoutine.",
+        quote: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong",
+      },
+      faq: {
+        label: "Questions & Answers", h2: "Before you start",
+        contactText: "Can't find the answer?", contactLink: "Contact us", showMore: "more questions",
+        items: [
+          { title: "What is the QuickScan?", content: "A short, free questionnaire in the form of 9 holes. It looks at how you handle the moments before, during and after a shot. You see your result on screen straight away: your profile across the three phases, your strongest point and your biggest growth opportunity. If you like, we email you a personal PDF report of about 10 pages with explanation, exercises and an action plan." },
+          { title: "Is it really free?", content: "Yes — no card needed. If you ask for your PDF report, we'll also send you a few emails with insights based on your result, and at some point an invitation to the full MentalRoutine Assessment. You can unsubscribe with one click." },
+          { title: "Is it right for my level?", content: "Yes. The questions are about situations every golfer knows, from beginner to scratch. Your scores are corrected for your handicap." },
+          { title: "Is the QuickScan a diagnosis?", content: "No. The QuickScan gives you a first picture, based on your own answers. Want the full picture? The MentalRoutine Assessment (20–25 minutes) maps your mental game in depth, with a complete player profile and three personal training reports. Neither is a medical or psychological diagnosis." },
+          { title: "Which languages is it available in?", content: "The QuickScan is available in English and Dutch." },
+        ],
+      },
+      final: { h2a: "Curious what's behind it?", h2b: "Find out in 8 minutes." },
+      sticky: "Free QuickScan · 9 holes · 8 minutes",
+    },
     hero: {
       badge: "The Mental Routine Assessment",
       h1a: "The strokes you lose", h1b: "aren't in your swing.",
@@ -124,7 +170,6 @@ const en = {
       reportPreview: { label: "Your assessment includes:", items: ["Your complete player profile — all 8 steps + 4 factors", "What each score means for your game", "Your top 3 development priorities", "Three training reports of your choice from twelve"] },
       previewBtn: "Preview sample profile →",
       previewModal: { standard: "Player Profile — Sample", training: "Training Report — Sample", closePreview: "Close preview", iframeTitle: "Sample Profile Preview" },
-      pricingQuote: { text: "The profile described things about my game I'd never been able to articulate.", name: "Robert M.", role: "Handicap 13.7" },
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
@@ -143,20 +188,6 @@ const en = {
       reportCountStd: "Three included", reportCountDlx: "Twelve to choose from",
       mockup: { tagline: "Training report · ~10 pages", title: "Conviction", subtitle: "Personal workbook for your profile", priority: "growth area", physical: "ON THE COURSE", mental: "AT HOME", exercise: "Exercise", expertInsight: "Insight", reflection: "Reflection", storytelling: "From the game", mantra: "Mantra", aiPrompt: "AI prompt", plan: "4-week plan", exPhysical: "Name the shot, then swing within 3 seconds · 10 min", exMental: "Rehearse your moment of choice · 5 min", exExpert: "Why doubt shows up in the swing, not the head", exReflection: "Where did I hold back today?", exStorytelling: "A recognisable moment: the tee shot that mattered", exMantra: "\"Chosen means all-in.\"", exAiPrompt: "Starter prompt + 2 follow-ups for your AI coach", exPlan: "Week by week — what to do and for how long" },
     },
-    testimonials: {
-      label: "From the Fairway", h2: "What golfers are saying",
-      items: [
-        { quote: "Once I saw that pattern written down, everything changed.", text: "I always assumed my inconsistency was technical. The report showed me I was playing too aggressively after bogeys — trying to recover too fast. Once I saw that pattern written down clearly in the Conviction chapter, everything changed. My net scores are far more consistent now.", image: "https://randomuser.me/api/portraits/women/44.jpg", name: "Sarah O'Brien", role: "Handicap 12.4 · Amateur competitor, Dublin" },
-        { quote: "I wasn't expecting it to apply to someone at my level. It did.", text: "I'm not a competitive golfer — I play for the social side and to clear my head after work. But I was getting frustrated because every round felt the same. The report showed my Acceptance score was very low: I was carrying each bad hole into the next one. That single insight changed how I experience a round. Same scores, but I actually enjoy it now.", image: "https://randomuser.me/api/portraits/women/29.jpg", name: "Catherine Blake", role: "Handicap 31.4 · Social golfer, Melbourne" },
-        { quote: "Once I understood that, fixing it was straightforward.", text: "The assessment identified that my Acceptance score was low — I wasn't finishing the mental routine after a bad shot. I was starting the next hole still carrying the previous one. Once I understood that, fixing it was actually straightforward.", image: "https://randomuser.me/api/portraits/men/32.jpg", name: "James Whitfield", role: "Handicap 5.1 · Club captain, Suffolk" },
-        { quote: "Three rounds later, I shot my best score in two years.", text: "My risk profile in the assessment came back as too high. I kept attacking pins when I should have been playing to the fat of the green. Three rounds after reading my report and adjusting, I shot my best score in two years.", image: "https://randomuser.me/api/portraits/women/12.jpg", name: "Fiona Mcallister", role: "Handicap 10.2 · Club champion, Edinburgh" },
-        { quote: "I'm not broken — I just have a measurable pattern.", text: "The first tee has always been my problem. The assessment showed high external pressure sensitivity. Knowing that I'm not broken — I just have a measurable pattern — made it much easier to start working on it intentionally.", image: "https://randomuser.me/api/portraits/men/51.jpg", name: "David Reinders", role: "Handicap 14.6 · Weekend golfer, Rotterdam" },
-        { quote: "I trained each mental step deliberately for the first time.", text: "I had no idea there were eight distinct mental steps to every shot. I thought focus was just staring at the ball. The assessment report explains why that's not enough — and the training reports helped me actually train each step deliberately.", image: "https://randomuser.me/api/portraits/men/68.jpg", name: "Marcus van der Berg", role: "Handicap 19.3 · Weekend golfer, Amsterdam" },
-        { quote: "Worth more than another lesson.", text: "As a teaching pro I now recommend this to every student who's technically competent but plateauing. The gap is almost always mental. This assessment gives you an objective map of where — and that's worth more than another lesson.", image: "https://randomuser.me/api/portraits/women/56.jpg", name: "Annika Johansson", role: "PGA Teaching Professional, Gothenburg" },
-        { quote: "I nearly didn't buy it. Then I read my report.", text: "Honestly, I was sceptical. I've played for fifteen years and figured mental stuff was for tour pros or people who overthink everything. My wife basically dared me. The report arrived and I read it in one sitting — it described things about my game I'd never been able to articulate. Like why I always play my worst golf after a good front nine. I'm glad she dared me.", image: "https://randomuser.me/api/portraits/men/77.jpg", name: "Robert Mackenzie", role: "Handicap 13.7 · Weekend golfer, Glasgow" },
-        { quote: "Now I know it, I can train it.", text: "Twenty years of golf and I never knew my resilience score was low. I don't recover well after a bad hole — that's just a fact about me. Now I know it, I can train it. There's a specific training report for exactly that.", image: "https://randomuser.me/api/portraits/men/23.jpg", name: "Tom Harrington", role: "Handicap 7.8 · Competitive amateur, Cork" },
-      ],
-    },
     faq: {
       label: "Questions & Answers", h2: "Frequently Asked Questions",
       contactText: "Everything you need to know before you start. Can't find the answer?", contactLink: "Contact us", showMore: "more questions",
@@ -166,13 +197,13 @@ const en = {
         { title: "What are the 8 steps of the Mental Routine?", content: "The Mental Routine is an 8-step framework developed by Henk de Jong, grouped in the three phases you already know. Pre-shot: Focus (select your target) and Concentration (one task only). Swing: Conviction (commit fully) and Trust (let it happen). Post-shot: Evaluation (observe the outcome), Acceptance (release the result), Analysis (identify what deviated and why), and Transfer (store what you've learned for next time). Most golfers skip the post-shot steps — which is where the biggest gains lie." },
         { title: "What does the PDF profile actually show me?", content: "Your profile maps your scores across all 8 routine steps and the 4 influencing factors: risk appetite, pressure, resilience and readiness. It highlights your strongest mental areas, identifies the specific patterns costing you strokes or enjoyment, and gives you targeted recommendations on where to focus your mental development." },
         { title: "What are the Training Reports?", content: "Training reports are personal workbooks of around ten pages (PDF), built from your assessment scores and your handicap — each targeting one step or factor in your profile, like Conviction or Acceptance. Every report works through five angles, each with an exercise on the course, at home and on the range, plus a 4-week plan, an action plan for before, during and after the round, an insight and a story from the game, what to watch for in others, a mantra and course cue, and AI coaching prompts. There are twelve in total — one for each of the eight steps and the four factors. Your assessment includes three of your choice; your profile recommends which three to start with." },
-        { title: "Is this based on real research?", content: "Yes. The methodology was developed by golf psychologist and coach Henk de Jong through research with more than 1,000 golfers conducted over the last decade. The central finding: 90% of golfers who consistently apply a structured mental routine report measurable improvement in both performance and enjoyment — regardless of handicap. The framework is the foundation of the NogBeterGolfen method." },
-        { title: "Is this also suitable for high-handicap golfers (28+)?", content: "Absolutely. In fact, golfers with higher handicaps often gain the most — because frustration, inconsistency, and lost enjoyment are almost always mental rather than technical at that stage. The assessment is equally valuable for a 34-handicapper who simply wants to enjoy the game more and a scratch golfer preparing for competition. Several of our highest-rated testimonials come from golfers with handicaps above 28." },
+        { title: "Is this based on real research?", content: "Yes. The methodology was developed on the initiative of Henk de Jong through research with more than 1,000 golfers conducted over the last decade. The central finding: 90% of golfers who consistently apply a structured mental routine report measurable improvement in both performance and enjoyment — regardless of handicap." },
+        { title: "Is this also suitable for high-handicap golfers (28+)?", content: "Absolutely. In fact, golfers with higher handicaps often gain the most — because frustration, inconsistency, and lost enjoyment are often as much mental as technical at that stage. The assessment is equally valuable for a 34-handicapper who simply wants to enjoy the game more and a scratch golfer preparing for competition." },
       ],
     },
     contact: {
       label: "Get in Touch", h2a: "Questions? We'd love", h2b: "to hear from you.",
-      p1: "Not sure which plan is right for you? Want to know more about how the assessment works? Or just curious whether this is the right next step for your golf game?",
+      p1: "Questions about the QuickScan, the assessment or how MentalRoutine works? Or just curious whether this is the right next step for your golf?",
       p2: "Send us a message and we'll get back to you within one business day. We're golfers too — we get it.",
       fields: { name: "Name", namePlaceholder: "Your name", handicap: "Golf Handicap", handicapPlaceholder: "e.g. 14.2", email: "Email", emailPlaceholder: "you@example.com", message: "Message", messagePlaceholder: "What would you like to know?", submit: "Send Message →", note: "We respond within one business day.", sending: "Sending...", error: "Something went wrong. Please try again." },
       success: { h3: "Message received", p: "We'll be in touch within one business day. Good luck on the course in the meantime." },
@@ -186,7 +217,7 @@ const en = {
       quizLine: "Still on the fence? See your weakest link free — 8 minutes, no card needed.",
       trust: ["In your inbox shortly after", "One assessment — $79", "Research base: 1,000+ golfers", "30-day money-back guarantee"],
     },
-        footer: { tagline: "Based on the NogBeterGolfen method by Henk de Jong", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free QuickScan", methodology: "The methodology", quoteText: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong", methodBy: "Method by Henk de Jong", menuLabel: "Menu" },
+        footer: { tagline: "The mental routine for every shot.", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free QuickScan", methodology: "The methodology", quoteText: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong", methodBy: "An initiative of Henk de Jong", menuLabel: "Menu" },
 } as const;
 
 export const translations = {
@@ -196,7 +227,53 @@ export const translations = {
   // DUTCH
   // ─────────────────────────────────────────────────────────────────
   nl: {
-    nav: { howItWorks: "Het Onderzoek", pricing: "Prijzen", testimonials: "Ervaringen", faq: "FAQ", contact: "Contact", cta: "Gratis QuickScan", openMenu: "Menu openen", closeMenu: "Menu sluiten", selectLang: "Taal kiezen", skipToContent: "Ga naar inhoud" },
+    nav: { howItWorks: "Hoe het werkt", faq: "FAQ", contact: "Contact", cta: "Gratis QuickScan", openMenu: "Menu openen", closeMenu: "Menu sluiten", selectLang: "Taal kiezen", skipToContent: "Ga naar inhoud" },
+    home: {
+      hero: {
+        badge: "Gratis MentalRoutine QuickScan",
+        sub: "Een ronde is meer dan je swings. De gratis QuickScan kijkt hoe jij omgaat met de momenten vóór, tijdens en na elke slag.",
+        cta: "Doe de gratis QuickScan",
+        meta: "9 holes · 8 minuten · gratis · je rapport per mail",
+        trust: "Onderzoek onder 1.000+ golfers sinds 2016 · elk handicap",
+      },
+      recognise: {
+        label: "Herken je dit?", h2a: "Welke hiervan", h2b: "herken jij?",
+        intro: "Kies wat het best bij je past. De QuickScan kijkt daarna naar het patroon erachter — in 8 minuten.",
+        footnote: "Herken je er meer? Dat is heel gewoon. Begin waar je wilt.",
+      },
+      phases: {
+        label: "De MentalRoutine", h2a: "Elke slag kent", h2b: "drie momenten.",
+        intro: "Je hebt waarschijnlijk een pre-shot routine voor je lichaam. MentalRoutine is hetzelfde idee voor je hoofd — vóór, tijdens en na elke slag.",
+        items: [
+          { label: "Pre-shot", body: "Je slag kiezen — en er helemaal bij zijn." },
+          { label: "Swing", body: "Vol voor je keuze gaan — en de slag laten gaan." },
+          { label: "Post-shot", body: "Omgaan met de uitkomst — en alleen meenemen wat je volgende slag helpt." },
+        ],
+        link: "Hoe de methode werkt",
+      },
+      team: {
+        label: "Wie erachter zit", h2a: "De mensen achter", h2b: "MentalRoutine",
+        members: [
+          { name: "Henk de Jong", role: "Initiatiefnemer van MentalRoutine · 40+ jaar golfer" },
+          { name: "Berend Jansen", role: "Psychometrisch expert · assessmentspecialist" },
+        ],
+        body: "Henk de Jong speelt al meer dan 40 jaar golf en bracht via zijn PGA-netwerk meer dan 1.000 golfers bij het onderzoek. Berend Jansen is expert in psychometrische meetinstrumenten — het meten van waarom mensen doen wat ze doen. Samen bouwen zij al meer dan 15 jaar gedragsassessments, en in 2016 startten zij MentalRoutine.",
+        quote: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong",
+      },
+      faq: {
+        label: "Vragen & antwoorden", h2: "Voordat je begint",
+        contactText: "Staat je vraag er niet bij?", contactLink: "Neem contact op", showMore: "meer vragen",
+        items: [
+          { title: "Wat is de QuickScan?", content: "Een korte, gratis vragenlijst in de vorm van 9 holes. Hij kijkt hoe jij omgaat met de momenten vóór, tijdens en na een slag. Je ziet je resultaat direct op je scherm: je profiel over de drie fases, je sterkste punt en je grootste groeikans. Wil je meer? Dan mailen we je een persoonlijk PDF-rapport van zo'n 10 pagina's met uitleg, oefeningen en een actieplan." },
+          { title: "Is het echt gratis?", content: "Ja — je hebt geen betaalkaart nodig. Vraag je je PDF-rapport aan, dan sturen we je ook een paar mails met inzichten op basis van je resultaat, en op een gegeven moment een uitnodiging voor de volledige MentalRoutine Assessment. Uitschrijven kan met één klik." },
+          { title: "Past het bij mijn niveau?", content: "Ja. De vragen gaan over situaties die elke golfer kent, van beginner tot scratch. Je scores worden gecorrigeerd voor je handicap." },
+          { title: "Is de QuickScan een diagnose?", content: "Nee. De QuickScan geeft je een eerste beeld, op basis van je eigen antwoorden. Wil je het volledige beeld? De MentalRoutine Assessment (20–25 minuten) brengt je mentale spel diepgaand in kaart, met een compleet spelersprofiel en drie persoonlijke trainingsrapporten. Geen van beide is een medische of psychologische diagnose." },
+          { title: "In welke talen is hij beschikbaar?", content: "De QuickScan is beschikbaar in het Nederlands en het Engels." },
+        ],
+      },
+      final: { h2a: "Benieuwd wat erachter zit?", h2b: "Ontdek het in 8 minuten." },
+      sticky: "Gratis QuickScan · 9 holes · 8 minuten",
+    },
     hero: {
       badge: "De Mental Routine Assessment",
       h1a: "De slagen die je verliest", h1b: "zitten niet in je swing.",
@@ -312,7 +389,6 @@ export const translations = {
       reportPreview: { label: "Jouw assessment bevat:", items: ["Je complete spelersprofiel — alle 8 stappen + 4 factoren", "Wat elke score betekent voor jouw spel", "Jouw top-3 ontwikkelpunten", "Drie trainingsrapporten naar keuze uit twaalf"] },
       previewBtn: "Bekijk voorbeeldprofiel →",
       previewModal: { standard: "Spelersprofiel — Voorbeeld", training: "Trainingsrapport — Voorbeeld", closePreview: "Voorbeeld sluiten", iframeTitle: "Voorbeeldprofiel" },
-      pricingQuote: { text: "Het profiel beschreef dingen over mijn spel die ik zelf nooit had kunnen verwoorden.", name: "Willem B.", role: "Handicap 12.8" },
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
@@ -331,20 +407,6 @@ export const translations = {
       reportCountStd: "Drie inbegrepen", reportCountDlx: "Twaalf om uit te kiezen",
       mockup: { tagline: "Trainingsrapport · ±10 pagina's", title: "Overtuiging", subtitle: "Persoonlijk werkboek voor jouw profiel", priority: "groeipunt", physical: "OP DE BAAN", mental: "THUIS", exercise: "Oefening", expertInsight: "Inzicht", reflection: "Reflectie", storytelling: "Uit de praktijk", mantra: "Mantra", aiPrompt: "AI-prompt", plan: "4-wekenplan", exPhysical: "Benoem de slag, swing binnen 3 seconden · 10 min", exMental: "Oefen je keuzemoment · 5 min", exExpert: "Waarom twijfel in je swing zit, niet in je hoofd", exReflection: "Waar hield ik vandaag in?", exStorytelling: "Herkenbaar moment: de afslag die ertoe deed", exMantra: "\"Gekozen is voluit.\"", exAiPrompt: "Startprompt + 2 vervolgprompts voor je AI-coach", exPlan: "Week voor week — wat je doet en hoe lang" },
     },
-    testimonials: {
-      label: "Van de Fairway", h2: "Wat golfers zeggen",
-      items: [
-        { quote: "Dat patroon zag ik zelf nooit.", text: "Ik dacht altijd dat mijn inconsistentie technisch was. Het rapport liet zien dat ik na bogeys te agressief speelde — te snel probeerde te herstellen. Dat patroon staat duidelijk beschreven in het Overtuiging-hoofdstuk. Mijn nettoscores zijn sindsdien veel consistenter.", image: "https://randomuser.me/api/portraits/men/41.jpg", name: "Joost van der Linden", role: "Handicap 11.7 · Amateurcompetitie, Utrecht" },
-        { quote: "Zelfde scores, maar wél weer plezier.", text: "Ik speel voor de gezelligheid, niet voor competitie. Maar ik merkte dat ik steeds minder plezier had — elke slechte slag bleef hangen. Het rapport liet zien dat mijn Aanvaardingsscore erg laag was. Ik nam elke misser mee naar de volgende tee. Dat inzicht heeft de manier waarop ik golf compleet veranderd. Mijn scores zijn hetzelfde, maar mijn plezier is enorm teruggekomen.", image: "https://randomuser.me/api/portraits/women/19.jpg", name: "Hanneke Mol", role: "Handicap 29.8 · Gezelschapsgolfer, Haarlem" },
-        { quote: "Toen ik het begreep, was het eenvoudig.", text: "Mijn Aanvaardingsscore was laag — ik rondde de mentale routine niet af na een slechte slag. Ik begon de volgende hole nog steeds met de vorige. Toen ik dat begreep, was het eigenlijk eenvoudig om te verbeteren.", image: "https://randomuser.me/api/portraits/women/33.jpg", name: "Marieke Smit", role: "Handicap 18.2 · Weekendgolfer, Amsterdam" },
-        { quote: "Drie rondes later, mijn beste score in twee jaar.", text: "Mijn risicoprofiel kwam terug als te hoog. Ik bleef pinnen aanvallen terwijl ik naar het midden van de green had moeten spelen. Na drie rondes het rapport gelezen en aangepast te hebben, sloeg ik mijn beste score in twee jaar.", image: "https://randomuser.me/api/portraits/women/48.jpg", name: "Eline de Boer", role: "Handicap 9.8 · Competitiegolfer, Rotterdam" },
-        { quote: "Ik ben niet kapot — ik heb gewoon een meetbaar patroon.", text: "De eerste tee is altijd mijn probleem geweest. De assessment toonde hoge externe drukgevoeligheid. Weten dat ik niet kapot ben — maar gewoon een meetbaar patroon heb — maakte het veel makkelijker om er bewust aan te werken.", image: "https://randomuser.me/api/portraits/men/54.jpg", name: "Kees Vermeulen", role: "Handicap 14.3 · Weekendgolfer, Eindhoven" },
-        { quote: "Ik trainde elke mentale stap voor het eerst bewust.", text: "Ik had geen idee dat er acht afzonderlijke mentale stappen bij elke slag horen. Ik dacht dat focus gewoon naar de bal staren was. De methode legt uit waarom dat niet genoeg is — de trainingsrapporten hielpen me elke stap bewust te trainen.", image: "https://randomuser.me/api/portraits/men/62.jpg", name: "Pieter Korstanje", role: "Handicap 5.4 · Clubkampioen, Den Haag" },
-        { quote: "Meer waard dan weer een les.", text: "Als golfleraar beveel ik dit nu aan bij elke leerling die technisch competent is maar een plafond heeft bereikt. Het verschil zit bijna altijd in het mentale. Deze assessment geeft je een objectieve kaart van waar — en dat is meer waard dan een extra les.", image: "https://randomuser.me/api/portraits/women/61.jpg", name: "Sandra Brouwer", role: "NGF Teaching Professional, Arnhem" },
-        { quote: "Ik was sceptisch. Toen las ik mijn rapport.", text: "Eerlijk gezegd was ik sceptisch. Mentaal golf — dat is toch voor toerprofessionals of mensen die te veel nadenken? Mijn vrouw daagde me uit. Het rapport beschreef dingen over mijn spel die ik zelf nooit had kunnen verwoorden — zoals waarom ik mijn slechtste golf speel precies na een goede voornegen. Blij dat ze dat deed.", image: "https://randomuser.me/api/portraits/men/71.jpg", name: "Willem Brouwer", role: "Handicap 12.8 · Weekendgolfer, Leiden" },
-        { quote: "Nu ik het weet, kan ik het trainen.", text: "Twintig jaar golf en ik wist nooit dat mijn veerkrachtscore laag was. Ik herstel slecht na een slechte hole — dat is gewoon een feit over mij. Nu ik het weet, kan ik het trainen. Er is een specifiek trainingsrapport voor precies dat.", image: "https://randomuser.me/api/portraits/men/27.jpg", name: "Bas Hartman", role: "Handicap 7.6 · Competitieamateur, Groningen" },
-      ],
-    },
     faq: {
       label: "Vragen & Antwoorden", h2: "Veelgestelde Vragen",
       contactText: "Alles wat je moet weten voordat je begint. Antwoord niet gevonden?", contactLink: "Neem contact op", showMore: "meer vragen",
@@ -354,13 +416,13 @@ export const translations = {
         { title: "Wat zijn de 8 stappen van de Mentale Routine?", content: "De Mentale Routine is een 8-staps raamwerk ontwikkeld door Henk de Jong, gegroepeerd in de drie fases die je al kent. Pre-shot: Focus (selecteer je doel) en Concentratie (één taak). Swing: Overtuiging (volledig committen) en Vertrouwen (laat het gebeuren). Post-shot: Beoordeling (resultaat observeren), Aanvaarding (loslaten), Analyse (wat week af en waarom?) en Transfer (sla op wat je hebt geleerd voor later). De meeste golfers slaan de post-shot stappen over — precies daar liggen de grootste winsten." },
         { title: "Wat staat er in het PDF-profiel?", content: "Je profiel brengt je scores in kaart over alle 8 routinestappen en de 4 beïnvloedende factoren: risicobereidheid, druk, veerkracht en paraatheid. Het belicht je sterkste mentale gebieden, identificeert de specifieke patronen die je slagen of plezier kosten, en geeft gerichte aanbevelingen voor je mentale ontwikkeling." },
         { title: "Wat zijn de Trainingsrapporten?", content: "Trainingsrapporten zijn persoonlijke werkboeken (PDF) van zo'n tien pagina's, opgebouwd vanuit jouw assessmentscores en je handicap — elk gericht op één stap of factor in jouw profiel, zoals Overtuiging of Acceptatie. Elk rapport werkt vijf invalshoeken uit, elk met een oefening op de baan, thuis en op de range, plus een 4-wekenplan, een actieplan voor, tijdens en na de ronde, een inzicht en een verhaal uit de praktijk, waar je bij anderen op let, een mantra en baancue, en AI-coachingprompts. Er zijn er twaalf in totaal — één voor elk van de acht stappen en de vier factoren. Je assessment bevat er drie naar keuze; je profiel adviseert met welke drie je begint." },
-        { title: "Is dit gebaseerd op echt onderzoek?", content: "Ja. De methodologie is ontwikkeld door golfpsycholoog en coach Henk de Jong via onderzoek met meer dan 1.000 golfers vanaf 2016. De centrale bevinding: 90% van de golfers die consequent een gestructureerde mentale routine toepassen, rapporteert meetbare verbetering in zowel prestaties als plezier — ongeacht handicap. Het raamwerk vormt de basis van de NogBeterGolfen-methode." },
-        { title: "Is dit ook geschikt voor golfers met een hoog handicap (28+)?", content: "Absoluut. Golfers met een hoger handicap profiteren zelfs het meest — omdat frustratie, inconsistentie en verlies van plezier in die fase bijna altijd mentaal zijn, niet technisch. De assessment is even waardevol voor een 34-handicapper die gewoon meer van het spel wil genieten als voor een scratch golfer die zich voorbereidt op competitie. Enkele van onze best beoordeelde testimonials komen van golfers met een handicap boven de 28." },
+        { title: "Is dit gebaseerd op echt onderzoek?", content: "Ja. De methodologie is ontwikkeld op initiatief van Henk de Jong via onderzoek met meer dan 1.000 golfers vanaf 2016. De centrale bevinding: 90% van de golfers die consequent een gestructureerde mentale routine toepassen, rapporteert meetbare verbetering in zowel prestaties als plezier — ongeacht handicap." },
+        { title: "Is dit ook geschikt voor golfers met een hoog handicap (28+)?", content: "Absoluut. Golfers met een hoger handicap profiteren zelfs het meest — omdat frustratie, inconsistentie en verlies van plezier in die fase vaak net zo goed mentaal als technisch zijn. De assessment is even waardevol voor een 34-handicapper die gewoon meer van het spel wil genieten als voor een scratch golfer die zich voorbereidt op competitie." },
       ],
     },
     contact: {
       label: "Neem Contact Op", h2a: "Vragen? We horen", h2b: "graag van je.",
-      p1: "Weet je niet zeker welk pakket bij jou past? Wil je meer weten over hoe de assessment werkt? Of ben je gewoon benieuwd of dit de juiste volgende stap is voor jouw golfspel?",
+      p1: "Vragen over de QuickScan, de assessment of hoe MentalRoutine werkt? Of ben je gewoon benieuwd of dit de juiste volgende stap is voor jouw golf?",
       p2: "Stuur ons een bericht en we reageren binnen één werkdag. Wij zijn ook golfers — we begrijpen het.",
       fields: { name: "Naam", namePlaceholder: "Jouw naam", handicap: "Golf Handicap", handicapPlaceholder: "bijv. 14,2", email: "E-mail", emailPlaceholder: "jij@voorbeeld.nl", message: "Bericht", messagePlaceholder: "Wat wil je weten?", submit: "Verstuur Bericht →", note: "We reageren binnen één werkdag.", sending: "Verzenden...", error: "Er is iets misgegaan. Probeer het opnieuw." },
       success: { h3: "Bericht ontvangen", p: "We nemen binnen één werkdag contact op. Veel succes op de baan in de tussentijd." },
@@ -373,7 +435,7 @@ export const translations = {
       quizLine: "Nog aan het twijfelen? Zie je zwakste schakel gratis — 8 minuten, geen betaalgegevens nodig.",
       trust: ["Kort daarna in je inbox", "Eén assessment — $79", "Onderzoeksbasis: 1.000+ golfers", "30 dagen geld terug"],
     },
-        footer: { tagline: "Gebaseerd op de NogBeterGolfen-methode van Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis QuickScan", methodology: "De methodiek", quoteText: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong", methodBy: "Methode van Henk de Jong", menuLabel: "Menu" },
+        footer: { tagline: "De mentale routine voor elke slag.", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis QuickScan", methodology: "De methodiek", quoteText: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong", methodBy: "Een initiatief van Henk de Jong", menuLabel: "Menu" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -384,7 +446,8 @@ export const translations = {
   // a full translated object (same structure) and un-hide the language.
   // ─────────────────────────────────────────────────────────────────
   de: {
-    nav: { howItWorks: "Die Forschung", pricing: "Preise", testimonials: "Erfahrungen", faq: "FAQ", contact: "Kontakt", cta: "Kostenloser QuickScan", openMenu: "Menü öffnen", closeMenu: "Menü schließen", selectLang: "Sprache wählen", skipToContent: "Zum Inhalt springen" },
+    nav: { howItWorks: "So funktioniert's", faq: "FAQ", contact: "Kontakt", cta: "Kostenloser QuickScan", openMenu: "Menü öffnen", closeMenu: "Menü schließen", selectLang: "Sprache wählen", skipToContent: "Zum Inhalt springen" },
+    home: en.home, // EN until DE/FR/ES are translated
     hero: {
       badge: "Das Mental Routine Assessment",
       h1a: "Die Schläge, die du verlierst,", h1b: "stecken nicht in deinem Schwung.",
@@ -501,7 +564,6 @@ export const translations = {
       reportPreview: { label: "Dein Assessment enthält:", items: ["Dein komplettes Spielerprofil — alle 8 Schritte + 4 Faktoren", "Was jeder Score für dein Spiel bedeutet", "Deine 3 wichtigsten Entwicklungsprioritäten", "Drei Trainingsreports deiner Wahl aus zwölf"] },
       previewBtn: "Beispielprofil ansehen →",
       previewModal: { standard: "Spielerprofil — Beispiel", training: "Trainingsreport — Beispiel", closePreview: "Vorschau schließen", iframeTitle: "Vorschau des Beispielprofils" },
-      pricingQuote: { text: "Das Profil hat Dinge über mein Spiel beschrieben, die ich nie in Worte fassen konnte.", name: "Robert M.", role: "Handicap 13,7" },
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
@@ -520,20 +582,6 @@ export const translations = {
       reportCountStd: "Drei inklusive", reportCountDlx: "Zwölf zur Auswahl",
       mockup: { tagline: "Trainingsreport · ~10 Seiten", title: "Conviction", subtitle: "Persönliches Arbeitsbuch für dein Profil", priority: "Wachstumspunkt", physical: "AUF DEM PLATZ", mental: "ZU HAUSE", exercise: "Übung", expertInsight: "Einsicht", reflection: "Reflexion", storytelling: "Aus dem Spiel", mantra: "Mantra", aiPrompt: "KI-Prompt", plan: "4-Wochen-Plan", exPhysical: "Schlag benennen, innerhalb von 3 Sekunden schwingen · 10 Min.", exMental: "Übe deinen Entscheidungsmoment · 5 Min.", exExpert: "Warum Zweifel im Schwung steckt, nicht im Kopf", exReflection: "Wo habe ich heute zurückgehalten?", exStorytelling: "Ein bekannter Moment: der Abschlag, der zählte", exMantra: "\"Entschieden heißt voll dabei.\"", exAiPrompt: "Start-Prompt + 2 Folge-Prompts für deinen KI-Coach", exPlan: "Woche für Woche — was du tust und wie lange" },
     },
-    testimonials: {
-      label: "Vom Fairway", h2: "Was Golfer sagen",
-      items: [
-        { quote: "Sobald ich dieses Muster schwarz auf weiß sah, änderte sich alles.", text: "Ich ging immer davon aus, meine Unbeständigkeit sei technisch. Der Report zeigte mir, dass ich nach Bogeys zu aggressiv spielte — zu schnell zurückholen wollte. Sobald ich dieses Muster klar geschrieben im Conviction-Kapitel sah, änderte sich alles. Meine Netto-Scores sind jetzt viel konstanter.", image: "https://randomuser.me/api/portraits/women/44.jpg", name: "Sarah O'Brien", role: "Handicap 12,4 · Amateurspielerin, Dublin" },
-        { quote: "Ich hätte nicht erwartet, dass es für jemanden auf meinem Niveau gilt. Tat es aber.", text: "Ich bin keine Wettkampfgolferin — ich spiele wegen des Geselligen und um nach der Arbeit den Kopf freizubekommen. Aber ich wurde frustriert, weil sich jede Runde gleich anfühlte. Der Report zeigte, dass mein Acceptance-Score sehr niedrig war: Ich schleppte jedes schlechte Loch ins nächste mit. Diese eine Erkenntnis hat verändert, wie ich eine Runde erlebe. Gleiche Scores, aber ich genieße es jetzt wirklich.", image: "https://randomuser.me/api/portraits/women/29.jpg", name: "Catherine Blake", role: "Handicap 31,4 · Freizeitgolferin, Melbourne" },
-        { quote: "Sobald ich das verstanden hatte, war die Lösung ganz einfach.", text: "Das Assessment stellte fest, dass mein Acceptance-Score niedrig war — ich schloss die mentale Routine nach einem schlechten Schlag nicht ab. Ich begann das nächste Loch und trug das vorherige noch mit mir. Sobald ich das verstanden hatte, war die Lösung tatsächlich ganz einfach.", image: "https://randomuser.me/api/portraits/men/32.jpg", name: "James Whitfield", role: "Handicap 5,1 · Clubkapitän, Suffolk" },
-        { quote: "Drei Runden später spielte ich meinen besten Score seit zwei Jahren.", text: "Mein Risikoprofil kam im Assessment als zu hoch zurück. Ich griff ständig Fahnen an, wenn ich auf die sichere Mitte des Greens hätte spielen sollen. Drei Runden nachdem ich meinen Report gelesen und mich angepasst hatte, spielte ich meinen besten Score seit zwei Jahren.", image: "https://randomuser.me/api/portraits/women/12.jpg", name: "Fiona Mcallister", role: "Handicap 10,2 · Clubmeisterin, Edinburgh" },
-        { quote: "Mit mir stimmt nichts nicht — ich habe einfach ein messbares Muster.", text: "Das erste Tee war schon immer mein Problem. Das Assessment zeigte eine hohe Empfindlichkeit gegenüber äußerem Druck. Zu wissen, dass mit mir nichts nicht stimmt — ich habe einfach ein messbares Muster — machte es viel leichter, gezielt daran zu arbeiten.", image: "https://randomuser.me/api/portraits/men/51.jpg", name: "David Reinders", role: "Handicap 14,6 · Wochenendgolfer, Rotterdam" },
-        { quote: "Zum ersten Mal habe ich jeden mentalen Schritt bewusst trainiert.", text: "Ich hatte keine Ahnung, dass es acht klar unterscheidbare mentale Schritte für jeden Schlag gibt. Ich dachte, Fokus sei einfach nur, den Ball anzustarren. Der Assessment-Report erklärt, warum das nicht reicht — und die Trainingsreports halfen mir, jeden Schritt tatsächlich bewusst zu trainieren.", image: "https://randomuser.me/api/portraits/men/68.jpg", name: "Marcus van der Berg", role: "Handicap 19,3 · Wochenendgolfer, Amsterdam" },
-        { quote: "Mehr wert als eine weitere Trainingsstunde.", text: "Als Teaching Pro empfehle ich das jetzt jedem Schüler, der technisch versiert ist, aber auf einem Plateau feststeckt. Die Lücke ist fast immer mental. Dieses Assessment gibt dir eine objektive Karte, wo genau — und das ist mehr wert als eine weitere Trainingsstunde.", image: "https://randomuser.me/api/portraits/women/56.jpg", name: "Annika Johansson", role: "PGA Teaching Professional, Göteborg" },
-        { quote: "Fast hätte ich es nicht gekauft. Dann las ich meinen Report.", text: "Ehrlich gesagt war ich skeptisch. Ich spiele seit fünfzehn Jahren und dachte, mentales Zeug sei was für Tour-Pros oder Leute, die alles zerdenken. Meine Frau hat mich quasi herausgefordert. Der Report kam an und ich las ihn in einem Rutsch — er beschrieb Dinge über mein Spiel, die ich nie in Worte fassen konnte. Etwa, warum ich mein schlechtestes Golf immer nach einer guten ersten Neun spiele. Ich bin froh, dass sie mich herausgefordert hat.", image: "https://randomuser.me/api/portraits/men/77.jpg", name: "Robert Mackenzie", role: "Handicap 13,7 · Wochenendgolfer, Glasgow" },
-        { quote: "Jetzt, wo ich es weiß, kann ich es trainieren.", text: "Zwanzig Jahre Golf und ich wusste nie, dass mein Resilienz-Score niedrig war. Ich erhole mich nach einem schlechten Loch nicht gut — das ist einfach eine Tatsache über mich. Jetzt, wo ich es weiß, kann ich es trainieren. Es gibt einen eigenen Trainingsreport für genau das.", image: "https://randomuser.me/api/portraits/men/23.jpg", name: "Tom Harrington", role: "Handicap 7,8 · Wettkampfamateur, Cork" },
-      ],
-    },
     faq: {
       label: "Fragen & Antworten", h2: "Häufig gestellte Fragen",
       contactText: "Alles, was du vor dem Start wissen musst. Antwort nicht dabei?", contactLink: "Kontaktiere uns", showMore: "weitere Fragen",
@@ -543,8 +591,8 @@ export const translations = {
         { title: "Was sind die 8 Schritte der Mental Routine?", content: "Die Mental Routine ist ein 8-Schritte-Framework, entwickelt von Henk de Jong, gegliedert in die drei Phasen, die du bereits kennst. Pre-Shot: Focus (wähle dein Ziel) und Concentration (nur eine Aufgabe). Swing: Conviction (committe dich voll) und Trust (lass es geschehen). Post-Shot: Evaluation (beobachte das Ergebnis), Acceptance (lass das Resultat los), Analysis (erkenne, was abgewichen ist und warum) und Transfer (speichere das Gelernte für nächstes Mal). Die meisten Golfer überspringen die Post-Shot-Schritte — und genau dort liegen die größten Gewinne." },
         { title: "Was zeigt mir das PDF-Profil eigentlich?", content: "Dein Profil kartiert deine Scores über alle 8 Routine-Schritte und die 4 Einflussfaktoren: Risikobereitschaft, Druck, Resilienz und Spielbereitschaft. Es hebt deine stärksten mentalen Bereiche hervor, identifiziert die konkreten Muster, die dich Schläge oder Spaß kosten, und gibt dir gezielte Empfehlungen, worauf du deine mentale Entwicklung konzentrieren solltest." },
         { title: "Was sind die Trainingsreports?", content: "Trainingsreports sind persönliche Arbeitsbücher (PDF) von rund zehn Seiten, aufgebaut aus deinen Assessment-Scores und deinem Handicap — jeder zielt auf einen Schritt oder Faktor in deinem Profil, wie Conviction oder Acceptance. Jeder Report arbeitet fünf Blickwinkel aus, jeweils mit einer Übung auf dem Platz, zu Hause und auf der Range, dazu ein 4-Wochen-Plan, ein Aktionsplan für vor, während und nach der Runde, eine Einsicht und eine Geschichte aus dem Spiel, worauf du bei anderen achtest, ein Mantra und Platz-Cue sowie KI-Coaching-Prompts. Es gibt zwölf insgesamt — einen für jeden der acht Schritte und der vier Faktoren. Dein Assessment enthält drei deiner Wahl; dein Profil empfiehlt, mit welchen drei du starten solltest." },
-        { title: "Beruht das auf echter Forschung?", content: "Ja. Die Methodik wurde vom Golfpsychologen und Coach Henk de Jong durch Forschung mit mehr als 1.000 Golfern über das letzte Jahrzehnt entwickelt. Die zentrale Erkenntnis: 90 % der Golfer, die eine strukturierte mentale Routine konsequent anwenden, berichten von messbarer Verbesserung sowohl bei der Leistung als auch beim Spaß — unabhängig vom Handicap. Das Framework ist die Grundlage der NogBeterGolfen-Methode." },
-        { title: "Ist das auch für High-Handicap-Golfer (28+) geeignet?", content: "Absolut. Tatsächlich profitieren Golfer mit höheren Handicaps oft am meisten — weil Frust, Unbeständigkeit und verlorener Spaß in diesem Stadium fast immer mental und nicht technisch sind. Das Assessment ist für einen 34-Handicapper, der einfach mehr Spaß am Spiel haben will, genauso wertvoll wie für einen Scratch-Golfer, der sich auf den Wettkampf vorbereitet. Mehrere unserer am besten bewerteten Erfahrungsberichte stammen von Golfern mit Handicaps über 28." },
+        { title: "Beruht das auf echter Forschung?", content: "Ja. Die Methodik wurde auf Initiative von Henk de Jong durch Forschung mit mehr als 1.000 Golfern über das letzte Jahrzehnt entwickelt. Die zentrale Erkenntnis: 90 % der Golfer, die eine strukturierte mentale Routine konsequent anwenden, berichten von messbarer Verbesserung sowohl bei der Leistung als auch beim Spaß — unabhängig vom Handicap." },
+        { title: "Ist das auch für High-Handicap-Golfer (28+) geeignet?", content: "Absolut. Tatsächlich profitieren Golfer mit höheren Handicaps oft am meisten — weil Frust, Unbeständigkeit und verlorener Spaß in diesem Stadium oft genauso mental wie technisch sind. Das Assessment ist für einen 34-Handicapper, der einfach mehr Spaß am Spiel haben will, genauso wertvoll wie für einen Scratch-Golfer, der sich auf den Wettkampf vorbereitet." },
       ],
     },
     contact: {
@@ -563,10 +611,11 @@ export const translations = {
       quizLine: "Noch unsicher? Sieh deinen schwächsten Punkt gratis — 8 Minuten, keine Kartendaten nötig.",
       trust: ["Kurz danach in deinem Posteingang", "Ein Assessment — $79", "Forschungsbasis: 1.000+ Golfer", "30 Tage Geld-zurück-Garantie"],
     },
-        footer: { tagline: "Basierend auf der NogBeterGolfen-Methode von Henk de Jong", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfiehl das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloser QuickScan", methodology: "Die Methodik", quoteText: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong", methodBy: "Methode von Henk de Jong", menuLabel: "Menü" },
+        footer: { tagline: "Die mentale Routine für jeden Schlag.", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfiehl das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloser QuickScan", methodology: "Die Methodik", quoteText: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong", methodBy: "Eine Initiative von Henk de Jong", menuLabel: "Menü" },
 },
   fr: {
-    nav: { howItWorks: "La recherche", pricing: "Tarifs", testimonials: "Témoignages", faq: "FAQ", contact: "Contact", cta: "QuickScan gratuit", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu", selectLang: "Choisir la langue", skipToContent: "Aller au contenu" },
+    nav: { howItWorks: "Comment ça marche", faq: "FAQ", contact: "Contact", cta: "QuickScan gratuit", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu", selectLang: "Choisir la langue", skipToContent: "Aller au contenu" },
+    home: en.home, // EN until DE/FR/ES are translated
     hero: {
       badge: "Le MentalRoutine Assessment",
       h1a: "Les coups que vous perdez", h1b: "ne sont pas dans votre swing.",
@@ -683,7 +732,6 @@ export const translations = {
       reportPreview: { label: "Votre assessment inclut :", items: ["Votre profil de joueur complet — les 8 étapes + les 4 facteurs", "Ce que chaque score signifie pour votre jeu", "Vos 3 priorités de développement", "Trois rapports d'entraînement de votre choix parmi douze"] },
       previewBtn: "Aperçu d'un profil type →",
       previewModal: { standard: "Profil de joueur — Exemple", training: "Rapport d'entraînement — Exemple", closePreview: "Fermer l'aperçu", iframeTitle: "Aperçu du profil type" },
-      pricingQuote: { text: "Le profil a mis des mots sur des choses de mon jeu que je n'avais jamais réussi à formuler.", name: "Robert M.", role: "Handicap 13.7" },
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
@@ -702,20 +750,6 @@ export const translations = {
       reportCountStd: "Trois inclus", reportCountDlx: "Douze au choix",
       mockup: { tagline: "Rapport d'entraînement · ~10 pages", title: "Conviction", subtitle: "Cahier personnel pour votre profil", priority: "point de progression", physical: "SUR LE PARCOURS", mental: "À LA MAISON", exercise: "Exercice", expertInsight: "Éclairage", reflection: "Réflexion", storytelling: "Histoire du jeu", mantra: "Mantra", aiPrompt: "Prompt IA", plan: "Plan sur 4 semaines", exPhysical: "Nommez le coup, swinguez dans les 3 secondes · 10 min", exMental: "Répétez votre moment de choix · 5 min", exExpert: "Pourquoi le doute se voit dans le swing, pas dans la tête", exReflection: "Où me suis-je retenu aujourd'hui ?", exStorytelling: "Un moment familier : le départ qui comptait", exMantra: "\"Choisi veut dire à fond.\"", exAiPrompt: "Prompt de départ + 2 relances pour votre coach IA", exPlan: "Semaine après semaine — quoi faire et combien de temps" },
     },
-    testimonials: {
-      label: "Depuis le fairway", h2: "Ce que disent les golfeurs",
-      items: [
-        { quote: "Une fois ce schéma écrit noir sur blanc, tout a changé.", text: "J'ai toujours cru que mon irrégularité était technique. Le rapport m'a montré que je jouais trop agressivement après les bogeys — à vouloir récupérer trop vite. Une fois ce schéma écrit noir sur blanc dans le chapitre Conviction, tout a changé. Mes scores nets sont bien plus réguliers maintenant.", image: "https://randomuser.me/api/portraits/women/44.jpg", name: "Sarah O'Brien", role: "Handicap 12.4 · Compétitrice amateur, Dublin" },
-        { quote: "Je ne m'attendais pas à ce que ça s'applique à quelqu'un de mon niveau. Et pourtant.", text: "Je ne suis pas une golfeuse de compétition — je joue pour le côté social et pour me vider la tête après le travail. Mais je me sentais frustrée parce que chaque parcours se ressemblait. Le rapport a montré que mon score d'Acceptance était très faible : je traînais chaque mauvais trou dans le suivant. Ce seul enseignement a changé ma façon de vivre un parcours. Mêmes scores, mais j'y prends enfin du plaisir.", image: "https://randomuser.me/api/portraits/women/29.jpg", name: "Catherine Blake", role: "Handicap 31.4 · Golfeuse loisir, Melbourne" },
-        { quote: "Une fois que j'ai compris ça, le corriger a été simple.", text: "L'assessment a identifié que mon score d'Acceptance était faible — je ne terminais pas la routine mentale après un mauvais coup. J'entamais le trou suivant en traînant encore le précédent. Une fois que j'ai compris ça, le corriger a été vraiment simple.", image: "https://randomuser.me/api/portraits/men/32.jpg", name: "James Whitfield", role: "Handicap 5.1 · Capitaine de club, Suffolk" },
-        { quote: "Trois parcours plus tard, j'ai signé mon meilleur score en deux ans.", text: "Mon profil de risque dans l'assessment est ressorti comme trop élevé. Je n'arrêtais pas d'attaquer les drapeaux alors que j'aurais dû jouer le gros de la green. Trois parcours après avoir lu mon rapport et ajusté, j'ai signé mon meilleur score en deux ans.", image: "https://randomuser.me/api/portraits/women/12.jpg", name: "Fiona Mcallister", role: "Handicap 10.2 · Championne de club, Édimbourg" },
-        { quote: "Je ne suis pas cassé — j'ai juste un schéma mesurable.", text: "Le premier tee a toujours été mon problème. L'assessment a révélé une forte sensibilité à la pression externe. Savoir que je ne suis pas cassé — que j'ai juste un schéma mesurable — a rendu bien plus facile le fait de commencer à y travailler volontairement.", image: "https://randomuser.me/api/portraits/men/51.jpg", name: "David Reinders", role: "Handicap 14.6 · Golfeur du week-end, Rotterdam" },
-        { quote: "J'ai travaillé chaque étape mentale volontairement, pour la première fois.", text: "Je n'avais aucune idée qu'il y avait huit étapes mentales distinctes à chaque coup. Je pensais que le focus, c'était juste fixer la balle. Le rapport d'assessment explique pourquoi ça ne suffit pas — et les rapports d'entraînement m'ont aidé à vraiment travailler chaque étape volontairement.", image: "https://randomuser.me/api/portraits/men/68.jpg", name: "Marcus van der Berg", role: "Handicap 19.3 · Golfeur du week-end, Amsterdam" },
-        { quote: "Ça vaut plus qu'une leçon de plus.", text: "En tant qu'enseignant, je le recommande désormais à chaque élève techniquement compétent mais qui stagne. L'écart est presque toujours mental. Cet assessment vous donne une carte objective de l'endroit où il se situe — et ça vaut plus qu'une leçon de plus.", image: "https://randomuser.me/api/portraits/women/56.jpg", name: "Annika Johansson", role: "Enseignante PGA, Göteborg" },
-        { quote: "J'ai failli ne pas l'acheter. Puis j'ai lu mon rapport.", text: "Honnêtement, j'étais sceptique. Je joue depuis quinze ans et je me disais que le mental, c'était pour les pros du Tour ou les gens qui réfléchissent trop à tout. Ma femme m'a plus ou moins mis au défi. Le rapport est arrivé et je l'ai lu d'une traite — il décrivait des choses de mon jeu que je n'avais jamais réussi à formuler. Comme pourquoi je joue toujours mon plus mauvais golf après un bon aller. Je suis content qu'elle m'ait mis au défi.", image: "https://randomuser.me/api/portraits/men/77.jpg", name: "Robert Mackenzie", role: "Handicap 13.7 · Golfeur du week-end, Glasgow" },
-        { quote: "Maintenant que je le sais, je peux le travailler.", text: "Vingt ans de golf et je n'avais jamais su que mon score de résilience était faible. Je ne récupère pas bien après un mauvais trou — c'est un simple fait qui me concerne. Maintenant que je le sais, je peux le travailler. Il y a un rapport d'entraînement précisément pour ça.", image: "https://randomuser.me/api/portraits/men/23.jpg", name: "Tom Harrington", role: "Handicap 7.8 · Amateur de compétition, Cork" },
-      ],
-    },
     faq: {
       label: "Questions & réponses", h2: "Questions fréquentes",
       contactText: "Tout ce que vous devez savoir avant de commencer. Vous ne trouvez pas la réponse ?", contactLink: "Contactez-nous", showMore: "questions supplémentaires",
@@ -725,8 +759,8 @@ export const translations = {
         { title: "Quelles sont les 8 étapes de la Mental Routine ?", content: "La Mental Routine est un cadre en 8 étapes développé par Henk de Jong, regroupées dans les trois phases que vous connaissez déjà. Avant le coup : Focus (choisir votre cible) et Concentration (une seule tâche). Swing : Conviction (s'engager totalement) et Trust (laisser faire). Après le coup : Evaluation (observer le résultat), Acceptance (lâcher le résultat), Analysis (identifier ce qui a dévié et pourquoi) et Transfer (garder ce que vous avez appris pour la prochaine fois). La plupart des golfeurs sautent les étapes d'après le coup — c'est justement là que se trouvent les plus grands gains." },
         { title: "Que me montre concrètement le profil PDF ?", content: "Votre profil cartographie vos scores sur les 8 étapes de la routine et les 4 facteurs d'influence : appétence au risque, pression, résilience et disponibilité. Il met en lumière vos points mentaux les plus forts, identifie les schémas précis qui vous coûtent des coups ou du plaisir, et vous donne des recommandations ciblées sur les zones à travailler pour votre développement mental." },
         { title: "Que sont les rapports d'entraînement ?", content: "Les rapports d'entraînement sont des cahiers personnels (PDF) d'une dizaine de pages, bâtis à partir de vos scores d'assessment et de votre handicap — chacun ciblant une étape ou un facteur de votre profil, comme la Conviction ou l'Acceptance. Chaque rapport développe cinq angles, chacun avec un exercice sur le parcours, à la maison et au practice, plus un plan sur 4 semaines, un plan d'action avant, pendant et après le parcours, un éclairage et une histoire du jeu, ce qu'il faut observer chez les autres, un mantra et un mot-clé de parcours, et des prompts de coaching IA. Il y en a douze au total — un pour chacune des huit étapes et des quatre facteurs. Votre assessment en inclut trois de votre choix ; votre profil vous recommande par lesquels commencer." },
-        { title: "Est-ce basé sur de vraies recherches ?", content: "Oui. La méthodologie a été développée par le psychologue du golf et coach Henk de Jong à partir de recherches avec plus de 1 000 golfeurs menées au cours de la dernière décennie. Le constat central : 90 % des golfeurs qui appliquent régulièrement une routine mentale structurée rapportent une amélioration mesurable à la fois de leur performance et de leur plaisir — quel que soit leur handicap. Ce cadre est le fondement de la méthode NogBeterGolfen." },
-        { title: "Est-ce aussi adapté aux golfeurs à handicap élevé (28+) ?", content: "Tout à fait. En réalité, les golfeurs à handicap plus élevé en tirent souvent le plus grand bénéfice — parce que la frustration, l'irrégularité et la perte de plaisir sont presque toujours mentales plutôt que techniques à ce stade. L'assessment est tout aussi précieux pour un joueur de handicap 34 qui veut simplement prendre plus de plaisir que pour un golfeur scratch qui prépare une compétition. Plusieurs de nos témoignages les mieux notés viennent de golfeurs dont le handicap dépasse 28." },
+        { title: "Est-ce basé sur de vraies recherches ?", content: "Oui. La méthodologie a été développée à l'initiative de Henk de Jong à partir de recherches avec plus de 1 000 golfeurs menées au cours de la dernière décennie. Le constat central : 90 % des golfeurs qui appliquent régulièrement une routine mentale structurée rapportent une amélioration mesurable à la fois de leur performance et de leur plaisir — quel que soit leur handicap." },
+        { title: "Est-ce aussi adapté aux golfeurs à handicap élevé (28+) ?", content: "Tout à fait. En réalité, les golfeurs à handicap plus élevé en tirent souvent le plus grand bénéfice — parce que la frustration, l'irrégularité et la perte de plaisir sont souvent autant mentales que techniques à ce stade. L'assessment est tout aussi précieux pour un joueur de handicap 34 qui veut simplement prendre plus de plaisir que pour un golfeur scratch qui prépare une compétition." },
       ],
     },
     contact: {
@@ -745,10 +779,11 @@ export const translations = {
       quizLine: "Vous hésitez encore ? Voyez votre maillon faible gratuitement — 8 minutes, sans carte bancaire.",
       trust: ["Dans votre boîte de réception peu après", "Un seul assessment — $79", "Base de recherche : 1 000+ golfeurs", "Garantie satisfait ou remboursé de 30 jours"],
     },
-        footer: { tagline: "Basé sur la méthode NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Enseignant PGA ? Recommandez l'assessment à vos élèves →", socialLabel: "Suivez-nous", quizLink: "QuickScan gratuit", methodology: "La méthodologie", quoteText: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong", methodBy: "Méthode de Henk de Jong", menuLabel: "Menu" },
+        footer: { tagline: "La routine mentale pour chaque coup.", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Enseignant PGA ? Recommandez l'assessment à vos élèves →", socialLabel: "Suivez-nous", quizLink: "QuickScan gratuit", methodology: "La méthodologie", quoteText: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong", methodBy: "Une initiative de Henk de Jong", menuLabel: "Menu" },
 },
   es: {
-    nav: { howItWorks: "La Investigación", pricing: "Precios", testimonials: "Testimonios", faq: "Preguntas", contact: "Contacto", cta: "QuickScan gratis", openMenu: "Abrir menú", closeMenu: "Cerrar menú", selectLang: "Seleccionar idioma", skipToContent: "Saltar al contenido" },
+    nav: { howItWorks: "Cómo funciona", faq: "Preguntas", contact: "Contacto", cta: "QuickScan gratis", openMenu: "Abrir menú", closeMenu: "Cerrar menú", selectLang: "Seleccionar idioma", skipToContent: "Saltar al contenido" },
+    home: en.home, // EN until DE/FR/ES are translated
     hero: {
       badge: "El MentalRoutine Assessment",
       h1a: "Los golpes que pierdes", h1b: "no están en tu swing.",
@@ -865,7 +900,6 @@ export const translations = {
       reportPreview: { label: "Tu assessment incluye:", items: ["Tu perfil de jugador completo — los 8 pasos + 4 factores", "Lo que significa cada score para tu juego", "Tus 3 prioridades de desarrollo principales", "Tres training reports a tu elección de entre doce"] },
       previewBtn: "Ver un perfil de muestra →",
       previewModal: { standard: "Perfil de jugador — Muestra", training: "Training Report — Muestra", closePreview: "Cerrar vista previa", iframeTitle: "Vista previa del perfil de muestra" },
-      pricingQuote: { text: "El perfil describió cosas de mi juego que nunca había sido capaz de expresar con palabras.", name: "Robert M.", role: "Handicap 13,7" },
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
@@ -884,20 +918,6 @@ export const translations = {
       reportCountStd: "Tres incluidos", reportCountDlx: "Doce entre los que elegir",
       mockup: { tagline: "Training report · ~10 páginas", title: "Conviction", subtitle: "Cuaderno personal para tu perfil", priority: "punto de mejora", physical: "EN EL CAMPO", mental: "EN CASA", exercise: "Ejercicio", expertInsight: "Perspectiva", reflection: "Reflexión", storytelling: "Del juego real", mantra: "Mantra", aiPrompt: "Prompt de IA", plan: "Plan de 4 semanas", exPhysical: "Nombra el golpe y haz el swing en 3 segundos · 10 min", exMental: "Ensaya tu momento de decisión · 5 min", exExpert: "Por qué la duda aparece en el swing, no en la cabeza", exReflection: "¿Dónde me he frenado hoy?", exStorytelling: "Un momento reconocible: la salida que importaba", exMantra: "\"Elegido es a por todas.\"", exAiPrompt: "Prompt inicial + 2 de seguimiento para tu coach de IA", exPlan: "Semana a semana — qué hacer y cuánto tiempo" },
     },
-    testimonials: {
-      label: "Desde el Fairway", h2: "Lo que dicen los golfistas",
-      items: [
-        { quote: "Una vez que vi ese patrón por escrito, todo cambió.", text: "Siempre di por hecho que mi inconsistencia era técnica. El informe me mostró que jugaba demasiado agresivo tras los bogeys, intentando recuperarme demasiado rápido. Una vez que vi ese patrón escrito con claridad en el capítulo de Conviction, todo cambió. Mis scores netos son ahora mucho más consistentes.", image: "https://randomuser.me/api/portraits/women/44.jpg", name: "Sarah O'Brien", role: "Handicap 12,4 · Competidora amateur, Dublín" },
-        { quote: "No esperaba que aplicara a alguien de mi nivel. Y aplicó.", text: "No soy una golfista competitiva — juego por la parte social y para despejar la cabeza después del trabajo. Pero me estaba frustrando porque cada vuelta se sentía igual. El informe me mostró que mi score de Acceptance era muy bajo: arrastraba cada mal hoyo al siguiente. Esa sola idea cambió cómo vivo una vuelta. Los mismos scores, pero ahora sí que la disfruto.", image: "https://randomuser.me/api/portraits/women/29.jpg", name: "Catherine Blake", role: "Handicap 31,4 · Golfista social, Melbourne" },
-        { quote: "En cuanto lo entendí, arreglarlo fue sencillo.", text: "El assessment identificó que mi score de Acceptance era bajo — no terminaba la rutina mental tras un mal golpe. Empezaba el hoyo siguiente arrastrando todavía el anterior. En cuanto lo entendí, arreglarlo fue de verdad sencillo.", image: "https://randomuser.me/api/portraits/men/32.jpg", name: "James Whitfield", role: "Handicap 5,1 · Capitán de club, Suffolk" },
-        { quote: "Tres vueltas después, firmé mi mejor score en dos años.", text: "Mi perfil de riesgo en el assessment salió como demasiado alto. No paraba de atacar banderas cuando debería haber jugado a la parte ancha del green. Tres vueltas después de leer mi informe y ajustar, firmé mi mejor score en dos años.", image: "https://randomuser.me/api/portraits/women/12.jpg", name: "Fiona Mcallister", role: "Handicap 10,2 · Campeona de club, Edimburgo" },
-        { quote: "No estoy roto — solo tengo un patrón medible.", text: "El primer tee siempre ha sido mi problema. El assessment mostró una alta sensibilidad a la presión externa. Saber que no estoy roto —que solo tengo un patrón medible— hizo mucho más fácil empezar a trabajarlo de forma intencionada.", image: "https://randomuser.me/api/portraits/men/51.jpg", name: "David Reinders", role: "Handicap 14,6 · Golfista de fin de semana, Róterdam" },
-        { quote: "Entrené cada paso mental de forma deliberada por primera vez.", text: "No tenía ni idea de que había ocho pasos mentales distintos en cada golpe. Pensaba que la concentración era solo mirar fijamente la bola. El informe del assessment explica por qué eso no basta, y los training reports me ayudaron a entrenar de verdad cada paso de forma deliberada.", image: "https://randomuser.me/api/portraits/men/68.jpg", name: "Marcus van der Berg", role: "Handicap 19,3 · Golfista de fin de semana, Ámsterdam" },
-        { quote: "Vale más que otra clase.", text: "Como teaching pro, ahora se lo recomiendo a todo alumno técnicamente competente pero estancado. La brecha casi siempre es mental. Este assessment te da un mapa objetivo de dónde está, y eso vale más que otra clase.", image: "https://randomuser.me/api/portraits/women/56.jpg", name: "Annika Johansson", role: "PGA Teaching Professional, Gotemburgo" },
-        { quote: "Casi no lo compro. Luego leí mi informe.", text: "Sinceramente, era escéptico. Llevo quince años jugando y daba por hecho que lo mental era para los pros del Tour o para gente que le da demasiadas vueltas a todo. Mi mujer prácticamente me retó. Llegó el informe y lo leí de una sentada — describía cosas de mi juego que nunca había sido capaz de expresar con palabras. Como por qué siempre juego mi peor golf tras unos buenos primeros nueve. Me alegro de que me retara.", image: "https://randomuser.me/api/portraits/men/77.jpg", name: "Robert Mackenzie", role: "Handicap 13,7 · Golfista de fin de semana, Glasgow" },
-        { quote: "Ahora que lo sé, puedo entrenarlo.", text: "Veinte años de golf y nunca supe que mi score de resiliencia era bajo. No me recupero bien tras un mal hoyo — es un hecho sobre mí. Ahora que lo sé, puedo entrenarlo. Hay un training report específico para exactamente eso.", image: "https://randomuser.me/api/portraits/men/23.jpg", name: "Tom Harrington", role: "Handicap 7,8 · Amateur competitivo, Cork" },
-      ],
-    },
     faq: {
       label: "Preguntas y Respuestas", h2: "Preguntas Frecuentes",
       contactText: "Todo lo que necesitas saber antes de empezar. ¿No encuentras la respuesta?", contactLink: "Contáctanos", showMore: "más preguntas",
@@ -907,8 +927,8 @@ export const translations = {
         { title: "¿Cuáles son los 8 pasos de la Mental Routine?", content: "La Mental Routine es un marco de 8 pasos desarrollado por Henk de Jong, agrupado en las tres fases que ya conoces. Pre-golpe: Focus (selecciona tu objetivo) y Concentration (una sola tarea). Swing: Conviction (comprométete del todo) y Trust (deja que suceda). Post-golpe: Evaluation (observa el resultado), Acceptance (suelta el resultado), Analysis (identifica qué se desvió y por qué) y Transfer (guarda lo aprendido para la próxima vez). La mayoría de golfistas se salta los pasos post-golpe, que es donde están las mayores ganancias." },
         { title: "¿Qué me muestra realmente el perfil PDF?", content: "Tu perfil cartografía tus scores en los 8 pasos de la rutina y los 4 factores de influencia: apetito de riesgo, presión, resiliencia y disponibilidad. Destaca tus áreas mentales más fuertes, identifica los patrones concretos que te cuestan golpes o disfrute, y te da recomendaciones dirigidas sobre dónde centrar tu desarrollo mental." },
         { title: "¿Qué son los Training Reports?", content: "Los training reports son cuadernos personales (PDF) de unas diez páginas, construidos a partir de tus scores del assessment y tu hándicap — cada uno apunta a un paso o factor de tu perfil, como Conviction o Acceptance. Cada informe desarrolla cinco ángulos, cada uno con un ejercicio en el campo, en casa y en el range, además de un plan de 4 semanas, un plan de acción para antes, durante y después de la vuelta, una perspectiva y una historia del juego, qué observar en los demás, un mantra y una señal para el campo, y prompts de coaching con IA. Hay doce en total — uno por cada uno de los ocho pasos y los cuatro factores. Tu assessment incluye tres a tu elección; tu perfil recomienda con qué tres empezar." },
-        { title: "¿Está basado en investigación real?", content: "Sí. La metodología fue desarrollada por el psicólogo de golf y entrenador Henk de Jong a través de investigación con más de 1000 golfistas realizada durante la última década. El hallazgo central: el 90% de los golfistas que aplican de forma consistente una rutina mental estructurada reportan una mejora medible tanto en rendimiento como en disfrute, independientemente del handicap. El marco es la base del método NogBeterGolfen." },
-        { title: "¿Es también adecuado para golfistas de handicap alto (28+)?", content: "Por supuesto. De hecho, los golfistas con handicaps más altos suelen ser los que más ganan, porque la frustración, la inconsistencia y la pérdida de disfrute son casi siempre mentales y no técnicas en esa etapa. El assessment es igual de valioso para un golfista de handicap 34 que simplemente quiere disfrutar más del juego que para un scratch preparándose para competición. Varios de nuestros testimonios mejor valorados vienen de golfistas con handicaps por encima de 28." },
+        { title: "¿Está basado en investigación real?", content: "Sí. La metodología fue desarrollada por iniciativa de Henk de Jong a través de investigación con más de 1000 golfistas realizada durante la última década. El hallazgo central: el 90% de los golfistas que aplican de forma consistente una rutina mental estructurada reportan una mejora medible tanto en rendimiento como en disfrute, independientemente del handicap." },
+        { title: "¿Es también adecuado para golfistas de handicap alto (28+)?", content: "Por supuesto. De hecho, los golfistas con handicaps más altos suelen ser los que más ganan, porque la frustración, la inconsistencia y la pérdida de disfrute son a menudo tanto mentales como técnicas en esa etapa. El assessment es igual de valioso para un golfista de handicap 34 que simplemente quiere disfrutar más del juego que para un scratch preparándose para competición." },
       ],
     },
     contact: {
@@ -927,7 +947,7 @@ export const translations = {
       quizLine: "¿Aún dudando? Mira tu eslabón más débil gratis — 8 minutos, sin tarjeta.",
       trust: ["En tu bandeja de entrada poco después", "Un assessment — $79", "Base de investigación: 1000+ golfistas", "Garantía de devolución de 30 días"],
     },
-        footer: { tagline: "Basado en el método NogBeterGolfen de Henk de Jong", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Eres Teaching Professional? Recomienda el assessment a tus alumnos →", socialLabel: "Síguenos", quizLink: "QuickScan gratis", methodology: "La metodología", quoteText: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong", methodBy: "Método de Henk de Jong", menuLabel: "Menú" },
+        footer: { tagline: "La rutina mental para cada golpe.", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Eres Teaching Professional? Recomienda el assessment a tus alumnos →", socialLabel: "Síguenos", quizLink: "QuickScan gratis", methodology: "La metodología", quoteText: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong", methodBy: "Una iniciativa de Henk de Jong", menuLabel: "Menú" },
 },
 } satisfies Record<Lang, Translation>;
 

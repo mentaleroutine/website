@@ -1,5 +1,36 @@
 # Project: The Mental Routine for Golfers — Landing Page
 
+## ⚠️ ACTUEEL — HOMEPAGE = QUICKSCAN-FUNNEL (okt 2026, branch `funnel-quickscan`)
+
+> Wint van alles hieronder waar het botst. Terugrollen: tag `homepage-pre-funnel-2026-10`.
+> Wat er van de oude homepage af ging + hergebruik: `docs/ARCHIEF_HOMEPAGE_OKT2026.md`.
+
+- **De homepage verkoopt niets.** Eén doel: de gratis QuickScan. Kopen gebeurt pas ná de QuickScan
+  (resultaatscherm + nurture-mails → `/assessment` of Lemon-checkout). Geen koopknop, pricing,
+  trainingsrapporten-sectie of "warmte"-logica meer op `/` (`traffic-warmth.ts` verwijderd).
+- **Messaging = Entry Narrative Framework v1.5** (Berend & Henk, 23-9-2026, bevroren). Data in
+  `src/lib/narratives.ts` (3 groepen · 12 narratives · 48 hooks, EN vast + NL-vertaling).
+  Regels: herkennen, niet diagnosticeren; **geen "strokes lost by mindset"-claims**; de 4 factoren
+  blijven **onder water** (niet als navigatie); geen persona's.
+- **Secties `/`:** hero (hook P1.1) · `#recognise` "Herken je dit?" (12 narratives → QuickScan met
+  `?route=P1`…) · `#how-it-works` 3 momenten (pre-shot/swing/post-shot, géén stappen/factoren/aantallen)
+  · `#team` Henk + Berend · `#faq` QuickScan-vragen (`home.faq`, ook JSON-LD) · contact · footer.
+- **`?route=P4.2`** (of `P4`) op `/` toont de hook van die route in de hero (advertenties). De route
+  gaat mee naar de QuickScan → Plausible-props `route` op `quiz_click`/`narrative_click`/`quiz_start`/
+  `quiz_complete`/`quiz_optin`.
+- **QuickScan-links** via `src/lib/quickscan.ts` → `/quickscan?start=1&lang=nl|en[&route=]`.
+  `start=1` slaat de eigen landing van quiz.html over (de homepage ís de landing); de landing op
+  `/quickscan` blijft voor direct verkeer. `/quickscan` = `public/quiz.html` (rewrite).
+- **`/assessment`** blijft als verkooppagina voor warme leads (niet in menu/home).
+  **Pro-programma:** alleen één footer-link.
+- **Henk de Jong = initiatiefnemer van MentalRoutine** — niet coach, niet (golf)psycholoog, nooit
+  PGA-pro (wel "PGA-netwerk": klopt). **Alleen MentalRoutine-branding** (NogBeterGolfen weg).
+  Fictieve testimonials + pricing-quotes **verwijderd**. "1.000+ golfers sinds 2016" en "4.9/5" kloppen.
+- **Talen:** `home.*` + narratives in EN + NL; DE/FR/ES tonen `home: en.home` tot vertaald.
+  NL-teksten ter goedkeuring Henk: `docs/NL_TEKSTEN_HOMEPAGE_HENK.md`.
+- Lokale typecheck: de geneste kopie `Claude website MR 01/Claude website MR 01/` (untracked) geeft
+  tsc-fouten — negeren; alleen fouten in `src/` tellen.
+
 ## ⚠️ ACTUELE STAAT — VERSIMPELD MODEL (juli 2026, LIVE op www.mentalroutine.com)
 
 > **Grote herziening uitgevoerd + live.** De secties verderop in dit bestand beschrijven

@@ -7,9 +7,11 @@ import { translations, type Translation } from '@/lib/translations';
 
 const MOBILE_INITIAL_COUNT = 4;
 
-export function FaqsSection() {
+// `content` lets a page show its own question set (the homepage shows QuickScan
+// questions); without it, the general product FAQ is used.
+export function FaqsSection({ content }: { content?: Translation["home"]["faq"] } = {}) {
   const { lang } = useLang();
-  const t: Translation["faq"] = translations[lang].faq;
+  const t: Translation["faq"] | Translation["home"]["faq"] = content ?? translations[lang].faq;
   const [openId, setOpenId] = React.useState<string>('item-0');
   const [showAll, setShowAll] = React.useState(false);
 
