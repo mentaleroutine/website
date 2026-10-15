@@ -1,9 +1,10 @@
 # Project: The Mental Routine for Golfers — Landing Page
 
-## ⚠️ ACTUEEL — HOMEPAGE = QUICKSCAN-FUNNEL (okt 2026, branch `funnel-quickscan`)
+## ⚠️ ACTUEEL — HOMEPAGE = QUICKSCAN-FUNNEL (okt 2026, LIVE op `main`)
 
 > Wint van alles hieronder waar het botst. Terugrollen: tag `homepage-pre-funnel-2026-10`.
 > Wat er van de oude homepage af ging + hergebruik: `docs/ARCHIEF_HOMEPAGE_OKT2026.md`.
+> **Volledig sessieverslag (besluiten + redenen, commits, openstaand): `docs/SESSIE_QUICKSCAN_FUNNEL_OKT2026.md`.**
 
 - **De homepage verkoopt niets.** Eén doel: de gratis QuickScan. Kopen gebeurt pas ná de QuickScan
   (resultaatscherm + nurture-mails → `/assessment` of Lemon-checkout). Geen koopknop, pricing,
@@ -64,7 +65,7 @@
   Scoreschaal overal **0–10, 1 decimaal**.
 
 **Pagina's/URLs:**
-- `/` homepage — LEGT UIT, verkoopt niet. Hero: geen prijs/koopknop, **3 gelijkwaardige deuren**
+- ~~`/` homepage — 3 gelijkwaardige deuren~~ **VEROUDERD (okt 2026): homepage = QuickScan-funnel, zie bovenaan.** Oud: `/` homepage — LEGT UIT, verkoopt niet. Hero: geen prijs/koopknop, **3 gelijkwaardige deuren**
   (QuickScan `/quickscan` · assessment `/assessment` · pro `/pro-program`).
 - `/assessment` = NIEUWE Next.js-pagina (`src/app/assessment/page.tsx`) — het betaalde product,
   koopknop → **Lemon Squeezy-checkout** (live). Meertalig via `translations.assessmentPage`.
@@ -95,7 +96,7 @@ LANG_OPTIONS niet meer uitgecommend). ✅ **`sample-mastery.html` VERWIJDERD** +
 `mastery`-preview-pad uit report-preview-modal/page.tsx/previewModal-keys (product bestaat niet
 meer). ✅ privacyNote "nooit gedeeld zonder jouw toestemming".
 
-**Openstaand (niet gedaan):** testimonials-foto's/authenticiteit (randomuser.me, overleg compagnon) ·
+**Openstaand (niet gedaan):** ~~testimonials-foto's/authenticiteit~~ (okt 2026: fictief → verwijderd) ·
 UTM-meetbaarheid PGA-mailing · DE/FR/ES-vertaling is AI-gegenereerd (idiomatisch, tsc+build schoon)
 maar niet menselijk gereviewd op toon/nuance · tekstuele finetuning · `assessment/page.tsx`-copy is
 grotendeels mijn formulering (mag bijgestuurd).
