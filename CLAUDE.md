@@ -9,7 +9,8 @@
   (resultaatscherm + nurture-mails → `/assessment` of Lemon-checkout). Geen koopknop, pricing,
   trainingsrapporten-sectie of "warmte"-logica meer op `/` (`traffic-warmth.ts` verwijderd).
 - **Messaging = Entry Narrative Framework v1.5** (Berend & Henk, 23-9-2026, bevroren). Data in
-  `src/lib/narratives.ts` (3 groepen · 12 narratives · 48 hooks, EN vast + NL-vertaling).
+  `src/lib/narratives.ts` (3 groepen · 12 narratives · 48 sub-narratives · 48 hooks + NL-vertaling).
+  Groepsregels, narratives en sub-narratives = **Henks golfer-voice-keuzes (okt 2026)**; hooks = v1.5.
   Regels: herkennen, niet diagnosticeren; **geen "strokes lost by mindset"-claims**; de 4 factoren
   blijven **onder water** (niet als navigatie); geen persona's.
 - **Secties `/`:** hero (hook P1.1) · `#recognise` "Herken je dit?" (12 narratives → QuickScan met

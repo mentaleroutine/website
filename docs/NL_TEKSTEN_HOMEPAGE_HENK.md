@@ -1,43 +1,96 @@
 # Nederlandse teksten nieuwe homepage — ter goedkeuring (Henk)
 
-Engels = vastgelegde tekst uit het Entry Narrative Framework v1.5. Nederlands = vertaling, **graag per regel akkoord of aanpassing**.
+Groepsregels, narratives en sub-narratives = Henks golfer-voice-keuzes (okt 2026); hooks = Entry Narrative Framework v1.5. Nederlands = vertaling in dezelfde spreektaal, **graag per regel akkoord of aanpassing**.
 
 ## 1. De 12 herkenningszinnen (sectie "Herken je dit?")
 
-### Prestatie — Ik wil betere resultaten.
+### Prestatie — Ik wil lager scoren.
 
-_EN: Performance — I want better results._
+_EN: Performance — I want to shoot lower._
 
 | Code | Engels | Nederlands | Akkoord? |
 |---|---|---|---|
-| P1 | My scores don't reflect the golf I know I can play. | Mijn scores laten niet zien hoe goed ik kan golfen. | |
-| P2 | I lose too many shots without actually hitting a bad shot. | Ik verlies te veel slagen zonder dat ik echt een slechte slag sla. | |
-| P3 | My performance changes when the round starts to matter. | Mijn spel verandert zodra de ronde ertoe gaat doen. | |
+| P1 | I'm a better golfer than my scores show. | Ik ben een betere golfer dan mijn scores laten zien. | |
+| P2 | It's not my swing that costs me shots. | Het is niet mijn swing die me slagen kost. | |
+| P3 | I play fine until the score starts to matter. | Ik speel prima, tot de score ertoe gaat doen. | |
 | P4 | I can't reproduce my best golf consistently. | Mijn beste golf kan ik niet consequent herhalen. | |
 
-### Beleving — Ik wil dat golf beter voelt.
+### Beleving — Ik wil genieten van mijn golf.
 
-_EN: Emotion & experience — I want golf to feel better._
-
-| Code | Engels | Nederlands | Akkoord? |
-|---|---|---|---|
-| E1 | I struggle to let go of bad shots and bad holes. | Ik kan slechte slagen en slechte holes moeilijk loslaten. | |
-| E2 | My confidence can change completely during a round. | Mijn vertrouwen kan tijdens een ronde volledig omslaan. | |
-| E3 | I think too much when I should just be playing. | Ik denk te veel na terwijl ik gewoon zou moeten spelen. | |
-| E4 | Golf affects my mood and enjoyment more than I want it to. | Golf heeft meer invloed op mijn humeur en plezier dan ik zou willen. | |
-
-### Ontwikkeling — Ik wil dat wat ik weet, wordt wat ik doe.
-
-_EN: Development — I want what I know to become what I do._
+_EN: Emotion & experience — I want to enjoy my golf._
 
 | Code | Engels | Nederlands | Akkoord? |
 |---|---|---|---|
-| D1 | I know what I should do — but I don't do it consistently. | Ik weet wat ik moet doen — maar ik doe het niet consequent. | |
-| D2 | I know I should practise — but I struggle to make it happen consistently. | Ik weet dat ik moet oefenen — maar het lukt me niet om het vol te houden. | |
-| D3 | I practise the right things — but they don't always show up when I play. | Ik oefen de juiste dingen — maar in de baan zie ik ze niet altijd terug. | |
-| D4 | I want to keep improving without making golf feel like work. | Ik wil beter blijven worden zonder dat golf als werk gaat voelen. | |
+| E1 | I can't shake off a bad shot. | Ik kan een slechte slag niet van me afschudden. | |
+| E2 | I can go from confident to clueless in three holes. | Ik kan in drie holes van vol vertrouwen naar radeloos gaan. | |
+| E3 | I overthink it when I should just hit the ball. | Ik denk te veel na terwijl ik gewoon de bal moet slaan. | |
+| E4 | I love golf, but it gets to me more than it should. | Ik hou van golf, maar het raakt me meer dan zou moeten. | |
 
-## 2. De 48 hooks (hero-kop bij advertenties met `?route=`; P1.1 is de standaard-hero)
+### Ontwikkeling — Ik wil beter blijven worden én blijven genieten van het spel.
+
+_EN: Development — I want to keep getting better and still enjoy the game._
+
+| Code | Engels | Nederlands | Akkoord? |
+|---|---|---|---|
+| D1 | I know what to do. I just don't do it every time. | Ik weet wat ik moet doen. Ik doe het alleen niet elke keer. | |
+| D2 | I know I should practise more. It just doesn't happen. | Ik weet dat ik meer moet oefenen. Het komt er alleen niet van. | |
+| D3 | It works on the range. It disappears on the course. | Op de range werkt het. In de baan is het weg. | |
+| D4 | I want to improve, but I still want golf to be fun. | Ik wil beter worden, maar golf moet wel leuk blijven. | |
+
+## 2. De 48 sub-narratives (golfer voice; nog niet op de site, klaar voor advertenties en mails)
+
+| Code | Engels | Nederlands | Akkoord? |
+|---|---|---|---|
+| P1.1 | I hit it pretty well all day and still signed for a number that didn't match. | Ik sloeg de hele dag prima en tekende toch voor een score die daar niet bij paste. | |
+| P1.2 | I'll make a great par on the toughest hole and then three-putt the easy one after it. | Ik maak een mooie par op de moeilijkste hole en drieput dan de makkelijke erna. | |
+| P1.3 | One or two silly holes and a good round's gone. | Eén of twee domme holes en een goede ronde is weg. | |
+| P1.4 | Walking off 18 I'm often thinking I left five shots out there. | Als ik van de 18e loop, denk ik vaak dat ik er vijf slagen heb laten liggen. | |
+| P2.1 | Sometimes I'm over the ball, still not sure about the club, and I hit it anyway. | Soms sta ik boven de bal, nog niet zeker van mijn club, en sla ik toch. | |
+| P2.2 | I lose more shots with my head than with my swing. Wrong club, wrong target. | Ik verlies meer slagen met mijn hoofd dan met mijn swing. Verkeerde club, verkeerd doel. | |
+| P2.3 | It's the tap-ins and simple chips I mess up, because I'm not really paying attention. | Juist de korte putts en simpele chips verpest ik, omdat ik er niet echt bij ben. | |
+| P2.4 | After a bad shot I tend to do something daft on the next one. | Na een slechte slag doe ik vaak iets doms bij de volgende. | |
+| P3.1 | When it counts, I rush. My routine just goes out the window. | Als het telt, ga ik haasten. Mijn routine verdwijnt gewoon. | |
+| P3.2 | Under pressure I stop playing to score and start playing not to mess up. | Onder druk speel ik niet meer om te scoren, maar om geen fouten te maken. | |
+| P3.3 | Once I start counting my score, I stop thinking about the shot. | Zodra ik mijn score ga tellen, denk ik niet meer aan de slag. | |
+| P3.4 | I know I can hit this shot. It just feels completely different when the score matters. | Ik weet dat ik deze slag kan slaan. Hij voelt alleen totaal anders als de score telt. | |
+| P4.1 | I'll have six great holes and then it's gone, and I can't get it back. | Ik speel zes geweldige holes en dan is het weg, en ik krijg het niet meer terug. | |
+| P4.2 | I stripe it on the range and then can't find it on the first tee. | Op de range raak ik hem perfect, en op de eerste tee is het weg. | |
+| P4.3 | One week I shoot my best, the next I'm ten shots worse, and the swing feels the same. | De ene week speel ik mijn beste ronde, de week erna tien slagen slechter, en mijn swing voelt hetzelfde. | |
+| P4.4 | Once I lose my rhythm, I spend the rest of the round chasing it. | Ben ik mijn ritme kwijt, dan jaag ik er de rest van de ronde achteraan. | |
+| E1.1 | A bad shot stays in my head for holes. | Een slechte slag blijft holes lang in mijn hoofd zitten. | |
+| E1.2 | I get so annoyed with myself, and I take that straight into the next shot. | Ik word zo boos op mezelf, en dat neem ik zo mee naar de volgende slag. | |
+| E1.3 | After a bad shot I want it back straight away, so I go for the hero shot. | Na een slechte slag wil ik hem meteen terug, dus ga ik voor de heldenslag. | |
+| E1.4 | One double and my mood's gone for the next few holes. | Eén dubbele bogey en mijn humeur is de holes erna weg. | |
+| E2.1 | Two bad drives and I don't trust the driver anymore. | Twee slechte drives en ik vertrouw mijn driver niet meer. | |
+| E2.2 | My confidence depends too much on what happened on the last few shots. | Mijn vertrouwen hangt te veel af van wat er bij de laatste paar slagen gebeurde. | |
+| E2.3 | Low on confidence, I try to guide the ball, and it only gets worse. | Met weinig vertrouwen probeer ik de bal te sturen, en dan wordt het alleen maar erger. | |
+| E2.4 | I wait for one good shot to fix my confidence instead of resetting it myself. | Ik wacht op één goede slag om mijn vertrouwen te herstellen, in plaats van het zelf te resetten. | |
+| E3.1 | My head's full of swing tips when I should just be hitting it. | Mijn hoofd zit vol swingtips terwijl ik gewoon moet slaan. | |
+| E3.2 | By the time I've checked everything, a simple shot feels hard. | Tegen de tijd dat ik alles heb gecheckt, voelt een simpele slag moeilijk. | |
+| E3.3 | I start trying to fix my swing during the round instead of simply playing golf. | Ik ga tijdens de ronde aan mijn swing sleutelen in plaats van gewoon te golfen. | |
+| E3.4 | I try to control every bit of the swing, and it only works when I don't. | Ik probeer elk stukje van mijn swing te sturen, en het werkt alleen als ik dat niet doe. | |
+| E4.1 | If I score badly the whole day's ruined, however nice the round was. | Als ik slecht scoor, is de hele dag verpest, hoe mooi de ronde ook was. | |
+| E4.2 | When it's not going well, I can't enjoy anything else out there. | Als het niet loopt, kan ik nergens anders meer van genieten. | |
+| E4.3 | I played alright, but I still went home disappointed. | Ik speelde best oké, maar ging toch teleurgesteld naar huis. | |
+| E4.4 | After eighteen holes my head is more tired than my legs. | Na achttien holes is mijn hoofd vermoeider dan mijn benen. | |
+| D1.1 | My routine's there when I don't need it and gone when I do. | Mijn routine is er als ik hem niet nodig heb, en weg als ik hem wel nodig heb. | |
+| D1.2 | I know I should commit, but I still stand there with doubts. | Ik weet dat ik vol voor mijn keuze moet gaan, maar ik sta er toch met twijfels. | |
+| D1.3 | I know how I want to react after a bad shot, but the old me takes over. | Ik weet hoe ik wil reageren na een slechte slag, maar de oude ik neemt het over. | |
+| D1.4 | I know it's one shot at a time, but I keep adding up the score in my head. | Ik weet dat het slag voor slag gaat, maar ik blijf mijn score in mijn hoofd optellen. | |
+| D2.1 | I barely have time to hit balls, let alone work on the mental side. | Ik heb amper tijd om ballen te slaan, laat staan om aan de mentale kant te werken. | |
+| D2.2 | Starting a routine is easy. Keeping it going is the hard part. | Beginnen met een routine is makkelijk. Volhouden is het moeilijke deel. | |
+| D2.3 | Hitting balls feels like practice. Mental stuff feels a bit vague. | Ballen slaan voelt als oefenen. Mentaal werk voelt een beetje vaag. | |
+| D2.4 | I know the mental game matters, but I've no idea what to actually practise. | Ik weet dat het mentale spel ertoe doet, maar ik heb geen idee wat ik nou moet oefenen. | |
+| D3.1 | My routine works in practice and disappears on the course. | Mijn routine werkt op de range en verdwijnt in de baan. | |
+| D3.2 | On the range I get another ball. On the course I don't. | Op de range krijg ik nog een bal. In de baan niet. | |
+| D3.3 | I practise my swing, hardly my decisions or how I handle pressure. | Ik oefen mijn swing, maar nauwelijks mijn keuzes of hoe ik met druk omga. | |
+| D3.4 | When the round goes wrong, everything I've practised goes out the window. | Als de ronde misgaat, is alles wat ik heb geoefend ineens weg. | |
+| D4.1 | I want to get better, but not if every round turns into an exam. | Ik wil beter worden, maar niet als elke ronde een examen wordt. | |
+| D4.2 | I want to practise smarter, not just longer. | Ik wil slimmer oefenen, niet alleen langer. | |
+| D4.3 | I want to be ambitious without beating myself up over every mistake. | Ik wil ambitieus zijn zonder mezelf bij elke fout af te kraken. | |
+| D4.4 | One bad round and I feel like all the work's been for nothing. | Eén slechte ronde en ik heb het gevoel dat al het werk voor niets was. | |
+
+## 3. De 48 hooks (hero-kop bij advertenties met `?route=`; P1.1 is de standaard-hero)
 
 | Code | Engels | Nederlands | Akkoord? |
 |---|---|---|---|
@@ -90,7 +143,7 @@ _EN: Development — I want what I know to become what I do._
 | D4.3 | You want high standards because you care about improving. So when do those standards start getting in the way? | Je legt de lat hoog omdat je beter wilt worden. Wanneer gaat die lat je dan in de weg zitten? | |
 | D4.4 | Improvement isn't linear. So why can one bad round still feel like you're going backwards? | Vooruitgang gaat niet in een rechte lijn. Waarom kan één slechte ronde dan toch voelen als achteruitgang? | |
 
-## 3. Overige homepageteksten
+## 4. Overige homepageteksten
 
 | Plek | Engels | Nederlands | Akkoord? |
 |---|---|---|---|
