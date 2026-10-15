@@ -43,6 +43,8 @@ overclaiming** (geen "strokes lost by mindset"-claims zonder meetdata); handicap
 | 17 | NL-vertalingen | **Goedgekeurd door Henk** | Lijst `docs/NL_TEKSTEN_HOMEPAGE_HENK.md`. |
 | 18 | Route-ID naar portal + nurture | **Gebouwd** (portal migratie 025) | Conversie per narrative meetbaar; mail 1 sluit aan bij wat de golfer herkende. |
 | 20 | Waar gaan de overige CTA's heen? | **Allemaal naar "Herken je dit?"** (`#recognise`); de QuickScan start alleen na ≥1 vinkje. Advertentie-route vinkt de zin alvast aan, subroute blijft behouden | Anders start de QuickScan zonder narratives en werkt de meting/nurture-aansluiting niet. |
+| 21 | `/quickscan` direct bezocht (zonder vinkjes) | **Doorsturen naar "Herken je dit?"** (307, taal mee via `?lang=`); oude landing vervalt, `/quickscan` uit de sitemap | Elke QuickScan heeft narratives; oude links/bio/deellinks blijven werken. |
+| 22 | Site begon altijd in het Engels | **Taaldetectie**: `?lang=` → eerder gekozen taal (onthouden) → browsertaal → EN | NL/DE/FR/ES-bezoekers zagen eerst Engels. |
 | 19 | Eén narrative aanklikken of meerdere aanvinken? | **Checkboxes + één startknop**; alle aangevinkte narratives gaan mee (`?route=P1,E2,D3`) en worden opgeslagen (portal migratie 026, kolom 64 tekens) | Rijkere info over de golfer; mensen herkennen zich vaak in meerdere narratives (framework: "één golfer kan op meerdere narratives resoneren"). |
 
 ## 2. Eindtoestand website (`src/app/page.tsx`)

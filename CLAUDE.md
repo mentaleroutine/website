@@ -23,6 +23,12 @@
 - **Alle CTA's → `#recognise`** (hero, slot, sticky, footer, navbar `/#recognise` op elke pagina, `/methodology`):
   de QuickScan start ALLEEN vanuit de 12 checkboxes (anders geen narratives). Advertentie-`?route=P4.2` vinkt P4
   alvast aan en stuurt bij start de exacte subroute mee (`P4.2,E1`). CTA's vuren `cta_click{source}`.
+- **`/quickscan` zonder `route` → 307 naar `/#recognise`** (`next.config.ts` redirects; met `lang` →
+  `/?lang=xx#recognise`). De oude QuickScan-landing in quiz.html is daardoor niet meer bereikbaar (alleen nog
+  met `?route=…&start=1`). `/quickscan` uit de sitemap.
+- **Taalkeuze site** (`context/lang-context.tsx`, okt 2026): `?lang=` → eerder zelf gekozen taal
+  (localStorage `mr_lang`, gezet door de taalwisselaar) → browsertaal (`navigator.languages`) → EN.
+  SSR/eerste render blijft EN (geen hydration-mismatch), daarna direct de gedetecteerde taal. Was: altijd EN.
 - **QuickScan-links** via `src/lib/quickscan.ts` → `/quickscan?start=1&lang=nl|en[&route=]`.
   `start=1` slaat de eigen landing van quiz.html over (de homepage ís de landing); de landing op
   `/quickscan` blijft voor direct verkeer. `/quickscan` = `public/quiz.html` (rewrite).

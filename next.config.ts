@@ -37,6 +37,23 @@ const nextConfig: NextConfig = {
     return [
       // Old QuickScan URL → clean URL.
       { source: "/quiz.html", destination: "/quickscan", permanent: true },
+      // The QuickScan only starts from "Sound familiar?" on the homepage, where the golfer
+      // ticks the entry narratives they recognise (?route=P1,E2). A visit without a route
+      // (old links, bio links, the old QuickScan landing) goes there first; lang carries over.
+      // Not permanent: browsers must not cache it in case the landing comes back.
+      {
+        source: "/quickscan",
+        missing: [{ type: "query", key: "route" }],
+        has: [{ type: "query", key: "lang", value: "(?<lang>en|nl|de|fr|es)" }],
+        destination: "/?lang=:lang#recognise",
+        permanent: false,
+      },
+      {
+        source: "/quickscan",
+        missing: [{ type: "query", key: "route" }],
+        destination: "/#recognise",
+        permanent: false,
+      },
       // Mastery is no longer a product; the old explainer page → the assessment.
       { source: "/assessment-mastery.html", destination: "/assessment", permanent: true },
       // The old Foundation subsite is superseded by the /assessment page.
