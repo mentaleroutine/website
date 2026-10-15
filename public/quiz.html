@@ -2849,6 +2849,7 @@
       fase_scores: state.phaseScores,
       sterkste_domein: state.strongestDomain,
       zwakste_domein: state.weakestDomain,
+      entry_route: MR_ROUTE === 'none' ? null : MR_ROUTE,
     };
 
     fetch('https://portal.mentalroutine.com/api/quiz/results', {

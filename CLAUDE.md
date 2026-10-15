@@ -27,8 +27,10 @@
 - **Henk de Jong = initiatiefnemer van MentalRoutine** — niet coach, niet (golf)psycholoog, nooit
   PGA-pro (wel "PGA-netwerk": klopt). **Alleen MentalRoutine-branding** (NogBeterGolfen weg).
   Fictieve testimonials + pricing-quotes **verwijderd**. "1.000+ golfers sinds 2016" en "4.9/5" kloppen.
-- **Talen:** `home.*` + narratives in EN + NL; DE/FR/ES tonen `home: en.home` tot vertaald.
-  NL-teksten ter goedkeuring Henk: `docs/NL_TEKSTEN_HOMEPAGE_HENK.md`.
+- **Talen:** `home.*` + narratives in alle 5 talen (NL **goedgekeurd door Henk** okt 2026, lijst
+  `docs/NL_TEKSTEN_HOMEPAGE_HENK.md`; DE/FR/ES AI-vertaald, du/vous/tú). De QuickScan zelf blijft NL/EN.
+- **Route → portal:** quiz.html stuurt `entry_route` mee naar `POST /api/quiz/results` → portal
+  `QuizSession.entry_route` (migratie 025) → nurture-prompt + admin-funnel per narrative.
 - Lokale typecheck: de geneste kopie `Claude website MR 01/Claude website MR 01/` (untracked) geeft
   tsc-fouten — negeren; alleen fouten in `src/` tellen.
 

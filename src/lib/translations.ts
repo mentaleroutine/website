@@ -2,9 +2,7 @@ export type Lang = "en" | "nl" | "de" | "fr" | "es";
 
 // ─────────────────────────────────────────────────────────────────
 // ENGLISH — the canonical structure. `Translation` is derived from this.
-// DE/FR/ES currently point to this English object as a temporary placeholder
-// (they are hidden from the language switcher until translated). Replace each
-// with a real translated object when ready — the structure must stay identical.
+// NL/DE/FR/ES are full translated objects — the structure must stay identical.
 // ─────────────────────────────────────────────────────────────────
 const en = {
     nav: { howItWorks: "How it works", faq: "FAQ", contact: "Contact", cta: "Free QuickScan", openMenu: "Open menu", closeMenu: "Close menu", selectLang: "Select language", skipToContent: "Skip to content" },
@@ -439,15 +437,58 @@ export const translations = {
   },
 
   // ─────────────────────────────────────────────────────────────────
-  // GERMAN / FRENCH / SPANISH — temporary placeholder.
-  // These point to the English object so the structure always matches the
-  // canonical `Translation` type. They are hidden from the language switcher
-  // until real translations are written. To translate: replace `en` below with
-  // a full translated object (same structure) and un-hide the language.
+  // GERMAN / FRENCH / SPANISH — full translations (DE "du", FR "vous", ES "tú").
+  // The structure must stay identical to the canonical English object
+  // (enforced by `satisfies Record<Lang, Translation>` below).
   // ─────────────────────────────────────────────────────────────────
   de: {
     nav: { howItWorks: "So funktioniert's", faq: "FAQ", contact: "Kontakt", cta: "Kostenloser QuickScan", openMenu: "Menü öffnen", closeMenu: "Menü schließen", selectLang: "Sprache wählen", skipToContent: "Zum Inhalt springen" },
-    home: en.home, // EN until DE/FR/ES are translated
+    home: {
+      hero: {
+        badge: "Kostenloser MentalRoutine QuickScan",
+        sub: "Eine Runde ist mehr als deine Schwünge. Der kostenlose QuickScan schaut darauf, wie du mit den Momenten vor, während und nach jedem Schlag umgehst.",
+        cta: "Mach den kostenlosen QuickScan",
+        meta: "9 Löcher · 8 Minuten · kostenlos · dein Report per E-Mail",
+        trust: "Forschung mit 1.000+ Golfern seit 2016 · jedes Handicap",
+      },
+      recognise: {
+        label: "Kommt dir das bekannt vor?", h2a: "Welcher dieser Sätze", h2b: "klingt nach dir?",
+        intro: "Wähl den, der am besten passt. Der QuickScan schaut sich dann das Muster dahinter an — in 8 Minuten.",
+        footnote: "Erkennst du dich in mehreren wieder? Das ist ganz normal. Fang einfach mit einem davon an.",
+      },
+      phases: {
+        label: "Die MentalRoutine", h2a: "Jeder Schlag hat", h2b: "drei Momente.",
+        intro: "Für deinen Körper hast du wahrscheinlich eine Pre-Shot-Routine. MentalRoutine ist dieselbe Idee für deinen Kopf — vor, während und nach jedem Schlag.",
+        items: [
+          { label: "Pre-Shot", body: "Deinen Schlag wählen — und ganz bei der Sache sein." },
+          { label: "Swing", body: "Voll hinter deiner Entscheidung stehen — und den Schlag laufen lassen." },
+          { label: "Post-Shot", body: "Mit dem Ergebnis umgehen — und nur mitnehmen, was dir beim nächsten Schlag hilft." },
+        ],
+        link: "So funktioniert die Methode",
+      },
+      team: {
+        label: "Wer dahintersteht", h2a: "Die Menschen hinter", h2b: "MentalRoutine",
+        members: [
+          { name: "Henk de Jong", role: "Initiator von MentalRoutine · Golfer seit über 40 Jahren" },
+          { name: "Berend Jansen", role: "Experte für Psychometrie · Assessment-Spezialist" },
+        ],
+        body: "Henk de Jong spielt seit über 40 Jahren Golf und hat über sein PGA-Netzwerk mehr als 1.000 Golfer in die Forschung eingebunden. Berend Jansen ist Experte für psychometrische Instrumente — dafür zu messen, warum Menschen tun, was sie tun. Gemeinsam entwickeln sie seit über 15 Jahren Verhaltens-Assessments, und 2016 haben sie MentalRoutine gestartet.",
+        quote: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong",
+      },
+      faq: {
+        label: "Fragen & Antworten", h2: "Bevor du startest",
+        contactText: "Antwort nicht dabei?", contactLink: "Kontaktiere uns", showMore: "weitere Fragen",
+        items: [
+          { title: "Was ist der QuickScan?", content: "Ein kurzer, kostenloser Fragebogen in Form von 9 Löchern. Er schaut darauf, wie du mit den Momenten vor, während und nach einem Schlag umgehst. Dein Ergebnis siehst du sofort auf dem Bildschirm: dein Profil über die drei Phasen, deine größte Stärke und deine größte Wachstumschance. Wenn du möchtest, schicken wir dir per E-Mail einen persönlichen PDF-Report von etwa 10 Seiten mit Erklärungen, Übungen und einem Aktionsplan." },
+          { title: "Ist das wirklich kostenlos?", content: "Ja — keine Kartendaten nötig. Wenn du deinen PDF-Report anforderst, schicken wir dir auch ein paar E-Mails mit Erkenntnissen zu deinem Ergebnis und irgendwann eine Einladung zum vollständigen MentalRoutine Assessment. Abmelden kannst du dich mit einem Klick." },
+          { title: "Passt das zu meinem Niveau?", content: "Ja. Die Fragen drehen sich um Situationen, die jeder Golfer kennt, vom Anfänger bis zum Scratch-Golfer. Deine Scores werden für dein Handicap korrigiert." },
+          { title: "Ist der QuickScan eine Diagnose?", content: "Nein. Der QuickScan gibt dir ein erstes Bild, auf Basis deiner eigenen Antworten. Du willst das vollständige Bild? Das MentalRoutine Assessment (20–25 Minuten) kartiert dein mentales Spiel in der Tiefe, mit einem kompletten Spielerprofil und drei persönlichen Trainingsreports. Keines von beiden ist eine medizinische oder psychologische Diagnose." },
+          { title: "In welchen Sprachen gibt es ihn?", content: "Den QuickScan gibt es auf Englisch und Niederländisch." },
+        ],
+      },
+      final: { h2a: "Neugierig, was dahintersteckt?", h2b: "Finde es in 8 Minuten heraus." },
+      sticky: "Kostenloser QuickScan · 9 Löcher · 8 Minuten",
+    },
     hero: {
       badge: "Das Mental Routine Assessment",
       h1a: "Die Schläge, die du verlierst,", h1b: "stecken nicht in deinem Schwung.",
@@ -597,7 +638,7 @@ export const translations = {
     },
     contact: {
       label: "Kontakt aufnehmen", h2a: "Fragen? Wir freuen uns,", h2b: "von dir zu hören.",
-      p1: "Nicht sicher, welches Angebot das richtige für dich ist? Willst du mehr darüber wissen, wie das Assessment funktioniert? Oder bist du einfach neugierig, ob das der richtige nächste Schritt für dein Golfspiel ist?",
+      p1: "Fragen zum QuickScan, zum Assessment oder dazu, wie MentalRoutine funktioniert? Oder bist du einfach neugierig, ob das der richtige nächste Schritt für dein Golfspiel ist?",
       p2: "Schick uns eine Nachricht und wir melden uns innerhalb eines Werktags. Wir sind selbst Golfer — wir verstehen das.",
       fields: { name: "Name", namePlaceholder: "Dein Name", handicap: "Golf-Handicap", handicapPlaceholder: "z. B. 14,2", email: "E-Mail", emailPlaceholder: "du@beispiel.de", message: "Nachricht", messagePlaceholder: "Was möchtest du wissen?", submit: "Nachricht senden →", note: "Wir antworten innerhalb eines Werktags.", sending: "Wird gesendet...", error: "Etwas ist schiefgelaufen. Bitte versuche es erneut." },
       success: { h3: "Nachricht erhalten", p: "Wir melden uns innerhalb eines Werktags. Bis dahin viel Erfolg auf dem Platz." },
@@ -615,7 +656,52 @@ export const translations = {
 },
   fr: {
     nav: { howItWorks: "Comment ça marche", faq: "FAQ", contact: "Contact", cta: "QuickScan gratuit", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu", selectLang: "Choisir la langue", skipToContent: "Aller au contenu" },
-    home: en.home, // EN until DE/FR/ES are translated
+    home: {
+      hero: {
+        badge: "QuickScan MentalRoutine gratuit",
+        sub: "Un parcours, c'est plus que vos swings. Le QuickScan gratuit examine comment vous gérez les moments avant, pendant et après chaque coup.",
+        cta: "Faites le QuickScan gratuit",
+        meta: "9 trous · 8 minutes · gratuit · votre rapport par e-mail",
+        trust: "Recherche avec 1 000+ golfeurs depuis 2016 · tous les handicaps",
+      },
+      recognise: {
+        label: "Ça vous parle ?", h2a: "Laquelle de ces phrases", h2b: "vous ressemble ?",
+        intro: "Choisissez celle qui vous correspond le mieux. Le QuickScan examine ensuite le schéma qui se cache derrière — en 8 minutes.",
+        footnote: "Vous vous reconnaissez dans plusieurs ? C'est fréquent. Commencez par n'importe laquelle.",
+      },
+      phases: {
+        label: "La MentalRoutine", h2a: "Chaque coup se joue en", h2b: "trois moments.",
+        intro: "Vous avez sans doute une routine avant le coup pour votre corps. MentalRoutine, c'est la même idée pour votre tête — avant, pendant et après chaque coup.",
+        items: [
+          { label: "Avant le coup", body: "Choisir votre coup — et y être pleinement présent." },
+          { label: "Swing", body: "Vous engager dans votre choix — et laisser partir le coup." },
+          { label: "Après le coup", body: "Gérer le résultat — et n'emporter dans le coup suivant que ce qui vous aide." },
+        ],
+        link: "Comment fonctionne la méthode",
+      },
+      team: {
+        label: "Qui est derrière", h2a: "Les personnes derrière", h2b: "MentalRoutine",
+        members: [
+          { name: "Henk de Jong", role: "Initiateur de MentalRoutine · golfeur depuis plus de 40 ans" },
+          { name: "Berend Jansen", role: "Expert en psychométrie · spécialiste de l'assessment" },
+        ],
+        body: "Henk de Jong joue au golf depuis plus de 40 ans et, grâce à son réseau PGA, a fait participer plus de 1 000 golfeurs à la recherche. Berend Jansen est expert en instruments psychométriques — mesurer pourquoi les gens font ce qu'ils font. Ensemble, ils conçoivent des assessments comportementaux depuis plus de 15 ans, et en 2016 ils ont lancé MentalRoutine.",
+        quote: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong",
+      },
+      faq: {
+        label: "Questions & réponses", h2: "Avant de commencer",
+        contactText: "Vous ne trouvez pas la réponse ?", contactLink: "Contactez-nous", showMore: "questions supplémentaires",
+        items: [
+          { title: "Qu'est-ce que le QuickScan ?", content: "Un questionnaire court et gratuit, sous la forme de 9 trous. Il examine comment vous gérez les moments avant, pendant et après un coup. Vous voyez votre résultat tout de suite à l'écran : votre profil sur les trois phases, votre point le plus fort et votre plus grande marge de progression. Si vous le souhaitez, nous vous envoyons par e-mail un rapport PDF personnalisé d'une dizaine de pages, avec explications, exercices et plan d'action." },
+          { title: "Est-ce vraiment gratuit ?", content: "Oui — sans carte bancaire. Si vous demandez votre rapport PDF, nous vous enverrons aussi quelques e-mails avec des enseignements tirés de votre résultat, puis, à un moment donné, une invitation au MentalRoutine Assessment complet. Vous pouvez vous désinscrire en un clic." },
+          { title: "Est-ce adapté à mon niveau ?", content: "Oui. Les questions portent sur des situations que tout golfeur connaît, du débutant au joueur scratch. Vos scores sont corrigés en fonction de votre handicap." },
+          { title: "Le QuickScan est-il un diagnostic ?", content: "Non. Le QuickScan vous donne une première image, à partir de vos propres réponses. Vous voulez l'image complète ? Le MentalRoutine Assessment (20 à 25 minutes) cartographie votre jeu mental en profondeur, avec un profil de joueur complet et trois rapports d'entraînement personnels. Ni l'un ni l'autre n'est un diagnostic médical ou psychologique." },
+          { title: "Dans quelles langues est-il disponible ?", content: "Le QuickScan est disponible en anglais et en néerlandais." },
+        ],
+      },
+      final: { h2a: "Curieux de savoir ce qu'il y a derrière ?", h2b: "Découvrez-le en 8 minutes." },
+      sticky: "QuickScan gratuit · 9 trous · 8 minutes",
+    },
     hero: {
       badge: "Le MentalRoutine Assessment",
       h1a: "Les coups que vous perdez", h1b: "ne sont pas dans votre swing.",
@@ -765,7 +851,7 @@ export const translations = {
     },
     contact: {
       label: "Nous contacter", h2a: "Des questions ? Nous serions", h2b: "ravis de vous lire.",
-      p1: "Vous ne savez pas quelle formule vous convient ? Vous voulez en savoir plus sur le fonctionnement de l'assessment ? Ou vous vous demandez simplement si c'est la bonne prochaine étape pour votre golf ?",
+      p1: "Des questions sur le QuickScan, l'assessment ou le fonctionnement de MentalRoutine ? Ou vous vous demandez simplement si c'est la bonne prochaine étape pour votre golf ?",
       p2: "Envoyez-nous un message et nous vous répondrons sous un jour ouvré. Nous sommes golfeurs aussi — on comprend.",
       fields: { name: "Nom", namePlaceholder: "Votre nom", handicap: "Handicap de golf", handicapPlaceholder: "ex. : 14,2", email: "E-mail", emailPlaceholder: "vous@exemple.com", message: "Message", messagePlaceholder: "Que souhaitez-vous savoir ?", submit: "Envoyer le message →", note: "Nous répondons sous un jour ouvré.", sending: "Envoi en cours...", error: "Une erreur est survenue. Veuillez réessayer." },
       success: { h3: "Message bien reçu", p: "Nous vous recontactons sous un jour ouvré. En attendant, bonne chance sur le parcours." },
@@ -783,7 +869,52 @@ export const translations = {
 },
   es: {
     nav: { howItWorks: "Cómo funciona", faq: "Preguntas", contact: "Contacto", cta: "QuickScan gratis", openMenu: "Abrir menú", closeMenu: "Cerrar menú", selectLang: "Seleccionar idioma", skipToContent: "Saltar al contenido" },
-    home: en.home, // EN until DE/FR/ES are translated
+    home: {
+      hero: {
+        badge: "QuickScan MentalRoutine gratuito",
+        sub: "Una vuelta es más que tus swings. El QuickScan gratuito analiza cómo gestionas los momentos antes, durante y después de cada golpe.",
+        cta: "Haz el QuickScan gratuito",
+        meta: "9 hoyos · 8 minutos · gratis · tu informe por email",
+        trust: "Investigación con 1000+ golfistas desde 2016 · cualquier handicap",
+      },
+      recognise: {
+        label: "¿Te suena?", h2a: "¿Cuál de estas frases", h2b: "va contigo?",
+        intro: "Elige la que mejor encaje contigo. Después, el QuickScan analiza el patrón que hay detrás — en 8 minutos.",
+        footnote: "¿Te reconoces en más de una? Es muy normal. Empieza por cualquiera.",
+      },
+      phases: {
+        label: "La MentalRoutine", h2a: "Cada golpe tiene", h2b: "tres momentos.",
+        intro: "Seguramente tienes una rutina pre-golpe para tu cuerpo. MentalRoutine es la misma idea para tu cabeza — antes, durante y después de cada golpe.",
+        items: [
+          { label: "Pre-golpe", body: "Elegir tu golpe — y estar plenamente en él." },
+          { label: "Swing", body: "Comprometerte con tu elección — y soltar el golpe." },
+          { label: "Post-golpe", body: "Gestionar el resultado — y llevarte al siguiente golpe solo lo que te ayuda." },
+        ],
+        link: "Cómo funciona el método",
+      },
+      team: {
+        label: "Quién está detrás", h2a: "Las personas detrás de", h2b: "MentalRoutine",
+        members: [
+          { name: "Henk de Jong", role: "Iniciador de MentalRoutine · golfista desde hace más de 40 años" },
+          { name: "Berend Jansen", role: "Experto en psicometría · especialista en assessments" },
+        ],
+        body: "Henk de Jong juega al golf desde hace más de 40 años y, a través de su red PGA, sumó a más de 1000 golfistas a la investigación. Berend Jansen es experto en instrumentos psicométricos — medir por qué las personas hacen lo que hacen. Juntos llevan más de 15 años creando assessments de comportamiento, y en 2016 pusieron en marcha MentalRoutine.",
+        quote: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong",
+      },
+      faq: {
+        label: "Preguntas y respuestas", h2: "Antes de empezar",
+        contactText: "¿No encuentras la respuesta?", contactLink: "Contáctanos", showMore: "más preguntas",
+        items: [
+          { title: "¿Qué es el QuickScan?", content: "Un cuestionario breve y gratuito en forma de 9 hoyos. Analiza cómo gestionas los momentos antes, durante y después de un golpe. Ves tu resultado en pantalla al instante: tu perfil en las tres fases, tu punto más fuerte y tu mayor oportunidad de mejora. Si quieres, te enviamos por email un informe PDF personal de unas 10 páginas con explicaciones, ejercicios y un plan de acción." },
+          { title: "¿De verdad es gratis?", content: "Sí — sin tarjeta. Si pides tu informe PDF, también te enviaremos algunos emails con ideas basadas en tu resultado y, en algún momento, una invitación al MentalRoutine Assessment completo. Puedes darte de baja con un clic." },
+          { title: "¿Es adecuado para mi nivel?", content: "Sí. Las preguntas tratan de situaciones que todo golfista conoce, desde principiante hasta scratch. Tus scores se corrigen según tu handicap." },
+          { title: "¿Es el QuickScan un diagnóstico?", content: "No. El QuickScan te da una primera imagen, basada en tus propias respuestas. ¿Quieres la imagen completa? El MentalRoutine Assessment (20–25 minutos) cartografía tu juego mental en profundidad, con un perfil de jugador completo y tres training reports personales. Ninguno de los dos es un diagnóstico médico ni psicológico." },
+          { title: "¿En qué idiomas está disponible?", content: "El QuickScan está disponible en inglés y neerlandés." },
+        ],
+      },
+      final: { h2a: "¿Te pica la curiosidad por lo que hay detrás?", h2b: "Descúbrelo en 8 minutos." },
+      sticky: "QuickScan gratis · 9 hoyos · 8 minutos",
+    },
     hero: {
       badge: "El MentalRoutine Assessment",
       h1a: "Los golpes que pierdes", h1b: "no están en tu swing.",
@@ -893,7 +1024,7 @@ export const translations = {
     },
     pricing: {
       label: "El Assessment", h2a: "Has pagado por clases.", h2b: "Esta es la parte que se saltan.",
-      note: "Un assessment. Tu perfil de jugador completo — los 8 pasos y los 4 factores — más 3 training reports a tu elección de entre 12. Todo lo que la QuickScan gratuita solo dejaba entrever.", badge: "Empieza ya",
+      note: "Un assessment. Tu perfil de jugador completo — los 8 pasos y los 4 factores — más 3 training reports a tu elección de entre 12. Todo lo que el QuickScan gratuito solo dejaba entrever.", badge: "Empieza ya",
       pricingAnchor: "Una sesión de psicólogo: $150–$300. Tu mapa mental completo, para quedártelo: $79.",
       proCallout: "¿Eres Teaching Professional? Descubre cómo ofrecer esto a tus alumnos →",
       creditsNote: "Tu perfil recomienda tres training reports para empezar — tú eliges cuáles, de uno en uno, a tu propio ritmo.",
@@ -933,7 +1064,7 @@ export const translations = {
     },
     contact: {
       label: "Ponte en Contacto", h2a: "¿Preguntas? Nos encantaría", h2b: "saber de ti.",
-      p1: "¿No sabes qué plan es el adecuado para ti? ¿Quieres saber más sobre cómo funciona el assessment? ¿O simplemente tienes curiosidad por si este es el siguiente paso adecuado para tu juego?",
+      p1: "¿Preguntas sobre el QuickScan, el assessment o cómo funciona MentalRoutine? ¿O simplemente tienes curiosidad por si este es el siguiente paso adecuado para tu golf?",
       p2: "Envíanos un mensaje y te responderemos en un día laborable. Nosotros también somos golfistas — lo entendemos.",
       fields: { name: "Nombre", namePlaceholder: "Tu nombre", handicap: "Handicap de golf", handicapPlaceholder: "p. ej. 14,2", email: "Email", emailPlaceholder: "tu@ejemplo.com", message: "Mensaje", messagePlaceholder: "¿Qué te gustaría saber?", submit: "Enviar mensaje →", note: "Respondemos en un día laborable.", sending: "Enviando...", error: "Algo salió mal. Inténtalo de nuevo." },
       success: { h3: "Mensaje recibido", p: "Nos pondremos en contacto en un día laborable. Mientras tanto, mucha suerte en el campo." },
