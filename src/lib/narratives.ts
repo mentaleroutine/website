@@ -37,7 +37,7 @@ export const NARRATIVE_GROUPS: NarrativeGroup[] = [
   {
     id: "P",
     name: { en: "Performance", nl: "Prestatie", de: "Leistung", fr: "Performance", es: "Rendimiento" },
-    tagline: { en: "I want to shoot lower.", nl: "Ik wil lager scoren.", de: "Ich will weniger Schläge spielen.", fr: "Je veux faire de meilleurs scores.", es: "Quiero hacer menos golpes." },
+    tagline: { en: "I want to shoot lower.", nl: "Ik wil minder slagen maken.", de: "Ich will weniger Schläge spielen.", fr: "Je veux jouer moins de coups.", es: "Quiero hacer menos golpes." },
     narratives: [
       {
         id: "P1",

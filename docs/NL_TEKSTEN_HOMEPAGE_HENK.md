@@ -4,7 +4,7 @@ Groepsregels, narratives en sub-narratives = Henks golfer-voice-keuzes (okt 2026
 
 ## 1. De 12 herkenningszinnen (sectie "Herken je dit?")
 
-### Prestatie — Ik wil lager scoren.
+### Prestatie — Ik wil minder slagen maken.
 
 _EN: Performance — I want to shoot lower._
 
