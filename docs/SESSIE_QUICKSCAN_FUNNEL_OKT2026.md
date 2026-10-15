@@ -42,6 +42,7 @@ overclaiming** (geen "strokes lost by mindset"-claims zonder meetdata); handicap
 | 16 | Henks golfer-voice-review (PDF "Golfer-voice alternatives") | **Overgenomen**: groepsregels, 12 narratives, 48 sub-narratives in golferstaal | Hooks bleven v1.5. P2 = "It's not my swing that costs me shots." (golfer zegt het zelf → herkenning, geen MR-claim; alternatief A "I throw shots away without hitting a bad one." indien voorzichtiger gewenst). |
 | 17 | NL-vertalingen | **Goedgekeurd door Henk** | Lijst `docs/NL_TEKSTEN_HOMEPAGE_HENK.md`. |
 | 18 | Route-ID naar portal + nurture | **Gebouwd** (portal migratie 025) | Conversie per narrative meetbaar; mail 1 sluit aan bij wat de golfer herkende. |
+| 20 | Waar gaan de overige CTA's heen? | **Allemaal naar "Herken je dit?"** (`#recognise`); de QuickScan start alleen na ≥1 vinkje. Advertentie-route vinkt de zin alvast aan, subroute blijft behouden | Anders start de QuickScan zonder narratives en werkt de meting/nurture-aansluiting niet. |
 | 19 | Eén narrative aanklikken of meerdere aanvinken? | **Checkboxes + één startknop**; alle aangevinkte narratives gaan mee (`?route=P1,E2,D3`) en worden opgeslagen (portal migratie 026, kolom 64 tekens) | Rijkere info over de golfer; mensen herkennen zich vaak in meerdere narratives (framework: "één golfer kan op meerdere narratives resoneren"). |
 
 ## 2. Eindtoestand website (`src/app/page.tsx`)

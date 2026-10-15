@@ -20,6 +20,9 @@
 - **`?route=P4.2`** (of `P4`) op `/` toont de hook van die route in de hero (advertenties). De route
   gaat mee naar de QuickScan → Plausible-props `route` op `quiz_click`/`narrative_click`/`quiz_start`/
   `quiz_complete`/`quiz_optin`.
+- **Alle CTA's → `#recognise`** (hero, slot, sticky, footer, navbar `/#recognise` op elke pagina, `/methodology`):
+  de QuickScan start ALLEEN vanuit de 12 checkboxes (anders geen narratives). Advertentie-`?route=P4.2` vinkt P4
+  alvast aan en stuurt bij start de exacte subroute mee (`P4.2,E1`). CTA's vuren `cta_click{source}`.
 - **QuickScan-links** via `src/lib/quickscan.ts` → `/quickscan?start=1&lang=nl|en[&route=]`.
   `start=1` slaat de eigen landing van quiz.html over (de homepage ís de landing); de landing op
   `/quickscan` blijft voor direct verkeer. `/quickscan` = `public/quiz.html` (rewrite).

@@ -43,19 +43,25 @@ function PageContent() {
   const [showStickyBar, setShowStickyBar] = useState(false);
 
   // ?route=P4.2 (from an ad on that route) swaps the hero hook so the visitor lands
-  // on the same message; the route id travels on to the QuickScan for tracking.
+  // on the same message, and pre-ticks that narrative (P4) in "Sound familiar?".
   // Read after mount → the server-rendered default (P1.1) never flickers for the gros.
   const [route, setRoute] = useState<string | null>(null);
+  // "Sound familiar?": visitors tick every narrative they recognise (in click order).
+  // This is the ONLY way into the QuickScan: every CTA on the page leads here first.
+  const [picked, setPicked] = useState<string[]>([]);
   useEffect(() => {
     const r = resolveRoute(new URLSearchParams(window.location.search).get("route"));
-    if (r) { setRoute(r.route); track("hero_route", { route: r.route }); }
+    if (r) {
+      setRoute(r.route);
+      setPicked([r.route.split(".")[0]]);
+      track("hero_route", { route: r.route });
+    }
   }, []);
   const heroHook = pick((route && resolveRoute(route)?.hook) || resolveRoute(DEFAULT_ROUTE)!.hook, lang);
   const [heroA, heroB] = splitHook(heroHook);
-  const heroHref = quickscanUrl(lang, route);
-
-  // "Sound familiar?": visitors tick every narrative they recognise (in click order).
-  const [picked, setPicked] = useState<string[]>([]);
+  // Routes sent to the QuickScan: the ticked narratives, where the ad's narrative keeps its
+  // exact sub-route ("P4" → "P4.2") so ad performance stays measurable per hook.
+  const pickedRoutes = picked.map(id => (route && route.split(".")[0] === id ? route : id)).join(",");
   const toggleNarrative = (id: string) => {
     const on = !picked.includes(id);
     if (on) track("narrative_click", { route: id }); // per tick → counts per narrative
@@ -97,8 +103,9 @@ function PageContent() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Every CTA goes to "Sound familiar?" (#recognise); the QuickScan only starts from there.
   const QuickScanButton = ({ source, className = goldBtn }: { source: string; className?: string }) => (
-    <a href={heroHref} onClick={() => track("quiz_click", { source, route: route ?? DEFAULT_ROUTE })} className={className}>
+    <a href="#recognise" onClick={() => track("cta_click", { source })} className={className}>
       {H.hero.cta} <span aria-hidden="true">→</span>
     </a>
   );
@@ -151,7 +158,7 @@ function PageContent() {
       </section>
 
       {/* ── SOUND FAMILIAR? — the 12 entry narratives ────────────────────── */}
-      <section id="recognise" className="py-28 px-6 bg-[#f6f1e7]">
+      <section id="recognise" className="py-28 px-6 bg-[#f6f1e7] scroll-mt-20">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-14">
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{H.recognise.label}</p>
@@ -194,8 +201,8 @@ function PageContent() {
           <div className="mt-10 flex flex-col items-center gap-3">
             {picked.length > 0 ? (
               <a
-                href={quickscanUrl(lang, picked.join(","))}
-                onClick={() => track("quiz_click", { source: "recognise", route: picked.join(","), count: String(picked.length) })}
+                href={quickscanUrl(lang, pickedRoutes)}
+                onClick={() => track("quiz_click", { source: "recognise", route: pickedRoutes, count: String(picked.length) })}
                 className={goldBtn}
               >
                 {H.recognise.start} <span aria-hidden="true">→</span>
@@ -316,7 +323,7 @@ function PageContent() {
               <p className="text-[10px] font-bold tracking-widest uppercase text-green-400/40 mb-5">{T.footer.menuLabel}</p>
               <nav className="flex flex-col gap-3">
                 {[
-                  { label: T.footer.quizLink,    href: heroHref,         quiz: true  },
+                  { label: T.footer.quizLink,    href: '#recognise',     quiz: true  },
                   { label: T.nav.howItWorks,     href: '#how-it-works',  quiz: false },
                   { label: T.footer.methodology, href: '/methodology',   quiz: false },
                   { label: T.nav.faq,            href: '#faq',           quiz: false },
@@ -325,7 +332,7 @@ function PageContent() {
                   <a
                     key={link.href}
                     href={link.href}
-                    onClick={link.quiz ? () => track("quiz_click", { source: "footer", route: route ?? DEFAULT_ROUTE }) : undefined}
+                    onClick={link.quiz ? () => track("cta_click", { source: "footer" }) : undefined}
                     className="group flex items-center gap-2 text-sm text-green-200/50 hover:text-amber-300 transition-colors duration-200"
                   >
                     <span className="w-3 h-px bg-green-200/20 group-hover:bg-amber-400/60 group-hover:w-5 transition-all duration-300" />

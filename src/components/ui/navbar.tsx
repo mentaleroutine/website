@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "motion/react"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { useLang, Lang } from "@/context/lang-context"
 import { translations } from "@/lib/translations"
-import { quickscanUrl } from "@/lib/quickscan"
 
 const LANG_OPTIONS: { code: Lang; name: string }[] = [
   { code: "en", name: "English"   },
@@ -124,8 +123,9 @@ const Navbar = () => {
     { label: t.faq,          href: "/#faq"          },
     { label: t.contact,      href: "/#contact"      },
   ]
-  // The homepage is the QuickScan's landing, so the button starts the quiz at hole 1.
-  const quickscanHref = quickscanUrl(lang, null)
+  // The QuickScan always starts from "Sound familiar?" on the homepage, where the golfer
+  // ticks the narratives they recognise — so this button goes there, not to the quiz.
+  const quickscanHref = "/#recognise"
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-5">
@@ -166,7 +166,7 @@ const Navbar = () => {
           <div className="w-px h-4 bg-white/10" />
           <a
             href={quickscanHref}
-            onClick={() => { if (typeof window !== "undefined" && window.plausible) window.plausible("quiz_click", { props: { source: "nav" } }); }}
+            onClick={() => { if (typeof window !== "undefined" && window.plausible) window.plausible("cta_click", { props: { source: "nav" } }); }}
             className="inline-flex items-center gap-1.5 rounded-xl bg-amber-400 px-4 py-2 text-xs font-bold text-green-950 tracking-wide shadow-md shadow-amber-500/20 transition-all duration-200 hover:bg-amber-300 hover:-translate-y-px hover:shadow-lg hover:shadow-amber-500/30 whitespace-nowrap"
           >
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 shrink-0"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14z"/><path d="M5.8 5.8a2.2 2.2 0 0 1 4.1 1.1c0 1.5-2.2 2-2.2 2"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg>
@@ -225,7 +225,7 @@ const Navbar = () => {
               <motion.a
                 href={quickscanHref}
                 className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-amber-400 px-5 py-3.5 text-base font-bold text-green-950 mt-4 shadow-lg shadow-amber-500/20 hover:bg-amber-300 transition-colors"
-                onClick={() => { setIsOpen(false); if (typeof window !== "undefined" && window.plausible) window.plausible("quiz_click", { props: { source: "nav" } }); }}
+                onClick={() => { setIsOpen(false); if (typeof window !== "undefined" && window.plausible) window.plausible("cta_click", { props: { source: "nav" } }); }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45 }}
