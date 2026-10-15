@@ -92,8 +92,8 @@ gereviewd**. De QuickScan zelf blijft NL/EN (DE/FR/ES-bezoekers krijgen `lang=en
   P3)"; prompt: mail 1 sluit daar warm op aan, **herkenning, geen diagnose**. Zonder route ongewijzigd.
 - `routers/admin.py` — route in `/admin/quickscans` + CSV; `/admin/nurture-conversie` → `per_route`
   (QuickScans → opt-ins → sequences → kopers per narrative, subs tellen bij hun narrative, zonder route =
-  `direct`, met `optin_pct`/`koop_pct`). Admin-UI toont de route naast de taal ("NL · P2"); voor
-  `per_route` is er nog **geen** UI (alleen API).
+  `direct`, met `optin_pct`/`koop_pct`). Admin-UI toont de route naast de taal ("NL · P2") en de
+  tabel "Funnel per herkenningszin" (QuickScans · opt-ins · opt-in % · kopers · koop % + totaal).
 - Tests `tests/test_entry_route.py` (6); suite **553 passed, 7 skipped**.
 - Docs: portal `CLAUDE.md` (nurture-sectie + blokkentabel), `docs/NURTURE_CAMPAGNE_UITVOERING.md`,
   `docs/TESTS.md`, `TIJDREGISTRATIE.md`.
@@ -121,7 +121,7 @@ gereviewd**. De QuickScan zelf blijft NL/EN (DE/FR/ES-bezoekers krijgen `lang=en
    golferzinnen; DE tagline "Ich will weniger Schläge spielen."; groepsnamen DE "Emotion & Erleben" /
    FR "Émotion & vécu" / ES "Emoción y vivencia"; DE/ES "Initiator"/"Iniciador"; DE E2.4 "neu ansetzen".
 2. **"4.9/5"** op de QuickScan-landing: bron + aantal beoordelingen erbij zetten (opdrachtgever levert aan).
-3. **Admin-UI voor `per_route`** (funnel per narrative) — nu alleen via de API.
+3. ~~Admin-UI voor `per_route`~~ — **gedaan**: tabel "Funnel per herkenningszin" op de portal-admin-pagina.
 4. **De 48 sub-narratives** staan in `narratives.ts` maar worden nog nergens getoond (bedoeld voor
    advertenties/mails; C8-experimenten uit het framework zitten nog niet in de data).
 5. **QuickScan-resultaat → `/assessment`**: de koop-escape in quiz.html linkt nog rechtstreeks naar de
