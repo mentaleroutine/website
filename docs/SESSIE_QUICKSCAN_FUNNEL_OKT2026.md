@@ -1,4 +1,4 @@
-# Sessieverslag — QuickScan-funnel, Entry Narratives & QuickScan-rapport (15 okt – 2 nov 2026)
+# Sessieverslag — QuickScan-funnel, Entry Narratives, QuickScan-rapport & voorbeeldrapporten (15 okt – 2 nov 2026)
 
 > **Volledig, gedetailleerd verslag** van een reeks werksessies over twee repo's — de **website**
 > (`C:/Users/beren/Documents/Claude website MR 01`, repo `mentaleroutine/website`, Vercel) en de **portal**
@@ -6,8 +6,10 @@
 > verloren bij context-compactering. Bevat elk besluit met de reden, de eindtoestand per onderdeel, alle
 > commits, incidenten + lessen, testhulpmiddelen, terugrollen en wat nog openstaat.
 >
-> **Status 2-11-2026: alles LIVE.** Website: laatste functionele commit `054b401`. Portal: server op `9c1a18e`
-> (health `healthy`, migratie `026_quiz_entry_route_multi` = head, frontend-build ok).
+> **Status 2-11-2026 (middag): alles LIVE.** Website: laatste functionele commit `7bb2604` (voorbeeldrapporten,
+> Vercel). Portal: server op `88a252a` (git pull + herstart backend/celery door de opdrachtgever; geen migratie,
+> `026_quiz_entry_route_multi` = head). **Voorbeeldrapporten (`/samples`) staan in §10** — inclusief hoe je een
+> voorbeeld vervangt en wat er nog moet (de 6 profielen opnieuw genereren).
 
 ---
 
@@ -65,6 +67,12 @@ coach, niet (golf)psycholoog, nooit PGA-pro ("PGA-netwerk" klopt wél). **Alleen
 | 26 | QuickScan-rapport te klinisch | **Rijker, 11 pagina's** (details §4.2): welkom + aangevinkte zinnen als rode draad, "wat zit erin / wat niet", scenario's in jij-vorm, 1 zachte teaser per inhoudspagina, energiekere toon; lengtebewaking + worst-case-test. | Het rapport is DE leadgenerator. |
 | 27 | Hetzelfde e-mailadres twee keer de QuickScan | **Nieuwe scan vervangt de lopende nurture-reeks** (nooit twee tegelijk); geen reeks bij uitgeschreven/onderdrukt of al klant. | PDF en mails moeten over dezelfde scores gaan. |
 | — | Profielrapport (betaald) noemde een echte tourspeler | Verhaal over een **naamloze clubgolfer**; EN-kop "From the game". | Verzonnen details over echte mensen kloppen vaak niet. |
+| 28 | Voorbeeldrapporten op de website | **Drie verzonnen golfers — Alex, Sam, Chris** (dezelfde als de bestaande EN-trainingsvoorbeelden van 25-9). Elke golfer **gevolgd door de hele reis: QuickScan → spelersprofiel → trainingsrapport**. | Bezoekers zien dat elk rapport voor één persoon geschreven is; drie naast elkaar maakt het verschil zichtbaar. |
+| 29 | Hoe toon je het spelersprofiel (45 p.)? | **De visuele samenvatting (7 p.) om door te bladeren + het volledige profiel als PDF-download** (+ sinds 2-11 de leeswijzer als tweede download). | 45 pagina's als plaatjes is te zwaar; de samenvatting is het "gezicht" van het profiel. |
+| 30 | Talen | **Alle rapporten NL + EN.** DE/FR/ES-bezoekers zien de EN-rapporten met een korte taalnoot. | De rapporten bestaan alleen in NL/EN (portal). |
+| 31 | Waar staat het? | **Eén pagina `/samples`** (alias `/voorbeelden` → redirect). Gelinkt vanaf: **homepage** (stille link onder de startknop van "Herken je dit?"), **QuickScan-opt-in** (nieuw tabblad, zodat de QuickScan niet verloren gaat) en **`/assessment`** (nieuw tabblad; koopknop ongewijzigd). | De homepage blijft QuickScan-only; wie twijfelt kan kijken zonder de flow te verlaten. |
+| 32 | Oude voorbeelden | **Uitgefaseerd:** `public/reports/sample-standard.html` + `sample-training-report.html` + de iframe-modal `report-preview-modal.tsx` weg; oude URL's redirecten naar `/samples?report=profile` resp. `?report=training`. | Dummy-HTML i.p.v. echte uitvoer; één plek voor voorbeelden. |
+| 33 | Profielen hebben 2 bekende inhoudsfouten (§10.6) | **Toch nu live** ("ik wil voortgang boeken"); fixes zitten in de portal (`88a252a`, gedeployd); de 6 profielen worden **later** opnieuw gegenereerd en vervangen. | Opdrachtgever. |
 
 ---
 
@@ -207,11 +215,16 @@ worst-case-test). Daarom:
 - **Worst-case-criterium**: de eerste versie vergeleek twee paginatellingen die allebei te hoog waren; nu een
   vaste verwachting (11).
 - **Scratchpad-map is tijdelijk** (werd tussendoor leeggemaakt): testhulpmiddelen staan nu in de repo's (§6).
+- **JS-syntaxfout in quiz.html (2-11, vóór commit gevangen)**: de NL-tekst `optin.sampleLink` bevatte "zo'n" met een
+  rechte apostrof binnen een JS-string tussen enkele quotes → het hele quiz-script brak. Fix: typografische ’.
+  **Les: NL-teksten in quiz.html altijd met ’ (of escapen) en daarna funnel-check draaien.**
+- **Inhoudsfouten in de voorbeeldprofielen (2-11)** — gevonden bij het nalezen, zie §10.6.
 
 ## 6. Testhulpmiddelen
-- **Website** `scripts/e2e/funnel-check.js` (+ README): 41 controles in Chromium (homepage, vinkjes, routes,
+- **Website** `scripts/e2e/funnel-check.js` (+ README): sinds 2-11 **56 controles** (was 41; +`/samples`: kiezers, deep links,
+  DE→EN-rapporten + taalnoot, redirects van de oude voorbeeld-URL's, opt-in-link, geen paginafouten). Oorspronkelijk 41 controles in Chromium (homepage, vinkjes, routes,
   CTA's, redirects, taaldetectie, volledige QuickScan NL/EN tot het resultaatscherm, wegen naar `/assessment`);
-  portal-verzoeken geblokkeerd. Laatste run live 2-11: **ALL CHECKS PASSED**.
+  portal-verzoeken geblokkeerd. Laatste run 2-11 (lokaal, na `7bb2604`): **ALL CHECKS PASSED**.
 - **Portal** `backend/scripts/quickscan_check/` (+ README): `quickscan_worstcase.py` (geen AI-kosten) en
   `quickscan_sample.py` (één echt rapport; OpenAI-sleutel uit de website-`.env.local` als env-var meegeven;
   `REUSE=1` hergebruikt de AI-teksten).
@@ -224,11 +237,14 @@ worst-case-test). Daarom:
 `217aa19` methodology zonder koopdeur · `396fe8a` fix lege QuickScan · `9259d3d` checkboxes · `6f9f523` alle CTA's
 → narratives · `8f6a111` `/quickscan`-redirect + taaldetectie · `e4a5f43` "minder slagen" · `742369b`
 resultaatscherm-audit · `ae4dce2` geen deelknoppen · `dac445e` wegen naar `/assessment` · `17d5889` kop
-`/assessment` · `054b401` footer-link · plus docs-commits.
+`/assessment` · `054b401` footer-link · **`5eb5e65` pagina `/samples` + QuickScan-voorbeelden** · **`7bb2604` profielen, NL-trainingsrapporten,
+leeswijzer** · plus docs-commits.
 
 **Portal** (`main`): `26d0e6b` entry_route (025) + nurture + admin · `f0e68f6` profielverhaal zonder echte speler ·
 `589ce92` admin-funnel-tabel · `e7589a2` meerdere routes (026) · `629e2c4` mail + PDF kloppen · `a601d64`
-links naar `/assessment` · `cf2a2b4` rijker QuickScan-rapport · `3a6cf28` één reeks per adres · plus docs-commits.
+links naar `/assessment` · `cf2a2b4` rijker QuickScan-rapport · `3a6cf28` één reeks per adres · **`a2e0232` script
+voorbeeldprofielen** · **`15cf73f` script QuickScan-voorbeelden** · **`88a252a` profielrapport: twee zwakste stappen bij
+naam, EN-blinde-vlek, neutrale voornaamwoorden, lege taalcontrole geen waarschuwing** · plus docs-commits.
 
 ## 8. Deploy en terugrollen
 - **Website**: push naar `main` → Vercel. Terugrollen: tag **`homepage-pre-funnel-2026-10`** (= `323678b`, ook op
@@ -252,5 +268,116 @@ links naar `/assessment` · `cf2a2b4` rijker QuickScan-rapport · `3a6cf28` éé
 8. **De 48 sub-narratives** worden nog nergens getoond (bedoeld voor ads/mails); C8-experimenten niet in de data.
 9. **Ongebruikte translation-keys** (oude homepage-blokken) — bewust laten staan; opruimen kan later.
 10. Hero-radar geeft in de browser `<circle> cx/cy undefined`-consolemeldingen (cosmetisch, bestond al).
-11. Untracked geneste map `Claude website MR 01/Claude website MR 01/` geeft lokale tsc-fouten (niet in git) —
-    opruimen of excluden.
+11. Untracked geneste map `Claude website MR 01/Claude website MR 01/` (1,3 GB, niet in git) geeft lokale tsc-fouten
+    én laat een lokale `npx next build` falen op de type-check — opruimen of buiten de repo zetten (aangeboden, nog geen
+    antwoord). Tot dan: `npx tsc --noEmit -p .` en alleen regels die met `src/` beginnen tellen; Vercel bouwt wel goed.
+12. **De 6 voorbeeldprofielen opnieuw genereren** (§10.6/§10.7) — bevatten nog 2 bekende fouten; de portal-fix staat
+    sinds 2-11 op de server. Kost 6 betaalde AI-runs (Anthropic).
+13. **De EN-trainingsvoorbeelden** zijn die van 25-9-2026 (`public/reports/training-samples/`), gemaakt vóór de
+    rapport-review-rondes; eventueel later opnieuw genereren voor gelijke kwaliteit met de NL-versies (3 AI-runs).
+
+---
+
+## 10. Voorbeeldrapporten op de website — `/samples` (2 nov 2026, LIVE)
+
+Besluiten 28–33 in §1. Commits website `5eb5e65` (pagina + QuickScan-voorbeelden) en `7bb2604` (profielen,
+NL-trainingsrapporten, leeswijzer); portal `a2e0232` + `15cf73f` (generatiescripts) en `88a252a` (rapportfixes).
+
+### 10.1 Wat de bezoeker ziet
+- **Hero** "Drie golfers. Drie heel verschillende rapporten." + uitleg (verzonnen golfers, echte ongewijzigde uitvoer).
+- **1 · Kies een golfer** — drie kaarten (naam, hcp, één herkenbare regel, focus):
+
+  | Golfer | Hcp | Regel (NL) | Focus | Kernscores profiel (0–10) |
+  |---|---|---|---|---|
+  | **Alex** | 14.2 | "Kiest de slag — en twijfelt boven de bal toch nog." | Grootste groeikans: **Overtuiging 3.8** (groeipunt) | sterkst Focus 7.2; op-een-na-laagst Transfer 5.0 |
+  | **Sam** | 24.0 | "Een slechte slag gaat mee naar de volgende tee." | Werkgebied: **Acceptatie 5.6** | sterkst Vertrouwen 7.8; op-een-na-laagst Analyse 6.0 |
+  | **Chris** | 6.3 | "Scherpe focus, maar een misser kost nog te veel." | Sterkte: **Focus 8.1** · groeikans Acceptatie 4.4 | op-een-na-laagst Transfer 5.2 |
+
+- **2 · Kies een rapport** — QuickScan (gratis, ± 8 min) · Spelersprofiel (het volledige assessment) ·
+  Trainingsrapport (3 inbegrepen). Op mobiel compacte rijen van één regel (de tag staat dan in de lopende tekst).
+- **Viewer**: de pagina's als afbeeldingen (`<img>`, 1075×1521, eerste 2 eager, rest lazy) + download-link(s):
+  QuickScan/trainingsrapport "Download PDF"; profiel "Download het volledige profiel (PDF)" **+ "de leeswijzer die erbij
+  hoort (PDF)"**. Daaronder vergelijk-hint + disclaimer, daarna CTA → `/#recognise` (primair) en `/assessment` (secundair).
+- **Deep links**: `/samples?golfer=sam&report=profile&lang=nl&source=…`; een keuze zet `golfer`/`report` in de URL
+  via `replaceState` (deelbaar, geen extra history-stappen).
+- **Talen**: UI in 5 talen; rapporten NL voor `nl`, **EN voor en/de/fr/es** (+ taalnoot `langNote` bij de/fr/es;
+  de leeswijzerlink zegt daar "(PDF, Englisch / en anglais / en inglés)").
+
+### 10.2 Welke rapporten (alles NL + EN, 3 golfers)
+
+| Rapport | Pagina's | Bron | Map op de website |
+|---|---|---|---|
+| QuickScan | 11 | portal `scripts/quickscan_check/quickscan_voorbeelden.py` (OpenAI, gpt-5.6-luna) | `public/samples/{g}/quickscan-{nl,en}/` + `.pdf` |
+| Spelersprofiel — samenvatting | 7 (bladerbaar) | portal `scripts/website_voorbeelden.py` (Anthropic) → mailbijlage `samenvatting_{g}.pdf` | `public/samples/{g}/profile-{nl,en}/` |
+| Spelersprofiel — volledig | 45 (alleen PDF, ~1,2 MB) | idem → `testrapport_{g}.pdf` | `public/samples/{g}/profile-{nl,en}.pdf` |
+| Leeswijzer | 5 (alleen PDF) | idem → `leeswijzer.pdf` — **voor iedereen gelijk**, dus één per taal | `public/samples/guide-{nl,en}.pdf` |
+| Trainingsrapport NL | 10 | portal `scripts/trainingsrapport_voorbeeld.py --taal nl` (Anthropic), 2-11-2026 | `public/samples/{g}/training-nl/` + `.pdf` |
+| Trainingsrapport EN | 10 | hetzelfde script, **25-9-2026** (commit `323678b`) | `public/reports/training-samples/{g}/` + `{g}.pdf` (oude plek, bewust niet verplaatst) |
+
+Onderwerpen trainingsrapport: Alex **Overtuiging 3.8**, Sam **Acceptatie 5.6**, Chris **Focus 8.1**.
+De QuickScan-scores wijken bewust iets af van het profiel (de QuickScan kijkt minder diep — het rapport zegt dat zelf).
+`public/samples` is in totaal ~18 MB.
+
+### 10.3 Code
+- `src/lib/samples.ts` — types `GolferId`/`ReportId`, `GOLFERS`, `REPORTS`, `GOLFER_HCP`, `reportLang()` (nl→nl, rest→en),
+  **`SAMPLE_FILES`-manifest** (per golfer × rapport × taal: `dir`, `pages`, `pdf`; `pages: 0` = "binnenkort online"),
+  helper `files()` → `/samples/{g}/{report}-{lang}`, `oldTraining()` → `/reports/training-samples/{g}` (10 p.).
+  Alle paginatekst (`SamplesCopy`, type = `typeof nl`) in 5 talen, o.a. `downloadFull`, `downloadGuide`, `langNote`.
+- `src/app/samples/page.tsx` (client, `LangProvider`) + `layout.tsx` (metadata/OG/canonical, EN).
+- `next.config.ts` — redirects `/voorbeelden` → `/samples` (permanent, query gaat mee); `/reports/sample-standard.html`
+  → `/samples?report=profile`; `/reports/sample-training-report.html` → `/samples?report=training`.
+- `src/app/sitemap.ts` — `/samples` (priority 0.8).
+- Ingangen: `src/app/page.tsx` (stille link onder de startknop van `#recognise`, `home.samplesLink`, 5 talen);
+  `public/quiz.html` (`#optin-sample-link` direct na de opt-in-checklist, nieuw tabblad, i18n `optin.sampleLink`; de href
+  krijgt in `applyI18n` `&lang=`); `src/app/assessment/page.tsx` (de oude preview-knop is nu een link naar
+  `/samples?report=profile&source=assessment`, nieuw tabblad; `previewBtn` 5 talen; de modal + `previewModal`-keys zijn weg).
+- Verwijderd: `src/components/ui/report-preview-modal.tsx`, `public/reports/sample-standard.html`,
+  `public/reports/sample-training-report.html`.
+- Omzetscript: `scripts/samples/pdf_to_webp.py` (PyMuPDF + Pillow, 1075 px breed, WebP kwaliteit 82).
+
+### 10.4 Analytics (Plausible)
+- `sample_view{golfer,report,lang,source}` — bij laden (`source` = `home`/`quiz`/`assessment`/`direct`) en bij elke keuze (`picker`).
+- `sample_download{golfer,report,lang}` — `report` = `quickscan`/`profile`/`training`/**`guide`** (leeswijzer).
+- `samples_click{source: home-recognise | quiz-optin}` — de links ernaartoe; op `/assessment` `report_preview{type:"samples"}`.
+- Nog niet als goal in het dashboard (zie §2.4 — de dashboard-stappen staan nog open).
+
+### 10.5 Een voorbeeld vervangen (stappenplan)
+1. **Genereren** — op de server (vanuit `backend/`, venv actief):
+   - profiel: `python scripts/website_voorbeelden.py` (alle 6) of `--golfer alex --taal nl` → mailt per golfer×taal
+     profiel + samenvatting + leeswijzer naar `jansen.berend@gmail.com` (`--email` om te wijzigen). Kost per profiel
+     één volledige Anthropic-generatie;
+   - trainingsrapport: `python scripts/trainingsrapport_voorbeeld.py --naam Alex --onderwerp overtuiging --score 3.8
+     --hcp 14.2 --taal nl` (Sam: `acceptatie 5.6 24.0`; Chris: `focus 8.1 6.3`) → print S3-links (PDF + JSON), **1 uur geldig**;
+   - QuickScan: lokaal `OPENAI_API_KEY=… python scripts/quickscan_check/quickscan_voorbeelden.py` (sleutel uit de
+     website-`.env.local` als env-var meegeven, nooit kopiëren) → `scripts/quickscan_check/out/voorbeelden/`.
+2. **Downloaden** — de opdrachtgever zet ze in `C:/Users/beren/Downloads`. Downloads met dezelfde naam krijgen `(1)`,
+   `(2)` → **op inhoud herkennen** (pagina 1: naam, onderwerp, taal), niet op bestandsnaam.
+3. **Omzetten** (website-repo): `python scripts/samples/pdf_to_webp.py <pdf> public/samples/<g>/<report>-<lang> --pdf-as <report>-<lang>.pdf`.
+   Voor het profiel: de **samenvatting** omzetten (map `profile-<lang>/`) en het **testrapport** kopiëren als
+   `public/samples/<g>/profile-<lang>.pdf`. Het script print het aantal pagina's → in `SAMPLE_FILES` zetten als het
+   afwijkt (profiel 7, QuickScan 11, training 10).
+4. **Testen**: `npx next dev -p 3123` + `BASE=http://localhost:3123 node scripts/e2e/funnel-check.js` (Node uit
+   `/c/Program Files/nodejs` op het PATH) en `npx tsc --noEmit -p .` (alleen `src/`-regels tellen). Dev-server stoppen:
+   PowerShell `Get-NetTCPConnection -LocalPort 3123 -State Listen | % { Stop-Process -Id $_.OwningProcess }`.
+5. **Committen** — alleen `src/…` + `public/samples` stagen (de repo-map bevat veel untracked werkbestanden) — en
+   pushen → Vercel deployt. Controle: Vercel-deploy "Ready" + `www.mentalroutine.com/samples` doorklikken.
+- Golfers/scores/onderwerpen **nooit los** wijzigen: ze staan gelijk in de 3 portal-scripts en in `samples.ts` (kaartteksten).
+
+### 10.6 Bekende fouten in de huidige profielen (live gezet op verzoek, besluit 33)
+Gevonden bij het nalezen van de 6 profielen op 2-11:
+- **A — tweede groeikans beschrijft de verkeerde stap.** Samenvatting pagina 5 ("Wat je eraan doet") toont de kop van de
+  op-een-na-zwakste stap, maar de tekst (en oefening 2) gaat over prioriteit 2. Gezien: Alex EN (kop Transfer, tekst over
+  Trust), Chris NL (Transfer ↔ Vertrouwen/putten), Sam NL + EN (Analyse ↔ Beoordeling). Oorzaak: de AI-opdracht
+  (`subelement_actie_2`, `sv_oefening_2`) noemde de stap niet bij naam.
+- **B — Nederlandse zin in het Engelse profiel.** Chris EN, blinde-vlek-blok bij een hoge score: "Een score dit hoog is een
+  kracht…" stond hard-coded NL in `rapport_v4.html`.
+- **C — "he/his", "dezelfde man"** bij genderneutrale namen (coach-briefing + baanscènes): het profiel kent het geslacht niet.
+- **Fix** (portal `88a252a`, op de server sinds 2-11): de opdracht noemt beide zwakste stappen + hun laagste onderdeel
+  (zelfde sortering als de samenvatting), blinde-vlek-tekst per taal (`rapport_labels.blinde_vlek_hoog`), regel "geslacht
+  onbekend → naam / 'de speler' / they". Pytest 571 passed. A en C zijn **niet met de echte AI hertest** — nalezen
+  bij het opnieuw genereren.
+
+### 10.7 Nog te doen
+- De 6 profielen opnieuw genereren (§10.5 stap 1) en vervangen; daarbij A/B/C nalezen.
+- Optioneel: de EN-trainingsrapporten opnieuw (van 25-9, vóór de rapport-review) zodat NL en EN even vers zijn.
+- Plausible: `sample_view`/`sample_download`/`samples_click` als goals toevoegen.

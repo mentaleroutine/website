@@ -47,7 +47,18 @@
   "Ontvang je uitwerking van {stap}", scorebadges = portalbanden Groeipunt/Werkgebied/Sterkte, "stap" (niet domein),
   stap 8 = Transfer, EN Evaluation, "Grootste groeikans" (niet "Zwakste"), geen deelknoppen, geen
   voorbeeld-trainingsrapport. Benchmark "5.2 / 6.8+" blijft op verzoek (fictief). QUICKSCAN10 t/m 31-12-2026.
-- **Testen:** `scripts/e2e/funnel-check.js` (Playwright, 41 controles, portal geblokkeerd) — draai dit na elke
+- **Voorbeeldrapporten `/samples`** (alias `/voorbeelden`, 2-11-2026, LIVE): 3 verzonnen golfers **Alex (hcp 14.2,
+  Overtuiging 3.8) · Sam (24.0, Acceptatie 5.6) · Chris (6.3, Focus 8.1)**, elk QuickScan (11 p.) → spelersprofiel
+  (samenvatting 7 p. bladerbaar + volledig profiel 45 p. als PDF + leeswijzer-PDF) → trainingsrapport (10 p.), **NL + EN**
+  (de/fr/es zien EN + taalnoot). Manifest + teksten `src/lib/samples.ts` (`SAMPLE_FILES`, paginatelling; 0 = "binnenkort");
+  pagina `src/app/samples/`; bestanden `public/samples/{g}/{quickscan,profile,training}-{nl,en}/pNN.webp` + `.pdf`,
+  `public/samples/guide-{nl,en}.pdf`; EN-trainingsrapport nog op de oude plek `public/reports/training-samples/{g}/`.
+  Ingangen: homepage (stille link onder de `#recognise`-startknop), QuickScan-opt-in (nieuw tabblad), `/assessment`
+  (nieuw tabblad; koopknop ongewijzigd). De oude iframe-modal + `sample-standard.html`/`sample-training-report.html` zijn
+  weg (redirects). Events `sample_view`/`sample_download`/`samples_click`. **Vervangen/genereren: stappenplan in
+  `docs/SESSIE_QUICKSCAN_FUNNEL_OKT2026.md` §10.5**; de huidige 6 profielen hebben nog 2 bekende fouten (§10.6) en worden
+  later opnieuw gegenereerd. Golfers/scores nooit los wijzigen (staan ook in 3 portal-scripts).
+- **Testen:** `scripts/e2e/funnel-check.js` (Playwright, 56 controles incl. `/samples`, portal geblokkeerd) — draai dit na elke
   wijziging aan quiz.html / homepage / navbar / redirects (lege-QuickScan-incident 15-10-2026).
 - Lokale typecheck: de geneste kopie `Claude website MR 01/Claude website MR 01/` (untracked) geeft
   tsc-fouten — negeren; alleen fouten in `src/` tellen.
@@ -134,7 +145,7 @@ grotendeels mijn formulering (mag bijgestuurd).
 - **Pricing = ÉÉN product $79** (translations `plans[0]`: `price:"79"`, geen was-prijs, geen tiers,
   geen credits). GEEN Foundation/Mastery, GEEN vergelijkingstabel (`comparisonRows: []` leeg), GEEN
   2 plan-kaarten. De "Pricing (huidige waarden)"-tabel + "Upgrade pad" verderop zijn HISTORIE.
-- **Sample-preview modal** accepteert alleen **`"standard" | "training"`** (geen `"mastery"`).
+- ~~Sample-preview modal~~ — **verwijderd 2-11-2026**; voorbeelden staan op `/samples` (zie ACTUEEL-blok bovenaan).
 - **Secties in page.tsx** (13 incl. navbar/footer, GEEN `#early-access`): hero = **3 deuren, geen
   prijs/koopknop**; Research-stats = **90% / 1000+ / 56** (niet 70+); `#dimensions` toont nu de
   **4 beïnvloedende factoren** (niet "6 dimensies"); pricing = 1 kaart.
@@ -189,7 +200,7 @@ src/
     testimonials-columns.tsx    — testimonial kaarten in auto-scroll kolommen (reduced-motion aware)
     hero-radar.tsx              — SVG radar chart, roteert random scores (reduced-motion aware)
     contact-section.tsx         — contactformulier (POST naar /api/contact), lazy-loaded
-    report-preview-modal.tsx    — iframe modal voor sample reports (types: standard|training), lazy-loaded
+    (report-preview-modal.tsx is VERWIJDERD 2-11-2026 → /samples)
     spotlight.tsx               — achtergrond spotlight effect (hero)
     button.tsx                  — generieke button component
     evervault-card.tsx          — decoratief card component
@@ -201,9 +212,10 @@ public/
   robots.txt                    — crawler-regels
   logoMRpng.png / logoMRjpg.jpg / logoMR.svg / logo-icon.svg — logo-varianten
   social/                       — 3 social-PNG's
+  samples/                      — voorbeeldrapporten voor /samples (Alex/Sam/Chris × QuickScan/profiel/training × nl/en)
   reports/
-    sample-standard.html        — dummy voorbeeldrapport (clickable preview)
-    sample-training-report.html — sample trainingsrapport (clickable preview)
+    training-samples/{alex,sam,chris}/ + .pdf — EN-trainingsvoorbeelden (25-9-2026), gebruikt door /samples
+    (sample-standard.html + sample-training-report.html VERWIJDERD 2-11-2026 → redirect naar /samples)
   quiz.html                     — de QuickScan (rewrite van /quickscan)
   *.svg                         — Next.js default icons
   (VERWIJDERD: reports/sample-mastery.html, assessment-foundation.html, assessment-mastery.html,
@@ -286,6 +298,9 @@ dollar-equivalente waarde die de website communiceert; de portal int in credits.
 **Let op**: De termen "Skills Developer" en "bonus credits" zijn volledig verwijderd uit alle user-facing tekst (0 matches in zichtbare content). "Skills Developer" hernoemd naar "Training Reports" / "Trainingsrapporten", "bonus credits" vervangen door "extra training reports". De interne property-namen in translations.ts heten nog steeds `skillBuilder.*` — dat is de technische key, de zichtbare labels zijn hernoemd.
 
 ## Sample Report Previews
+
+> **HISTORIE (vervangen 2-11-2026).** De HTML-voorbeelden en de modal hieronder bestaan niet meer; alle voorbeelden
+> staan op `/samples` — zie het ACTUEEL-blok bovenaan en `docs/SESSIE_QUICKSCAN_FUNNEL_OKT2026.md` §10.
 
 - **Locatie**: `public/reports/sample-standard.html`, `public/reports/sample-mastery.html`, `public/reports/sample-training-report.html`
 - **Type**: Volledige HTML pagina's met eigen CSS (geen Tailwind), gestyled om een PDF-rapport te simuleren
@@ -584,7 +599,10 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 | `assessment_click` | `source: "home-faq"\|"quiz-optin-escape"` | **NIEUW (29-10)** — naar `/assessment` |
 | `pro_program_click` | `source: "footer"` | Enige pro-link op de homepage |
 | `checkout_click` | `plan`, `source: "assessment-page"\|"quiz-optin-escape"` | Lemon-checkout (homepage heeft GEEN koopknop meer) |
-| `report_preview` / `report_preview_close` | `type` / `type, seconds` | Voorbeeldrapporten (`/assessment`, quiz.html) |
+| `report_preview` | `type: "samples"` | `/assessment`: link naar `/samples` (de modal + `report_preview_close` zijn weg, 2-11) |
+| `sample_view` | `golfer, report, lang, source` (`home`/`quiz`/`assessment`/`direct`/`picker`) | **NIEUW (2-11)** — `/samples` geladen of andere golfer/rapport gekozen |
+| `sample_download` | `golfer, report` (`quickscan`/`profile`/`training`/`guide`), `lang` | **NIEUW (2-11)** — PDF-download op `/samples` |
+| `samples_click` | `source: "home-recognise"\|"quiz-optin"` | **NIEUW (2-11)** — link naar `/samples` |
 | `section_view` | `section` | homepage: **`recognise, how-it-works, team, faq, contact`** |
 | `scroll_depth` | `depth` | homepage |
 | `faq_open` | `question` | FAQ-vraag geopend |
