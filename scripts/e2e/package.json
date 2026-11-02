@@ -1,0 +1,16 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "`funnel-check.js` test de hele funnel in een echte (headless) browser: homepage → 12 herkenningszinnen (checkboxes) → QuickScan → resultaatscherm → wegen naar `/assessment`. Verzoeken naar de portal worden **geblokkeerd**, dus er komt niets in de productie-database. Plausible-events worden onderschept en gecontroleerd.",
+  "main": "funnel-check.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "playwright": "^1.64.1"
+  }
+}

@@ -1,174 +1,257 @@
-# Sessieverslag — Homepage als QuickScan-funnel + Entry Narratives (15 okt 2026)
+# Sessieverslag — QuickScan-funnel, Entry Narratives & QuickScan-rapport (15 okt – 2 nov 2026)
 
-> Volledig verslag van één werksessie over twee repo's (website + portal), zodat niets verloren gaat
-> bij context-compactering. Bevat de besluiten (met de reden erachter), de eindtoestand, de commits,
-> hoe je terugrolt en wat nog openstaat. **Status: alles LIVE** (website via Vercel, portal gedeployed
-> + migratie 025 gedraaid, health `healthy`).
+> **Volledig, gedetailleerd verslag** van een reeks werksessies over twee repo's — de **website**
+> (`C:/Users/beren/Documents/Claude website MR 01`, repo `mentaleroutine/website`, Vercel) en de **portal**
+> (`C:/Users/beren/Documents/NewAssessmentPortal`, repo `mentaleroutine/portal`, eigen server). Doel: niets gaat
+> verloren bij context-compactering. Bevat elk besluit met de reden, de eindtoestand per onderdeel, alle
+> commits, incidenten + lessen, testhulpmiddelen, terugrollen en wat nog openstaat.
+>
+> **Status 2-11-2026: alles LIVE.** Website: laatste functionele commit `054b401`. Portal: `3a6cf28` gepusht —
+> de deploy daarvan (git pull + herstart + frontend-build) moet de opdrachtgever nog draaien; eerdere stand
+> `cf2a2b4` staat live (health `healthy`, migratie `026_quiz_entry_route_multi` = head).
 
-## 0. Aanleiding
+---
 
-De website (www.mentalroutine.com) stond "te weinig in het teken van de funnel": de hero bood drie
-gelijkwaardige deuren (QuickScan · assessment $79 kopen · pro-programma) en geen van de drie converteerde
-goed — "het is gewoon teveel". Doel van de opdrachtgever: **informeren over de dienstverlening met als
-enige CTA "doe de gratis QuickScan"**; opt-ins converteren via de (al bestaande) e-mailreeks naar kopers.
+## 0. Aanleiding en uitgangspunten
 
-Uitgangsmateriaal: het **Entry Narrative Framework v1.5** (Berend & Henk, 23-9-2026; PDF, niet in een
-repo): 3 groepen (Performance / Emotion & Experience / Development) → 12 entry narratives → 48
-sub-narratives → 48 primary hooks → 48 lead executions + C8-experimenten. Kernregels: herkennen, niet
-diagnosticeren; geen persona's; de 4 beïnvloedende factoren blijven **onder water**; **geen
-overclaiming** (geen "strokes lost by mindset"-claims zonder meetdata); handicap-neutraal; niet pushy.
+De homepage bood drie gelijkwaardige deuren (QuickScan · assessment $79 kopen · pro-programma) en geen van de
+drie converteerde — "het is gewoon teveel". Doel: **de site informeert en heeft één CTA: doe de gratis
+QuickScan**; opt-ins worden via de (al bestaande, AI-gegenereerde) nurture-reeks van 12 mails kopers.
 
-## 1. Besluiten (één voor één met de opdrachtgever genomen)
+Uitgangsmateriaal: **Entry Narrative Framework v1.5** (Berend & Henk, 23-9-2026; PDF, niet in een repo):
+3 groepen (Performance / Emotion & Experience / Development) → 12 entry narratives → 48 sub-narratives →
+48 primary hooks → 48 lead executions + C8-experimenten. Kernregels die overal zijn toegepast:
+- **herkennen, niet diagnosticeren** ("marketing herkent het verschijnsel; MentalRoutine onderzoekt het patroon");
+- **geen overclaiming**: geen "strokes lost by mindset"/"dit kost je slagen"-claims zonder meetdata;
+- geen persona's (één golfer kan op meerdere narratives resoneren); handicap-neutraal; niet pushy;
+- de 4 beïnvloedende factoren blijven **onder water** in de marketing (wel genoemd waar het betaalde product
+  wordt uitgelegd).
+
+Vaste feiten (door de opdrachtgever bevestigd): **Henk de Jong = initiatiefnemer van MentalRoutine** — niet
+coach, niet (golf)psycholoog, nooit PGA-pro ("PGA-netwerk" klopt wél). **Alleen MentalRoutine-branding**
+(NogBeterGolfen weg). "1.000+ golfers onderzocht sinds 2016" klopt. "4.9/5" op de QuickScan heeft een bron.
+
+---
+
+## 1. Alle besluiten (chronologisch, één voor één met de opdrachtgever genomen)
 
 | # | Vraag | Besluit | Reden |
 |---|---|---|---|
-| 1 | Assessment nog direct kopen op de site? | **Nee — site verkoopt niets** (optie A) | Scherp kiezen; elke koper eerst in de lijst; funnel meetbaar. Voorwaarde: wie al overtuigd is kan direct ná de QuickScan kopen (koop-escape in quiz.html + kortingscode). |
-| 2 | Pro-programma op de homepage? | **Alleen één footer-link** (B); `/pro-program` blijft | Stoort de golfer niet; pro die zoekt vindt het. |
-| 3 | Lengte homepage | **Kort** (~6 secties) | Site hoeft alleen nog een gratis scan "te verdienen"; overtuigen gebeurt in resultaat + mails; diepgang op `/methodology`. |
-| 4 | Doelgroep | Geen persona/handicapgroep — **de 12 entry narratives** | Uit het framework. |
-| 5 | Narratives op de homepage | **A + C-light**: sectie "Herken je dit?" met de 12 narratives (klik → QuickScan met `?route=`) + `?route=` in de URL wisselt de hero-hook (advertenties) | Spiegel i.p.v. keuzemenu; meetbaar per route; ads landen op dezelfde boodschap zonder aparte pagina's. |
-| 6 | Talen | **Eerst EN + NL, daarna DE/FR/ES** | NL door Henk goed te keuren. (Beide inmiddels gedaan.) |
-| 7 | `/assessment` | **Blijft** als verkooppagina voor warme leads (niet in menu/home; wel vanuit QuickScan-resultaat + mails) | Twijfelaar heeft een plek om overtuigd te raken. |
-| 8 | Hero zonder `?route=` | **P1.1-hook** "You hit plenty of good shots. So why does the scorecard still tell a different story?" | Breedste herkenning; spiegel, geen claim. Bewust de exacte (bevroren) frameworktekst. |
-| 9 | Testimonials | **Fictief → verwijderd** (9 stuks + pricing-quotes "Robert M."/"Willem B.", randomuser.me-foto's) | Misleidende reclame (EU/FTC) + botst met framework. |
-| 9b | "1.000+ golfers onderzocht sinds 2016" | **Klopt** — blijft | Bevestigd. |
-| 10 | Foto/feiten Henk | Geen foto. **Alleen MentalRoutine-branding** — NogBeterGolfen (footer, FAQ, link) weg | Eén merk. |
-| 10b | Omschrijving Henk | **Initiatiefnemer van MentalRoutine** — NIET coach, NIET (golf)psycholoog, NOOIT PGA-pro | Feitelijk. "PGA-netwerk" (bracht golfers bij het onderzoek) klopt wél. |
-| 11 | Dubbeling homepage ↔ `/quickscan`-landing | **Homepage = de landing**; klik start de QuickScan direct bij hole 1 (`?start=1`) | Anders twee verkooppagina's na elkaar (dubbele frictie). De `/quickscan`-landing blijft voor direct verkeer. |
-| 12 | "4.9/5" op de QuickScan-landing | **Heeft een bron** — blijft | Bron + aantal kan nog worden toegevoegd. |
-| 13 | "PGA-netwerk" bij Henk | **Klopt** — blijft | |
-| 14 | "Niet je swing / Het zit niet in je swing / wat je écht slagen kost" (QuickScan) | **Herschreven** volgens framework (herkennen, niet concluderen) | Overclaim. Ook in meta-titel, startknop, slot-CTA, resultaattekst, deeltekst. |
-| 15 | "Welk domein kost jou de meeste slagen" / "Je laat veel slagen liggen" | **Herschreven** naar "sterkste punt + grootste groeikans" | De QuickScan meet geen slagen. |
-| 16 | Henks golfer-voice-review (PDF "Golfer-voice alternatives") | **Overgenomen**: groepsregels, 12 narratives, 48 sub-narratives in golferstaal | Hooks bleven v1.5. P2 = "It's not my swing that costs me shots." (golfer zegt het zelf → herkenning, geen MR-claim; alternatief A "I throw shots away without hitting a bad one." indien voorzichtiger gewenst). |
-| 17 | NL-vertalingen | **Goedgekeurd door Henk** | Lijst `docs/NL_TEKSTEN_HOMEPAGE_HENK.md`. |
-| 18 | Route-ID naar portal + nurture | **Gebouwd** (portal migratie 025) | Conversie per narrative meetbaar; mail 1 sluit aan bij wat de golfer herkende. |
-| 20 | Waar gaan de overige CTA's heen? | **Allemaal naar "Herken je dit?"** (`#recognise`); de QuickScan start alleen na ≥1 vinkje. Advertentie-route vinkt de zin alvast aan, subroute blijft behouden | Anders start de QuickScan zonder narratives en werkt de meting/nurture-aansluiting niet. |
-| 21 | `/quickscan` direct bezocht (zonder vinkjes) | **Doorsturen naar "Herken je dit?"** (307, taal mee via `?lang=`); oude landing vervalt, `/quickscan` uit de sitemap | Elke QuickScan heeft narratives; oude links/bio/deellinks blijven werken. |
-| 22 | Site begon altijd in het Engels | **Taaldetectie**: `?lang=` → eerder gekozen taal (onthouden) → browsertaal → EN | NL/DE/FR/ES-bezoekers zagen eerst Engels. |
-| 23 | QuickScan-resultaatscherm beloofde dingen van het betaalde product | **Gecorrigeerd** (audit scherm ↔ gratis PDF): geen "oefeningen op maat van je handicap" maar tips; geen "{stap}-plan ligt klaar" maar "Ontvang je uitwerking van {stap}"; voorbeeld-trainingsrapport weg uit "Dit ontvang je"; "volledige rapport" → "persoonlijke rapport"; scorebadges = portalbanden (Groeipunt/Werkgebied/Sterkte, <4/4–6.9/7+); stap i.p.v. domein, Transfer, Evaluation (EN), "Grootste groeikans" i.p.v. "Zwakste"; PDF-mockup vertaalbaar; vergrendelde balken vaste lengte. Portal: QuickScan-mail (geen "oefening", 2 groeikansen, stap) + PDF `shop.mentalroutine.com` → `www.mentalroutine.com`. Website NL "Aanvaarding" → "Acceptatie". | Scherm, mail en PDF zeggen nu hetzelfde. |
-| 23c | Delen + link kopiëren (bedankscherm én resultaatscherm) | **Weg** — geen deelknoppen meer in de QuickScan | Opdrachtgever. |
-| 23d | Kortingscode QUICKSCAN10 verliep 31-10 | **Geldig t/m 31 december 2026** in de QuickScan-PDF | Lemon Squeezy-code ook aangepast (opdrachtgever, 15-10-2026); portal gedeployed (`629e2c4`). |
-| 24 | Hoe komen mensen bij `/assessment`? (29-10) | **Besluit 7 alsnog uitgevoerd + 1 stille link**: QuickScan-"Al overtuigd?" → `/assessment?lang=nl\|en` (was Lemon-checkout); nurture-mails + QuickScan-PDF-mail linken naar `/assessment?lang=` (was checkout); homepage: één onopvallende link onder de FAQ. Event `assessment_click{source}` | Twijfelaars zien eerst wat ze krijgen (voorbeelden, garantie, QUICKSCAN10); overtuigde kopers 1 klik extra. Reeds gegenereerde nurture-reeksen houden hun Lemon-link. |
-| 24b | Ook in de footer? | **Ja**: menuregel "Het volledige assessment" (5 talen) tussen "De methodiek" en "FAQ", `assessment_click{source:"footer"}` | Opdrachtgever, 2-11-2026. |
-| 25 | Kop `/assessment` "Elke slag die je hoofd je kost" (overclaim) | **"Eén assessment. Je hele mentale spel, stap voor stap."** (5 talen) + intro (sterk/groeiruimte, 3 trainingsrapporten), feature "alle 8 stappen en 4 factoren" i.p.v. "de slagen die je verliest", brug "grootste groeikans" i.p.v. "zwakste punt" | Twijfelaars landen nu op deze pagina; geen "slagen door je hoofd"-claims (framework). |
-| 26 | QuickScan-rapport te klinisch (nov) | **Rijker, 11 pagina's**: welkomstpagina + aangevinkte zinnen als rode draad, "wat zit erin / wat niet" + nuance over afwijkende scores, scenario's in jij-vorm, 1 zachte teaser per inhoudspagina, energiekere toon; disclaimer zonder "gevalideerde"; lengtebewaking + worst-case-test | Leadgenerator moet nieuwsgierig maken naar het betaalde assessment. Details: portal-CLAUDE.md. |
-| 23b | Benchmark "Gemiddelde golfer 5.2 · Top 25% 6.8+" | **Blijft staan** (besluit opdrachtgever) | Let op: volgens `README_QUIZ_FUNNEL.md` een fictieve benchmark; ook gebruikt in de nurture-prompt. |
-| 19 | Eén narrative aanklikken of meerdere aanvinken? | **Checkboxes + één startknop**; alle aangevinkte narratives gaan mee (`?route=P1,E2,D3`) en worden opgeslagen (portal migratie 026, kolom 64 tekens) | Rijkere info over de golfer; mensen herkennen zich vaak in meerdere narratives (framework: "één golfer kan op meerdere narratives resoneren"). |
+| 1 | Assessment nog direct kopen op de site? | **Nee — de site verkoopt niets.** | Scherp kiezen; elke koper eerst in de lijst; funnel meetbaar. Wie al overtuigd is kan ná de QuickScan door (zie 24). |
+| 2 | Pro-programma op de homepage? | **Alleen één footer-link**; `/pro-program` blijft bestaan. | Stoort de golfer niet; een pro die zoekt vindt het. |
+| 3 | Lengte homepage | **Kort** (hero · herkenning · 3 momenten · team · FAQ · contact). | De site hoeft alleen een gratis scan te "verdienen"; overtuigen gebeurt in resultaat + mails; diepgang op `/methodology`. |
+| 4 | Doelgroep | Geen persona's — **de 12 entry narratives**. | Framework. |
+| 5 | Narratives op de homepage | Sectie **"Herken je dit?"** + `?route=` in de URL wisselt de hero-hook (advertenties). | Spiegel i.p.v. keuzemenu; meetbaar per route; ads landen op dezelfde boodschap zonder aparte pagina's. |
+| 6 | Talen | Eerst EN + NL, daarna DE/FR/ES. | NL door Henk goed te keuren. (Beide gedaan.) |
+| 7 | `/assessment` | **Blijft** als verkooppagina voor warme leads (niet in menu). | Twijfelaar heeft een plek om overtuigd te raken. (Pas op 2-11 echt aangesloten, zie 24.) |
+| 8 | Hero zonder `?route=` | **Hook P1.1**: "You hit plenty of good shots. So why does the scorecard still tell a different story?" | Breedste herkenning, spiegel, geen claim; exacte (bevroren) frameworktekst. |
+| 9 | 9 testimonials + pricing-quotes ("Robert M."/"Willem B."), randomuser.me-foto's | **Fictief → verwijderd** (homepage én `/assessment`). | Misleidende reclame (EU/FTC); botst met framework. |
+| 10 | Foto/feiten Henk; NogBeterGolfen | Geen foto. NogBeterGolfen overal weg (footer, FAQ, link). Henk overal "initiatiefnemer". | Eén merk; feitelijk. |
+| 11 | Dubbeling homepage ↔ eigen landing van `/quickscan` | **De homepage is de landing**; de QuickScan start direct bij hole 1 (`?start=1`). | Anders twee verkooppagina's na elkaar. |
+| 12–15 | Claims op de QuickScan-pagina ("Niet je swing", "wat je écht slagen kost", "welk domein kost je de meeste slagen", "je laat slagen liggen") | **Herschreven** naar herkenning ("Een ronde is meer dan je swings", "je sterkste punt + grootste groeikans"). "4.9/5" en "PGA-netwerk" blijven (kloppen). | Overclaim; de QuickScan meet geen slagen. |
+| 16 | Henks golfer-voice-review (PDF "Golfer-voice alternatives") | **Overgenomen**: groepsregels, 12 narratives, 48 sub-narratives in golferstaal; hooks bleven v1.5. | P2 = "It's not my swing that costs me shots." (golfer zegt het zelf → herkenning). |
+| 17 | NL-vertalingen | **Goedgekeurd door Henk.** | Lijst: `docs/NL_TEKSTEN_HOMEPAGE_HENK.md`. |
+| 18 | Route-ID naar portal + nurture | **Gebouwd** (portal migratie 025). | Conversie per narrative meetbaar; mails sluiten aan bij wat de golfer herkende. |
+| 19 | Eén narrative aanklikken of meerdere aanvinken? | **Checkboxes + één startknop**; alle vinkjes gaan mee (`?route=P1,E2,D3`), opgeslagen (migratie 026). | Rijkere info; mensen herkennen zich vaak in meerdere narratives. |
+| 20 | Waar gaan de overige CTA's heen? | **Allemaal naar "Herken je dit?"** (`#recognise`); de QuickScan start alleen na ≥1 vinkje. Advertentie-route vinkt de zin alvast aan; de subroute (`P4.2`) blijft behouden. | Anders start de QuickScan zonder narratives. |
+| 21 | `/quickscan` direct (oude links, bio, deellinks) | **307-redirect naar `/#recognise`** (taal mee via `?lang=`); oude landing vervalt; uit de sitemap. | Elke QuickScan heeft narratives. |
+| 22 | Site begon altijd in het Engels | **Taaldetectie**: `?lang=` → eerder zelf gekozen taal (onthouden) → browsertaal → EN. | NL/DE/FR/ES-bezoekers zagen eerst Engels. |
+| — | Groepsregel Prestatie (NL) | "Ik wil lager scoren" → **"Ik wil minder slagen maken."** (FR "Je veux jouer moins de coups."; EN/DE/ES zeiden al "minder slagen"). | Opdrachtgever. |
+| 23 | QuickScan-resultaatscherm beloofde dingen van het betaalde product | **Gecorrigeerd** na audit scherm ↔ gratis PDF (details §3.3). | Scherm, mail en PDF zeggen nu hetzelfde. |
+| 23b | Benchmark "Gemiddelde golfer 5.2 · Top 25% 6.8+" | **Blijft staan** (besluit opdrachtgever). | Let op: volgens `README_QUIZ_FUNNEL.md` een **fictieve** benchmark; ook in de nurture-prompt. |
+| 23c | Deelknoppen in de QuickScan (bedankscherm én resultaatscherm) | **Weg.** | Opdrachtgever. |
+| 23d | QUICKSCAN10 verliep 31-10 | **Geldig t/m 31-12-2026** (PDF-tekst + door de opdrachtgever in Lemon Squeezy aangepast). | |
+| 24 | Hoe komen mensen bij `/assessment`? | Besluit 7 alsnog uitgevoerd: QuickScan "Al overtuigd?" → `/assessment?lang=`; nurture- en QuickScan-PDF-mail → `/assessment?lang=` (was de Lemon-checkout); **één stille link onder de homepage-FAQ** + (24b) **footer-menuregel "Het volledige assessment"**. | Twijfelaars zien eerst voorbeelden, garantie, QUICKSCAN10; overtuigde kopers 1 klik extra. |
+| 25 | Kop `/assessment` "Elke slag die je hoofd je kost" | **"Eén assessment. Je hele mentale spel, stap voor stap."** + intro, feature en brug zonder slagen-claims (5 talen). | Twijfelaars landen nu hier; framework. |
+| 26 | QuickScan-rapport te klinisch | **Rijker, 11 pagina's** (details §4.2): welkom + aangevinkte zinnen als rode draad, "wat zit erin / wat niet", scenario's in jij-vorm, 1 zachte teaser per inhoudspagina, energiekere toon; lengtebewaking + worst-case-test. | Het rapport is DE leadgenerator. |
+| 27 | Hetzelfde e-mailadres twee keer de QuickScan | **Nieuwe scan vervangt de lopende nurture-reeks** (nooit twee tegelijk); geen reeks bij uitgeschreven/onderdrukt of al klant. | PDF en mails moeten over dezelfde scores gaan. |
+| — | Profielrapport (betaald) noemde een echte tourspeler | Verhaal over een **naamloze clubgolfer**; EN-kop "From the game". | Verzonnen details over echte mensen kloppen vaak niet. |
 
-## 2. Eindtoestand website (`src/app/page.tsx`)
+---
 
-Secties: **hero** (badge "Free MentalRoutine QuickScan", hook, 1 knop, "9 holes · 8 minutes · free ·
-your report by email", trust "Research with 1,000+ golfers since 2016", radar) · **`#recognise`**
-"Sound familiar? / Which of these sounds like you?" (3 kolommen × 4 narratives, groepsregel als kop) ·
-**`#how-it-works`** "Every shot has three moments" (pre-shot/swing/post-shot, géén stappen/factoren/
-aantallen, link `/methodology`) · **`#team`** Henk (initiatiefnemer, 40+ jaar golfer) + Berend
-(psychometrisch expert), tekst uit de QuickScan-teambalk, quote Henk · **`#faq`** 5 QuickScan-vragen
-(`home.faq`; ook de FAQ-JSON-LD in `layout.tsx`) + slot-CTA · contact · footer (alleen pro-link,
-"An initiative of Henk de Jong") · sticky QuickScan-balk.
+## 2. Website — eindtoestand
 
-Weg van de homepage (teksten staan grotendeels nog in `translations.ts`): pricing, trainingsrapporten,
-8 stappen, factoren, why-it-works, oude hero, warmte-logica (`traffic-warmth.ts` verwijderd),
-testimonials (`testimonials-columns.tsx` verwijderd). Zie `docs/ARCHIEF_HOMEPAGE_OKT2026.md` voor
-waar elk blok staat + hergebruik-ideeën.
+### 2.1 Homepage (`src/app/page.tsx`)
+1. **Hero** — badge "Free MentalRoutine QuickScan", hook (P1.1, of de hook van `?route=`), knop
+   "Take the free QuickScan" → `#recognise`, "9 holes · 8 minutes · free · your report by email", trust
+   "Research with 1,000+ golfers since 2016", radar (voorbeeldprofiel).
+2. **`#recognise` "Herken je dit?"** — 3 kolommen (groepsnaam + groepsregel) × 4 narratives als **checkboxes**;
+   teller "{n} aangevinkt"; knop "Start de QuickScan" (uit tot ≥1 vinkje) → `quickscanUrl(lang, "P1,E2")`.
+   Advertentie-`?route=P4.2` vinkt P4 voor en geeft bij de start `P4.2` mee.
+3. **`#how-it-works`** — "Elke slag kent drie momenten" (pre-shot/swing/post-shot, géén stappen/factoren/
+   aantallen) + link `/methodology`.
+4. **`#team`** — Henk (initiatiefnemer, 40+ jaar golfer, PGA-netwerk) + Berend (psychometrisch expert), quote Henk.
+5. **`#faq`** — 5 QuickScan-vragen (`home.faq`, ook de FAQ-JSON-LD in `layout.tsx`), daaronder de **stille link**
+   naar `/assessment?lang=`, dan de slot-CTA.
+6. Contact · **footer** (menu: Gratis QuickScan → `#recognise` · Hoe het werkt · De methodiek · **Het volledige
+   assessment** · FAQ · Contact; pro-link; "Een initiatief van Henk de Jong") · sticky QuickScan-balk.
 
-Bestanden:
-- `src/lib/narratives.ts` — 3 groepen · 12 narratives · 48 subs · 48 hooks, **5 talen** (`Text` =
-  `{en,nl,de,fr,es}`), `resolveRoute()` (`P4.2` of `P4` → hook), `pick()`, `DEFAULT_ROUTE = "P1.1"`.
-- `src/lib/quickscan.ts` — `quickscanUrl(lang, route)` → `/quickscan?start=1&lang=nl|en[&route=P1,E2]` (komma leesbaar).
-- `#recognise`: checkboxes (state `picked`, klikvolgorde), knop disabled tot ≥1 vinkje, teller "{n} selected";
-  per vinkje `narrative_click{route}`, de startknop `quiz_click{source:"recognise",route:"P1,E2",count}`.
-- `src/lib/translations.ts` — `home.*` in 5 talen; nav = How it works · FAQ · Contact (+ QuickScan-knop);
-  Henk-omschrijving + NogBeterGolfen gecorrigeerd in alle 5 talen; hoog-handicap-FAQ afgezwakt.
-- `src/components/ui/faqs.tsx` — optionele `content`-prop (homepage toont `home.faq`, `/assessment`
-  houdt de product-FAQ).
-- `src/components/ui/navbar.tsx` — links absoluut (`/#…`), QuickScan-knop start direct.
-- `src/app/layout.tsx` — titel/omschrijving/OG = QuickScan (P1.1), FAQ-JSON-LD = `home.faq`.
-- `src/app/assessment/page.tsx` — fictieve quote verwijderd.
-- `public/quiz.html` — claims herschreven (NL+EN); `?start=1` auto-start; `MR_ROUTE` uit `?route=`
-  (alleen geldige `[PED][1-4](.[1-4])?`, anders `'none'`) → Plausible-props `route` op `quiz_start`/
-  `quiz_complete`/`quiz_optin` + `entry_route` in de `POST /api/quiz/results`-payload.
+Alle CTA's (hero, slot, sticky, footer, navbar op elke pagina = `/#recognise`, `/methodology`) leiden naar
+`#recognise`; de QuickScan start alleen daar. Weg van de homepage (teksten grotendeels nog in
+`translations.ts`, hergebruik: `docs/ARCHIEF_HOMEPAGE_OKT2026.md`): pricing, trainingsrapporten, 8 stappen,
+factoren, why-it-works, warmte-logica (`traffic-warmth.ts` verwijderd), testimonials (component verwijderd).
 
-`/methodology`: de koopdeur naar `/assessment` onderaan is verwijderd; de CTA start de QuickScan direct
-(tekst in 5 talen: alleen nog QuickScan).
+### 2.2 Bestanden
+- `src/lib/narratives.ts` — 3 groepen · 12 narratives (`statement`) · 48 `subs` · 48 `hooks`, **5 talen**
+  (`Text = {en,nl,de,fr,es}`); `resolveRoute("P4.2" | "P4")`, `pick()`, `DEFAULT_ROUTE = "P1.1"`.
+- `src/lib/quickscan.ts` — `quickscanUrl(lang, route)` → `/quickscan?start=1&lang=nl|en[&route=P1,E2]`.
+- `src/lib/translations.ts` — `home.*` (5 talen) incl. `recognise.start/selected`, `assessmentLink`;
+  `footer.assessment`; `assessmentPage` (nieuwe kop/intro/brug); NL stap 6 overal "Acceptatie".
+- `src/context/lang-context.tsx` — taaldetectie (`?lang` → localStorage `mr_lang` → `navigator.languages` → EN;
+  SSR/eerste render EN, daarna de gedetecteerde taal — korte flits is bekend).
+- `src/components/ui/navbar.tsx` — links `/#…`; knop "Gratis QuickScan" → `/#recognise` (`cta_click{source:"nav"}`).
+- `src/components/ui/faqs.tsx` — optionele `content`-prop (homepage `home.faq`, `/assessment` de product-FAQ).
+- `src/app/layout.tsx` — titel/omschrijving/OG = QuickScan (P1.1); FAQ-JSON-LD = `home.faq`.
+- `src/app/methodology/page.tsx` — één CTA → `/#recognise`; koopdeur weg.
+- `src/app/assessment/page.tsx` — fictieve quote weg; kop A (besluit 25).
+- `next.config.ts` — redirects: `/quiz.html` → `/quickscan` (308); `/quickscan` **zonder `route`** → `/?lang=:lang#recognise`
+  of `/#recognise` (307). `src/app/sitemap.ts` zonder `/quickscan`.
 
-Analytics (Plausible): `quiz_click{source,route}` · `narrative_click{route}` · `hero_route{route}` ·
-`section_view` · `scroll_depth` · `methodology_click` · `pro_program_click`.
+### 2.3 QuickScan-pagina (`public/quiz.html`, NL/EN)
+- `?start=1` → opent hole 1 (autostart als **laatste** stap van het script, met vangnet terug naar de landing).
+- `MR_ROUTE` uit `?route=` (lijst; alleen geldige `[PED][1-4](.[1-4])?`, ontdubbeld, max 12; anders `'none'`) →
+  Plausible-prop `route` op `quiz_start/_complete/_optin` + `entry_route` in `POST /api/quiz/results`.
+- Resultaatscherm (besluit 23): "Concrete tips die passen bij jouw spel en niveau" (niet "oefeningen op maat van je
+  handicap"); "Ontvang je uitwerking van {stap}" (niet "{stap}-plan ligt klaar"); "persoonlijke rapport" (niet
+  "volledige"); geen voorbeeld-trainingsrapport onder "Dit ontvang je"; scorebadges = portalbanden
+  **Groeipunt (<4.0) / Werkgebied (4.0–6.9) / Sterkte (7.0+)**; "stap" i.p.v. "domein", stap 8 **Transfer**, EN
+  **Evaluation**; tag "Grootste groeikans" i.p.v. "Zwakste"; PDF-mockup vertaalbaar; vergrendelde balken vaste lengte;
+  **geen deelknoppen** meer; "Al overtuigd?" → `/assessment?lang=`.
+- De eigen landing (hero/pijn/"dit krijg je") is herschreven maar alleen nog bereikbaar met `?route=`(zonder `start`).
 
-Talen: EN canoniek; NL goedgekeurd (Henk); DE/FR/ES door AI vertaald (du / vous / tú), **niet native
-gereviewd**. De QuickScan zelf blijft NL/EN (DE/FR/ES-bezoekers krijgen `lang=en`).
+### 2.4 Analytics (Plausible, site mentalroutine.com)
+Events: `narrative_click{route}` (per vinkje) · `hero_route{route}` · `cta_click{source}` (hero/final/sticky/footer/
+nav/methodology → `#recognise`) · `quiz_click{source:"recognise",route,count}` (echte start) · `quiz_start/
+_complete/_optin{route}` · `assessment_click{source: home-faq|footer|quiz-optin-escape}` · `checkout_click`
+(alleen nog op `/assessment`) · `section_view` (recognise, how-it-works, team, faq, contact) · `scroll_depth` ·
+`faq_open` · `methodology_click`. Vervallen: `hero_warmth`, homepage-`checkout_click`, oude secties.
+**Dashboard nog handmatig in te richten (opdrachtgever, stap voor stap):** (1) custom property `route`;
+(2) goals `narrative_click`, `hero_route`, `assessment_click` erbij, `hero_warmth` weg; (3) funnel
+"Herkenning" `narrative_click → quiz_start → quiz_complete → quiz_optin`; (4) "Assessment Checkout" → pageview
+`/assessment` → `checkout_click`. **Stand 2-11: stap 1 nog niet gedaan.**
 
-## 3. Portal (repo `mentaleroutine/portal`, commit `26d0e6b`)
+---
 
-- **Migratie 025** `quiz_sessions.entry_route` (String(8), nullable, index). Gedraaid op de server.
-- **Migratie 026** `entry_route` → String(64): meerdere aangevinkte narratives komma-gescheiden (`P1,E2,D3`).
-  `normalize_route` valideert per code, ontdubbelt, max 12; `narrative_ids()`/`statements()` voor lijsten.
-  Nurture-profiel noemt alle zinnen ("…" (P3); "…" (E1)); prompt: mail 1 = rode draad, latere mails pakken
-  de andere zinnen op. Funnel: golfer telt in élke aangevinkte rij; `per_route_totaal` telt uniek + `met_meerdere`.
-- `services/entry_narratives.py` — 12 statements NL/EN (kopie van website-`narratives.ts`; bij wijziging
-  daar ook hier bijwerken), `normalize_route`, `narrative_id`, `statement`.
-- `routers/quiz.py` — `QuizResultsRequest.entry_route` (gevalideerd) → opgeslagen bij `/quiz/results`
-  (vóór opt-in, dus ook anonieme invullingen per route).
-- `services/nurture_service.py` — profiel krijgt "Herkende zich bij binnenkomst in: "…" (entry narrative
-  P3)"; prompt: mail 1 sluit daar warm op aan, **herkenning, geen diagnose**. Zonder route ongewijzigd.
-- `routers/admin.py` — route in `/admin/quickscans` + CSV; `/admin/nurture-conversie` → `per_route`
-  (QuickScans → opt-ins → sequences → kopers per narrative, subs tellen bij hun narrative, zonder route =
-  `direct`, met `optin_pct`/`koop_pct`). Admin-UI toont de route naast de taal ("NL · P2") en de
-  tabel "Funnel per herkenningszin" (QuickScans · opt-ins · opt-in % · kopers · koop % + totaal).
-- Tests `tests/test_entry_route.py` (6); suite **553 passed, 7 skipped**.
-- Docs: portal `CLAUDE.md` (nurture-sectie + blokkentabel), `docs/NURTURE_CAMPAGNE_UITVOERING.md`,
-  `docs/TESTS.md`, `TIJDREGISTRATIE.md`.
+## 3. Portal — eindtoestand
 
-## 3b. Incident: lege QuickScan-pagina (15-10-2026, opgelost in `396fe8a`)
+### 3.1 Entry route (migraties 025 + 026)
+- `quiz_sessions.entry_route` String(64), nullable, index — komma-lijst (`P1,E2,D3`) of één advertentie-route.
+- `services/entry_narratives.py` — 12 statements NL/EN (kopie van website-`narratives.ts`: **bij wijziging daar
+  ook hier bijwerken**), `normalize_route` (per code valideren, ontdubbelen, max 12), `narrative_ids`,
+  `statements`, `statement`.
+- `routers/quiz.py` — `/quiz/results` slaat de route op (vóór opt-in, dus ook anonieme invullingen); de opt-in
+  geeft `entry_route` via `quiz_task.genereer_quiz_rapport_taak` door aan de PDF.
 
-Vanaf `c167d73` gaf elke QuickScan-link vanaf de homepage (`?start=1`) een **lege pagina**: de autostart
-draaide vóór het "INITIAL DISPLAY"-blok aan het eind van het quiz-script, dat `#phase-quiz` weer verborg
-(landing al verborgen door `showPhase`). Fix: autostart als allerlaatste stap in de IIFE + vangnet (bij
-een fout terug naar de landing). Getest in jsdom (EN/NL hole 1, zonder params = landing).
-**Gevolg voor de data van die dag:** `quiz_start` vuurde wél (vóór het verbergen) → Plausible telt voor
-15-10 te veel QuickScan-starts; `quiz_complete`/`quiz_optin` zijn wel betrouwbaar. Les: wijzigingen in
-quiz.html altijd eerst in jsdom draaien.
+### 3.2 Nurture (`services/nurture_service.py`)
+- Profiel: "Herkende zich bij binnenkomst in: "…" (P3); "…" (E1)"; prompt: mail 1 = rode draad, latere mails
+  pakken de andere zinnen op — herkenning, geen diagnose.
+- Koop-links → `assessment_url(lang)` = `https://www.mentalroutine.com/assessment?lang=nl|en` (was Lemon-checkout).
+  Reeksen van vóór 2-11 houden hun Lemon-link.
+- **Zelfde adres (besluit 27)**: `mag_reeks_starten` → geen reeks bij onderdrukt, uitgeschreven
+  (`unsubscribed`/`stopped_unsub`) of al klant (`TrainingReportGrant.grant_source == "included"` op het account, of
+  eerdere `stopped_purchase`). Anders: nieuwe reeks genereren en **pas daarna** de lopende reeks op dat adres
+  `replaced` maken (pending mails `cancelled`; `stop_sequence(..., behalve_id=)`). `replaced` telt niet mee in
+  `conversie_pct` en de funnel; admin toont 'm grijs.
 
-## 4. Commits & terugrollen
+### 3.3 Mail + PDF consistent (besluit 23)
+QuickScan-mail: "sterkste stap + je twee grootste groeikansen: duiding, 3 tips en een mantra" (geen "oefening"),
+"stap" i.p.v. "domein", link naar `/assessment?lang=`. PDF: `www.mentalroutine.com` i.p.v. het gesloopte
+`shop.mentalroutine.com`; QUICKSCAN10 t/m 31-12-2026.
 
-> Latere commits (zelfde dag): `396fe8a` (fix lege QuickScan), checkbox-multi-select (website + portal
-> migratie 026) — zie `git log`.
+### 3.4 Admin
+- `/admin/quickscans` + CSV: route per invulling ("NL · P1,E2").
+- `/admin/nurture-conversie` → `per_route` (QuickScans · opt-ins · sequences · kopers per narrative; een golfer telt
+  in **elke** aangevinkte rij; subroutes bij hun narrative; zonder route = `direct`) + `per_route_totaal` (uniek,
+  `met_meerdere`). Admin-pagina: tabel **"Funnel per herkenningszin"** (5 talen) met totaalregel van de backend.
 
+---
 
-| Repo | Commit | Wat |
-|---|---|---|
-| website | `c167d73` | Homepage als QuickScan-funnel (framework), opschoning, quiz.html-claims |
-| website | `bb2f02a` | Narratives in golfer voice (Henks review) |
-| website | `f1f4b56` | DE/FR/ES + quiz.html stuurt `entry_route` |
-| portal | `26d0e6b` | entry_route opslaan + nurture + admin |
+## 4. QuickScan-rapport (het gratis PDF) — de leadgenerator
 
-- **Tag `homepage-pre-funnel-2026-10`** (ook op GitHub) = live website vóór deze sessie (`323678b`).
-  Oude homepage bekijken: `git show homepage-pre-funnel-2026-10:src/app/page.tsx`.
-  Terug: `git revert` van de website-commits hierboven (of `main` resetten naar de tag + force-push —
-  alleen in overleg).
-- Portal terug: `alembic downgrade 024_report_summary_key` + revert `26d0e6b` (kolom is nullable; de
-  website-payload met `entry_route` wordt dan door Pydantic genegeerd).
+### 4.1 Wat het wel/niet bevat
+Wel: 3 fases, 8 stappen (sterkste + 2 grootste groeikansen uitgewerkt, 5 op slot), actieplan, AI-prompts.
+**Niet**: de 4 beïnvloedende factoren, de 5 onderdelen per stap, trainingsrapporten — die zitten in het betaalde
+assessment. Dat staat nu expliciet in het rapport, met de nuance dat het volledige assessment dieper kijkt en
+**andere scores kan geven**.
 
-## 5. Openstaand
+### 4.2 Opbouw (11 pagina's)
+1. Cover (AI-titel + intro; handicap als "18").
+2. **Welkom** (nieuw): AI-welkomstbrief; "Dit herkende je zelf" (max 4 aangevinkte zinnen + "en nog N andere") met
+   AI-duiding (herkenning, geen oorzaak); leeswijzer (5 punten); blok **"Wat zit er in deze QuickScan — en wat
+   niet"** + nuance-zin; "Over de MentalRoutine" alleen zonder aangevinkte zinnen (ruimte).
+3. Shotroutine (3 fases) + **"Wat valt op?"** + teaser (factoren).
+4. De 8 stappen.
+5. Kracht — scoreduiding, **scenario in jij-vorm** op een baanmoment (op maat van score + handicap), tips, teaser.
+6. Grootste groeikans — duiding, "wat levert het op" (rust, keuzes, plezier, mogelijk enkele slagen — nooit
+   "kost slagen"), scenario, tips, mantra, teaser.
+7. Tweede groeikans — idem.
+8–9. Reflectie + AI-prompts. 10. Actieplan. 11. Slotpagina (QuickScan vs volledig assessment, QUICKSCAN10,
+   disclaimer zonder "gevalideerde").
 
-1. **DE/FR/ES native review** — twijfelpunten van de vertaling: FR "partie" (narratives) vs "parcours"
-   (rest site) voor *round*; FR "Progression" voor Development; ES "resultado" vs "score" in de
-   golferzinnen; DE tagline "Ich will weniger Schläge spielen."; groepsnamen DE "Emotion & Erleben" /
-   FR "Émotion & vécu" / ES "Emoción y vivencia"; DE/ES "Initiator"/"Iniciador"; DE E2.4 "neu ansetzen".
-2. **"4.9/5"** op de QuickScan-landing: bron + aantal beoordelingen erbij zetten (opdrachtgever levert aan).
-3. ~~Admin-UI voor `per_route`~~ — **gedaan**: tabel "Funnel per herkenningszin" op de portal-admin-pagina.
-4. **De 48 sub-narratives** staan in `narratives.ts` maar worden nog nergens getoond (bedoeld voor
-   advertenties/mails; C8-experimenten uit het framework zitten nog niet in de data).
-5. **QuickScan-resultaat → `/assessment`**: de koop-escape in quiz.html linkt nog rechtstreeks naar de
-   Lemon-checkout (met QUICKSCAN10); `/assessment` wordt vooral via de nurture bereikt.
-6. **Ongebruikte translation-keys** (`hero`, `research`, `routine`-tekst, `process`, `dimensions`,
-   `whyItWorks`, `skillBuilder`, `cta`, `heroCardLabels`, `nav`-restanten) — bewust laten staan
-   (`/assessment` gebruikt een deel; hergebruik zie archiefdoc); opruimen kan later.
-7. **Server**: bij inloggen meldde Ubuntu "System restart required" (OS-updates, los van deze deploy) —
-   `sudo reboot` op een rustig moment, daarna `/api/health` checken.
-9. **Franse aanspreekvorm inconsistent**: homepage FR = "vous" (bestaande site-objecten), `/methodology`
-   FR = "tu". Kiezen en gelijktrekken (native reviewer).
-10. **Plausible-dashboard** (handmatig): property `route` toevoegen; goals `narrative_click` + `hero_route`
-   erbij, `hero_warmth` weg; funnel "Herkenning" (`narrative_click → quiz_start → quiz_complete → quiz_optin`);
-   "Assessment Checkout" → pageview `/assessment` → `checkout_click`.
-8. De untracked geneste map `Claude website MR 01/Claude website MR 01/` geeft lokale tsc-fouten
-   (niet in git, niet op Vercel) — opruimen of in `tsconfig` excluden.
+### 4.3 Lengtebewaking (belangrijk)
+Elke pagina is vast A4; **te lange tekst valt niet weg maar levert een extra, halflege pagina op** (les uit de
+worst-case-test). Daarom:
+- elke AI-veldregel in de prompt heeft `(max N tekens)`;
+- `limieten_uit_prompt(prompt)` leest die limieten; `begrens_teksten`/`kort_in` kappen het AI-antwoord netjes af
+  (op een zinseinde, anders woord + "…") — één bron van waarheid;
+- `tests/test_quickscan_rapport_layout.py` + `backend/scripts/quickscan_check/quickscan_worstcase.py`: elk veld tot
+  de limiet → exact **11 pagina's** (NL/EN × 0/4/12 zinnen). **Nieuw/langer veld = limiet in de prompt + test.**
+
+---
+
+## 5. Incidenten en lessen
+- **Lege QuickScan-pagina (15-10, fix `396fe8a`)**: de `?start=1`-autostart draaide vóór het "INITIAL DISPLAY"-
+  blok aan het eind van het quiz-script, dat `#phase-quiz` weer verborg → elke klik vanaf de homepage gaf een
+  lege pagina tot de opdrachtgever het meldde. Fix: autostart als laatste stap + vangnet. Plausible telt voor
+  15-10 te veel `quiz_start`. **Les: wijzigingen aan quiz.html/de funnel eerst in een echte browser testen** →
+  `scripts/e2e/funnel-check.js`.
+- **Worst-case-criterium**: de eerste versie vergeleek twee paginatellingen die allebei te hoog waren; nu een
+  vaste verwachting (11).
+- **Scratchpad-map is tijdelijk** (werd tussendoor leeggemaakt): testhulpmiddelen staan nu in de repo's (§6).
+
+## 6. Testhulpmiddelen
+- **Website** `scripts/e2e/funnel-check.js` (+ README): 41 controles in Chromium (homepage, vinkjes, routes,
+  CTA's, redirects, taaldetectie, volledige QuickScan NL/EN tot het resultaatscherm, wegen naar `/assessment`);
+  portal-verzoeken geblokkeerd. Laatste run live 2-11: **ALL CHECKS PASSED**.
+- **Portal** `backend/scripts/quickscan_check/` (+ README): `quickscan_worstcase.py` (geen AI-kosten) en
+  `quickscan_sample.py` (één echt rapport; OpenAI-sleutel uit de website-`.env.local` als env-var meegeven;
+  `REUSE=1` hergebruikt de AI-teksten).
+- **Portal pytest**: **571 passed, 7 skipped** (o.a. `test_entry_route.py`, `test_quickscan_rapport_layout.py`,
+  `test_nurture_zelfde_adres.py`).
+
+## 7. Commits
+
+**Website** (`main`): `c167d73` funnel-homepage · `bb2f02a` golfer voice · `f1f4b56` DE/FR/ES + route naar portal ·
+`217aa19` methodology zonder koopdeur · `396fe8a` fix lege QuickScan · `9259d3d` checkboxes · `6f9f523` alle CTA's
+→ narratives · `8f6a111` `/quickscan`-redirect + taaldetectie · `e4a5f43` "minder slagen" · `742369b`
+resultaatscherm-audit · `ae4dce2` geen deelknoppen · `dac445e` wegen naar `/assessment` · `17d5889` kop
+`/assessment` · `054b401` footer-link · plus docs-commits.
+
+**Portal** (`main`): `26d0e6b` entry_route (025) + nurture + admin · `f0e68f6` profielverhaal zonder echte speler ·
+`589ce92` admin-funnel-tabel · `e7589a2` meerdere routes (026) · `629e2c4` mail + PDF kloppen · `a601d64`
+links naar `/assessment` · `cf2a2b4` rijker QuickScan-rapport · `3a6cf28` één reeks per adres · plus docs-commits.
+
+## 8. Deploy en terugrollen
+- **Website**: push naar `main` → Vercel. Terugrollen: tag **`homepage-pre-funnel-2026-10`** (= `323678b`, ook op
+  GitHub) — `git revert` van de commits, of in overleg `main` terugzetten.
+- **Portal**: `cd /var/www/mentalroutine && git pull && source venv/bin/activate && cd backend && alembic upgrade
+  head && cd .. && sudo systemctl restart mentalroutine mentalroutine-celery mentalroutine-celery-beat && cd frontend
+  && npm run build && sudo systemctl restart mentalroutine-frontend`; check `curl -s http://127.0.0.1:8000/api/health`.
+  Terug: `alembic downgrade 024_report_summary_key` (026 kort meervoudige routes in tot de eerste) + revert.
+
+## 9. Openstaand
+1. **Portal-deploy van `3a6cf28`** (één reeks per adres + grijze admin-badge): git pull, herstart, frontend-build.
+2. **Plausible-dashboard** (§2.4) — stap 1 (property `route`) nog niet gedaan.
+3. **Server-reboot** (Ubuntu "System restart required" + beveiligingsupdates) op een rustig moment; daarna `/api/health`.
+4. **Echte test** van het nieuwe QuickScan-rapport (eigen adres, een paar vinkjes): let op "QuickScan" i.p.v.
+   "Snapshot", jij-vorm in de brief, geen "committen" (laatste prompt-aanpassingen zijn niet met de AI hertest).
+5. **DE/FR/ES native review** — twijfels: FR "partie" vs "parcours"; FR "Progression"; ES "resultado" vs "score";
+   DE "Ich will weniger Schläge spielen."; groepsnamen; DE/ES "Initiator/Iniciador"; DE E2.4 "neu ansetzen";
+   **FR-aanspreekvorm**: homepage "vous", `/methodology` "tu" — gelijktrekken.
+6. **"4.9/5"** op de QuickScan-landing: bron + aantal beoordelingen erbij (opdrachtgever levert aan).
+7. **Benchmark "5.2 / top 25% 6.8+"** is fictief maar blijft op verzoek staan (ook in de nurture-prompt).
+8. **De 48 sub-narratives** worden nog nergens getoond (bedoeld voor ads/mails); C8-experimenten niet in de data.
+9. **Ongebruikte translation-keys** (oude homepage-blokken) — bewust laten staan; opruimen kan later.
+10. Hero-radar geeft in de browser `<circle> cx/cy undefined`-consolemeldingen (cosmetisch, bestond al).
+11. Untracked geneste map `Claude website MR 01/Claude website MR 01/` geeft lokale tsc-fouten (niet in git) —
+    opruimen of excluden.

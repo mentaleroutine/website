@@ -1,13 +1,13 @@
 # Project: The Mental Routine for Golfers — Landing Page
 
-## ⚠️ ACTUEEL — HOMEPAGE = QUICKSCAN-FUNNEL (okt 2026, LIVE op `main`)
+## ⚠️ ACTUEEL — HOMEPAGE = QUICKSCAN-FUNNEL (okt–nov 2026, LIVE op `main`)
 
 > Wint van alles hieronder waar het botst. Terugrollen: tag `homepage-pre-funnel-2026-10`.
 > Wat er van de oude homepage af ging + hergebruik: `docs/ARCHIEF_HOMEPAGE_OKT2026.md`.
 > **Volledig sessieverslag (besluiten + redenen, commits, openstaand): `docs/SESSIE_QUICKSCAN_FUNNEL_OKT2026.md`.**
 
 - **De homepage verkoopt niets.** Eén doel: de gratis QuickScan. Kopen gebeurt pas ná de QuickScan
-  (resultaatscherm + nurture-mails → `/assessment` of Lemon-checkout). Geen koopknop, pricing,
+  ("Al overtuigd?" na de QuickScan + nurture-mails → `/assessment` → Lemon). Geen koopknop, pricing,
   trainingsrapporten-sectie of "warmte"-logica meer op `/` (`traffic-warmth.ts` verwijderd).
 - **Messaging = Entry Narrative Framework v1.5** (Berend & Henk, 23-9-2026, bevroren). Data in
   `src/lib/narratives.ts` (3 groepen · 12 narratives · 48 sub-narratives · 48 hooks + NL-vertaling).
@@ -30,8 +30,8 @@
   (localStorage `mr_lang`, gezet door de taalwisselaar) → browsertaal (`navigator.languages`) → EN.
   SSR/eerste render blijft EN (geen hydration-mismatch), daarna direct de gedetecteerde taal. Was: altijd EN.
 - **QuickScan-links** via `src/lib/quickscan.ts` → `/quickscan?start=1&lang=nl|en[&route=]`.
-  `start=1` slaat de eigen landing van quiz.html over (de homepage ís de landing); de landing op
-  `/quickscan` blijft voor direct verkeer. `/quickscan` = `public/quiz.html` (rewrite).
+  `start=1` slaat de eigen landing van quiz.html over (de homepage ís de landing; zonder route redirect
+  `/quickscan` naar `/#recognise`). `/quickscan` = `public/quiz.html` (rewrite).
 - **`/assessment`** = verkooppagina voor warme leads (niet in menu). Ingangen: QuickScan-"Al overtuigd?"
   (`/assessment?lang=`), nurture-mails + QuickScan-PDF-mail (portal), één stille link onder de homepage-FAQ
   (`assessmentLink`), footer-menu (`footer.assessment`, tussen methodiek en FAQ), sitemap. Koopknop daar → Lemon. Event `assessment_click{source}`.
@@ -42,7 +42,13 @@
 - **Talen:** `home.*` + narratives in alle 5 talen (NL **goedgekeurd door Henk** okt 2026, lijst
   `docs/NL_TEKSTEN_HOMEPAGE_HENK.md`; DE/FR/ES AI-vertaald, du/vous/tú). De QuickScan zelf blijft NL/EN.
 - **Route → portal:** quiz.html stuurt `entry_route` mee naar `POST /api/quiz/results` → portal
-  `QuizSession.entry_route` (migratie 025) → nurture-prompt + admin-funnel per narrative.
+  `QuizSession.entry_route` (migraties 025+026, komma-lijst) → nurture-prompt + QuickScan-PDF + admin-funnel per narrative.
+- **QuickScan-resultaatscherm (quiz.html)** belooft alleen wat de gratis PDF levert: tips (geen "oefeningen op maat"),
+  "Ontvang je uitwerking van {stap}", scorebadges = portalbanden Groeipunt/Werkgebied/Sterkte, "stap" (niet domein),
+  stap 8 = Transfer, EN Evaluation, "Grootste groeikans" (niet "Zwakste"), geen deelknoppen, geen
+  voorbeeld-trainingsrapport. Benchmark "5.2 / 6.8+" blijft op verzoek (fictief). QUICKSCAN10 t/m 31-12-2026.
+- **Testen:** `scripts/e2e/funnel-check.js` (Playwright, 41 controles, portal geblokkeerd) — draai dit na elke
+  wijziging aan quiz.html / homepage / navbar / redirects (lege-QuickScan-incident 15-10-2026).
 - Lokale typecheck: de geneste kopie `Claude website MR 01/Claude website MR 01/` (untracked) geeft
   tsc-fouten — negeren; alleen fouten in `src/` tellen.
 
