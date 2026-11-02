@@ -337,13 +337,15 @@ function PageContent() {
                   { label: T.footer.quizLink,    href: '#recognise',     quiz: true  },
                   { label: T.nav.howItWorks,     href: '#how-it-works',  quiz: false },
                   { label: T.footer.methodology, href: '/methodology',   quiz: false },
+                  { label: T.footer.assessment,  href: `/assessment?lang=${lang}`, quiz: false },
                   { label: T.nav.faq,            href: '#faq',           quiz: false },
                   { label: T.nav.contact,        href: '#contact',       quiz: false },
                 ].map(link => (
                   <a
                     key={link.href}
                     href={link.href}
-                    onClick={link.quiz ? () => track("cta_click", { source: "footer" }) : undefined}
+                    onClick={link.quiz ? () => track("cta_click", { source: "footer" })
+                      : link.href.startsWith("/assessment") ? () => track("assessment_click", { source: "footer" }) : undefined}
                     className="group flex items-center gap-2 text-sm text-green-200/50 hover:text-amber-300 transition-colors duration-200"
                   >
                     <span className="w-3 h-px bg-green-200/20 group-hover:bg-amber-400/60 group-hover:w-5 transition-all duration-300" />

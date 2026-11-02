@@ -34,7 +34,7 @@
   `/quickscan` blijft voor direct verkeer. `/quickscan` = `public/quiz.html` (rewrite).
 - **`/assessment`** = verkooppagina voor warme leads (niet in menu). Ingangen: QuickScan-"Al overtuigd?"
   (`/assessment?lang=`), nurture-mails + QuickScan-PDF-mail (portal), één stille link onder de homepage-FAQ
-  (`assessmentLink`), sitemap. Koopknop daar → Lemon. Event `assessment_click{source}`.
+  (`assessmentLink`), footer-menu (`footer.assessment`, tussen methodiek en FAQ), sitemap. Koopknop daar → Lemon. Event `assessment_click{source}`.
   **Pro-programma:** alleen één footer-link.
 - **Henk de Jong = initiatiefnemer van MentalRoutine** — niet coach, niet (golf)psycholoog, nooit
   PGA-pro (wel "PGA-netwerk": klopt). **Alleen MentalRoutine-branding** (NogBeterGolfen weg).
