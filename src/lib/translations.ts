@@ -51,6 +51,7 @@ const en = {
       },
       final: { h2a: "Curious what's behind it?", h2b: "Find out in 8 minutes." },
       sticky: "Free QuickScan · 9 holes · 8 minutes",
+      assessmentLink: "Already know you want the full picture? See the full MentalRoutine Assessment →",
     },
     hero: {
       badge: "The Mental Routine Assessment",
@@ -271,6 +272,7 @@ export const translations = {
       },
       final: { h2a: "Benieuwd wat erachter zit?", h2b: "Ontdek het in 8 minuten." },
       sticky: "Gratis QuickScan · 9 holes · 8 minuten",
+      assessmentLink: "Weet je al dat je het volledige beeld wilt? Bekijk het volledige MentalRoutine Assessment →",
     },
     hero: {
       badge: "De Mental Routine Assessment",
@@ -488,6 +490,7 @@ export const translations = {
       },
       final: { h2a: "Neugierig, was dahintersteckt?", h2b: "Finde es in 8 Minuten heraus." },
       sticky: "Kostenloser QuickScan · 9 Löcher · 8 Minuten",
+      assessmentLink: "Du willst gleich das ganze Bild? Sieh dir das vollständige MentalRoutine Assessment an →",
     },
     hero: {
       badge: "Das Mental Routine Assessment",
@@ -701,6 +704,7 @@ export const translations = {
       },
       final: { h2a: "Curieux de savoir ce qu'il y a derrière ?", h2b: "Découvrez-le en 8 minutes." },
       sticky: "QuickScan gratuit · 9 trous · 8 minutes",
+      assessmentLink: "Vous voulez directement le tableau complet ? Découvrez le MentalRoutine Assessment complet →",
     },
     hero: {
       badge: "Le MentalRoutine Assessment",
@@ -914,6 +918,7 @@ export const translations = {
       },
       final: { h2a: "¿Te pica la curiosidad por lo que hay detrás?", h2b: "Descúbrelo en 8 minutos." },
       sticky: "QuickScan gratis · 9 hoyos · 8 minutos",
+      assessmentLink: "¿Ya sabes que quieres el panorama completo? Mira el MentalRoutine Assessment completo →",
     },
     hero: {
       badge: "El MentalRoutine Assessment",

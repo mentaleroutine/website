@@ -32,7 +32,9 @@
 - **QuickScan-links** via `src/lib/quickscan.ts` → `/quickscan?start=1&lang=nl|en[&route=]`.
   `start=1` slaat de eigen landing van quiz.html over (de homepage ís de landing); de landing op
   `/quickscan` blijft voor direct verkeer. `/quickscan` = `public/quiz.html` (rewrite).
-- **`/assessment`** blijft als verkooppagina voor warme leads (niet in menu/home).
+- **`/assessment`** = verkooppagina voor warme leads (niet in menu). Ingangen: QuickScan-"Al overtuigd?"
+  (`/assessment?lang=`), nurture-mails + QuickScan-PDF-mail (portal), één stille link onder de homepage-FAQ
+  (`assessmentLink`), sitemap. Koopknop daar → Lemon. Event `assessment_click{source}`.
   **Pro-programma:** alleen één footer-link.
 - **Henk de Jong = initiatiefnemer van MentalRoutine** — niet coach, niet (golf)psycholoog, nooit
   PGA-pro (wel "PGA-netwerk": klopt). **Alleen MentalRoutine-branding** (NogBeterGolfen weg).
@@ -573,6 +575,7 @@ Gebruiker zegt "push" → commit + push → Vercel deployt automatisch.
 | `hero_route` | `route: "P4.2"` e.d. | **NIEUW** — bezoeker kwam binnen met `?route=` (advertentie) → hero toont die hook |
 | `quiz_click` | `source: "hero"\|"recognise"\|"final"\|"sticky"\|"footer"\|"nav"\|"methodology"`, `route` (home; bij `recognise` de lijst `"P1,E2"` + `count`) | QuickScan-knoppen |
 | `methodology_click` | `source: "phases"\|"assessment"` | Link naar `/methodology` |
+| `assessment_click` | `source: "home-faq"\|"quiz-optin-escape"` | **NIEUW (29-10)** — naar `/assessment` |
 | `pro_program_click` | `source: "footer"` | Enige pro-link op de homepage |
 | `checkout_click` | `plan`, `source: "assessment-page"\|"quiz-optin-escape"` | Lemon-checkout (homepage heeft GEEN koopknop meer) |
 | `report_preview` / `report_preview_close` | `type` / `type, seconds` | Voorbeeldrapporten (`/assessment`, quiz.html) |

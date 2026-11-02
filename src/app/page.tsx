@@ -287,6 +287,17 @@ function PageContent() {
         <div className="container mx-auto">
           <FaqsSection content={H.faq} />
 
+          {/* The one quiet door to the paid assessment for visitors who already want it all. */}
+          <p className="mt-10 text-center text-sm">
+            <a
+              href={`/assessment?lang=${lang}`}
+              onClick={() => track("assessment_click", { source: "home-faq" })}
+              className="text-stone-500 hover:text-amber-700 underline-offset-4 hover:underline transition-colors"
+            >
+              {H.assessmentLink}
+            </a>
+          </p>
+
           <div className="mt-20 text-center">
             <h2 className="text-3xl lg:text-4xl font-semibold text-green-950 leading-tight mb-8" style={serif}>
               {H.final.h2a}<br /><em>{H.final.h2b}</em>
