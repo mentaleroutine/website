@@ -6,9 +6,8 @@
 > verloren bij context-compactering. Bevat elk besluit met de reden, de eindtoestand per onderdeel, alle
 > commits, incidenten + lessen, testhulpmiddelen, terugrollen en wat nog openstaat.
 >
-> **Status 2-11-2026: alles LIVE.** Website: laatste functionele commit `054b401`. Portal: `3a6cf28` gepusht —
-> de deploy daarvan (git pull + herstart + frontend-build) moet de opdrachtgever nog draaien; eerdere stand
-> `cf2a2b4` staat live (health `healthy`, migratie `026_quiz_entry_route_multi` = head).
+> **Status 2-11-2026: alles LIVE.** Website: laatste functionele commit `054b401`. Portal: server op `9c1a18e`
+> (health `healthy`, migratie `026_quiz_entry_route_multi` = head, frontend-build ok).
 
 ---
 
@@ -240,7 +239,7 @@ links naar `/assessment` · `cf2a2b4` rijker QuickScan-rapport · `3a6cf28` éé
   Terug: `alembic downgrade 024_report_summary_key` (026 kort meervoudige routes in tot de eerste) + revert.
 
 ## 9. Openstaand
-1. **Portal-deploy van `3a6cf28`** (één reeks per adres + grijze admin-badge): git pull, herstart, frontend-build.
+1. ~~Portal-deploy van `3a6cf28`~~ — **gedaan 2-11-2026** (server op `9c1a18e`, frontend-build ok).
 2. **Plausible-dashboard** (§2.4) — stap 1 (property `route`) nog niet gedaan.
 3. **Server-reboot** (Ubuntu "System restart required" + beveiligingsupdates) op een rustig moment; daarna `/api/health`.
 4. **Echte test** van het nieuwe QuickScan-rapport (eigen adres, een paar vinkjes): let op "QuickScan" i.p.v.
