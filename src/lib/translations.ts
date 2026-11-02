@@ -80,12 +80,12 @@ const en = {
     stepLabel: "Step",
     assessmentPage: {
       badge: "The MentalRoutine Assessment",
-      h1a: "One assessment.", h1b: "Every stroke your head is costing you.",
-      intro: "Twenty minutes. See where your game wins — and where it leaks strokes. Plus three plans to fix it.",
+      h1a: "One assessment.", h1b: "Your whole mental game, step by step.",
+      intro: "Twenty minutes. See where your game is strong — and where the most room to grow is. Plus three training reports to work on it.",
       whatYouGetLabel: "What you walk away with",
       durationLabel: "How fast you'll know", duration: "20–25 minutes to complete. Your full profile lands in your inbox shortly after.",
       guaranteeInline: "30-day money-back guarantee. If it doesn't change how you see your game, you pay nothing — the risk is entirely ours.",
-      bridge: "Did the free QuickScan? You already know your weakest point — enter code QUICKSCAN10 at checkout, it's waiting for you. For comparison: one session with a golf psychologist runs $150–$300. This is $79, once.",
+      bridge: "Did the free QuickScan? You already know your biggest growth opportunity — enter code QUICKSCAN10 at checkout, it's waiting for you. For comparison: one session with a golf psychologist runs $150–$300. This is $79, once.",
       backHome: "← See the full method first",
       faqLabel: "Before you decide",
     },
@@ -172,7 +172,7 @@ const en = {
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
-        { plan: "The MentalRoutine Assessment", price: "79", wasPrice: "", tagline: "One payment. Yours to keep. · In your inbox shortly after", cta: "Map My Mental Game — $79", features: ["A 20-minute check of all 8 steps + 4 factors of your mental game", "Your complete player profile — the strokes you're losing, named and scored (PDF)", "Three personal training plans — you pick which, from all twelve", "Each one a workbook of around ten pages, built around your exact scores", "30-day money-back guarantee — the risk is entirely ours"] },
+        { plan: "The MentalRoutine Assessment", price: "79", wasPrice: "", tagline: "One payment. Yours to keep. · In your inbox shortly after", cta: "Map My Mental Game — $79", features: ["A 20-minute check of all 8 steps + 4 factors of your mental game", "Your complete player profile — all 8 steps and 4 factors, named and scored (PDF)", "Three personal training plans — you pick which, from all twelve", "Each one a workbook of around ten pages, built around your exact scores", "30-day money-back guarantee — the risk is entirely ours"] },
       ],
     },
     skillBuilder: {
@@ -301,12 +301,12 @@ export const translations = {
     stepLabel: "Stap",
     assessmentPage: {
       badge: "De MentalRoutine Assessment",
-      h1a: "Eén assessment.", h1b: "Elke slag die je hoofd je kost.",
-      intro: "Twintig minuten. Zie waar je spel wint — en waar het slagen weglekt. Plus drie plannen om het aan te pakken.",
+      h1a: "Eén assessment.", h1b: "Je hele mentale spel, stap voor stap.",
+      intro: "Twintig minuten. Zie waar je spel sterk is — en waar de meeste groeiruimte zit. Plus drie trainingsrapporten om ermee aan de slag te gaan.",
       whatYouGetLabel: "Wat je meeneemt",
       durationLabel: "Hoe snel je het weet", duration: "20–25 minuten om in te vullen. Je volledige profiel komt kort daarna in je inbox.",
       guaranteeInline: "30 dagen geld terug. Verandert het niet hoe je naar je spel kijkt, dan betaal je niets — het risico ligt volledig bij ons.",
-      bridge: "QuickScan gedaan? Dan ken je je zwakste punt al — vul code QUICKSCAN10 in bij het afrekenen, hij ligt voor je klaar. Ter vergelijking: één sessie bij een golfpsycholoog kost al snel $150–$300. Dit is $79, eenmalig.",
+      bridge: "QuickScan gedaan? Dan ken je je grootste groeikans al — vul code QUICKSCAN10 in bij het afrekenen, hij ligt voor je klaar. Ter vergelijking: één sessie bij een golfpsycholoog kost al snel $150–$300. Dit is $79, eenmalig.",
       backHome: "← Bekijk eerst de volledige methode",
       faqLabel: "Voordat je beslist",
     },
@@ -392,7 +392,7 @@ export const translations = {
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
-        { plan: "De MentalRoutine Assessment", price: "79", wasPrice: "", tagline: "Eén betaling. Voorgoed van jou. · Kort daarna in je inbox", cta: "Breng Mijn Mentale Spel In Kaart — $79", features: ["Een check van 20 minuten over alle 8 stappen + 4 factoren van jouw mentale spel", "Je complete spelersprofiel — de slagen die je verliest, benoemd en gescoord (PDF)", "Drie persoonlijke trainingsplannen — jij kiest welke, uit alle twaalf", "Elk plan een werkboek van zo'n tien pagina's, gebouwd rond jouw exacte scores", "30 dagen geld terug — het risico ligt volledig bij ons"] },
+        { plan: "De MentalRoutine Assessment", price: "79", wasPrice: "", tagline: "Eén betaling. Voorgoed van jou. · Kort daarna in je inbox", cta: "Breng Mijn Mentale Spel In Kaart — $79", features: ["Een check van 20 minuten over alle 8 stappen + 4 factoren van jouw mentale spel", "Je complete spelersprofiel — alle 8 stappen en 4 factoren, benoemd en gescoord (PDF)", "Drie persoonlijke trainingsplannen — jij kiest welke, uit alle twaalf", "Elk plan een werkboek van zo'n tien pagina's, gebouwd rond jouw exacte scores", "30 dagen geld terug — het risico ligt volledig bij ons"] },
       ],
     },
     skillBuilder: {
@@ -519,12 +519,12 @@ export const translations = {
     stepLabel: "Schritt",
     assessmentPage: {
       badge: "Das MentalRoutine Assessment",
-      h1a: "Ein Assessment.", h1b: "Jeder Schlag, den dein Kopf dich kostet.",
-      intro: "Zwanzig Minuten. Sieh, wo dein Spiel gewinnt — und wo es Schläge verliert. Plus drei Pläne, um es zu beheben.",
+      h1a: "Ein Assessment.", h1b: "Dein ganzes mentales Spiel, Schritt für Schritt.",
+      intro: "Zwanzig Minuten. Sieh, wo dein Spiel stark ist — und wo am meisten Raum zum Wachsen liegt. Plus drei Trainingsreports, um daran zu arbeiten.",
       whatYouGetLabel: "Was du mitnimmst",
       durationLabel: "Wie schnell du es weißt", duration: "20–25 Minuten zum Ausfüllen. Dein vollständiges Profil landet kurz danach in deinem Posteingang.",
       guaranteeInline: "30 Tage Geld-zurück-Garantie. Verändert es nicht, wie du dein Spiel siehst, zahlst du nichts — das Risiko liegt ganz bei uns.",
-      bridge: "QuickScan gemacht? Dann kennst du deinen schwächsten Punkt bereits — gib beim Bezahlen den Code QUICKSCAN10 ein, er liegt für dich bereit. Zum Vergleich: eine Sitzung bei einem Golfpsychologen kostet $150–$300. Das hier ist $79, einmalig.",
+      bridge: "QuickScan gemacht? Dann kennst du deine größte Wachstumschance bereits — gib beim Bezahlen den Code QUICKSCAN10 ein, er liegt für dich bereit. Zum Vergleich: eine Sitzung bei einem Golfpsychologen kostet $150–$300. Das hier ist $79, einmalig.",
       backHome: "← Sieh dir erst die vollständige Methode an",
       faqLabel: "Bevor du dich entscheidest",
     },
@@ -611,7 +611,7 @@ export const translations = {
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
-        { plan: "Das MentalRoutine Assessment", price: "79", wasPrice: "", tagline: "Einmalige Zahlung. Bleibt für immer deins. · Kurz danach in deinem Posteingang", cta: "Mein mentales Spiel kartieren — $79", features: ["Ein 20-minütiger Check aller 8 Schritte + 4 Faktoren deines mentalen Spiels", "Dein komplettes Spielerprofil — die Schläge, die du verlierst, benannt und bewertet (PDF)", "Drei persönliche Trainingspläne — du wählst welche, aus allen zwölf", "Jeder ein Arbeitsbuch von rund zehn Seiten, gebaut rund um deine exakten Scores", "30 Tage Geld-zurück-Garantie — das Risiko liegt ganz bei uns"] },
+        { plan: "Das MentalRoutine Assessment", price: "79", wasPrice: "", tagline: "Einmalige Zahlung. Bleibt für immer deins. · Kurz danach in deinem Posteingang", cta: "Mein mentales Spiel kartieren — $79", features: ["Ein 20-minütiger Check aller 8 Schritte + 4 Faktoren deines mentalen Spiels", "Dein komplettes Spielerprofil — alle 8 Schritte und 4 Faktoren, benannt und bewertet (PDF)", "Drei persönliche Trainingspläne — du wählst welche, aus allen zwölf", "Jeder ein Arbeitsbuch von rund zehn Seiten, gebaut rund um deine exakten Scores", "30 Tage Geld-zurück-Garantie — das Risiko liegt ganz bei uns"] },
       ],
     },
     skillBuilder: {
@@ -733,12 +733,12 @@ export const translations = {
     stepLabel: "Étape",
     assessmentPage: {
       badge: "Le MentalRoutine Assessment",
-      h1a: "Un seul assessment.", h1b: "Chaque coup que votre tête vous coûte.",
-      intro: "Vingt minutes. Voyez où votre jeu gagne — et où il perd des coups. Plus trois plans pour y remédier.",
+      h1a: "Un seul assessment.", h1b: "Tout votre jeu mental, étape par étape.",
+      intro: "Vingt minutes. Voyez où votre jeu est fort — et où se trouve la plus grande marge de progression. Plus trois rapports d'entraînement pour y travailler.",
       whatYouGetLabel: "Ce que vous en retirez",
       durationLabel: "En combien de temps vous saurez", duration: "20 à 25 minutes pour le remplir. Votre profil complet arrive dans votre boîte de réception peu après.",
       guaranteeInline: "Garantie satisfait ou remboursé de 30 jours. Si ça ne change pas votre regard sur votre jeu, vous ne payez rien — le risque est entièrement pour nous.",
-      bridge: "Vous avez fait le QuickScan gratuit ? Vous connaissez déjà votre point faible — saisissez le code QUICKSCAN10 au moment du paiement, il vous attend. Pour comparaison : une séance avec un psychologue du golf coûte $150–$300. Ceci, c'est $79, une seule fois.",
+      bridge: "Vous avez fait le QuickScan gratuit ? Vous connaissez déjà votre plus grande marge de progression — saisissez le code QUICKSCAN10 au moment du paiement, il vous attend. Pour comparaison : une séance avec un psychologue du golf coûte $150–$300. Ceci, c'est $79, une seule fois.",
       backHome: "← Voyez d'abord la méthode complète",
       faqLabel: "Avant de vous décider",
     },
@@ -825,7 +825,7 @@ export const translations = {
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
-        { plan: "Le MentalRoutine Assessment", price: "79", wasPrice: "", tagline: "Paiement unique. À vous pour toujours. · Dans votre boîte de réception peu après", cta: "Cartographier mon jeu mental — $79", features: ["Un bilan de 20 minutes sur les 8 étapes + les 4 facteurs de votre jeu mental", "Votre profil de joueur complet — les coups que vous perdez, nommés et notés (PDF)", "Trois plans d'entraînement personnels — vous choisissez lesquels, parmi les douze", "Chacun un cahier d'une dizaine de pages bâti autour de vos scores exacts", "Garantie satisfait ou remboursé de 30 jours — le risque est entièrement pour nous"] },
+        { plan: "Le MentalRoutine Assessment", price: "79", wasPrice: "", tagline: "Paiement unique. À vous pour toujours. · Dans votre boîte de réception peu après", cta: "Cartographier mon jeu mental — $79", features: ["Un bilan de 20 minutes sur les 8 étapes + les 4 facteurs de votre jeu mental", "Votre profil de joueur complet — les 8 étapes et les 4 facteurs, nommés et notés (PDF)", "Trois plans d'entraînement personnels — vous choisissez lesquels, parmi les douze", "Chacun un cahier d'une dizaine de pages bâti autour de vos scores exacts", "Garantie satisfait ou remboursé de 30 jours — le risque est entièrement pour nous"] },
       ],
     },
     skillBuilder: {
@@ -947,12 +947,12 @@ export const translations = {
     stepLabel: "Paso",
     assessmentPage: {
       badge: "El MentalRoutine Assessment",
-      h1a: "Un assessment.", h1b: "Cada golpe que tu cabeza te está costando.",
-      intro: "Veinte minutos. Mira dónde gana tu juego — y dónde pierde golpes. Además, tres planes para arreglarlo.",
+      h1a: "Un assessment.", h1b: "Todo tu juego mental, paso a paso.",
+      intro: "Veinte minutos. Mira dónde es fuerte tu juego — y dónde hay más margen para crecer. Además, tres training reports para trabajarlo.",
       whatYouGetLabel: "Lo que te llevas",
       durationLabel: "En cuánto lo sabrás", duration: "20–25 minutos para completarlo. Tu perfil completo llega a tu bandeja de entrada poco después.",
       guaranteeInline: "Garantía de devolución de 30 días. Si no cambia tu forma de ver tu juego, no pagas nada — el riesgo es enteramente nuestro.",
-      bridge: "¿Hiciste el QuickScan gratuito? Entonces ya conoces tu punto más débil — introduce el código QUICKSCAN10 al pagar, te está esperando. Para comparar: una sesión con un psicólogo del golf cuesta $150–$300. Esto es $79, una sola vez.",
+      bridge: "¿Hiciste el QuickScan gratuito? Entonces ya conoces tu mayor oportunidad de crecimiento — introduce el código QUICKSCAN10 al pagar, te está esperando. Para comparar: una sesión con un psicólogo del golf cuesta $150–$300. Esto es $79, una sola vez.",
       backHome: "← Mira primero el método completo",
       faqLabel: "Antes de decidir",
     },
@@ -1039,7 +1039,7 @@ export const translations = {
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
-        { plan: "El MentalRoutine Assessment", price: "79", wasPrice: "", tagline: "Un solo pago. Tuyo para siempre. · En tu bandeja de entrada poco después", cta: "Mapea mi juego mental — $79", features: ["Un chequeo de 20 minutos de los 8 pasos + 4 factores de tu juego mental", "Tu perfil de jugador completo — los golpes que pierdes, nombrados y puntuados (PDF)", "Tres planes de entrenamiento personales — tú eliges cuáles, de entre los doce", "Cada uno un cuaderno de unas diez páginas creado en torno a tus scores exactos", "Garantía de devolución de 30 días — el riesgo es enteramente nuestro"] },
+        { plan: "El MentalRoutine Assessment", price: "79", wasPrice: "", tagline: "Un solo pago. Tuyo para siempre. · En tu bandeja de entrada poco después", cta: "Mapea mi juego mental — $79", features: ["Un chequeo de 20 minutos de los 8 pasos + 4 factores de tu juego mental", "Tu perfil de jugador completo — los 8 pasos y los 4 factores, nombrados y puntuados (PDF)", "Tres planes de entrenamiento personales — tú eliges cuáles, de entre los doce", "Cada uno un cuaderno de unas diez páginas creado en torno a tus scores exactos", "Garantía de devolución de 30 días — el riesgo es enteramente nuestro"] },
       ],
     },
     skillBuilder: {
