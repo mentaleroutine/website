@@ -45,6 +45,16 @@ function Viewer({ golfer, report, S, lang }: { golfer: GolferId; report: ReportI
         >
           {report === "profile" ? S.downloadFull : S.download}
         </a>
+        {report === "profile" && (
+          <a
+            href={`/samples/guide-${lang}.pdf`}
+            download
+            onClick={() => track("sample_download", { golfer, report: "guide", lang })}
+            className="font-semibold text-amber-700 hover:text-amber-800 underline-offset-4 hover:underline"
+          >
+            {S.downloadGuide}
+          </a>
+        )}
       </div>
       {pages.map((n) => (
         // Plain <img>: static A4 renders with fixed dimensions; next/image adds nothing here.
