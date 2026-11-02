@@ -51,6 +51,7 @@ const en = {
       },
       final: { h2a: "Curious what's behind it?", h2b: "Find out in 8 minutes." },
       sticky: "Free QuickScan · 9 holes · 8 minutes",
+      samplesLink: "Curious what you get? See three sample reports →",
       assessmentLink: "Already know you want the full picture? See the full MentalRoutine Assessment →",
     },
     hero: {
@@ -167,8 +168,7 @@ const en = {
       proCallout: "Teaching Professional? See how to offer this to your students →",
       creditsNote: "Your profile recommends three training reports to start with — you choose which, one at a time, at your own pace.",
       reportPreview: { label: "Your assessment includes:", items: ["Your complete player profile — all 8 steps + 4 factors", "What each score means for your game", "Your top 3 development priorities", "Three training reports of your choice from twelve"] },
-      previewBtn: "Preview sample profile →",
-      previewModal: { standard: "Player Profile — Sample", training: "Training Report — Sample", closePreview: "Close preview", iframeTitle: "Sample Profile Preview" },
+      previewBtn: "See sample reports →",
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
@@ -272,6 +272,7 @@ export const translations = {
       },
       final: { h2a: "Benieuwd wat erachter zit?", h2b: "Ontdek het in 8 minuten." },
       sticky: "Gratis QuickScan · 9 holes · 8 minuten",
+      samplesLink: "Eerst zien wat je krijgt? Bekijk drie voorbeeldrapporten →",
       assessmentLink: "Weet je al dat je het volledige beeld wilt? Bekijk het volledige MentalRoutine Assessment →",
     },
     hero: {
@@ -387,8 +388,7 @@ export const translations = {
       proCallout: "Teaching Professional? Bekijk hoe je dit aan je leerlingen kunt aanbieden →",
       creditsNote: "Je profiel adviseert drie trainingsrapporten om mee te beginnen — jij kiest welke, één voor één, in je eigen tempo.",
       reportPreview: { label: "Jouw assessment bevat:", items: ["Je complete spelersprofiel — alle 8 stappen + 4 factoren", "Wat elke score betekent voor jouw spel", "Jouw top-3 ontwikkelpunten", "Drie trainingsrapporten naar keuze uit twaalf"] },
-      previewBtn: "Bekijk voorbeeldprofiel →",
-      previewModal: { standard: "Spelersprofiel — Voorbeeld", training: "Trainingsrapport — Voorbeeld", closePreview: "Voorbeeld sluiten", iframeTitle: "Voorbeeldprofiel" },
+      previewBtn: "Bekijk voorbeeldrapporten →",
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
@@ -490,6 +490,7 @@ export const translations = {
       },
       final: { h2a: "Neugierig, was dahintersteckt?", h2b: "Finde es in 8 Minuten heraus." },
       sticky: "Kostenloser QuickScan · 9 Löcher · 8 Minuten",
+      samplesLink: "Erst sehen, was du bekommst? Drei Beispielberichte ansehen →",
       assessmentLink: "Du willst gleich das ganze Bild? Sieh dir das vollständige MentalRoutine Assessment an →",
     },
     hero: {
@@ -606,8 +607,7 @@ export const translations = {
       proCallout: "Teaching Professional? So bietest du das deinen Schülern an →",
       creditsNote: "Dein Profil empfiehlt drei Trainingsreports für den Start — du entscheidest, welche, einen nach dem anderen, in deinem eigenen Tempo.",
       reportPreview: { label: "Dein Assessment enthält:", items: ["Dein komplettes Spielerprofil — alle 8 Schritte + 4 Faktoren", "Was jeder Score für dein Spiel bedeutet", "Deine 3 wichtigsten Entwicklungsprioritäten", "Drei Trainingsreports deiner Wahl aus zwölf"] },
-      previewBtn: "Beispielprofil ansehen →",
-      previewModal: { standard: "Spielerprofil — Beispiel", training: "Trainingsreport — Beispiel", closePreview: "Vorschau schließen", iframeTitle: "Vorschau des Beispielprofils" },
+      previewBtn: "Beispielberichte ansehen →",
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
@@ -704,6 +704,7 @@ export const translations = {
       },
       final: { h2a: "Curieux de savoir ce qu'il y a derrière ?", h2b: "Découvrez-le en 8 minutes." },
       sticky: "QuickScan gratuit · 9 trous · 8 minutes",
+      samplesLink: "Envie de voir ce que vous recevez ? Trois exemples de rapports →",
       assessmentLink: "Vous voulez directement le tableau complet ? Découvrez le MentalRoutine Assessment complet →",
     },
     hero: {
@@ -820,8 +821,7 @@ export const translations = {
       proCallout: "Enseignant PGA ? Découvrez comment le proposer à vos élèves →",
       creditsNote: "Votre profil vous recommande trois rapports d'entraînement pour commencer — vous choisissez lesquels, un à la fois, à votre rythme.",
       reportPreview: { label: "Votre assessment inclut :", items: ["Votre profil de joueur complet — les 8 étapes + les 4 facteurs", "Ce que chaque score signifie pour votre jeu", "Vos 3 priorités de développement", "Trois rapports d'entraînement de votre choix parmi douze"] },
-      previewBtn: "Aperçu d'un profil type →",
-      previewModal: { standard: "Profil de joueur — Exemple", training: "Rapport d'entraînement — Exemple", closePreview: "Fermer l'aperçu", iframeTitle: "Aperçu du profil type" },
+      previewBtn: "Voir des exemples de rapports →",
       comparisonTitle: "",
       comparisonRows: [],
       plans: [
@@ -918,6 +918,7 @@ export const translations = {
       },
       final: { h2a: "¿Te pica la curiosidad por lo que hay detrás?", h2b: "Descúbrelo en 8 minutos." },
       sticky: "QuickScan gratis · 9 hoyos · 8 minutos",
+      samplesLink: "¿Quieres ver primero lo que recibes? Mira tres informes de muestra →",
       assessmentLink: "¿Ya sabes que quieres el panorama completo? Mira el MentalRoutine Assessment completo →",
     },
     hero: {
@@ -1034,8 +1035,7 @@ export const translations = {
       proCallout: "¿Eres Teaching Professional? Descubre cómo ofrecer esto a tus alumnos →",
       creditsNote: "Tu perfil recomienda tres training reports para empezar — tú eliges cuáles, de uno en uno, a tu propio ritmo.",
       reportPreview: { label: "Tu assessment incluye:", items: ["Tu perfil de jugador completo — los 8 pasos + 4 factores", "Lo que significa cada score para tu juego", "Tus 3 prioridades de desarrollo principales", "Tres training reports a tu elección de entre doce"] },
-      previewBtn: "Ver un perfil de muestra →",
-      previewModal: { standard: "Perfil de jugador — Muestra", training: "Training Report — Muestra", closePreview: "Cerrar vista previa", iframeTitle: "Vista previa del perfil de muestra" },
+      previewBtn: "Ver informes de muestra →",
       comparisonTitle: "",
       comparisonRows: [],
       plans: [

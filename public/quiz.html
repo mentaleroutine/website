@@ -1027,6 +1027,8 @@
     .form-privacy{text-align:center;font-size:.7rem;color:var(--text-muted);margin-top:.5rem;opacity:.7}
     .optin-buy-escape{display:block;text-align:center;font-size:.78rem;color:var(--text-muted);margin-top:1.4rem;padding-top:1.1rem;border-top:1px solid rgba(27,58,45,.08);text-decoration:none;line-height:1.5;transition:color .2s}
     .optin-buy-escape:hover{color:var(--gold)}
+    .optin-sample-link{display:block;text-align:center;font-size:.85rem;color:var(--gold-light);margin:-1.1rem 0 1.8rem;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(184,149,42,.45);transition:color .2s}
+    .optin-sample-link:hover{color:var(--gold)}
 
     /* Trust strip under form */
     .optin-trust-strip{
@@ -1532,6 +1534,8 @@
         <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.5">Je actieplan voor vóór, tijdens en ná de ronde</span></li>
         <li><span class="optin-check" aria-hidden="true">&#10003;</span> <span data-i18n="optin.checklist.6">Je kortingscode voor de volledige assessment — mocht je verder willen</span></li>
       </ul>
+      <!-- Sample report (new tab, so the result stays open) — just before the opt-in, see /samples -->
+      <a href="/samples?report=quickscan&amp;source=quiz" target="_blank" rel="noopener" class="optin-sample-link" id="optin-sample-link" data-i18n="optin.sampleLink" onclick="if(window.plausible)plausible('samples_click',{props:{source:'quiz-optin'}})">Benieuwd hoe zo'n rapport eruitziet? Bekijk eerst een voorbeeld &rarr;</a>
 
       <div id="optin-form-wrap">
         <form class="optin-form" id="optin-form" novalidate aria-labelledby="optin-h2">
@@ -1923,6 +1927,7 @@
         submitting: 'Bezig met versturen...',
         sub: 'Je ontvangt je PDF binnen enkele minuten. Check ook je spam-map.',
         privacy: 'We delen je gegevens nooit met derden.',
+        sampleLink: 'Benieuwd hoe zo’n rapport eruitziet? Bekijk eerst een voorbeeld →',
         buyEscape: 'Al overtuigd? Sla de wachttijd over — ga direct naar het volledige assessment (met code QUICKSCAN10) →',
         thanksTitle: 'Je uitslag is onderweg!',
         thanksBody1: 'Check je inbox binnen enkele minuten. Niet gevonden? Kijk ook even in je spam-map.',
@@ -2234,6 +2239,7 @@
         submitting: 'Sending...',
         sub: "You'll receive your PDF within minutes. Check your spam folder too.",
         privacy: 'We never share your data with third parties.',
+        sampleLink: 'Curious what such a report looks like? See a sample first →',
         buyEscape: 'Already convinced? Skip the wait — go straight to the full assessment (with code QUICKSCAN10) →',
         thanksTitle: 'Your results are on the way!',
         thanksBody1: 'Check your inbox in the next few minutes. Not there? Check your spam folder.',
@@ -2296,6 +2302,8 @@
     // "Already convinced?" escape → the assessment page in the QuickScan's language.
     var esc = document.getElementById('optin-buy-escape');
     if (esc) esc.setAttribute('href', '/assessment?lang=' + currentLang);
+    var smp = document.getElementById('optin-sample-link');
+    if (smp) smp.setAttribute('href', '/samples?report=quickscan&source=quiz&lang=' + currentLang);
     document.documentElement.lang = T.meta.htmlLang;
     document.title = T.meta.title;
     var metaDesc = document.querySelector('meta[name="description"]');

@@ -215,6 +215,14 @@ function PageContent() {
             <p className="text-sm text-stone-500" aria-live="polite">
               {picked.length > 0 ? H.recognise.selected.replace("{n}", String(picked.length)) : H.recognise.footnote}
             </p>
+            {/* Quiet: show what a report looks like, without competing with the start button. */}
+            <a
+              href={`/samples?lang=${lang}&source=home`}
+              onClick={() => track("samples_click", { source: "home-recognise" })}
+              className="mt-2 text-sm text-stone-500 hover:text-amber-700 underline-offset-4 hover:underline transition-colors"
+            >
+              {H.samplesLink}
+            </a>
           </div>
         </div>
       </section>

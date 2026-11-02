@@ -1,16 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import dynamic from "next/dynamic";
+import React from "react";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/ui/navbar";
 import { LangProvider, useLang } from "@/context/lang-context";
 import { translations, type Translation } from "@/lib/translations";
-
-const ReportPreviewModal = dynamic(
-  () => import("@/components/ui/report-preview-modal").then((m) => ({ default: m.ReportPreviewModal })),
-  { ssr: false }
-);
 
 declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
@@ -32,7 +26,6 @@ function AssessmentContent() {
   const T: Translation = translations[lang];
   const A = T.assessmentPage;
   const plan = T.pricing.plans[0];
-  const [preview, setPreview] = useState<"standard" | "training" | null>(null);
 
   return (
     <main className="bg-[#faf8f3] text-[#1a1c18]">
@@ -73,9 +66,10 @@ function AssessmentContent() {
             </ul>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-2">{A.durationLabel}</p>
             <p className="text-sm text-stone-600 leading-relaxed mb-8">{A.duration}</p>
-            <button onClick={() => { setPreview("standard"); track("report_preview", { type: "standard" }); }} className="text-sm font-medium text-amber-700 hover:text-amber-800 underline underline-offset-4">
+            {/* Sample reports open in a new tab, so the buy button stays one click away. */}
+            <a href="/samples?report=profile&source=assessment" target="_blank" rel="noopener" onClick={() => track("report_preview", { type: "samples" })} className="text-sm font-medium text-amber-700 hover:text-amber-800 underline underline-offset-4">
               {T.pricing.previewBtn}
-            </button>
+            </a>
           </div>
 
           {/* Price card */}
@@ -127,7 +121,6 @@ function AssessmentContent() {
         </div>
       </section>
 
-      {preview && <ReportPreviewModal plan={preview} onClose={() => setPreview(null)} />}
     </main>
   );
 }

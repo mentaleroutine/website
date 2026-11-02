@@ -54,6 +54,11 @@ const nextConfig: NextConfig = {
         destination: "/#recognise",
         permanent: false,
       },
+      // Dutch alias for the sample reports page (query string carries over).
+      { source: "/voorbeelden", destination: "/samples", permanent: true },
+      // The old single sample profile (Sep 2026 template) is superseded by /samples.
+      { source: "/reports/sample-standard.html", destination: "/samples?report=profile", permanent: true },
+      { source: "/reports/sample-training-report.html", destination: "/samples?report=training", permanent: true },
       // Mastery is no longer a product; the old explainer page → the assessment.
       { source: "/assessment-mastery.html", destination: "/assessment", permanent: true },
       // The old Foundation subsite is superseded by the /assessment page.

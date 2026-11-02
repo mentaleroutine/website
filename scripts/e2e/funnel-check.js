@@ -129,6 +129,7 @@ const inView = (page, sel) =>
     const checklist = (await page.locator("#optin-checklist").innerText()).toLowerCase();
     check(`[${lang}] no "exercises tailored to your handicap" promise`, !/oefeningen op maat|exercises tailored/.test(checklist));
     check(`[${lang}] "already convinced" → /assessment?lang=${lang}`, (await page.locator("#optin-buy-escape").getAttribute("href")) === `/assessment?lang=${lang}`);
+    check(`[${lang}] sample link → /samples (QuickScan, new tab)`, (await page.locator("#optin-sample-link").getAttribute("href")) === `/samples?report=quickscan&source=quiz&lang=${lang}` && (await page.locator("#optin-sample-link").getAttribute("target")) === "_blank");
     check(`[${lang}] no page errors (QuickScan)`, errors.length === 0, errors.join(" | "));
     await ctx.close();
   }
@@ -145,6 +146,43 @@ const inView = (page, sel) =>
     const h1 = (await page.locator("h1").first().innerText()).replace(/\s+/g, " ");
     check("/assessment headline (no overclaim)", h1.includes("Je hele mentale spel, stap voor stap"), h1);
     check("/assessment mentions QUICKSCAN10", (await page.content()).includes("QUICKSCAN10"));
+    await ctx.close();
+  }
+
+  // 7. Sample reports: three golfers × QuickScan / profile / training, NL or EN reports, old URLs redirect
+  {
+    const { ctx, page, errors } = await newPage(browser, "nl-NL");
+    await page.goto(BASE + "/", { waitUntil: "networkidle" });
+    await page.waitForTimeout(600);
+    check("homepage sample link → /samples", (await page.locator("#recognise a", { hasText: "voorbeeldrapporten" }).getAttribute("href")) === "/samples?lang=nl&source=home");
+    await page.goto(BASE + "/assessment?lang=nl", { waitUntil: "networkidle" });
+    const prev = page.locator("a", { hasText: "Bekijk voorbeeldrapporten" });
+    check("/assessment preview → /samples in a new tab", (await prev.getAttribute("href")) === "/samples?report=profile&source=assessment" && (await prev.getAttribute("target")) === "_blank");
+    await page.goto(BASE + "/voorbeelden?lang=nl&golfer=sam&report=quickscan", { waitUntil: "networkidle" });
+    await page.waitForTimeout(600);
+    check("/voorbeelden → /samples (query kept)", page.url().includes("/samples?") && page.url().includes("golfer=sam"), page.url());
+    const imgs = () => page.locator("#viewer img").evaluateAll((els) => els.map((e) => e.getAttribute("src")));
+    let src = await imgs();
+    check("deep link shows Sam's NL QuickScan (11 pages)", src.length === 11 && src[0] === "/samples/sam/quickscan-nl/p01.webp", src[0]);
+    const first = await page.evaluate(() => fetch("/samples/sam/quickscan-nl/p01.webp").then((r) => r.status + " " + r.headers.get("content-type")));
+    check("page image is served", first === "200 image/webp", first);
+    await page.getByRole("tab", { name: /Chris/ }).click();
+    src = await imgs();
+    check("switching golfer keeps the report", src[0] === "/samples/chris/quickscan-nl/p01.webp", src[0]);
+    check("…and updates the url", page.url().includes("golfer=chris") && page.url().includes("report=quickscan"));
+    const views = await events(page, "sample_view");
+    check("sample_view events (deep link + pick)", views.length === 2 && views[1][1].golfer === "chris", JSON.stringify(views));
+    await page.getByRole("tab", { name: /Trainingsrapport/ }).click();
+    const viewer = await page.locator("#viewer").innerText();
+    check("missing sample shows 'coming soon', no broken images", (await imgs()).length > 0 || viewer.includes("binnenkort"), viewer.slice(0, 80));
+    await page.goto(BASE + "/samples?lang=de&golfer=alex&report=training", { waitUntil: "networkidle" });
+    await page.waitForTimeout(600);
+    src = await imgs();
+    check("DE visitor gets the EN reports", src[0] === "/reports/training-samples/alex/p01.webp", src[0]);
+    check("…with a language note", (await page.content()).includes("auf Englisch"));
+    await page.goto(BASE + "/reports/sample-standard.html", { waitUntil: "networkidle" });
+    check("old sample profile URL → /samples", page.url().includes("/samples?report=profile"), page.url());
+    check("no page errors (samples)", errors.length === 0, errors.join(" | "));
     await ctx.close();
   }
 
