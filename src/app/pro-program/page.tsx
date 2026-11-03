@@ -28,7 +28,7 @@ const INITIAL_FORM: FormData = {
 };
 
 const PGA_DIVISIONS = [
-  "PGA of America", "PGA European Tour", "PGA Netherlands", "PGA UK",
+  "PGA of America", "PGA Holland", "PGA UK", "PGA Belgium",
   "PGA Australia", "Other",
 ];
 
@@ -171,7 +171,7 @@ export default function ProProgramPage() {
               className="text-base text-green-200/55 max-w-xl mx-auto mb-8 leading-relaxed"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
             >
-              Give your students an objective picture of their mental game, then build individual and group lesson programs around it — with ready-made materials, so there&apos;s no extra prep.
+              Give your students a clear picture of their mental game, then build individual and group lesson programs around it — with ready-made materials, so there&apos;s no extra prep.
             </motion.p>
 
             <motion.div
@@ -220,8 +220,8 @@ export default function ProProgramPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { title: "Do It Yourself First", desc: "Take the full assessment yourself — free ($79 value). You'll teach it far better once you've felt it.", icon: "gift" },
-              { title: "Clinic Outline & Materials", desc: "A ready-to-run clinic outline plus six printable A4 pages you can hand out on the day.", icon: "kit" },
-              { title: "Marketing Toolkit", desc: "Sales copy, emails, and social posts to introduce the assessment to your student base.", icon: "tag" },
+              { title: "Clinic Kit", desc: "Two ready-to-run clinics — one before and one after the assessment — with run sheets, slides, a take-home handout and a poster.", icon: "kit" },
+              { title: "Communication Kit", desc: "Invitation and follow-up emails, a club newsletter piece and social posts — written for you to send in your own name.", icon: "tag" },
               { title: "Personal Discount Code", desc: "A code that gives your students a discount on the assessment — a natural reason to reach out.", icon: "dollar" },
             ].map((item, i) => (
               <motion.div
@@ -270,7 +270,7 @@ export default function ProProgramPage() {
 
           <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {[
-              { label: "One Assessment", title: "A Clear Starting Point", sub: "Every golfer you coach gets an objective picture of their mental game — and a reason to work on it with you." },
+              { label: "One Assessment", title: "A Clear Starting Point", sub: "Every golfer you coach gets a clear picture of their mental game — and a reason to work on it with you." },
               { label: "Two Lesson Formats", title: "Individual & Group", sub: "Build private lesson programs or run a clinic. The material is ready; you bring the coaching." },
               { label: "One Student Base", title: "No New Audience Needed", sub: "You already have the relationships. This simply gives you a second, natural thing to teach." },
             ].map((item, i) => (
@@ -322,7 +322,7 @@ export default function ProProgramPage() {
             {[
               { num: "01", title: "Apply", body: "Fill in the form below. It only takes a few minutes and tells us about your teaching practice." },
               { num: "02", title: "We Screen Your Application", body: "We review every application by hand and verify your PGA credentials. It's a deliberate quality gate — so the program stays credible for you and your students." },
-              { num: "03", title: "Get Access", body: "Once you're approved, your Pro portal, free assessment, clinic materials, and personal code are unlocked. From there you can build lesson programs around each student." },
+              { num: "03", title: "Get Access", body: "Create your free portal account with the email you apply with. Once you're approved, we unlock PRO Admin on it: your free assessment, clinic and communication kits, and your personal discount code. From there you can build lesson programs around each student." },
             ].map((step, i) => (
               <motion.div
                 key={i}
@@ -352,7 +352,7 @@ export default function ProProgramPage() {
               </h2>
               <div className="w-12 h-0.5 bg-amber-500 mb-6" />
               <p className="text-stone-600 leading-relaxed mb-6">
-                Build individual and group lesson programs directly from your students&apos; assessments — the structure and materials are generated for you. Your first five are free to try on real students; after that, a flat introductory rate you lock in for as long as you renew. You set your own lesson price, so a single program earns it back many times over.
+                Build individual and group lesson programs directly from your students&apos; assessments — the structure and materials are generated for you. Your first five are free to try on real students; after that, a flat introductory rate you lock in for as long as you renew. You set your own lesson price.
               </p>
               <button onClick={scrollToForm} className="px-6 py-3 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
                 Apply for Access
@@ -364,7 +364,7 @@ export default function ProProgramPage() {
                 { icon: <IconUsers />, title: "Individual & Group Programs", desc: "Generate structured lesson programs for private students and clinics, built around each assessment" },
                 { icon: <IconPlay />, title: "First Five Programs Free", desc: "Try the generator on real students at no cost" },
                 { icon: <IconDollar />, title: "$199 Per Year After That", desc: "A flat introductory rate — you set your own lesson prices" },
-                { icon: <IconShield />, title: "Pro Portal Access", desc: "Your assessment, clinic materials, marketing toolkit, and lesson programs, all in one place" },
+                { icon: <IconShield />, title: "Pro Portal Access", desc: "Your assessment, clinic kit, communication kit and lesson programs, all in one place" },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -397,7 +397,7 @@ export default function ProProgramPage() {
             {[
               { title: "A reason to reach out", body: "It gives you a natural opening to talk mental game with students you've only ever coached on technique." },
               { title: "Zero extra prep", body: "The clinic outline and printable materials are ready to run — you bring the coaching, not the preparation." },
-              { title: "Data to build on", body: "Every assessment gives you an objective picture of a student's mental game to design a lesson program around." },
+              { title: "Data to build on", body: "Every assessment gives you a clear picture of a student's mental game to design a lesson program around — once they share their profile with you." },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -428,12 +428,12 @@ export default function ProProgramPage() {
 
           <div className="space-y-4">
             {[
-              { q: "What do I get once I'm approved?", a: "Everything in the free program: your own Mental Routine Assessment (a $79 value), a clinic outline with six printable A4 pages, a marketing toolkit, a personal discount code for your students, and Pro portal access. You can also build individual and group lesson programs — your first five are free." },
+              { q: "What do I get once I'm approved?", a: "Everything in the free program: your own MentalRoutine Assessment (a $79 value), a clinic kit for two clinics (run sheets, slides, a take-home handout and a poster), a communication kit, a personal discount code that gives your students $20 off the assessment, and access to PRO Admin. You can also build individual and group lesson programs — your first five are free." },
               { q: "Do I have to apply first, or can I start straight away?", a: "You apply first. We review every application by hand and verify your PGA credentials before granting access — including access to the free assessment. It's a deliberate quality gate, so the program stays credible for you and your students." },
               { q: "Do I need to be a PGA member?", a: "Yes. We verify PGA credentials to ensure quality and credibility for both you and your students. All PGA divisions worldwide are welcome." },
-              { q: "What's free, what's paid, and what's the $199?", a: "Once you're approved, the assessment, clinic outline and materials, marketing toolkit, discount code, portal access, and your first five lesson programs are all free. After those five, the lesson program generator continues at $199 per year — an introductory rate you keep for as long as you renew. You set your own lesson prices, so a single program typically earns it back many times over." },
+              { q: "What's free, what's paid, and what's the $199?", a: "Once you're approved, the assessment, clinic kit, communication kit, discount code, portal access, and your first five lesson programs are all free. After those five, the lesson program generator continues at $199 per year — an introductory rate you keep for as long as you renew, and you can cancel any time. You set your own lesson prices." },
               { q: "Can I set my own prices for clinics and lessons?", a: "Absolutely. You teach your students and set whatever price works for your market — that arrangement is entirely between you and them. The Pro Program simply gives you the assessment, materials, and lesson programs to build on." },
-              { q: "How fast will I get approved?", a: "We aim to review applications within 1-3 business days. Once approved, your assessment, discount code, clinic materials, and portal access are unlocked." },
+              { q: "How fast will I get approved?", a: "We aim to review applications within 1-3 business days. Create your free portal account with the same email address in the meantime — once you're approved, we unlock PRO Admin on it and email you." },
             ].map((item, i) => (
               <FaqItem key={i} question={item.q} answer={item.a} index={i} />
             ))}
@@ -471,7 +471,10 @@ export default function ProProgramPage() {
               </div>
               <h3 className="text-2xl font-semibold text-green-950 mb-2" style={{ fontFamily: "var(--font-cormorant), serif" }}>Application Received!</h3>
               <p className="text-stone-500 text-sm mb-1">Thank you for your interest in the Pro Program.</p>
-              <p className="text-stone-500 text-sm">We&apos;ll review your application and get back to you within 1-3 business days.</p>
+              <p className="text-stone-500 text-sm mb-4">We&apos;ll review your application and get back to you within 1-3 business days.</p>
+              <p className="text-stone-600 text-sm">
+                Next step: <a href="https://portal.mentalroutine.com/en/registreer" target="_blank" rel="noopener" className="font-semibold text-amber-700 underline underline-offset-4">create your free portal account</a> with the same email address — that&apos;s the account we unlock once you&apos;re approved.
+              </p>
             </motion.div>
           ) : (
             <motion.form

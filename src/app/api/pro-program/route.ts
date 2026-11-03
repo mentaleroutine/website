@@ -34,52 +34,63 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
-    // Send notification to support + confirmation to applicant in parallel
-    await Promise.all([
-      resend.emails.send({
-        from: "MentalRoutine <contact@mentalroutine.com>",
-        to: "support@mentalroutine.com",
-        replyTo: data.email,
-        subject: `Pro Program inquiry: ${data.fullName}`,
-        text: [
-          `Name: ${data.fullName}`,
-          `Email: ${data.email}`,
-          data.pgaNumber ? `PGA Number: ${data.pgaNumber}` : null,
-          data.pgaDivision ? `PGA Division: ${data.pgaDivision}` : null,
-          data.linkedIn ? `LinkedIn: ${data.linkedIn}` : null,
-          data.country ? `Country: ${data.country}` : null,
-          data.facility ? `Facility: ${data.facility}` : null,
-          data.activeStudents ? `Active Students: ${data.activeStudents}` : null,
-          data.groupLessons ? `Group Lessons: ${data.groupLessons}` : null,
-          data.mentalExperience ? `Mental Training Experience: ${data.mentalExperience}` : null,
-          data.howFound ? `How Found: ${data.howFound}` : null,
-        ]
-          .filter(Boolean)
-          .join("\n"),
-      }),
-      resend.emails.send({
+    // Support first: that mail IS the application (nothing is stored elsewhere). Only when it
+    // went out do we confirm to the applicant — best effort, a failed confirmation must not make
+    // the applicant retry and send support a duplicate.
+    const lead = await resend.emails.send({
+      from: "MentalRoutine <contact@mentalroutine.com>",
+      to: "support@mentalroutine.com",
+      replyTo: data.email,
+      subject: `Pro Program inquiry: ${data.fullName}`,
+      text: [
+        `Name: ${data.fullName}`,
+        `Email: ${data.email}`,
+        data.pgaNumber ? `PGA Number: ${data.pgaNumber}` : null,
+        data.pgaDivision ? `PGA Division: ${data.pgaDivision}` : null,
+        data.linkedIn ? `LinkedIn: ${data.linkedIn}` : null,
+        data.country ? `Country: ${data.country}` : null,
+        data.facility ? `Facility: ${data.facility}` : null,
+        data.activeStudents ? `Active Students: ${data.activeStudents}` : null,
+        data.groupLessons ? `Group Lessons: ${data.groupLessons}` : null,
+        data.mentalExperience ? `Mental Training Experience: ${data.mentalExperience}` : null,
+        data.howFound ? `How Found: ${data.howFound}` : null,
+      ]
+        .filter(Boolean)
+        .join("\n"),
+    });
+    if (lead.error) {
+      throw new Error(`support notification failed: ${lead.error.message}`);
+    }
+    try {
+      await resend.emails.send({
         from: "MentalRoutine <contact@mentalroutine.com>",
         replyTo: "support@mentalroutine.com",
         to: data.email,
         subject: "Your Pro Program application has been received!",
         text: `Hi ${data.fullName},
 
-Thanks for applying to the MentalRoutine Pro Program! We've received your application and will review it shortly — usually within the same business day.
+Thanks for applying to the MentalRoutine Pro Program! We've received your application and review every one personally, usually within 1-3 business days.
 
 Here's what happens next:
 
-  1. Today — Your application is in our queue
-  2. Within 24 hours — We verify your details and activate your account
-  3. Once approved — You receive your free Foundation Assessment ($59 value) and personal affiliate code
+  1. Now — Create your free portal account with this email address (${data.email}):
+     https://portal.mentalroutine.com/en/registreer
+     That's the account we unlock for you.
+  2. Within 1-3 business days — We review your application and verify your PGA details.
+  3. Once approved — You get an email from the portal. PRO Admin is then open: your free
+     MentalRoutine Assessment ($79 value), the clinic and communication kits, your personal
+     discount code ($20 off for your students) and the lesson program generator.
 
-In the meantime, if you have any questions, just reply to this email.
+Questions? Just reply to this email.
 
 We look forward to working with you.
 
 The MentalRoutine Team
 www.mentalroutine.com`,
-      }),
-    ]);
+      });
+    } catch (err) {
+      console.error("[pro-program] Confirmation to applicant failed (application itself was sent):", err);
+    }
 
     return NextResponse.json({ ok: true });
   } catch (err) {

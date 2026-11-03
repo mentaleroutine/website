@@ -347,16 +347,21 @@ dollar-equivalente waarde die de website communiceert; de portal int in credits.
 
 ## Pro Program Pagina
 
-- **URL**: `https://mentalroutine.com/pro-program`
-- **Bestand**: `src/app/pro-program/page.tsx`
-- **API route**: `src/app/api/pro-program/route.ts` — POST → 2 emails via Resend (parallel via `Promise.all`)
-- **Doel**: Landing page voor PGA Teaching Professionals om het assessment aan te bieden aan hun leerlingen
-- **Taal**: alleen Engels (niet meertalig, niet in translations.ts)
-- **Toegang vanuit hoofdpagina**: footer link, pricing proCallout, process coachNote (alle 3 getrackt via `pro_program_click`)
-- **Bevat**: aanmeldformulier met velden voor PGA-nummer, divisie, land, faciliteit, actieve leerlingen, etc.
-- **Emails bij aanmelding**:
-  1. **Notificatie** naar `support@mentalroutine.com` — naam, email, PGA-nummer, land, etc.
-  2. **Bevestiging** naar aanmelder — bedankt, next-steps timeline (review → activatie → free Deluxe Assessment + affiliate code)
+> **Bijgewerkt 3-11-2026** (portal-sessie: hele pro-keten nagelopen; portal-repo CLAUDE.md "Pro-…"-regels).
+
+- **URL**: `https://mentalroutine.com/pro-program` · **Bestand**: `src/app/pro-program/page.tsx` + `layout.tsx`
+  (eigen metadata/canonical — was: erfde de homepage-titel en `canonical: "/"`).
+- **API route**: `src/app/api/pro-program/route.ts` — eerst de mail naar `support@` (dát is de aanvraag; niets
+  wordt opgeslagen), pas daarna best effort de bevestiging aan de aanvrager (was `Promise.all`: een mislukte
+  bevestiging gaf 500 → aanvrager probeerde opnieuw → dubbele aanvraag).
+- **Taal**: alleen Engels (niet in translations.ts). **Toegang**: alleen de footer-link (`pro_program_click`).
+- **Belofte = wat er in de portal staat** (PRO Admin): gratis eigen assessment ($79, toegekend bij pro-activering),
+  **clinicpakket** (2 clinics: draaiboeken, PowerPoints, A4-handout, poster), **communicatiepakket** (mails,
+  nieuwsbriefstuk, social posts), kortingscode ($20 voor leerlingen), lesprogramma-generator (5 gratis, daarna
+  $199/jaar, opzegbaar). GEEN "six A4 pages"/"marketing toolkit"/"objective picture"/verdienclaim meer.
+- **Keten**: aanmelden → bevestigingsmail vraagt de pro **meteen een gratis portal-account** aan te maken met
+  hetzelfde e-mailadres (`portal.mentalroutine.com/en/registreer`) → admin screent en klikt "activeer pro" →
+  portal stuurt de pro-welkomstmail. PGA-divisies: PGA of America · PGA Holland · PGA UK · PGA Belgium · PGA Australia · Other.
 - **Analytics**: `pro_program_submit` (succes + country) en `pro_program_error` (API fout)
 
 ## Contactformulier
