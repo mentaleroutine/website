@@ -381,3 +381,21 @@ Gevonden bij het nalezen van de 6 profielen op 2-11:
 - De 6 profielen opnieuw genereren (§10.5 stap 1) en vervangen; daarbij A/B/C nalezen.
 - Optioneel: de EN-trainingsrapporten opnieuw (van 25-9, vóór de rapport-review) zodat NL en EN even vers zijn.
 - Plausible: `sample_view`/`sample_download`/`samples_click` als goals toevoegen.
+
+---
+
+## 11. Pro Program-pagina (3 nov 2026, LIVE, commit `42bb70b`)
+
+Onderdeel van een portal-sessie over de hele PRO-keten; volledig verslag in de **portal-repo
+`docs/SESSIE_PRO_KETEN_NOV2026.md`** (§1.1 audit, §3.6 wijzigingen).
+- `/pro-program` belooft nu precies wat PRO Admin levert: eigen assessment ($79), **Clinic Kit** (2 clinics: draaiboeken,
+  slides, handout, poster), **Communication Kit**, $20-code voor leerlingen, 5 gratis lesprogramma's, daarna $199/jaar
+  (opzegbaar). Weg: "six printable A4 pages", "marketing toolkit", "objective picture", verdienclaim.
+- Aanvrager wordt (mail, succes-scherm, FAQ, How it works) gevraagd **meteen een gratis portal-account** te maken met
+  hetzelfde e-mailadres (`portal.mentalroutine.com/en/registreer`) — dat account activeert de admin.
+- Bevestigingsmail zonder "Foundation $59" / "24 uur"; eerst de supportmail (= de aanvraag), daarna best effort de
+  bevestiging (geen dubbele aanvragen meer).
+- Eigen `layout.tsx` (title/OG/canonical `/pro-program`); PGA-divisies zonder "PGA European Tour".
+- Website-CLAUDE.md "Pro Program Pagina" herschreven. Funnel-check ALL PASSED; formulier bewust niet live getest.
+- Open (website): alleen Engels; server-side validatie alleen naam+e-mail; geen privacytekst bij PGA-nummer/LinkedIn.
+
