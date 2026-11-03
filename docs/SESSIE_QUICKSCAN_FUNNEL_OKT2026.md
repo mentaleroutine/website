@@ -377,8 +377,13 @@ Gevonden bij het nalezen van de 6 profielen op 2-11:
   onbekend → naam / 'de speler' / they". Pytest 571 passed. A en C zijn **niet met de echte AI hertest** — nalezen
   bij het opnieuw genereren.
 
+- **Opgelost (4-11-2026)**: de 6 profielen zijn opnieuw gegenereerd met gpt-6.1-sol (portal `57e4103`: toon-blok, één
+  startpunt per rapport, geen slagen-claims) en vervangen, inclusief beide leeswijzers. Nagelezen: A (tweede groeikans =
+  juiste stap: Alex/Chris Transfer, Sam Analyse), B (geen NL in EN) en C (geen he/his) zijn weg; het startpunt is per golfer
+  overal gelijk (Alex Overtuiging, Sam en Chris Acceptatie). Kleine restpunten: Chris EN zegt één keer "strongest domain",
+  Alex EN factorpagina's beginnen veel zinnen met "You can".
+
 ### 10.7 Nog te doen
-- De 6 profielen opnieuw genereren (§10.5 stap 1) en vervangen; daarbij A/B/C nalezen.
 - Optioneel: de EN-trainingsrapporten opnieuw (van 25-9, vóór de rapport-review) zodat NL en EN even vers zijn.
 - Plausible: `sample_view`/`sample_download`/`samples_click` als goals toevoegen.
 
