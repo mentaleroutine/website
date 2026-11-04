@@ -384,6 +384,12 @@ Gevonden bij het nalezen van de 6 profielen op 2-11:
   Alex EN factorpagina's beginnen veel zinnen met "You can".
 
 ### 10.7 Nog te doen
+- **De 6 profielen lopen achter op de portal (sinds 4-11-2026).** In de portal is de samenvatting omgebouwd: "Begin hier"
+  en de kaart staan op p. 3, het slot "Na je eerste ronde" op p. 7, en p. 2 heet "De kern". Er is ook een **baankaart als
+  telefoon-PNG** (1080×1920) en de NL-archetype "De Committer" heet nu "De Doorpakker" (Sam). Zie de portal-repo
+  `docs/RAPPORT_REVIEW_SEP2026.md` rondes 15–16b. De voorbeelden op `/samples` tonen nog de oude opzet. Vervangen kan met
+  §10.5 (6 betaalde runs; de testmail stuurt nu ook `baankaart_<naam>.png` mee). De baankaart zou als extra voorbeeld op
+  `/samples` kunnen; dat is nog niet gebouwd.
 - Optioneel: de EN-trainingsrapporten opnieuw (van 25-9, vóór de rapport-review) zodat NL en EN even vers zijn.
 - Plausible: `sample_view`/`sample_download`/`samples_click` als goals toevoegen.
 
