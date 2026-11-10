@@ -119,7 +119,10 @@ function ProProgramContent() {
   const [form, setForm] = useState<FormData>(INITIAL_FORM);
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
-  const [error, setError] = useState(false);
+  // "" = geen fout; anders welke melding past (was: één melding voor alles, ook als opnieuw proberen niet helpt).
+  const [error, setError] = useState<"" | "rate" | "email" | "generic">("");
+  // Lokvak tegen scripts: mensen zien het niet en laten het leeg.
+  const [trap, setTrap] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
   function update(field: keyof FormData) {
@@ -130,18 +133,22 @@ function ProProgramContent() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSending(true);
-    setError(false);
+    setError("");
     try {
       const res = await fetch("/api/pro-program", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, lang: L }),   // taal end-to-end: bevestiging + aanvraagrecord in de portal
+        body: JSON.stringify({ ...form, lang: L, pp_check: trap }),   // taal end-to-end: bevestiging + aanvraagrecord in de portal
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        setError(res.status === 429 ? "rate" : res.status === 400 ? "email" : "generic");
+        track("pro_program_error", { type: String(res.status) });
+        return;
+      }
       setSubmitted(true);
       track("pro_program_submit", { country: form.country || "unknown", lang: L });
     } catch {
-      setError(true);
+      setError("generic");
       track("pro_program_error", { type: "api" });
     } finally {
       setSending(false);
@@ -477,11 +484,11 @@ function ProProgramContent() {
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className={labelCls}>{T.f.fullName}</label>
-                  <input type="text" required value={form.fullName} onChange={update("fullName")} placeholder="John Smith" className={inputCls} />
+                  <input type="text" required value={form.fullName} onChange={update("fullName")} placeholder={T.f.namePh} className={inputCls} />
                 </div>
                 <div>
                   <label className={labelCls}>{T.f.email}</label>
-                  <input type="email" required value={form.email} onChange={update("email")} placeholder="john@example.com" className={inputCls} />
+                  <input type="email" required value={form.email} onChange={update("email")} placeholder={T.f.emailPh} className={inputCls} />
                 </div>
               </div>
 
@@ -523,7 +530,7 @@ function ProProgramContent() {
                 </div>
                 <div>
                   <label className={labelCls}>{T.f.students}</label>
-                  <input type="number" required value={form.activeStudents} onChange={update("activeStudents")} placeholder={T.f.studentsPh} className={inputCls} />
+                  <input type="number" min={0} step={1} required value={form.activeStudents} onChange={update("activeStudents")} placeholder={T.f.studentsPh} className={inputCls} />
                 </div>
               </div>
 
@@ -563,7 +570,17 @@ function ProProgramContent() {
               <button type="submit" disabled={sending} className="w-full py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
                 {sending ? T.f.sending : T.f.submit}
               </button>
-              {error && <p className="text-center text-xs text-red-500">{T.f.error}</p>}
+              {error && (
+                <p className="text-center text-xs text-red-500" role="alert">
+                  {error === "rate" ? T.f.errorRate : error === "email" ? T.f.errorEmail : T.f.error}
+                </p>
+              )}
+              {/* Lokvak: buiten beeld, niet voor mensen bedoeld. */}
+              <div style={{ display: "none" }} aria-hidden="true">
+                <input type="text" name="pp_check" tabIndex={-1} autoComplete="off" value={trap}
+                       onChange={(e) => setTrap(e.target.value)} />
+              </div>
+              <p className="text-center text-xs text-stone-400">{T.f.privacy}</p>
 
               <div className="flex items-center justify-center gap-4 text-xs text-stone-400">
                 <span className="flex items-center gap-1.5">
@@ -593,6 +610,7 @@ function ProProgramContent() {
       </footer>
 
       {/* ── STICKY MOBILE CTA ─────────────────────────────────────────────── */}
+      {!submitted && (
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-green-950/95 backdrop-blur-lg border-t border-white/[0.08] px-4 py-3">
         <button
           onClick={scrollToForm}
@@ -601,6 +619,7 @@ function ProProgramContent() {
           {T.stickyCta}
         </button>
       </div>
+      )}
 
     </main>
   );

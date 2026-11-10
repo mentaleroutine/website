@@ -216,7 +216,7 @@ const en = {
       quizLine: "Still on the fence? See your weakest link free — 8 minutes, no card needed.",
       trust: ["In your inbox shortly after", "One assessment — $79", "Research base: 1,000+ golfers", "30-day money-back guarantee"],
     },
-        footer: { tagline: "The mental routine for every shot.", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching Professional? Recommend the assessment to your students →", socialLabel: "Follow us", quizLink: "Free QuickScan", methodology: "The methodology", assessment: "The full assessment", quoteText: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong", methodBy: "An initiative of Henk de Jong", menuLabel: "Menu" },
+        footer: { tagline: "The mental routine for every shot.", copyright: "© 2026 MentalRoutine.com · All rights reserved", teachingPro: "Teaching professional? See the free Pro Program →", socialLabel: "Follow us", quizLink: "Free QuickScan", methodology: "The methodology", assessment: "The full assessment", quoteText: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong", methodBy: "An initiative of Henk de Jong", menuLabel: "Menu" },
 } as const;
 
 export const translations = {
@@ -435,7 +435,7 @@ export const translations = {
       quizLine: "Nog aan het twijfelen? Zie je zwakste schakel gratis — 8 minuten, geen betaalgegevens nodig.",
       trust: ["Kort daarna in je inbox", "Eén assessment — $79", "Onderzoeksbasis: 1.000+ golfers", "30 dagen geld terug"],
     },
-        footer: { tagline: "De mentale routine voor elke slag.", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Teaching Professional? Verwijs je leerlingen door naar de assessment →", socialLabel: "Volg ons", quizLink: "Gratis QuickScan", methodology: "De methodiek", assessment: "Het volledige assessment", quoteText: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong", methodBy: "Een initiatief van Henk de Jong", menuLabel: "Menu" },
+        footer: { tagline: "De mentale routine voor elke slag.", copyright: "© 2026 MentalRoutine.com · Alle rechten voorbehouden", teachingPro: "Golfprofessional? Bekijk het gratis Pro-programma →", socialLabel: "Volg ons", quizLink: "Gratis QuickScan", methodology: "De methodiek", assessment: "Het volledige assessment", quoteText: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong", methodBy: "Een initiatief van Henk de Jong", menuLabel: "Menu" },
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -655,7 +655,7 @@ export const translations = {
       quizLine: "Noch unsicher? Sieh deinen schwächsten Punkt gratis — 8 Minuten, keine Kartendaten nötig.",
       trust: ["Kurz danach in deinem Posteingang", "Ein Assessment — $79", "Forschungsbasis: 1.000+ Golfer", "30 Tage Geld-zurück-Garantie"],
     },
-        footer: { tagline: "Die mentale Routine für jeden Schlag.", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Empfiehl das Assessment deinen Schülern →", socialLabel: "Folge uns", quizLink: "Kostenloser QuickScan", methodology: "Die Methodik", assessment: "Das vollständige Assessment", quoteText: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong", methodBy: "Eine Initiative von Henk de Jong", menuLabel: "Menü" },
+        footer: { tagline: "Die mentale Routine für jeden Schlag.", copyright: "© 2026 MentalRoutine.com · Alle Rechte vorbehalten", teachingPro: "Teaching Professional? Sieh dir das kostenlose Pro Program an →", socialLabel: "Folge uns", quizLink: "Kostenloser QuickScan", methodology: "Die Methodik", assessment: "Das vollständige Assessment", quoteText: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong", methodBy: "Eine Initiative von Henk de Jong", menuLabel: "Menü" },
 },
   fr: {
     nav: { howItWorks: "Comment ça marche", faq: "FAQ", contact: "Contact", cta: "QuickScan gratuit", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu", selectLang: "Choisir la langue", skipToContent: "Aller au contenu" },
@@ -869,7 +869,7 @@ export const translations = {
       quizLine: "Vous hésitez encore ? Voyez votre maillon faible gratuitement — 8 minutes, sans carte bancaire.",
       trust: ["Dans votre boîte de réception peu après", "Un seul assessment — $79", "Base de recherche : 1 000+ golfeurs", "Garantie satisfait ou remboursé de 30 jours"],
     },
-        footer: { tagline: "La routine mentale pour chaque coup.", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Enseignant PGA ? Recommandez l'assessment à vos élèves →", socialLabel: "Suivez-nous", quizLink: "QuickScan gratuit", methodology: "La méthodologie", assessment: "L'assessment complet", quoteText: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong", methodBy: "Une initiative de Henk de Jong", menuLabel: "Menu" },
+        footer: { tagline: "La routine mentale pour chaque coup.", copyright: "© 2026 MentalRoutine.com · Tous droits réservés", teachingPro: "Enseignant PGA ? Découvrez le Pro Program gratuit →", socialLabel: "Suivez-nous", quizLink: "QuickScan gratuit", methodology: "La méthodologie", assessment: "L'assessment complet", quoteText: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong", methodBy: "Une initiative de Henk de Jong", menuLabel: "Menu" },
 },
   es: {
     nav: { howItWorks: "Cómo funciona", faq: "Preguntas", contact: "Contacto", cta: "QuickScan gratis", openMenu: "Abrir menú", closeMenu: "Cerrar menú", selectLang: "Seleccionar idioma", skipToContent: "Saltar al contenido" },
@@ -1083,7 +1083,7 @@ export const translations = {
       quizLine: "¿Aún dudando? Mira tu eslabón más débil gratis — 8 minutos, sin tarjeta.",
       trust: ["En tu bandeja de entrada poco después", "Un assessment — $79", "Base de investigación: 1000+ golfistas", "Garantía de devolución de 30 días"],
     },
-        footer: { tagline: "La rutina mental para cada golpe.", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Eres Teaching Professional? Recomienda el assessment a tus alumnos →", socialLabel: "Síguenos", quizLink: "QuickScan gratis", methodology: "La metodología", assessment: "El assessment completo", quoteText: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong", methodBy: "Una iniciativa de Henk de Jong", menuLabel: "Menú" },
+        footer: { tagline: "La rutina mental para cada golpe.", copyright: "© 2026 MentalRoutine.com · Todos los derechos reservados", teachingPro: "¿Eres Teaching Professional? Descubre el Pro Program gratuito →", socialLabel: "Síguenos", quizLink: "QuickScan gratis", methodology: "La metodología", assessment: "El assessment completo", quoteText: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong", methodBy: "Una iniciativa de Henk de Jong", menuLabel: "Menú" },
 },
 } satisfies Record<Lang, Translation>;
 
