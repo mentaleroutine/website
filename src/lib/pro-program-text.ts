@@ -51,7 +51,7 @@ export type ProText = {
   whyLabel: string; whyTitle: string; whyTitleEm: string; whyCards: Card[];
   faqLabel: string; faqTitle: string; faqTitleEm: string; faqs: Faq[];
   formLabel: string; formTitle: string; formTitleEm: string; formIntro: string;
-  f: { fullName: string; email: string; pga: string; pgaPh: string; division: string; select: string; linkedin: string; linkedinOpt: string;
+  f: { fullName: string; email: string; pga: string; pgaPh: string; division: string; divisionOther: string; select: string; linkedin: string; linkedinOpt: string;
        country: string; facility: string; facilityPh: string; students: string; studentsPh: string; group: string; mental: string;
        yes: string; no: string; some: string; found: string; foundLinkedin: string; foundColleague: string; foundGoogle: string; foundOther: string;
        submit: string; sending: string; error: string; errorRate: string; errorEmail: string; privacy: string;
@@ -121,7 +121,7 @@ export const PRO_TEXT: Record<ProLang, ProText> = {
     ],
     formLabel: "Apply Now", formTitle: "Join the Pro", formTitleEm: "Program",
     formIntro: "We review every application personally. You'll usually hear back within 1-3 business days.",
-    f: { fullName: "Full Name *", email: "Email *", pga: "PGA Membership Number *", pgaPh: "Your PGA number", division: "PGA Division *", select: "Select...",
+    f: { fullName: "Full Name *", email: "Email *", pga: "PGA Membership Number *", pgaPh: "Your PGA number", division: "PGA Division *", divisionOther: "Which PGA? *", select: "Select...",
          linkedin: "LinkedIn Profile URL", linkedinOpt: "optional", country: "Country *", facility: "Club / Facility *", facilityPh: "Your club or facility",
          students: "Active Students (approx.) *", studentsPh: "e.g. 40", group: "Do you give group lessons / clinics? *", mental: "Experience with mental coaching? *",
          yes: "Yes", no: "No", some: "A little", found: "How did you find us? *", foundLinkedin: "LinkedIn", foundColleague: "Colleague", foundGoogle: "Google", foundOther: "Other",
@@ -197,7 +197,7 @@ export const PRO_TEXT: Record<ProLang, ProText> = {
     ],
     formLabel: "Nu aanvragen", formTitle: "Doe mee met het", formTitleEm: "Pro-programma",
     formIntro: "We bekijken elke aanvraag persoonlijk. Je hoort meestal binnen 1-3 werkdagen van ons.",
-    f: { fullName: "Volledige naam *", email: "E-mail *", pga: "PGA-lidmaatschapsnummer *", pgaPh: "Je PGA-nummer", division: "PGA-afdeling *", select: "Kies...",
+    f: { fullName: "Volledige naam *", email: "E-mail *", pga: "PGA-lidmaatschapsnummer *", pgaPh: "Je PGA-nummer", division: "PGA-afdeling *", divisionOther: "Welke PGA? *", select: "Kies...",
          linkedin: "LinkedIn-profiel (URL)", linkedinOpt: "optioneel", country: "Land *", facility: "Club / baan *", facilityPh: "Je club of baan",
          students: "Actieve leerlingen (ongeveer) *", studentsPh: "bv. 40", group: "Geef je groepslessen of clinics? *", mental: "Ervaring met mentale coaching? *",
          yes: "Ja", no: "Nee", some: "Een beetje", found: "Hoe heb je ons gevonden? *", foundLinkedin: "LinkedIn", foundColleague: "Collega", foundGoogle: "Google", foundOther: "Anders",

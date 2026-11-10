@@ -14,6 +14,7 @@ type FormData = {
   email: string;
   pgaNumber: string;
   pgaDivision: string;
+  pgaOther: string;      // alleen bij "Other": welke PGA
   linkedIn: string;
   country: string;
   facility: string;
@@ -24,7 +25,7 @@ type FormData = {
 };
 
 const INITIAL_FORM: FormData = {
-  fullName: "", email: "", pgaNumber: "", pgaDivision: "", linkedIn: "",
+  fullName: "", email: "", pgaNumber: "", pgaDivision: "", pgaOther: "", linkedIn: "",
   country: "", facility: "", activeStudents: "", groupLessons: "",
   mentalExperience: "", howFound: "",
 };
@@ -138,7 +139,12 @@ function ProProgramContent() {
       const res = await fetch("/api/pro-program", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, lang: L, pp_check: trap }),   // taal end-to-end: bevestiging + aanvraagrecord in de portal
+        body: JSON.stringify({
+          ...form,
+          // "Other" zegt de beoordelaar niets: de naam van de PGA gaat mee in hetzelfde veld.
+          pgaDivision: form.pgaDivision === "Other" ? `Other: ${form.pgaOther.trim()}` : form.pgaDivision,
+          lang: L, pp_check: trap,
+        }),   // taal end-to-end: bevestiging + aanvraagrecord in de portal
       });
       if (!res.ok) {
         setError(res.status === 429 ? "rate" : res.status === 400 ? "email" : "generic");
@@ -504,6 +510,10 @@ function ProProgramContent() {
                     <option value="">{T.f.select}</option>
                     {PGA_DIVISIONS[L].map(d => <option key={d} value={d}>{d}</option>)}
                   </select>
+                  {form.pgaDivision === "Other" && (
+                    <input type="text" required maxLength={80} value={form.pgaOther} onChange={update("pgaOther")}
+                      placeholder={T.f.divisionOther} aria-label={T.f.divisionOther} className={`${inputCls} mt-2`} />
+                  )}
                 </div>
               </div>
 
