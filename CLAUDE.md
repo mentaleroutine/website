@@ -348,6 +348,11 @@ dollar-equivalente waarde die de website communiceert; de portal int in credits.
 ## Pro Program Pagina
 
 > **Bijgewerkt 3-11-2026** (portal-sessie: hele pro-keten nagelopen; portal-repo CLAUDE.md "Pro-…"-regels).
+> **Besloten 10-11-2026, nog niet gebouwd** — bron van waarheid: portal-repo `docs/PRO_PROGRAM_NL_EN_AANVRAGEN_PLAN.md`:
+> pagina wordt **NL + EN** via `useLang()` (DE/FR/ES → EN), NL toegespitst; LinkedIn optioneel; formulier stuurt `lang`
+> mee; API-route stuurt de aanvraag ook naar de portal (`POST /api/public/pro-aanvraag`, geheim `PRO_APPLICATION_SECRET`),
+> bevestiging NL/EN zonder "maak nu je account"; **$199 intro t/m 31-3-2027 (peildatum goedkeuring), daarna $299**;
+> geen teamlinks/Rondes op de pagina.
 
 - **URL**: `https://mentalroutine.com/pro-program` · **Bestand**: `src/app/pro-program/page.tsx` + `layout.tsx`
   (eigen metadata/canonical — was: erfde de homepage-titel en `canonical: "/"`).
