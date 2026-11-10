@@ -204,6 +204,18 @@ const inView = (page, sel) =>
     check(`pro-program ${q} no page errors`, errors.length === 0, errors.join(" | "));
     await ctx.close();
   }
+  // …and the NL/EN switch in the hero changes the page and is remembered without ?lang
+  {
+    const { ctx, page } = await newPage(browser, "en-US");
+    await page.goto(BASE + "/pro-program?lang=en", { waitUntil: "networkidle" });
+    await page.getByRole("button", { name: "NL", exact: true }).click();
+    await page.waitForTimeout(400);
+    check("pro-program switch EN→NL", (await page.locator("h1").first().innerText()).includes("Een tweede lesaanbod"));
+    await page.goto(BASE + "/pro-program", { waitUntil: "networkidle" });
+    await page.waitForTimeout(400);
+    check("pro-program switch remembered", (await page.locator("h1").first().innerText()).includes("Een tweede lesaanbod"));
+    await ctx.close();
+  }
 
   await browser.close();
   console.log(failures ? `\n${failures} CHECK(S) FAILED` : "\nALL CHECKS PASSED");

@@ -79,6 +79,33 @@ function IconShield() {
   );
 }
 
+// ── TAALWISSEL NL/EN ────────────────────────────────────────────────────────
+// Deze pagina heeft geen navbar (en dus geen taalwisselaar); wie via de footer binnenkomt moet zelf kunnen
+// wisselen. Twee talen, want alles ná goedkeuring bestaat alleen in NL/EN. setLang onthoudt de keuze (mr_lang).
+function LangSwitch() {
+  const { lang, setLang } = useLang();
+  const L = proLang(lang);
+  const btn = (code: "nl" | "en", label: string) => (
+    <button
+      type="button"
+      onClick={() => { setLang(code); window.plausible?.("lang_switch", { props: { lang: code } }); }}
+      aria-pressed={L === code}
+      className={`px-2.5 py-1 text-xs font-semibold tracking-widest uppercase rounded-md transition-colors ${
+        L === code ? "bg-amber-400 text-green-950" : "text-green-200/70 hover:text-amber-300"
+      }`}
+    >
+      {label}
+    </button>
+  );
+  return (
+    <div className="absolute top-5 right-5 z-20 flex items-center gap-1 rounded-lg border border-white/[0.12] bg-white/[0.06] p-1 backdrop-blur-sm"
+         aria-label="Taal / Language">
+      {btn("nl", "NL")}
+      {btn("en", "EN")}
+    </div>
+  );
+}
+
 // ── SCROLL TO FORM ──────────────────────────────────────────────────────────
 function scrollToForm() {
   document.getElementById("pro-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -130,6 +157,7 @@ function ProProgramContent() {
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-[#162b1e]">
+        <LangSwitch />
         {/* Ambient glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-green-700/20 blur-3xl" />
