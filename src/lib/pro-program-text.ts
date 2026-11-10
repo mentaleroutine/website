@@ -5,6 +5,10 @@
  * clubpro (toon, voorbeelden); de FEITEN en BELOFTES zijn in beide talen identiek: eigen assessment ($79), clinic kit
  * (2 clinics), communication kit, $20-code, 5 gratis lesprogramma's, daarna $199/jaar introductietarief t/m 31-3-2027
  * (peildatum = goedkeuring, blijvend zolang je verlengt), daarna $299/jaar voor nieuwe pro's.
+ *
+ * Clinicmodel (10-11-2026, portal-repo docs/SESSIE_PRO_KETEN_NOV2026.md §3.5a): clinic 1 = gratis kennismaking,
+ * clinic 2 = betaald vervolg (de pro bepaalt en houdt de entree). Beloof GEEN "zonder voorbereiding": de pro vult
+ * dia's in, verstuurt mails en maakt voor clinic 2 een groepsprogramma. Wel waar: niets zelf ontwikkelen.
  */
 import type { Lang } from "@/context/lang-context";
 
@@ -62,14 +66,14 @@ export const PRO_TEXT: Record<ProLang, ProText> = {
     heroTitleEm: "from the Students You Already Teach",
     heroP1: "Turn the mental game into a ",
     heroP1Strong: "natural extension of your teaching practice",
-    heroP2: "Give your students a clear picture of their mental game, then build individual and group lesson programs around it — with ready-made materials, so there's no extra prep.",
+    heroP2: "Give your students a clear picture of their mental game, then build individual and group lesson programs around it — with ready-made materials: nothing to develop yourself.",
     ctaApply: "Apply for Access", ctaHow: "See How It Works", ctaNow: "Apply Now",
     trust: "Free for approved pros · By application · Available worldwide",
     getLabel: "Free for Approved Pros", getTitle: "Everything You Need", getTitleEm: "to Add the Mental Game",
     getCards: [
       { title: "Do It Yourself First", desc: "Take the full assessment yourself — free ($79 value). You'll teach it far better once you've felt it." },
-      { title: "Clinic Kit", desc: "Two ready-to-run clinics — one before and one after the assessment — with run sheets, slides, a take-home handout and a poster." },
-      { title: "Communication Kit", desc: "Invitation and follow-up emails, a club newsletter piece and social posts — written for you to send in your own name." },
+      { title: "Clinic Kit", desc: "Two clinics, worked out for you: a free introduction before the assessment and a paid follow-up after it, for which you set and keep the entry fee. With a start-here guide, run sheets, slides, a take-home handout, a route sheet for attendees and a poster." },
+      { title: "Communication Kit", desc: "Invitation, confirmation, reminder and follow-up emails, a club newsletter piece and social posts — written for you to send in your own name." },
       { title: "Personal Discount Code", desc: "A code that gives your students $20 off the assessment — a natural reason to reach out." },
     ],
     getNote: "You also get ", getNoteStrong1: "access to the Pro portal", getNoteStrong2: "your first five programs are free",
@@ -80,7 +84,7 @@ export const PRO_TEXT: Record<ProLang, ProText> = {
       { label: "One Student Base", title: "No New Audience Needed", sub: "You already have the relationships. This simply gives you a second, natural thing to teach." },
     ],
     fitIdeaLabel: "The Idea in One Line",
-    fitIdea: "A second lesson offer, built on the students you already have — with the materials ready and zero extra prep.",
+    fitIdea: "A second lesson offer, built on the students you already have — with the materials ready, so you develop nothing yourself.",
     howLabel: "3 Simple Steps", howTitle: "Apply, Get Approved,", howTitleEm: "Then Get Started",
     howSteps: [
       { num: "01", title: "Apply", body: "Fill in the form below. It only takes a few minutes and tells us about your teaching practice." },
@@ -98,16 +102,16 @@ export const PRO_TEXT: Record<ProLang, ProText> = {
     whyLabel: "Why Pros Add It", whyTitle: "What It Does", whyTitleEm: "for Your Practice",
     whyCards: [
       { title: "A reason to reach out", desc: "It gives you a natural opening to talk mental game with students you've only ever coached on technique." },
-      { title: "Zero extra prep", desc: "The clinic outline and printable materials are ready to run — you bring the coaching, not the preparation." },
+      { title: "Nothing to develop yourself", desc: "The run sheets, slides and printable materials are ready — you fill in your own details and bring the coaching." },
       { title: "Data to build on", desc: "Every assessment gives you a clear picture of a student's mental game to design a lesson program around — once they share their profile with you." },
     ],
     faqLabel: "Questions?", faqTitle: "Frequently", faqTitleEm: "Asked",
     faqs: [
-      { q: "What do I get once I'm approved?", a: "Everything in the free program: your own MentalRoutine Assessment (a $79 value), a clinic kit for two clinics (run sheets, slides, a take-home handout and a poster), a communication kit, a personal discount code that gives your students $20 off the assessment, and access to PRO Admin. You can also build individual and group lesson programs — your first five are free." },
+      { q: "What do I get once I'm approved?", a: "Everything in the free program: your own MentalRoutine Assessment (a $79 value), a clinic kit for two clinics (a start-here guide, run sheets, slides, a take-home handout, a route sheet for attendees and a poster), a communication kit, a personal discount code that gives your students $20 off the assessment, and access to PRO Admin. You can also build individual and group lesson programs — your first five are free." },
       { q: "Do I have to apply first, or can I start straight away?", a: "You apply first. We review every application by hand and verify your PGA credentials before granting access — including access to the free assessment. It's a deliberate quality gate, so the program stays credible for you and your students." },
       { q: "Do I need to be a PGA member?", a: "Yes. We verify PGA credentials to ensure quality and credibility for both you and your students. All PGA divisions worldwide are welcome." },
-      { q: "What's free, what's paid, and what does the subscription cost?", a: "Once you're approved, the assessment, clinic kit, communication kit, discount code, portal access and your first five lesson programs are all free. After those five, the lesson program generator continues on a yearly subscription: $199 per year if you're approved by 31 March 2027 (an introductory rate you keep for as long as you renew), or $299 per year for pros approved from 1 April 2027. You can cancel any time, and you set your own lesson prices." },
-      { q: "Can I set my own prices for clinics and lessons?", a: "Absolutely. You teach your students and set whatever price works for your market — that arrangement is entirely between you and them. The Pro Program simply gives you the assessment, materials and lesson programs to build on." },
+      { q: "What's free, what's paid, and what does the subscription cost?", a: "Once you're approved, the assessment, clinic kit, communication kit, discount code, portal access and your first five lesson programs are all free. After those five, the lesson program generator continues on a yearly subscription: $199 per year if you're approved by 31 March 2027 (an introductory rate you keep for as long as you renew), or $299 per year for pros approved from 1 April 2027. The group lesson you build for the second clinic is one of those five. You can cancel any time, and you set your own lesson prices." },
+      { q: "Can I set my own prices for clinics and lessons?", a: "Absolutely. You teach your students and set whatever price works for your market — that arrangement is entirely between you and them. The first clinic is a free introduction; for the second clinic you charge your own entry fee and keep it. The Pro Program simply gives you the assessment, materials and lesson programs to build on." },
       { q: "How fast will I get approved?", a: "We aim to review applications within 1-3 business days. You'll get an email either way. Once approved, you create your free portal account (or log in if you already have one) and PRO Admin is open." },
     ],
     formLabel: "Apply Now", formTitle: "Join the Pro", formTitleEm: "Program",
@@ -130,25 +134,25 @@ export const PRO_TEXT: Record<ProLang, ProText> = {
     heroTitleEm: "voor de leerlingen die je al hebt",
     heroP1: "Maak van het mentale spel ",
     heroP1Strong: "een vanzelfsprekend onderdeel van je lespraktijk",
-    heroP2: "Geef je leerlingen een helder beeld van hun mentale spel en bouw daar individuele lessen en groepslessen op — met kant-en-klaar materiaal, dus zonder extra voorbereiding.",
+    heroP2: "Geef je leerlingen een helder beeld van hun mentale spel en bouw daar individuele lessen en groepslessen op — met kant-en-klaar materiaal: je hoeft niets zelf te ontwikkelen.",
     ctaApply: "Toegang aanvragen", ctaHow: "Zo werkt het", ctaNow: "Nu aanvragen",
     trust: "Gratis voor toegelaten pro's · Op aanvraag · Wereldwijd beschikbaar",
     getLabel: "Gratis voor toegelaten pro's", getTitle: "Alles wat je nodig hebt", getTitleEm: "om het mentale spel erbij te nemen",
     getCards: [
       { title: "Doe het eerst zelf", desc: "Doe het volledige assessment zelf — gratis (t.w.v. $79). Je geeft er veel beter les in als je het zelf hebt gevoeld." },
-      { title: "Clinicpakket", desc: "Twee clinics die je zo kunt draaien — één vóór en één na het assessment — met draaiboeken, presentaties, een hand-out voor thuis en een poster." },
-      { title: "Communicatiepakket", desc: "Uitnodigings- en opvolgmails, een stuk voor de clubnieuwsbrief en social posts — geschreven om in je eigen naam te versturen." },
+      { title: "Clinicpakket", desc: "Twee uitgewerkte clinics: een gratis kennismaking vóór het assessment en een betaald vervolg erna, waarvoor jij de entree bepaalt en houdt. Met “Lees dit eerst”, draaiboeken, presentaties, een hand-out, een routeblad voor deelnemers en een poster." },
+      { title: "Communicatiepakket", desc: "Uitnodigings-, bevestigings-, herinnerings- en opvolgmails, een stuk voor de clubnieuwsbrief en social posts — geschreven om in je eigen naam te versturen." },
       { title: "Persoonlijke kortingscode", desc: "Een code die je leerlingen $20 korting geeft op het assessment — een natuurlijke reden om ze aan te spreken." },
     ],
     getNote: "Je krijgt ook ", getNoteStrong1: "toegang tot de pro-portal", getNoteStrong2: "je eerste vijf programma's zijn gratis",
     fitLabel: "Waarom het bij je praktijk past", fitTitle: "Je leerlingen", fitTitleEm: "heb je al.",
     fitCards: [
-      { label: "Eén assessment", title: "Een helder startpunt", sub: "Elke golfer die je lesgeeft krijgt een duidelijk beeld van zijn mentale spel — en een reden om er met jou aan te werken." },
+      { label: "Eén assessment", title: "Een helder startpunt", sub: "Elke golfer die je lesgeeft krijgt een duidelijk beeld van het eigen mentale spel — en een reden om er met jou aan te werken." },
       { label: "Twee lesvormen", title: "Individueel en in de groep", sub: "Bouw een persoonlijk lesprogramma of draai een clinic. Het materiaal ligt klaar; jij brengt de les." },
       { label: "Eén leerlingenbestand", title: "Geen nieuw publiek nodig", sub: "De relaties heb je al. Dit geeft je gewoon een tweede, logisch onderwerp om in les te geven." },
     ],
     fitIdeaLabel: "In één zin",
-    fitIdea: "Een tweede lesaanbod, gebouwd op de leerlingen die je al hebt — met het materiaal klaar en zonder extra voorbereiding.",
+    fitIdea: "Een tweede lesaanbod, gebouwd op de leerlingen die je al hebt — met het materiaal klaar, zodat je niets zelf hoeft te ontwikkelen.",
     howLabel: "3 eenvoudige stappen", howTitle: "Aanvragen, toelating,", howTitleEm: "en dan aan de slag",
     howSteps: [
       { num: "01", title: "Aanvragen", body: "Vul het formulier hieronder in. Het kost een paar minuten en vertelt ons iets over je lespraktijk." },
@@ -166,16 +170,16 @@ export const PRO_TEXT: Record<ProLang, ProText> = {
     whyLabel: "Waarom pro's het erbij nemen", whyTitle: "Wat het doet", whyTitleEm: "voor je praktijk",
     whyCards: [
       { title: "Een reden om contact te zoeken", desc: "Het geeft je een natuurlijke opening om over het mentale spel te praten met leerlingen die je tot nu toe alleen technisch lesgaf." },
-      { title: "Geen extra voorbereiding", desc: "Het clinicdraaiboek en het printmateriaal liggen klaar — jij brengt de les, niet de voorbereiding." },
-      { title: "Iets om op te bouwen", desc: "Elk assessment geeft je een helder beeld van het mentale spel van een leerling om een lesprogramma op te ontwerpen — zodra de leerling zijn profiel met je deelt." },
+      { title: "Niets zelf ontwikkelen", desc: "De draaiboeken, presentaties en het printmateriaal liggen klaar — jij vult je eigen gegevens in en brengt de les." },
+      { title: "Iets om op te bouwen", desc: "Elk assessment geeft je een helder beeld van het mentale spel van een leerling om een lesprogramma op te ontwerpen — zodra de leerling het profiel met je deelt." },
     ],
     faqLabel: "Vragen?", faqTitle: "Veelgestelde", faqTitleEm: "vragen",
     faqs: [
-      { q: "Wat krijg ik zodra ik ben toegelaten?", a: "Alles uit het gratis programma: je eigen MentalRoutine Assessment (t.w.v. $79), een clinicpakket voor twee clinics (draaiboeken, presentaties, hand-out en poster), een communicatiepakket, een persoonlijke kortingscode waarmee je leerlingen $20 korting krijgen op het assessment, en toegang tot PRO Admin. Je kunt ook individuele en groepslesprogramma's bouwen — je eerste vijf zijn gratis." },
+      { q: "Wat krijg ik zodra ik ben toegelaten?", a: "Alles uit het gratis programma: je eigen MentalRoutine Assessment (t.w.v. $79), een clinicpakket voor twee clinics (“Lees dit eerst”, draaiboeken, presentaties, hand-out, routeblad voor deelnemers en poster), een communicatiepakket, een persoonlijke kortingscode waarmee je leerlingen $20 korting krijgen op het assessment, en toegang tot PRO Admin. Je kunt ook individuele en groepslesprogramma's bouwen — je eerste vijf zijn gratis." },
       { q: "Moet ik eerst aanvragen, of kan ik meteen beginnen?", a: "Je vraagt eerst aan. We bekijken elke aanvraag persoonlijk en controleren je PGA-gegevens voordat we toegang geven — ook tot het gratis assessment. Dat is een bewuste kwaliteitsdrempel, zodat het programma geloofwaardig blijft voor jou en je leerlingen." },
       { q: "Moet ik PGA-lid zijn?", a: "Ja. We controleren PGA-gegevens om de kwaliteit en geloofwaardigheid voor jou en je leerlingen te borgen. Alle PGA-afdelingen wereldwijd zijn welkom." },
-      { q: "Wat is gratis, wat is betaald, en wat kost het abonnement?", a: "Zodra je bent toegelaten zijn het assessment, het clinicpakket, het communicatiepakket, de kortingscode, de portal en je eerste vijf lesprogramma's allemaal gratis. Na die vijf loopt de lesprogramma-generator door op een jaarabonnement: $199 per jaar als je vóór 1 april 2027 bent toegelaten (een introductietarief dat je houdt zolang je verlengt), of $299 per jaar voor pro's die vanaf 1 april 2027 worden toegelaten. Opzeggen kan altijd, en je lesprijzen bepaal je zelf." },
-      { q: "Mag ik zelf mijn prijzen voor clinics en lessen bepalen?", a: "Zeker. Jij geeft les aan je leerlingen en vraagt wat bij jouw markt past — dat regel je volledig met hen. Het Pro-programma geeft je alleen het assessment, het materiaal en de lesprogramma's om op te bouwen." },
+      { q: "Wat is gratis, wat is betaald, en wat kost het abonnement?", a: "Zodra je bent toegelaten zijn het assessment, het clinicpakket, het communicatiepakket, de kortingscode, de portal en je eerste vijf lesprogramma's allemaal gratis. Na die vijf loopt de lesprogramma-generator door op een jaarabonnement: $199 per jaar als je vóór 1 april 2027 bent toegelaten (een introductietarief dat je houdt zolang je verlengt), of $299 per jaar voor pro's die vanaf 1 april 2027 worden toegelaten. De groepsles die je voor de tweede clinic maakt, is één van die vijf. Opzeggen kan altijd, en je lesprijzen bepaal je zelf." },
+      { q: "Mag ik zelf mijn prijzen voor clinics en lessen bepalen?", a: "Zeker. Jij geeft les aan je leerlingen en vraagt wat bij jouw markt past — dat regel je volledig met hen. De eerste clinic is een gratis kennismaking; voor de tweede clinic vraag je je eigen entree, en die houd je zelf. Het Pro-programma geeft je alleen het assessment, het materiaal en de lesprogramma's om op te bouwen." },
       { q: "Hoe snel word ik toegelaten?", a: "We streven ernaar aanvragen binnen 1-3 werkdagen te beoordelen. Je krijgt hoe dan ook een mail. Na toelating maak je je gratis portal-account aan (of je logt in als je er al een hebt) en staat PRO Admin voor je open." },
     ],
     formLabel: "Nu aanvragen", formTitle: "Doe mee met het", formTitleEm: "Pro-programma",
