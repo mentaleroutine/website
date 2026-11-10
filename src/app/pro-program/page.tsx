@@ -2,6 +2,8 @@
 
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { LangProvider, useLang } from "@/context/lang-context";
+import { PRO_TEXT, PGA_DIVISIONS, COUNTRIES, COUNTRY_LABEL, proLang } from "@/lib/pro-program-text";
 
 declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
@@ -26,16 +28,6 @@ const INITIAL_FORM: FormData = {
   country: "", facility: "", activeStudents: "", groupLessons: "",
   mentalExperience: "", howFound: "",
 };
-
-const PGA_DIVISIONS = [
-  "PGA of America", "PGA Holland", "PGA UK", "PGA Belgium",
-  "PGA Australia", "Other",
-];
-
-const COUNTRIES = [
-  "United States", "United Kingdom", "Canada", "Australia",
-  "Netherlands", "Belgium", "France", "Germany", "Spain", "Other",
-];
 
 // ── ICONS (inline SVG) ──────────────────────────────────────────────────────
 function IconCheck() {
@@ -93,7 +85,10 @@ function scrollToForm() {
 }
 
 // ── MAIN PAGE ───────────────────────────────────────────────────────────────
-export default function ProProgramPage() {
+function ProProgramContent() {
+  const { lang } = useLang();
+  const L = proLang(lang);            // NL of EN; andere talen zien de Engelse pagina (besluit 10-11-2026)
+  const T = PRO_TEXT[L];
   const [form, setForm] = useState<FormData>(INITIAL_FORM);
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
@@ -113,11 +108,11 @@ export default function ProProgramPage() {
       const res = await fetch("/api/pro-program", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, lang: L }),   // taal end-to-end: bevestiging + aanvraagrecord in de portal
       });
       if (!res.ok) throw new Error();
       setSubmitted(true);
-      track("pro_program_submit", { country: form.country || "unknown" });
+      track("pro_program_submit", { country: form.country || "unknown", lang: L });
     } catch {
       setError(true);
       track("pro_program_error", { type: "api" });
@@ -147,7 +142,7 @@ export default function ProProgramPage() {
               className="inline-block text-xs font-semibold tracking-widest uppercase text-amber-400 border border-amber-400/30 px-4 py-1.5 rounded-full mb-8"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
             >
-              PGA Professional Program
+              {T.badge}
             </motion.span>
 
             <motion.h1
@@ -155,23 +150,22 @@ export default function ProProgramPage() {
               style={{ fontFamily: "var(--font-cormorant), serif" }}
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             >
-              A Second Revenue Stream<br />
-              <span className="italic text-amber-300">from the Students You Already Teach</span>
+              {T.heroTitle}<br />
+              <span className="italic text-amber-300">{T.heroTitleEm}</span>
             </motion.h1>
 
             <motion.p
               className="text-lg text-green-200/75 max-w-2xl mx-auto mb-4 leading-relaxed"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
             >
-              Turn the mental game into a <strong className="text-amber-300">natural extension of your teaching practice</strong>.
-              Every golfer you already coach is a potential mental-game student.
+              {T.heroP1}<strong className="text-amber-300">{T.heroP1Strong}</strong>.
             </motion.p>
 
             <motion.p
               className="text-base text-green-200/55 max-w-xl mx-auto mb-8 leading-relaxed"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
             >
-              Give your students a clear picture of their mental game, then build individual and group lesson programs around it — with ready-made materials, so there&apos;s no extra prep.
+              {T.heroP2}
             </motion.p>
 
             <motion.div
@@ -182,13 +176,13 @@ export default function ProProgramPage() {
                 onClick={scrollToForm}
                 className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide"
               >
-                Apply for Access
+                {T.ctaApply}
               </button>
               <a
                 href="#how-it-works"
                 className="px-8 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm"
               >
-                See How It Works
+                {T.ctaHow}
               </a>
             </motion.div>
 
@@ -199,7 +193,7 @@ export default function ProProgramPage() {
             >
               <span className="inline-flex items-center gap-2 bg-white/[0.06] border border-white/[0.1] rounded-full px-4 py-1.5 text-xs text-green-200/65">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-                Free for approved pros · By application · Available worldwide
+                {T.trust}
               </span>
             </motion.div>
           </div>
@@ -210,20 +204,15 @@ export default function ProProgramPage() {
       <section className="py-24 px-6 bg-[#f6f1e7]">
         <div className="container mx-auto max-w-5xl">
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">Free for Approved Pros</p>
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.getLabel}</p>
             <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-              Everything You Need<br /><em>to Add the Mental Game</em>
+              {T.getTitle}<br /><em>{T.getTitleEm}</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              { title: "Do It Yourself First", desc: "Take the full assessment yourself — free ($79 value). You'll teach it far better once you've felt it.", icon: "gift" },
-              { title: "Clinic Kit", desc: "Two ready-to-run clinics — one before and one after the assessment — with run sheets, slides, a take-home handout and a poster.", icon: "kit" },
-              { title: "Communication Kit", desc: "Invitation and follow-up emails, a club newsletter piece and social posts — written for you to send in your own name.", icon: "tag" },
-              { title: "Personal Discount Code", desc: "A code that gives your students a discount on the assessment — a natural reason to reach out.", icon: "dollar" },
-            ].map((item, i) => (
+            {T.getCards.map((c, i) => ({ ...c, icon: ["gift", "kit", "tag", "dollar"][i] })).map((item, i) => (
               <motion.div
                 key={i}
                 className="bg-white rounded-2xl p-7 border border-green-900/[0.07] shadow-lg shadow-green-900/5 hover:-translate-y-1.5 transition-transform duration-300"
@@ -245,13 +234,12 @@ export default function ProProgramPage() {
             className="text-center text-sm text-stone-500 max-w-2xl mx-auto mt-10 leading-relaxed"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
           >
-            You also get <strong className="text-green-900">access to the Pro portal</strong> and can build your own
-            individual and group lesson programs around each assessment — your <strong className="text-green-900">first five programs are free</strong>.
+            {T.getNote}<strong className="text-green-900">{T.getNoteStrong1}</strong>{L === "nl" ? " en bouwt je eigen individuele en groepslesprogramma's op elk assessment — " : " and can build your own individual and group lesson programs around each assessment — "}<strong className="text-green-900">{T.getNoteStrong2}</strong>.
           </motion.p>
 
           <motion.div className="text-center mt-8" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
             <button onClick={scrollToForm} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
-              Apply for Access
+              {T.ctaApply}
             </button>
           </motion.div>
         </div>
@@ -261,19 +249,15 @@ export default function ProProgramPage() {
       <section className="py-24 px-6 bg-green-950">
         <div className="container mx-auto max-w-5xl">
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">Why It Fits Your Practice</p>
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">{T.fitLabel}</p>
             <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-              Your Students Are<br /><em className="text-amber-300">Already Here.</em>
+              {T.fitTitle}<br /><em className="text-amber-300">{T.fitTitleEm}</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            {[
-              { label: "One Assessment", title: "A Clear Starting Point", sub: "Every golfer you coach gets a clear picture of their mental game — and a reason to work on it with you." },
-              { label: "Two Lesson Formats", title: "Individual & Group", sub: "Build private lesson programs or run a clinic. The material is ready; you bring the coaching." },
-              { label: "One Student Base", title: "No New Audience Needed", sub: "You already have the relationships. This simply gives you a second, natural thing to teach." },
-            ].map((item, i) => (
+            {T.fitCards.map((item, i) => (
               <motion.div
                 key={i}
                 className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-7 text-center"
@@ -293,15 +277,15 @@ export default function ProProgramPage() {
             className="mt-8 max-w-3xl mx-auto rounded-2xl border border-amber-400/30 bg-amber-500/10 px-8 py-7 text-center"
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <p className="text-xs font-semibold tracking-widest uppercase text-amber-300 mb-3">The Idea in One Line</p>
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-300 mb-3">{T.fitIdeaLabel}</p>
             <p className="text-xl md:text-2xl font-semibold text-[#f6f1e7] leading-snug" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-              A second lesson offer, built on the students you already have — with the materials ready and zero extra prep.
+              {T.fitIdea}
             </p>
           </motion.div>
 
           <motion.div className="text-center mt-10" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.5 }}>
             <button onClick={scrollToForm} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide">
-              Apply Now
+              {T.ctaNow}
             </button>
           </motion.div>
         </div>
@@ -311,19 +295,15 @@ export default function ProProgramPage() {
       <section id="how-it-works" className="py-24 px-6 bg-[#faf8f3]">
         <div className="container mx-auto max-w-5xl">
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">3 Simple Steps</p>
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.howLabel}</p>
             <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-              Apply, Get Approved,<br /><em>Then Get Started</em>
+              {T.howTitle}<br /><em>{T.howTitleEm}</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { num: "01", title: "Apply", body: "Fill in the form below. It only takes a few minutes and tells us about your teaching practice." },
-              { num: "02", title: "We Screen Your Application", body: "We review every application by hand and verify your PGA credentials. It's a deliberate quality gate — so the program stays credible for you and your students." },
-              { num: "03", title: "Get Access", body: "Create your free portal account with the email you apply with. Once you're approved, we unlock PRO Admin on it: your free assessment, clinic and communication kits, and your personal discount code. From there you can build lesson programs around each student." },
-            ].map((step, i) => (
+            {T.howSteps.map((step, i) => (
               <motion.div
                 key={i}
                 className="bg-white rounded-2xl p-8 border border-green-900/[0.07] shadow-lg shadow-green-900/5 relative overflow-hidden"
@@ -346,26 +326,21 @@ export default function ProProgramPage() {
         <div className="container mx-auto max-w-5xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-              <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">When You&apos;re Ready to Scale</p>
+              <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.genLabel}</p>
               <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 mb-6 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-                The Lesson Program<br /><em>Generator</em>
+                {T.genTitle}<br /><em>{T.genTitleEm}</em>
               </h2>
               <div className="w-12 h-0.5 bg-amber-500 mb-6" />
               <p className="text-stone-600 leading-relaxed mb-6">
-                Build individual and group lesson programs directly from your students&apos; assessments — the structure and materials are generated for you. Your first five are free to try on real students; after that, a flat introductory rate you lock in for as long as you renew. You set your own lesson price.
+                {T.genBody}
               </p>
               <button onClick={scrollToForm} className="px-6 py-3 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
-                Apply for Access
+                {T.ctaApply}
               </button>
             </motion.div>
 
             <motion.div className="space-y-4" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-              {[
-                { icon: <IconUsers />, title: "Individual & Group Programs", desc: "Generate structured lesson programs for private students and clinics, built around each assessment" },
-                { icon: <IconPlay />, title: "First Five Programs Free", desc: "Try the generator on real students at no cost" },
-                { icon: <IconDollar />, title: "$199 Per Year After That", desc: "A flat introductory rate — you set your own lesson prices" },
-                { icon: <IconShield />, title: "Pro Portal Access", desc: "Your assessment, clinic kit, communication kit and lesson programs, all in one place" },
-              ].map((item, i) => (
+              {T.genItems.map((c, i) => ({ ...c, icon: [<IconUsers key="u" />, <IconPlay key="p" />, <IconDollar key="d" />, <IconShield key="s" />][i] })).map((item, i) => (
                 <motion.div
                   key={i}
                   className="flex items-start gap-4 bg-white rounded-xl p-5 border border-green-900/[0.07] shadow-sm"
@@ -387,18 +362,14 @@ export default function ProProgramPage() {
       <section className="py-20 px-6 bg-green-950">
         <div className="container mx-auto max-w-4xl">
           <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">Why Pros Add It</p>
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-3">{T.whyLabel}</p>
             <h2 className="text-4xl lg:text-5xl font-semibold text-[#f6f1e7] leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-              What It Does<br /><em className="text-amber-300">for Your Practice</em>
+              {T.whyTitle}<br /><em className="text-amber-300">{T.whyTitleEm}</em>
             </h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { title: "A reason to reach out", body: "It gives you a natural opening to talk mental game with students you've only ever coached on technique." },
-              { title: "Zero extra prep", body: "The clinic outline and printable materials are ready to run — you bring the coaching, not the preparation." },
-              { title: "Data to build on", body: "Every assessment gives you a clear picture of a student's mental game to design a lesson program around — once they share their profile with you." },
-            ].map((item, i) => (
+            {T.whyCards.map((c) => ({ title: c.title, body: c.desc })).map((item, i) => (
               <motion.div
                 key={i}
                 className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-7"
@@ -419,29 +390,22 @@ export default function ProProgramPage() {
       <section className="py-24 px-6 bg-[#faf8f3]">
         <div className="container mx-auto max-w-3xl">
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">Questions?</p>
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.faqLabel}</p>
             <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-              Frequently<br /><em>Asked</em>
+              {T.faqTitle}<br /><em>{T.faqTitleEm}</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6" />
           </motion.div>
 
           <div className="space-y-4">
-            {[
-              { q: "What do I get once I'm approved?", a: "Everything in the free program: your own MentalRoutine Assessment (a $79 value), a clinic kit for two clinics (run sheets, slides, a take-home handout and a poster), a communication kit, a personal discount code that gives your students $20 off the assessment, and access to PRO Admin. You can also build individual and group lesson programs — your first five are free." },
-              { q: "Do I have to apply first, or can I start straight away?", a: "You apply first. We review every application by hand and verify your PGA credentials before granting access — including access to the free assessment. It's a deliberate quality gate, so the program stays credible for you and your students." },
-              { q: "Do I need to be a PGA member?", a: "Yes. We verify PGA credentials to ensure quality and credibility for both you and your students. All PGA divisions worldwide are welcome." },
-              { q: "What's free, what's paid, and what's the $199?", a: "Once you're approved, the assessment, clinic kit, communication kit, discount code, portal access, and your first five lesson programs are all free. After those five, the lesson program generator continues at $199 per year — an introductory rate you keep for as long as you renew, and you can cancel any time. You set your own lesson prices." },
-              { q: "Can I set my own prices for clinics and lessons?", a: "Absolutely. You teach your students and set whatever price works for your market — that arrangement is entirely between you and them. The Pro Program simply gives you the assessment, materials, and lesson programs to build on." },
-              { q: "How fast will I get approved?", a: "We aim to review applications within 1-3 business days. Create your free portal account with the same email address in the meantime — once you're approved, we unlock PRO Admin on it and email you." },
-            ].map((item, i) => (
-              <FaqItem key={i} question={item.q} answer={item.a} index={i} />
+            {T.faqs.map((item, i) => (
+              <FaqItem key={`${L}-${i}`} question={item.q} answer={item.a} index={i} />
             ))}
           </div>
 
           <motion.div className="text-center mt-12" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <button onClick={scrollToForm} className="px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
-              Apply for Access
+              {T.ctaApply}
             </button>
           </motion.div>
         </div>
@@ -451,12 +415,12 @@ export default function ProProgramPage() {
       <section id="pro-form" className="py-24 px-6 bg-[#f6f1e7]">
         <div className="container mx-auto max-w-2xl">
           <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">Apply Now</p>
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.formLabel}</p>
             <h2 className="text-4xl lg:text-5xl font-semibold text-green-950 leading-tight" style={{ fontFamily: "var(--font-cormorant), serif" }}>
-              Join the Pro<br /><em>Program</em>
+              {T.formTitle}<br /><em>{T.formTitleEm}</em>
             </h2>
             <div className="w-12 h-0.5 bg-amber-500 mx-auto mt-6 mb-4" />
-            <p className="text-stone-500 text-sm">We review every application personally. You&apos;ll hear back within 1-3 business days.</p>
+            <p className="text-stone-500 text-sm">{T.formIntro}</p>
           </motion.div>
 
           {submitted ? (
@@ -469,12 +433,10 @@ export default function ProProgramPage() {
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-semibold text-green-950 mb-2" style={{ fontFamily: "var(--font-cormorant), serif" }}>Application Received!</h3>
-              <p className="text-stone-500 text-sm mb-1">Thank you for your interest in the Pro Program.</p>
-              <p className="text-stone-500 text-sm mb-4">We&apos;ll review your application and get back to you within 1-3 business days.</p>
-              <p className="text-stone-600 text-sm">
-                Next step: <a href="https://portal.mentalroutine.com/en/registreer" target="_blank" rel="noopener" className="font-semibold text-amber-700 underline underline-offset-4">create your free portal account</a> with the same email address — that&apos;s the account we unlock once you&apos;re approved.
-              </p>
+              <h3 className="text-2xl font-semibold text-green-950 mb-2" style={{ fontFamily: "var(--font-cormorant), serif" }}>{T.doneTitle}</h3>
+              <p className="text-stone-500 text-sm mb-1">{T.doneP1}</p>
+              <p className="text-stone-500 text-sm mb-4">{T.doneP2}</p>
+              <p className="text-stone-600 text-sm">{T.doneP3}</p>
             </motion.div>
           ) : (
             <motion.form
@@ -486,11 +448,11 @@ export default function ProProgramPage() {
               {/* Row 1: Name + Email */}
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className={labelCls}>Full Name *</label>
+                  <label className={labelCls}>{T.f.fullName}</label>
                   <input type="text" required value={form.fullName} onChange={update("fullName")} placeholder="John Smith" className={inputCls} />
                 </div>
                 <div>
-                  <label className={labelCls}>Email *</label>
+                  <label className={labelCls}>{T.f.email}</label>
                   <input type="email" required value={form.email} onChange={update("email")} placeholder="john@example.com" className={inputCls} />
                 </div>
               </div>
@@ -498,14 +460,14 @@ export default function ProProgramPage() {
               {/* Row 2: PGA Number + Division */}
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className={labelCls}>PGA Membership Number *</label>
-                  <input type="text" required value={form.pgaNumber} onChange={update("pgaNumber")} placeholder="Your PGA number" className={inputCls} />
+                  <label className={labelCls}>{T.f.pga}</label>
+                  <input type="text" required value={form.pgaNumber} onChange={update("pgaNumber")} placeholder={T.f.pgaPh} className={inputCls} />
                 </div>
                 <div>
-                  <label className={labelCls}>PGA Division *</label>
+                  <label className={labelCls}>{T.f.division}</label>
                   <select required value={form.pgaDivision} onChange={update("pgaDivision")} className={selectCls}>
-                    <option value="">Select division...</option>
-                    {PGA_DIVISIONS.map(d => <option key={d} value={d}>{d}</option>)}
+                    <option value="">{T.f.select}</option>
+                    {PGA_DIVISIONS[L].map(d => <option key={d} value={d}>{d}</option>)}
                   </select>
                 </div>
               </div>
@@ -513,14 +475,14 @@ export default function ProProgramPage() {
               {/* Row 3: LinkedIn + Country */}
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className={labelCls}>LinkedIn Profile URL *</label>
-                  <input type="url" required value={form.linkedIn} onChange={update("linkedIn")} placeholder="https://linkedin.com/in/..." className={inputCls} />
+                  <label className={labelCls}>{T.f.linkedin} <span className="font-normal text-stone-400">({T.f.linkedinOpt})</span></label>
+                  <input type="url" value={form.linkedIn} onChange={update("linkedIn")} placeholder="https://linkedin.com/in/..." className={inputCls} />
                 </div>
                 <div>
-                  <label className={labelCls}>Country *</label>
+                  <label className={labelCls}>{T.f.country}</label>
                   <select required value={form.country} onChange={update("country")} className={selectCls}>
-                    <option value="">Select country...</option>
-                    {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
+                    <option value="">{T.f.select}</option>
+                    {COUNTRIES[L].map(c => <option key={c} value={c}>{COUNTRY_LABEL[c]?.[L] ?? c}</option>)}
                   </select>
                 </div>
               </div>
@@ -528,62 +490,62 @@ export default function ProProgramPage() {
               {/* Row 4: Facility + Students */}
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className={labelCls}>Club / Facility *</label>
-                  <input type="text" required value={form.facility} onChange={update("facility")} placeholder="Your club or facility" className={inputCls} />
+                  <label className={labelCls}>{T.f.facility}</label>
+                  <input type="text" required value={form.facility} onChange={update("facility")} placeholder={T.f.facilityPh} className={inputCls} />
                 </div>
                 <div>
-                  <label className={labelCls}>Active Students (approx.) *</label>
-                  <input type="number" required value={form.activeStudents} onChange={update("activeStudents")} placeholder="e.g. 40" className={inputCls} />
+                  <label className={labelCls}>{T.f.students}</label>
+                  <input type="number" required value={form.activeStudents} onChange={update("activeStudents")} placeholder={T.f.studentsPh} className={inputCls} />
                 </div>
               </div>
 
               {/* Row 5: Group lessons + Mental experience */}
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className={labelCls}>Do you give group lessons / clinics? *</label>
+                  <label className={labelCls}>{T.f.group}</label>
                   <select required value={form.groupLessons} onChange={update("groupLessons")} className={selectCls}>
-                    <option value="">Select...</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option value="">{T.f.select}</option>
+                    <option value="yes">{T.f.yes}</option>
+                    <option value="no">{T.f.no}</option>
                   </select>
                 </div>
                 <div>
-                  <label className={labelCls}>Experience with mental coaching? *</label>
+                  <label className={labelCls}>{T.f.mental}</label>
                   <select required value={form.mentalExperience} onChange={update("mentalExperience")} className={selectCls}>
-                    <option value="">Select...</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                    <option value="some">A little</option>
+                    <option value="">{T.f.select}</option>
+                    <option value="yes">{T.f.yes}</option>
+                    <option value="no">{T.f.no}</option>
+                    <option value="some">{T.f.some}</option>
                   </select>
                 </div>
               </div>
 
               {/* Row 6: How found */}
               <div>
-                <label className={labelCls}>How did you find us? *</label>
+                <label className={labelCls}>{T.f.found}</label>
                 <select required value={form.howFound} onChange={update("howFound")} className={selectCls}>
-                  <option value="">Select...</option>
-                  <option value="linkedin">LinkedIn</option>
-                  <option value="colleague">Colleague</option>
-                  <option value="google">Google</option>
-                  <option value="other">Other</option>
+                  <option value="">{T.f.select}</option>
+                  <option value="linkedin">{T.f.foundLinkedin}</option>
+                  <option value="colleague">{T.f.foundColleague}</option>
+                  <option value="google">{T.f.foundGoogle}</option>
+                  <option value="other">{T.f.foundOther}</option>
                 </select>
               </div>
 
               <button type="submit" disabled={sending} className="w-full py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
-                {sending ? "Sending..." : "Submit Application"}
+                {sending ? T.f.sending : T.f.submit}
               </button>
-              {error && <p className="text-center text-xs text-red-500">Something went wrong. Please try again or email support@mentalroutine.com</p>}
+              {error && <p className="text-center text-xs text-red-500">{T.f.error}</p>}
 
               <div className="flex items-center justify-center gap-4 text-xs text-stone-400">
                 <span className="flex items-center gap-1.5">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5"><path d="M8 1l5.5 2.5v4c0 3-2.5 5.5-5.5 6.5C5 13 2.5 10.5 2.5 7.5v-4L8 1z" /></svg>
-                  Free to apply
+                  {T.f.free}
                 </span>
                 <span>·</span>
-                <span>No obligations</span>
+                <span>{T.f.noObligation}</span>
                 <span>·</span>
-                <span>Response within 1-3 days</span>
+                <span>{T.f.response}</span>
               </div>
             </motion.form>
           )}
@@ -598,7 +560,7 @@ export default function ProProgramPage() {
               Mental<span className="text-amber-400">Routine</span>
             </span>
           </div>
-          <p className="text-xs text-green-200/40">&copy; {new Date().getFullYear()} Mental Routine. All rights reserved.</p>
+          <p className="text-xs text-green-200/40">&copy; {new Date().getFullYear()} Mental Routine. {T.footerRights}</p>
         </div>
       </footer>
 
@@ -608,11 +570,19 @@ export default function ProProgramPage() {
           onClick={scrollToForm}
           className="w-full py-3.5 bg-amber-400 text-green-950 font-bold rounded-lg text-sm tracking-wide shadow-lg shadow-amber-500/30"
         >
-          Apply for Access
+          {T.stickyCta}
         </button>
       </div>
 
     </main>
+  );
+}
+
+export default function ProProgramPage() {
+  return (
+    <LangProvider>
+      <ProProgramContent />
+    </LangProvider>
   );
 }
 

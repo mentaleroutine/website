@@ -410,3 +410,24 @@ Onderdeel van een portal-sessie over de hele PRO-keten; volledig verslag in de *
 - Website-CLAUDE.md "Pro Program Pagina" herschreven. Funnel-check ALL PASSED; formulier bewust niet live getest.
 - Open (website): alleen Engels; server-side validatie alleen naam+e-mail; geen privacytekst bij PGA-nummer/LinkedIn.
 
+### 11.1 NL/EN, aanvragen in de portal, introductietarief (10 nov 2026)
+Besluiten + ontwerp: **portal-repo `docs/PRO_PROGRAM_NL_EN_AANVRAGEN_PLAN.md`** (bron van waarheid). Website-kant:
+- **NL + EN** via `useLang()` (DE/FR/ES → EN); teksten in `src/lib/pro-program-text.ts` (niet in de 5-talige
+  `translations.ts`). NL **toegespitst** (kop "Een tweede lesaanbod, voor de leerlingen die je al hebt"; PGA Holland,
+  Nederland/België bovenaan; landnamen vertaald via `COUNTRY_LABEL`); feiten/beloftes identiek aan EN. Directe NL-link:
+  `/pro-program?lang=nl`. `layout.tsx`: `alternates.languages` nl/en.
+- **LinkedIn optioneel** (label "(optioneel)", geen `required`); de vier praktijkvragen blijven verplicht.
+- **Introductietarief** overal op de pagina (generator-blok, prijskaart, FAQ): $199/jaar voor wie vóór 1-4-2027 is
+  toegelaten, blijvend zolang je verlengt; vanaf 1-4-2027 $299/jaar voor nieuwe pro's. "Introductory rate … lock in"
+  zonder datum is weg.
+- **Geen "maak nu je account"** meer in stap 3 / FAQ / succes-scherm / bevestiging: de toelatingsmail van de portal regelt
+  dat (met en zonder account). Geen teamlinks/Rondes op de pagina (besluit).
+- **API-route** (`src/app/api/pro-program/route.ts`): `lang` mee → (1) supportmail met `Taal: NL/EN` en een regel waar
+  je goedkeurt (User Admin → Pro-aanvragen), (2) **aanvraag naar de portal** `POST {PORTAL_API_URL}/api/public/pro-aanvraag`
+  met header `X-Pro-Application-Key: {PRO_APPLICATION_SECRET}` (best effort; zonder env alleen een warning), (3)
+  bevestiging aan de pro in zijn taal. Server-side nu ook PGA-nummer/divisie/land/club verplicht.
+- **Env (Vercel)**: `PORTAL_API_URL=https://portal.mentalroutine.com` en `PRO_APPLICATION_SECRET` (zelfde waarde als in
+  de portal-`.env`). Zonder deze twee komt de aanvraag alleen per mail binnen.
+- Test: `funnel-check.js` blok 8 (NL/EN/DE: h1, LinkedIn optioneel, $199/$299 + datum, geen page errors) — lokaal ALL
+  PASSED op 10-11-2026 (17 checks). Formulier niet live getest.
+

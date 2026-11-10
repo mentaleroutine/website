@@ -6,7 +6,9 @@ export const metadata: Metadata = {
   title: "MentalRoutine Pro Program — For Teaching Professionals | MentalRoutine",
   description:
     "For PGA professionals: take the MentalRoutine assessment yourself, run two ready-made clinics, and build individual and group lesson programs from your students' mental profiles.",
-  alternates: { canonical: "/pro-program" },
+  // NL/EN sinds 10-11-2026 (taal via ?lang= / sitetaal, geen eigen URL per taal); de metadata blijft Engels
+  // met een NL-alternate zodat zoekmachines de Nederlandse ingang kennen.
+  alternates: { canonical: "/pro-program", languages: { en: "/pro-program?lang=en", nl: "/pro-program?lang=nl" } },
   openGraph: {
     title: "MentalRoutine Pro Program — For Teaching Professionals",
     description:

@@ -359,7 +359,12 @@ dollar-equivalente waarde die de website communiceert; de portal int in credits.
 - **API route**: `src/app/api/pro-program/route.ts` — eerst de mail naar `support@` (dát is de aanvraag; niets
   wordt opgeslagen), pas daarna best effort de bevestiging aan de aanvrager (was `Promise.all`: een mislukte
   bevestiging gaf 500 → aanvrager probeerde opnieuw → dubbele aanvraag).
-- **Taal**: alleen Engels (niet in translations.ts). **Toegang**: alleen de footer-link (`pro_program_click`).
+- **Taal (sinds 10-11-2026)**: **NL + EN** via `useLang()`, teksten in `src/lib/pro-program-text.ts` (DE/FR/ES → EN);
+  `?lang=nl` voor een directe NL-link. **Toegang**: alleen de footer-link (`pro_program_click`).
+- **Aanvraag → portal (10-11-2026)**: de API-route stuurt het formulier ook naar de portal (`POST /api/public/pro-aanvraag`,
+  header `X-Pro-Application-Key`), env `PORTAL_API_URL` + `PRO_APPLICATION_SECRET` (Vercel). Admin keurt goed/af in User
+  Admin → Pro-aanvragen; goedkeuren werkt ook zonder account. LinkedIn optioneel. **$199 intro t/m 31-3-2027
+  (peildatum goedkeuring), daarna $299.** Zie website-sessieverslag §11.1 + portal `docs/PRO_PROGRAM_NL_EN_AANVRAGEN_PLAN.md`.
 - **Belofte = wat er in de portal staat** (PRO Admin): gratis eigen assessment ($79, toegekend bij pro-activering),
   **clinicpakket** (2 clinics: draaiboeken, PowerPoints, A4-handout, poster), **communicatiepakket** (mails,
   nieuwsbriefstuk, social posts), kortingscode ($20 voor leerlingen), lesprogramma-generator (5 gratis, daarna

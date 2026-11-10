@@ -186,6 +186,25 @@ const inView = (page, sel) =>
     await ctx.close();
   }
 
+  // 8. /pro-program: NL + EN via the site language (10-11-2026); LinkedIn optional; intro price + date on the page
+  for (const [q, expectH1, expectLinkedIn, expectPrice] of [
+    ["?lang=nl", "Een tweede lesaanbod", "optioneel", "31 maart 2027"],
+    ["?lang=en", "A Second Revenue Stream", "optional", "31 March 2027"],
+    ["?lang=de", "A Second Revenue Stream", "optional", "31 March 2027"],   // other languages → English
+  ]) {
+    const { ctx, page, errors } = await newPage(browser, "en-US");
+    await page.goto(BASE + "/pro-program" + q, { waitUntil: "networkidle" });
+    await page.waitForTimeout(600);
+    const h1 = (await page.locator("h1").first().innerText()).replace(/\s+/g, " ");
+    check(`pro-program ${q} h1`, h1.includes(expectH1), h1);
+    const body = await page.locator("main").innerText();
+    check(`pro-program ${q} LinkedIn optional`, body.includes(expectLinkedIn));
+    check(`pro-program ${q} intro price + date`, body.includes("$199") && body.includes("$299") && body.includes(expectPrice));
+    check(`pro-program ${q} LinkedIn not required`, (await page.locator("#pro-form input[type=url]").getAttribute("required")) === null);
+    check(`pro-program ${q} no page errors`, errors.length === 0, errors.join(" | "));
+    await ctx.close();
+  }
+
   await browser.close();
   console.log(failures ? `\n${failures} CHECK(S) FAILED` : "\nALL CHECKS PASSED");
   process.exit(failures ? 1 : 0);
