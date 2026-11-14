@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { LangProvider, useLang } from "@/context/lang-context";
 import { PRO_TEXT, PGA_DIVISIONS, COUNTRIES, COUNTRY_LABEL, proLang } from "@/lib/pro-program-text";
+import { TEAMS_LIVE, PRO_TEAM_BLOCK } from "@/lib/teams-text";
 
 declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
@@ -125,6 +126,13 @@ function ProProgramContent() {
   // Lokvak tegen scripts: mensen zien het niet en laten het leeg.
   const [trap, setTrap] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
+  // Teamblok (competitieteams): zichtbaar zodra de werving start (TEAMS_LIVE); tot dan alleen ter review met
+  // /pro-program?preview=teams. Zo staat er vóór de start nergens een link naar /teams.
+  const [showTeams, setShowTeams] = useState(TEAMS_LIVE);
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("preview") === "teams") setShowTeams(true);
+  }, []);
+  const TB = PRO_TEAM_BLOCK[L];
 
   function update(field: keyof FormData) {
     return (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -331,6 +339,39 @@ function ProProgramContent() {
           </motion.div>
         </div>
       </section>
+
+      {/* ── COMPETITIETEAMS (teamaanbod; zie lib/teams-text.ts) ───────────── */}
+      {showTeams && (
+      <section id="teams" className="py-24 px-6 bg-[#f6f1e7] scroll-mt-4">
+        <div className="container mx-auto max-w-3xl">
+          <motion.div
+            className="bg-white rounded-2xl p-8 md:p-10 border border-amber-500/40 shadow-lg shadow-green-900/5"
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+          >
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{TB.label}</p>
+            <h2 className="text-3xl lg:text-4xl font-semibold text-green-950 leading-tight mb-4" style={{ fontFamily: "var(--font-cormorant), serif" }}>
+              {TB.title} <em>{TB.titleEm}</em>
+            </h2>
+            <p className="text-stone-600 leading-relaxed mb-6">{TB.body}</p>
+            <ul className="space-y-3 mb-6">
+              {TB.points.map((p, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm text-stone-700 leading-relaxed"><span className="mt-0.5"><IconCheck /></span>{p}</li>
+              ))}
+            </ul>
+            <p className="text-sm text-stone-500 leading-relaxed mb-8">{TB.cost}</p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button onClick={scrollToForm} className="px-6 py-3 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
+                {T.ctaApply}
+              </button>
+              <a href={`/teams?lang=${L}`} onClick={() => track("pro_program_teams_link", { lang: L })}
+                 className="px-6 py-3 border border-green-900/20 text-green-950 rounded-lg hover:border-green-900/50 transition-all text-sm text-center">
+                {TB.link}
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+      )}
 
       {/* ── HOW IT WORKS ──────────────────────────────────────────────────── */}
       <section id="how-it-works" className="py-24 px-6 bg-[#faf8f3]">
