@@ -8,8 +8,10 @@
  * - €15 per speler, maximaal €99 per team bij aanmelding van 1-12-2026 t/m 28-2-2027; daarna €49 / €299.
  *   Euro's in beide talen. De Engelse pagina heeft GEEN landbeperking (buitenlandse teams niet weren, niet werven).
  * - Alleen spelers van 18 jaar en ouder.
- * - De captain ontvangt het teamrapport en deelt het met team en pro; elke speler krijgt een eigen rapport en deelt
- *   dat alleen vrijwillig.
+ * - De captain ontvangt het teamrapport en deelt het met team en pro. Wie in een team meedoet, deelt de eigen SCORES
+ *   (8 stappen + 4 factoren) met pro, captain en teamgenoten: voorwaarde voor deelname, akkoord bij aanmelden
+ *   (besluit 14-11-2026 's avonds, vervangt "alleen vrijwillig delen"). Het VOLLEDIGE persoonlijke rapport blijft van
+ *   de speler; delen met de pro is een eigen keuze (bestaande koppeling in de portal).
  * - De pro bepaalt zelf aantal lessen, tempo en lesgeld; geen vast of aanbevolen aantal lessen noemen.
  * - Voor de pro gelden de gewone regels van het Pro-programma (eigen assessment gratis, vijf lesprogramma's gratis,
  *   daarna het abonnement).
@@ -103,7 +105,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     ],
     getLabel: "Wat je krijgt", getTitle: "Voor de speler, de captain", getTitleEm: "en het team",
     getItems: [
-      { title: "Voor elke speler: een eigen rapport", desc: "Je persoonlijke profiel is van jou. Je beslist zelf of je het met je captain deelt; dat gebeurt niet vanzelf." },
+      { title: "Voor elke speler: een eigen rapport", desc: "Je volledige persoonlijke rapport is van jou. Je scores deel je binnen het team; of je ook het hele rapport met de pro deelt, beslis je zelf." },
       { title: "Voor de captain: het teamrapport", desc: "De captain ontvangt het teamrapport en deelt het met de teamleden en de pro." },
       { title: "Voor het team: lessen op maat", desc: "De pro gebruikt de lesprogramma's van MentalRoutine voor de teamlessen, en als jullie dat willen ook voor individuele lessen." },
     ],
@@ -119,7 +121,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       { q: "Waarom kan een team alleen via een pro starten?", a: "Omdat de meting pas iets oplevert als er daarna mee gewerkt wordt. De pro start het team, ontvangt de lesprogramma's en geeft de teamlessen. Speel je bij een club zonder pro, of wil je pro er meer over weten? Mail " + TEAM_CONTACT + "." },
       { q: "Wat betalen we precies?", a: "Bij aanmelding van 1 december 2026 t/m 28 februari 2027: €15 per speler, met een maximum van €99 voor het hele team. Zes spelers betalen dus samen €90, zeven of meer spelers samen €99. Vanaf seizoen 2027/2028 is dat €49 per speler en maximaal €299 per team. Het lesgeld van de pro komt daar los bij en spreek je met de pro af." },
       { q: "Hoeveel lessen horen erbij?", a: "Dat bepalen jullie samen met de pro. Er is geen vast aantal en geen vast ritme: de pro stemt het af op wat het team nodig heeft en op de tijd die er is." },
-      { q: "Wie ziet mijn rapport?", a: "Je eigen rapport is van jou. De captain ontvangt het teamrapport en deelt dat met het team en de pro. Je persoonlijke rapport deel je alleen als je dat zelf wilt." },
+      { q: "Wie ziet mijn gegevens?", a: "Wie in een team meedoet, deelt de eigen scores met de pro, de captain en de teamgenoten. Daar is het teamrapport op gebouwd, en bij het aanmelden ga je daarmee akkoord. Je volledige persoonlijke rapport blijft van jou: je kiest zelf of je dat ook met de pro deelt." },
       { q: "Hoeveel tijd kost het assessment?", a: "Ongeveer 20 tot 25 minuten, online, op een moment dat jou past. Het assessment is er in het Nederlands en het Engels." },
       { q: "Kan ons jeugdteam meedoen?", a: "Nee. Het teamaanbod is voor teams met spelers van 18 jaar en ouder." },
       { q: "Kunnen we na het seizoen opnieuw meten?", a: "Ja, als je dat wilt. Elke speler kan na het seizoen zelf een herhaalmeting doen tegen de prijs die dan voor de herhaalmeting geldt. Die is niet verplicht en zit niet in de teamprijs." },
@@ -184,7 +186,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     ],
     getLabel: "What you get", getTitle: "For the player, the captain", getTitleEm: "and the team",
     getItems: [
-      { title: "For every player: a personal report", desc: "Your personal profile is yours. You decide whether to share it with your captain; that does not happen automatically." },
+      { title: "For every player: a personal report", desc: "Your full personal report is yours. You share your scores within the team; whether you also share the whole report with the pro is up to you." },
       { title: "For the captain: the team report", desc: "The captain receives the team report and shares it with the team members and the pro." },
       { title: "For the team: lessons that fit", desc: "The pro uses MentalRoutine's lesson programs for the team lessons and, if you want, for individual lessons too." },
     ],
@@ -200,7 +202,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       { q: "Why can a team only start through a pro?", a: "Because the assessment only pays off when you work with it afterwards. The pro starts the team, receives the lesson programs and gives the team lessons. Is there no pro at your club, or does your pro want to know more? Email " + TEAM_CONTACT + "." },
       { q: "What exactly do we pay?", a: "When you sign up from 1 December 2026 to 28 February 2027: €15 per player, with a maximum of €99 for the whole team. Six players pay €90 in total, seven or more pay €99 in total. From season 2027/2028 it is €49 per player and €299 maximum per team. The pro's lesson fee is separate and is agreed with the pro." },
       { q: "How many lessons are included?", a: "You decide that together with the pro. There is no fixed number and no fixed rhythm: the pro matches it to what the team needs and the time available." },
-      { q: "Who sees my report?", a: "Your own report is yours. The captain receives the team report and shares it with the team and the pro. You only share your personal report if you choose to." },
+      { q: "Who sees my data?", a: "If you take part in a team, you share your own scores with the pro, the captain and your teammates. The team report is built on them, and you agree to this when you sign up. Your full personal report stays yours: you choose whether to share that with the pro as well." },
       { q: "How long does the assessment take?", a: "About 20 to 25 minutes, online, at a time that suits you. The assessment is available in English and Dutch." },
       { q: "Can our junior team take part?", a: "No. The team offer is for teams with players aged 18 and over." },
       { q: "Can we measure again after the season?", a: "Yes, if you want to. After the season each player can take a re-assessment at the price that applies to the re-assessment at that time. It is not required and not included in the team price." },
