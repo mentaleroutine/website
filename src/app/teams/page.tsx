@@ -193,15 +193,18 @@ function TeamsContent() {
             className="bg-white rounded-2xl border border-amber-500/40 shadow-xl shadow-green-900/10 overflow-hidden"
             initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
           >
-            <div className="bg-green-950 px-8 py-4 text-center">
+            <div className="bg-green-950 px-8 py-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center">
               <p className="text-xs font-semibold tracking-widest uppercase text-amber-400">{T.priceNow.label}</p>
+              <span className="text-[11px] font-bold tracking-widest uppercase bg-amber-400 text-green-950 px-3 py-1 rounded-full">{T.priceNow.badge}</span>
             </div>
             <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-green-900/10">
               <div className="p-8 text-center">
+                <div className="text-xl text-stone-400 line-through decoration-stone-400" style={serif}>{T.priceNow.playerWas}</div>
                 <div className="text-6xl font-semibold text-green-950" style={serif}>{T.priceNow.player}</div>
                 <p className="text-sm text-stone-500 mt-1">{T.priceNow.playerSub}</p>
               </div>
               <div className="p-8 text-center">
+                <div className="text-xl text-stone-400 line-through decoration-stone-400" style={serif}>{T.priceNow.teamWas}</div>
                 <div className="text-6xl font-semibold text-green-950" style={serif}>{T.priceNow.team}</div>
                 <p className="text-sm text-stone-500 mt-1">{T.priceNow.teamSub}</p>
               </div>

@@ -42,7 +42,7 @@ export type TeamText = {
   whyLabel: string; whyTitle: string; whyTitleEm: string; whyIntro: string; whyCards: Card[];
   lossLabel: string; lossTitle: string; lossTitleEm: string; lossItems: string[]; lossClose: string;
   priceLabel: string; priceTitle: string; priceTitleEm: string;
-  priceNow: { label: string; player: string; playerSub: string; team: string; teamSub: string; note: string };
+  priceNow: { label: string; badge: string; player: string; playerWas: string; playerSub: string; team: string; teamWas: string; teamSub: string; note: string };
   priceLater: { label: string; line: string };
   priceFacts: string[];
   howLabel: string; howTitle: string; howTitleEm: string; howSteps: Step[];
@@ -63,7 +63,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     heroP1: "Op een competitiedag is de techniek er al. Wat dan telt, is wat er tussen de slagen gebeurt. Met MentalRoutine werkt je team daar deze winter aan, samen met jullie eigen pro.",
     heroP2: "Elke speler krijgt een eigen mentaal profiel, het team krijgt een teamrapport en de pro geeft lessen die over jullie gaan.",
     ctaSend: "Stuur dit naar je pro", ctaHow: "Zo werkt het",
-    trust: "€15 per speler · maximaal €99 per team · aanmelden van 1 december t/m 28 februari",
+    trust: "Introductieprijs: €15 per speler · maximaal €99 per team · aanmelden van 1 december t/m 28 februari",
     whyLabel: "Waarom je dit wilt", whyTitle: "Wat je team", whyTitleEm: "eraan heeft",
     whyIntro: "De meeste teams trainen in de winter hun swing. Bijna geen team traint wat er gebeurt na een gemiste putt, op de eerste tee of in de laatste holes van een partij die gelijk staat.",
     whyCards: [
@@ -82,12 +82,12 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     lossClose: "Een hele winter aan voorbereiding, voor minder dan een doos ballen per speler.",
     priceLabel: "Wat het kost", priceTitle: "Een prijs waar je", priceTitleEm: "niet over hoeft te vergaderen",
     priceNow: {
-      label: "Introductieseizoen 2026/2027",
-      player: "€15", playerSub: "per speler",
-      team: "€99", teamSub: "maximaal per team",
-      note: "Bij aanmelding van 1 december 2026 t/m 28 februari 2027. Het teambedrag is een plafond: met zeven spelers of meer betaalt het team samen nooit meer dan €99.",
+      label: "Introductieprijs · seizoen 2026/2027", badge: "Introductiekorting",
+      player: "€15", playerWas: "€49", playerSub: "per speler",
+      team: "€99", teamWas: "€299", teamSub: "maximaal per team",
+      note: "Introductiekorting bij aanmelding van 1 december 2026 t/m 28 februari 2027. Het teambedrag is een plafond: met zeven spelers of meer betaalt het team samen nooit meer dan €99.",
     },
-    priceLater: { label: "Vanaf seizoen 2027/2028", line: "€49 per speler, maximaal €299 per team." },
+    priceLater: { label: "Normale prijs, vanaf seizoen 2027/2028", line: "€49 per speler, maximaal €299 per team." },
     priceFacts: [
       "Het volledige assessment, hetzelfde dat los $79 kost.",
       "Een eigen rapport voor elke speler en een teamrapport voor het team.",
@@ -144,7 +144,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     heroP1: "On match day the technique is already there. What counts then is what happens between the shots. With MentalRoutine your team works on exactly that this winter, together with your own pro.",
     heroP2: "Every player gets a personal mental profile, the team gets a team report and the pro gives lessons that are about you.",
     ctaSend: "Send this to your pro", ctaHow: "See how it works",
-    trust: "€15 per player · €99 maximum per team · sign up from 1 December to 28 February",
+    trust: "Introductory price: €15 per player · €99 maximum per team · sign up from 1 December to 28 February",
     whyLabel: "Why you want this", whyTitle: "What your team", whyTitleEm: "gets out of it",
     whyIntro: "Most teams spend the winter on their swing. Hardly any team trains what happens after a missed putt, on the first tee, or in the closing holes of a match that is all square.",
     whyCards: [
@@ -163,12 +163,12 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     lossClose: "A whole winter of preparation, for less than a box of balls per player.",
     priceLabel: "What it costs", priceTitle: "A price you don't need", priceTitleEm: "a committee meeting for",
     priceNow: {
-      label: "Introductory season 2026/2027",
-      player: "€15", playerSub: "per player",
-      team: "€99", teamSub: "maximum per team",
-      note: "When you sign up from 1 December 2026 to 28 February 2027. The team amount is a ceiling: with seven players or more, the team never pays more than €99 in total.",
+      label: "Introductory price · season 2026/2027", badge: "Introductory discount",
+      player: "€15", playerWas: "€49", playerSub: "per player",
+      team: "€99", teamWas: "€299", teamSub: "maximum per team",
+      note: "Introductory discount when you sign up from 1 December 2026 to 28 February 2027. The team amount is a ceiling: with seven players or more, the team never pays more than €99 in total.",
     },
-    priceLater: { label: "From season 2027/2028", line: "€49 per player, €299 maximum per team." },
+    priceLater: { label: "Regular price, from season 2027/2028", line: "€49 per player, €299 maximum per team." },
     priceFacts: [
       "The full assessment, the same one that costs $79 on its own.",
       "A personal report for every player and a team report for the team.",
