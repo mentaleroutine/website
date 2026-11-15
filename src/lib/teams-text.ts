@@ -10,7 +10,7 @@
  * - €15 per speler, maximaal €99 per team bij aanmelding van 1-12-2026 t/m 28-2-2027; daarna €49 / €299.
  *   De €49 is GEEN "was"-prijs (heeft nooit gegolden): niet doorstrepen, schrijf "na 28 februari 2027".
  *   HOE het plafond wordt afgerekend is nog niet gebouwd: geen mechaniek beschrijven (geen teamcode, geen kassa);
- *   alleen "de pro meldt het team aan; bij aanmelding hoor je hoe het afrekenen loopt".
+ *   alleen "de pro meldt het team per mail bij ons aan; bij de aanmelding hoor je hoe het afrekenen loopt".
  *   Euro's in beide talen. De Engelse pagina weert buitenlandse teams niet en werft ze niet; ze zegt wel eerlijk dat
  *   het rapport de spelvormen van de Nederlandse NGF-competitie volgt.
  *   Het losse assessment ($79), de herhaalmeting ($39) en het pro-abonnement ($199) zijn in dollars: dat staat één
@@ -60,14 +60,20 @@
  *   uit het voorbeeld public/samples/team/h18) meewijzigen.
  * - Er is op de site GEEN privacyverklaring of voorwaardenpagina: er wordt dus nergens naar gelinkt.
  *
- * TEAMS_LIVE = de ene schakelaar voor de start van de werving. Zolang false: de pagina staat op het adres maar is
- * onvindbaar (noindex, niet in de sitemap), het teamblok op /pro-program is verborgen (wel te bekijken met
- * /pro-program?preview=teams) en de teamvoorbeelden op /samples ook (wel met /samples?preview=teams). Op true zetten =
- * vindbaar + in de sitemap + teamblok + teamvoorbeelden zichtbaar.
+ * TEAMS_LIVE = de ene schakelaar. **Sinds 15-11-2026 true, op uitdrukkelijk verzoek van de opdrachtgever** ("De
+ * teampagina zichtbaar maken. De betaalroute doen we daarna."): /teams is vindbaar (index, in de sitemap), er staat een
+ * link "Teams" in het footermenu van de homepage, het teamblok op /pro-program en de teamvoorbeelden op /samples zijn
+ * zichtbaar, en de links dragen geen ?preview=teams meer. Op false zetten verbergt dat alles weer (dan alleen nog te
+ * bekijken met ?preview=teams).
+ * WAT ER NOG NIET IS (de pagina mag het dus niet suggereren): een betaalroute per speler in de portal, een pro die zelf
+ * een team start, een privacyverklaring of voorwaardenpagina. De route op de pagina is daarom: de pro vraagt toegang aan
+ * tot het Pro-programma (kan nu al) -> meldt het team PER MAIL bij ons aan (support@, vanaf 1 december 2026) -> wij maken
+ * de teamlink -> bij de aanmelding hoort het team hoe het afrekenen loopt.
+ * 18+: het verplichte vinkje bij de teamlink begint met "Ik ben 18 jaar of ouder en doe mee met het team."
  */
 import type { Lang } from "@/context/lang-context";
 
-export const TEAMS_LIVE = false;
+export const TEAMS_LIVE = true;
 
 export type TeamLang = "nl" | "en";
 export const teamLang = (lang: Lang): TeamLang => (lang === "nl" ? "nl" : "en");
@@ -125,15 +131,15 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     heroTitle: "Wat spreekt jullie team af",
     heroTitleEm: "na een mindere slag?",
     heroPrice: "€15 per speler · hooguit €99 per team",
-    heroPriceSub: "bij aanmelding t/m 28 februari 2027",
+    heroPriceSub: "bij aanmelding van 1 december 2026 t/m 28 februari 2027",
     heroP1: "Eén teamavond, een kaartje per paar en de wedstrijddag op één pagina. Dat staat in één teamrapport, geschreven voor dit ene team, nadat iedere speler thuis het assessment heeft gedaan. Daarna kan jullie pro lessen geven rond jullie thema; dat spreek je met de pro af.",
     glance: [
       { title: "Wat het is", desc: "Een assessment per speler en één teamrapport voor het team. De lessen geeft jullie eigen pro; het lesgeld spreek je met de pro af." },
       { title: "Wat het kost", desc: "€15 per speler, hooguit €99 per team. De lessen van de pro zitten daar niet in." },
-      { title: "Wat je doet", desc: "Stuur deze pagina naar jullie pro. De pro meldt het team aan." },
+      { title: "Wat je doet", desc: "Stuur deze pagina naar jullie pro. De pro meldt het team bij ons aan; dat kan vanaf 1 december 2026." },
     ],
     ctaSend: "Stuur dit naar je pro", ctaSample: "Blader door een voorbeeldrapport",
-    trust: "Introductieprijs bij aanmelding van 1 december 2026 t/m 28 februari 2027",
+    trust: "Een team aanmelden kan vanaf 1 december 2026. Jullie pro kan nu al toegang aanvragen.",
     get: {
       label: "Dit krijgen jullie", title: "Eén rapport,", titleEm: "geschreven voor dit ene team",
       intro: "Geen algemeen verhaal over mentale training. Een rapport met jullie namen, jullie spelvorm en ruimte voor jullie eigen afspraken.",
@@ -198,7 +204,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       "Het eerste gesprek over spanning en herstel voer je anders op de eerste competitiedag, als het er al toe doet.",
       "Een paar dat in de winter afspreekt wat het doet na een mindere slag, hoeft dat niet tijdens de partij uit te vinden.",
       "De techniektraining blijft gewoon staan. Dit komt ernaast, in dezelfde trainingen.",
-      "Aanmelden kan t/m 28 februari 2027 voor €15 per speler. Daarna is het €49 per speler.",
+      "Van 1 december 2026 t/m 28 februari 2027 kost aanmelden €15 per speler. Daarna is het €49 per speler.",
     ],
     lossClose: "Het assessment en het teamrapport kosten per speler minder dan een doos ballen.",
     priceLabel: "Wat het kost", priceTitle: "Een prijs waar je", priceTitleEm: "niet over hoeft te vergaderen",
@@ -214,14 +220,14 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       "Inbegrepen: één teamrapport voor het team, met een deel voor de captain en een bijlage voor de pro.",
       "Niet inbegrepen: de lessen van de pro. Het lesgeld bepaalt de pro zelf; dat spreek je rechtstreeks met de pro af.",
       "Niet inbegrepen: een herhaalmeting na het seizoen. Die is vrijwillig en kost $39 per speler.",
-      "De pro meldt het team aan. Bij aanmelding hoor je hoe het afrekenen loopt.",
-      "Voor teams met spelers van 18 jaar en ouder.",
+      "De pro meldt het team per mail bij ons aan; dat kan vanaf 1 december 2026. Bij de aanmelding hoor je hoe het afrekenen loopt.",
+      "Voor teams met spelers van 18 jaar en ouder. Iedere speler bevestigt dat bij het aanmelden.",
     ],
     currencyNote: "Teamprijzen zijn in euro's. Het losse assessment ($79), de herhaalmeting ($39) en het abonnement voor de pro ($199 per jaar) zijn in dollars.",
     howLabel: "4 stappen", howTitle: "Van idee", howTitleEm: "tot eerste teamles",
     howSteps: [
       { num: "01", title: "Spreek je pro aan", body: "Stuur deze pagina naar de pro van je club. Een team start altijd via een PGA-pro. Voor de pro is het meer dan een handtekening; onderaan staat eerlijk wat het de pro vraagt en oplevert." },
-      { num: "02", title: "De pro meldt het team aan", body: "De pro vraagt toegang aan tot het Pro-programma, meldt jullie team aan en stuurt de spelers een teamlink. Dan hoor je ook hoe het afrekenen loopt." },
+      { num: "02", title: "De pro meldt het team aan", body: "De pro vraagt toegang aan tot het Pro-programma; dat kan nu al. Vanaf 1 december 2026 meldt de pro jullie team per mail bij ons aan. Wij maken de teamlink en de pro stuurt die naar de spelers. Bij de aanmelding hoor je hoe het afrekenen loopt." },
       { num: "03", title: "Iedere speler doet het assessment", body: "Thuis, online, in 20 tot 25 minuten, in het Nederlands of Engels. Daarna nog één teamvraag. Iedere speler krijgt het eigen spelersprofiel: een samenvatting en het volledige rapport." },
       { num: "04", title: "Rapport, teamavond, lessen", body: "Als de spelers klaar zijn, maakt de pro het teamrapport en wijst de captain aan. Daarna volgen de teamavond en de trainingen met de paren. Of de pro daarna lessen geeft, hoeveel en in welk tempo, spreken jullie met de pro af." },
     ],
@@ -259,7 +265,8 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     faqLabel: "Vragen?", faqTitle: "Veelgestelde", faqTitleEm: "vragen",
     faqs: [
       { q: "Waarom kan een team alleen via een pro starten?", a: "Omdat de meting pas iets oplevert als er daarna mee gewerkt wordt. De pro meldt het team aan, maakt het teamrapport, ontvangt de bijlage met de lessenreeks en geeft de lessen. Speel je bij een club zonder pro, of wil je pro er meer over weten? Mail " + TEAM_CONTACT + "." },
-      { q: "Wat betalen we precies?", a: "Bij aanmelding van 1 december 2026 t/m 28 februari 2027: €15 per speler, met een maximum van €99 voor het hele team. Zes spelers betalen dus samen €90, zeven of meer spelers samen €99. Na 28 februari 2027 is dat €49 per speler en maximaal €299 per team. De pro meldt het team aan; bij aanmelding hoor je hoe het afrekenen loopt." },
+      { q: "Wat betalen we precies?", a: "Bij aanmelding van 1 december 2026 t/m 28 februari 2027: €15 per speler, met een maximum van €99 voor het hele team. Zes spelers betalen dus samen €90, zeven of meer spelers samen €99. Na 28 februari 2027 is dat €49 per speler en maximaal €299 per team. De pro meldt het team per mail bij ons aan; bij de aanmelding hoor je hoe het afrekenen loopt." },
+      { q: "Wanneer kunnen we beginnen?", a: "Een team kan vanaf 1 december 2026 worden aangemeld. Jullie pro kan nu al toegang aanvragen tot het Pro-programma; de toelating duurt meestal 1 tot 3 werkdagen. Daarna meldt de pro het team per mail bij ons aan (" + TEAM_CONTACT + "), maken wij de teamlink en hoort het team hoe het afrekenen loopt." },
       { q: "Zitten de lessen van de pro in de prijs?", a: "Nee. De teamprijs is voor het assessment van iedere speler en het teamrapport. De lessen geeft jullie eigen pro. De pro bepaalt zelf het lesgeld; dat spreek je rechtstreeks met de pro af." },
       { q: "Hoeveel tijd kost het?", a: "Het assessment kost 20 tot 25 minuten per speler: online, thuis, in het Nederlands of Engels. Daarna één teamavond van anderhalf tot twee uur. In de winter vier trainingen met de paren, binnen jullie gewone trainingen; de captain kan ze leiden met het rapport. Per paar één kaartje: aankruisen op de teamavond, de rest na de eerste training samen. Tijdens de competitie na elke speeldag een terugblik van twee minuten per paar. Lessen van de pro komen daar bij, als jullie die met de pro afspreken." },
       { q: "Wie ziet mijn gegevens?", a: "Het team en de captain lezen het teamrapport. Daarin staan teamgemiddelden, en per speler in woorden wat het hoogst ligt en waar die aan werkt. Er staan geen cijfers per speler in, op één ding na: je handicap kan in een voorbeeldindeling van de paren staan. Je persoonlijke rapport zien het team en de captain niet. De pro krijgt een bijlage met de scores per speler en ziet je antwoord op de teamvraag, of dat je die hebt overgeslagen. De beheerder van MentalRoutine kan de bijlage ook openen. Bij het aanmelden via de teamlink vink je aan dat je hiermee akkoord gaat. Je volledige persoonlijke rapport kan de pro alleen openen als jij dat apart aanvinkt; dat is niet verplicht en je kunt het later in de portal aan- of uitzetten. Stoppen met delen kan altijd in de portal." },
@@ -269,7 +276,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       { q: "Is dit iets voor een sceptisch team?", a: "Ja. Er komen geen cijfers per speler op tafel en niemand hoeft iets over zichzelf te vertellen. Het rapport levert praktische afspraken op voor de wedstrijddag, zoals wie beslist over het geven van een putt. Twijfel je? Blader eerst door een voorbeeldrapport." },
       { q: "Wat als ons team weinig verschillen laat zien?", a: "Dan zegt het rapport dat eerlijk. Het wijst dan geen thema of paren aan en noemt per speler geen hoogste of laagste onderdeel. Het team kiest zelf uit drie thema's, elk met een oefenvorm en een voorbeeldafspraak. De pro krijgt dan per thema een teamles in plaats van de lessenreeks. De wedstrijddag, de teamavond en de kaartjes blijven gewoon." },
       { q: "Hoeveel lessen horen erbij?", a: "Dat bepalen jullie samen met de pro. Er is geen vast aantal en geen vast ritme. In de bijlage voor de pro staat een lessenreeks van vier lessen; dat is een kapstok, geen verplichting. Kiest het team zelf het thema, dan staat er per thema een teamles in plaats van de lessenreeks." },
-      { q: "Kan ons jeugdteam meedoen?", a: "Nee. Het teamaanbod is voor teams met spelers van 18 jaar en ouder." },
+      { q: "Kan ons jeugdteam meedoen?", a: "Nee. Het teamaanbod is voor teams met spelers van 18 jaar en ouder. Iedere speler bevestigt dat bij het aanmelden via de teamlink." },
       { q: "Kunnen we na het seizoen opnieuw meten?", a: "Ja, als je dat wilt. Elke speler kan na het seizoen zelf een herhaalmeting doen. Die is vrijwillig, kost $39 per speler en zit niet in de teamprijs." },
       { q: "Worden we hier beter van in de competitie?", a: "Dat beloven we niet; niemand kan een uitslag garanderen. Wat je wel krijgt: een beeld van hoe het team zichzelf ziet, afspraken voor de wedstrijddag en een winter waarin jullie gericht oefenen op wat er tussen de slagen gebeurt." },
     ],
@@ -286,10 +293,10 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       stepsIntro: "Er zit een leercurve aan de methode, ook voor een ervaren pro. Reken daar vooraf op.",
       timeLabel: "Jouw tijd",
       steps: [
-        { title: "Vraag toegang aan tot het Pro-programma", body: "Met het formulier op de pagina van het Pro-programma. We bekijken elke aanvraag persoonlijk en controleren je PGA-gegevens.", time: "Een paar minuten. Toelating meestal binnen 1 tot 3 werkdagen." },
+        { title: "Vraag toegang aan tot het Pro-programma", body: "Met het formulier op de pagina van het Pro-programma. Dat kan nu al. We bekijken elke aanvraag persoonlijk en controleren je PGA-gegevens.", time: "Een paar minuten. Toelating meestal binnen 1 tot 3 werkdagen." },
         { title: "Doe je eigen assessment en lees je eigen rapport", body: "Gratis voor toegelaten pro's. Je begeleidt een team beter als je je eigen rapport kent.", time: "20 tot 25 minuten, plus het lezen." },
         { title: "Leer de methode kennen", body: "Je eigen rapport, de leeswijzer en het materiaal in PRO Admin. Zo weet je waar de acht stappen en de vier factoren over gaan voordat je een team begeleidt.", time: "Reken op een paar avonden." },
-        { title: "Meld het team aan en stuur de teamlink door", body: "Je meldt het team bij ons aan en krijgt een teamlink. Die stuur je naar de spelers; zij doen thuis het assessment.", time: "Een paar berichten. Daarna wacht je tot de spelers klaar zijn." },
+        { title: "Meld het team bij ons aan en stuur de teamlink door", body: "Mail ons op " + TEAM_CONTACT + " welk team je wilt aanmelden; dat kan vanaf 1 december 2026. Wij maken de teamlink en sturen die naar jou. Jij stuurt hem door naar de spelers; zij doen thuis het assessment. Bij de aanmelding hoor je ook hoe het afrekenen voor het team loopt.", time: "Een paar berichten. Daarna wacht je tot de spelers klaar zijn." },
         { title: "Maak het teamrapport en wijs de captain aan", body: "In PRO Admin, zodra minstens vier spelers klaar zijn en hun uitkomst delen. Je kiest de spelvorm en bevestigt dat de spelers weten dat hun uitkomst in het teamrapport staat. De captain krijgt het rapport; de bijlage is alleen voor jou.", time: "Een paar minuten." },
         { title: "Lees het teamrapport en je bijlage", body: "Twintig tot vijfentwintig pagina's rapport en een bijlage met de scores per speler, per speler één ding om op te letten en een lessenreeks. Het volledige persoonlijke rapport van een speler kun je alleen openen als die speler dat apart met je deelt.", time: "Een uur tot anderhalf uur. De eerste keer langer." },
         { title: "De teamavond", body: "Met het draaiboek uit het rapport. Jij leidt de avond, of de captain doet dat en jij bent erbij. De teamavond kan ook zonder jou: dan leidt de captain hem met het draaiboek.", time: "Anderhalf tot twee uur, plus je voorbereiding." },
@@ -307,15 +314,15 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     heroTitle: "What has your team agreed to do",
     heroTitleEm: "after a poor shot?",
     heroPrice: "€15 per player · €99 at most per team",
-    heroPriceSub: "when you sign up by 28 February 2027",
+    heroPriceSub: "when you sign up from 1 December 2026 to 28 February 2027",
     heroP1: "One team meeting, a card for every pair and match day on one page. It all comes from one team report, written for this one team, after every player has taken the assessment at home. After that your pro can give lessons around your theme; you agree that with the pro.",
     glance: [
       { title: "What it is", desc: "An assessment for every player and one team report for the team. Your own pro gives the lessons; you agree the lesson fee with the pro." },
       { title: "What it costs", desc: "€15 per player, €99 at most per team. The pro's lessons are not included." },
-      { title: "What you do", desc: "Send this page to your pro. The pro signs the team up." },
+      { title: "What you do", desc: "Send this page to your pro. The pro signs the team up with us; that is possible from 1 December 2026." },
     ],
     ctaSend: "Send this to your pro", ctaSample: "Browse a sample report",
-    trust: "Introductory price when you sign up from 1 December 2026 to 28 February 2027",
+    trust: "A team can be signed up from 1 December 2026. Your pro can apply for access now.",
     get: {
       label: "This is what you get", title: "One report,", titleEm: "written for this one team",
       intro: "Not a general story about mental training. A report with your names, your match format and room for your own agreements.",
@@ -380,7 +387,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       "Otherwise your first conversation about nerves and recovery happens on the first match day, when it already matters.",
       "A pair that agrees in winter what it does after a poor shot does not have to work that out during the match.",
       "Technique practice stays as it is. This comes alongside it, in the same sessions.",
-      "You can sign up for €15 per player until 28 February 2027. After that it is €49 per player.",
+      "From 1 December 2026 to 28 February 2027 signing up costs €15 per player. After that it is €49 per player.",
     ],
     lossClose: "The assessment and the team report cost less per player than a box of balls.",
     priceLabel: "What it costs", priceTitle: "A price you don't need", priceTitleEm: "a committee meeting for",
@@ -396,14 +403,14 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       "Included: one team report for the team, with a part for the captain and an annex for the pro.",
       "Not included: the pro's lessons. The pro sets the lesson fee; you agree it directly with the pro.",
       "Not included: a re-assessment after the season. It is voluntary and costs $39 per player.",
-      "The pro signs the team up. When the team is signed up you hear how payment works.",
-      "For teams with players aged 18 and over.",
+      "The pro signs the team up with us by email; that is possible from 1 December 2026. When the team is signed up you hear how payment works.",
+      "For teams with players aged 18 and over. Every player confirms that when signing up.",
     ],
     currencyNote: "Team prices are in euros. The assessment on its own ($79), the re-assessment ($39) and the subscription for the pro ($199 per year) are in US dollars.",
     howLabel: "4 steps", howTitle: "From idea", howTitleEm: "to first team lesson",
     howSteps: [
       { num: "01", title: "Talk to your pro", body: "Send this page to the pro at your club. A team always starts through a PGA professional. For the pro it is more than a signature; we set out below what it asks of the pro and what's in it for them." },
-      { num: "02", title: "The pro signs the team up", body: "The pro applies for the Pro Program, signs your team up and sends the players a team link. That is also when you hear how payment works." },
+      { num: "02", title: "The pro signs the team up", body: "The pro applies for the Pro Program; that is possible now. From 1 December 2026 the pro signs your team up with us by email. We create the team link and the pro sends it to the players. When the team is signed up you hear how payment works." },
       { num: "03", title: "Every player takes the assessment", body: "At home, online, in 20 to 25 minutes, in English or Dutch. Then one team question. Every player gets their own player profile: a summary and the full report." },
       { num: "04", title: "Report, team meeting, lessons", body: "Once the players are done, the pro creates the team report and names the captain. Then come the team meeting and the sessions with the pairs. Whether the pro gives lessons after that, how many and at what pace, is for you to agree with the pro." },
     ],
@@ -441,7 +448,8 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     faqLabel: "Questions?", faqTitle: "Frequently", faqTitleEm: "asked",
     faqs: [
       { q: "Why can a team only start through a pro?", a: "Because the assessment only pays off when you work with it afterwards. The pro signs the team up, creates the team report, receives the annex with the series of lessons and gives the lessons. Is there no pro at your club, or does your pro want to know more? Email " + TEAM_CONTACT + "." },
-      { q: "What exactly do we pay?", a: "When you sign up from 1 December 2026 to 28 February 2027: €15 per player, with a maximum of €99 for the whole team. Six players pay €90 in total, seven or more pay €99 in total. After 28 February 2027 it is €49 per player and €299 maximum per team. The pro signs the team up; when the team is signed up you hear how payment works." },
+      { q: "What exactly do we pay?", a: "When you sign up from 1 December 2026 to 28 February 2027: €15 per player, with a maximum of €99 for the whole team. Six players pay €90 in total, seven or more pay €99 in total. After 28 February 2027 it is €49 per player and €299 maximum per team. The pro signs the team up with us by email; when the team is signed up you hear how payment works." },
+      { q: "When can we start?", a: "A team can be signed up from 1 December 2026. Your pro can apply for the Pro Program now; approval usually takes one to three working days. After that the pro signs the team up with us by email (" + TEAM_CONTACT + "), we create the team link and the team hears how payment works." },
       { q: "Are the pro's lessons included in the price?", a: "No. The team price covers the assessment for every player and the team report. Your own pro gives the lessons. The pro sets the lesson fee; you agree it directly with the pro." },
       { q: "How much time does it take?", a: "The assessment takes 20 to 25 minutes per player: online, at home, in English or Dutch. Then one team meeting of an hour and a half to two hours. In winter, four sessions with the pairs within your normal practice; the captain can lead them with the report. One pair card per pair: ticked at the team meeting, the rest after your first session together. During the season, a two-minute review per pair after every match day. Lessons from the pro come on top of that, if you agree them with the pro." },
       { q: "Who sees my data?", a: "The team and the captain read the team report. It shows team averages and, for each player, in words what comes out highest and what they work on. There are no scores per player in it, with one exception: your handicap may appear in a sample arrangement of the pairs. The team and the captain do not see your personal report. The pro gets an annex with the scores per player and sees your answer to the team question, or the fact that you skipped it. The MentalRoutine administrator can open the annex as well. When you sign up through the team link you tick that you agree to this. The pro can only open your full personal report if you tick that separately; it is optional and you can switch it on or off later in the portal. You can stop sharing in the portal at any time." },
@@ -452,7 +460,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       { q: "Is this something for a sceptical team?", a: "Yes. There are no scores per player on the table and nobody has to say anything about themselves. The report gives practical agreements for match day, such as who decides on conceding a putt. Not sure? Browse a sample report first." },
       { q: "What if our team shows few differences?", a: "Then the report says so honestly. It does not point to a theme or to pairs and names no highest or lowest part per player. The team picks one of three themes itself, each with a practice format and a sample agreement. The pro then gets a team lesson for each theme instead of the series of lessons. Match day, the team meeting and the pair cards stay as they are." },
       { q: "How many lessons are included?", a: "You decide that together with the pro. There is no fixed number and no fixed rhythm. The annex for the pro contains a series of four lessons; that is a framework, not an obligation. If the team picks its own theme, it has a team lesson for each theme instead of the series of lessons." },
-      { q: "Can our junior team take part?", a: "No. The team offer is for teams with players aged 18 and over." },
+      { q: "Can our junior team take part?", a: "No. The team offer is for teams with players aged 18 and over. Every player confirms that when signing up through the team link." },
       { q: "Can we measure again after the season?", a: "Yes, if you want to. After the season each player can take a re-assessment. It is voluntary, costs $39 per player and is not included in the team price." },
       { q: "Will this make us win more matches?", a: "We don't promise that; nobody can guarantee a result. What you do get: a picture of how the team sees itself, agreements for match day and a winter in which you practise what happens between the shots." },
     ],
@@ -469,10 +477,10 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       stepsIntro: "The method has a learning curve, also for an experienced pro. Allow for that in advance.",
       timeLabel: "Your time",
       steps: [
-        { title: "Apply for the Pro Program", body: "With the form on the Pro Program page. We review every application by hand and verify your PGA credentials.", time: "A few minutes. Approval usually within one to three working days." },
+        { title: "Apply for the Pro Program", body: "With the form on the Pro Program page. You can do that now. We review every application by hand and verify your PGA credentials.", time: "A few minutes. Approval usually within one to three working days." },
         { title: "Take your own assessment and read your own report", body: "Free for approved pros. You guide a team better once you know your own report.", time: "20 to 25 minutes, plus the reading." },
         { title: "Get to know the method", body: "Your own report, the reading guide and the material in PRO Admin. That way you know what the eight steps and the four factors are about before you work with a team.", time: "Allow a few evenings." },
-        { title: "Sign the team up and pass on the team link", body: "You sign the team up with us and receive a team link. You send it to the players; they take the assessment at home.", time: "A few messages. Then you wait until the players are done." },
+        { title: "Sign the team up with us and pass on the team link", body: "Email us at " + TEAM_CONTACT + " to say which team you want to sign up; that is possible from 1 December 2026. We create the team link and send it to you. You pass it on to the players; they take the assessment at home. When the team is signed up you also hear how payment for the team works.", time: "A few messages. Then you wait until the players are done." },
         { title: "Create the team report and name the captain", body: "In PRO Admin, once at least four players are done and share their outcome. You choose the match format and confirm that the players know their outcome is in the team report. The captain receives the report; the annex is for you only.", time: "A few minutes." },
         { title: "Read the team report and your annex", body: "Twenty to twenty-five pages of report and an annex with the scores per player, one thing to watch per player and a series of lessons. You can only open a player's full personal report if that player shares it with you separately.", time: "An hour to an hour and a half. Longer the first time." },
         { title: "The team meeting", body: "With the run sheet from the report. You lead the meeting, or the captain does and you are there. The team meeting can also go ahead without you: the captain then leads it with the run sheet.", time: "An hour and a half to two hours, plus your preparation." },
@@ -493,7 +501,7 @@ export const PRO_TEAM_BLOCK: Record<TeamLang, { label: string; title: string; ti
     body: "Een competitieteam van je club dat deze winter met jou wil werken: een lesklant voor de rustige maanden, met een concreet thema en je eigen tarief. Het vraagt wel tijd van je. Dit doe je, in deze volgorde:",
     points: [
       "Je doet je eigen assessment (20 tot 25 minuten), leest je eigen rapport en leert de methode kennen. Reken op een paar avonden.",
-      "Je meldt het team aan en stuurt de spelers de teamlink. Zij doen thuis het assessment.",
+      "Je meldt het team per mail bij ons aan (" + TEAM_CONTACT + ", vanaf 1 december 2026). Wij maken de teamlink; jij stuurt hem naar de spelers. Zij doen thuis het assessment.",
       "Zijn minstens vier spelers klaar, dan maak je in PRO Admin het teamrapport en wijs je de captain aan.",
       "Je leest het rapport en je bijlage: een uur tot anderhalf uur, de eerste keer langer.",
       "De teamavond: anderhalf tot twee uur, plus je voorbereiding.",
@@ -510,7 +518,7 @@ export const PRO_TEAM_BLOCK: Record<TeamLang, { label: string; title: string; ti
     body: "A team from your club that wants to work with you this winter: a lesson client for the quiet months, with a concrete theme and your own rate. It does take time. This is what you do, in this order:",
     points: [
       "You take your own assessment (20 to 25 minutes), read your own report and get to know the method. Allow a few evenings.",
-      "You sign the team up and send the players the team link. They take the assessment at home.",
+      "You sign the team up with us by email (" + TEAM_CONTACT + ", from 1 December 2026). We create the team link; you send it to the players. They take the assessment at home.",
       "Once at least four players are done, you create the team report in PRO Admin and name the captain.",
       "You read the report and your annex: an hour to an hour and a half, longer the first time.",
       "The team meeting: an hour and a half to two hours, plus your preparation.",

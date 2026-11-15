@@ -393,11 +393,13 @@ Gevonden bij het nalezen van de 6 profielen op 2-11:
 - Optioneel: de EN-trainingsrapporten opnieuw (van 25-9, vóór de rapport-review) zodat NL en EN even vers zijn.
 - Plausible: `sample_view`/`sample_download`/`samples_click` als goals toevoegen.
 
-### 10.8 Teamvoorbeelden: het teamrapport op `/samples` (15 nov 2026, gebouwd, VERBORGEN)
+### 10.8 Teamvoorbeelden: het teamrapport op `/samples` (15 nov 2026, gebouwd; ZICHTBAAR sinds 15-11-2026)
 Bij het teamaanbod (`/teams`, portal-repo `docs/TEAMAANBOD_NOV2026.md` en `docs/TEAMRAPPORT_UITVOERING.md`). Proeflezers
 van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten naast de pagina.
 
-- **Schakelaar**: alles hangt aan `TEAMS_LIVE` in `src/lib/teams-text.ts` (nu `false`). Zolang die uit staat is de
+- **Stand 15-11-2026: `TEAMS_LIVE = true`** (zie "Zichtbaar gemaakt" onderaan deze paragraaf). Wat hieronder over
+  "verborgen" en `?preview=teams` staat, beschrijft de schakelaar in de uit-stand.
+- **Schakelaar**: alles hangt aan `TEAMS_LIVE` in `src/lib/teams-text.ts`. Zolang die uit staat is de
   teamsectie op `/samples` onzichtbaar; bekijken kan met `/samples?preview=teams`. Zonder `preview` doet een teamlink
   niets bijzonders (de bezoeker ziet Alex' QuickScan). De voorbeelden van Alex, Sam en Chris zijn niet veranderd.
 - **Wat de bezoeker ziet** (met de schakelaar aan of `?preview=teams`): boven de keuzes een schakelaar "Drie golfers /
@@ -433,7 +435,7 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
      in `scripts/e2e/teams-check.js`).
   4. De twee citaten op `/teams` (`get.quotes` in `teams-text.ts`) komen letterlijk uit `h18`: nalopen of ze nog in het
      nieuwe rapport staan.
-  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (357 controles: `/teams` NL/EN
+  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (380 controles: `/teams` NL/EN
      desktop/mobiel, teamblok, en alle vijf smaken × twee documenten × twee talen: aantal pagina's, pagina 1 geladen,
      PDF 200) en `BASE=http://localhost:3123 node scripts/e2e/funnel-check.js`.
 - **Let op**: het Engelse teamrapport gebruikt zelf het woord "line-up" (in de pagina-afbeeldingen). De regel dat dat
@@ -488,9 +490,26 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
   pagina zegt dat nu zo (kaarten "De pro", "Je eigen rapport", "Stoppen met delen", de voetregel, twee FAQ's, stap 6 van
   het pro-blok en het teamblok op `/pro-program`); de formulering van één vinkje uit de vorige commit is weg en de test
   keurt haar af.
-  Test: `teams-check.js` nu **357 controles**. **Nog te doen**: de voorbeeld-PDF's in `public/samples/team/` zijn van
+  Test: `teams-check.js` nu **380 controles**. **Nog te doen**: de voorbeeld-PDF's in `public/samples/team/` zijn van
   vóór ronde 15 (daarin staat nog een teamavond van een uur en "Wij kozen" op het kaartje): opnieuw maken en plaatsen
-  (stappen hierboven) vóór `TEAMS_LIVE = true`.
+  (stappen hierboven) vóór `TEAMS_LIVE = true`. (Gedaan: de voorbeelden zijn op 15-11 opnieuw gemaakt, commits
+  `20020cd` en `71ffa22`.)
+- **Zichtbaar gemaakt (15-11-2026, op uitdrukkelijk verzoek van de opdrachtgever: "De teampagina zichtbaar maken. Doe
+  dit nu. De betaalroute doen we daarna.")**. `TEAMS_LIVE = true`. Gevolgen, allemaal getest zonder `?preview=teams`:
+  `/teams` is index/follow en staat in de sitemap; het teamblok op `/pro-program` en de teamsectie op `/samples` zijn
+  zichtbaar (een deep link `/samples?report=team&…` opent nu het teamvoorbeeld); alle links naar de teamvoorbeelden
+  zijn hun `&preview=teams` kwijt. **Nieuwe link**: "Teams" in het footermenu van de homepage (`src/app/page.tsx`, na
+  "Het volledige assessment", zelfde label in alle talen, event `teams_click{source:"footer"}`); hero, navigatie en de
+  QuickScan-funnel zijn niet veranderd. Verder linken naar `/teams`: het teamblok op `/pro-program` en de knop onderaan
+  de teamvoorbeelden op `/samples`.
+  **Eerlijk over wat er nog niet is** (betaalroute per speler, pro start zelf een team, privacyverklaring/voorwaarden):
+  de pagina beschrijft de route zoals hij nu werkt: de pro vraagt toegang aan tot het Pro-programma (kan nu al), meldt
+  het team per mail aan bij support@mentalroutine.com (vanaf 1 december 2026), wij maken de teamlink, en bij de
+  aanmelding hoort het team hoe het afrekenen loopt. Nieuwe vraag "Wanneer kunnen we beginnen?". 18+: "Iedere speler
+  bevestigt dat bij het aanmelden" (het verplichte vinkje begint met "Ik ben 18 jaar of ouder…").
+  Test: `teams-check.js` gaat nu uit van de aan-stand (**380 controles**); zet je de schakelaar uit, dan falen de
+  controles op vindbaarheid en links. **Aanmeldingen komen dus per mail binnen bij support@ en vragen handwerk**
+  (teamlink maken in de portal, afrekenen regelen) tot de betaalroute er is.
 
 ---
 

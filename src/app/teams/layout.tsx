@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { TEAMS_LIVE } from "@/lib/teams-text";
 
-// Route-level metadata (de pagina zelf is een client component). Tot de werving start (TEAMS_LIVE in
-// lib/teams-text.ts) staat de pagina op het adres maar is ze onvindbaar: noindex, niet in de sitemap, nergens gelinkt.
+// Route-level metadata (de pagina zelf is een client component). Eén schakelaar: TEAMS_LIVE in lib/teams-text.ts.
+// Sinds 15-11-2026 aan: vindbaar (index, follow), in de sitemap en gelinkt in het footermenu van de homepage.
+// Uit = noindex, niet in de sitemap, nergens gelinkt.
 export const metadata: Metadata = {
   title: "Mentaal trainen met je competitieteam | MentalRoutine",
   description:

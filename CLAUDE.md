@@ -58,8 +58,13 @@
   weg (redirects). Events `sample_view`/`sample_download`/`samples_click`. **Vervangen/genereren: stappenplan in
   `docs/SESSIE_QUICKSCAN_FUNNEL_OKT2026.md` §10.5**; de huidige 6 profielen hebben nog 2 bekende fouten (§10.6) en worden
   later opnieuw gegenereerd. Golfers/scores nooit los wijzigen (staan ook in 3 portal-scripts).
-- **Teampagina `/teams`** (teamaanbod competitieteams, NL + EN, 14/15-11-2026; **verborgen**: één schakelaar `TEAMS_LIVE`
-  in `src/lib/teams-text.ts` = `false` → noindex, niet in de sitemap, nergens gelinkt). Alle tekst en de besluiten staan
+- **Teampagina `/teams`** (teamaanbod competitieteams, NL + EN, 14/15-11-2026; **ZICHTBAAR sinds 15-11-2026** op
+  uitdrukkelijk verzoek van de opdrachtgever: één schakelaar `TEAMS_LIVE` in `src/lib/teams-text.ts` = `true` → index/follow,
+  in de sitemap, link "Teams" in het footermenu van de homepage, teamblok op `/pro-program` en teamvoorbeelden op `/samples`
+  zichtbaar, links zonder `?preview=teams`; `false` verbergt alles weer). **Nog niet gebouwd, dus niet suggereren**: betaalroute
+  per speler in de portal, pro start zelf een team, privacyverklaring/voorwaarden. De route op de pagina: pro vraagt toegang
+  aan tot het Pro-programma (kan nu al) → meldt het team per mail aan bij support@ (vanaf 1 december 2026) → wij maken de
+  teamlink → bij de aanmelding hoort het team hoe het afrekenen loopt. Alle tekst en de besluiten staan
   bovenaan `teams-text.ts` (via een PGA-pro, 18+, €15/€99 t/m 28-2-2027 daarna €49/€299, teamprijzen in euro's, geen
   resultaatclaims, "paren" en niet de woorden die de test afkeurt, geen gedachtestreepjes). Opbouw sinds 15-11 (na
   leesronde 15, **lokaal gecommit, nog niet gepusht**): hero met een prijsregel direct onder de titel (op een telefoon op het
@@ -81,7 +86,7 @@
   `/samples?report=team&team=h18|h27|h36|small|even&doc=report|annex&lang=nl|en[&preview=teams]`. Het teamblok op
   `/pro-program` (ook achter de schakelaar; `?preview=teams`) linkt naar de voorbeeldbijlage. Verandert het teamrapport in de
   portal, dan de lijsten/citaten in `teams-text.ts` en de voorbeelden meewijzigen. Test: `node scripts/e2e/teams-check.js
-  http://localhost:3123` (357 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn op 15-11-2026 opnieuw gemaakt
+  http://localhost:3123` (380 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn op 15-11-2026 opnieuw gemaakt
   met de portalcode na ronde 15–17 en de twee vinkjes (portal `538e1eb`), gecontroleerd en geplaatst.**
 - **Testen:** `scripts/e2e/funnel-check.js` (Playwright, 56 controles incl. `/samples`, portal geblokkeerd) — draai dit na elke
   wijziging aan quiz.html / homepage / navbar / redirects (lege-QuickScan-incident 15-10-2026).

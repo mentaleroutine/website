@@ -1,6 +1,7 @@
 // Controle van /teams in een echte browser (Chromium): NL + EN, desktop + mobiel, de doorstuurknop, de
-// onvindbaarheid (noindex), het teamblok op /pro-program en de teamvoorbeelden op /samples (beide alleen met
-// ?preview=teams zolang TEAMS_LIVE=false; vijf smaken x rapport/bijlage x NL/EN).
+// vindbaarheid (index, sitemap, footerlink), het teamblok op /pro-program en de teamvoorbeelden op /samples
+// (vijf smaken x rapport/bijlage x NL/EN). Stand: TEAMS_LIVE = true (sinds 15-11-2026), dus alles werkt ZONDER
+// ?preview=teams. Zet je de schakelaar weer uit, dan kloppen de controles op vindbaarheid en links niet meer.
 //   node teams-check.js [basis-url] [map voor schermafbeeldingen]
 const { chromium } = require("playwright");
 const fs = require("fs");
@@ -36,7 +37,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       ok(!/koppel|opstelling|pairing|line-?up/i.test(tekst), "niets over koppels of opstelling");
       ok(!tekst.includes("—"), "geen gedachtestreepjes");
       const robots = await page.locator('meta[name="robots"]').getAttribute("content").catch(() => null);
-      ok(/noindex/.test(robots || ""), `onvindbaar (robots = ${robots})`);
+      ok(!/noindex/.test(robots || "") && /index/.test(robots || "") && /follow/.test(robots || ""), `vindbaar (robots = ${robots})`);
 
       // Propositie in één oogopslag, "Dit krijgen jullie", wie ziet wat, voorbeeldknoppen
       ok((await page.locator("#in-een-oogopslag dt").count()) === 3, "hero: drie tegels (wat het is, wat het kost, wat je doet)");
@@ -56,7 +57,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       const feiten = await page.locator("#prijs-feiten").innerText();
       ok(feiten.includes(lang === "nl" ? "Niet inbegrepen: de lessen van de pro" : "Not included: the pro's lessons"), "lessen van de pro zitten niet in de prijs");
       ok(feiten.includes("$39") && feiten.includes(lang === "nl" ? "vrijwillig" : "voluntary"), "herhaalmeting: vrijwillig, $39, niet inbegrepen");
-      ok(feiten.includes(lang === "nl" ? "Bij aanmelding hoor je hoe het afrekenen loopt" : "you hear how payment works"), "afrekenen: geen verzonnen mechaniek");
+      ok(feiten.includes(lang === "nl" ? "Bij de aanmelding hoor je hoe het afrekenen loopt" : "you hear how payment works"), "afrekenen: geen verzonnen mechaniek");
       ok(!/teamcode|team code/i.test(tekst), "geen teamcode (niet gebouwd)");
 
       // Eerlijke tijd voor het team
@@ -152,9 +153,20 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       ok((await page.locator("#wie-ziet-wat").count()) === 1, "blok 'Wie ziet wat'");
       ok(!/deel[t]? (je|de eigen) scores|share your (own )?scores/i.test(tekst), "niet meer 'je deelt je scores binnen het team'");
       const vb = await page.locator("#voorbeeld-knop").getAttribute("href");
-      ok(vb === `/samples?report=team&team=h18&doc=report&lang=${lang}&source=teams&preview=teams`, `voorbeeldknop → ${vb}`);
+      ok(vb === `/samples?report=team&team=h18&doc=report&lang=${lang}&source=teams`, `voorbeeldknop zonder preview → ${vb}`);
       const vbPro = await page.locator("#voorbeeld-bijlage").getAttribute("href");
-      ok(/report=team&team=h18&doc=annex/.test(vbPro || "") && /preview=teams/.test(vbPro || ""), `voorbeeld van de bijlage in het pro-blok → ${vbPro}`);
+      ok(/report=team&team=h18&doc=annex/.test(vbPro || "") && !/preview=/.test(vbPro || ""), `voorbeeld van de bijlage in het pro-blok, zonder preview → ${vbPro}`);
+      ok((await page.locator('main a[href*="preview=teams"]').count()) === 0, "nergens meer een link met ?preview=teams");
+
+      // De route zoals hij nu echt is: pro vraagt toegang aan (kan nu), meldt het team per mail aan (vanaf 1 december), wij maken de teamlink
+      const hele = await page.locator("main").textContent();
+      ok(lang === "nl"
+        ? hele.includes("Een team aanmelden kan vanaf 1 december 2026. Jullie pro kan nu al toegang aanvragen.") && hele.includes("meldt de pro jullie team per mail bij ons aan. Wij maken de teamlink") && hele.includes("Mail ons op support@mentalroutine.com welk team je wilt aanmelden")
+        : hele.includes("A team can be signed up from 1 December 2026. Your pro can apply for access now.") && hele.includes("the pro signs your team up with us by email. We create the team link") && hele.includes("Email us at support@mentalroutine.com to say which team you want to sign up"),
+        "route: aanmelden per mail vanaf 1 december 2026, wij maken de teamlink, pro kan nu al toegang aanvragen");
+      ok(hele.includes(lang === "nl" ? "Wanneer kunnen we beginnen?" : "When can we start?"), "vraag: wanneer kunnen we beginnen");
+      ok(hele.includes(lang === "nl" ? "Iedere speler bevestigt dat bij het aanmelden" : "Every player confirms that when signing up"), "18+: de speler bevestigt het bij het aanmelden");
+      ok(!/vanuit je dashboard|from your dashboard|start het team\b|starts the team|privacyverklaring|privacy policy|algemene voorwaarden|terms and conditions|betaal(t)? (online|in de portal)|pay online|checkout/i.test(hele), "niets over wat er nog niet is (zelf een team starten, betalen in de portal, privacyverklaring, voorwaarden)");
       ok(tekst.includes("$79") && tekst.includes(lang === "nl" ? "in dollars" : "in US dollars"), "valuta: dollars één keer benoemd");
 
       // Veelgestelde vragen: nieuwe vragen, en de antwoorden staan in de HTML ook als ze dichtgeklapt zijn
@@ -203,22 +215,21 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
     }
   }
 
-  // Teamblok op /pro-program: verborgen zonder preview, zichtbaar met ?preview=teams
+  // Teamblok op /pro-program: zichtbaar zonder ?preview=teams (TEAMS_LIVE = true)
   const ctx = await browser.newContext({ viewport: { width: 1366, height: 900 }, reducedMotion: "reduce" });
   const page = await ctx.newPage();
   console.log("\n== /pro-program teamblok");
   await page.goto(`${BASE}/pro-program?lang=nl`, { waitUntil: "networkidle" });
-  ok((await page.locator("#teams").count()) === 0, "zonder preview: geen teamblok en geen link naar /teams");
-  ok((await page.locator('a[href^="/teams"]').count()) === 0, "zonder preview: nergens een link naar /teams");
-  await page.goto(`${BASE}/pro-program?lang=nl&preview=teams`, { waitUntil: "networkidle" });
   await page.waitForTimeout(400);
-  ok((await page.locator("#teams").count()) === 1, "met ?preview=teams: teamblok zichtbaar");
+  ok((await page.locator("#teams").count()) === 1, "zonder preview: teamblok zichtbaar op /pro-program");
+  ok((await page.locator('#teams a[href="/teams?lang=nl"]').count()) === 1, "teamblok: link naar /teams?lang=nl");
   await page.locator("#teams").scrollIntoViewIfNeeded();
   await page.waitForTimeout(800);
   await page.locator("#teams").screenshot({ path: path.join(OUT, "pro_program_teamblok_nl.png") });
   const bijlage = await page.locator("#team-annex-sample").getAttribute("href");
-  ok(/\/samples\?report=team&team=h18&doc=annex&lang=nl/.test(bijlage || "") && /preview=teams/.test(bijlage || ""), `teamblok: link naar de voorbeeldbijlage → ${bijlage}`);
+  ok(/\/samples\?report=team&team=h18&doc=annex&lang=nl/.test(bijlage || "") && !/preview=/.test(bijlage || ""), `teamblok: link naar de voorbeeldbijlage, zonder preview → ${bijlage}`);
   const blok = await page.locator("#teams").innerText();
+  ok(blok.includes("Je meldt het team per mail bij ons aan (support@mentalroutine.com, vanaf 1 december 2026). Wij maken de teamlink"), "teamblok: aanmelden per mail, wij maken de teamlink");
   ok(blok.includes("lessenreeks van vier lessen") && blok.includes("scores per speler"), "teamblok: één zin over wat de pro krijgt");
   ok(blok.includes("Reken op een paar avonden") && blok.includes("anderhalf tot twee uur, plus je voorbereiding") && blok.includes("in deze volgorde"), "teamblok: de stappen in volgorde met eerlijke tijden");
   ok(blok.includes("Een teamrapport telt niet mee voor die vijf") && blok.includes("Jouw lessen zitten daar niet in"), "teamblok: teamrapport telt niet mee; lessen niet in de teamprijs");
@@ -227,28 +238,40 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
   ok(blok.includes("ruwweg tien uur") && blok.includes("drie lessen van een uur en één van twee uur") && blok.includes("per thema een teamles in plaats van de lessenreeks"), "teamblok: tien uur, lessenreeks 3 + 1, uitzondering eigen thema");
   ok(!/koppel|opstelling|pairing|line-?up/i.test(blok) && !blok.includes("—"), "teamblok: geen afgekeurde woorden of gedachtestreepjes");
   const sm = await (await page.request.get(`${BASE}/sitemap.xml`)).text();
-  ok(!sm.includes("/teams"), "/teams staat niet in de sitemap");
+  ok(sm.includes("https://www.mentalroutine.com/teams"), "/teams staat in de sitemap");
 
-  // Teamvoorbeelden op /samples: verborgen zonder preview, zichtbaar met ?preview=teams
+  // Link naar /teams in het footermenu van de homepage (NL + EN); de QuickScan-funnel zelf is niet veranderd
+  console.log("\n== homepage: footerlink Teams");
+  for (const lang of ["nl", "en"]) {
+    await page.goto(`${BASE}/?lang=${lang}`, { waitUntil: "networkidle" });
+    const link = page.locator("footer nav a", { hasText: /^Teams$/ });
+    ok((await link.count()) === 1 && (await link.getAttribute("href")) === `/teams?lang=${lang}`, `homepage ${lang}: footermenu heeft 'Teams' → /teams?lang=${lang}`);
+    ok((await page.locator('a[href^="/teams"]').count()) === 1, `homepage ${lang}: precies één link naar /teams (alleen de footer; hero en navigatie ongewijzigd)`);
+  }
+  await page.goto(`${BASE}/?lang=nl`, { waitUntil: "networkidle" });
+  await page.locator("footer nav a", { hasText: /^Teams$/ }).click();
+  await page.waitForURL(/\/teams\?lang=nl/);
+  ok((await page.locator("h1").innerText()).includes("Wat spreekt jullie team af"), "de footerlink opent de teampagina in het Nederlands");
+
+  // Teamvoorbeelden op /samples: zichtbaar zonder ?preview=teams (TEAMS_LIVE = true)
   console.log("\n== /samples teamvoorbeelden");
   const fout = [];
   page.on("pageerror", (e) => fout.push(String(e)));
   const eerste = () => page.locator("#viewer img").first().getAttribute("src");
   await page.goto(`${BASE}/samples?lang=nl`, { waitUntil: "networkidle" });
-  ok((await page.locator("#sample-kind").count()) === 0 && (await page.locator("#team-samples").count()) === 0, "zonder preview: geen teamsectie op /samples");
-  ok(!/teamrapport/i.test(await page.locator("main").innerText()), "zonder preview: het woord teamrapport staat nergens op /samples");
+  ok((await page.locator("#sample-kind").count()) === 1, "zonder preview: keuze 'Drie golfers / Teamrapport' op /samples");
+  ok((await eerste()) === "/samples/alex/quickscan-nl/p01.webp" && (await page.locator("#team-samples").count()) === 0, "de bestaande voorbeelden staan nog steeds voorop (Alex' QuickScan)");
   await page.goto(`${BASE}/samples?lang=nl&report=team&team=h27&doc=annex`, { waitUntil: "networkidle" });
-  ok((await page.locator("#team-samples").count()) === 0 && (await eerste()) === "/samples/alex/quickscan-nl/p01.webp", "zonder preview: een teamlink toont gewoon Alex' QuickScan");
-  await page.goto(`${BASE}/samples?lang=nl&preview=teams`, { waitUntil: "networkidle" });
-  ok((await page.locator("#sample-kind").count()) === 1, "met ?preview=teams: keuze 'Drie golfers / Teamrapport'");
-  ok((await eerste()) === "/samples/alex/quickscan-nl/p01.webp", "met preview: de bestaande voorbeelden staan nog steeds voorop");
+  await page.waitForSelector('#viewer img[src="/samples/team/h27/annex-nl/p01.webp"]');
+  ok((await page.locator("#team-samples").count()) === 1, "zonder preview: een teamlink opent het teamvoorbeeld (h27, bijlage)");
+  await page.goto(`${BASE}/samples?lang=nl`, { waitUntil: "networkidle" });
   const titelGolfers = await page.title();
   ok(/Three Golfers/.test(titelGolfers), `documenttitel bij de golfers ongewijzigd (${titelGolfers})`);
   await page.locator("#sample-kind").getByRole("tab", { name: "Teamrapport" }).click();
   await page.waitForTimeout(200);
   ok((await page.title()).startsWith("Voorbeeld teamrapport"), `documenttitel volgt de teamvoorbeelden (${await page.title()})`);
   ok((await page.locator("#team-samples [data-team]").count()) === 5 && (await page.locator("#team-samples [data-doc]").count()) === 2, "teamsectie: vijf smaken en twee documenten");
-  ok(/report=team/.test(page.url()) && /team=h18/.test(page.url()) && /preview=teams/.test(page.url()), `de keuze staat in het adres (${page.url()})`);
+  ok(/report=team/.test(page.url()) && /team=h18/.test(page.url()) && !/preview=/.test(page.url()), `de keuze staat in het adres, zonder preview (${page.url()})`);
   await page.locator("#sample-kind").getByRole("tab", { name: "Drie golfers" }).click();
   ok((await eerste()) === "/samples/alex/quickscan-nl/p01.webp" && !/team=/.test(page.url()), "terug naar de golfers");
   await page.waitForTimeout(200);
@@ -260,7 +283,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
   for (const lang of ["nl", "en"]) {
     for (const smaak of Object.keys(PAGINAS)) {
       for (const doc of ["report", "annex"]) {
-        await page.goto(`${BASE}/samples?report=team&team=${smaak}&doc=${doc}&lang=${lang}&preview=teams`, { waitUntil: "domcontentloaded" });
+        await page.goto(`${BASE}/samples?report=team&team=${smaak}&doc=${doc}&lang=${lang}`, { waitUntil: "domcontentloaded" });
         const map = `/samples/team/${smaak}/${doc}-${lang}`;
         await page.waitForSelector(`#viewer img[src="${map}/p01.webp"]`);   // de deep link schakelt na het laden naar het team
         const srcs = await page.locator("#viewer img").evaluateAll((els) => els.map((e) => e.getAttribute("src")));
@@ -274,13 +297,13 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       }
     }
   }
-  await page.goto(`${BASE}/samples?report=team&team=h18&doc=annex&lang=en&preview=teams`, { waitUntil: "networkidle" });
+  await page.goto(`${BASE}/samples?report=team&team=h18&doc=annex&lang=en`, { waitUntil: "networkidle" });
   const st = await page.locator("main").innerText();
   ok(st.includes("Only the pro receives this annex; the captain and the team do not."), "EN: regel bij de bijlage");
   ok((await page.title()).startsWith("Sample Team Reports"), `EN: documenttitel van de teamvoorbeelden (${await page.title()})`);
   ok(st.includes("The teams are made up, the reports are real output"), "EN: de teams zijn verzonnen, de rapporten echt");
   ok(!st.includes("—") && !/koppel|opstelling|pairing|line-?up/i.test(st), "teamsectie: geen gedachtestreepjes of afgekeurde woorden");
-  await page.goto(`${BASE}/samples?report=team&team=h18&doc=annex&lang=nl&preview=teams`, { waitUntil: "networkidle" });
+  await page.goto(`${BASE}/samples?report=team&team=h18&doc=annex&lang=nl`, { waitUntil: "networkidle" });
   ok((await page.locator("main").innerText()).includes("Alleen de pro krijgt deze bijlage; de captain en het team niet."), "NL: regel bij de bijlage");
   ok(fout.length === 0, `geen fouten op /samples ${fout.slice(0, 2).join(" | ")}`);
   await browser.close();

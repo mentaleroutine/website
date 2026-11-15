@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/samples`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/methodology`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/pro-program`, changeFrequency: "monthly", priority: 0.7 },
-    // /teams pas in de sitemap als de werving start (één schakelaar: TEAMS_LIVE in lib/teams-text.ts).
+    // /teams staat in de sitemap zolang de schakelaar TEAMS_LIVE (lib/teams-text.ts) aan staat (sinds 15-11-2026).
     ...(TEAMS_LIVE ? [{ url: `${BASE}/teams`, changeFrequency: "monthly" as const, priority: 0.8 }] : []),
   ];
 }
