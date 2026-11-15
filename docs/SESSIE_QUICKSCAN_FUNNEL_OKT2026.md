@@ -433,7 +433,7 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
      in `scripts/e2e/teams-check.js`).
   4. De twee citaten op `/teams` (`get.quotes` in `teams-text.ts`) komen letterlijk uit `h18`: nalopen of ze nog in het
      nieuwe rapport staan.
-  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (344 controles: `/teams` NL/EN
+  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (357 controles: `/teams` NL/EN
      desktop/mobiel, teamblok, en alle vijf smaken × twee documenten × twee talen: aantal pagina's, pagina 1 geladen,
      PDF 200) en `BASE=http://localhost:3123 node scripts/e2e/funnel-check.js`.
 - **Let op**: het Engelse teamrapport gebruikt zelf het woord "line-up" (in de pagina-afbeeldingen). De regel dat dat
@@ -482,7 +482,13 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
   - Engels: review, comes out highest, working days, worth $79, reading guide, lesson programme, nieuwe titel.
   - Let op: de test verbiedt het woord "opstelling" in paginatekst; er staat daarom "voorbeeldindeling van de paren" /
     "order of the pairs".
-  Test: `teams-check.js` nu **344 controles**. **Nog te doen**: de voorbeeld-PDF's in `public/samples/team/` zijn van
+  **Daarna: twee vinkjes bij de teamlink (besluit opdrachtgever, in de portal gebouwd; derde lokale commit)**. Vinkje 1
+  (verplicht): meedoen, uitkomst in het teamrapport in woorden, de pro ziet de scores. Vinkje 2 (niet verplicht, nooit
+  voorgevinkt): de pro mag ook het volledige persoonlijke rapport openen; later in de portal aan- of uit te zetten. De
+  pagina zegt dat nu zo (kaarten "De pro", "Je eigen rapport", "Stoppen met delen", de voetregel, twee FAQ's, stap 6 van
+  het pro-blok en het teamblok op `/pro-program`); de formulering van één vinkje uit de vorige commit is weg en de test
+  keurt haar af.
+  Test: `teams-check.js` nu **357 controles**. **Nog te doen**: de voorbeeld-PDF's in `public/samples/team/` zijn van
   vóór ronde 15 (daarin staat nog een teamavond van een uur en "Wij kozen" op het kaartje): opnieuw maken en plaatsen
   (stappen hierboven) vóór `TEAMS_LIVE = true`.
 

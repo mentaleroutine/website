@@ -103,9 +103,15 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       // Toestemming zoals het vinkje bij de teamlink: het persoonlijke rapport is ook voor de pro te openen
       ok(!/kies je zelf|je kiest zelf of je dat|blijft van jou|stays yours|is your choice|you choose whether to share/i.test(tekst), "niet meer 'delen met de pro kies je zelf' (klopt niet met het vinkje bij de teamlink)");
       ok(lang === "nl"
-        ? zie.includes("Het team en de captain zien je persoonlijke rapport niet") && zie.includes("De pro kan het openen zolang je deelt") && zie.includes("Stoppen met delen kan altijd in de portal")
-        : zie.includes("The team and the captain do not see your personal report") && zie.includes("The pro can open it for as long as you share") && zie.includes("You can stop sharing in the portal at any time"),
-        "wie ziet wat: team en captain zien het persoonlijke rapport niet, de pro wel zolang je deelt, stoppen kan altijd");
+        ? zie.includes("Het team en de captain zien je persoonlijke rapport nooit") && zie.includes("jij kiest zelf of de pro dat mag openen") && zie.includes("Dat vink je apart aan bij de teamlink") && zie.includes("later in de portal aan- of uitzetten")
+        : zie.includes("The team and the captain never see your personal report") && zie.includes("you decide yourself whether the pro may open it") && zie.includes("You tick that separately at the team link") && zie.includes("switch it on or off later in the portal"),
+        "wie ziet wat: twee vinkjes; het volledige persoonlijke rapport deel je apart met de pro, aan- en uitzetten in de portal");
+      ok(!/resultaten en je rapport met de pro deelt|share your results and your report with the pro|zolang je deelt|for as long as you share|het persoonlijke rapport met de pro\. Dat vink|and your personal report with the pro\. You tick/i.test(await page.locator("main").textContent()), "de oude formulering van één vinkje (resultaten en rapport met de pro) is weg");
+      ok(lang === "nl"
+        ? zie.includes("Bij de teamlink staan twee vinkjes") && zie.includes("Het tweede is niet verplicht") && zie.includes("De pro ziet je scores en je rapport dan niet meer") && zie.includes("alleen openen als jij dat apart aanvinkt")
+        : zie.includes("The team link has two tick boxes") && zie.includes("The second is optional") && zie.includes("The pro then no longer sees your scores or your report") && zie.includes("only open your full personal report if you tick that separately"),
+        "wie ziet wat: voetregel met de twee vinkjes; stoppen met delen = pro ziet scores en rapport niet meer");
+      ok(proBlok.includes(lang === "nl" ? "alleen openen als die speler dat apart met je deelt" : "if that player shares it with you separately"), "pro-blok: het volledige rapport alleen van spelers die dat apart delen");
       ok(lang === "nl"
         ? zie.includes("of dat je die hebt overgeslagen") && zie.includes("je handicap kan in een voorbeeldindeling van de paren staan") && zie.includes("De beheerder van MentalRoutine kan hem ook openen")
         : zie.includes("or the fact that you skipped it") && zie.includes("your handicap may appear in a sample arrangement of the pairs") && zie.includes("The MentalRoutine administrator can open it as well"),
@@ -217,6 +223,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
   ok(blok.includes("Reken op een paar avonden") && blok.includes("anderhalf tot twee uur, plus je voorbereiding") && blok.includes("in deze volgorde"), "teamblok: de stappen in volgorde met eerlijke tijden");
   ok(blok.includes("Een teamrapport telt niet mee voor die vijf") && blok.includes("Jouw lessen zitten daar niet in"), "teamblok: teamrapport telt niet mee; lessen niet in de teamprijs");
   ok(!/teamcode|paar minuten/i.test(blok), "teamblok: geen teamcode, geen 'een paar minuten'");
+  ok(blok.includes("alleen openen als die speler dat apart met je deelt"), "teamblok: het volledige rapport alleen van spelers die dat apart delen");
   ok(blok.includes("ruwweg tien uur") && blok.includes("drie lessen van een uur en één van twee uur") && blok.includes("per thema een teamles in plaats van de lessenreeks"), "teamblok: tien uur, lessenreeks 3 + 1, uitzondering eigen thema");
   ok(!/koppel|opstelling|pairing|line-?up/i.test(blok) && !blok.includes("—"), "teamblok: geen afgekeurde woorden of gedachtestreepjes");
   const sm = await (await page.request.get(`${BASE}/sitemap.xml`)).text();
