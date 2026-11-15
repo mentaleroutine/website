@@ -71,7 +71,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             "We gebruiken je gegevens om het assessment af te nemen, je rapporten te maken en je account te beheren.",
             "Je scores en rapporten zijn van jou. Een golfpro, captain of teamgenoot ziet alleen iets als jij dat zelf aanzet, en je kunt dat weer stoppen.",
             "We verkopen je gegevens niet en gebruiken ze niet voor advertenties.",
-            "Je kunt je gegevens inzien, laten verbeteren of laten verwijderen door te mailen naar support@mentalroutine.com.",
+            "Je kunt je account zelf verwijderen in de portal. Je gegevens inzien of laten verbeteren kan door te mailen naar support@mentalroutine.com.",
           ),
         ] },
         { h: "2. Welke gegevens we verwerken", blocks: [
@@ -151,7 +151,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
         ] },
         { h: "8. Hoe lang we gegevens bewaren", blocks: [
           ul(
-            "**Account, antwoorden, scores en rapporten:** zolang je account bestaat. Vraag je om verwijdering, dan verwijderen we ze binnen 30 dagen.",
+            "**Account, antwoorden, scores en rapporten:** zolang je account bestaat. Verwijder je je account, dan zijn je naam, je e-mailadres, je geboortedatum en je rapporten binnen 24 uur weg. Je antwoorden, scores en handicap bewaren we daarna zonder naam of e-mailadres, voor onderzoek en statistiek; ze zijn dan niet meer tot jou te herleiden.",
             "**Logboeken** van handelingen in de portal: 24 maanden.",
             "**QuickScan-gegevens met e-mailadres:** tot je vraagt ze te verwijderen. De e-mailreeks stopt als je je uitschrijft of iets koopt.",
             "**Gegevens over betalingen:** zeven jaar, omdat de belastingwet dat vraagt.",
@@ -171,7 +171,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             "je gegevens in een gangbaar formaat mee te krijgen;",
             "een gegeven toestemming in te trekken. Dat werkt voor de toekomst.",
           ),
-          p("Stuur je verzoek naar support@mentalroutine.com. We reageren binnen een maand. Een account verwijderen kan op dit moment alleen via dit adres."),
+          p("Je account verwijderen doe je zelf in de portal: klik rechtsboven op je naam en kies 'Account verwijderen'. Voor de andere verzoeken mail je naar support@mentalroutine.com; we reageren binnen een maand. Een document dat een pro of team al van je heeft (een teamrapport of lesprogramma) blijft bij hen bestaan; daarin kan je voornaam staan. Wil je dat ook dat wordt verwijderd, mail ons dan. Gegevens over betalingen blijven bij Lemon Squeezy bewaard zolang de wet dat vraagt. Een golfprofessional verwijdert het account via support, omdat er leerlingen of teams aan kunnen hangen."),
           p("Ben je het niet eens met hoe we met je gegevens omgaan, dan horen we dat graag eerst zelf. Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens (autoriteitpersoonsgegevens.nl)."),
         ] },
         { h: "11. Leeftijd", blocks: [
@@ -199,7 +199,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             "We use your data to run the assessment, to create your reports and to manage your account.",
             "Your scores and reports are yours. A golf pro, captain or teammate only sees something if you switch that on yourself, and you can stop it again.",
             "We do not sell your data and do not use it for advertising.",
-            "You can see your data, have it corrected or have it deleted by emailing support@mentalroutine.com.",
+            "You can delete your account yourself in the portal. To see your data or have it corrected, email support@mentalroutine.com.",
           ),
         ] },
         { h: "2. Which data we process", blocks: [
@@ -279,7 +279,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
         ] },
         { h: "8. How long we keep data", blocks: [
           ul(
-            "**Account, answers, scores and reports:** for as long as your account exists. If you ask for deletion, we delete them within 30 days.",
+            "**Account, answers, scores and reports:** for as long as your account exists. If you delete your account, your name, your e-mail address, your date of birth and your reports are gone within 24 hours. After that we keep your answers, scores and handicap without a name or e-mail address, for research and statistics; they can then no longer be traced back to you.",
             "**Logs** of actions in the portal: 24 months.",
             "**QuickScan data with an email address:** until you ask us to delete it. The series of emails stops when you unsubscribe or buy something.",
             "**Data about payments:** seven years, because tax law requires it.",
@@ -299,7 +299,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             "receive your data in a commonly used format;",
             "withdraw consent you have given. That applies to the future.",
           ),
-          p("Send your request to support@mentalroutine.com. We respond within a month. At present an account can only be deleted through this address."),
+          p("You delete your account yourself in the portal: click your name at the top right and choose 'Delete account'. For the other requests, email support@mentalroutine.com; we respond within a month. A document that a pro or team already holds about you (a team report or lesson programme) remains with them; it may contain your first name. If you want that removed as well, email us. Payment records remain with Lemon Squeezy for as long as the law requires. A golf professional deletes the account through support, because students or teams may depend on it."),
           p("If you disagree with how we handle your data, we would like to hear it from you first. You can also lodge a complaint with the Dutch Data Protection Authority, the Autoriteit Persoonsgegevens (autoriteitpersoonsgegevens.nl)."),
         ] },
         { h: "11. Age", blocks: [
