@@ -435,7 +435,7 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
      in `scripts/e2e/teams-check.js`).
   4. De twee citaten op `/teams` (`get.quotes` in `teams-text.ts`) komen letterlijk uit `h18`: nalopen of ze nog in het
      nieuwe rapport staan.
-  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (397 controles: `/teams` NL/EN
+  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (413 controles: `/teams` NL/EN
      desktop/mobiel, teamblok, en alle vijf smaken × twee documenten × twee talen: aantal pagina's, pagina 1 geladen,
      PDF 200) en `BASE=http://localhost:3123 node scripts/e2e/funnel-check.js`.
 - **Let op**: het Engelse teamrapport gebruikt zelf het woord "line-up" (in de pagina-afbeeldingen). De regel dat dat
@@ -490,7 +490,7 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
   pagina zegt dat nu zo (kaarten "De pro", "Je eigen rapport", "Stoppen met delen", de voetregel, twee FAQ's, stap 6 van
   het pro-blok en het teamblok op `/pro-program`); de formulering van één vinkje uit de vorige commit is weg en de test
   keurt haar af.
-  Test: `teams-check.js` nu **397 controles**. **Nog te doen**: de voorbeeld-PDF's in `public/samples/team/` zijn van
+  Test: `teams-check.js` nu **413 controles**. **Nog te doen**: de voorbeeld-PDF's in `public/samples/team/` zijn van
   vóór ronde 15 (daarin staat nog een teamavond van een uur en "Wij kozen" op het kaartje): opnieuw maken en plaatsen
   (stappen hierboven) vóór `TEAMS_LIVE = true`. (Gedaan: de voorbeelden zijn op 15-11 opnieuw gemaakt, commits
   `20020cd` en `71ffa22`.)
@@ -507,7 +507,7 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
   het team per mail aan bij support@mentalroutine.com (vanaf 1 december 2026), wij maken de teamlink, en bij de
   aanmelding hoort het team hoe het afrekenen loopt. Nieuwe vraag "Wanneer kunnen we beginnen?". 18+: "Iedere speler
   bevestigt dat bij het aanmelden" (het verplichte vinkje begint met "Ik ben 18 jaar of ouder…").
-  Test: `teams-check.js` gaat nu uit van de aan-stand (**397 controles**); zet je de schakelaar uit, dan falen de
+  Test: `teams-check.js` gaat nu uit van de aan-stand (**413 controles**); zet je de schakelaar uit, dan falen de
   controles op vindbaarheid en links. **Aanmeldingen komen dus per mail binnen bij support@ en vragen handwerk**
   (teamlink maken in de portal, afrekenen regelen) tot de betaalroute er is.
 - **Teamprijs in dollars (besluit opdrachtgever 15-11-2026: de betaalprovider rekent altijd in dollars af)**. Overal op
@@ -518,7 +518,21 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
   Amerikaanse dollars. Betaal je in euro's, dan rekent je bank het bedrag om."). De aanmeldroute is NIET veranderd (per
   mail via de pro); over een betaallink of PRO Admin als plek om een team aan te maken staat niets op de pagina, tot die
   route met een echte betaling is getest. Elders in `src/` stonden geen teamprijzen in euro's. Test: geen euroteken op
-  `/teams` en in het teamblok, de dollarbedragen, één betaler (**397 controles**).
+  `/teams` en in het teamblok, de dollarbedragen, één betaler (397 controles).
+- **De echte betaalroute op de pagina (15-11-2026, nadat de opdrachtgever de route in de portal met een echte betaling en
+  terugbetaling had getest)**. De tussenoplossing "de pro meldt het team per mail bij ons aan, wij maken de teamlink, bij
+  de aanmelding hoor je hoe het afrekenen loopt" is overal vervangen (wat daarover hierboven staat, is de oude stand).
+  Nu: de pro vraagt toegang aan tot het Pro-programma → maakt het team aan in PRO Admin (teamnaam en 4 t/m 12 spelers;
+  de portal toont direct de prijs) → de portal maakt één betaallink voor het hele team; de pro betaalt zelf of stuurt hem
+  door naar de captain (de betaler heeft geen account nodig; Lemon Squeezy, in dollars) → na de betaling werkt de
+  teamlink met zoveel plekken als er betaald zijn → de spelers maken een account, zetten de twee vinkjes en doen het
+  assessment; zij rekenen zelf niets af. Speler erbij = alleen het verschil, nooit meer dan het plafond (vijf betaald
+  $75, naar zeven: $24 bij). Onbenutte plekken worden niet terugbetaald (één zin in de FAQ). **Aanmelden kan nu**:
+  "1 december 2026" staat nergens meer als startmoment; de introductieprijs geldt "bij aanmelding t/m 28 februari 2027".
+  Pro-blok: negen stappen (stap 4 "Maak het team aan in PRO Admin en regel de betaling", stap 5 "Stuur de teamlink naar
+  de spelers"). Nieuwe vragen "Hoe werkt het betalen?" en "Wat als er later een speler bij komt?". support@ blijft het
+  adres voor vragen en teams zonder pro. Nog steeds geen privacyverklaring of voorwaarden, dus geen link. Test: het woord
+  "betaallink" moet er nu staan; de oude route en "1 december" worden afgekeurd (**413 controles**).
 
 ---
 

@@ -61,10 +61,13 @@
 - **Teampagina `/teams`** (teamaanbod competitieteams, NL + EN, 14/15-11-2026; **ZICHTBAAR sinds 15-11-2026** op
   uitdrukkelijk verzoek van de opdrachtgever: één schakelaar `TEAMS_LIVE` in `src/lib/teams-text.ts` = `true` → index/follow,
   in de sitemap, link "Teams" in het footermenu van de homepage, teamblok op `/pro-program` en teamvoorbeelden op `/samples`
-  zichtbaar, links zonder `?preview=teams`; `false` verbergt alles weer). **Nog niet gebouwd, dus niet suggereren**: betaalroute
-  per speler in de portal, pro start zelf een team, privacyverklaring/voorwaarden. De route op de pagina: pro vraagt toegang
-  aan tot het Pro-programma (kan nu al) → meldt het team per mail aan bij support@ (vanaf 1 december 2026) → wij maken de
-  teamlink → bij de aanmelding hoort het team hoe het afrekenen loopt. Alle tekst en de besluiten staan
+  zichtbaar, links zonder `?preview=teams`; `false` verbergt alles weer). **Bestaat niet, dus niet suggereren**:
+  privacyverklaring/voorwaarden. **De route op de pagina (sinds 15-11-2026, in de portal getest met een echte betaling en
+  terugbetaling)**: pro vraagt toegang aan tot het Pro-programma → maakt het team aan in PRO Admin (teamnaam, 4 t/m 12
+  spelers) → de portal maakt één betaallink voor het hele team (pro betaalt zelf of stuurt hem naar de captain; Lemon
+  Squeezy, dollars) → na de betaling werkt de teamlink → spelers doen het assessment en rekenen zelf niets af. Speler erbij =
+  alleen het verschil; onbenutte plekken niet terugbetaald. Aanmelden kan nu; "1 december" staat nergens meer als startmoment;
+  de oude route "per mail bij ons aanmelden" is vervallen (de test keurt beide af). support@ = vragen en teams zonder pro. Alle tekst en de besluiten staan
   bovenaan `teams-text.ts` (via een PGA-pro, 18+, **$15/$99 t/m 28-2-2027 daarna $49/$299: teamprijzen in DOLLARS sinds 15-11-2026**, één betaler per team (pro of captain), geen
   resultaatclaims, "paren" en niet de woorden die de test afkeurt, geen gedachtestreepjes). Opbouw sinds 15-11 (na
   leesronde 15, **lokaal gecommit, nog niet gepusht**): hero met een prijsregel direct onder de titel (op een telefoon op het
@@ -87,7 +90,7 @@
   `/samples?report=team&team=h18|h27|h36|small|even&doc=report|annex&lang=nl|en[&preview=teams]`. Het teamblok op
   `/pro-program` (ook achter de schakelaar; `?preview=teams`) linkt naar de voorbeeldbijlage. Verandert het teamrapport in de
   portal, dan de lijsten/citaten in `teams-text.ts` en de voorbeelden meewijzigen. Test: `node scripts/e2e/teams-check.js
-  http://localhost:3123` (397 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn op 15-11-2026 opnieuw gemaakt
+  http://localhost:3123` (413 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn op 15-11-2026 opnieuw gemaakt
   met de portalcode na ronde 15–17 en de twee vinkjes (portal `538e1eb`), gecontroleerd en geplaatst.**
 - **Testen:** `scripts/e2e/funnel-check.js` (Playwright, 56 controles incl. `/samples`, portal geblokkeerd) — draai dit na elke
   wijziging aan quiz.html / homepage / navbar / redirects (lege-QuickScan-incident 15-10-2026).

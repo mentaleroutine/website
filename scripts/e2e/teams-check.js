@@ -34,7 +34,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       ok(!(await page.locator("main").textContent()).includes("€") && !/\bEUR\b/.test(tekst), "geen euroteken meer: de teamprijs is in dollars");
       ok(tekst.includes(lang === "nl" ? "Vier spelers: samen $60. Zes spelers: samen $90. Zeven spelers of meer: samen $99." : "Four players: $60 in total. Six players: $90 in total. Seven players or more: $99 in total."), "rekenvoorbeelden $60 / $90 / $99");
       ok(tekst.includes(lang === "nl" ? "Eén persoon rekent af voor het hele team: de pro of de captain." : "One person pays for the whole team: the pro or the captain."), "één betaler: de pro of de captain");
-      ok(!/betaallink|payment link/i.test(await page.locator("main").textContent()), "niets over een betaallink (nog niet getest)");
+      ok(/betaallink|payment link/i.test(await page.locator("main").textContent()), "de betaallink staat op de pagina (route getest met een echte betaling)");
       ok(tekst.includes("support@mentalroutine.com"), "contactregel zonder pro");
       ok(lang === "nl" ? tekst.includes("18 jaar en ouder") : tekst.includes("aged 18 and over"), "18+");
       ok(lang === "nl" ? tekst.includes("Stuur dit naar je pro") : tekst.includes("Send this to your pro"), `taal = ${lang}`);
@@ -61,7 +61,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       const feiten = await page.locator("#prijs-feiten").innerText();
       ok(feiten.includes(lang === "nl" ? "Niet inbegrepen: de lessen van de pro" : "Not included: the pro's lessons"), "lessen van de pro zitten niet in de prijs");
       ok(feiten.includes("$39") && feiten.includes(lang === "nl" ? "vrijwillig" : "voluntary"), "herhaalmeting: vrijwillig, $39, niet inbegrepen");
-      ok(feiten.includes(lang === "nl" ? "Bij de aanmelding hoor je hoe het afrekenen loopt" : "you hear how payment works"), "afrekenen: geen verzonnen mechaniek");
+      ok(feiten.includes(lang === "nl" ? "krijgt één betaallink voor het hele team. De spelers rekenen zelf niets af." : "gets one payment link for the whole team. The players do not pay anything themselves."), "prijsfeiten: één betaallink voor het hele team, spelers rekenen niets af");
       ok(!/teamcode|team code/i.test(tekst), "geen teamcode (niet gebouwd)");
 
       // Eerlijke tijd voor het team
@@ -75,7 +75,12 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
 
       // Het blok voor de pro: eerst wat het oplevert, dan de stappen met de tijd, dan de kosten
       ok((await page.locator("#pro-oplevert li").count()) === 3, "pro-blok: drie regels 'dit levert het je op'");
-      ok((await page.locator("#pro-stappen > li").count()) === 8, "pro-blok: acht stappen in volgorde");
+      const proBlokVroeg = await page.locator("#voor-de-pro").innerText();
+      ok((await page.locator("#pro-stappen > li").count()) === 9, "pro-blok: negen stappen in volgorde");
+      ok(lang === "nl"
+        ? proBlokVroeg.includes("Maak het team aan in PRO Admin en regel de betaling") && proBlokVroeg.includes("Je bent dus geen kassier.") && proBlokVroeg.includes("Stuur de teamlink naar de spelers") && proBlokVroeg.includes("4 tot en met 12")
+        : proBlokVroeg.includes("Set the team up in PRO Admin and arrange the payment") && proBlokVroeg.includes("So you do not have to collect money.") && proBlokVroeg.includes("Send the team link to the players") && proBlokVroeg.includes("4 to 12"),
+        "pro-blok: team aanmaken in PRO Admin en betaling regelen, daarna de teamlink naar de spelers");
       const proBlok = await page.locator("#voor-de-pro").innerText();
       const kopStappen = lang === "nl" ? "Dit doe je, in deze volgorde, en dit kost het je" : "This is what you do, in this order, and what it costs you";
       ok(proBlok.includes(kopStappen), `pro-blok: kop '${kopStappen}'`);
@@ -162,15 +167,21 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       ok(/report=team&team=h18&doc=annex/.test(vbPro || "") && !/preview=/.test(vbPro || ""), `voorbeeld van de bijlage in het pro-blok, zonder preview → ${vbPro}`);
       ok((await page.locator('main a[href*="preview=teams"]').count()) === 0, "nergens meer een link met ?preview=teams");
 
-      // De route zoals hij nu echt is: pro vraagt toegang aan (kan nu), meldt het team per mail aan (vanaf 1 december), wij maken de teamlink
+      // De route zoals hij nu echt is (getest met een echte betaling): toegang aanvragen -> team aanmaken in PRO Admin -> betaallink -> teamlink
       const hele = await page.locator("main").textContent();
       ok(lang === "nl"
-        ? hele.includes("Een team aanmelden kan vanaf 1 december 2026. Jullie pro kan nu al toegang aanvragen.") && hele.includes("meldt de pro jullie team per mail bij ons aan. Wij maken de teamlink") && hele.includes("Mail ons op support@mentalroutine.com welk team je wilt aanmelden")
-        : hele.includes("A team can be signed up from 1 December 2026. Your pro can apply for access now.") && hele.includes("the pro signs your team up with us by email. We create the team link") && hele.includes("Email us at support@mentalroutine.com to say which team you want to sign up"),
-        "route: aanmelden per mail vanaf 1 december 2026, wij maken de teamlink, pro kan nu al toegang aanvragen");
+        ? hele.includes("Aanmelden kan nu. De introductieprijs geldt bij aanmelding t/m 28 februari 2027.") && hele.includes("maakt daarna jullie team aan in PRO Admin. De portal maakt één betaallink voor het hele team: de pro betaalt zelf of stuurt de betaallink door naar de captain.") && hele.includes("Betalen gaat via onze betaalprovider Lemon Squeezy, in dollars.") && hele.includes("de betaler heeft geen account nodig")
+        : hele.includes("You can sign up now. The introductory price applies when you sign up by 28 February 2027.") && hele.includes("then sets your team up in PRO Admin. The portal creates one payment link for the whole team: the pro pays, or passes the payment link on to the captain.") && hele.includes("Payment goes through our payment provider Lemon Squeezy, in US dollars.") && hele.includes("the payer does not need an account"),
+        "route: aanmelden kan nu; team aanmaken in PRO Admin, één betaallink (pro of captain), Lemon Squeezy in dollars");
+        ok(!/1 december|1 December|per mail bij ons aan|with us by email|hoe het afrekenen loopt|how payment works|paar berichten|a few messages/i.test(hele), "de oude route is weg (per mail aanmelden, 1 december als startmoment, 'je hoort hoe het afrekenen loopt')");
+        ok(lang === "nl"
+          ? hele.includes("Dan betaalt het team alleen het verschil, en nooit meer dan het maximum ($99 bij de introductieprijs).") && hele.includes("is er voor vijf spelers betaald ($75) en worden het er zeven, dan komt er $24 bij") && hele.includes("Onbenutte plekken worden niet terugbetaald.") && hele.includes("met zoveel plekken als er betaald zijn")
+          : hele.includes("Then the team only pays the difference, and never more than the maximum ($99 at the introductory price).") && hele.includes("if five players have been paid for ($75) and the team grows to seven, $24 is added") && hele.includes("Unused places are not refunded.") && hele.includes("with as many places as have been paid for"),
+          "speler erbij = alleen het verschil ($75 naar zeven spelers = $24 bij); onbenutte plekken niet terugbetaald");
+        ok(hele.includes(lang === "nl" ? "Hoe werkt het betalen?" : "How does payment work?") && hele.includes(lang === "nl" ? "Wat als er later een speler bij komt?" : "What if a player joins later?"), "nieuwe vragen: hoe werkt het betalen, speler erbij");
       ok(hele.includes(lang === "nl" ? "Wanneer kunnen we beginnen?" : "When can we start?"), "vraag: wanneer kunnen we beginnen");
       ok(hele.includes(lang === "nl" ? "Iedere speler bevestigt dat bij het aanmelden" : "Every player confirms that when signing up"), "18+: de speler bevestigt het bij het aanmelden");
-      ok(!/vanuit je dashboard|from your dashboard|start het team\b|starts the team|privacyverklaring|privacy policy|algemene voorwaarden|terms and conditions|betaal(t)? (online|in de portal)|pay online|checkout/i.test(hele), "niets over wat er nog niet is (zelf een team starten, betalen in de portal, privacyverklaring, voorwaarden)");
+      ok(!/privacyverklaring|privacy policy|privacy statement|algemene voorwaarden|terms and conditions|voorwaardenpagina/i.test(hele), "nog steeds niets over een privacyverklaring of voorwaarden (die bestaan niet)");
       const valuta = await page.locator("#valuta").innerText();
       ok(valuta.includes(lang === "nl" ? "Alle prijzen op deze pagina zijn in Amerikaanse dollars" : "All prices on this page are in US dollars") && tekst.includes("$79"), "valuta: één regel, alle prijzen in dollars");
 
@@ -234,10 +245,10 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
   const bijlage = await page.locator("#team-annex-sample").getAttribute("href");
   ok(/\/samples\?report=team&team=h18&doc=annex&lang=nl/.test(bijlage || "") && !/preview=/.test(bijlage || ""), `teamblok: link naar de voorbeeldbijlage, zonder preview → ${bijlage}`);
   const blok = await page.locator("#teams").innerText();
-  ok(blok.includes("Je meldt het team per mail bij ons aan (support@mentalroutine.com, vanaf 1 december 2026). Wij maken de teamlink"), "teamblok: aanmelden per mail, wij maken de teamlink");
+  ok(blok.includes("Je maakt het team aan in PRO Admin: teamnaam en aantal spelers (4 tot en met 12). De portal maakt één betaallink voor het hele team") && !/per mail bij ons aan|1 december/i.test(blok), "teamblok: team aanmaken in PRO Admin, één betaallink; oude route weg");
   ok(blok.includes("lessenreeks van vier lessen") && blok.includes("scores per speler"), "teamblok: één zin over wat de pro krijgt");
   ok(blok.includes("Reken op een paar avonden") && blok.includes("anderhalf tot twee uur, plus je voorbereiding") && blok.includes("in deze volgorde"), "teamblok: de stappen in volgorde met eerlijke tijden");
-  ok(!blok.includes("€") && blok.includes("$15 per persoon") && blok.includes("$99 per team") && blok.includes("Eén persoon rekent af voor het hele team: jij of de captain."), "teamblok: prijs in dollars, één betaler, geen euroteken");
+  ok(!blok.includes("€") && blok.includes("$15 per speler") && blok.includes("$99 per team") && blok.includes("Eén persoon rekent af voor het hele team: jij of de captain."), "teamblok: prijs in dollars, één betaler, geen euroteken");
   ok(blok.includes("Een teamrapport telt niet mee voor die vijf") && blok.includes("Jouw lessen zitten daar niet in"), "teamblok: teamrapport telt niet mee; lessen niet in de teamprijs");
   ok(!/teamcode|paar minuten/i.test(blok), "teamblok: geen teamcode, geen 'een paar minuten'");
   ok(blok.includes("alleen openen als die speler dat apart met je deelt"), "teamblok: het volledige rapport alleen van spelers die dat apart delen");
