@@ -71,6 +71,8 @@
   (eerst wat het oplevert, dan "Dit doe je, in deze volgorde, en dit kost het je" in acht stappen met de tijd; feiten uit
   `pro-program-text.ts`) → FAQ (antwoorden staan altijd in de HTML, dichtgeklapt met `hidden`). Tijden eerlijk, niet
   optimistisch (aanwijzing opdrachtgever). Geen privacy- of voorwaardenpagina op de site, dus geen link.
+  **Toestemming = het vinkje bij de teamlink in de portal**: wie meedoet deelt de uitkomst binnen het team én het
+  persoonlijke rapport met de pro (te openen zolang de speler deelt); schrijf nooit "delen met de pro kies je zelf".
   `document.title` per taal in de pagina; de statische metadata blijft NL.
   **Teamvoorbeelden** op `/samples` achter dezelfde schakelaar (tot dan alleen met `?preview=teams`): vijf verzonnen teams ×
   teamrapport + bijlage voor de pro × NL/EN, manifest + teksten `src/lib/team-samples.ts`, bestanden
@@ -78,7 +80,7 @@
   `/samples?report=team&team=h18|h27|h36|small|even&doc=report|annex&lang=nl|en[&preview=teams]`. Het teamblok op
   `/pro-program` (ook achter de schakelaar; `?preview=teams`) linkt naar de voorbeeldbijlage. Verandert het teamrapport in de
   portal, dan de lijsten/citaten in `teams-text.ts` en de voorbeelden meewijzigen. Test: `node scripts/e2e/teams-check.js
-  http://localhost:3123` (295 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn van vóór ronde 15
+  http://localhost:3123` (344 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn van vóór ronde 15
   en moeten opnieuw vóór de pagina live gaat.**
 - **Testen:** `scripts/e2e/funnel-check.js` (Playwright, 56 controles incl. `/samples`, portal geblokkeerd) — draai dit na elke
   wijziging aan quiz.html / homepage / navbar / redirects (lege-QuickScan-incident 15-10-2026).

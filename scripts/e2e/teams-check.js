@@ -74,14 +74,21 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       const proBlok = await page.locator("#voor-de-pro").innerText();
       const kopStappen = lang === "nl" ? "Dit doe je, in deze volgorde, en dit kost het je" : "This is what you do, in this order, and what it costs you";
       ok(proBlok.includes(kopStappen), `pro-blok: kop '${kopStappen}'`);
-      const posOplevert = proBlok.search(lang === "nl" ? /dit levert het je op/i : /what it brings you/i);
+      const posOplevert = proBlok.search(lang === "nl" ? /dit levert het je op/i : /what.s in it for you/i);
       ok(posOplevert >= 0 && posOplevert < proBlok.indexOf(kopStappen), "pro-blok: wat het oplevert staat vóór de stappen");
       ok(lang === "nl"
         ? proBlok.includes("1 tot 3 werkdagen") && proBlok.includes("Reken op een paar avonden") && proBlok.includes("Een uur tot anderhalf uur") && proBlok.includes("Anderhalf tot twee uur, plus je voorbereiding")
-        : proBlok.includes("1 to 3 business days") && proBlok.includes("Allow a few evenings") && proBlok.includes("An hour to an hour and a half") && proBlok.includes("An hour and a half to two hours, plus your preparation"),
+        : proBlok.includes("one to three working days") && proBlok.includes("Allow a few evenings") && proBlok.includes("An hour to an hour and a half") && proBlok.includes("An hour and a half to two hours, plus your preparation"),
         "pro-blok: eerlijke tijden (toelating, methode leren, lezen, teamavond)");
       ok(proBlok.includes(lang === "nl" ? "Een teamrapport telt niet mee voor die vijf" : "A team report does not count towards those five"), "pro-blok: teamrapport telt niet mee voor de vijf gratis lesprogramma's");
       ok(proBlok.includes("$199") && proBlok.includes("$299"), "pro-blok: $199 / $299 zoals op /pro-program");
+      const totaal = await page.locator("#pro-totaal").innerText();
+      ok(totaal.includes(lang === "nl" ? "ruwweg tien uur" : "roughly ten hours"), "pro-blok: bij elkaar ruwweg tien uur voor het eerste team");
+      ok(lang === "nl"
+        ? proBlok.includes("drie lessen van een uur en één van twee uur") && proBlok.includes("een half uur tot een uur voorbereiding") && proBlok.includes("De teamavond kan ook zonder jou")
+        : proBlok.includes("three lessons of an hour and one of two hours") && proBlok.includes("half an hour to an hour of preparation") && proBlok.includes("can also go ahead without you"),
+        "pro-blok: lessenreeks 3 x 1 uur + 1 x 2 uur, voorbereiding per les, teamavond kan zonder de pro");
+      ok(!/Reken per les op een uur|Allow an hour per lesson/.test(proBlok), "pro-blok: niet meer 'reken per les op een uur'");
       ok(await page.evaluate(() => { const p = document.querySelector("#voor-de-pro"), f = document.querySelector("#vragen"); return !!(p && f && (p.compareDocumentPosition(f) & Node.DOCUMENT_POSITION_FOLLOWING)); }), "pro-blok staat vóór de veelgestelde vragen (niet pas onderaan)");
 
       // Wie ziet wat: zes kaarten, met niet meedoen / stoppen met delen / de teamvraag
@@ -89,9 +96,35 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       ok((await page.locator("#wie-ziet-wat h3").count()) === 6, "wie ziet wat: zes kaarten");
       ok(lang === "nl"
         ? zie.includes("Niemand is verplicht") && zie.includes("vanaf vier spelers") && zie.includes("een rapport dat al gemaakt is, blijft bestaan") && zie.includes("telling voor het hele team, zonder namen") && zie.includes("De pro ziet het antwoord per speler")
-        : zie.includes("Nobody has to") && zie.includes("from four players") && zie.includes("a report that has already been made stays as it is") && zie.includes("count for the whole team, without names") && zie.includes("The pro sees the answer per player"),
+        : zie.includes("Nobody has to") && zie.includes("at least four players") && zie.includes("a report that has already been made stays as it is") && zie.includes("count for the whole team, without names") && zie.includes("The pro sees the answer per player"),
         "wie ziet wat: niet meedoen, stoppen met delen, wie het antwoord op de teamvraag ziet");
       ok(zie.includes("support@mentalroutine.com"), "wie ziet wat: adres buiten captain en pro om");
+
+      // Toestemming zoals het vinkje bij de teamlink: het persoonlijke rapport is ook voor de pro te openen
+      ok(!/kies je zelf|je kiest zelf of je dat|blijft van jou|stays yours|is your choice|you choose whether to share/i.test(tekst), "niet meer 'delen met de pro kies je zelf' (klopt niet met het vinkje bij de teamlink)");
+      ok(lang === "nl"
+        ? zie.includes("Het team en de captain zien je persoonlijke rapport niet") && zie.includes("De pro kan het openen zolang je deelt") && zie.includes("Stoppen met delen kan altijd in de portal")
+        : zie.includes("The team and the captain do not see your personal report") && zie.includes("The pro can open it for as long as you share") && zie.includes("You can stop sharing in the portal at any time"),
+        "wie ziet wat: team en captain zien het persoonlijke rapport niet, de pro wel zolang je deelt, stoppen kan altijd");
+      ok(lang === "nl"
+        ? zie.includes("of dat je die hebt overgeslagen") && zie.includes("je handicap kan in een voorbeeldindeling van de paren staan") && zie.includes("De beheerder van MentalRoutine kan hem ook openen")
+        : zie.includes("or the fact that you skipped it") && zie.includes("your handicap may appear in a sample arrangement of the pairs") && zie.includes("The MentalRoutine administrator can open it as well"),
+        "wie ziet wat: overgeslagen teamvraag, handicap als enige getal per speler, beheerder kan de bijlage openen");
+      ok(tekst.includes(lang === "nl" ? "niemand hoeft iets over zichzelf te vertellen" : "nobody has to say anything about themselves"), "blijft staan: niemand hoeft iets over zichzelf te vertellen");
+      ok(tekst.includes(lang === "nl" ? "spelersprofiel: een samenvatting en het volledige rapport" : "player profile: a summary and the full report") && !/trainingsrapport|training report/i.test(tekst), "persoonlijk rapport = het spelersprofiel (samenvatting en volledig rapport); geen trainingsrapporten beloofd");
+      ok(tekst.includes(lang === "nl" ? "Twintig tot vijfentwintig pagina's" : "Twenty to twenty-five pages") && !/ongeveer twintig|about twenty/i.test(tekst), "aantal pagina's: twintig tot vijfentwintig");
+      ok(lang === "nl"
+        ? tekst.includes("per speler geen hoogste of laagste onderdeel") && tekst.includes("elk met een oefenvorm en een voorbeeldafspraak") && tekst.includes("per thema een teamles in plaats van de lessenreeks")
+        : tekst.includes("no highest or lowest part per player") && tekst.includes("each with a practice format and a sample agreement") && tekst.includes("a team lesson for each theme instead of the series of lessons"),
+        "team dat zelf het thema kiest: de uitzonderingen staan erbij");
+      ok(lang === "nl"
+        ? tijd.includes("De captain kan ze leiden met het rapport") && tijd.includes("op de teamavond kruisen jullie aan") && tekst.includes("Daarna kan jullie pro lessen geven rond jullie thema; dat spreek je met de pro af.")
+        : tijd.includes("The captain can lead them with the report") && tijd.includes("at the team meeting you tick") && tekst.includes("After that your pro can give lessons around your theme; you agree that with the pro."),
+        "tijd: wie de trainingen leidt, wanneer het kaartje wordt aangekruist; niets beloofd namens de pro");
+      if (lang === "en") {
+        ok(!/look back|sits highest|business days|a \$79 value|reader.s guide|lesson programs?\b|yearly|further down/i.test(tekst), "EN: verbeteringen van de Engelstalige lezer (review, comes out highest, working days, worth $79, reading guide, programme)");
+        ok(tekst.includes("What has your team agreed to do") && tekst.includes("It needs at least four players") && (await page.locator("main").textContent()).includes("The pages on the order of the pairs and on match points follow the NGF rules"), "EN: titel, 'at least four players', NGF-regels buiten Nederland");
+      }
       ok(!/zo weet je teamgenoot wat jou helpt|your teammate knows what helps you|nog niet kennen|have not seen before|geen twee spelers|no two players/i.test(tekst), "geen beweringen die een vragenlijst niet draagt");
       ok(!/alleen techniek|technique only|ruim twintig|more than twenty/i.test(tekst), "toon: niet 'weer een winter alleen techniek', niet 'ruim twintig pagina's'");
       if (lang === "en") {
@@ -184,6 +217,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
   ok(blok.includes("Reken op een paar avonden") && blok.includes("anderhalf tot twee uur, plus je voorbereiding") && blok.includes("in deze volgorde"), "teamblok: de stappen in volgorde met eerlijke tijden");
   ok(blok.includes("Een teamrapport telt niet mee voor die vijf") && blok.includes("Jouw lessen zitten daar niet in"), "teamblok: teamrapport telt niet mee; lessen niet in de teamprijs");
   ok(!/teamcode|paar minuten/i.test(blok), "teamblok: geen teamcode, geen 'een paar minuten'");
+  ok(blok.includes("ruwweg tien uur") && blok.includes("drie lessen van een uur en één van twee uur") && blok.includes("per thema een teamles in plaats van de lessenreeks"), "teamblok: tien uur, lessenreeks 3 + 1, uitzondering eigen thema");
   ok(!/koppel|opstelling|pairing|line-?up/i.test(blok) && !blok.includes("—"), "teamblok: geen afgekeurde woorden of gedachtestreepjes");
   const sm = await (await page.request.get(`${BASE}/sitemap.xml`)).text();
   ok(!sm.includes("/teams"), "/teams staat niet in de sitemap");

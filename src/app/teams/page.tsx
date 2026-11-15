@@ -441,6 +441,7 @@ function TeamsContent() {
                 </li>
               ))}
             </ol>
+            <p id="pro-totaal" className="rounded-xl border border-amber-500/40 bg-amber-50 px-5 py-4 text-sm font-semibold text-green-950 leading-relaxed mb-6">{T.pro.total}</p>
             <p id="pro-kosten" className="text-sm text-stone-600 leading-relaxed mb-8">{T.pro.cost}</p>
             <a href={`/pro-program?lang=${L}`} onClick={() => track("teams_pro_apply", { lang: L })}
                className="inline-block px-8 py-4 bg-green-950 text-[#f6f1e7] font-bold rounded-lg hover:bg-green-900 transition-all hover:-translate-y-0.5 text-sm tracking-wide">

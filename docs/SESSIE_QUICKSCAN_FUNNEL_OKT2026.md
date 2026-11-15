@@ -433,7 +433,7 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
      in `scripts/e2e/teams-check.js`).
   4. De twee citaten op `/teams` (`get.quotes` in `teams-text.ts`) komen letterlijk uit `h18`: nalopen of ze nog in het
      nieuwe rapport staan.
-  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (295 controles: `/teams` NL/EN
+  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (344 controles: `/teams` NL/EN
      desktop/mobiel, teamblok, en alle vijf smaken × twee documenten × twee talen: aantal pagina's, pagina 1 geladen,
      PDF 200) en `BASE=http://localhost:3123 node scripts/e2e/funnel-check.js`.
 - **Let op**: het Engelse teamrapport gebruikt zelf het woord "line-up" (in de pagina-afbeeldingen). De regel dat dat
@@ -465,7 +465,24 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
   - `/samples`: de documenttitel volgt de teamvoorbeelden zolang die gekozen zijn (`teamSamples.docTitle`); voor gewone
     bezoekers verandert er niets;
   - `PRO_TEAM_BLOCK` (teamblok op `/pro-program`) volgt dezelfde stappen en tijden.
-  Test: `teams-check.js` nu **295 controles**. **Nog te doen**: de voorbeeld-PDF's in `public/samples/team/` zijn van
+  **Daarna het finale paneloordeel verwerkt (zelfde dag, tweede lokale commit, ook niet gepusht)**:
+  - **toestemming rechtgezet** (de pagina zei iets wat niet klopt): het vinkje bij de teamlink in de portal luidt "Ik deel
+    mijn resultaten en rapport met {pro}…", dus wie via de teamlink meedoet deelt ook het persoonlijke rapport met de pro.
+    "Of je dat met de pro deelt, kies je zelf" is overal weg. Nu: team en captain zien het persoonlijke rapport niet; de pro
+    kan het openen zolang je deelt; stoppen kan altijd in de portal; de pro ziet ook of de teamvraag is overgeslagen; de
+    handicap kan als enige getal per speler in het teamrapport staan; de beheerder kan de bijlage openen;
+  - tijd: het kaartje wordt op de teamavond aangekruist en na de eerste training samen afgemaakt; de captain kan de vier
+    trainingen leiden; niets beloofd namens de pro ("daarna kan jullie pro lessen geven");
+  - pro-blok: lessenreeks = drie lessen van een uur en één van twee uur, een half uur tot een uur voorbereiding per les,
+    "bij elkaar ruwweg tien uur voor je eerste team" (`pro.total`, `#pro-totaal`), teamavond kan ook zonder de pro;
+  - team dat zelf het thema kiest: de uitzonderingen staan bij de lijsten en in de FAQ (drie thema's met oefenvorm en
+    voorbeeldafspraak, per speler geen hoogste of laagste onderdeel, per thema een teamles in plaats van de lessenreeks);
+  - "twintig tot vijfentwintig pagina's"; "persoonlijk rapport" = het spelersprofiel (samenvatting en volledig rapport),
+    geen trainingsrapporten beloofd;
+  - Engels: review, comes out highest, working days, worth $79, reading guide, lesson programme, nieuwe titel.
+  - Let op: de test verbiedt het woord "opstelling" in paginatekst; er staat daarom "voorbeeldindeling van de paren" /
+    "order of the pairs".
+  Test: `teams-check.js` nu **344 controles**. **Nog te doen**: de voorbeeld-PDF's in `public/samples/team/` zijn van
   vóór ronde 15 (daarin staat nog een teamavond van een uur en "Wij kozen" op het kaartje): opnieuw maken en plaatsen
   (stappen hierboven) vóór `TEAMS_LIVE = true`.
 
