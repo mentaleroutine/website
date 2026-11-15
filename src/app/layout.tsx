@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { DM_Sans, Cormorant_Garamond } from "next/font/google";
+import { Cormorant_Garamond } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { translations } from "@/lib/translations";
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+// DM Sans wordt meegeleverd (src/app/fonts, OFL) in plaats van bij elke build bij Google opgehaald: Google gaf op 15-11-2026
+// font-URL's met meerdere query-parameters terug, waar de Turbopack-build op Vercel op stukliep ("next/font/google queries
+// have exactly one entry"). Zelfde bestand als Google levert: de variabele latin-subset, gewichten 300 t/m 600 in gebruik.
+const dmSans = localFont({
+  src: "./fonts/dm-sans-latin.woff2",
+  weight: "300 600",
+  style: "normal",
   display: "swap",
   variable: "--font-dm-sans",
 });
