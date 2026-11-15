@@ -5,6 +5,7 @@
 // No entrance animations: nothing on these pages may ever be hidden from a reader or a crawler.
 import React, { useEffect } from "react";
 import { LangProvider, useLang } from "@/context/lang-context";
+import { CookieSettingsLink } from "@/components/cookie-consent";
 import { LEGAL_TEXT, legalHref, legalLang, type LegalBlock, type LegalKind, type LegalLang } from "@/lib/legal-text";
 
 const serif = { fontFamily: "var(--font-cormorant), serif" } as const;
@@ -128,6 +129,7 @@ function LegalContent({ kind }: { kind: LegalKind }) {
         <nav className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
           <a id="legal-other" href={legalHref(otherKind, lang)} className="text-amber-800 underline underline-offset-4 hover:text-amber-900">{D.other}</a>
           <a href={`/?lang=${lang}`} className="text-amber-800 underline underline-offset-4 hover:text-amber-900">{D.home}</a>
+          <CookieSettingsLink className="text-amber-800 underline underline-offset-4 hover:text-amber-900" />
         </nav>
       </article>
 

@@ -584,6 +584,30 @@ Opdracht van de opdrachtgever: "Maak voorwaarden en privacyverklaring voor het t
   (2) onder het aanvraagformulier van het Pro-programma staat "We delen ze met niemand", terwijl de privacyverklaring
   verwerkers noemt (Resend, Vercel, AWS).
 
+### 10.10 Cookiemelding: Microsoft Clarity alleen met toestemming (15 nov 2026, lokaal gecommit)
+Besluit van de opdrachtgever: een cookiemelding die bevestigd moet worden, zodat Clarity alleen met toestemming laadt.
+
+- **Clarity** staat niet meer in `src/app/layout.tsx`. Het script wordt pas toegevoegd na "Accepteren"
+  (`src/lib/cookie-consent.ts` → `loadClarity()`). Zonder keuze of na "Weigeren": geen Clarity, geen Clarity-cookies.
+  Plausible is ongewijzigd (zonder cookies). **Ook `public/quiz.html`** (de losse QuickScan, buiten de layout) laadt
+  Clarity nu alleen als dezelfde keuze `granted` is; daar staat geen eigen melding (de bezoeker komt van de homepage).
+- **De melding**: `src/components/cookie-consent.tsx`, in de root-layout dus op elke pagina. Kaart onderaan, blokkeert de
+  pagina niet. Twee knoppen van dezelfde grootte en dezelfde stijl ("Weigeren" / "Accepteren"; EN "Decline" / "Accept").
+  Taal = de sitetaal (`<html lang>`), NL of anders Engels. Een vaste balk onderaan een pagina krijgt `data-sticky-bottom`
+  (mobiele knop op `/teams`, de sticky balk op de homepage): de melding schuift er dan boven.
+- **Keuze bewaren**: localStorage, sleutel `mr_cookie_consent`, waarde `{"choice":"granted"|"denied","date":"<ISO>"}`.
+  Geen cookie voor de keuze. Er wordt niet opnieuw gevraagd zolang de keuze er staat.
+- **Keuze wijzigen**: knop "Cookie-instellingen" / "Cookie settings" (`CookieSettingsLink`) in de footer van de homepage,
+  de teampagina en onder de twee juridische pagina's; die opent de melding opnieuw. Intrekken: Clarity krijgt
+  `consent false`, de Clarity-cookies van het eigen domein (`_clck`, `_clsk`, `CLID`, `ANONCHK`, `MR`, `MUID`, `SM`) worden
+  verwijderd en bij het volgende laden wordt Clarity niet meer geladen. Cookies op de domeinen van Microsoft zelf
+  (clarity.ms, bing.com) zijn vanaf onze site niet te verwijderen.
+- **Privacyverklaring** (`legal-text.ts`, NL leidend, EN vertaald): hoofdstuk 7 over Clarity en de rij "Statistieken" in
+  de tabel van hoofdstuk 3 volgen de melding (tekst aangeleverd door de opdrachtgever).
+- **Test**: `node scripts/e2e/cookie-check.js http://localhost:3123` (**47 controles**; verzoeken naar clarity.ms worden
+  onderschept en geteld). De andere scripts zetten de keuze vooraf (`denied`), zodat de melding dicht blijft.
+  **Nieuwe pagina met een vaste balk onderaan = `data-sticky-bottom` erop zetten.**
+
 ---
 
 ## 11. Pro Program-pagina (3 nov 2026, LIVE, commit `42bb70b`)

@@ -104,7 +104,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             ["De e-mailreeks na een QuickScan-rapport", "Jouw toestemming; uitschrijven kan altijd"],
             ["Je scores of rapport delen met een pro, een team of via een deel-link", "Jouw toestemming; intrekken kan altijd"],
             ["Beveiliging, misbruik voorkomen en storingen oplossen (logboeken)", "Gerechtvaardigd belang"],
-            ["Statistieken over het gebruik van website en portal", "Gerechtvaardigd belang, en toestemming waar de wet die vraagt"],
+            ["Statistieken over het gebruik van website en portal", "Gerechtvaardigd belang voor statistieken zonder cookies; toestemming voor Microsoft Clarity"],
             ["Administratie en belastingplicht", "Wettelijke verplichting"],
           ] },
         ] },
@@ -145,9 +145,9 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
           ul(
             "**Noodzakelijk.** Als je inlogt in de portal, plaatsen we een cookie om je ingelogd te houden. De website onthoudt je taalkeuze in je browser.",
             "**Plausible Analytics** telt bezoeken en handelingen zonder cookies en zonder je over websites heen te volgen.",
-            "**Microsoft Clarity** laat ons zien hoe pagina's worden gebruikt, met onder meer klikkaarten en opnames van hoe een bezoeker door een pagina beweegt. Clarity plaatst daarvoor cookies. In de portal kan op zo'n opname ook te zien zijn wat er op jouw scherm stond.",
+            "**Microsoft Clarity** laat ons zien hoe pagina's worden gebruikt, met onder meer klikkaarten en opnames van hoe een bezoeker door een pagina beweegt. Clarity plaatst daarvoor cookies. Dat gebeurt alleen als je daar toestemming voor geeft in de cookiemelding. Zonder toestemming laden we Clarity niet.",
           ),
-          p("Wil je niet dat Clarity je bezoek vastlegt, dan kun je in je browser cookies van derden blokkeren of een inhoudsblokkeerder gebruiken. Je kunt ons ook vragen opnames van jouw bezoek te verwijderen."),
+          p("Je kunt je keuze altijd wijzigen via 'Cookie-instellingen' onderaan de pagina. Je kunt ons ook vragen opnames van jouw bezoek te verwijderen."),
         ] },
         { h: "8. Hoe lang we gegevens bewaren", blocks: [
           ul(
@@ -232,7 +232,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             ["The series of emails after a QuickScan report", "Your consent; you can unsubscribe at any time"],
             ["Sharing your scores or report with a pro, a team or through a share link", "Your consent; you can withdraw it at any time"],
             ["Security, preventing abuse and resolving faults (logs)", "Legitimate interest"],
-            ["Statistics on the use of the website and the portal", "Legitimate interest, and consent where the law requires it"],
+            ["Statistics on the use of the website and the portal", "Legitimate interest for statistics without cookies; consent for Microsoft Clarity"],
             ["Administration and tax obligations", "Legal obligation"],
           ] },
         ] },
@@ -273,9 +273,9 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
           ul(
             "**Necessary.** When you log in to the portal, we place a cookie to keep you logged in. The website remembers your language choice in your browser.",
             "**Plausible Analytics** counts visits and actions without cookies and without following you across websites.",
-            "**Microsoft Clarity** shows us how pages are used, including click maps and recordings of how a visitor moves through a page. Clarity places cookies for that. In the portal such a recording may also show what was on your screen.",
+            "**Microsoft Clarity** shows us how pages are used, including click maps and recordings of how a visitor moves through a page. Clarity places cookies for that. That only happens if you give consent for it in the cookie notice. Without consent we do not load Clarity.",
           ),
-          p("If you do not want Clarity to record your visit, you can block third-party cookies in your browser or use a content blocker. You can also ask us to delete recordings of your visit."),
+          p("You can always change your choice through 'Cookie settings' at the bottom of the page. You can also ask us to delete recordings of your visit."),
         ] },
         { h: "8. How long we keep data", blocks: [
           ul(

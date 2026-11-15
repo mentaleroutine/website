@@ -43,6 +43,8 @@ const DOC = {
       for (const lang of ["nl", "en"]) {
         const D = DOC[kind][lang];
         const ctx = await browser.newContext({ viewport });
+        // The cookie notice has its own test (cookie-check.js): here the choice is already made, so it stays closed.
+        await ctx.addInitScript(() => { try { localStorage.setItem("mr_cookie_consent", JSON.stringify({ choice: "denied", date: "2026-11-15T00:00:00.000Z" })); } catch {} });
         const page = await ctx.newPage();
         const consoleFouten = [];
         page.on("pageerror", (e) => consoleFouten.push(String(e)));
@@ -81,6 +83,8 @@ const DOC = {
   }
 
   const ctx = await browser.newContext({ viewport: { width: 1366, height: 900 } });
+  // The cookie notice has its own test (cookie-check.js): here the choice is already made, so it stays closed.
+  await ctx.addInitScript(() => { try { localStorage.setItem("mr_cookie_consent", JSON.stringify({ choice: "denied", date: "2026-11-15T00:00:00.000Z" })); } catch {} });
   const page = await ctx.newPage();
 
   console.log("\n== taalwissel, terugval, alias");
@@ -126,6 +130,8 @@ const DOC = {
   await page.goto(`${BASE}/?lang=nl`, { waitUntil: "networkidle" });
   await page.locator("#footer-legal a").nth(1).click();
   await page.waitForURL(/\/terms\?lang=nl/);
+  await page.waitForLoadState("networkidle");   // the server renders English; the page switches to Dutch right after loading
+  await page.waitForTimeout(500);
   ok((await page.locator("h1").innerText()) === "Algemene voorwaarden", "de footerlink opent de voorwaarden in het Nederlands");
 
   const sm = await (await page.request.get(`${BASE}/sitemap.xml`)).text();

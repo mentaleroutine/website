@@ -13,6 +13,7 @@ import { NARRATIVE_GROUPS, DEFAULT_ROUTE, pick, resolveRoute } from "@/lib/narra
 import { quickscanUrl } from "@/lib/quickscan";
 import { TEAMS_LIVE } from "@/lib/teams-text";
 import { LEGAL_LABELS, legalHref, legalLang } from "@/lib/legal-text";
+import { CookieSettingsLink } from "@/components/cookie-consent";
 
 // Lazy-load below-fold interactive components
 const ContactSection = dynamic(() => import("@/components/ui/contact-section").then(m => ({ default: m.ContactSection })), { ssr: false });
@@ -405,9 +406,10 @@ function PageContent() {
           <div className="container mx-auto max-w-5xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs text-green-200/30">{T.footer.copyright}</p>
             {/* Privacy Statement and Terms and Conditions (NL + EN; other languages get the English labels and pages) */}
-            <nav id="footer-legal" className="flex items-center gap-4 text-xs">
+            <nav id="footer-legal" className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs">
               <a href={legalHref("privacy", lang)} className="text-green-200/40 hover:text-amber-300 transition-colors">{LEGAL_LABELS[legalLang(lang)].privacyShort}</a>
               <a href={legalHref("terms", lang)} className="text-green-200/40 hover:text-amber-300 transition-colors">{LEGAL_LABELS[legalLang(lang)].termsShort}</a>
+              <CookieSettingsLink className="text-green-200/40 hover:text-amber-300 transition-colors" />
             </nav>
             <p className="text-xs text-green-200/25">{T.footer.methodBy}</p>
           </div>
@@ -418,6 +420,7 @@ function PageContent() {
       <AnimatePresence>
         {showStickyBar && (
           <motion.div
+            data-sticky-bottom
             className="fixed bottom-0 left-0 right-0 z-40 bg-green-950/95 backdrop-blur-lg border-t border-white/[0.08] shadow-xl shadow-black/30"
             initial={{ y: 60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}

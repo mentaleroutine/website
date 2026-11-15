@@ -98,6 +98,13 @@
   prijs, drie FAQ's, footer), `/pro-program` (onder het formulier). De teampagina mag de documenten niet tegenspreken
   (14 dagen terugvragen zolang geen speler is gestart, onbenutte plekken niet terug, 18+). Test:
   `node scripts/e2e/legal-check.js http://localhost:3123` (239 controles). Sessieverslag §10.9.
+- **Cookiemelding (15-11-2026)**: Microsoft Clarity laadt ALLEEN na "Accepteren" (niet meer in `layout.tsx`; ook
+  `public/quiz.html` kijkt naar dezelfde keuze). Melding = `src/components/cookie-consent.tsx` (root-layout), logica
+  `src/lib/cookie-consent.ts`. Keuze in localStorage `mr_cookie_consent` = `{"choice":"granted"|"denied","date"}`, geen
+  cookie. "Cookie-instellingen" (`CookieSettingsLink`) in de footers van homepage, `/teams`, `/privacy`, `/terms` opent
+  de melding opnieuw. Weigeren en accepteren: even grote, gelijke knoppen. Vaste balk onderaan een pagina =
+  `data-sticky-bottom` (de melding schuift erboven). Plausible ongewijzigd. Test: `node scripts/e2e/cookie-check.js
+  http://localhost:3123` (47 controles); de andere e2e-scripts zetten de keuze vooraf. Sessieverslag §10.10.
 - **Testen:** `scripts/e2e/funnel-check.js` (Playwright, 56 controles incl. `/samples`, portal geblokkeerd) — draai dit na elke
   wijziging aan quiz.html / homepage / navbar / redirects (lege-QuickScan-incident 15-10-2026).
 - Lokale typecheck: de geneste kopie `Claude website MR 01/Claude website MR 01/` (untracked) geeft

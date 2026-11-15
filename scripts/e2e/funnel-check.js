@@ -15,6 +15,8 @@ function check(name, cond, detail = "") {
 
 async function newPage(browser, locale = "en-US") {
   const ctx = await browser.newContext({ locale, viewport: { width: 1280, height: 900 } });
+  // The cookie notice has its own test (cookie-check.js): here the choice is already made, so it stays closed.
+  await ctx.addInitScript(() => { try { localStorage.setItem("mr_cookie_consent", JSON.stringify({ choice: "denied", date: "2026-11-15T00:00:00.000Z" })); } catch {} });
   const page = await ctx.newPage();
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));

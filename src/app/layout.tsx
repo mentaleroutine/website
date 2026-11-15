@@ -3,6 +3,7 @@ import { Cormorant_Garamond } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { translations } from "@/lib/translations";
+import { CookieConsent } from "@/components/cookie-consent";
 
 // DM Sans wordt meegeleverd (src/app/fonts, OFL) in plaats van bij elke build bij Google opgehaald: Google gaf op 15-11-2026
 // font-URL's met meerdere query-parameters terug, waar de Turbopack-build op Vercel op stukliep ("next/font/google queries
@@ -146,14 +147,12 @@ export default function RootLayout({
             __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`,
           }}
         />
-        {/* Microsoft Clarity — heatmaps + session recordings */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","w8rr4hfxpz");`,
-          }}
-        />
+        {/* Microsoft Clarity is NOT loaded here: only after consent, by components/cookie-consent.tsx */}
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <CookieConsent />
+      </body>
     </html>
   );
 }

@@ -6,6 +6,7 @@ import { LangProvider, useLang } from "@/context/lang-context";
 import { TEAM_TEXT, TEAM_CONTACT, SITE, teamLang, type TeamLang } from "@/lib/teams-text";
 import { teamSampleHref } from "@/lib/team-samples";
 import { LEGAL_LABELS, legalHref, type LegalKind } from "@/lib/legal-text";
+import { CookieSettingsLink } from "@/components/cookie-consent";
 
 declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
@@ -483,16 +484,17 @@ function TeamsContent() {
           <span className="font-semibold text-amber-100/90 tracking-wide" style={{ ...serif, fontSize: "1.05rem" }}>
             Mental<span className="text-amber-400">Routine</span>
           </span>
-          <nav id="teams-footer-legal" className="flex items-center gap-5 text-xs">
+          <nav id="teams-footer-legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs">
             <a href={legalHref("privacy", L)} className="text-green-200/60 hover:text-amber-300 transition-colors">{LEGAL_LABELS[L].privacy}</a>
             <a href={legalHref("terms", L)} className="text-green-200/60 hover:text-amber-300 transition-colors">{LEGAL_LABELS[L].terms}</a>
+            <CookieSettingsLink className="text-green-200/60 hover:text-amber-300 transition-colors" />
           </nav>
           <p className="text-xs text-green-200/40">&copy; {new Date().getFullYear()} Mental Routine. {T.footerRights}</p>
         </div>
       </footer>
 
       {/* ── STICKY MOBILE CTA ─────────────────────────────────────────────── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-green-950/95 backdrop-blur-lg border-t border-white/[0.08] px-4 py-3">
+      <div data-sticky-bottom className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-green-950/95 backdrop-blur-lg border-t border-white/[0.08] px-4 py-3">
         <button onClick={() => { scrollToSend(); track("teams_cta", { place: "sticky", lang: L }); }}
                 className="w-full py-3.5 bg-amber-400 text-green-950 font-bold rounded-lg text-sm tracking-wide shadow-lg shadow-amber-500/30">
           {T.stickyCta}
