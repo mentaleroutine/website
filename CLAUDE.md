@@ -65,12 +65,13 @@
   per speler in de portal, pro start zelf een team, privacyverklaring/voorwaarden. De route op de pagina: pro vraagt toegang
   aan tot het Pro-programma (kan nu al) → meldt het team per mail aan bij support@ (vanaf 1 december 2026) → wij maken de
   teamlink → bij de aanmelding hoort het team hoe het afrekenen loopt. Alle tekst en de besluiten staan
-  bovenaan `teams-text.ts` (via een PGA-pro, 18+, €15/€99 t/m 28-2-2027 daarna €49/€299, teamprijzen in euro's, geen
+  bovenaan `teams-text.ts` (via een PGA-pro, 18+, **$15/$99 t/m 28-2-2027 daarna $49/$299: teamprijzen in DOLLARS sinds 15-11-2026**, één betaler per team (pro of captain), geen
   resultaatclaims, "paren" en niet de woorden die de test afkeurt, geen gedachtestreepjes). Opbouw sinds 15-11 (na
   leesronde 15, **lokaal gecommit, nog niet gepusht**): hero met een prijsregel direct onder de titel (op een telefoon op het
   eerste scherm) en de propositie in drie tegels → **"Dit krijgen jullie"** (wat het teamrapport werkelijk bevat: team /
   captain / bijlage voor de pro, twee letterlijke citaten uit het voorbeeld, knop naar de teamvoorbeelden) → waarom nu →
-  prijs (geen doorgestreepte prijs; "na 28 februari 2027: €49"; lessen en herhaalmeting niet inbegrepen; één valutaregel:
+  prijs (**in dollars sinds 15-11-2026**: geen euroteken op de pagina, de test keurt het af; rekenvoorbeelden $60/$90/$99;
+  geen doorgestreepte prijs; "na 28 februari 2027: $49"; lessen en herhaalmeting niet inbegrepen; één valutaregel, zie teams-text.ts; oud:
   $79/$39/$199 zijn dollars; geen afrekenmechaniek beschrijven) → 4 stappen + **"Eerlijk over de tijd"** → **"Wie ziet wat"**
   (zes kaarten; altijd "geen cijfers per speler", nooit kaal "zonder cijfers") → stuur dit naar je pro → **blok voor de pro**
   (eerst wat het oplevert, dan "Dit doe je, in deze volgorde, en dit kost het je" in acht stappen met de tijd; feiten uit
@@ -86,7 +87,7 @@
   `/samples?report=team&team=h18|h27|h36|small|even&doc=report|annex&lang=nl|en[&preview=teams]`. Het teamblok op
   `/pro-program` (ook achter de schakelaar; `?preview=teams`) linkt naar de voorbeeldbijlage. Verandert het teamrapport in de
   portal, dan de lijsten/citaten in `teams-text.ts` en de voorbeelden meewijzigen. Test: `node scripts/e2e/teams-check.js
-  http://localhost:3123` (380 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn op 15-11-2026 opnieuw gemaakt
+  http://localhost:3123` (397 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn op 15-11-2026 opnieuw gemaakt
   met de portalcode na ronde 15–17 en de twee vinkjes (portal `538e1eb`), gecontroleerd en geplaatst.**
 - **Testen:** `scripts/e2e/funnel-check.js` (Playwright, 56 controles incl. `/samples`, portal geblokkeerd) — draai dit na elke
   wijziging aan quiz.html / homepage / navbar / redirects (lege-QuickScan-incident 15-10-2026).

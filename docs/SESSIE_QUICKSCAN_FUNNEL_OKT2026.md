@@ -435,7 +435,7 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
      in `scripts/e2e/teams-check.js`).
   4. De twee citaten op `/teams` (`get.quotes` in `teams-text.ts`) komen letterlijk uit `h18`: nalopen of ze nog in het
      nieuwe rapport staan.
-  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (380 controles: `/teams` NL/EN
+  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (397 controles: `/teams` NL/EN
      desktop/mobiel, teamblok, en alle vijf smaken × twee documenten × twee talen: aantal pagina's, pagina 1 geladen,
      PDF 200) en `BASE=http://localhost:3123 node scripts/e2e/funnel-check.js`.
 - **Let op**: het Engelse teamrapport gebruikt zelf het woord "line-up" (in de pagina-afbeeldingen). De regel dat dat
@@ -490,7 +490,7 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
   pagina zegt dat nu zo (kaarten "De pro", "Je eigen rapport", "Stoppen met delen", de voetregel, twee FAQ's, stap 6 van
   het pro-blok en het teamblok op `/pro-program`); de formulering van één vinkje uit de vorige commit is weg en de test
   keurt haar af.
-  Test: `teams-check.js` nu **380 controles**. **Nog te doen**: de voorbeeld-PDF's in `public/samples/team/` zijn van
+  Test: `teams-check.js` nu **397 controles**. **Nog te doen**: de voorbeeld-PDF's in `public/samples/team/` zijn van
   vóór ronde 15 (daarin staat nog een teamavond van een uur en "Wij kozen" op het kaartje): opnieuw maken en plaatsen
   (stappen hierboven) vóór `TEAMS_LIVE = true`. (Gedaan: de voorbeelden zijn op 15-11 opnieuw gemaakt, commits
   `20020cd` en `71ffa22`.)
@@ -507,9 +507,18 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
   het team per mail aan bij support@mentalroutine.com (vanaf 1 december 2026), wij maken de teamlink, en bij de
   aanmelding hoort het team hoe het afrekenen loopt. Nieuwe vraag "Wanneer kunnen we beginnen?". 18+: "Iedere speler
   bevestigt dat bij het aanmelden" (het verplichte vinkje begint met "Ik ben 18 jaar of ouder…").
-  Test: `teams-check.js` gaat nu uit van de aan-stand (**380 controles**); zet je de schakelaar uit, dan falen de
+  Test: `teams-check.js` gaat nu uit van de aan-stand (**397 controles**); zet je de schakelaar uit, dan falen de
   controles op vindbaarheid en links. **Aanmeldingen komen dus per mail binnen bij support@ en vragen handwerk**
   (teamlink maken in de portal, afrekenen regelen) tot de betaalroute er is.
+- **Teamprijs in dollars (besluit opdrachtgever 15-11-2026: de betaalprovider rekent altijd in dollars af)**. Overal op
+  `/teams`, in het teamblok op `/pro-program` en in de metabeschrijving: **$15 per speler, hooguit $99 per team** bij
+  aanmelding van 1-12-2026 t/m 28-2-2027, daarna **$49 / $299** (de eerdere regels in deze paragraaf noemen nog euro's:
+  dat is de oude stand). Rekenvoorbeelden vier spelers $60, zes $90, zeven of meer $99. Nieuw: "Eén persoon rekent af
+  voor het hele team: de pro of de captain." De valutaregel is één zin geworden ("Alle prijzen op deze pagina zijn in
+  Amerikaanse dollars. Betaal je in euro's, dan rekent je bank het bedrag om."). De aanmeldroute is NIET veranderd (per
+  mail via de pro); over een betaallink of PRO Admin als plek om een team aan te maken staat niets op de pagina, tot die
+  route met een echte betaling is getest. Elders in `src/` stonden geen teamprijzen in euro's. Test: geen euroteken op
+  `/teams` en in het teamblok, de dollarbedragen, één betaler (**397 controles**).
 
 ---
 

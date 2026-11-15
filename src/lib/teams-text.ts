@@ -7,14 +7,18 @@
  * WAT DE PAGINA MAG ZEGGEN (besluiten, niet stilzwijgend wijzigen):
  * - Een team start via een PGA-pro. Geen eigen startroute voor captains; wel een contactregel voor teams zonder pro
  *   (belooft niet dát het kan).
- * - €15 per speler, maximaal €99 per team bij aanmelding van 1-12-2026 t/m 28-2-2027; daarna €49 / €299.
- *   De €49 is GEEN "was"-prijs (heeft nooit gegolden): niet doorstrepen, schrijf "na 28 februari 2027".
+ * - PRIJS IN DOLLARS (besluit opdrachtgever 15-11-2026: de betaalprovider rekent altijd in dollars af; was euro's).
+ *   $15 per speler, maximaal $99 per team bij aanmelding van 1-12-2026 t/m 28-2-2027; daarna $49 / $299.
+ *   Rekenvoorbeelden: vier spelers $60, zes $90, zeven of meer $99. Eén persoon rekent af voor het hele team: de pro
+ *   of de captain (besloten). Nog NIETS schrijven over een betaallink of over PRO Admin als plek om een team aan te
+ *   maken: die route is gebouwd maar nog niet met een echte betaling getest.
+ *   De $49 is GEEN "was"-prijs (heeft nooit gegolden): niet doorstrepen, schrijf "na 28 februari 2027".
  *   HOE het plafond wordt afgerekend is nog niet gebouwd: geen mechaniek beschrijven (geen teamcode, geen kassa);
  *   alleen "de pro meldt het team per mail bij ons aan; bij de aanmelding hoor je hoe het afrekenen loopt".
- *   Euro's in beide talen. De Engelse pagina weert buitenlandse teams niet en werft ze niet; ze zegt wel eerlijk dat
- *   het rapport de spelvormen van de Nederlandse NGF-competitie volgt.
- *   Het losse assessment ($79), de herhaalmeting ($39) en het pro-abonnement ($199) zijn in dollars: dat staat één
- *   keer duidelijk bij de prijs.
+ *   Alle prijzen op de pagina zijn in dollars (ook assessment $79, herhaalmeting $39, pro-abonnement $199); één
+ *   valutaregel bij de prijs zegt dat en dat de bank omrekent. Geen euroteken op de pagina (de test keurt het af).
+ *   De Engelse pagina weert buitenlandse teams niet en werft ze niet; ze zegt wel eerlijk dat het rapport de
+ *   spelvormen van de Nederlandse NGF-competitie volgt.
  * - Alleen spelers van 18 jaar en ouder.
  * - WIE ZIET WAT (klopt met het rapport, 15-11-2026): het team en de captain lezen het teamrapport; daarin staan
  *   teamgemiddelden en per speler IN WOORDEN wat het hoogst ligt en waar die aan werkt. Schrijf dus altijd
@@ -130,12 +134,12 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     badge: "Voor competitieteams · winter 2026/2027",
     heroTitle: "Wat spreekt jullie team af",
     heroTitleEm: "na een mindere slag?",
-    heroPrice: "€15 per speler · hooguit €99 per team",
+    heroPrice: "$15 per speler · hooguit $99 per team",
     heroPriceSub: "bij aanmelding van 1 december 2026 t/m 28 februari 2027",
     heroP1: "Eén teamavond, een kaartje per paar en de wedstrijddag op één pagina. Dat staat in één teamrapport, geschreven voor dit ene team, nadat iedere speler thuis het assessment heeft gedaan. Daarna kan jullie pro lessen geven rond jullie thema; dat spreek je met de pro af.",
     glance: [
       { title: "Wat het is", desc: "Een assessment per speler en één teamrapport voor het team. De lessen geeft jullie eigen pro; het lesgeld spreek je met de pro af." },
-      { title: "Wat het kost", desc: "€15 per speler, hooguit €99 per team. De lessen van de pro zitten daar niet in." },
+      { title: "Wat het kost", desc: "$15 per speler, hooguit $99 per team. De lessen van de pro zitten daar niet in." },
       { title: "Wat je doet", desc: "Stuur deze pagina naar jullie pro. De pro meldt het team bij ons aan; dat kan vanaf 1 december 2026." },
     ],
     ctaSend: "Stuur dit naar je pro", ctaSample: "Blader door een voorbeeldrapport",
@@ -204,26 +208,27 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       "Het eerste gesprek over spanning en herstel voer je anders op de eerste competitiedag, als het er al toe doet.",
       "Een paar dat in de winter afspreekt wat het doet na een mindere slag, hoeft dat niet tijdens de partij uit te vinden.",
       "De techniektraining blijft gewoon staan. Dit komt ernaast, in dezelfde trainingen.",
-      "Van 1 december 2026 t/m 28 februari 2027 kost aanmelden €15 per speler. Daarna is het €49 per speler.",
+      "Van 1 december 2026 t/m 28 februari 2027 kost aanmelden $15 per speler. Daarna is het $49 per speler.",
     ],
     lossClose: "Het assessment en het teamrapport kosten per speler minder dan een doos ballen.",
     priceLabel: "Wat het kost", priceTitle: "Een prijs waar je", priceTitleEm: "niet over hoeft te vergaderen",
     priceNow: {
       label: "Introductieprijs", badge: "Aanmelden van 1 december 2026 t/m 28 februari 2027",
-      player: "€15", playerSub: "per speler",
-      team: "€99", teamSub: "maximaal per team",
-      note: "Zes spelers: samen €90. Zeven spelers of meer: samen €99.",
+      player: "$15", playerSub: "per speler",
+      team: "$99", teamSub: "maximaal per team",
+      note: "Vier spelers: samen $60. Zes spelers: samen $90. Zeven spelers of meer: samen $99.",
     },
-    priceLater: { label: "Na 28 februari 2027", line: "€49 per speler, maximaal €299 per team." },
+    priceLater: { label: "Na 28 februari 2027", line: "$49 per speler, maximaal $299 per team." },
     priceFacts: [
       "Inbegrepen: het volledige assessment voor iedere speler. Iedere speler krijgt het eigen spelersprofiel: een samenvatting en het volledige rapport.",
       "Inbegrepen: één teamrapport voor het team, met een deel voor de captain en een bijlage voor de pro.",
       "Niet inbegrepen: de lessen van de pro. Het lesgeld bepaalt de pro zelf; dat spreek je rechtstreeks met de pro af.",
       "Niet inbegrepen: een herhaalmeting na het seizoen. Die is vrijwillig en kost $39 per speler.",
+      "Eén persoon rekent af voor het hele team: de pro of de captain.",
       "De pro meldt het team per mail bij ons aan; dat kan vanaf 1 december 2026. Bij de aanmelding hoor je hoe het afrekenen loopt.",
       "Voor teams met spelers van 18 jaar en ouder. Iedere speler bevestigt dat bij het aanmelden.",
     ],
-    currencyNote: "Teamprijzen zijn in euro's. Het losse assessment ($79), de herhaalmeting ($39) en het abonnement voor de pro ($199 per jaar) zijn in dollars.",
+    currencyNote: "Alle prijzen op deze pagina zijn in Amerikaanse dollars. Betaal je in euro's, dan rekent je bank het bedrag om.",
     howLabel: "4 stappen", howTitle: "Van idee", howTitleEm: "tot eerste teamles",
     howSteps: [
       { num: "01", title: "Spreek je pro aan", body: "Stuur deze pagina naar de pro van je club. Een team start altijd via een PGA-pro. Voor de pro is het meer dan een handtekening; onderaan staat eerlijk wat het de pro vraagt en oplevert." },
@@ -265,7 +270,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     faqLabel: "Vragen?", faqTitle: "Veelgestelde", faqTitleEm: "vragen",
     faqs: [
       { q: "Waarom kan een team alleen via een pro starten?", a: "Omdat de meting pas iets oplevert als er daarna mee gewerkt wordt. De pro meldt het team aan, maakt het teamrapport, ontvangt de bijlage met de lessenreeks en geeft de lessen. Speel je bij een club zonder pro, of wil je pro er meer over weten? Mail " + TEAM_CONTACT + "." },
-      { q: "Wat betalen we precies?", a: "Bij aanmelding van 1 december 2026 t/m 28 februari 2027: €15 per speler, met een maximum van €99 voor het hele team. Zes spelers betalen dus samen €90, zeven of meer spelers samen €99. Na 28 februari 2027 is dat €49 per speler en maximaal €299 per team. De pro meldt het team per mail bij ons aan; bij de aanmelding hoor je hoe het afrekenen loopt." },
+      { q: "Wat betalen we precies?", a: "Bij aanmelding van 1 december 2026 t/m 28 februari 2027: $15 per speler, met een maximum van $99 voor het hele team. Vier spelers betalen dus samen $60, zes spelers $90, zeven of meer spelers $99. Na 28 februari 2027 is dat $49 per speler en maximaal $299 per team. Alle bedragen zijn in dollars; je bank rekent om naar euro's. Eén persoon rekent af voor het hele team: de pro of de captain. De pro meldt het team per mail bij ons aan; bij de aanmelding hoor je hoe het afrekenen loopt." },
       { q: "Wanneer kunnen we beginnen?", a: "Een team kan vanaf 1 december 2026 worden aangemeld. Jullie pro kan nu al toegang aanvragen tot het Pro-programma; de toelating duurt meestal 1 tot 3 werkdagen. Daarna meldt de pro het team per mail bij ons aan (" + TEAM_CONTACT + "), maken wij de teamlink en hoort het team hoe het afrekenen loopt." },
       { q: "Zitten de lessen van de pro in de prijs?", a: "Nee. De teamprijs is voor het assessment van iedere speler en het teamrapport. De lessen geeft jullie eigen pro. De pro bepaalt zelf het lesgeld; dat spreek je rechtstreeks met de pro af." },
       { q: "Hoeveel tijd kost het?", a: "Het assessment kost 20 tot 25 minuten per speler: online, thuis, in het Nederlands of Engels. Daarna één teamavond van anderhalf tot twee uur. In de winter vier trainingen met de paren, binnen jullie gewone trainingen; de captain kan ze leiden met het rapport. Per paar één kaartje: aankruisen op de teamavond, de rest na de eerste training samen. Tijdens de competitie na elke speeldag een terugblik van twee minuten per paar. Lessen van de pro komen daar bij, als jullie die met de pro afspreken." },
@@ -313,12 +318,12 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     badge: "For club teams in league play · winter 2026/2027",
     heroTitle: "What has your team agreed to do",
     heroTitleEm: "after a poor shot?",
-    heroPrice: "€15 per player · €99 at most per team",
+    heroPrice: "$15 per player · $99 at most per team",
     heroPriceSub: "when you sign up from 1 December 2026 to 28 February 2027",
     heroP1: "One team meeting, a card for every pair and match day on one page. It all comes from one team report, written for this one team, after every player has taken the assessment at home. After that your pro can give lessons around your theme; you agree that with the pro.",
     glance: [
       { title: "What it is", desc: "An assessment for every player and one team report for the team. Your own pro gives the lessons; you agree the lesson fee with the pro." },
-      { title: "What it costs", desc: "€15 per player, €99 at most per team. The pro's lessons are not included." },
+      { title: "What it costs", desc: "$15 per player, $99 at most per team. The pro's lessons are not included." },
       { title: "What you do", desc: "Send this page to your pro. The pro signs the team up with us; that is possible from 1 December 2026." },
     ],
     ctaSend: "Send this to your pro", ctaSample: "Browse a sample report",
@@ -387,26 +392,27 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       "Otherwise your first conversation about nerves and recovery happens on the first match day, when it already matters.",
       "A pair that agrees in winter what it does after a poor shot does not have to work that out during the match.",
       "Technique practice stays as it is. This comes alongside it, in the same sessions.",
-      "From 1 December 2026 to 28 February 2027 signing up costs €15 per player. After that it is €49 per player.",
+      "From 1 December 2026 to 28 February 2027 signing up costs $15 per player. After that it is $49 per player.",
     ],
     lossClose: "The assessment and the team report cost less per player than a box of balls.",
     priceLabel: "What it costs", priceTitle: "A price you don't need", priceTitleEm: "a committee meeting for",
     priceNow: {
       label: "Introductory price", badge: "Sign up from 1 December 2026 to 28 February 2027",
-      player: "€15", playerSub: "per player",
-      team: "€99", teamSub: "maximum per team",
-      note: "Six players: €90 in total. Seven players or more: €99 in total.",
+      player: "$15", playerSub: "per player",
+      team: "$99", teamSub: "maximum per team",
+      note: "Four players: $60 in total. Six players: $90 in total. Seven players or more: $99 in total.",
     },
-    priceLater: { label: "After 28 February 2027", line: "€49 per player, €299 maximum per team." },
+    priceLater: { label: "After 28 February 2027", line: "$49 per player, $299 maximum per team." },
     priceFacts: [
       "Included: the full assessment for every player. Every player gets their own player profile: a summary and the full report.",
       "Included: one team report for the team, with a part for the captain and an annex for the pro.",
       "Not included: the pro's lessons. The pro sets the lesson fee; you agree it directly with the pro.",
       "Not included: a re-assessment after the season. It is voluntary and costs $39 per player.",
+      "One person pays for the whole team: the pro or the captain.",
       "The pro signs the team up with us by email; that is possible from 1 December 2026. When the team is signed up you hear how payment works.",
       "For teams with players aged 18 and over. Every player confirms that when signing up.",
     ],
-    currencyNote: "Team prices are in euros. The assessment on its own ($79), the re-assessment ($39) and the subscription for the pro ($199 per year) are in US dollars.",
+    currencyNote: "All prices on this page are in US dollars. If you pay in another currency, your bank converts the amount.",
     howLabel: "4 steps", howTitle: "From idea", howTitleEm: "to first team lesson",
     howSteps: [
       { num: "01", title: "Talk to your pro", body: "Send this page to the pro at your club. A team always starts through a PGA professional. For the pro it is more than a signature; we set out below what it asks of the pro and what's in it for them." },
@@ -448,7 +454,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     faqLabel: "Questions?", faqTitle: "Frequently", faqTitleEm: "asked",
     faqs: [
       { q: "Why can a team only start through a pro?", a: "Because the assessment only pays off when you work with it afterwards. The pro signs the team up, creates the team report, receives the annex with the series of lessons and gives the lessons. Is there no pro at your club, or does your pro want to know more? Email " + TEAM_CONTACT + "." },
-      { q: "What exactly do we pay?", a: "When you sign up from 1 December 2026 to 28 February 2027: €15 per player, with a maximum of €99 for the whole team. Six players pay €90 in total, seven or more pay €99 in total. After 28 February 2027 it is €49 per player and €299 maximum per team. The pro signs the team up with us by email; when the team is signed up you hear how payment works." },
+      { q: "What exactly do we pay?", a: "When you sign up from 1 December 2026 to 28 February 2027: $15 per player, with a maximum of $99 for the whole team. Four players pay $60 in total, six players $90, seven or more $99. After 28 February 2027 it is $49 per player and $299 maximum per team. All amounts are in US dollars; your bank converts them. One person pays for the whole team: the pro or the captain. The pro signs the team up with us by email; when the team is signed up you hear how payment works." },
       { q: "When can we start?", a: "A team can be signed up from 1 December 2026. Your pro can apply for the Pro Program now; approval usually takes one to three working days. After that the pro signs the team up with us by email (" + TEAM_CONTACT + "), we create the team link and the team hears how payment works." },
       { q: "Are the pro's lessons included in the price?", a: "No. The team price covers the assessment for every player and the team report. Your own pro gives the lessons. The pro sets the lesson fee; you agree it directly with the pro." },
       { q: "How much time does it take?", a: "The assessment takes 20 to 25 minutes per player: online, at home, in English or Dutch. Then one team meeting of an hour and a half to two hours. In winter, four sessions with the pairs within your normal practice; the captain can lead them with the report. One pair card per pair: ticked at the team meeting, the rest after your first session together. During the season, a two-minute review per pair after every match day. Lessons from the pro come on top of that, if you agree them with the pro." },
@@ -509,7 +515,7 @@ export const PRO_TEAM_BLOCK: Record<TeamLang, { label: string; title: string; ti
       "Bij elkaar voor je eerste team: reken, zonder de lessen en de trainingen zelf, op ruwweg tien uur. Bij een volgend team is dat minder.",
     ],
     gets: "Bij elk teamrapport krijg je een bijlage die alleen jij leest: de scores per speler, per speler één ding om op te letten, en een lessenreeks van vier lessen als kapstok. Kiest het team zelf het thema, dan staat er per thema een teamles in plaats van de lessenreeks. Het volledige persoonlijke rapport van een speler kun je alleen openen als die speler dat apart met je deelt.",
-    cost: "Spelers betalen bij aanmelding van 1 december 2026 t/m 28 februari 2027 €15 per persoon, met een maximum van €99 per team; daarna €49 en €299. Jouw lessen zitten daar niet in. Voor jou gelden de gewone regels van het Pro-programma: je eerste vijf lesprogramma's zijn gratis, daarna het abonnement. Een teamrapport telt niet mee voor die vijf.",
+    cost: "Spelers betalen bij aanmelding van 1 december 2026 t/m 28 februari 2027 $15 per persoon, met een maximum van $99 per team; daarna $49 en $299. Eén persoon rekent af voor het hele team: jij of de captain. Jouw lessen zitten daar niet in. Voor jou gelden de gewone regels van het Pro-programma: je eerste vijf lesprogramma's zijn gratis, daarna het abonnement. Een teamrapport telt niet mee voor die vijf.",
     link: "Bekijk wat je team krijgt en wat het jou vraagt",
     annexLink: "Bekijk een voorbeeld van de bijlage voor de pro",
   },
@@ -526,7 +532,7 @@ export const PRO_TEAM_BLOCK: Record<TeamLang, { label: string; title: string; ti
       "All in all for your first team: allow, not counting the lessons and the sessions themselves, roughly ten hours. With a next team it is less.",
     ],
     gets: "With every team report you get an annex that only you read: the scores per player, one thing to watch per player, and a series of four lessons as a framework. If the team picks its own theme, there is a team lesson for each theme instead of the series of lessons. You can only open a player's full personal report if that player shares it with you separately.",
-    cost: "Players pay €15 each when they sign up from 1 December 2026 to 28 February 2027, with a maximum of €99 per team; after that €49 and €299. Your lessons are not included. For you the normal Pro Program rules apply: your first five lesson programmes are free, then the subscription. A team report does not count towards those five.",
+    cost: "Players pay $15 each when they sign up from 1 December 2026 to 28 February 2027, with a maximum of $99 per team; after that $49 and $299. One person pays for the whole team: you or the captain. Your lessons are not included. For you the normal Pro Program rules apply: your first five lesson programmes are free, then the subscription. A team report does not count towards those five.",
     link: "See what your team gets and what it asks of you",
     annexLink: "See a sample of the annex for the pro",
   },

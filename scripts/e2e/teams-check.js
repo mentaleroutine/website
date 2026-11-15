@@ -29,8 +29,12 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       await page.waitForTimeout(600);
 
       const tekst = await page.locator("main").innerText();
-      ok(tekst.includes("€15") && tekst.includes("€99"), "introductieprijzen €15 en €99");
-      ok(tekst.includes("€49") && tekst.includes("€299"), "reguliere prijzen €49 en €299");
+      ok(tekst.includes("$15") && tekst.includes("$99"), "introductieprijzen $15 en $99");
+      ok(tekst.includes("$49") && tekst.includes("$299"), "reguliere prijzen $49 en $299");
+      ok(!(await page.locator("main").textContent()).includes("€") && !/\bEUR\b/.test(tekst), "geen euroteken meer: de teamprijs is in dollars");
+      ok(tekst.includes(lang === "nl" ? "Vier spelers: samen $60. Zes spelers: samen $90. Zeven spelers of meer: samen $99." : "Four players: $60 in total. Six players: $90 in total. Seven players or more: $99 in total."), "rekenvoorbeelden $60 / $90 / $99");
+      ok(tekst.includes(lang === "nl" ? "Eén persoon rekent af voor het hele team: de pro of de captain." : "One person pays for the whole team: the pro or the captain."), "één betaler: de pro of de captain");
+      ok(!/betaallink|payment link/i.test(await page.locator("main").textContent()), "niets over een betaallink (nog niet getest)");
       ok(tekst.includes("support@mentalroutine.com"), "contactregel zonder pro");
       ok(lang === "nl" ? tekst.includes("18 jaar en ouder") : tekst.includes("aged 18 and over"), "18+");
       ok(lang === "nl" ? tekst.includes("Stuur dit naar je pro") : tekst.includes("Send this to your pro"), `taal = ${lang}`);
@@ -42,7 +46,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       // Propositie in één oogopslag, "Dit krijgen jullie", wie ziet wat, voorbeeldknoppen
       ok((await page.locator("#in-een-oogopslag dt").count()) === 3, "hero: drie tegels (wat het is, wat het kost, wat je doet)");
       const oog = await page.locator("#in-een-oogopslag").innerText();
-      ok(oog.includes("€15") && oog.includes("€99"), "hero noemt €15 en €99");
+      ok(oog.includes("$15") && oog.includes("$99"), "hero noemt $15 en $99");
       ok(tekst.includes(lang === "nl" ? "Niemand zegt sorry voor een slag." : "Nobody says sorry for a shot."), "citaat uit het voorbeeldrapport");
       ok(tekst.includes(lang === "nl" ? "Dan heeft die speler gelijk. Streep door en schrijf erbij wat wel klopt." : "Then that player is right. Cross it out and write what does fit."), "tweede citaat staat in het huidige rapport");
       ok(!/wij kozen|we chose/i.test(tekst), "het oude citaat 'Wij kozen' is weg");
@@ -52,7 +56,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       // Prijs: geen doorgestreepte 'was'-prijs, de tweede prijs heet 'na 28 februari 2027', lessen niet inbegrepen
       ok((await page.locator("main .line-through").count()) === 0, "geen doorgestreepte prijs");
       const prijs = await page.locator("#prijskaart").innerText();
-      ok(prijs.includes(lang === "nl" ? "Na 28 februari 2027" : "After 28 February 2027") && prijs.includes("€49") && prijs.includes("€299"), "prijskaart: 'na 28 februari 2027' €49 / €299");
+      ok(prijs.includes(lang === "nl" ? "Na 28 februari 2027" : "After 28 February 2027") && prijs.includes("$49") && prijs.includes("$299"), "prijskaart: 'na 28 februari 2027' $49 / $299");
       ok(!/2027\/2028|seizoen 2026|season 2026/i.test(tekst), "geen 'vanaf seizoen 2027/2028' meer");
       const feiten = await page.locator("#prijs-feiten").innerText();
       ok(feiten.includes(lang === "nl" ? "Niet inbegrepen: de lessen van de pro" : "Not included: the pro's lessons"), "lessen van de pro zitten niet in de prijs");
@@ -148,7 +152,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       const balk = naam === "mobiel" ? await page.locator("div.fixed.bottom-0").boundingBox() : null;
       const grens = balk ? balk.y : viewport.height;
       const hpTekst = await page.locator("#hero-prijs").innerText();
-      ok(!!hp && hp.y >= 0 && hp.y + hp.height <= grens && hpTekst.includes("€15") && hpTekst.includes("€99"), `prijs op het eerste scherm (${naam}: onderkant ${hp ? Math.round(hp.y + hp.height) : "?"}px, grens ${Math.round(grens)}px)`);
+      ok(!!hp && hp.y >= 0 && hp.y + hp.height <= grens && hpTekst.includes("$15") && hpTekst.includes("$99"), `prijs op het eerste scherm (${naam}: onderkant ${hp ? Math.round(hp.y + hp.height) : "?"}px, grens ${Math.round(grens)}px)`);
       if (naam === "mobiel") await page.screenshot({ path: path.join(OUT, `teams_${lang}_mobiel_eerste_scherm.png`) });
       ok((await page.locator("#wie-ziet-wat").count()) === 1, "blok 'Wie ziet wat'");
       ok(!/deel[t]? (je|de eigen) scores|share your (own )?scores/i.test(tekst), "niet meer 'je deelt je scores binnen het team'");
@@ -167,7 +171,8 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       ok(hele.includes(lang === "nl" ? "Wanneer kunnen we beginnen?" : "When can we start?"), "vraag: wanneer kunnen we beginnen");
       ok(hele.includes(lang === "nl" ? "Iedere speler bevestigt dat bij het aanmelden" : "Every player confirms that when signing up"), "18+: de speler bevestigt het bij het aanmelden");
       ok(!/vanuit je dashboard|from your dashboard|start het team\b|starts the team|privacyverklaring|privacy policy|algemene voorwaarden|terms and conditions|betaal(t)? (online|in de portal)|pay online|checkout/i.test(hele), "niets over wat er nog niet is (zelf een team starten, betalen in de portal, privacyverklaring, voorwaarden)");
-      ok(tekst.includes("$79") && tekst.includes(lang === "nl" ? "in dollars" : "in US dollars"), "valuta: dollars één keer benoemd");
+      const valuta = await page.locator("#valuta").innerText();
+      ok(valuta.includes(lang === "nl" ? "Alle prijzen op deze pagina zijn in Amerikaanse dollars" : "All prices on this page are in US dollars") && tekst.includes("$79"), "valuta: één regel, alle prijzen in dollars");
 
       // Veelgestelde vragen: nieuwe vragen, en de antwoorden staan in de HTML ook als ze dichtgeklapt zijn
       const vragen = lang === "nl"
@@ -232,6 +237,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
   ok(blok.includes("Je meldt het team per mail bij ons aan (support@mentalroutine.com, vanaf 1 december 2026). Wij maken de teamlink"), "teamblok: aanmelden per mail, wij maken de teamlink");
   ok(blok.includes("lessenreeks van vier lessen") && blok.includes("scores per speler"), "teamblok: één zin over wat de pro krijgt");
   ok(blok.includes("Reken op een paar avonden") && blok.includes("anderhalf tot twee uur, plus je voorbereiding") && blok.includes("in deze volgorde"), "teamblok: de stappen in volgorde met eerlijke tijden");
+  ok(!blok.includes("€") && blok.includes("$15 per persoon") && blok.includes("$99 per team") && blok.includes("Eén persoon rekent af voor het hele team: jij of de captain."), "teamblok: prijs in dollars, één betaler, geen euroteken");
   ok(blok.includes("Een teamrapport telt niet mee voor die vijf") && blok.includes("Jouw lessen zitten daar niet in"), "teamblok: teamrapport telt niet mee; lessen niet in de teamprijs");
   ok(!/teamcode|paar minuten/i.test(blok), "teamblok: geen teamcode, geen 'een paar minuten'");
   ok(blok.includes("alleen openen als die speler dat apart met je deelt"), "teamblok: het volledige rapport alleen van spelers die dat apart delen");
