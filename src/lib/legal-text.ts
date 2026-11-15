@@ -145,7 +145,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
           ul(
             "**Noodzakelijk.** Als je inlogt in de portal, plaatsen we een cookie om je ingelogd te houden. De website onthoudt je taalkeuze in je browser.",
             "**Plausible Analytics** telt bezoeken en handelingen zonder cookies en zonder je over websites heen te volgen.",
-            "**Microsoft Clarity** laat ons zien hoe pagina's worden gebruikt, met onder meer klikkaarten en opnames van hoe een bezoeker door een pagina beweegt. Clarity plaatst daarvoor cookies. Dat gebeurt alleen als je daar toestemming voor geeft in de cookiemelding. Zonder toestemming laden we Clarity niet.",
+            "**Microsoft Clarity** laat ons zien hoe pagina's worden gebruikt, met onder meer klikkaarten en opnames van hoe een bezoeker door een pagina beweegt. Clarity plaatst daarvoor cookies. Dat gebeurt alleen als je daar toestemming voor geeft in de cookiemelding. Zonder toestemming laden we Clarity niet. In de portal kan op zo'n opname ook te zien zijn wat er op jouw scherm stond, zoals je antwoorden en scores.",
           ),
           p("Je kunt je keuze altijd wijzigen via 'Cookie-instellingen' onderaan de pagina. Je kunt ons ook vragen opnames van jouw bezoek te verwijderen."),
         ] },
@@ -273,7 +273,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
           ul(
             "**Necessary.** When you log in to the portal, we place a cookie to keep you logged in. The website remembers your language choice in your browser.",
             "**Plausible Analytics** counts visits and actions without cookies and without following you across websites.",
-            "**Microsoft Clarity** shows us how pages are used, including click maps and recordings of how a visitor moves through a page. Clarity places cookies for that. That only happens if you give consent for it in the cookie notice. Without consent we do not load Clarity.",
+            "**Microsoft Clarity** shows us how pages are used, including click maps and recordings of how a visitor moves through a page. Clarity places cookies for that. That only happens if you give consent for it in the cookie notice. Without consent we do not load Clarity. In the portal such a recording can also show what was on your screen, such as your answers and scores.",
           ),
           p("You can always change your choice through 'Cookie settings' at the bottom of the page. You can also ask us to delete recordings of your visit."),
         ] },
