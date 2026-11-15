@@ -611,6 +611,25 @@ Besluit van de opdrachtgever: een cookiemelding die bevestigd moet worden, zodat
 
 ---
 
+### 10.11 Stand na 15 november 2026 en waar het hele verhaal staat
+
+**Het volledige verslag van 15-11-2026 staat in de portal-repo: `docs/SESSIE_TEAMAANBOD_15NOV2026.md`** (besluiten, wat er in
+portal en website is gebouwd, alle commits van beide repo's, getest/niet getest, incidenten, open punten, naslag).
+
+Stand van de website (`e06dcd5`):
+- `/teams` **zichtbaar** (`TEAMS_LIVE = true`): indexeerbaar, in de sitemap, link "Teams" in het footermenu van de homepage.
+- Prijs in **dollars**: $15 per speler, hooguit $99 per team bij aanmelding t/m **15 maart 2027**, daarna $49 / $299.
+  Aanmelden kan vanaf nu. Route: de pro maakt het team aan in PRO Admin, één betaallink voor het hele team (pro of captain).
+- `/privacy` en `/terms` (alias `/voorwaarden`), NL + EN, bron `src/lib/legal-text.ts` (Nederlands leidend), aanbieder
+  Innerprompt B.V. De portal linkt ernaar.
+- **Cookiemelding**: Microsoft Clarity alleen na "Accepteren" (`src/components/cookie-consent.tsx`, `src/lib/cookie-consent.ts`,
+  ook `public/quiz.html`); keuze in localStorage `mr_cookie_consent`; "Cookie-instellingen" in de footers.
+- **Lettertypen meegeleverd** (`src/app/fonts/`: DM Sans, Cormorant Garamond recht en cursief; `next/font/local`): geen
+  verzoek meer naar Google Fonts, bij de build niet en in de browser niet.
+- Teamvoorbeelden: 20 PDF's, gelijk aan de machine-uitvoer van portal `4cafa95`; het kleine team wordt na regel R13 opnieuw
+  gemaakt (zie het portalverslag §9).
+- Tests: `teams-check.js` (425), `legal-check.js` (239), `cookie-check.js` (47), `funnel-check.js`; alle ook tegen de live site.
+
 ## 11. Pro Program-pagina (3 nov 2026, LIVE, commit `42bb70b`)
 
 Onderdeel van een portal-sessie over de hele PRO-keten; volledig verslag in de **portal-repo
