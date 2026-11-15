@@ -409,10 +409,10 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
 
   | Smaak | Team (NL / EN) | Wat | Pagina's rapport NL / EN | Bijlage NL / EN |
   |---|---|---|---|---|
-  | `h18` | Heren 1 / Men's 1 | 18 holes (9 singles, 9 greensome), acht spelers | 22 / 23 | 6 / 6 |
-  | `h27` | Heren 2 / Men's 2 | 27 holes (9 greensome, 18 singles), zes spelers | 22 / 22 | 5 / 5 |
-  | `h36` | Heren 1 / Men's 1 | 36 holes (18 foursome, 18 singles), acht spelers | 22 / 23 | 6 / 6 |
-  | `small` | Heren 3 / Men's 3 | klein team: vier spelers (18 holes) | 22 / 22 | 5 / 5 |
+  | `h18` | Heren 1 / Men's 1 | 18 holes (9 singles, 9 greensome), acht spelers | 23 / 23 | 6 / 6 |
+  | `h27` | Heren 2 / Men's 2 | 27 holes (9 greensome, 18 singles), zes spelers | 22 / 22 | 6 / 6 |
+  | `h36` | Heren 1 / Men's 1 | 36 holes (18 foursome, 18 singles), acht spelers | 23 / 23 | 6 / 6 |
+  | `small` | Heren 3 / Men's 3 | klein team: vier spelers (18 holes) | 22 / 22 | 6 / 6 |
   | `even` | Gemengd 1 / Mixed 1 | scores dicht bij elkaar: het team kiest zelf het thema (36 holes) | 20 / 20 | 6 / 6 |
 
 - **Bestanden**: per smaak `report-{nl,en}.pdf`, `annex-{nl,en}.pdf` en de mappen `report-{nl,en}/pNN.webp`,
@@ -493,6 +493,15 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
   (stappen hierboven) vóór `TEAMS_LIVE = true`.
 
 ---
+
+- **Voorbeelden vervangen en gepusht (15-11-2026, avond)**: de twintig PDF's zijn opnieuw gemaakt met de portalcode na
+  leesronde 15 tot en met 17 en de twee vinkjes (portal `538e1eb`; tien echte runs met de AI-schrijver, elk 0 terugvalzinnen,
+  samen ± $0,97; daarna gratis opnieuw opgemaakt met dezelfde goedgekeurde teksten na twee opmaakpunten). Gecontroleerd:
+  automatisch (geen "Wij kozen", verwijzingen binnen bereik, taal), door twee onafhankelijke AI-lezers die elke op-maat-tekst
+  tegen de scoretabel narekenden (NL en EN: geen feitelijke fout, privacyfout of foute verwijzing; taalpunten in de vaste
+  tekst hersteld, zinnen van de AI-schrijver ongewijzigd gelaten) en met het oog op vijf pagina's als beeld. Pagina's: zie
+  de tabel hierboven. `teams-check.js` (357) en `funnel-check.js` slagen; `TEAMS_LIVE` blijft `false`. De opmerking hieronder
+  dat de PDF's van vóór ronde 15 zijn, geldt dus niet meer.
 
 ## 11. Pro Program-pagina (3 nov 2026, LIVE, commit `42bb70b`)
 

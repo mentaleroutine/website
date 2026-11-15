@@ -254,8 +254,8 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
   await page.waitForTimeout(200);
   ok((await page.title()) === titelGolfers, `terug bij de golfers: de oude documenttitel (${await page.title()})`);
 
-  const PAGINAS = { h18: { report: { nl: 22, en: 23 }, annex: { nl: 6, en: 6 } }, h27: { report: { nl: 22, en: 22 }, annex: { nl: 5, en: 5 } },
-    h36: { report: { nl: 22, en: 23 }, annex: { nl: 6, en: 6 } }, small: { report: { nl: 22, en: 22 }, annex: { nl: 5, en: 5 } },
+  const PAGINAS = { h18: { report: { nl: 23, en: 23 }, annex: { nl: 6, en: 6 } }, h27: { report: { nl: 22, en: 22 }, annex: { nl: 6, en: 6 } },
+    h36: { report: { nl: 23, en: 23 }, annex: { nl: 6, en: 6 } }, small: { report: { nl: 22, en: 22 }, annex: { nl: 6, en: 6 } },
     even: { report: { nl: 20, en: 20 }, annex: { nl: 6, en: 6 } } };
   for (const lang of ["nl", "en"]) {
     for (const smaak of Object.keys(PAGINAS)) {

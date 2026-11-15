@@ -81,8 +81,8 @@
   `/samples?report=team&team=h18|h27|h36|small|even&doc=report|annex&lang=nl|en[&preview=teams]`. Het teamblok op
   `/pro-program` (ook achter de schakelaar; `?preview=teams`) linkt naar de voorbeeldbijlage. Verandert het teamrapport in de
   portal, dan de lijsten/citaten in `teams-text.ts` en de voorbeelden meewijzigen. Test: `node scripts/e2e/teams-check.js
-  http://localhost:3123` (357 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn van vóór ronde 15
-  en moeten opnieuw vóór de pagina live gaat.**
+  http://localhost:3123` (357 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn op 15-11-2026 opnieuw gemaakt
+  met de portalcode na ronde 15–17 en de twee vinkjes (portal `538e1eb`), gecontroleerd en geplaatst.**
 - **Testen:** `scripts/e2e/funnel-check.js` (Playwright, 56 controles incl. `/samples`, portal geblokkeerd) — draai dit na elke
   wijziging aan quiz.html / homepage / navbar / redirects (lege-QuickScan-incident 15-10-2026).
 - Lokale typecheck: de geneste kopie `Claude website MR 01/Claude website MR 01/` (untracked) geeft
