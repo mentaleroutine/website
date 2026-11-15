@@ -99,23 +99,33 @@ function TeamsContent() {
           <div className="absolute bottom-0 right-1/3 w-80 h-80 rounded-full bg-amber-600/[0.07] blur-3xl" />
         </div>
 
-        <div className="container mx-auto px-6 py-24 relative z-10">
+        <div className="container mx-auto px-6 pt-16 pb-20 md:py-24 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.span
-              className="inline-block text-xs font-semibold tracking-widest uppercase text-amber-400 border border-amber-400/30 px-4 py-1.5 rounded-full mb-8"
+              className="inline-block text-xs font-semibold tracking-widest uppercase text-amber-400 border border-amber-400/30 px-4 py-1.5 rounded-full mb-6 md:mb-8"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
             >
               {T.badge}
             </motion.span>
 
             <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight text-[#f6f1e7] mb-6"
+              className="text-[2.6rem] md:text-6xl lg:text-7xl font-semibold leading-tight text-[#f6f1e7] mb-5 md:mb-6"
               style={serif}
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             >
               {T.heroTitle}<br />
               <span className="italic text-amber-300">{T.heroTitleEm}</span>
             </motion.h1>
+
+            {/* De prijs staat op het eerste scherm, ook op een telefoon (390 x 844) */}
+            <motion.p
+              id="hero-prijs"
+              className="mb-6 flex flex-col items-center gap-1"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.35 }}
+            >
+              <span className="inline-block rounded-lg bg-amber-400 px-4 py-2 text-base md:text-lg font-bold text-green-950">{T.heroPrice}</span>
+              <span className="text-xs text-green-200/70">{T.heroPriceSub}</span>
+            </motion.p>
 
             <motion.p
               className="text-lg text-green-200/80 max-w-2xl mx-auto mb-8 leading-relaxed"
@@ -271,6 +281,7 @@ function TeamsContent() {
         <div className="container mx-auto max-w-4xl">
           <SectionHead label={T.priceLabel} title={T.priceTitle} em={T.priceTitleEm} />
           <motion.div
+            id="prijskaart"
             className="bg-white rounded-2xl border border-amber-500/40 shadow-xl shadow-green-900/10 overflow-hidden"
             initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
           >
@@ -280,12 +291,10 @@ function TeamsContent() {
             </div>
             <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-green-900/10">
               <div className="p-8 text-center">
-                <div className="text-xl text-stone-400 line-through decoration-stone-400" style={serif}>{T.priceNow.playerWas}</div>
                 <div className="text-6xl font-semibold text-green-950" style={serif}>{T.priceNow.player}</div>
                 <p className="text-sm text-stone-500 mt-1">{T.priceNow.playerSub}</p>
               </div>
               <div className="p-8 text-center">
-                <div className="text-xl text-stone-400 line-through decoration-stone-400" style={serif}>{T.priceNow.teamWas}</div>
                 <div className="text-6xl font-semibold text-green-950" style={serif}>{T.priceNow.team}</div>
                 <p className="text-sm text-stone-500 mt-1">{T.priceNow.teamSub}</p>
               </div>
@@ -296,7 +305,7 @@ function TeamsContent() {
             </div>
           </motion.div>
 
-          <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3 mt-10 max-w-3xl mx-auto">
+          <ul id="prijs-feiten" className="grid sm:grid-cols-2 gap-x-8 gap-y-3 mt-10 max-w-3xl mx-auto">
             {T.priceFacts.map((f, i) => (
               <li key={i} className="flex items-start gap-3 text-sm text-stone-700 leading-relaxed">
                 <Check />
@@ -334,14 +343,30 @@ function TeamsContent() {
             ))}
           </div>
 
+          {/* Eerlijk over de tijd die het het team kost */}
+          <motion.div
+            id="tijd"
+            className="mt-10 bg-white rounded-2xl p-8 md:p-10 border border-amber-500/40 shadow-lg shadow-green-900/5 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+          >
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-2">{T.time.label}</p>
+            <h3 className="text-2xl md:text-3xl font-semibold text-green-950 mb-5 leading-tight" style={serif}>{T.time.title}</h3>
+            <ul className="space-y-3">
+              {T.time.items.map((it, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm text-stone-700 leading-relaxed"><Check />{it}</li>
+              ))}
+            </ul>
+            <p className="mt-5 text-sm text-stone-500 leading-relaxed">{T.time.note}</p>
+          </motion.div>
+
         </div>
       </section>
 
       {/* ── WIE ZIET WAT ──────────────────────────────────────────────────── */}
       <section id="wie-ziet-wat" className="py-24 px-6 bg-[#faf8f3] scroll-mt-4">
-        <div className="container mx-auto max-w-4xl">
+        <div className="container mx-auto max-w-5xl">
           <SectionHead label={T.see.label} title={T.see.title} em={T.see.titleEm} />
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {T.see.items.map((item, i) => (
               <motion.div
                 key={i}
@@ -376,8 +401,63 @@ function TeamsContent() {
         </div>
       </section>
 
+      {/* ── VOOR DE PRO: wat het oplevert, wat je doet, wat het kost ─────── */}
+      <section id="voor-de-pro" className="py-24 px-6 bg-[#f6f1e7] scroll-mt-4">
+        <div className="container mx-auto max-w-3xl">
+          <motion.div
+            className="bg-white rounded-2xl p-8 md:p-10 border border-green-900/[0.07] shadow-lg shadow-green-900/5"
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+          >
+            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.pro.label}</p>
+            <h2 className="text-3xl lg:text-4xl font-semibold text-green-950 leading-tight mb-4" style={serif}>
+              {T.pro.title} <em>{T.pro.titleEm}</em>
+            </h2>
+            <p className="text-stone-600 leading-relaxed mb-7">{T.pro.body}</p>
+
+            <h3 className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.pro.gainsLabel}</h3>
+            <ul id="pro-oplevert" className="space-y-3 mb-9">
+              {T.pro.gains.map((p, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm text-stone-700 leading-relaxed">
+                  <Check />
+                  {p}
+                </li>
+              ))}
+            </ul>
+
+            <h3 className="text-2xl font-semibold text-green-950 leading-tight mb-2" style={serif}>{T.pro.stepsLabel}</h3>
+            <p className="text-sm text-stone-600 leading-relaxed mb-5">{T.pro.stepsIntro}</p>
+            <ol id="pro-stappen" className="space-y-3 mb-7">
+              {T.pro.steps.map((st, i) => (
+                <li key={i} className="flex gap-4 rounded-xl border border-green-900/10 bg-[#faf8f3] px-5 py-4">
+                  <span className="shrink-0 w-7 h-7 rounded-full bg-green-950 text-[#f6f1e7] text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                  <div>
+                    <p className="text-sm font-semibold text-green-950 leading-snug">{st.title}</p>
+                    <p className="text-sm text-stone-600 leading-relaxed mt-1">{st.body}</p>
+                    <p className="text-xs text-stone-700 leading-relaxed mt-2">
+                      <span className="font-semibold tracking-widest uppercase text-amber-700 text-[10px] mr-2">{T.pro.timeLabel}</span>
+                      {st.time}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p id="pro-kosten" className="text-sm text-stone-600 leading-relaxed mb-8">{T.pro.cost}</p>
+            <a href={`/pro-program?lang=${L}`} onClick={() => track("teams_pro_apply", { lang: L })}
+               className="inline-block px-8 py-4 bg-green-950 text-[#f6f1e7] font-bold rounded-lg hover:bg-green-900 transition-all hover:-translate-y-0.5 text-sm tracking-wide">
+              {T.pro.cta}
+            </a>
+            <p className="mt-5">
+              <a id="voorbeeld-bijlage" href={teamSampleHref(L, "annex", "teams-pro")} onClick={() => track("teams_sample", { place: "pro", doc: "annex", lang: L })}
+                 className="text-sm font-semibold text-amber-700 underline underline-offset-4 hover:text-amber-800">
+                {T.pro.sample}
+              </a>
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── FAQ ───────────────────────────────────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#faf8f3]">
+      <section id="vragen" className="py-24 px-6 bg-[#faf8f3]">
         <div className="container mx-auto max-w-3xl">
           <SectionHead label={T.faqLabel} title={T.faqTitle} em={T.faqTitleEm} />
           <div className="space-y-4">
@@ -385,41 +465,6 @@ function TeamsContent() {
               <FaqItem key={`${L}-${i}`} question={item.q} answer={item.a} index={i} />
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── VOOR DE PRO ───────────────────────────────────────────────────── */}
-      <section id="voor-de-pro" className="py-24 px-6 bg-[#f6f1e7] scroll-mt-4">
-        <div className="container mx-auto max-w-3xl">
-          <motion.div
-            className="bg-white rounded-2xl p-8 md:p-10 border border-green-900/[0.07] shadow-lg shadow-green-900/5"
-            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-          >
-            <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">{T.proLabel}</p>
-            <h2 className="text-3xl lg:text-4xl font-semibold text-green-950 leading-tight mb-4" style={serif}>
-              {T.proTitle} <em>{T.proTitleEm}</em>
-            </h2>
-            <p className="text-stone-600 leading-relaxed mb-6">{T.proBody}</p>
-            <ul className="space-y-3 mb-6">
-              {T.proPoints.map((p, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-stone-700 leading-relaxed">
-                  <Check />
-                  {p}
-                </li>
-              ))}
-            </ul>
-            <p className="text-sm text-stone-500 leading-relaxed mb-8">{T.proCost}</p>
-            <a href={`/pro-program?lang=${L}`} onClick={() => track("teams_pro_apply", { lang: L })}
-               className="inline-block px-8 py-4 bg-green-950 text-[#f6f1e7] font-bold rounded-lg hover:bg-green-900 transition-all hover:-translate-y-0.5 text-sm tracking-wide">
-              {T.proCta}
-            </a>
-            <p className="mt-5">
-              <a id="voorbeeld-bijlage" href={teamSampleHref(L, "annex", "teams-pro")} onClick={() => track("teams_sample", { place: "pro", doc: "annex", lang: L })}
-                 className="text-sm font-semibold text-amber-700 underline underline-offset-4 hover:text-amber-800">
-                {T.proSample}
-              </a>
-            </p>
-          </motion.div>
         </div>
       </section>
 

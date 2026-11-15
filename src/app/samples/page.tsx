@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/ui/navbar";
 import { LangProvider, useLang } from "@/context/lang-context";
@@ -140,6 +140,22 @@ function SamplesContent() {
   const [flavour, setFlavour] = useState<TeamFlavour>("h18");
   const [doc, setDoc] = useState<TeamDoc>("report");
   const team = showTeams && mode === "team";
+
+  // Document title: the route metadata says "Three Golfers…". Only while the team samples are chosen (so only with
+  // TEAMS_LIVE or ?preview=teams) does the tab title follow them; ordinary visitors keep the metadata title untouched.
+  const golfersTitle = useRef<string | null>(null);
+  useEffect(() => {
+    if (!team) {
+      if (golfersTitle.current !== null) { document.title = golfersTitle.current; golfersTitle.current = null; }
+      return;
+    }
+    if (golfersTitle.current === null) golfersTitle.current = document.title;
+    const set = () => { if (document.title !== TS.docTitle) document.title = TS.docTitle; };
+    set();
+    const obs = new MutationObserver(set);   // Next may write the metadata title after the first render
+    obs.observe(document.head, { childList: true, subtree: true, characterData: true });
+    return () => obs.disconnect();
+  }, [team, TS.docTitle]);
 
   // Deep links: /samples?golfer=sam&report=profile (QuickScan result screen, /assessment).
   useEffect(() => {

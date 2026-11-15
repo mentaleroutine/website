@@ -61,19 +61,25 @@
 - **Teampagina `/teams`** (teamaanbod competitieteams, NL + EN, 14/15-11-2026; **verborgen**: één schakelaar `TEAMS_LIVE`
   in `src/lib/teams-text.ts` = `false` → noindex, niet in de sitemap, nergens gelinkt). Alle tekst en de besluiten staan
   bovenaan `teams-text.ts` (via een PGA-pro, 18+, €15/€99 t/m 28-2-2027 daarna €49/€299, teamprijzen in euro's, geen
-  resultaatclaims, "paren" en niet de woorden die de test afkeurt, geen gedachtestreepjes). Opbouw sinds 15-11: hero met de
-  propositie in drie tegels (wat het is, wat het kost, wat je doet) → **"Dit krijgen jullie"** (wat het teamrapport werkelijk
-  bevat: team / captain / bijlage voor de pro, twee letterlijke citaten uit het voorbeeld, knop naar de teamvoorbeelden) →
-  waarom nu → prijs (met één valutaregel: $79/$199 zijn dollars) → 4 stappen → **"Wie ziet wat"** (team en captain: woorden,
-  geen cijfers; pro: bijlage met scores) → stuur dit naar je pro → FAQ (antwoorden staan altijd in de HTML, dichtgeklapt met
-  `hidden`) → blok voor de pro. `document.title` per taal in de pagina; de statische metadata blijft NL.
+  resultaatclaims, "paren" en niet de woorden die de test afkeurt, geen gedachtestreepjes). Opbouw sinds 15-11 (na
+  leesronde 15, **lokaal gecommit, nog niet gepusht**): hero met een prijsregel direct onder de titel (op een telefoon op het
+  eerste scherm) en de propositie in drie tegels → **"Dit krijgen jullie"** (wat het teamrapport werkelijk bevat: team /
+  captain / bijlage voor de pro, twee letterlijke citaten uit het voorbeeld, knop naar de teamvoorbeelden) → waarom nu →
+  prijs (geen doorgestreepte prijs; "na 28 februari 2027: €49"; lessen en herhaalmeting niet inbegrepen; één valutaregel:
+  $79/$39/$199 zijn dollars; geen afrekenmechaniek beschrijven) → 4 stappen + **"Eerlijk over de tijd"** → **"Wie ziet wat"**
+  (zes kaarten; altijd "geen cijfers per speler", nooit kaal "zonder cijfers") → stuur dit naar je pro → **blok voor de pro**
+  (eerst wat het oplevert, dan "Dit doe je, in deze volgorde, en dit kost het je" in acht stappen met de tijd; feiten uit
+  `pro-program-text.ts`) → FAQ (antwoorden staan altijd in de HTML, dichtgeklapt met `hidden`). Tijden eerlijk, niet
+  optimistisch (aanwijzing opdrachtgever). Geen privacy- of voorwaardenpagina op de site, dus geen link.
+  `document.title` per taal in de pagina; de statische metadata blijft NL.
   **Teamvoorbeelden** op `/samples` achter dezelfde schakelaar (tot dan alleen met `?preview=teams`): vijf verzonnen teams ×
   teamrapport + bijlage voor de pro × NL/EN, manifest + teksten `src/lib/team-samples.ts`, bestanden
   `public/samples/team/<smaak>/{report,annex}-{nl,en}` (± 28 MB), deep link
   `/samples?report=team&team=h18|h27|h36|small|even&doc=report|annex&lang=nl|en[&preview=teams]`. Het teamblok op
   `/pro-program` (ook achter de schakelaar; `?preview=teams`) linkt naar de voorbeeldbijlage. Verandert het teamrapport in de
   portal, dan de lijsten/citaten in `teams-text.ts` en de voorbeelden meewijzigen. Test: `node scripts/e2e/teams-check.js
-  http://localhost:3123` (154 controles). Vervangen: sessieverslag §10.8.
+  http://localhost:3123` (295 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn van vóór ronde 15
+  en moeten opnieuw vóór de pagina live gaat.**
 - **Testen:** `scripts/e2e/funnel-check.js` (Playwright, 56 controles incl. `/samples`, portal geblokkeerd) — draai dit na elke
   wijziging aan quiz.html / homepage / navbar / redirects (lege-QuickScan-incident 15-10-2026).
 - Lokale typecheck: de geneste kopie `Claude website MR 01/Claude website MR 01/` (untracked) geeft

@@ -433,13 +433,41 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
      in `scripts/e2e/teams-check.js`).
   4. De twee citaten op `/teams` (`get.quotes` in `teams-text.ts`) komen letterlijk uit `h18`: nalopen of ze nog in het
      nieuwe rapport staan.
-  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (154 controles: `/teams` NL/EN
+  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (295 controles: `/teams` NL/EN
      desktop/mobiel, teamblok, en alle vijf smaken × twee documenten × twee talen: aantal pagina's, pagina 1 geladen,
      PDF 200) en `BASE=http://localhost:3123 node scripts/e2e/funnel-check.js`.
 - **Let op**: het Engelse teamrapport gebruikt zelf het woord "line-up" (in de pagina-afbeeldingen). De regel dat dat
   woord niet in paginatekst mag, geldt voor de tekst van de website; de test kijkt alleen daarnaar.
 - **Live zetten** = `TEAMS_LIVE = true` (één regel): `/teams` wordt vindbaar en komt in de sitemap, het teamblok op
   `/pro-program` en de teamsectie op `/samples` worden zichtbaar, en de links verliezen `&preview=teams`.
+- **Teampagina na leesronde 15 (15-11-2026, lokaal gecommit, NIET gepusht: de opdrachtgever leest de tekst eerst)**.
+  Bron: portal-repo `docs/MENUKAART_TEAMRAPPORT_PANEL.md` §18 "Wat niet goed is: de teampagina". Gewijzigd in
+  `src/lib/teams-text.ts` + `src/app/teams/page.tsx`:
+  - overal "geen cijfers per speler" (het rapport toont teamgemiddelden); de test keurt kaal "zonder cijfers" af;
+  - **eerlijke tijd** (aanwijzing opdrachtgever): blok "Eerlijk over de tijd" (`#tijd`) onder de vier stappen: assessment
+    20–25 min, teamavond anderhalf tot twee uur, vier wintertrainingen met de paren, een kaartje per paar, terugblik van
+    twee minuten na elke speeldag;
+  - **blok voor de pro herschreven en vóór de FAQ gezet** (`#voor-de-pro`): eerst "Dit levert het je op", dan
+    "Dit doe je, in deze volgorde, en dit kost het je" (acht stappen met "Jouw tijd"), dan de kosten. Bedragen en
+    termijnen komen letterlijk uit `pro-program-text.ts`; een teamrapport telt niet mee voor de vijf gratis lesprogramma's;
+  - **prijs**: geen doorgestreepte €49/€299 meer, "Na 28 februari 2027: €49 per speler, maximaal €299 per team", geen
+    "vanaf seizoen 2027/2028"; "Niet inbegrepen: de lessen van de pro" en de herhaalmeting ($39, vrijwillig); geen
+    teamcode of andere afrekenmechaniek ("bij aanmelding hoor je hoe het afrekenen loopt");
+  - "Wie ziet wat" met zes kaarten (ook: wie niet wil meedoen, stoppen met delen, wie het antwoord op de teamvraag ziet)
+    en vijf nieuwe vragen; adres buiten captain en pro om. **Geen link naar privacyverklaring of voorwaarden: die
+    pagina's bestaan niet op de site**;
+  - tweede citaat vervangen ("Wij kozen…" staat niet meer in het rapport) door "Dan heeft die speler gelijk. Streep door
+    en schrijf erbij wat wel klopt." (staat in het huidige voorbeeld `h18` én in het nieuwe rapport);
+  - toon: "Weer een winter alleen techniek" → "Afspreken doe je niet op de eerste speeldag"; "ongeveer twintig pagina's";
+  - Engels: "club team" / "league", één vraag "Does this work outside the Netherlands?", termen gelijk aan het rapport
+    (set phrase, poor shot, team meeting, pair card, annex for the pro, practice formats, match day, run sheet);
+  - **telefoon**: prijsregel `#hero-prijs` direct onder de titel; op 390×844 staat hij op het eerste scherm (test);
+  - `/samples`: de documenttitel volgt de teamvoorbeelden zolang die gekozen zijn (`teamSamples.docTitle`); voor gewone
+    bezoekers verandert er niets;
+  - `PRO_TEAM_BLOCK` (teamblok op `/pro-program`) volgt dezelfde stappen en tijden.
+  Test: `teams-check.js` nu **295 controles**. **Nog te doen**: de voorbeeld-PDF's in `public/samples/team/` zijn van
+  vóór ronde 15 (daarin staat nog een teamavond van een uur en "Wij kozen" op het kaartje): opnieuw maken en plaatsen
+  (stappen hierboven) vóór `TEAMS_LIVE = true`.
 
 ---
 

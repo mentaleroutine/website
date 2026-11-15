@@ -43,6 +43,7 @@ export function teamSampleHref(lang: ReportLang, doc: TeamDoc, source: string, f
 type FlavourCopy = { team: string; name: string; line: string };
 
 export type TeamSamplesCopy = {
+  docTitle: string;
   tabGolfers: string; tabTeam: string; tabsLabel: string;
   badge: string; h1a: string; h1b: string; intro: string;
   pickLabel: string; docLabel: string;
@@ -56,6 +57,7 @@ export type TeamSamplesCopy = {
 
 export const teamSamples: Record<ReportLang, TeamSamplesCopy> = {
   nl: {
+    docTitle: "Voorbeeld teamrapport: vijf teams, vijf verschillende rapporten | MentalRoutine",
     tabGolfers: "Drie golfers", tabTeam: "Teamrapport", tabsLabel: "Soort voorbeeld",
     badge: "Voorbeeld teamrapport",
     h1a: "Vijf teams.",
@@ -71,7 +73,7 @@ export const teamSamples: Record<ReportLang, TeamSamplesCopy> = {
       even:  { team: "Gemengd 1", name: "Scores dicht bij elkaar",   line: "Het rapport zegt dat eerlijk; het team kiest zelf het thema (36 holes)." },
     },
     docs: {
-      report: { name: "Teamrapport", tag: "Voor het team en de captain", body: "Het teamprofiel, de spelers in woorden, paren om uit te proberen, het thema voor de winter, de teamavond, de wedstrijddag, een kaartje per paar en het deel voor de captain. Zonder cijfers per speler." },
+      report: { name: "Teamrapport", tag: "Voor het team en de captain", body: "Het teamprofiel, de spelers in woorden, paren om uit te proberen, het thema voor de winter, de teamavond, de wedstrijddag, een kaartje per paar en het deel voor de captain. Geen cijfers per speler." },
       annex:  { name: "Bijlage voor de pro", tag: "Alleen voor de pro", body: "De scores per speler, per speler één ding om op te letten en één vraag voor achteraf, een lessenreeks van vier lessen en oefenvormen." },
     },
     annexNote: "Alleen de pro krijgt deze bijlage; de captain en het team niet.",
@@ -84,6 +86,7 @@ export const teamSamples: Record<ReportLang, TeamSamplesCopy> = {
     cta: { label: "Jullie eigen teamrapport", h2a: "Benieuwd wat jullie team", h2b: "over zichzelf zegt?", primary: "Bekijk het teamaanbod" },
   },
   en: {
+    docTitle: "Sample Team Reports: Five Teams, Five Different Reports | MentalRoutine",
     tabGolfers: "Three golfers", tabTeam: "Team report", tabsLabel: "Kind of sample",
     badge: "Sample team report",
     h1a: "Five teams.",
@@ -100,7 +103,7 @@ export const teamSamples: Record<ReportLang, TeamSamplesCopy> = {
     },
     docs: {
       report: { name: "Team report", tag: "For the team and the captain", body: "The team profile, the players in words, pairs to try out, the theme for the winter, the team meeting, match day, a card per pair and the part for the captain. No scores per player." },
-      annex:  { name: "Annex for the pro", tag: "For the pro only", body: "The scores per player, one thing to watch and one question for afterwards per player, a series of four lessons and practice drills." },
+      annex:  { name: "Annex for the pro", tag: "For the pro only", body: "The scores per player, one thing to watch and one question for afterwards per player, a series of four lessons and practice formats." },
     },
     annexNote: "Only the pro receives this annex; the captain and the team do not.",
     pages: "{n} pages",

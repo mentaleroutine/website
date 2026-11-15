@@ -6,11 +6,11 @@ import { TEAMS_LIVE } from "@/lib/teams-text";
 export const metadata: Metadata = {
   title: "Mentaal trainen met je competitieteam | MentalRoutine",
   description:
-    "Deze winter traint je competitieteam ook het hoofd: een mentaal profiel voor elke speler, een teamrapport en teamlessen van je eigen pro. €15 per speler, maximaal €99 per team.",
+    "Deze winter traint je competitieteam ook het hoofd: een assessment voor elke speler en één teamrapport, €15 per speler en maximaal €99 per team bij aanmelding t/m 28 februari 2027. De lessen spreek je af met je eigen pro.",
   alternates: { canonical: "/teams", languages: { nl: "/teams?lang=nl", en: "/teams?lang=en" } },
   openGraph: {
     title: "Mentaal trainen met je competitieteam",
-    description: "Een mentaal profiel voor elke speler, een teamrapport en teamlessen van je eigen pro.",
+    description: "Een assessment voor elke speler en één teamrapport voor het team. De lessen spreek je af met je eigen pro.",
     url: "https://www.mentalroutine.com/teams",
     siteName: "MentalRoutine",
     locale: "nl_NL",
