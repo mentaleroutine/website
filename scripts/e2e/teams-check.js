@@ -107,8 +107,8 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       const zie = await page.locator("#wie-ziet-wat").innerText();
       ok((await page.locator("#wie-ziet-wat h3").count()) === 6, "wie ziet wat: zes kaarten");
       ok(lang === "nl"
-        ? zie.includes("Niemand is verplicht") && zie.includes("vanaf vier spelers") && zie.includes("een rapport dat al gemaakt is, blijft bestaan") && zie.includes("telling voor het hele team, zonder namen") && zie.includes("De pro ziet het antwoord per speler")
-        : zie.includes("Nobody has to") && zie.includes("at least four players") && zie.includes("a report that has already been made stays as it is") && zie.includes("count for the whole team, without names") && zie.includes("The pro sees the answer per player"),
+        ? zie.includes("Niemand is verplicht") && zie.includes("vanaf vier spelers") && zie.includes("Een rapport dat al gemaakt is, blijft bestaan, ook de bijlage voor de pro waarin je scores staan") && zie.includes("telling voor het hele team, zonder namen") && zie.includes("De pro ziet het antwoord per speler")
+        : zie.includes("Nobody has to") && zie.includes("at least four players") && zie.includes("A report that has already been made stays as it is, including the annex for the pro that contains your scores") && zie.includes("count for the whole team, without names") && zie.includes("The pro sees the answer per player"),
         "wie ziet wat: niet meedoen, stoppen met delen, wie het antwoord op de teamvraag ziet");
       ok(zie.includes("support@mentalroutine.com"), "wie ziet wat: adres buiten captain en pro om");
 
@@ -120,7 +120,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
         "wie ziet wat: twee vinkjes; het volledige persoonlijke rapport deel je apart met de pro, aan- en uitzetten in de portal");
       ok(!/resultaten en je rapport met de pro deelt|share your results and your report with the pro|zolang je deelt|for as long as you share|het persoonlijke rapport met de pro\. Dat vink|and your personal report with the pro\. You tick/i.test(await page.locator("main").textContent()), "de oude formulering van één vinkje (resultaten en rapport met de pro) is weg");
       ok(lang === "nl"
-        ? zie.includes("Bij de teamlink staan twee vinkjes") && zie.includes("Het tweede is niet verplicht") && zie.includes("De pro ziet je scores en je rapport dan niet meer") && zie.includes("alleen openen als jij dat apart aanvinkt")
+        ? zie.includes("Bij de teamlink staan twee vinkjes") && zie.includes("Het tweede is niet verplicht") && zie.includes("De pro ziet je scores en je rapport daar dan niet meer") && zie.includes("alleen openen als jij dat apart aanvinkt")
         : zie.includes("The team link has two tick boxes") && zie.includes("The second is optional") && zie.includes("The pro then no longer sees your scores or your report") && zie.includes("only open your full personal report if you tick that separately"),
         "wie ziet wat: voetregel met de twee vinkjes; stoppen met delen = pro ziet scores en rapport niet meer");
       ok(proBlok.includes(lang === "nl" ? "alleen openen als die speler dat apart met je deelt" : "if that player shares it with you separately"), "pro-blok: het volledige rapport alleen van spelers die dat apart delen");

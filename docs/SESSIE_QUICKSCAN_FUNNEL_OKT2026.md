@@ -629,6 +629,10 @@ Stand van de website (`e06dcd5`):
 - Teamvoorbeelden: 20 PDF's, gelijk aan de machine-uitvoer. Het kleine team (`small`) is op 15-11 (einde dag) opnieuw gemaakt
   met portal `5adb717` (regel R13 voor de greensome en het ontdubbelen van zinnen); de andere vier smaken komen van `4cafa95`
   en zouden met de huidige code gelijk uitkomen (sindsdien alleen controleregels gewijzigd).
+- **Eerlijk over wat blijft (15-11, na panelronde 18; portal `05bd321`)**: teampagina (kaart "Stoppen met delen" + de vraag
+  erover) en privacyverklaring §5 en §10 zeggen nu dat een teamrapport dat al gemaakt is blijft bestaan, met de bijlage voor de
+  pro waarin de scores staan, en dat verwijderen daarvan per mail kan. De tien teamrapporten zijn gratis opnieuw opgemaakt
+  (zelfde AI-teksten, alleen het kader "Waar je ja tegen zei" is anders) en geplaatst; de bijlagen zijn ongewijzigd.
 - Tests: `teams-check.js` (425), `legal-check.js` (239), `cookie-check.js` (47), `funnel-check.js`; alle ook tegen de live site.
 
 ## 11. Pro Program-pagina (3 nov 2026, LIVE, commit `42bb70b`)
