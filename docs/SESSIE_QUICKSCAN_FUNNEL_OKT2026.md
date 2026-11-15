@@ -522,6 +522,15 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
   de tabel hierboven. `teams-check.js` (357) en `funnel-check.js` slagen; `TEAMS_LIVE` blijft `false`. De opmerking hieronder
   dat de PDF's van vóór ronde 15 zijn, geldt dus niet meer.
 
+- **Zichtbaar live sinds 15-11-2026 (`74d4df5`)**: `TEAMS_LIVE = true` (`e1c2ce3`) op uitdrukkelijk verzoek; `/teams` is
+  indexeerbaar, staat in de sitemap en in het footermenu van de homepage; teamblok en teamvoorbeelden zichtbaar zonder
+  `?preview=teams`. `teams-check.js` (380) slaagt tegen de live site. **Incident bij de uitrol**: twee Vercel-builds mislukten
+  op "next/font/google queries have exactly one entry": Google gaf voor DM Sans font-URL's met meerdere query-parameters
+  terug, waar de Turbopack-build op stukloopt. Opnieuw uitrollen hielp niet. Oplossing: **DM Sans wordt meegeleverd**
+  (`src/app/fonts/dm-sans-latin.woff2`, variabele latin-subset, OFL; `next/font/local` in `layout.tsx`). Cormorant Garamond
+  komt nog van Google; breekt de build daar ooit op, dan dezelfde oplossing. Lokaal faalt `next build` op de geneste kopiemap
+  (niet in de repo); dat zegt niets over Vercel. Open: de betaalroute (aanmelden loopt per mail via support@).
+
 ## 11. Pro Program-pagina (3 nov 2026, LIVE, commit `42bb70b`)
 
 Onderdeel van een portal-sessie over de hele PRO-keten; volledig verslag in de **portal-repo
