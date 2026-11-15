@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { LangProvider, useLang } from "@/context/lang-context";
 import { TEAM_TEXT, TEAM_CONTACT, SITE, teamLang, type TeamLang } from "@/lib/teams-text";
+import { teamSampleHref } from "@/lib/team-samples";
 
 declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
@@ -52,6 +53,12 @@ function SectionHead({ label, title, em, dark = false }: { label: string; title:
   );
 }
 
+const ghostCls = "px-8 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm";
+
+function Check() {
+  return <svg viewBox="0 0 16 16" fill="none" stroke="#c4a043" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 shrink-0 mt-0.5"><polyline points="2 8 6 12 14 4" /></svg>;
+}
+
 const ctaCls = "px-8 py-4 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/30 text-sm tracking-wide";
 
 function TeamsContent() {
@@ -59,6 +66,16 @@ function TeamsContent() {
   const L = teamLang(lang);            // NL of EN; andere talen zien de Engelse pagina
   const T = TEAM_TEXT[L];
   const [copied, setCopied] = useState(false);
+
+  // De taal wordt client-side gekozen; de statische metadata (layout.tsx) blijft Nederlands.
+  // Next zet de <title> uit de metadata soms pas na de eerste render in de head: daarom ook bewaken.
+  useEffect(() => {
+    const set = () => { if (document.title !== T.docTitle) document.title = T.docTitle; };
+    set();
+    const obs = new MutationObserver(set);
+    obs.observe(document.head, { childList: true, subtree: true, characterData: true });
+    return () => obs.disconnect();
+  }, [T.docTitle]);
 
   const mailHref = `mailto:?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(T.mailBody.replace("{url}", teamUrl(L)))}`;
 
@@ -101,25 +118,33 @@ function TeamsContent() {
             </motion.h1>
 
             <motion.p
-              className="text-lg text-green-200/80 max-w-2xl mx-auto mb-4 leading-relaxed"
+              className="text-lg text-green-200/80 max-w-2xl mx-auto mb-8 leading-relaxed"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
             >
               {T.heroP1}
             </motion.p>
-            <motion.p
-              className="text-base text-green-200/60 max-w-xl mx-auto mb-8 leading-relaxed"
+
+            {/* De propositie in één oogopslag: wat het is, wat het kost, wat je doet */}
+            <motion.dl
+              id="in-een-oogopslag"
+              className="grid sm:grid-cols-3 gap-3 text-left mb-9"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
             >
-              {T.heroP2}
-            </motion.p>
+              {T.glance.map((g, i) => (
+                <div key={i} className="rounded-xl border border-white/[0.12] bg-white/[0.06] px-5 py-4">
+                  <dt className="text-[11px] font-semibold tracking-widest uppercase text-amber-400 mb-1.5">{g.title}</dt>
+                  <dd className="text-sm text-green-100/90 leading-relaxed">{g.desc}</dd>
+                </div>
+              ))}
+            </motion.dl>
 
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.6 }}
             >
               <button onClick={() => { scrollToSend(); track("teams_cta", { place: "hero", lang: L }); }} className={ctaCls}>{T.ctaSend}</button>
-              <a href="#zo-werkt-het" className="px-8 py-4 border border-green-200/25 text-green-200 rounded-lg hover:border-green-200/60 hover:bg-green-200/5 transition-all text-sm">
-                {T.ctaHow}
+              <a href={teamSampleHref(L, "report", "teams-hero")} onClick={() => track("teams_sample", { place: "hero", doc: "report", lang: L })} className={ghostCls}>
+                {T.ctaSample}
               </a>
             </motion.div>
 
@@ -133,7 +158,63 @@ function TeamsContent() {
         </div>
       </section>
 
-      {/* ── WAT HET TEAM ERAAN HEEFT ──────────────────────────────────────── */}
+      {/* ── DIT KRIJGEN JULLIE (wat het teamrapport werkelijk bevat) ──────── */}
+      <section id="dit-krijgen-jullie" className="py-24 px-6 bg-[#faf8f3] scroll-mt-4">
+        <div className="container mx-auto max-w-5xl">
+          <SectionHead label={T.get.label} title={T.get.title} em={T.get.titleEm} />
+          <p className="text-center text-lg text-stone-600 max-w-2xl mx-auto -mt-6 mb-12 leading-relaxed">{T.get.intro}</p>
+
+          <div className="grid lg:grid-cols-[1.35fr_1fr] gap-5">
+            {T.get.groups.map((g, i) => (
+              <motion.div
+                key={i}
+                className={`bg-white rounded-2xl p-8 border shadow-lg shadow-green-900/5 ${i === 0 ? "border-amber-500/40 lg:row-span-2" : "border-green-900/[0.07]"}`}
+                initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.08 }}
+              >
+                <p className="text-[11px] font-semibold tracking-widest uppercase text-amber-700 mb-1">{g.size}</p>
+                <h3 className="text-2xl font-semibold text-green-950 mb-4 leading-tight" style={serif}>{g.title}</h3>
+                <ul className="space-y-2.5">
+                  {g.items.map((it, j) => (
+                    <li key={j} className="flex items-start gap-3 text-sm text-stone-700 leading-relaxed"><Check />{it}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Echte citaten uit een voorbeeldrapport */}
+          <div className="mt-12 rounded-2xl bg-green-950 px-6 py-9 md:px-10">
+            <p className="text-center text-[11px] font-semibold tracking-widest uppercase text-amber-400 mb-7">{T.get.quotesLabel}</p>
+            <div className="grid md:grid-cols-2 gap-6">
+              {T.get.quotes.map((q, i) => (
+                <figure key={i} className="rounded-xl border border-white/[0.1] bg-white/[0.04] px-6 py-6">
+                  <blockquote className="text-2xl md:text-[1.7rem] font-semibold text-[#f6f1e7] leading-snug" style={serif}>&ldquo;{q.text}&rdquo;</blockquote>
+                  <figcaption className="mt-3 text-xs text-green-200/60 leading-relaxed">{q.from}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5 mt-12">
+            {T.get.extras.map((item, i) => (
+              <div key={i} className="rounded-2xl p-7 border border-green-900/10 bg-[#f6f1e7]">
+                <h3 className="text-lg font-semibold text-green-950 mb-2 leading-snug" style={serif}>{item.title}</h3>
+                <p className="text-sm text-stone-600 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <a id="voorbeeld-knop" href={teamSampleHref(L, "report", "teams")} onClick={() => track("teams_sample", { place: "get", doc: "report", lang: L })}
+               className="inline-block px-8 py-4 bg-green-950 text-[#f6f1e7] font-bold rounded-lg hover:bg-green-900 transition-all hover:-translate-y-0.5 text-sm tracking-wide">
+              {T.get.sampleCta}
+            </a>
+            <p className="mt-3 text-xs text-stone-500">{T.get.sampleNote}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WAAROM NU ─────────────────────────────────────────────────────── */}
       <section className="py-24 px-6 bg-[#f6f1e7]">
         <div className="container mx-auto max-w-5xl">
           <SectionHead label={T.whyLabel} title={T.whyTitle} em={T.whyTitleEm} />
@@ -218,11 +299,13 @@ function TeamsContent() {
           <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3 mt-10 max-w-3xl mx-auto">
             {T.priceFacts.map((f, i) => (
               <li key={i} className="flex items-start gap-3 text-sm text-stone-700 leading-relaxed">
-                <svg viewBox="0 0 16 16" fill="none" stroke="#c4a043" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 shrink-0 mt-0.5"><polyline points="2 8 6 12 14 4" /></svg>
+                <Check />
                 {f}
               </li>
             ))}
           </ul>
+
+          <p id="valuta" className="mt-8 text-center text-xs text-stone-500 leading-relaxed max-w-2xl mx-auto">{T.currencyNote}</p>
 
           <div className="text-center mt-10">
             <button onClick={() => { scrollToSend(); track("teams_cta", { place: "price", lang: L }); }} className={ctaCls}>{T.ctaSend}</button>
@@ -251,18 +334,26 @@ function TeamsContent() {
             ))}
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5 mt-14">
-            {T.getItems.map((item, i) => (
+        </div>
+      </section>
+
+      {/* ── WIE ZIET WAT ──────────────────────────────────────────────────── */}
+      <section id="wie-ziet-wat" className="py-24 px-6 bg-[#faf8f3] scroll-mt-4">
+        <div className="container mx-auto max-w-4xl">
+          <SectionHead label={T.see.label} title={T.see.title} em={T.see.titleEm} />
+          <div className="grid sm:grid-cols-2 gap-5">
+            {T.see.items.map((item, i) => (
               <motion.div
                 key={i}
-                className="rounded-2xl p-7 border border-green-900/10 bg-[#faf8f3]"
+                className="bg-white rounded-2xl p-7 border border-green-900/[0.07] shadow-lg shadow-green-900/5"
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.08 }}
               >
-                <h3 className="text-lg font-semibold text-green-950 mb-2 leading-snug" style={serif}>{item.title}</h3>
+                <h3 className="text-xl font-semibold text-green-950 mb-2 leading-snug" style={serif}>{item.title}</h3>
                 <p className="text-sm text-stone-600 leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
+          <p className="mt-8 text-center text-sm text-stone-600 leading-relaxed max-w-2xl mx-auto">{T.see.note}</p>
         </div>
       </section>
 
@@ -312,7 +403,7 @@ function TeamsContent() {
             <ul className="space-y-3 mb-6">
               {T.proPoints.map((p, i) => (
                 <li key={i} className="flex items-start gap-3 text-sm text-stone-700 leading-relaxed">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="#c4a043" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 shrink-0 mt-0.5"><polyline points="2 8 6 12 14 4" /></svg>
+                  <Check />
                   {p}
                 </li>
               ))}
@@ -322,6 +413,12 @@ function TeamsContent() {
                className="inline-block px-8 py-4 bg-green-950 text-[#f6f1e7] font-bold rounded-lg hover:bg-green-900 transition-all hover:-translate-y-0.5 text-sm tracking-wide">
               {T.proCta}
             </a>
+            <p className="mt-5">
+              <a id="voorbeeld-bijlage" href={teamSampleHref(L, "annex", "teams-pro")} onClick={() => track("teams_sample", { place: "pro", doc: "annex", lang: L })}
+                 className="text-sm font-semibold text-amber-700 underline underline-offset-4 hover:text-amber-800">
+                {T.proSample}
+              </a>
+            </p>
           </motion.div>
         </div>
       </section>
@@ -370,11 +467,10 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </button>
-      {open && (
-        <div id={panelId} role="region" aria-labelledby={triggerId} className="px-6 pb-5">
-          <p className="text-sm text-stone-600 leading-relaxed">{answer}</p>
-        </div>
-      )}
+      {/* Het antwoord staat altijd in de HTML (zoekmachines, hulpmiddelen); dichtgeklapt = hidden. */}
+      <div id={panelId} role="region" aria-labelledby={triggerId} hidden={!open} className="px-6 pb-5">
+        <p className="text-sm text-stone-600 leading-relaxed">{answer}</p>
+      </div>
     </div>
   );
 }

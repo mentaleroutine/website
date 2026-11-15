@@ -58,6 +58,22 @@
   weg (redirects). Events `sample_view`/`sample_download`/`samples_click`. **Vervangen/genereren: stappenplan in
   `docs/SESSIE_QUICKSCAN_FUNNEL_OKT2026.md` §10.5**; de huidige 6 profielen hebben nog 2 bekende fouten (§10.6) en worden
   later opnieuw gegenereerd. Golfers/scores nooit los wijzigen (staan ook in 3 portal-scripts).
+- **Teampagina `/teams`** (teamaanbod competitieteams, NL + EN, 14/15-11-2026; **verborgen**: één schakelaar `TEAMS_LIVE`
+  in `src/lib/teams-text.ts` = `false` → noindex, niet in de sitemap, nergens gelinkt). Alle tekst en de besluiten staan
+  bovenaan `teams-text.ts` (via een PGA-pro, 18+, €15/€99 t/m 28-2-2027 daarna €49/€299, teamprijzen in euro's, geen
+  resultaatclaims, "paren" en niet de woorden die de test afkeurt, geen gedachtestreepjes). Opbouw sinds 15-11: hero met de
+  propositie in drie tegels (wat het is, wat het kost, wat je doet) → **"Dit krijgen jullie"** (wat het teamrapport werkelijk
+  bevat: team / captain / bijlage voor de pro, twee letterlijke citaten uit het voorbeeld, knop naar de teamvoorbeelden) →
+  waarom nu → prijs (met één valutaregel: $79/$199 zijn dollars) → 4 stappen → **"Wie ziet wat"** (team en captain: woorden,
+  geen cijfers; pro: bijlage met scores) → stuur dit naar je pro → FAQ (antwoorden staan altijd in de HTML, dichtgeklapt met
+  `hidden`) → blok voor de pro. `document.title` per taal in de pagina; de statische metadata blijft NL.
+  **Teamvoorbeelden** op `/samples` achter dezelfde schakelaar (tot dan alleen met `?preview=teams`): vijf verzonnen teams ×
+  teamrapport + bijlage voor de pro × NL/EN, manifest + teksten `src/lib/team-samples.ts`, bestanden
+  `public/samples/team/<smaak>/{report,annex}-{nl,en}` (± 28 MB), deep link
+  `/samples?report=team&team=h18|h27|h36|small|even&doc=report|annex&lang=nl|en[&preview=teams]`. Het teamblok op
+  `/pro-program` (ook achter de schakelaar; `?preview=teams`) linkt naar de voorbeeldbijlage. Verandert het teamrapport in de
+  portal, dan de lijsten/citaten in `teams-text.ts` en de voorbeelden meewijzigen. Test: `node scripts/e2e/teams-check.js
+  http://localhost:3123` (154 controles). Vervangen: sessieverslag §10.8.
 - **Testen:** `scripts/e2e/funnel-check.js` (Playwright, 56 controles incl. `/samples`, portal geblokkeerd) — draai dit na elke
   wijziging aan quiz.html / homepage / navbar / redirects (lege-QuickScan-incident 15-10-2026).
 - Lokale typecheck: de geneste kopie `Claude website MR 01/Claude website MR 01/` (untracked) geeft

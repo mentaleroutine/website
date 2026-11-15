@@ -393,6 +393,54 @@ Gevonden bij het nalezen van de 6 profielen op 2-11:
 - Optioneel: de EN-trainingsrapporten opnieuw (van 25-9, vóór de rapport-review) zodat NL en EN even vers zijn.
 - Plausible: `sample_view`/`sample_download`/`samples_click` als goals toevoegen.
 
+### 10.8 Teamvoorbeelden: het teamrapport op `/samples` (15 nov 2026, gebouwd, VERBORGEN)
+Bij het teamaanbod (`/teams`, portal-repo `docs/TEAMAANBOD_NOV2026.md` en `docs/TEAMRAPPORT_UITVOERING.md`). Proeflezers
+van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten naast de pagina.
+
+- **Schakelaar**: alles hangt aan `TEAMS_LIVE` in `src/lib/teams-text.ts` (nu `false`). Zolang die uit staat is de
+  teamsectie op `/samples` onzichtbaar; bekijken kan met `/samples?preview=teams`. Zonder `preview` doet een teamlink
+  niets bijzonders (de bezoeker ziet Alex' QuickScan). De voorbeelden van Alex, Sam en Chris zijn niet veranderd.
+- **Wat de bezoeker ziet** (met de schakelaar aan of `?preview=teams`): boven de keuzes een schakelaar "Drie golfers /
+  Teamrapport". In "Teamrapport": 1 · kies een team (vijf knoppen met één regel), 2 · kies een document (teamrapport ·
+  bijlage voor de pro), dezelfde viewer (pagina's als afbeelding + "Download PDF"). Bij de bijlage de regel "Alleen de pro
+  krijgt deze bijlage; de captain en het team niet." Bovenaan: de teams zijn verzonnen, de rapporten zijn echte uitvoer.
+  De knop onderaan gaat naar `/teams`. Teksten NL + EN; de/fr/es zien EN.
+- **De vijf smaken** (map `public/samples/team/<smaak>/`):
+
+  | Smaak | Team (NL / EN) | Wat | Pagina's rapport NL / EN | Bijlage NL / EN |
+  |---|---|---|---|---|
+  | `h18` | Heren 1 / Men's 1 | 18 holes (9 singles, 9 greensome), acht spelers | 22 / 23 | 6 / 6 |
+  | `h27` | Heren 2 / Men's 2 | 27 holes (9 greensome, 18 singles), zes spelers | 22 / 22 | 5 / 5 |
+  | `h36` | Heren 1 / Men's 1 | 36 holes (18 foursome, 18 singles), acht spelers | 22 / 23 | 6 / 6 |
+  | `small` | Heren 3 / Men's 3 | klein team: vier spelers (18 holes) | 22 / 22 | 5 / 5 |
+  | `even` | Gemengd 1 / Mixed 1 | scores dicht bij elkaar: het team kiest zelf het thema (36 holes) | 20 / 20 | 6 / 6 |
+
+- **Bestanden**: per smaak `report-{nl,en}.pdf`, `annex-{nl,en}.pdf` en de mappen `report-{nl,en}/pNN.webp`,
+  `annex-{nl,en}/pNN.webp` (1075 px, WebP 82). Samen 294 bestanden, ± 28 MB.
+- **Code**: `src/lib/team-samples.ts` (smaken, `TEAM_FILES` met de paginatelling, teksten NL/EN, `teamSampleHref()` die
+  `&preview=teams` meegeeft zolang de schakelaar uit staat); `src/app/samples/page.tsx` (`TeamViewer`, schakelaar, deep
+  link). **Deep link**: `/samples?report=team&team=<smaak>&doc=report|annex&lang=nl|en` (+ `&preview=teams`).
+- **Ingangen** (allemaal achter dezelfde schakelaar): `/teams` hero + blok "Dit krijgen jullie" (teamrapport) + het blok
+  voor de pro (bijlage); teamblok op `/pro-program` (bijlage).
+- **Analytics**: `sample_view{report:"team", team, doc, lang, source}` en `sample_download{report:"team", team, doc, lang}`;
+  op `/teams` `teams_sample{place, doc, lang}`, op `/pro-program` `pro_program_team_sample`.
+- **Vervangen** (bijvoorbeeld na een wijziging van het teamrapport in de portal):
+  1. Genereren in de portal-repo: `backend/scripts/teamrapport/portal_teamrapport_check.py` met `AI=1` (één betaalde run
+     per team × taal, ± $0,05–0,12). Elke run geeft een `…_ai.pdf` (teamrapport) en een `…_ai_bijlage.pdf` (bijlage).
+  2. Pagina 1 van elke PDF controleren op team, spelvorm en taal.
+  3. Omzetten: `python scripts/samples/pdf_to_webp.py <pdf> public/samples/team/<smaak>/report-<lang> --pdf-as report-<lang>.pdf`
+     (en hetzelfde met `annex`). Het script print het aantal pagina's → in `TEAM_FILES` zetten (en in de tabel `PAGINAS`
+     in `scripts/e2e/teams-check.js`).
+  4. De twee citaten op `/teams` (`get.quotes` in `teams-text.ts`) komen letterlijk uit `h18`: nalopen of ze nog in het
+     nieuwe rapport staan.
+  5. Testen: dev-server op 3123 + `node scripts/e2e/teams-check.js http://localhost:3123` (154 controles: `/teams` NL/EN
+     desktop/mobiel, teamblok, en alle vijf smaken × twee documenten × twee talen: aantal pagina's, pagina 1 geladen,
+     PDF 200) en `BASE=http://localhost:3123 node scripts/e2e/funnel-check.js`.
+- **Let op**: het Engelse teamrapport gebruikt zelf het woord "line-up" (in de pagina-afbeeldingen). De regel dat dat
+  woord niet in paginatekst mag, geldt voor de tekst van de website; de test kijkt alleen daarnaar.
+- **Live zetten** = `TEAMS_LIVE = true` (één regel): `/teams` wordt vindbaar en komt in de sitemap, het teamblok op
+  `/pro-program` en de teamsectie op `/samples` worden zichtbaar, en de links verliezen `&preview=teams`.
+
 ---
 
 ## 11. Pro Program-pagina (3 nov 2026, LIVE, commit `42bb70b`)

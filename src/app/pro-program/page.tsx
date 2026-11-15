@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { LangProvider, useLang } from "@/context/lang-context";
 import { PRO_TEXT, PGA_DIVISIONS, COUNTRIES, COUNTRY_LABEL, proLang } from "@/lib/pro-program-text";
 import { TEAMS_LIVE, PRO_TEAM_BLOCK } from "@/lib/teams-text";
+import { teamSampleHref } from "@/lib/team-samples";
 
 declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
@@ -358,6 +359,13 @@ function ProProgramContent() {
                 <li key={i} className="flex items-start gap-3 text-sm text-stone-700 leading-relaxed"><span className="mt-0.5"><IconCheck /></span>{p}</li>
               ))}
             </ul>
+            <p className="text-sm text-stone-700 leading-relaxed mb-3">
+              {TB.gets}{" "}
+              <a id="team-annex-sample" href={teamSampleHref(L, "annex", "pro-program")} onClick={() => track("pro_program_team_sample", { doc: "annex", lang: L })}
+                 className="font-semibold text-amber-700 underline underline-offset-4 hover:text-amber-800">
+                {TB.annexLink}
+              </a>
+            </p>
             <p className="text-sm text-stone-500 leading-relaxed mb-8">{TB.cost}</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button onClick={scrollToForm} className="px-6 py-3 bg-amber-400 text-green-950 font-bold rounded-lg hover:bg-amber-300 transition-all hover:-translate-y-0.5 shadow-lg shadow-amber-500/20 text-sm tracking-wide">
