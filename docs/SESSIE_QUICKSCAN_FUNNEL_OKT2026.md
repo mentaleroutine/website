@@ -551,7 +551,8 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
   op "next/font/google queries have exactly one entry": Google gaf voor DM Sans font-URL's met meerdere query-parameters
   terug, waar de Turbopack-build op stukloopt. Opnieuw uitrollen hielp niet. Oplossing: **DM Sans wordt meegeleverd**
   (`src/app/fonts/dm-sans-latin.woff2`, variabele latin-subset, OFL; `next/font/local` in `layout.tsx`). Cormorant Garamond
-  komt nog van Google; breekt de build daar ooit op, dan dezelfde oplossing. Lokaal faalt `next build` op de geneste kopiemap
+  is op 15-11-2026 (avond) op dezelfde manier meegeleverd (`cormorant-garamond-latin.woff2` + `-italic.woff2`, variabel
+  300–700): de site haalt bij de build en in de browser niets meer op bij Google Fonts. Lokaal faalt `next build` op de geneste kopiemap
   (niet in de repo); dat zegt niets over Vercel. Open: de betaalroute (aanmelden loopt per mail via support@).
 
 ### 10.9 Privacyverklaring en algemene voorwaarden (15 nov 2026, lokaal gecommit)

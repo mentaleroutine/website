@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { translations } from "@/lib/translations";
@@ -16,10 +15,13 @@ const dmSans = localFont({
   variable: "--font-dm-sans",
 });
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+// Cormorant Garamond wordt om dezelfde reden meegeleverd als DM Sans: geen afhankelijkheid van Google tijdens de build.
+// Twee variabele bestanden (recht en cursief), latin-subset, gewichten 300 t/m 700.
+const cormorant = localFont({
+  src: [
+    { path: "./fonts/cormorant-garamond-latin.woff2", weight: "300 700", style: "normal" },
+    { path: "./fonts/cormorant-garamond-latin-italic.woff2", weight: "300 700", style: "italic" },
+  ],
   display: "swap",
   variable: "--font-cormorant",
 });
