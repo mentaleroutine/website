@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/samples`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/methodology`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/pro-program`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/privacy`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE}/terms`, changeFrequency: "yearly", priority: 0.3 },
     // /teams staat in de sitemap zolang de schakelaar TEAMS_LIVE (lib/teams-text.ts) aan staat (sinds 15-11-2026).
     ...(TEAMS_LIVE ? [{ url: `${BASE}/teams`, changeFrequency: "monthly" as const, priority: 0.8 }] : []),
   ];

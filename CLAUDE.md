@@ -61,8 +61,7 @@
 - **Teampagina `/teams`** (teamaanbod competitieteams, NL + EN, 14/15-11-2026; **ZICHTBAAR sinds 15-11-2026** op
   uitdrukkelijk verzoek van de opdrachtgever: één schakelaar `TEAMS_LIVE` in `src/lib/teams-text.ts` = `true` → index/follow,
   in de sitemap, link "Teams" in het footermenu van de homepage, teamblok op `/pro-program` en teamvoorbeelden op `/samples`
-  zichtbaar, links zonder `?preview=teams`; `false` verbergt alles weer). **Bestaat niet, dus niet suggereren**:
-  privacyverklaring/voorwaarden. **De route op de pagina (sinds 15-11-2026, in de portal getest met een echte betaling en
+  zichtbaar, links zonder `?preview=teams`; `false` verbergt alles weer). **De route op de pagina (sinds 15-11-2026, in de portal getest met een echte betaling en
   terugbetaling)**: pro vraagt toegang aan tot het Pro-programma → maakt het team aan in PRO Admin (teamnaam, 4 t/m 12
   spelers) → de portal maakt één betaallink voor het hele team (pro betaalt zelf of stuurt hem naar de captain; Lemon
   Squeezy, dollars) → na de betaling werkt de teamlink → spelers doen het assessment en rekenen zelf niets af. Speler erbij =
@@ -79,7 +78,7 @@
   (zes kaarten; altijd "geen cijfers per speler", nooit kaal "zonder cijfers") → stuur dit naar je pro → **blok voor de pro**
   (eerst wat het oplevert, dan "Dit doe je, in deze volgorde, en dit kost het je" in acht stappen met de tijd; feiten uit
   `pro-program-text.ts`) → FAQ (antwoorden staan altijd in de HTML, dichtgeklapt met `hidden`). Tijden eerlijk, niet
-  optimistisch (aanwijzing opdrachtgever). Geen privacy- of voorwaardenpagina op de site, dus geen link.
+  optimistisch (aanwijzing opdrachtgever). Privacyverklaring en voorwaarden bestaan sinds 15-11-2026 (/privacy, /terms): de teampagina linkt ernaar.
   **Toestemming = twee vinkjes bij de teamlink in de portal**: 1 (verplicht) meedoen = uitkomst in het teamrapport in
   woorden + de pro ziet de scores; 2 (niet verplicht, nooit voorgevinkt) de pro mag ook het volledige persoonlijke rapport
   openen, later in de portal aan/uit. Team en captain zien het persoonlijke rapport nooit.
@@ -90,8 +89,15 @@
   `/samples?report=team&team=h18|h27|h36|small|even&doc=report|annex&lang=nl|en[&preview=teams]`. Het teamblok op
   `/pro-program` (ook achter de schakelaar; `?preview=teams`) linkt naar de voorbeeldbijlage. Verandert het teamrapport in de
   portal, dan de lijsten/citaten in `teams-text.ts` en de voorbeelden meewijzigen. Test: `node scripts/e2e/teams-check.js
-  http://localhost:3123` (413 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn op 15-11-2026 opnieuw gemaakt
+  http://localhost:3123` (425 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn op 15-11-2026 opnieuw gemaakt
   met de portalcode na ronde 15–17 en de twee vinkjes (portal `538e1eb`), gecontroleerd en geplaatst.**
+- **Privacyverklaring `/privacy` en algemene voorwaarden `/terms`** (alias `/voorwaarden`; 15-11-2026): NL + EN, tekst in
+  `src/lib/legal-text.ts` (gestructureerde blokken), opmaak `src/components/legal-page.tsx`. **De NL-tekst is door de
+  opdrachtgever aangeleverd en leidend: inhoudelijk niet wijzigen zonder opdracht**; het Engels is een getrouwe vertaling en
+  wijzigt mee. Uitgever Innerprompt B.V. (KvK 42076580). Links: homepage-footer (onderste balk), teampagina (wie ziet wat,
+  prijs, drie FAQ's, footer), `/pro-program` (onder het formulier). De teampagina mag de documenten niet tegenspreken
+  (14 dagen terugvragen zolang geen speler is gestart, onbenutte plekken niet terug, 18+). Test:
+  `node scripts/e2e/legal-check.js http://localhost:3123` (239 controles). Sessieverslag §10.9.
 - **Testen:** `scripts/e2e/funnel-check.js` (Playwright, 56 controles incl. `/samples`, portal geblokkeerd) — draai dit na elke
   wijziging aan quiz.html / homepage / navbar / redirects (lege-QuickScan-incident 15-10-2026).
 - Lokale typecheck: de geneste kopie `Claude website MR 01/Claude website MR 01/` (untracked) geeft

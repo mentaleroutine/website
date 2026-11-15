@@ -554,6 +554,38 @@ van de teampagina zeiden "ik koop blind"; daarom staan er nu echte teamrapporten
   komt nog van Google; breekt de build daar ooit op, dan dezelfde oplossing. Lokaal faalt `next build` op de geneste kopiemap
   (niet in de repo); dat zegt niets over Vercel. Open: de betaalroute (aanmelden loopt per mail via support@).
 
+### 10.9 Privacyverklaring en algemene voorwaarden (15 nov 2026, lokaal gecommit)
+Opdracht van de opdrachtgever: "Maak voorwaarden en privacyverklaring voor het teamaanbod en zet deze op de website".
+
+- **Pagina's**: `/privacy` en `/terms` (alias `/voorwaarden` → `/terms`, redirect in `next.config.ts` zoals `/voorbeelden`).
+  NL + EN via het gewone taalmechanisme (`?lang=`, eerdere keuze, browsertaal; de server geeft Engels); andere talen zien
+  Engels. Indexeerbaar, in de sitemap, eigen titel en beschrijving (`src/app/{privacy,terms}/layout.tsx`); de tabtitel
+  volgt de taal.
+- **Tekst**: `src/lib/legal-text.ts`, als gestructureerde blokken (alinea, tussenkop, lijst, tabel; geen markdown-parser,
+  geen nieuwe dependency). **De Nederlandse tekst is door de opdrachtgever aangeleverd en leidend; inhoudelijk niet
+  wijzigen zonder opdracht.** Het Engels is een getrouwe vertaling (Brits Engels). Wijzigt het Nederlands, dan het Engels
+  en de versiedatum in dezelfde commit meewijzigen. Uitgever: Innerprompt B.V., Meerlosebaan 12, 5971 NW Grubbenvorst,
+  KvK 42076580.
+- **Opmaak**: `src/components/legal-page.tsx` (één component voor beide): smalle tekstkolom, taalwissel NL/EN, link terug
+  naar de homepage, link naar het andere document, tabellen met vaste kolommen die op een telefoon binnen beeld blijven.
+  Geen animaties.
+- **Links ernaartoe** (de taal gaat mee): onderste balk van de homepage-footer ("Privacy" · "Voorwaarden"/"Terms");
+  teampagina: onder "Wie ziet wat" (privacy), bij de valutaregel onder de prijs (voorwaarden), in drie FAQ's ("Wie ziet
+  mijn gegevens?" → privacy; "Hoe werkt het betalen?" en "Wat als er later een speler bij komt?" → voorwaarden) en beide
+  in de footer; `/pro-program`: bij de privacyregel onder het aanvraagformulier.
+- **Teampagina in lijn met de documenten**: nieuwe zin in "Hoe werkt het betalen?": terugvragen kan binnen 14 dagen
+  zolang nog geen speler het assessment is gestart, daarna niet. De regel "de teampagina zegt niets over een
+  privacyverklaring of voorwaarden" in `teams-text.ts` en `teams-check.js` is omgedraaid.
+- **Test**: `node scripts/e2e/legal-check.js http://localhost:3123` (**239 controles**: beide pagina's NL/EN op desktop
+  en telefoon, vaste gegevens, tabellen, geen horizontaal scrollen, taalwissel, terugval naar Engels, alias, tekst in de
+  HTML zonder JavaScript, alle links, sitemap). `teams-check.js` nu **425 controles**.
+- **Gemeld aan de opdrachtgever, niet gewijzigd** (de NL-tekst is leidend): (1) voorwaarden art. 13 verwijst naar het
+  platform voor onlinegeschillenbeslechting van de Europese Commissie; dat platform is op 20 juli 2025 gesloten;
+  (2) onder het aanvraagformulier van het Pro-programma staat "We delen ze met niemand", terwijl de privacyverklaring
+  verwerkers noemt (Resend, Vercel, AWS).
+
+---
+
 ## 11. Pro Program-pagina (3 nov 2026, LIVE, commit `42bb70b`)
 
 Onderdeel van een portal-sessie over de hele PRO-keten; volledig verslag in de **portal-repo

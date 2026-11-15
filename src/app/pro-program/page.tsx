@@ -6,6 +6,7 @@ import { LangProvider, useLang } from "@/context/lang-context";
 import { PRO_TEXT, PGA_DIVISIONS, COUNTRIES, COUNTRY_LABEL, proLang } from "@/lib/pro-program-text";
 import { TEAMS_LIVE, PRO_TEAM_BLOCK } from "@/lib/teams-text";
 import { teamSampleHref } from "@/lib/team-samples";
+import { LEGAL_LABELS, legalHref } from "@/lib/legal-text";
 
 declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
@@ -639,7 +640,10 @@ function ProProgramContent() {
                 <input type="text" name="pp_check" tabIndex={-1} autoComplete="off" value={trap}
                        onChange={(e) => setTrap(e.target.value)} />
               </div>
-              <p className="text-center text-xs text-stone-400">{T.f.privacy}</p>
+              <p className="text-center text-xs text-stone-400">
+                {T.f.privacy}{" "}
+                <a id="pro-privacy-link" href={legalHref("privacy", L)} className="underline underline-offset-2 hover:text-amber-700">{LEGAL_LABELS[L].privacy}</a>
+              </p>
 
               <div className="flex items-center justify-center gap-4 text-xs text-stone-400">
                 <span className="flex items-center gap-1.5">

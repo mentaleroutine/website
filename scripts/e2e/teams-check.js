@@ -181,7 +181,11 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
         ok(hele.includes(lang === "nl" ? "Hoe werkt het betalen?" : "How does payment work?") && hele.includes(lang === "nl" ? "Wat als er later een speler bij komt?" : "What if a player joins later?"), "nieuwe vragen: hoe werkt het betalen, speler erbij");
       ok(hele.includes(lang === "nl" ? "Wanneer kunnen we beginnen?" : "When can we start?"), "vraag: wanneer kunnen we beginnen");
       ok(hele.includes(lang === "nl" ? "Iedere speler bevestigt dat bij het aanmelden" : "Every player confirms that when signing up"), "18+: de speler bevestigt het bij het aanmelden");
-      ok(!/privacyverklaring|privacy policy|privacy statement|algemene voorwaarden|terms and conditions|voorwaardenpagina/i.test(hele), "nog steeds niets over een privacyverklaring of voorwaarden (die bestaan niet)");
+      // Privacyverklaring en algemene voorwaarden bestaan sinds 15-11-2026: de teampagina linkt ernaar en spreekt ze niet tegen
+      ok((await page.locator("#zie-privacy").getAttribute("href")) === `/privacy?lang=${lang}` && (await page.locator("#prijs-voorwaarden").getAttribute("href")) === `/terms?lang=${lang}`, "links naar de privacyverklaring (wie ziet wat) en de voorwaarden (prijs)");
+      ok((await page.locator('#vragen a[data-legal="privacy"]').count()) === 1 && (await page.locator('#vragen a[data-legal="terms"]').count()) === 2 && (await page.locator("#teams-footer-legal a").count()) === 2, "links in de FAQ (1x privacy, 2x voorwaarden) en beide onderaan de pagina");
+      ok(hele.includes(lang === "nl" ? "Heeft nog geen speler het assessment gestart, dan kan de betaler binnen 14 dagen het hele bedrag terugvragen; daarna niet meer." : "If no player has started the assessment yet, the payer can ask for the full amount back within 14 days; after that, no longer."), "terugvragen: binnen 14 dagen zolang nog geen speler is gestart (gelijk aan de voorwaarden)");
+      ok(hele.includes(lang === "nl" ? "t/m 15 maart 2027" : "by 15 March 2027") && !/28 februari|28 February/.test(hele), "introductieprijs bij aanmelding t/m 15 maart 2027");
       const valuta = await page.locator("#valuta").innerText();
       ok(valuta.includes(lang === "nl" ? "Alle prijzen op deze pagina zijn in Amerikaanse dollars" : "All prices on this page are in US dollars") && tekst.includes("$79"), "valuta: één regel, alle prijzen in dollars");
 

@@ -12,6 +12,7 @@ import { translations, type Translation } from "@/lib/translations";
 import { NARRATIVE_GROUPS, DEFAULT_ROUTE, pick, resolveRoute } from "@/lib/narratives";
 import { quickscanUrl } from "@/lib/quickscan";
 import { TEAMS_LIVE } from "@/lib/teams-text";
+import { LEGAL_LABELS, legalHref, legalLang } from "@/lib/legal-text";
 
 // Lazy-load below-fold interactive components
 const ContactSection = dynamic(() => import("@/components/ui/contact-section").then(m => ({ default: m.ContactSection })), { ssr: false });
@@ -403,6 +404,11 @@ function PageContent() {
         <div className="border-t border-white/[0.05]">
           <div className="container mx-auto max-w-5xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs text-green-200/30">{T.footer.copyright}</p>
+            {/* Privacy Statement and Terms and Conditions (NL + EN; other languages get the English labels and pages) */}
+            <nav id="footer-legal" className="flex items-center gap-4 text-xs">
+              <a href={legalHref("privacy", lang)} className="text-green-200/40 hover:text-amber-300 transition-colors">{LEGAL_LABELS[legalLang(lang)].privacyShort}</a>
+              <a href={legalHref("terms", lang)} className="text-green-200/40 hover:text-amber-300 transition-colors">{LEGAL_LABELS[legalLang(lang)].termsShort}</a>
+            </nav>
             <p className="text-xs text-green-200/25">{T.footer.methodBy}</p>
           </div>
         </div>

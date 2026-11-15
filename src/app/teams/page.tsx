@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { LangProvider, useLang } from "@/context/lang-context";
 import { TEAM_TEXT, TEAM_CONTACT, SITE, teamLang, type TeamLang } from "@/lib/teams-text";
 import { teamSampleHref } from "@/lib/team-samples";
+import { LEGAL_LABELS, legalHref, type LegalKind } from "@/lib/legal-text";
 
 declare global { interface Window { plausible?: (event: string, options?: { props?: Record<string, string> }) => void } }
 function track(event: string, props?: Record<string, string>) { window.plausible?.(event, props ? { props } : undefined); }
@@ -314,7 +315,10 @@ function TeamsContent() {
             ))}
           </ul>
 
-          <p id="valuta" className="mt-8 text-center text-xs text-stone-500 leading-relaxed max-w-2xl mx-auto">{T.currencyNote}</p>
+          <p id="valuta" className="mt-8 text-center text-xs text-stone-500 leading-relaxed max-w-2xl mx-auto">
+            {T.currencyNote}{" "}
+            <a id="prijs-voorwaarden" href={legalHref("terms", L)} className="underline underline-offset-2 hover:text-amber-800">{LEGAL_LABELS[L].terms}</a>
+          </p>
 
           <div className="text-center mt-10">
             <button onClick={() => { scrollToSend(); track("teams_cta", { place: "price", lang: L }); }} className={ctaCls}>{T.ctaSend}</button>
@@ -379,6 +383,9 @@ function TeamsContent() {
             ))}
           </div>
           <p className="mt-8 text-center text-sm text-stone-600 leading-relaxed max-w-2xl mx-auto">{T.see.note}</p>
+          <p className="mt-3 text-center text-sm">
+            <a id="zie-privacy" href={legalHref("privacy", L)} className="font-semibold text-amber-700 underline underline-offset-4 hover:text-amber-800">{LEGAL_LABELS[L].readPrivacy}</a>
+          </p>
         </div>
       </section>
 
@@ -463,7 +470,8 @@ function TeamsContent() {
           <SectionHead label={T.faqLabel} title={T.faqTitle} em={T.faqTitleEm} />
           <div className="space-y-4">
             {T.faqs.map((item, i) => (
-              <FaqItem key={`${L}-${i}`} question={item.q} answer={item.a} index={i} />
+              <FaqItem key={`${L}-${i}`} question={item.q} answer={item.a} index={i}
+                       link={item.link ? { href: legalHref(item.link, L), label: item.link === "privacy" ? LEGAL_LABELS[L].readPrivacy : LEGAL_LABELS[L].readTerms, kind: item.link } : undefined} />
             ))}
           </div>
         </div>
@@ -475,6 +483,10 @@ function TeamsContent() {
           <span className="font-semibold text-amber-100/90 tracking-wide" style={{ ...serif, fontSize: "1.05rem" }}>
             Mental<span className="text-amber-400">Routine</span>
           </span>
+          <nav id="teams-footer-legal" className="flex items-center gap-5 text-xs">
+            <a href={legalHref("privacy", L)} className="text-green-200/60 hover:text-amber-300 transition-colors">{LEGAL_LABELS[L].privacy}</a>
+            <a href={legalHref("terms", L)} className="text-green-200/60 hover:text-amber-300 transition-colors">{LEGAL_LABELS[L].terms}</a>
+          </nav>
           <p className="text-xs text-green-200/40">&copy; {new Date().getFullYear()} Mental Routine. {T.footerRights}</p>
         </div>
       </footer>
@@ -499,7 +511,7 @@ export default function TeamsPage() {
   );
 }
 
-function FaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {
+function FaqItem({ question, answer, index, link }: { question: string; answer: string; index: number; link?: { href: string; label: string; kind: LegalKind } }) {
   const [open, setOpen] = useState(false);
   const triggerId = `team-faq-trigger-${index}`;
   const panelId = `team-faq-panel-${index}`;
@@ -516,6 +528,11 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
       {/* Het antwoord staat altijd in de HTML (zoekmachines, hulpmiddelen); dichtgeklapt = hidden. */}
       <div id={panelId} role="region" aria-labelledby={triggerId} hidden={!open} className="px-6 pb-5">
         <p className="text-sm text-stone-600 leading-relaxed">{answer}</p>
+        {link && (
+          <p className="mt-3 text-sm">
+            <a data-legal={link.kind} href={link.href} className="font-semibold text-amber-700 underline underline-offset-4 hover:text-amber-800">{link.label}</a>
+          </p>
+        )}
       </div>
     </div>
   );
