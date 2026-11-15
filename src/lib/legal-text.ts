@@ -419,7 +419,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
           p("Hoe we met je gegevens omgaan, staat in de privacyverklaring op mentalroutine.com/privacy."),
         ] },
         { h: "13. Klachten", blocks: [
-          p("Heb je een klacht, mail dan naar support@mentalroutine.com. We reageren binnen vijf werkdagen. Woon je in de Europese Unie, dan kun je een geschil ook voorleggen via het platform voor onlinegeschillenbeslechting van de Europese Commissie."),
+          p("Heb je een klacht, mail dan naar support@mentalroutine.com. We reageren binnen vijf werkdagen. Komen we er samen niet uit, dan kun je het geschil voorleggen aan de bevoegde rechter."),
         ] },
         { h: "14. Wijzigingen", blocks: [
           p("We mogen deze voorwaarden wijzigen. De nieuwe versie staat op deze pagina met de datum erbij. Voor wat je al hebt gekocht, blijven de voorwaarden gelden zoals ze waren op het moment van aankoop, tenzij een wijziging in jouw voordeel is of de wet haar voorschrijft."),
@@ -534,7 +534,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
           p("How we handle your data is set out in the Privacy Statement at mentalroutine.com/privacy."),
         ] },
         { h: "13. Complaints", blocks: [
-          p("If you have a complaint, email support@mentalroutine.com. We respond within five working days. If you live in the European Union, you can also submit a dispute through the European Commission's online dispute resolution platform."),
+          p("If you have a complaint, email support@mentalroutine.com. We respond within five working days. If we cannot resolve it together, you can bring the dispute before the competent court."),
         ] },
         { h: "14. Changes", blocks: [
           p("We may change these terms. The new version is on this page with the date. For what you have already bought, the terms continue to apply as they were at the moment of purchase, unless a change is to your advantage or is required by law."),
