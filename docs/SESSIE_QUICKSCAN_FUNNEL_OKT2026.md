@@ -626,8 +626,9 @@ Stand van de website (`e06dcd5`):
   ook `public/quiz.html`); keuze in localStorage `mr_cookie_consent`; "Cookie-instellingen" in de footers.
 - **Lettertypen meegeleverd** (`src/app/fonts/`: DM Sans, Cormorant Garamond recht en cursief; `next/font/local`): geen
   verzoek meer naar Google Fonts, bij de build niet en in de browser niet.
-- Teamvoorbeelden: 20 PDF's, gelijk aan de machine-uitvoer van portal `4cafa95`; het kleine team wordt na regel R13 opnieuw
-  gemaakt (zie het portalverslag §9).
+- Teamvoorbeelden: 20 PDF's, gelijk aan de machine-uitvoer. Het kleine team (`small`) is op 15-11 (einde dag) opnieuw gemaakt
+  met portal `5adb717` (regel R13 voor de greensome en het ontdubbelen van zinnen); de andere vier smaken komen van `4cafa95`
+  en zouden met de huidige code gelijk uitkomen (sindsdien alleen controleregels gewijzigd).
 - Tests: `teams-check.js` (425), `legal-check.js` (239), `cookie-check.js` (47), `funnel-check.js`; alle ook tegen de live site.
 
 ## 11. Pro Program-pagina (3 nov 2026, LIVE, commit `42bb70b`)
