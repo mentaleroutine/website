@@ -53,10 +53,10 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       ok(tekst.includes(lang === "nl" ? "geen cijfers per speler" : "no scores per player"), "per speler in woorden: geen cijfers per speler");
       ok(!(lang === "nl" ? /(zonder|geen) cijfers(?! per speler)/i : /(no|without) scores(?! per player)/i).test(tekst), "nergens kaal 'zonder cijfers' (het rapport toont teamgemiddelden)");
 
-      // Prijs: geen doorgestreepte 'was'-prijs, de tweede prijs heet 'na 28 februari 2027', lessen niet inbegrepen
+      // Prijs: geen doorgestreepte 'was'-prijs, de tweede prijs heet 'na 15 maart 2027', lessen niet inbegrepen
       ok((await page.locator("main .line-through").count()) === 0, "geen doorgestreepte prijs");
       const prijs = await page.locator("#prijskaart").innerText();
-      ok(prijs.includes(lang === "nl" ? "Na 28 februari 2027" : "After 28 February 2027") && prijs.includes("$49") && prijs.includes("$299"), "prijskaart: 'na 28 februari 2027' $49 / $299");
+      ok(prijs.includes(lang === "nl" ? "Na 15 maart 2027" : "After 15 March 2027") && prijs.includes("$49") && prijs.includes("$299"), "prijskaart: 'na 15 maart 2027' $49 / $299");
       ok(!/2027\/2028|seizoen 2026|season 2026/i.test(tekst), "geen 'vanaf seizoen 2027/2028' meer");
       const feiten = await page.locator("#prijs-feiten").innerText();
       ok(feiten.includes(lang === "nl" ? "Niet inbegrepen: de lessen van de pro" : "Not included: the pro's lessons"), "lessen van de pro zitten niet in de prijs");
@@ -170,8 +170,8 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       // De route zoals hij nu echt is (getest met een echte betaling): toegang aanvragen -> team aanmaken in PRO Admin -> betaallink -> teamlink
       const hele = await page.locator("main").textContent();
       ok(lang === "nl"
-        ? hele.includes("Aanmelden kan nu. De introductieprijs geldt bij aanmelding t/m 28 februari 2027.") && hele.includes("maakt daarna jullie team aan in PRO Admin. De portal maakt één betaallink voor het hele team: de pro betaalt zelf of stuurt de betaallink door naar de captain.") && hele.includes("Betalen gaat via onze betaalprovider Lemon Squeezy, in dollars.") && hele.includes("de betaler heeft geen account nodig")
-        : hele.includes("You can sign up now. The introductory price applies when you sign up by 28 February 2027.") && hele.includes("then sets your team up in PRO Admin. The portal creates one payment link for the whole team: the pro pays, or passes the payment link on to the captain.") && hele.includes("Payment goes through our payment provider Lemon Squeezy, in US dollars.") && hele.includes("the payer does not need an account"),
+        ? hele.includes("Aanmelden kan nu. De introductieprijs geldt bij aanmelding t/m 15 maart 2027.") && hele.includes("maakt daarna jullie team aan in PRO Admin. De portal maakt één betaallink voor het hele team: de pro betaalt zelf of stuurt de betaallink door naar de captain.") && hele.includes("Betalen gaat via onze betaalprovider Lemon Squeezy, in dollars.") && hele.includes("de betaler heeft geen account nodig")
+        : hele.includes("You can sign up now. The introductory price applies when you sign up by 15 March 2027.") && hele.includes("then sets your team up in PRO Admin. The portal creates one payment link for the whole team: the pro pays, or passes the payment link on to the captain.") && hele.includes("Payment goes through our payment provider Lemon Squeezy, in US dollars.") && hele.includes("the payer does not need an account"),
         "route: aanmelden kan nu; team aanmaken in PRO Admin, één betaallink (pro of captain), Lemon Squeezy in dollars");
         ok(!/1 december|1 December|per mail bij ons aan|with us by email|hoe het afrekenen loopt|how payment works|paar berichten|a few messages/i.test(hele), "de oude route is weg (per mail aanmelden, 1 december als startmoment, 'je hoort hoe het afrekenen loopt')");
         ok(lang === "nl"
