@@ -28,11 +28,11 @@ function f(flavour: TeamFlavour, doc: TeamDoc, lang: ReportLang, pages: number):
 }
 
 export const TEAM_FILES: Record<TeamFlavour, Record<TeamDoc, Record<ReportLang, SampleFiles>>> = {
-  h18:   { report: { nl: f("h18", "report", "nl", 23),   en: f("h18", "report", "en", 23) },   annex: { nl: f("h18", "annex", "nl", 6),   en: f("h18", "annex", "en", 6) } },
-  h27:   { report: { nl: f("h27", "report", "nl", 22),   en: f("h27", "report", "en", 22) },   annex: { nl: f("h27", "annex", "nl", 6),   en: f("h27", "annex", "en", 6) } },
-  h36:   { report: { nl: f("h36", "report", "nl", 23),   en: f("h36", "report", "en", 23) },   annex: { nl: f("h36", "annex", "nl", 6),   en: f("h36", "annex", "en", 6) } },
-  small: { report: { nl: f("small", "report", "nl", 22), en: f("small", "report", "en", 22) }, annex: { nl: f("small", "annex", "nl", 6), en: f("small", "annex", "en", 6) } },
-  even:  { report: { nl: f("even", "report", "nl", 20),  en: f("even", "report", "en", 20) },  annex: { nl: f("even", "annex", "nl", 6),  en: f("even", "annex", "en", 6) } },
+  h18:   { report: { nl: f("h18", "report", "nl", 28),   en: f("h18", "report", "en", 28) },   annex: { nl: f("h18", "annex", "nl", 7),   en: f("h18", "annex", "en", 7) } },
+  h27:   { report: { nl: f("h27", "report", "nl", 26),   en: f("h27", "report", "en", 26) },   annex: { nl: f("h27", "annex", "nl", 7),   en: f("h27", "annex", "en", 7) } },
+  h36:   { report: { nl: f("h36", "report", "nl", 29),   en: f("h36", "report", "en", 28) },   annex: { nl: f("h36", "annex", "nl", 7),   en: f("h36", "annex", "en", 7) } },
+  small: { report: { nl: f("small", "report", "nl", 26), en: f("small", "report", "en", 26) }, annex: { nl: f("small", "annex", "nl", 7), en: f("small", "annex", "en", 7) } },
+  even:  { report: { nl: f("even", "report", "nl", 24),  en: f("even", "report", "en", 24) },  annex: { nl: f("even", "annex", "nl", 7),  en: f("even", "annex", "en", 7) } },
 };
 
 /** Link to the team samples; carries ?preview=teams as long as the switch is off. */

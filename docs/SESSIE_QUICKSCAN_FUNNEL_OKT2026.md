@@ -629,6 +629,10 @@ Stand van de website (`e06dcd5`):
 - Teamvoorbeelden: 20 PDF's, gelijk aan de machine-uitvoer. Het kleine team (`small`) is op 15-11 (einde dag) opnieuw gemaakt
   met portal `5adb717` (regel R13 voor de greensome en het ontdubbelen van zinnen); de andere vier smaken komen van `4cafa95`
   en zouden met de huidige code gelijk uitkomen (sindsdien alleen controleregels gewijzigd).
+- **Drie onderdelen erbij (16-11-2026, portal `e74e888`)**: het teamrapport heeft een woordenboek, een kaartje per speler en (bijlage)
+  een opzet voor een gesprek met één speler. Tien voorbeelden opnieuw met AI gemaakt en geplaatst (rapport 24–29 p., bijlage 7 p.;
+  `TEAM_FILES` en de paginatallen in `teams-check.js` mee), byte voor byte gelijk aan de uitvoer. Teampagina: hero, "Dit krijgen jullie"
+  (twee punten voor het team, één voor de pro), "Twintig tot dertig pagina's", en de pro-stap "Lees het teamrapport en je bijlage".
 - **Eerlijk over wat blijft (15-11, na panelronde 18; portal `05bd321`)**: teampagina (kaart "Stoppen met delen" + de vraag
   erover) en privacyverklaring §5 en §10 zeggen nu dat een teamrapport dat al gemaakt is blijft bestaan, met de bijlage voor de
   pro waarin de scores staan, en dat verwijderen daarvan per mail kan. De tien teamrapporten zijn gratis opnieuw opgemaakt

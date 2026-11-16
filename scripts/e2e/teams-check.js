@@ -130,7 +130,11 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
         "wie ziet wat: overgeslagen teamvraag, handicap als enige getal per speler, beheerder kan de bijlage openen");
       ok(tekst.includes(lang === "nl" ? "niemand hoeft iets over zichzelf te vertellen" : "nobody has to say anything about themselves"), "blijft staan: niemand hoeft iets over zichzelf te vertellen");
       ok(tekst.includes(lang === "nl" ? "spelersprofiel: een samenvatting en het volledige rapport" : "player profile: a summary and the full report") && !/trainingsrapport|training report/i.test(tekst), "persoonlijk rapport = het spelersprofiel (samenvatting en volledig rapport); geen trainingsrapporten beloofd");
-      ok(tekst.includes(lang === "nl" ? "Twintig tot vijfentwintig pagina's" : "Twenty to twenty-five pages") && !/ongeveer twintig|about twenty/i.test(tekst), "aantal pagina's: twintig tot vijfentwintig");
+      ok(tekst.includes(lang === "nl" ? "Twintig tot dertig pagina's" : "Twenty to thirty pages") && !/ongeveer twintig|about twenty/i.test(tekst), "aantal pagina's: twintig tot dertig");
+      ok(lang === "nl"
+        ? tekst.includes("Een kaartje per speler, voor de single") && tekst.includes("Een woordenboek van twaalf woorden") && tekst.includes("Een opzet voor een gesprek met één speler")
+        : tekst.includes("A player card for every player, for the singles") && tekst.includes("A dictionary of twelve words") && tekst.includes("An outline for a conversation with one player"),
+        "dit krijgen jullie: kaartje per speler, woordenboek, gesprek met één speler (16-11-2026)");
       ok(lang === "nl"
         ? tekst.includes("per speler geen hoogste of laagste onderdeel") && tekst.includes("elk met een oefenvorm en een voorbeeldafspraak") && tekst.includes("per thema een teamles in plaats van de lessenreeks")
         : tekst.includes("no highest or lowest part per player") && tekst.includes("each with a practice format and a sample agreement") && tekst.includes("a team lesson for each theme instead of the series of lessons"),
@@ -304,9 +308,10 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
   await page.waitForTimeout(200);
   ok((await page.title()) === titelGolfers, `terug bij de golfers: de oude documenttitel (${await page.title()})`);
 
-  const PAGINAS = { h18: { report: { nl: 23, en: 23 }, annex: { nl: 6, en: 6 } }, h27: { report: { nl: 22, en: 22 }, annex: { nl: 6, en: 6 } },
-    h36: { report: { nl: 23, en: 23 }, annex: { nl: 6, en: 6 } }, small: { report: { nl: 22, en: 22 }, annex: { nl: 6, en: 6 } },
-    even: { report: { nl: 20, en: 20 }, annex: { nl: 6, en: 6 } } };
+  // 16-11-2026: met woordenboek, kaartje per speler en (bijlage) gesprek met één speler
+  const PAGINAS = { h18: { report: { nl: 28, en: 28 }, annex: { nl: 7, en: 7 } }, h27: { report: { nl: 26, en: 26 }, annex: { nl: 7, en: 7 } },
+    h36: { report: { nl: 29, en: 28 }, annex: { nl: 7, en: 7 } }, small: { report: { nl: 26, en: 26 }, annex: { nl: 7, en: 7 } },
+    even: { report: { nl: 24, en: 24 }, annex: { nl: 7, en: 7 } } };
   for (const lang of ["nl", "en"]) {
     for (const smaak of Object.keys(PAGINAS)) {
       for (const doc of ["report", "annex"]) {

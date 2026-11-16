@@ -50,7 +50,8 @@
  * - De speler krijgt het eigen SPELERSPROFIEL (samenvatting en volledig rapport). Beloof bij het teamaanbod geen
  *   trainingsrapporten.
  * - TIJD: eerlijk, niet optimistisch (aanwijzing opdrachtgever 15-11-2026). Team: assessment 20–25 min per speler,
- *   teamavond anderhalf tot twee uur, vier wintertrainingen met de paren, een kaartje per paar, terugblik van twee
+ *   teamavond anderhalf tot twee uur, vier wintertrainingen met de paren, een kaartje per paar en per speler (sinds
+ *   16-11-2026, met een woordenboek van twaalf woorden en in de bijlage een opzet voor een gesprek met één speler), terugblik van twee
  *   minuten na elke speeldag. Pro: zie `pro.steps` (leercurve, een paar avonden, voorbereiding per les).
  * - De pro bepaalt zelf aantal lessen, tempo en lesgeld; lessen zitten NIET in de teamprijs. De bijlage bevat een
  *   lessenreeks van vier lessen als kapstok: materiaal, geen verplichting.
@@ -145,7 +146,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     heroTitleEm: "na een mindere slag?",
     heroPrice: "$15 per speler · hooguit $99 per team",
     heroPriceSub: "bij aanmelding t/m 15 maart 2027",
-    heroP1: "Eén teamavond, een kaartje per paar en de wedstrijddag op één pagina. Dat staat in één teamrapport, geschreven voor dit ene team, nadat iedere speler thuis het assessment heeft gedaan. Daarna kan jullie pro lessen geven rond jullie thema; dat spreek je met de pro af.",
+    heroP1: "Eén teamavond, een kaartje per paar en per speler, en de wedstrijddag op één pagina. Dat staat in één teamrapport, geschreven voor dit ene team, nadat iedere speler thuis het assessment heeft gedaan. Daarna kan jullie pro lessen geven rond jullie thema; dat spreek je met de pro af.",
     glance: [
       { title: "Wat het is", desc: "Een assessment per speler en één teamrapport voor het team. De lessen geeft jullie eigen pro; het lesgeld spreek je met de pro af." },
       { title: "Wat het kost", desc: "$15 per speler, hooguit $99 per team. De lessen van de pro zitten daar niet in." },
@@ -158,11 +159,13 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       intro: "Geen algemeen verhaal over mentale training. Een rapport met jullie namen, jullie spelvorm en ruimte voor jullie eigen afspraken.",
       groups: [
         {
-          title: "Voor het team", size: "Twintig tot vijfentwintig pagina's",
+          title: "Voor het team", size: "Twintig tot dertig pagina's",
           items: [
             "Een draaiboek voor de teamavond: anderhalf tot twee uur, met de pro of onder leiding van de captain.",
             "De wedstrijddag op één pagina: vijf momenten, vijf regels en drie afspraken voor het hele team.",
             "Een kaartje per paar, om uit te knippen voor in de tas. Het paar kruist zelf aan wat het doet na een misser.",
+            "Een kaartje per speler, voor de single: waar je op bouwt, waar je aan werkt, één opdracht voor op de baan en je eigen reset-zin.",
+            "Een woordenboek van twaalf woorden die jullie pro ook in de les gebruikt, elk met een vraag voor op de baan, en het woord voor jullie winter.",
             "Het teamprofiel met de teamgemiddelden: waar jullie als team op leunen en waar jullie aan werken.",
             "Per speler in woorden wat het hoogst ligt en waar die aan werkt: geen cijfers per speler.",
             "Paren om in de winter uit te proberen, met per paar wat ieder inbrengt. Het zijn voorstellen.",
@@ -184,6 +187,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
           items: [
             "De scores per speler.",
             "Per speler één ding om op te letten en één vraag voor achteraf.",
+            "Een opzet voor een gesprek met één speler: vijf stappen, per speler waar het gesprek kan beginnen, en bij wie je het eerst aanbiedt.",
             "Een lessenreeks van vier lessen als kapstok, met een kijkpunt per les.",
             "Oefenvormen voor de teamles.",
             "Een overzicht van de tijd die het de pro kost.",
@@ -315,7 +319,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
         { title: "Maak het team aan in PRO Admin en regel de betaling", body: "Je vult de teamnaam en het aantal spelers in (4 tot en met 12). De portal toont direct de prijs en maakt één betaallink voor het hele team. Je betaalt zelf, of je stuurt de betaallink door naar de captain; de betaler heeft geen account nodig. Je bent dus geen kassier.", time: "Een paar minuten." },
         { title: "Stuur de teamlink naar de spelers", body: "Na de betaling werkt de teamlink, met zoveel plekken als er betaald zijn. De spelers maken een account, zetten de twee vinkjes en doen thuis het assessment. Zij rekenen zelf niets af. Komt er later een speler bij, dan betaalt het team alleen het verschil.", time: "Eén bericht. Daarna wacht je tot de spelers klaar zijn." },
         { title: "Maak het teamrapport en wijs de captain aan", body: "In PRO Admin, zodra minstens vier spelers klaar zijn en hun uitkomst delen. Je kiest de spelvorm en bevestigt dat de spelers weten dat hun uitkomst in het teamrapport staat. De captain krijgt het rapport; de bijlage is alleen voor jou.", time: "Een paar minuten." },
-        { title: "Lees het teamrapport en je bijlage", body: "Twintig tot vijfentwintig pagina's rapport en een bijlage met de scores per speler, per speler één ding om op te letten en een lessenreeks. Het volledige persoonlijke rapport van een speler kun je alleen openen als die speler dat apart met je deelt.", time: "Een uur tot anderhalf uur. De eerste keer langer." },
+        { title: "Lees het teamrapport en je bijlage", body: "Twintig tot dertig pagina's rapport en een bijlage met de scores per speler, per speler één ding om op te letten, een opzet voor een gesprek met één speler en een lessenreeks. Het volledige persoonlijke rapport van een speler kun je alleen openen als die speler dat apart met je deelt.", time: "Een uur tot anderhalf uur. De eerste keer langer." },
         { title: "De teamavond", body: "Met het draaiboek uit het rapport. Jij leidt de avond, of de captain doet dat en jij bent erbij. De teamavond kan ook zonder jou: dan leidt de captain hem met het draaiboek.", time: "Anderhalf tot twee uur, plus je voorbereiding." },
         { title: "Lessen rond het thema", body: "Aantal, tempo en lesgeld bepaal je zelf met het team. De lessenreeks van vier lessen in de bijlage is een kapstok, geen kant-en-klare les. Kiest het team zelf het thema, dan staat er per thema een teamles in plaats van de lessenreeks. Een lesprogramma op maat maak je in PRO Admin.", time: "De lessenreeks is drie lessen van een uur en één van twee uur. Reken per les op een half uur tot een uur voorbereiding, zeker de eerste keren." },
       ],
@@ -332,7 +336,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
     heroTitleEm: "after a poor shot?",
     heroPrice: "$15 per player · $99 at most per team",
     heroPriceSub: "when you sign up by 15 March 2027",
-    heroP1: "One team meeting, a card for every pair and match day on one page. It all comes from one team report, written for this one team, after every player has taken the assessment at home. After that your pro can give lessons around your theme; you agree that with the pro.",
+    heroP1: "One team meeting, a card for every pair and every player, and match day on one page. It all comes from one team report, written for this one team, after every player has taken the assessment at home. After that your pro can give lessons around your theme; you agree that with the pro.",
     glance: [
       { title: "What it is", desc: "An assessment for every player and one team report for the team. Your own pro gives the lessons; you agree the lesson fee with the pro." },
       { title: "What it costs", desc: "$15 per player, $99 at most per team. The pro's lessons are not included." },
@@ -345,11 +349,13 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       intro: "Not a general story about mental training. A report with your names, your match format and room for your own agreements.",
       groups: [
         {
-          title: "For the team", size: "Twenty to twenty-five pages",
+          title: "For the team", size: "Twenty to thirty pages",
           items: [
             "A run sheet for the team meeting: an hour and a half to two hours, with the pro or led by the captain.",
             "Match day on one page: five moments, five rules and three agreements for the whole team.",
             "A pair card for every pair, to cut out and keep in the bag. The pair ticks what it does after a poor shot.",
+            "A player card for every player, for the singles: what you build on, what you are working on, one thing to do on the course and your own reset phrase.",
+            "A dictionary of twelve words your pro also uses in lessons, each with a question for on the course, and your word for the winter.",
             "The team profile with the team averages: what you lean on as a team and what you work on.",
             "For each player, in words, what comes out highest and what they work on: no scores per player.",
             "Pairs to try out over the winter, with what each player brings. They are suggestions.",
@@ -371,6 +377,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
           items: [
             "The scores per player.",
             "One thing to watch and one question for afterwards per player.",
+            "An outline for a conversation with one player: five steps, where to start with each player, and who to offer it to first.",
             "A series of four lessons as a framework, with something to look for in each lesson.",
             "Practice formats for the team lesson.",
             "An overview of the time it takes the pro.",
@@ -503,7 +510,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
         { title: "Set the team up in PRO Admin and arrange the payment", body: "You enter the team name and the number of players (4 to 12). The portal shows the price straight away and creates one payment link for the whole team. You pay yourself, or you pass the payment link on to the captain; the payer does not need an account. So you do not have to collect money.", time: "A few minutes." },
         { title: "Send the team link to the players", body: "After payment the team link works, with as many places as have been paid for. The players create an account, tick the two boxes and take the assessment at home. They do not pay anything themselves. If a player joins later, the team only pays the difference.", time: "One message. Then you wait until the players are done." },
         { title: "Create the team report and name the captain", body: "In PRO Admin, once at least four players are done and share their outcome. You choose the match format and confirm that the players know their outcome is in the team report. The captain receives the report; the annex is for you only.", time: "A few minutes." },
-        { title: "Read the team report and your annex", body: "Twenty to twenty-five pages of report and an annex with the scores per player, one thing to watch per player and a series of lessons. You can only open a player's full personal report if that player shares it with you separately.", time: "An hour to an hour and a half. Longer the first time." },
+        { title: "Read the team report and your annex", body: "Twenty to thirty pages of report and an annex with the scores per player, one thing to watch per player, an outline for a conversation with one player and a series of lessons. You can only open a player's full personal report if that player shares it with you separately.", time: "An hour to an hour and a half. Longer the first time." },
         { title: "The team meeting", body: "With the run sheet from the report. You lead the meeting, or the captain does and you are there. The team meeting can also go ahead without you: the captain then leads it with the run sheet.", time: "An hour and a half to two hours, plus your preparation." },
         { title: "Lessons around the theme", body: "You decide the number, the pace and your fee with the team. The series of four lessons in the annex is a framework, not a ready-made lesson. If the team picks its own theme, there is a team lesson for each theme instead of the series of lessons. You build a tailored lesson programme in PRO Admin.", time: "The series is three lessons of an hour and one of two hours. Allow half an hour to an hour of preparation per lesson, certainly the first few times." },
       ],
