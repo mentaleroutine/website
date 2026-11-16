@@ -91,6 +91,9 @@
   portal, dan de lijsten/citaten in `teams-text.ts` en de voorbeelden meewijzigen. Test: `node scripts/e2e/teams-check.js
   http://localhost:3123` (425 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn op 15-11-2026 opnieuw gemaakt
   met de portalcode na ronde 15–17 en de twee vinkjes (portal `538e1eb`), gecontroleerd en geplaatst.**
+  **Op 16-11-2026 opnieuw gemaakt met de drie nieuwe onderdelen (woordenboek, kaartje per speler, gesprek met één speler;
+  portal `e74e888`, website `af5caba`): rapport 24–29 p., bijlage 7 p.; `teams-check.js` 429 controles. Verslag: portal-repo
+  `docs/SESSIE_TEAMRAPPORT_16NOV2026.md`.**
 - **Privacyverklaring `/privacy` en algemene voorwaarden `/terms`** (alias `/voorwaarden`; 15-11-2026): NL + EN, tekst in
   `src/lib/legal-text.ts` (gestructureerde blokken), opmaak `src/components/legal-page.tsx`. **De NL-tekst is door de
   opdrachtgever aangeleverd en leidend: inhoudelijk niet wijzigen zonder opdracht**; het Engels is een getrouwe vertaling en
