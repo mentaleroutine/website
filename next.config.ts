@@ -65,6 +65,8 @@ const nextConfig: NextConfig = {
       { source: "/assessment-mastery.html", destination: "/assessment", permanent: true },
       // The old Foundation subsite is superseded by the /assessment page.
       { source: "/assessment-foundation.html", destination: "/assessment", permanent: true },
+      // The old Standard explainer page is still linked from older social videos (17 Nov 2026).
+      { source: "/assessment-standard.html", destination: "/assessment", permanent: true },
     ];
   },
 };
