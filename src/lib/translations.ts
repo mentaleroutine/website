@@ -35,7 +35,7 @@ const en = {
           { name: "Henk de Jong", role: "Initiator of MentalRoutine · golfer for 40+ years" },
           { name: "Berend Jansen", role: "Psychometric expert · assessment specialist" },
         ],
-        body: "Henk de Jong has played golf for over 40 years and, through his PGA network, brought more than 1,000 golfers into the research. Berend Jansen is an expert in psychometric instruments — measuring why people do what they do. Together they have built behavioural assessments for over 15 years, and in 2016 they started MentalRoutine.",
+        body: "Henk de Jong has played golf for over 40 years and, through his PGA network, brought more than 1,000 golfers into the research. Berend Jansen is an expert in psychometric instruments — measuring why people do what they do. Together they have built behavioural assessments for over 15 years, and in 2026 they started MentalRoutine.",
         quote: "Mental golf is not a talent — it is a skill.", quoteAuthor: "— Henk de Jong",
       },
       faq: {
@@ -256,7 +256,7 @@ export const translations = {
           { name: "Henk de Jong", role: "Initiatiefnemer van MentalRoutine · 40+ jaar golfer" },
           { name: "Berend Jansen", role: "Psychometrisch expert · assessmentspecialist" },
         ],
-        body: "Henk de Jong speelt al meer dan 40 jaar golf en bracht via zijn PGA-netwerk meer dan 1.000 golfers bij het onderzoek. Berend Jansen is expert in psychometrische meetinstrumenten — het meten van waarom mensen doen wat ze doen. Samen bouwen zij al meer dan 15 jaar gedragsassessments, en in 2016 startten zij MentalRoutine.",
+        body: "Henk de Jong speelt al meer dan 40 jaar golf en bracht via zijn PGA-netwerk meer dan 1.000 golfers bij het onderzoek. Berend Jansen is expert in psychometrische meetinstrumenten — het meten van waarom mensen doen wat ze doen. Samen bouwen zij al meer dan 15 jaar gedragsassessments, en in 2026 startten zij MentalRoutine.",
         quote: "Mentaal golf is geen talent — het is een vaardigheid.", quoteAuthor: "— Henk de Jong",
       },
       faq: {
@@ -474,7 +474,7 @@ export const translations = {
           { name: "Henk de Jong", role: "Initiator von MentalRoutine · Golfer seit über 40 Jahren" },
           { name: "Berend Jansen", role: "Experte für Psychometrie · Assessment-Spezialist" },
         ],
-        body: "Henk de Jong spielt seit über 40 Jahren Golf und hat über sein PGA-Netzwerk mehr als 1.000 Golfer in die Forschung eingebunden. Berend Jansen ist Experte für psychometrische Instrumente — dafür zu messen, warum Menschen tun, was sie tun. Gemeinsam entwickeln sie seit über 15 Jahren Verhaltens-Assessments, und 2016 haben sie MentalRoutine gestartet.",
+        body: "Henk de Jong spielt seit über 40 Jahren Golf und hat über sein PGA-Netzwerk mehr als 1.000 Golfer in die Forschung eingebunden. Berend Jansen ist Experte für psychometrische Instrumente — dafür zu messen, warum Menschen tun, was sie tun. Gemeinsam entwickeln sie seit über 15 Jahren Verhaltens-Assessments, und 2026 haben sie MentalRoutine gestartet.",
         quote: "Mentales Golf ist kein Talent — es ist eine Fähigkeit.", quoteAuthor: "— Henk de Jong",
       },
       faq: {
@@ -688,7 +688,7 @@ export const translations = {
           { name: "Henk de Jong", role: "Initiateur de MentalRoutine · golfeur depuis plus de 40 ans" },
           { name: "Berend Jansen", role: "Expert en psychométrie · spécialiste de l'assessment" },
         ],
-        body: "Henk de Jong joue au golf depuis plus de 40 ans et, grâce à son réseau PGA, a fait participer plus de 1 000 golfeurs à la recherche. Berend Jansen est expert en instruments psychométriques — mesurer pourquoi les gens font ce qu'ils font. Ensemble, ils conçoivent des assessments comportementaux depuis plus de 15 ans, et en 2016 ils ont lancé MentalRoutine.",
+        body: "Henk de Jong joue au golf depuis plus de 40 ans et, grâce à son réseau PGA, a fait participer plus de 1 000 golfeurs à la recherche. Berend Jansen est expert en instruments psychométriques — mesurer pourquoi les gens font ce qu'ils font. Ensemble, ils conçoivent des assessments comportementaux depuis plus de 15 ans, et en 2026 ils ont lancé MentalRoutine.",
         quote: "Le golf mental n'est pas un talent — c'est une compétence.", quoteAuthor: "— Henk de Jong",
       },
       faq: {
@@ -902,7 +902,7 @@ export const translations = {
           { name: "Henk de Jong", role: "Iniciador de MentalRoutine · golfista desde hace más de 40 años" },
           { name: "Berend Jansen", role: "Experto en psicometría · especialista en assessments" },
         ],
-        body: "Henk de Jong juega al golf desde hace más de 40 años y, a través de su red PGA, sumó a más de 1000 golfistas a la investigación. Berend Jansen es experto en instrumentos psicométricos — medir por qué las personas hacen lo que hacen. Juntos llevan más de 15 años creando assessments de comportamiento, y en 2016 pusieron en marcha MentalRoutine.",
+        body: "Henk de Jong juega al golf desde hace más de 40 años y, a través de su red PGA, sumó a más de 1000 golfistas a la investigación. Berend Jansen es experto en instrumentos psicométricos — medir por qué las personas hacen lo que hacen. Juntos llevan más de 15 años creando assessments de comportamiento, y en 2026 pusieron en marcha MentalRoutine.",
         quote: "El golf mental no es un talento — es una habilidad.", quoteAuthor: "— Henk de Jong",
       },
       faq: {
