@@ -96,7 +96,7 @@ const nl = {
     training: {
       name: "Trainingsrapport",
       tag: "3 inbegrepen bij het assessment",
-      body: "Een werkboek over één onderwerp, geschreven op de score en de handicap van de golfer.",
+      body: "Een werkboek over één onderwerp, afgestemd op de score en de handicap van de golfer.",
     },
   },
   trainingTopic: {

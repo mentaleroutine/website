@@ -69,7 +69,7 @@ export const teamSamples: Record<ReportLang, TeamSamplesCopy> = {
       h18:   { team: "Heren 1",   name: "18 holes · acht spelers",  line: "Negen holes singles, daarna negen holes greensome." },
       h27:   { team: "Heren 2",   name: "27 holes · zes spelers",   line: "Negen holes greensome, daarna achttien holes singles." },
       h36:   { team: "Heren 1",   name: "36 holes · acht spelers",  line: "Achttien holes foursome, daarna achttien holes singles." },
-      small: { team: "Heren 3",   name: "Klein team · vier spelers", line: "Het kleinste team waarvoor een teamrapport kan (18 holes)." },
+      small: { team: "Heren 3",   name: "Klein team · vier spelers", line: "Het kleinste team waarvoor een teamrapport mogelijk is (18 holes)." },
       even:  { team: "Gemengd 1", name: "Scores dicht bij elkaar",   line: "Het rapport zegt dat eerlijk; het team kiest zelf het thema (36 holes)." },
     },
     docs: {

@@ -675,3 +675,28 @@ Besluiten + ontwerp: **portal-repo `docs/PRO_PROGRAM_NL_EN_AANVRAGEN_PLAN.md`** 
 - Test: `funnel-check.js` blok 8 (NL/EN/DE: h1, LinkedIn optioneel, $199/$299 + datum, geen page errors) — lokaal ALL
   PASSED op 10-11-2026 (17 checks). Formulier niet live getest.
 
+## 12. Nederlandse tekst nagelezen en Chrome-vertaling uitgezet (23-11-2026)
+**Melding opdrachtgever**: rare woorden op de Nederlandse site ("schommel" in plaats van swing, "sigaretten"). Die woorden stonden
+niet in de broncode. **Oorzaak**: elke pagina werd geleverd met `<html lang="en">` en eerst Engelse tekst (de taal wordt pas in de
+browser gekozen), en de tabtitel bleef Engels. Chrome hield de pagina daardoor voor Engels en "vertaalde" de Nederlandse tekst
+opnieuw (met "Engels altijd vertalen" automatisch): modelwoorden als *Swing* werden zo "schommel".
+**Fix**: een script in de `<head>` (`src/app/layout.tsx`) kiest de taal vóór de eerste weergave (zelfde volgorde als
+`lang-context`: `?lang=` → eerdere keuze → browsertaal) en zet bij Nederlands `lang="nl"`, `translate="no"` en
+`<meta name="google" content="notranslate">`; `LangProvider` houdt dat bij een taalwissel bij. Nederlandse tabtitels voor home,
+assessment, methodiek, pro-programma, voorbeelden, privacy en voorwaarden (`src/lib/page-meta-nl.ts`; de meta description blijft de
+serverversie, want Next voegt anders een tweede toe). Engelse bezoekers merken niets.
+**Nagelezen** (vier AI-lezers in de rol van eindredacteur, daarna door de maker verwerkt) en hersteld, alleen de Nederlandse tekst:
+- QuickScan (`public/quiz.html`): tikfouten in vragen ("liiging", "puts"), "de/het", "teebox" → tee, "dubbelbogey", scores en
+  voorbeelden met een decimale komma (`fmt10`), "Helemaal" → "Helemaal wel" op de schaal, fasenamen Pre-shot/Swing/Post-shot op het
+  resultaatscherm, merknaam MentalRoutine aaneen, Nederlandse voorleesteksten (aria-labels), "11 pagina's".
+- Homepage (`translations.ts`, `narratives.ts`): Engelse hoofdletters per woord, letterlijk vertaalde zinnen ("Geen vragen", "loop je
+  weg met een plan", "Zie waar…"), "de handicap", "het assessment" overal, "Risicobereidheid", "trainingsrapporten".
+- Methodiek (`methodology.ts`): vertaalfouten ("evidentie", "drukvol", "wijzen naar", "Wegen"), "anxiety", "skills" → vaardigheden,
+  samenstellingen (golfspecifiek, swinganalyse), "het assessment", **banden gelijk aan de rapporten** (groeipunt 0–3,9 · werkgebied
+  4,0–6,9 · sterkte 7,0–10; was "Aandachtspunt" en overlappende grenzen).
+- Teampagina, pro-pagina, voorbeelden, cookiemelding, footers; privacyverklaring en voorwaarden (alleen taal, inhoud gelijk).
+**Bewust niet veranderd** (keuze of inhoud, niet taal): "domein" op de methodiekpagina (rapporten zeggen "stap"), je/jullie op de
+teampagina, "reset-zin" (zo in het teamrapport), "Mental Index", de Engelse metadata voor zoekmachines, de cijfers "4,9/5" en
+"1.000+ golfers" zonder bron, het aantal vragen (40 + intake). Tests: `funnel-check.js`, `teams-check.js` (429), `legal-check.js`,
+`cookie-check.js` lokaal geslaagd.
+

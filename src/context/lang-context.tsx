@@ -1,5 +1,6 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { applyPageMeta } from "@/lib/page-meta-nl";
 
 export type Lang = "en" | "nl" | "de" | "fr" | "es";
 type LangCtx = { lang: Lang; setLang: (l: Lang) => void };
@@ -44,7 +45,17 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    document.documentElement.lang = lang;
+    const html = document.documentElement;
+    html.lang = lang;
+    // Nederlandse tekst mag Chrome niet "vertalen": de server levert eerst Engels, dus Chrome hield de pagina voor Engels en
+    // maakte van "Swing" "schommel" (23-11-2026). Zie ook het script in de <head> van src/app/layout.tsx.
+    if (lang === "nl") html.setAttribute("translate", "no");
+    else html.removeAttribute("translate");
+    // Next zet de <title> uit de metadata soms pas na de eerste render in de head: daarom ook bewaken (zoals /teams).
+    applyPageMeta(lang);
+    const obs = new MutationObserver(() => applyPageMeta(lang));
+    obs.observe(document.head, { childList: true, subtree: true, characterData: true });
+    return () => obs.disconnect();
   }, [lang]);
 
   return (

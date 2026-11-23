@@ -339,7 +339,7 @@ function SamplesContent() {
                 >
                   <span className="flex items-baseline justify-between gap-2">
                     <span className="text-xl font-semibold" style={{ fontFamily: "var(--font-cormorant), serif" }}>{NAMES[g]}</span>
-                    <span className={`text-xs tabular-nums ${on ? "text-green-200/70" : "text-stone-500"}`}>{S.hcp} {GOLFER_HCP[g]}</span>
+                    <span className={`text-xs tabular-nums ${on ? "text-green-200/70" : "text-stone-500"}`}>{S.hcp} {lang === "nl" ? GOLFER_HCP[g].replace(".", ",") : GOLFER_HCP[g]}</span>
                   </span>
                   <span className={`block text-sm leading-snug mt-1.5 ${on ? "text-green-100/85" : "text-stone-600"}`}>{S.golfers[g].line}</span>
                   <span className={`block text-[11px] font-semibold tracking-wide uppercase mt-3 ${on ? "text-amber-300" : "text-amber-700/80"}`}>{S.golfers[g].focus}</span>

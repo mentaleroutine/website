@@ -11,7 +11,7 @@ type CLang = "nl" | "en";
 const TEXT: Record<CLang, { title: string; body: string; privacy: string; decline: string; accept: string; settings: string }> = {
   nl: {
     title: "Cookies",
-    body: "We gebruiken Microsoft Clarity om te zien hoe de site wordt gebruikt. Clarity plaatst daarvoor cookies. Dat doen we alleen als jij dat goed vindt. Onze gewone statistieken werken zonder cookies.",
+    body: "We gebruiken Microsoft Clarity om te zien hoe de site wordt gebruikt. Clarity plaatst daarvoor cookies. We laden Clarity alleen als jij dat goed vindt. Onze gewone statistieken werken zonder cookies.",
     privacy: "Privacyverklaring", decline: "Weigeren", accept: "Accepteren", settings: "Cookie-instellingen",
   },
   en: {

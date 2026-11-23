@@ -558,7 +558,7 @@ function ProProgramContent() {
                   <label className={labelCls}>{T.f.division}</label>
                   <select required value={form.pgaDivision} onChange={update("pgaDivision")} className={selectCls}>
                     <option value="">{T.f.select}</option>
-                    {PGA_DIVISIONS[L].map(d => <option key={d} value={d}>{d}</option>)}
+                    {PGA_DIVISIONS[L].map(d => <option key={d} value={d}>{COUNTRY_LABEL[d]?.[L] ?? d}</option>)}
                   </select>
                   {form.pgaDivision === "Other" && (
                     <input type="text" required maxLength={80} value={form.pgaOther} onChange={update("pgaOther")}
@@ -668,7 +668,7 @@ function ProProgramContent() {
               Mental<span className="text-amber-400">Routine</span>
             </span>
           </div>
-          <p className="text-xs text-green-200/40">&copy; {new Date().getFullYear()} Mental Routine. {T.footerRights}</p>
+          <p className="text-xs text-green-200/40">&copy; {new Date().getFullYear()} MentalRoutine. {T.footerRights}</p>
         </div>
       </footer>
 

@@ -489,7 +489,7 @@ function TeamsContent() {
             <a href={legalHref("terms", L)} className="text-green-200/60 hover:text-amber-300 transition-colors">{LEGAL_LABELS[L].terms}</a>
             <CookieSettingsLink className="text-green-200/60 hover:text-amber-300 transition-colors" />
           </nav>
-          <p className="text-xs text-green-200/40">&copy; {new Date().getFullYear()} Mental Routine. {T.footerRights}</p>
+          <p className="text-xs text-green-200/40">&copy; {new Date().getFullYear()} MentalRoutine. {T.footerRights}</p>
         </div>
       </footer>
 

@@ -122,8 +122,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${cormorant.variable}`} suppressHydrationWarning>
       <head>
+        {/* Taal vóór de eerste weergave (zelfde volgorde als src/context/lang-context.tsx). Bij Nederlands: lang="nl" en geen
+            automatische vertaling. Anders hield Chrome de pagina voor Engels en "vertaalde" de Nederlandse tekst
+            ("Swing" werd "schommel"; melding opdrachtgever 23-11-2026). */}
+        <script dangerouslySetInnerHTML={{ __html: '(function(){try{var L=["en","nl","de","fr","es"],l=null,q=new URLSearchParams(location.search).get("lang");if(L.indexOf(q)>=0)l=q;if(!l){try{var s=localStorage.getItem("mr_lang");if(L.indexOf(s)>=0)l=s}catch(e){}}if(!l){var n=navigator.languages||[navigator.language];for(var i=0;i<n.length;i++){var b=(n[i]||"").slice(0,2).toLowerCase();if(L.indexOf(b)>=0){l=b;break}}}l=l||"en";var h=document.documentElement;h.lang=l;if(l==="nl"){h.setAttribute("translate","no");var m=document.createElement("meta");m.name="google";m.content="notranslate";document.head.appendChild(m)}}catch(e){}})();' }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

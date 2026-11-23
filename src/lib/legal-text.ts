@@ -69,7 +69,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
         { h: "1. In het kort", blocks: [
           ul(
             "We gebruiken je gegevens om het assessment af te nemen, je rapporten te maken en je account te beheren.",
-            "Je scores en rapporten zijn van jou. Een golfpro, captain of teamgenoot ziet alleen iets als jij dat zelf aanzet, en je kunt dat weer stoppen.",
+            "Je scores en rapporten zijn van jou. Een golfpro, captain of teamgenoot ziet alleen iets als jij dat zelf aanzet, en je kunt dat weer uitzetten.",
             "We verkopen je gegevens niet en gebruiken ze niet voor advertenties.",
             "Je kunt je account zelf verwijderen in de portal. Je gegevens inzien of laten verbeteren kan door te mailen naar support@mentalroutine.com.",
           ),
@@ -102,7 +102,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             ["Je account, aankopen, tegoeden en lidmaatschap beheren", "Uitvoering van de overeenkomst"],
             ["E-mails over je account en je aankopen (bevestiging, rapport klaar, wachtwoord)", "Uitvoering van de overeenkomst"],
             ["De e-mailreeks na een QuickScan-rapport", "Jouw toestemming; uitschrijven kan altijd"],
-            ["Je scores of rapport delen met een pro, een team of via een deel-link", "Jouw toestemming; intrekken kan altijd"],
+            ["Je scores of rapport delen met een pro, een team of via een deellink", "Jouw toestemming; intrekken kan altijd"],
             ["Beveiliging, misbruik voorkomen en storingen oplossen (logboeken)", "Gerechtvaardigd belang"],
             ["Statistieken over het gebruik van website en portal", "Gerechtvaardigd belang voor statistieken zonder cookies; toestemming voor Microsoft Clarity"],
             ["Administratie en belastingplicht", "Wettelijke verplichting"],
@@ -116,15 +116,15 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
           p("**Jij bepaalt wat je deelt.** Standaard ziet niemand anders je scores of rapporten."),
           ul(
             "**Een golfpro** ziet je scores en kan een lesprogramma voor je maken als je je rapport met die pro deelt. Je kunt het delen stoppen en de koppeling verbreken in de portal.",
-            "**Een deel-link** die je zelf aanzet, toont je voornaam, handicap en scores aan iedereen die de link heeft. Je kunt de link weer uitzetten.",
+            "**Een deellink** die je zelf aanzet, toont je voornaam, handicap en scores aan iedereen die de link heeft. Je kunt de link weer uitzetten.",
           ),
           sub("Als je via een teamlink meedoet met een team"),
           ul(
             "Bij het aanmelden zet je twee vinkjes. Het eerste is nodig om mee te doen: je uitkomst mag in het teamrapport staan en de pro van het team ziet je scores. Het tweede is vrijwillig: of de pro ook je volledige persoonlijke rapport mag openen. Dat kun je later in de portal aan- of uitzetten.",
             "**Het team en de captain** lezen het teamrapport. Daarin staan gemiddelden van het team, en per speler in woorden wat het hoogst ligt en waar die aan werkt. Er staan geen scores per speler in. Je handicap kan in een voorbeeld van de opstelling staan.",
-            "**De pro** krijgt daarnaast een bijlage met de scores per speler en ieders antwoord op de teamvraag, of dat je die hebt overgeslagen.",
+            "**De pro** krijgt daarnaast een bijlage met de scores per speler en ieders antwoord op de teamvraag, of dat de speler die heeft overgeslagen.",
             "**Je volledige persoonlijke rapport** zien het team en de captain nooit.",
-            "Stop je met delen, dan ziet de pro je scores en je rapport in de portal niet meer en sta je niet meer in een nieuw teamrapport. Een teamrapport dat al gemaakt is, blijft bestaan bij de pro en de captain. In de bijlage voor de pro staan je voornaam, je handicap, je scores en je antwoord op de teamvraag. Wil je dat ook dat wordt verwijderd, mail ons dan.",
+            "Stop je met delen, dan ziet de pro je scores en je rapport in de portal niet meer en sta je niet meer in een nieuw teamrapport. Een teamrapport dat al gemaakt is, blijft bestaan bij de pro en de captain. In de bijlage voor de pro staan je voornaam, je handicap, je scores en je antwoord op de teamvraag. Wil je dat dat ook wordt verwijderd, mail ons dan.",
             "De persoon die voor het team betaalt, hoeft geen account te hebben. Van die persoon ontvangen we alleen de gegevens van de betaling.",
           ),
           p("**Medewerkers van MentalRoutine** met beheerrechten kunnen je gegevens inzien als dat nodig is voor ondersteuning, beheer of het oplossen van storingen."),
@@ -144,7 +144,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
         { h: "7. Statistieken en cookies", blocks: [
           ul(
             "**Noodzakelijk.** Als je inlogt in de portal, plaatsen we een cookie om je ingelogd te houden. De website onthoudt je taalkeuze in je browser.",
-            "**Plausible Analytics** telt bezoeken en handelingen zonder cookies en zonder je over websites heen te volgen.",
+            "**Plausible Analytics** telt bezoeken en handelingen zonder cookies en zonder je van website naar website te volgen.",
             "**Microsoft Clarity** laat ons zien hoe pagina's worden gebruikt, met onder meer klikkaarten en opnames van hoe een bezoeker door een pagina beweegt. Clarity plaatst daarvoor cookies. Dat gebeurt alleen als je daar toestemming voor geeft in de cookiemelding. Zonder toestemming laden we Clarity niet. In de portal kan op zo'n opname ook te zien zijn wat er op jouw scherm stond, zoals je antwoorden en scores.",
           ),
           p("Je kunt je keuze altijd wijzigen via 'Cookie-instellingen' onderaan de pagina. Je kunt ons ook vragen opnames van jouw bezoek te verwijderen."),
@@ -169,9 +169,9 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             "je gegevens te laten verwijderen;",
             "de verwerking te laten beperken of er bezwaar tegen te maken;",
             "je gegevens in een gangbaar formaat mee te krijgen;",
-            "een gegeven toestemming in te trekken. Dat werkt voor de toekomst.",
+            "een gegeven toestemming in te trekken. Dat geldt voor de toekomst.",
           ),
-          p("Je account verwijderen doe je zelf in de portal: klik rechtsboven op je naam en kies 'Account verwijderen'. Voor de andere verzoeken mail je naar support@mentalroutine.com; we reageren binnen een maand. Een document dat een pro of team al van je heeft (een teamrapport of lesprogramma) blijft bij hen bestaan. Daarin staat je voornaam, en in de bijlage van een teamrapport voor de pro ook je handicap, je scores en je antwoord op de teamvraag. Wil je dat ook dat wordt verwijderd, mail ons dan. Gegevens over betalingen blijven bij Lemon Squeezy bewaard zolang de wet dat vraagt. Een golfprofessional verwijdert het account via support, omdat er leerlingen of teams aan kunnen hangen."),
+          p("Je account verwijderen doe je zelf in de portal: klik rechtsboven op je naam en kies 'Account verwijderen'. Voor de andere verzoeken mail je naar support@mentalroutine.com; we reageren binnen een maand. Een document dat een pro of team al van je heeft (een teamrapport of lesprogramma) blijft bij hen bestaan. Daarin staat je voornaam, en in de bijlage van een teamrapport voor de pro ook je handicap, je scores en je antwoord op de teamvraag. Wil je dat dat ook wordt verwijderd, mail ons dan. Gegevens over betalingen blijven bij Lemon Squeezy bewaard zolang de wet dat vraagt. Een golfprofessional verwijdert het eigen account via support, omdat er leerlingen of teams aan kunnen hangen."),
           p("Ben je het niet eens met hoe we met je gegevens omgaan, dan horen we dat graag eerst zelf. Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens (autoriteitpersoonsgegevens.nl)."),
         ] },
         { h: "11. Leeftijd", blocks: [
@@ -331,7 +331,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             "het assessment doen en je spelersprofiel ontvangen;",
             "trainingsrapporten, een baanboekje, een verschillenrapport na een herhaalmeting en rondeanalyses laten maken;",
             "een lidmaatschap afsluiten;",
-            "als golfprofessional meedoen aan het Pro-programma en lesprogramma's en teamrapporten maken;",
+            "als golfprofessional meedoen aan het Pro-programma, en lesprogramma's en teamrapporten maken;",
             "met een team meedoen aan het teamaanbod.",
           ),
           p("Wat een product precies inhoudt en kost, staat op de website of in de portal op het moment dat je het koopt."),
@@ -385,7 +385,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             "Deelname staat open voor golfprofessionals van wie de aanvraag is goedgekeurd. We mogen een aanvraag afwijzen en een toelating intrekken.",
             "De professional gebruikt gegevens van leerlingen en spelers alleen voor het lesgeven, en alleen zolang de leerling of speler die deelt.",
             "De professional vraagt geen vergoeding namens MentalRoutine en doet geen toezeggingen namens MentalRoutine.",
-            "Materiaal uit het Pro-programma mag de professional gebruiken voor de eigen lessen en clinics, niet doorverkopen.",
+            "Materiaal uit het Pro-programma mag de professional gebruiken voor de eigen lessen en clinics, maar niet doorverkopen.",
           ),
         ] },
         { h: "8. Wat een rapport wel en niet is", blocks: [
@@ -401,7 +401,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             "De methode, de vragenlijsten, de teksten, de rapporten en de software zijn van ons of van onze licentiegevers.",
             "Je mag je eigen rapporten voor jezelf gebruiken en delen met wie je wilt. Een teamrapport is voor het team, de captain en de professional.",
             "Je mag de inhoud niet doorverkopen, niet op grote schaal kopiëren en niet gebruiken om een vergelijkbare dienst te bouwen.",
-            "Je gebruikt de portal niet om anderen te schaden, om in te breken of om de dienst te verstoren.",
+            "Je gebruikt de portal niet om anderen te schaden, om in te breken in systemen of accounts of om de dienst te verstoren.",
           ),
         ] },
         { h: "10. Beschikbaarheid", blocks: [
@@ -410,7 +410,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
         { h: "11. Aansprakelijkheid", blocks: [
           ul(
             "We zijn aansprakelijk voor schade die het directe gevolg is van een tekortkoming die aan ons is toe te rekenen.",
-            "Onze aansprakelijkheid is beperkt tot het bedrag dat je in de twaalf maanden voor de schade aan ons hebt betaald.",
+            "Onze aansprakelijkheid is beperkt tot het bedrag dat je in de twaalf maanden vóór de schade aan ons hebt betaald.",
             "We zijn niet aansprakelijk voor indirecte schade, zoals gemiste inkomsten, of voor beslissingen die je neemt op basis van een rapport.",
             "Deze beperkingen gelden niet bij opzet of bewuste roekeloosheid van onze kant, en doen niets af aan rechten die je als consument volgens de wet hebt.",
           ),

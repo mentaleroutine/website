@@ -125,7 +125,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
         "wie ziet wat: voetregel met de twee vinkjes; stoppen met delen = pro ziet scores en rapport niet meer");
       ok(proBlok.includes(lang === "nl" ? "alleen openen als die speler dat apart met je deelt" : "if that player shares it with you separately"), "pro-blok: het volledige rapport alleen van spelers die dat apart delen");
       ok(lang === "nl"
-        ? zie.includes("of dat je die hebt overgeslagen") && zie.includes("je handicap kan in een voorbeeldindeling van de paren staan") && zie.includes("De beheerder van MentalRoutine kan hem ook openen")
+        ? zie.includes("of dat iemand die heeft overgeslagen") && zie.includes("je handicap kan in een voorbeeldindeling van de paren staan") && zie.includes("De beheerder van MentalRoutine kan hem ook openen")
         : zie.includes("or the fact that you skipped it") && zie.includes("your handicap may appear in a sample arrangement of the pairs") && zie.includes("The MentalRoutine administrator can open it as well"),
         "wie ziet wat: overgeslagen teamvraag, handicap als enige getal per speler, beheerder kan de bijlage openen");
       ok(tekst.includes(lang === "nl" ? "niemand hoeft iets over zichzelf te vertellen" : "nobody has to say anything about themselves"), "blijft staan: niemand hoeft iets over zichzelf te vertellen");
@@ -184,7 +184,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
           ? hele.includes("Dan betaalt het team alleen het verschil, en nooit meer dan het maximum ($99 bij de introductieprijs).") && hele.includes("is er voor vijf spelers betaald ($75) en worden het er zeven, dan komt er $24 bij") && hele.includes("Onbenutte plekken worden niet terugbetaald.") && hele.includes("met zoveel plekken als er betaald zijn")
           : hele.includes("Then the team only pays the difference, and never more than the maximum ($99 at the introductory price).") && hele.includes("if five players have been paid for ($75) and the team grows to seven, $24 is added") && hele.includes("Unused places are not refunded.") && hele.includes("with as many places as have been paid for"),
           "speler erbij = alleen het verschil ($75 naar zeven spelers = $24 bij); onbenutte plekken niet terugbetaald");
-        ok(hele.includes(lang === "nl" ? "Hoe werkt het betalen?" : "How does payment work?") && hele.includes(lang === "nl" ? "Wat als er later een speler bij komt?" : "What if a player joins later?"), "nieuwe vragen: hoe werkt het betalen, speler erbij");
+        ok(hele.includes(lang === "nl" ? "Hoe werkt het betalen?" : "How does payment work?") && hele.includes(lang === "nl" ? "Wat als er later een speler bijkomt?" : "What if a player joins later?"), "nieuwe vragen: hoe werkt het betalen, speler erbij");
       ok(hele.includes(lang === "nl" ? "Wanneer kunnen we beginnen?" : "When can we start?"), "vraag: wanneer kunnen we beginnen");
       ok(hele.includes(lang === "nl" ? "Iedere speler bevestigt dat bij het aanmelden" : "Every player confirms that when signing up"), "18+: de speler bevestigt het bij het aanmelden");
       // Privacyverklaring en algemene voorwaarden bestaan sinds 15-11-2026: de teampagina linkt ernaar en spreekt ze niet tegen
@@ -297,7 +297,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
   ok((await page.locator("#team-samples").count()) === 1, "zonder preview: een teamlink opent het teamvoorbeeld (h27, bijlage)");
   await page.goto(`${BASE}/samples?lang=nl`, { waitUntil: "networkidle" });
   const titelGolfers = await page.title();
-  ok(/Three Golfers/.test(titelGolfers), `documenttitel bij de golfers ongewijzigd (${titelGolfers})`);
+  ok(/drie golfers/i.test(titelGolfers), `documenttitel bij de golfers, in het Nederlands (${titelGolfers})`);
   await page.locator("#sample-kind").getByRole("tab", { name: "Teamrapport" }).click();
   await page.waitForTimeout(200);
   ok((await page.title()).startsWith("Voorbeeld teamrapport"), `documenttitel volgt de teamvoorbeelden (${await page.title()})`);

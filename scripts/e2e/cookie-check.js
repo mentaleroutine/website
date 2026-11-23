@@ -32,7 +32,7 @@ const open = async (page, url) => { await page.goto(url, { waitUntil: "networkid
   ok(clarity.length === 0, `zonder keuze is er geen verzoek naar clarity.ms (${clarity.length})`);
   ok((await keuze(page)) === null, "er is nog geen keuze bewaard");
   const tekst = await melding.innerText();
-  ok(/^cookies/i.test(tekst.trim()) && tekst.includes("We gebruiken Microsoft Clarity om te zien hoe de site wordt gebruikt. Clarity plaatst daarvoor cookies. Dat doen we alleen als jij dat goed vindt. Onze gewone statistieken werken zonder cookies."), "NL: kop en tekst van de melding");
+  ok(/^cookies/i.test(tekst.trim()) && tekst.includes("We gebruiken Microsoft Clarity om te zien hoe de site wordt gebruikt. Clarity plaatst daarvoor cookies. We laden Clarity alleen als jij dat goed vindt. Onze gewone statistieken werken zonder cookies."), "NL: kop en tekst van de melding");
   ok((await page.locator("#cookie-privacy").innerText()) === "Privacyverklaring" && (await page.locator("#cookie-privacy").getAttribute("href")) === "/privacy?lang=nl", "NL: link naar de privacyverklaring, met de taal");
   ok((await page.locator("#cookie-decline").innerText()) === "Weigeren" && (await page.locator("#cookie-accept").innerText()) === "Accepteren", "NL: knoppen Weigeren en Accepteren");
   const a = await page.locator("#cookie-decline").boundingBox(), b = await page.locator("#cookie-accept").boundingBox();

@@ -57,14 +57,14 @@ type Widen<T> = T extends string ? string
 // ─────────────────────────────────────────────────────────────────────────────
 const nl = {
   meta: {
-    title: "De MentalRoutine-methodiek — hoe de assessment werkt",
+    title: "De MentalRoutine-methodiek — hoe het assessment werkt",
     description:
-      "Hoe de MentalRoutine-assessment werkt: acht domeinen binnen drie fasen, vier beïnvloedende factoren, normatieve en ipsatieve vragen, en het onderzoek waarop het model rust.",
+      "Hoe het MentalRoutine-assessment werkt: acht domeinen binnen drie fasen, vier beïnvloedende factoren, normatieve en ipsatieve vragen, en het onderzoek waarop het model rust.",
   },
 
   /* ── Hero + summary (the short document) ── */
   badge: "De methodiek",
-  h1a: "Hoe werkt de",
+  h1a: "Hoe werkt het",
   h1b: "MentalRoutine-assessment?",
   intro: "Voor je een rapport aanschaft, wil je weten wat je koopt. Eerst het korte antwoord — daaronder de volledige uitleg.",
 
@@ -80,7 +80,7 @@ const nl = {
     },
     {
       k: "Hoe scherp dat gemeten wordt",
-      v: "De vragen zijn deels forced-choice: je verdeelt punten over stellingen, waardoor je niet overal een hoge score kunt geven. Dat maakt het lastiger om jezelf te vleien, en levert een scherper beeld op dan een gewone vragenlijst.",
+      v: "Een deel van de vragen werkt met een gedwongen keuze: je verdeelt punten over stellingen, waardoor je niet overal een hoge score kunt geven. Dat maakt het lastiger om jezelf te vleien, en levert een scherper beeld op dan een gewone vragenlijst.",
     },
     {
       k: "Wat het wel is",
@@ -88,10 +88,10 @@ const nl = {
     },
     {
       k: "Wat het niet is",
-      v: "Geen swing-analyse, geen externe meting, geen medische of psychologische diagnose. Een score van 8 betekent: zo ervaar jij dit zelf — niet “een expert beoordeelt je met een 8.”",
+      v: "Geen swinganalyse, geen externe meting, geen medische of psychologische diagnose. Een score van 8 betekent: zo ervaar jij dit zelf — niet “een expert beoordeelt je met een 8”.",
     },
   ],
-  summaryCta: "Lees de volledige methodologie",
+  summaryCta: "Lees de volledige methodiek",
   summaryCtaNote: "Hoe scores precies worden berekend, welk onderzoek eronder ligt, en hoe de validatie werkt.",
 
   tocLabel: "In dit document",
@@ -109,9 +109,9 @@ const nl = {
     title: "Wat het meet",
     blocks: [
       {
-        q: "Wat meet de MentalRoutine-assessment?",
+        q: "Wat meet het MentalRoutine-assessment?",
         a: [
-          "De assessment meet hoe jij je eigen mentale spel op de golfbaan ervaart — niet een extern gemeten prestatie zoals swingdata of trackman-cijfers. Je beantwoordt een reeks vragen, verdeeld over acht domeinen. Per domein meten we een aantal kleinere onderdelen: de bouwstenen waaruit je domeinscore is opgebouwd.",
+          "Het assessment meet hoe jij je eigen mentale spel op de golfbaan ervaart — niet een extern gemeten prestatie zoals swingdata of TrackMan-cijfers. Je beantwoordt een reeks vragen, verdeeld over acht domeinen. Per domein meten we een aantal kleinere onderdelen: de bouwstenen waaruit je domeinscore is opgebouwd.",
         ],
       },
       {
@@ -123,9 +123,9 @@ const nl = {
       {
         q: "Meet dit een objectieve prestatie, of mijn eigen beleving?",
         a: [
-          "Je eigen beleving — maar niet losjes gemeten. Dit is geen externe, gemeten prestatie zoals een swing-analyse of trackingdata; de vragen gaan over hoe jij jezelf ervaart. Het verschil met een gewone zelfbeoordelingsvragenlijst zit in de precisie waarmee dat gebeurt: de onderliggende skills, en hoe ontwikkelbaar ze bij jou zijn, worden grotendeels ipsatief gemeten.",
-          "Omdat je steeds moet kiezen wat, in verhouding tot de rest, het zwaarst weegt, kun je niet vluchten in een sociaal wenselijk “ik ben overal goed in.” Dat maakt het resultaat weliswaar nog steeds zelfbeleving, maar wel een scherp en betrouwbaar gemeten versie daarvan — geen losse indruk, maar een uitkomst die precies aangeeft waar voor jou de werkelijke verhoudingen liggen.",
-          "Een score van 8 op Focus betekent dus niet “een expert heeft je met een 8 beoordeeld,” maar wel iets nauwkeurigers dan een vrije zelfinschatting: het is hoe jouw eigen antwoordpatroon, onder dwang van een echte keuze, zich verhoudt tot je andere skills.",
+          "Je eigen beleving — maar niet losjes gemeten. Dit is geen externe, gemeten prestatie zoals een swinganalyse of trackingdata; de vragen gaan over hoe jij jezelf ervaart. Het verschil met een gewone zelfbeoordelingsvragenlijst zit in de precisie waarmee dat gebeurt: de onderliggende vaardigheden, en hoe ontwikkelbaar ze bij jou zijn, worden grotendeels ipsatief gemeten.",
+          "Omdat je steeds moet kiezen wat, in verhouding tot de rest, het zwaarst weegt, kun je niet vluchten in een sociaal wenselijk “ik ben overal goed in”. Het resultaat blijft weliswaar je eigen beleving, maar dan wel een scherp en betrouwbaar gemeten versie daarvan — geen losse indruk, maar een uitkomst die precies aangeeft waar voor jou de werkelijke verhoudingen liggen.",
+          "Een score van 8 op Focus betekent dus niet “een expert heeft je met een 8 beoordeeld”, maar wel iets nauwkeurigers dan een vrije zelfinschatting: het is hoe jouw eigen antwoordpatroon, onder dwang van een echte keuze, zich verhoudt tot je andere vaardigheden.",
         ],
       },
     ],
@@ -147,7 +147,7 @@ const nl = {
 
     factorsQ: "Wat zijn de vier beïnvloedende factoren, en hoe verschillen ze van de domeinen?",
     factorsA: [
-      "Rond de acht domeinen liggen vier factoren: risicobereidheid, druk, veerkracht en paraatheid. Dit zijn geen stappen in je routine — ze zijn de omstandigheden die bepalen of je routine standhoudt wanneer het spannend wordt.",
+      "Rond de acht domeinen liggen vier factoren: risicobereidheid, druk, veerkracht en paraatheid. Dit zijn geen stappen in je routine — het zijn de omstandigheden die bepalen of je routine standhoudt wanneer het spannend wordt.",
       "Ze tellen niet mee in je Mental Index, maar verklaren voor een groot deel wélke domeinen bij jou onder druk het eerst wankelen. Elke factor bekijken we door dezelfde vier lenzen — kennis, context, dialoog en zelf — wat zestien deelfactoren oplevert.",
     ],
     factors: ["Risicobereidheid", "Druk", "Veerkracht", "Paraatheid"],
@@ -156,24 +156,24 @@ const nl = {
     layersQ: "Waar bouwen de domeinen en factoren op voort?",
     layersA: [
       "De acht domeinen en vier factoren zijn geen losse uitvinding voor golf. Ze bouwen voort op een onderliggend meetmodel voor generieke soft skills — attitudes, denkwijzen, gedragswijzen en fundamentele waarden — voortgekomen uit vijftien jaar gedragsonderzoek en assessmentontwikkeling binnen organisaties en bij individuen.",
-      "Dat onderliggende model is het hulpmodel dat de losse skills meet die vervolgens golf-specifiek worden samengevat: elk domein en elke factor is een optelling van een aantal van die onderliggende skills, en gebruikt daarbij hetzelfde normatieve en ipsatieve meetmechanisme dat in hoofdstuk 3 wordt beschreven.",
-      "Focus bijvoorbeeld steunt op een andere combinatie van onderliggende attitudes en denkwijzen dan Vertrouwen. Je vult dus niet acht keer een losse, golf-specifieke vraag in — je beantwoordt vragen die zijn herleid tot een gevalideerde laag generieke skills, die daarna wordt vertaald naar jouw acht domeinen en vier factoren. Die extra laag is precies wat het model zijn scherpte geeft: de vragen meten iets dat al bewezen onderscheidend is, niet iets dat voor de gelegenheid is verzonnen.",
+      "Dat onderliggende model is het hulpmodel dat de losse vaardigheden meet die vervolgens golfspecifiek worden samengevat: elk domein en elke factor is een optelling van een aantal van die onderliggende vaardigheden, en gebruikt daarbij hetzelfde normatieve en ipsatieve meetmechanisme dat in hoofdstuk 3 wordt beschreven.",
+      "Focus bijvoorbeeld steunt op een andere combinatie van onderliggende attitudes en denkwijzen dan Vertrouwen. Je vult dus niet acht keer een losse, golfspecifieke vraag in — je beantwoordt vragen die zijn herleid tot een gevalideerde laag generieke vaardigheden, die daarna wordt vertaald naar jouw acht domeinen en vier factoren. Die extra laag is precies wat het model zijn scherpte geeft: de vragen meten iets dat al bewezen onderscheidend is, niet iets dat voor de gelegenheid is verzonnen.",
     ],
 
     diagramLabel: "Twee niveaus",
     diagramTitle: "Waar je het ziet, en waar je het traint",
     diagramIntro:
-      "Dat onderscheid tussen twee lagen is niet alleen een meettechnisch detail — het bepaalt ook waar je daadwerkelijk kunt trainen. Een domein als Vertrouwen of een factor als Druk is zelf geen trainbare eenheid; het is een verzamelnaam, een optelling van onderliggende skills. Je kunt niet rechtstreeks “aan Vertrouwen werken” zoals je aan een spier zou werken — het begrip is te abstract om ergens aan te grijpen.",
+      "Dat onderscheid tussen twee lagen is niet alleen een meettechnisch detail — het bepaalt ook waar je daadwerkelijk kunt trainen. Een domein als Vertrouwen of een factor als Druk is zelf geen trainbare eenheid; het is een verzamelnaam, een optelling van onderliggende vaardigheden. Je kunt niet rechtstreeks “aan Vertrouwen werken” zoals je aan een spier zou werken — het begrip is te abstract om ergens aan te grijpen.",
     diagramTopLabel: "Diagnostisch niveau",
     diagramTopCaption: "Acht domeinen en vier factoren. Hier zie je wáár het schuurt.",
     diagramTopNodes: ["Focus", "Vertrouwen", "Acceptatie"],
     diagramBottomLabel: "Interventieniveau",
-    diagramBottomCaption: "De onderliggende skills. Hier verandert er daadwerkelijk iets.",
+    diagramBottomCaption: "De onderliggende vaardigheden. Hier verandert er daadwerkelijk iets.",
     diagramBottomNodes: ["Attitudes", "Denkwijzen", "Gedragswijzen", "Waarden"],
     diagramOutro:
-      "Wat wél concreet en ontwikkelbaar is, zijn de onderliggende skills waaruit dat domein is opgebouwd. Elk advies en elke mentale oefening in je rapport richt zich dan ook nooit op een domein als geheel, maar altijd op een specifiek onderliggend subelement.",
+      "Wat wél concreet en ontwikkelbaar is, zijn de onderliggende vaardigheden waaruit dat domein is opgebouwd. Elk advies en elke mentale oefening in je rapport richt zich dan ook nooit op een domein als geheel, maar altijd op een specifiek onderliggend onderdeel.",
     diagramAria:
-      "Diagram van twee niveaus: bovenin het diagnostische niveau met domeinen als Focus, Vertrouwen en Acceptatie; daaronder het interventieniveau met de onderliggende skills — attitudes, denkwijzen, gedragswijzen en waarden. Lijnen verbinden elk domein met meerdere onderliggende skills.",
+      "Diagram van twee niveaus: bovenin het diagnostische niveau met domeinen als Focus, Vertrouwen en Acceptatie; daaronder het interventieniveau met de onderliggende vaardigheden — attitudes, denkwijzen, gedragswijzen en waarden. Lijnen verbinden elk domein met meerdere onderliggende vaardigheden.",
 
     axesQ: "De twee assen: prestatie en ontwikkeling",
     axesIntro: "Elke domeinscore is opgebouwd uit twee assen die samen bepalen hoe die score tot stand komt.",
@@ -183,12 +183,12 @@ const nl = {
         body: "meet hoe je een domein op dit moment daadwerkelijk uitvoert — hoe je nu, vandaag, omgaat met bijvoorbeeld focus, vertrouwen of acceptatie op de baan.",
       },
       {
-        name: "De ontwikkelings-as",
+        name: "De ontwikkelingsas",
         body: "meet iets anders: hoe ontwikkelbaar dat aspect voor jou is. Niet alleen waar je nu staat, maar hoeveel beweging daar voor jou realistisch in zit.",
       },
     ],
     axesOutro:
-      "Dat is waarom een score meer is dan een foto van je huidige niveau: hij geeft ook een indicatie van hoeveel je op dat domein daadwerkelijk kunt verschuiven. Precies dat onderscheid ligt onder de keuze die je later in je Trainingsrapport tegenkomt tussen “verbeteren” en “benutten” — niet een keuze op basis van hoe laag of hoog een cijfer toevallig uitvalt, maar op basis van waar voor jou echte beweging mogelijk is.",
+      "Daarom is een score meer dan een foto van je huidige niveau: hij geeft ook een indicatie van hoeveel je op dat domein daadwerkelijk kunt verschuiven. Precies dat onderscheid ligt ten grondslag aan de keuze die je later in je trainingsrapport tegenkomt tussen “verbeteren” en “benutten” — niet een keuze op basis van hoe laag of hoog een cijfer toevallig uitvalt, maar op basis van waar voor jou echte beweging mogelijk is.",
   },
 
   /* ── Chapter 3 ── */
@@ -196,9 +196,9 @@ const nl = {
     label: "Hoofdstuk 3",
     title: "Hoe de meting werkt",
 
-    q1: "Waarom bestaat de assessment uit twee soorten vragen?",
+    q1: "Waarom bestaat het assessment uit twee soorten vragen?",
     a1: [
-      "Niet elke vraag in de assessment werkt hetzelfde. We gebruiken een combinatie van normatieve en ipsatieve vragen — een bewuste keuze die bepaalt hoe scherp je scores uiteindelijk zijn.",
+      "Niet elke vraag in het assessment werkt hetzelfde. We gebruiken een combinatie van normatieve en ipsatieve vragen — een bewuste keuze die bepaalt hoe scherp je scores uiteindelijk zijn.",
       "Bij een normatieve vraag beoordeel je één stelling op zichzelf, los van de rest, op een absolute schaal — vergelijkbaar met hoe de meeste vragenlijsten werken. Dat is snel in te vullen, maar gevoelig voor wat in de psychometrie sociaal wenselijke antwoordtendentie heet: de neiging om jezelf op vrijwel elk afzonderlijk item gemiddeld tot hoog te beoordelen, omdat niets je dwingt tot een keuze tussen items onderling.",
       "Daarom werken andere vragen ipsatief, via een forced-choice-formaat: je krijgt een vast aantal punten — tien — dat je moet verdelen over meerdere stellingen tegelijk. Wil je één aspect hoger laten scoren, dan móét een ander aspect lager uitvallen.",
     ],
@@ -208,7 +208,7 @@ const nl = {
     demoNormativeTag: "Normatief",
     demoNormativeHint: "Elke stelling los beoordeeld. Alles kan tegelijk hoog.",
     demoIpsativeTag: "Ipsatief",
-    demoIpsativeHint: "Tien punten, te verdelen. Hoger op de één betekent lager op de ander.",
+    demoIpsativeHint: "Tien punten, te verdelen. Hoger op de een betekent lager op de ander.",
     demoQuestion: "Wat weegt het zwaarst in je beslissing bij een lastige slag?",
     demoItems: ["Risico inschatten", "Geduld bewaren", "Vertrouwen op je slag"],
     demoBudgetLabel: "Punten over",
@@ -217,15 +217,15 @@ const nl = {
     demoResetLabel: "Opnieuw",
 
     a1b: [
-      "Waar normatieve scores relatief zijn ten opzichte van een externe norm of populatie, zijn ipsatieve scores relatief ten opzichte van elkaar, binnen het eigen antwoordpatroon van die persoon: ze zeggen niets over hoe sterk je bent vergeleken met andere golfers, maar wel welk aspect bij jóú, in verhouding tot de rest, het zwaarst weegt. Er is geen ontsnappen naar “ik scoor overal een 8” — het puntensysteem forceert een rangorde.",
+      "Waar normatieve scores relatief zijn ten opzichte van een externe norm of populatie, zijn ipsatieve scores relatief ten opzichte van elkaar, binnen het eigen antwoordpatroon van die persoon: ze zeggen niets over hoe sterk je bent vergeleken met andere golfers, maar wel welk aspect bij jóú, in verhouding tot de rest, het zwaarst weegt. Je kunt niet uitwijken naar “ik scoor overal een 8” — het puntensysteem dwingt een rangorde af.",
       "Dat mechanisme is precies wat je nodig hebt bij vragen waarin meerdere aspecten tegelijk tegen elkaar afgewogen moeten worden — bijvoorbeeld wanneer je moet aangeven hoeveel gewicht risico, geduld en zelfvertrouwen elk in jouw beslissing hebben op een lastige slag. Een normatieve vraag zou drie losse, mogelijk alle drie hoge scores opleveren. De ipsatieve vraag dwingt een rangorde af — en juist die rangorde is wat je werkelijke profiel blootlegt.",
     ],
 
     q2: "Hoe is het model statistisch gevalideerd, met zoveel ipsatieve variabelen?",
     a2: [
-      "Ipsatieve data heeft een bekende psychometrische uitdaging: omdat de punten binnen één vraag altijd optellen tot een vast totaal, zijn de scores binnen die vraag per definitie niet onafhankelijk van elkaar — een hogere score op het ene aspect drukt wiskundig gezien een ander aspect omlaag. Dat maakt klassieke validatiemethoden, zoals interne consistentie of directe scorevergelijking tussen personen, lastig toe te passen op zuiver ipsatieve data.",
-      "Precies daarom combineert het model normatieve met ipsatieve vragen, in plaats van uitsluitend forced-choice te gebruiken. De normatieve items herstellen de vergelijkbaarheid tussen personen — op een absolute schaal kan de één wél hoger scoren dan de ander — terwijl de ipsatieve items binnen één persoon de scherpte geven die sociale wenselijkheid onmogelijk maakt.",
-      "Voor puur ipsatieve data bestaan daarnaast specifieke statistische technieken, met name Thurstoniaanse IRT-modellen voor forced-choice-data. Die rekenen de gedwongen puntenverdeling om naar onderliggende scores die wél tussen personen vergelijkbaar zijn. Wegen — hoe zwaar een item meetelt voor het onderliggende kenmerk dat het moet meten — spelen daarin een grote rol: pas als die weging voor elk item zorgvuldig is vastgesteld, is de omrekening van een gedwongen keuze naar een betrouwbare onderliggende score houdbaar.",
+      "Ipsatieve data heeft een bekende psychometrische uitdaging: omdat de punten binnen één vraag altijd optellen tot een vast totaal, zijn de scores binnen die vraag per definitie niet onafhankelijk van elkaar — een hogere score op het ene aspect drukt wiskundig gezien een ander aspect omlaag. Daardoor zijn klassieke validatiemethoden, zoals interne consistentie of directe scorevergelijking tussen personen, lastig toe te passen op zuiver ipsatieve data.",
+      "Precies daarom combineert het model normatieve met ipsatieve vragen, in plaats van uitsluitend forced-choice te gebruiken. De normatieve items herstellen de vergelijkbaarheid tussen personen — op een absolute schaal kan de een wél hoger scoren dan de ander — terwijl de ipsatieve items binnen één persoon de scherpte geven waarbij sociaal wenselijk antwoorden niet meer werkt.",
+      "Voor puur ipsatieve data bestaan daarnaast specifieke statistische technieken, met name Thurstoniaanse IRT-modellen voor forced-choice-data. Die rekenen de gedwongen puntenverdeling om naar onderliggende scores die wél tussen personen vergelijkbaar zijn. Gewichten — hoe zwaar een item meetelt voor het onderliggende kenmerk dat het moet meten — spelen daarin een grote rol: pas als die weging voor elk item zorgvuldig is vastgesteld, is de omrekening van een gedwongen keuze naar een betrouwbare onderliggende score houdbaar.",
     ],
     validationNote:
       "Het onderliggende meetmodel is op deze manier ongeveer 15.000 keer gevalideerd op organisatieniveau. Validatie op individueel niveau — het niveau waarop jouw persoonlijke rapport wordt opgebouwd — is een doorlopend onderzoekstraject, geen afgerond hoofdstuk.",
@@ -237,13 +237,13 @@ const nl = {
     title: "Waar het model op rust",
     intro: [
       "Niet op één gevalideerde academische taxonomie die precies deze acht stappen en vier factoren als losse constructen onderscheidt — die indeling, met deze labels en deze grenzen, is de toegepaste synthese van MentalRoutine zelf.",
-      "Wat er wél onder ligt, zijn meerdere onderzoekstradities uit de sportpsychologie en de bredere psychologie, elk met een eigen, deels golf-specifieke evidentie.",
+      "Wat er wél onder ligt, zijn meerdere onderzoekstradities uit de sportpsychologie en de bredere psychologie, elk met een eigen, deels golfspecifieke onderbouwing.",
     ],
 
     domainsTitle: "De acht domeinen",
     factorsTitle: "De vier beïnvloedende factoren",
 
-    golfSpecific: "Golf-specifiek onderzoek",
+    golfSpecific: "Golfspecifiek onderzoek",
     broadResearch: "Bredere basis",
 
     domains: [
@@ -252,14 +252,14 @@ const nl = {
         tradition: "Quiet Eye",
         cite: "Vickers, 1992, 1996 · Vine, Moore & Wilson, 2011",
         golf: true,
-        body: "Golfers die vlak vóór de backswing hun blik langer en stabieler op de bal houden, putten aantoonbaar nauwkeuriger — een effect dat getraind kan worden en meetbaar doorwerkt in wedstrijdprestatie bij elite-golfers.",
+        body: "Golfers die vlak vóór de backswing hun blik langer en stabieler op de bal houden, putten aantoonbaar nauwkeuriger — een effect dat getraind kan worden en meetbaar doorwerkt in wedstrijdprestatie bij topgolfers.",
       },
       {
         name: "Concentratie",
         tradition: "Attentional control",
         cite: "Nideffer, 1976",
         golf: false,
-        body: "Aandacht varieert langs twee assen, breed-smal en extern-intern. Het vermogen bij je bal te blijven ondanks afleiding is het vasthouden van die stijl onder verstoring.",
+        body: "Aandacht varieert langs twee assen, breed-smal en extern-intern. Het vermogen bij je bal te blijven ondanks afleiding is het vasthouden van je aandachtsstijl onder verstoring.",
       },
       {
         name: "Overtuiging",
@@ -273,7 +273,7 @@ const nl = {
         tradition: "Reinvestment · Ironic process",
         cite: "Masters, 1992 · Toner & Moran, 2011 · Wegner, 1994",
         golf: true,
-        body: "Twee onafhankelijke tradities wijzen naar hetzelfde mechanisme. Sport-specifiek: bewust proberen een al-geautomatiseerde beweging te sturen verstoort die beweging juist — specifiek onderzocht bij golf-putten. Breder, uit de klinische psychologie: hoe meer je bewust probeert iets níet te doen, hoe groter de kans dat je het juist wél doet.",
+        body: "Twee onafhankelijke tradities wijzen op hetzelfde mechanisme. Sportspecifiek: bewust proberen een al geautomatiseerde beweging te sturen verstoort die beweging juist — specifiek onderzocht bij het putten. Breder, uit de klinische psychologie: hoe meer je bewust probeert iets níet te doen, hoe groter de kans dat je het juist wél doet.",
       },
       {
         name: "Beoordeling",
@@ -291,17 +291,17 @@ const nl = {
       },
       {
         name: "Analyse",
-        tradition: "Self-regulated learning · Attributietheorie",
+        tradition: "Self-regulated learning · Attribution theory",
         cite: "Zimmerman, 2000 · Cleary & Zimmerman, 2001 · Weiner, 1985",
         golf: false,
-        body: "Een cyclus van vooruitdenken, uitvoeren en terugkijken, al eerder specifiek toegepast op sport bij het vergelijken van zelfregulatie tussen experts en beginners. De oorzaak duiden leunt daarbinnen op de causale attributietheorie.",
+        body: "Een cyclus van vooruitdenken, uitvoeren en terugkijken, al eerder specifiek toegepast op sport bij het vergelijken van zelfregulatie tussen experts en beginners. Voor het duiden van de oorzaak steunt die cyclus op de causale attributietheorie.",
       },
       {
         name: "Transfer",
         tradition: "Explanatory style",
         cite: "Seligman, Nolen-Hoeksema, Thornton & Thornton, 1990",
         golf: false,
-        body: "Of een tegenslag als tijdelijk en specifiek wordt verklaard, of als blijvend en alles-overkoepelend, voorspelt aantoonbaar hoe sporters na een misser presteren.",
+        body: "Of een tegenslag als tijdelijk en specifiek wordt verklaard, of als blijvend en allesomvattend, voorspelt aantoonbaar hoe sporters na een misser presteren.",
       },
     ],
 
@@ -311,21 +311,21 @@ const nl = {
         tradition: "Prospect theory",
         cite: "Kahneman & Tversky, 1979 · Pope & Schweitzer, 2011",
         golf: true,
-        body: "Mensen wegen verlies zwaarder dan winst. Golf-specifiek toont onderzoek op 2,5 miljoen laser-gemeten putts op de PGA Tour dat zelfs de beste golfers ter wereld nauwkeuriger putten voor par dan voor birdie — omdat een bogey als verlies aanvoelt en een birdie als winst.",
+        body: "Mensen wegen verlies zwaarder dan winst. Golfspecifiek toont onderzoek naar 2,5 miljoen met lasers gemeten putts op de PGA Tour dat zelfs de beste golfers ter wereld nauwkeuriger putten voor par dan voor birdie — omdat een bogey als verlies aanvoelt en een birdie als winst.",
       },
       {
         name: "Druk",
         tradition: "Catastrophe model",
         cite: "Hardy, 1990 · Lazarus & Folkman, 1984",
         golf: false,
-        body: "Prestatie neemt niet geleidelijk af naarmate spanning toeneemt, maar stort bij hoge cognitieve anxiety plotseling in — een abrupte “catastrofe” in plaats van een geleidelijke daling. Breder ligt hier ook appraisal-theorie onder: hoe iemand een drukvolle situatie inschat, bepaalt mede of hij die aankan.",
+        body: "Prestatie neemt niet geleidelijk af naarmate spanning toeneemt, maar stort bij hoge cognitieve angst plotseling in — een abrupte “catastrofe” in plaats van een geleidelijke daling. Breder gezien ligt hier ook de appraisaltheorie onder: hoe iemand een situatie onder druk inschat, bepaalt mede of die persoon die aankan.",
       },
       {
         name: "Veerkracht",
         tradition: "Psychological resilience",
         cite: "Fletcher & Sarkar, 2012",
         golf: false,
-        body: "Wat succesvolle topsporters onderscheidt is niet de afwezigheid van tegenslag, maar hoe ze protectieve factoren inzetten om na een tegenslag terug te keren naar hun basisniveau.",
+        body: "Wat succesvolle topsporters onderscheidt, is niet de afwezigheid van tegenslag, maar hoe ze protectieve factoren inzetten om na een tegenslag terug te keren naar hun basisniveau.",
       },
       {
         name: "Paraatheid",
@@ -359,15 +359,15 @@ const nl = {
         a: ["Nee. Elk profiel is een eigen combinatie van sterktes en groeipunten."],
       },
       {
-        q: "Hoe vaak kan ik de assessment opnieuw afnemen?",
-        a: ["Geef jezelf 3 tot 6 maanden om met de adviezen uit je rapport te werken — reken op minstens 6 tot 10 rondes of 8 tot 12 trainingssessies. Neem daarna de assessment opnieuw af. Waar je écht iets hebt veranderd, zie je dat terug als een verschuiving in je profiel — niet in één procentje, maar in de richting waarin een heel domein meebeweegt."],
+        q: "Hoe vaak kan ik het assessment opnieuw doen?",
+        a: ["Geef jezelf 3 tot 6 maanden om met de adviezen uit je rapport te werken — reken op minstens 6 tot 10 rondes of 8 tot 12 trainingssessies. Doe daarna het assessment opnieuw. Waar je écht iets hebt veranderd, zie je dat terug als een verschuiving in je profiel — niet in één procentje, maar in de richting waarin een heel domein meebeweegt."],
       },
     ],
     bandsLabel: "Hoe je je scores leest",
     bands: [
       { range: "7,0 – 10", name: "Sterkte",      body: "Een duidelijke sterkte. Hier kun je op bouwen." },
-      { range: "4,0 – 7,0", name: "Werkgebied",  body: "Functioneel, met ruimte voor verbetering." },
-      { range: "0 – 4,0",  name: "Aandachtspunt", body: "Hier valt voor jou het meeste te winnen." },
+      { range: "4,0 – 6,9", name: "Werkgebied",  body: "Functioneel, met ruimte voor verbetering." },
+      { range: "0 – 3,9",  name: "Groeipunt", body: "Hier valt voor jou het meeste te winnen." },
     ],
   },
 
