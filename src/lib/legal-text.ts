@@ -94,7 +94,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
           sub("Als je een formulier op de website invult"),
           ul("De gegevens die je invult, bijvoorbeeld bij een aanvraag voor het Pro-programma: naam, e-mailadres, club en je gegevens als golfprofessional."),
           sub("Als je de website of portal bezoekt"),
-          ul("Technische gegevens zoals je IP-adres, browser en de pagina's die je bezoekt (zie hoofdstuk 7 over statistieken en cookies)."),
+          ul("Technische gegevens zoals je IP-adres, browser en de pagina's die je bezoekt (zie punt 7 over statistieken en cookies)."),
         ] },
         { h: "3. Waarvoor we je gegevens gebruiken en op welke grond", blocks: [
           { t: "table", id: "doelen", head: ["Doel", "Grond"], rows: [
@@ -171,11 +171,11 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             "je gegevens in een gangbaar formaat mee te krijgen;",
             "een gegeven toestemming in te trekken. Dat geldt voor de toekomst.",
           ),
-          p("Je account verwijderen doe je zelf in de portal: klik rechtsboven op je naam en kies 'Account verwijderen'. Voor de andere verzoeken mail je naar support@mentalroutine.com; we reageren binnen een maand. Een document dat een pro of team al van je heeft (een teamrapport of lesprogramma) blijft bij hen bestaan. Daarin staat je voornaam, en in de bijlage van een teamrapport voor de pro ook je handicap, je scores en je antwoord op de teamvraag. Wil je dat dat ook wordt verwijderd, mail ons dan. Gegevens over betalingen blijven bij Lemon Squeezy bewaard zolang de wet dat vraagt. Een golfprofessional verwijdert het eigen account via support, omdat er leerlingen of teams aan kunnen hangen."),
+          p("Je account verwijderen doe je zelf in de portal: klik rechtsboven op je naam en kies 'Account verwijderen'. Voor de andere verzoeken mail je naar support@mentalroutine.com; we reageren binnen een maand. Een document dat een pro of team al van je heeft (een teamrapport of lesprogramma) blijft bij hen bestaan. Daarin staat je voornaam, en in de bijlage van een teamrapport voor de pro ook je handicap, je scores en je antwoord op de teamvraag. Wil je dat dat ook wordt verwijderd, mail ons dan. Gegevens over betalingen blijven bij Lemon Squeezy bewaard zolang de wet dat vraagt. Een golfprofessional verwijdert het eigen account via support, omdat er leerlingen of teams aan gekoppeld kunnen zijn."),
           p("Ben je het niet eens met hoe we met je gegevens omgaan, dan horen we dat graag eerst zelf. Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens (autoriteitpersoonsgegevens.nl)."),
         ] },
         { h: "11. Leeftijd", blocks: [
-          p("De portal is bedoeld voor wie 16 jaar of ouder is. Het teamaanbod is voor spelers van 18 jaar en ouder; iedere speler bevestigt dat bij het aanmelden."),
+          p("De portal is bedoeld voor wie 16 jaar of ouder is. Het teamaanbod is voor spelers van 18 jaar of ouder; iedere speler bevestigt dat bij het aanmelden."),
         ] },
         { h: "12. Wijzigingen", blocks: [
           p("Als we deze verklaring wijzigen, zetten we de nieuwe versie op deze pagina met de datum erbij. Bij een wezenlijke wijziging laten we dat weten aan wie een account heeft."),
@@ -347,7 +347,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
         { h: "3. Prijzen en betalen", blocks: [
           ul(
             "Prijzen staan in Amerikaanse dollars. Betaal je in een andere valuta, dan rekent je bank of kaartuitgever om.",
-            "Betalingen lopen via **Lemon Squeezy**, die als verkoper (\"merchant of record\") optreedt. Lemon Squeezy rekent af, berekent de btw en stuurt je de betaalbon. Op de betaling zijn ook de voorwaarden van Lemon Squeezy van toepassing.",
+            "Betalingen lopen via **Lemon Squeezy**, die als verkoper (\"merchant of record\") optreedt. Lemon Squeezy rekent af, berekent de btw en stuurt je het betaalbewijs. Op de betaling zijn ook de voorwaarden van Lemon Squeezy van toepassing.",
             "Een lidmaatschap of abonnement loopt een jaar en wordt daarna steeds met een jaar verlengd, tot je opzegt. Opzeggen kan op elk moment; je houdt toegang tot het einde van de betaalde periode.",
             "We mogen prijzen wijzigen. Een wijziging geldt niet voor wat je al hebt gekocht. Voor een lopend abonnement geldt een nieuwe prijs pas vanaf de volgende verlenging, en we laten dat vooraf weten.",
           ),
@@ -393,7 +393,7 @@ export const LEGAL_TEXT: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
             "Een rapport beschrijft hoe je jezelf ziet, op basis van je eigen antwoorden op één moment. Het is geen meting van je gedrag op de baan.",
             "Het is geen medisch of psychologisch onderzoek en geen vervanging van hulp door een arts, psycholoog of andere zorgverlener.",
             "We beloven geen resultaat: geen lagere handicap, geen betere scores en geen gewonnen wedstrijden.",
-            "De teksten in rapporten worden geschreven met hulp van kunstmatige intelligentie en gecontroleerd door onze software. Zie je iets dat niet klopt, laat het weten; dan kijken we ernaar.",
+            "De teksten in rapporten worden geschreven met hulp van kunstmatige intelligentie en gecontroleerd door onze software. Zie je iets wat niet klopt, laat het weten; dan kijken we ernaar.",
           ),
         ] },
         { h: "9. Gebruik en eigendom", blocks: [

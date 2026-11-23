@@ -76,7 +76,7 @@ const nl = {
     },
     {
       k: "Wat je terugkrijgt",
-      v: "Elk domein krijgt een rapportcijfer van 0 tot 10. Je acht domeinscores worden samengevat in één Mental Index. Daarnaast zie je vier factoren — risicobereidheid, druk, veerkracht en paraatheid — die laten zien onder welke omstandigheden jouw routine standhoudt.",
+      v: "Elk domein krijgt een rapportcijfer van 0 tot 10. Je acht domeinscores worden samengevat in één Mental Index. Daarnaast zie je vier factoren — Risicobereidheid, Druk, Veerkracht en Paraatheid — die laten zien onder welke omstandigheden jouw routine standhoudt.",
     },
     {
       k: "Hoe scherp dat gemeten wordt",
@@ -147,7 +147,7 @@ const nl = {
 
     factorsQ: "Wat zijn de vier beïnvloedende factoren, en hoe verschillen ze van de domeinen?",
     factorsA: [
-      "Rond de acht domeinen liggen vier factoren: risicobereidheid, druk, veerkracht en paraatheid. Dit zijn geen stappen in je routine — het zijn de omstandigheden die bepalen of je routine standhoudt wanneer het spannend wordt.",
+      "Rond de acht domeinen liggen vier factoren: Risicobereidheid, Druk, Veerkracht en Paraatheid. Dit zijn geen stappen in je routine — het zijn de omstandigheden die bepalen of je routine standhoudt wanneer het spannend wordt.",
       "Ze tellen niet mee in je Mental Index, maar verklaren voor een groot deel wélke domeinen bij jou onder druk het eerst wankelen. Elke factor bekijken we door dezelfde vier lenzen — kennis, context, dialoog en zelf — wat zestien deelfactoren oplevert.",
     ],
     factors: ["Risicobereidheid", "Druk", "Veerkracht", "Paraatheid"],
@@ -163,7 +163,7 @@ const nl = {
     diagramLabel: "Twee niveaus",
     diagramTitle: "Waar je het ziet, en waar je het traint",
     diagramIntro:
-      "Dat onderscheid tussen twee lagen is niet alleen een meettechnisch detail — het bepaalt ook waar je daadwerkelijk kunt trainen. Een domein als Vertrouwen of een factor als Druk is zelf geen trainbare eenheid; het is een verzamelnaam, een optelling van onderliggende vaardigheden. Je kunt niet rechtstreeks “aan Vertrouwen werken” zoals je aan een spier zou werken — het begrip is te abstract om ergens aan te grijpen.",
+      "Dat onderscheid tussen twee lagen is niet alleen een meettechnisch detail — het bepaalt ook waar je daadwerkelijk kunt trainen. Een domein als Vertrouwen of een factor als Druk is zelf geen trainbare eenheid; het is een verzamelnaam, een optelling van onderliggende vaardigheden. Je kunt niet rechtstreeks “aan Vertrouwen werken” zoals je aan een spier zou werken — het begrip is te abstract om er grip op te krijgen.",
     diagramTopLabel: "Diagnostisch niveau",
     diagramTopCaption: "Acht domeinen en vier factoren. Hier zie je wáár het schuurt.",
     diagramTopNodes: ["Focus", "Vertrouwen", "Acceptatie"],
@@ -180,7 +180,7 @@ const nl = {
     axes: [
       {
         name: "De prestatie-as",
-        body: "meet hoe je een domein op dit moment daadwerkelijk uitvoert — hoe je nu, vandaag, omgaat met bijvoorbeeld focus, vertrouwen of acceptatie op de baan.",
+        body: "meet hoe je een domein op dit moment daadwerkelijk uitvoert — hoe je nu, vandaag, omgaat met bijvoorbeeld Focus, Vertrouwen of Acceptatie op de baan.",
       },
       {
         name: "De ontwikkelingsas",
@@ -208,7 +208,7 @@ const nl = {
     demoNormativeTag: "Normatief",
     demoNormativeHint: "Elke stelling los beoordeeld. Alles kan tegelijk hoog.",
     demoIpsativeTag: "Ipsatief",
-    demoIpsativeHint: "Tien punten, te verdelen. Hoger op de een betekent lager op de ander.",
+    demoIpsativeHint: "Tien punten, te verdelen. Hoger op de ene betekent lager op de andere.",
     demoQuestion: "Wat weegt het zwaarst in je beslissing bij een lastige slag?",
     demoItems: ["Risico inschatten", "Geduld bewaren", "Vertrouwen op je slag"],
     demoBudgetLabel: "Punten over",
@@ -217,8 +217,8 @@ const nl = {
     demoResetLabel: "Opnieuw",
 
     a1b: [
-      "Waar normatieve scores relatief zijn ten opzichte van een externe norm of populatie, zijn ipsatieve scores relatief ten opzichte van elkaar, binnen het eigen antwoordpatroon van die persoon: ze zeggen niets over hoe sterk je bent vergeleken met andere golfers, maar wel welk aspect bij jóú, in verhouding tot de rest, het zwaarst weegt. Je kunt niet uitwijken naar “ik scoor overal een 8” — het puntensysteem dwingt een rangorde af.",
-      "Dat mechanisme is precies wat je nodig hebt bij vragen waarin meerdere aspecten tegelijk tegen elkaar afgewogen moeten worden — bijvoorbeeld wanneer je moet aangeven hoeveel gewicht risico, geduld en zelfvertrouwen elk in jouw beslissing hebben op een lastige slag. Een normatieve vraag zou drie losse, mogelijk alle drie hoge scores opleveren. De ipsatieve vraag dwingt een rangorde af — en juist die rangorde is wat je werkelijke profiel blootlegt.",
+      "Waar normatieve scores relatief zijn ten opzichte van een externe norm of populatie, zijn ipsatieve scores relatief ten opzichte van elkaar, binnen je eigen antwoordpatroon: ze zeggen niets over hoe sterk je bent vergeleken met andere golfers, maar wel welk aspect bij jóú, in verhouding tot de rest, het zwaarst weegt. Je kunt niet uitwijken naar “ik scoor overal een 8” — het puntensysteem dwingt een rangorde af.",
+      "Dat mechanisme is precies wat je nodig hebt bij vragen waarin meerdere aspecten tegelijk tegen elkaar afgewogen moeten worden — bijvoorbeeld wanneer je moet aangeven hoeveel gewicht risico, geduld en zelfvertrouwen elk in jouw beslissing hebben bij een lastige slag. Een normatieve vraag zou drie losse, mogelijk alle drie hoge scores opleveren. De ipsatieve vraag dwingt een rangorde af — en juist die rangorde is wat je werkelijke profiel blootlegt.",
     ],
 
     q2: "Hoe is het model statistisch gevalideerd, met zoveel ipsatieve variabelen?",
@@ -252,14 +252,14 @@ const nl = {
         tradition: "Quiet Eye",
         cite: "Vickers, 1992, 1996 · Vine, Moore & Wilson, 2011",
         golf: true,
-        body: "Golfers die vlak vóór de backswing hun blik langer en stabieler op de bal houden, putten aantoonbaar nauwkeuriger — een effect dat getraind kan worden en meetbaar doorwerkt in wedstrijdprestatie bij topgolfers.",
+        body: "Golfers die vlak vóór de backswing hun blik langer en stabieler op de bal houden, putten aantoonbaar nauwkeuriger — een effect dat getraind kan worden en meetbaar doorwerkt in de wedstrijdprestaties van topgolfers.",
       },
       {
         name: "Concentratie",
         tradition: "Attentional control",
         cite: "Nideffer, 1976",
         golf: false,
-        body: "Aandacht varieert langs twee assen, breed-smal en extern-intern. Het vermogen bij je bal te blijven ondanks afleiding is het vasthouden van je aandachtsstijl onder verstoring.",
+        body: "Aandacht varieert langs twee assen, breed-smal en extern-intern. Het vermogen bij je bal te blijven ondanks afleiding is je aandachtsstijl vasthouden als er iets stoort.",
       },
       {
         name: "Overtuiging",
@@ -318,7 +318,7 @@ const nl = {
         tradition: "Catastrophe model",
         cite: "Hardy, 1990 · Lazarus & Folkman, 1984",
         golf: false,
-        body: "Prestatie neemt niet geleidelijk af naarmate spanning toeneemt, maar stort bij hoge cognitieve angst plotseling in — een abrupte “catastrofe” in plaats van een geleidelijke daling. Breder gezien ligt hier ook de appraisaltheorie onder: hoe iemand een situatie onder druk inschat, bepaalt mede of die persoon die aankan.",
+        body: "De prestatie neemt niet geleidelijk af naarmate de spanning toeneemt, maar stort bij hoge cognitieve angst plotseling in — een abrupte “catastrofe” in plaats van een geleidelijke daling. Breder gezien ligt hier ook de appraisaltheorie onder: hoe iemand een situatie onder druk inschat, bepaalt mede of iemand die situatie aankan.",
       },
       {
         name: "Veerkracht",
@@ -337,7 +337,7 @@ const nl = {
     ],
 
     outro:
-      "Elk van deze tradities levert een deel van de wetenschappelijke basis onder één of meer van de acht domeinen of vier factoren. Het model zelf — de indeling in acht domeinen binnen drie fasen, plus de vier beïnvloedende factoren — is de eigen, toegepaste vertaalslag van MentalRoutine bovenop die onderzoeksbasis, getest op ruim 1.000 golfers, van handicap 0 tot 36+.",
+      "Elk van deze tradities levert een deel van de wetenschappelijke basis onder één of meer van de acht domeinen of vier factoren. Het model zelf — de indeling in acht domeinen binnen drie fasen, plus de vier beïnvloedende factoren — is de eigen, toegepaste vertaalslag van MentalRoutine op basis van dat onderzoek, getest op ruim 1.000 golfers, van handicap 0 tot 36+.",
 
     refsTitle: "Geraadpleegde bronnen",
     refsToggle: "Toon alle bronnen",
@@ -360,7 +360,7 @@ const nl = {
       },
       {
         q: "Hoe vaak kan ik het assessment opnieuw doen?",
-        a: ["Geef jezelf 3 tot 6 maanden om met de adviezen uit je rapport te werken — reken op minstens 6 tot 10 rondes of 8 tot 12 trainingssessies. Doe daarna het assessment opnieuw. Waar je écht iets hebt veranderd, zie je dat terug als een verschuiving in je profiel — niet in één procentje, maar in de richting waarin een heel domein meebeweegt."],
+        a: ["Geef jezelf 3 tot 6 maanden om met de adviezen uit je rapport te werken — reken op 6 tot 10 rondes of 8 tot 12 trainingssessies. Doe daarna het assessment opnieuw. Waar je écht iets hebt veranderd, zie je dat terug als een verschuiving in je profiel — niet in één procentje, maar in de richting waarin een heel domein meebeweegt."],
       },
     ],
     bandsLabel: "Hoe je je scores leest",

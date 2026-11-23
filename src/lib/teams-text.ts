@@ -24,7 +24,7 @@
  *   valutaregel bij de prijs zegt dat en dat de bank omrekent. Geen euroteken op de pagina (de test keurt het af).
  *   De Engelse pagina weert buitenlandse teams niet en werft ze niet; ze zegt wel eerlijk dat het rapport de
  *   spelvormen van de Nederlandse NGF-competitie volgt.
- * - Alleen spelers van 18 jaar en ouder.
+ * - Alleen spelers van 18 jaar of ouder.
  * - WIE ZIET WAT (klopt met het rapport, 15-11-2026): het team en de captain lezen het teamrapport; daarin staan
  *   teamgemiddelden en per speler IN WOORDEN wat het hoogst ligt en waar die aan werkt. Schrijf dus altijd
  *   "geen cijfers PER SPELER", nooit kaal "zonder cijfers" (de test keurt dat af). Enige getal per speler dat in het
@@ -187,7 +187,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
           items: [
             "De scores per speler.",
             "Per speler één ding om op te letten en één vraag voor achteraf.",
-            "Een opzet voor een gesprek met één speler: vijf stappen, per speler waar het gesprek kan beginnen, en bij wie je het eerst aanbiedt.",
+            "Een opzet voor een gesprek met één speler: vijf stappen, per speler waar het gesprek kan beginnen, en aan wie je het eerst aanbiedt.",
             "Een lessenreeks van vier lessen als kapstok, met een kijkpunt per les.",
             "Oefenvormen voor de teamles.",
             "Een overzicht van de tijd die het de pro kost.",
@@ -214,7 +214,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       { title: "Wat zegt jullie team over zichzelf?", desc: "Iedere speler vult thuis het assessment in. Samen geeft dat een teamprofiel: hoe jullie jezelf zien, waar het team op leunt en waar het aan werkt." },
       { title: "Het past in jullie winter", desc: "Eén teamavond en vier trainingen met de paren, binnen jullie gewone trainingen. Het vraagt tijd en aandacht; verderop staat eerlijk hoeveel." },
       { title: "Ook voor een sceptisch team", desc: "Er komen geen cijfers per speler op tafel en niemand hoeft iets over zichzelf te vertellen. Het team spreekt af hoe het een wedstrijddag aanpakt." },
-      { title: "Lessen rond jullie thema", desc: "Jullie pro krijgt een eigen bijlage met de scores per speler en een lessenreeks van vier lessen als kapstok. Kiest het team zelf het thema, dan is dat een teamles per thema. Of er lessen komen, hoeveel en wat ze kosten, spreken jullie met de pro af." },
+      { title: "Lessen rond jullie thema", desc: "Jullie pro krijgt een eigen bijlage met de scores per speler en een lessenreeks van vier lessen als kapstok. Kiest het team zelf het thema, dan krijgt de pro in plaats daarvan een teamles per thema. Of er lessen komen, hoeveel en wat ze kosten, spreken jullie met de pro af." },
     ],
     lossLabel: "Waarom vóór de competitie", lossTitle: "Afspreken doe je", lossTitleEm: "niet op de eerste speeldag",
     lossItems: [
@@ -239,7 +239,7 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       "Niet inbegrepen: een herhaalmeting na het seizoen. Die is vrijwillig en kost $39 per speler.",
       "Eén persoon rekent af voor het hele team: de pro of de captain.",
       "De pro maakt het team aan en krijgt één betaallink voor het hele team. De spelers rekenen zelf niets af.",
-      "Voor teams met spelers van 18 jaar en ouder. Iedere speler bevestigt dat bij het aanmelden.",
+      "Voor teams met spelers van 18 jaar of ouder. Iedere speler bevestigt dat bij het aanmelden.",
     ],
     currencyNote: "Alle prijzen op deze pagina zijn in Amerikaanse dollars. Betaal je in euro's, dan rekent je bank het bedrag om.",
     howLabel: "4 stappen", howTitle: "Van idee", howTitleEm: "tot eerste teamles",
@@ -291,12 +291,12 @@ export const TEAM_TEXT: Record<TeamLang, TeamText> = {
       { q: "Hoeveel tijd kost het?", a: "Het assessment kost 20 tot 25 minuten per speler: online, thuis, in het Nederlands of Engels. Daarna één teamavond van anderhalf tot twee uur. In de winter vier trainingen met de paren, binnen jullie gewone trainingen; de captain kan ze leiden met het rapport. Per paar één kaartje: aankruisen op de teamavond, de rest samen invullen na de eerste training. Tijdens de competitie na elke speeldag een terugblik van twee minuten per paar. Lessen van de pro komen daar nog bij, als jullie die met de pro afspreken." },
       { q: "Wie ziet mijn gegevens?", a: "Het team en de captain lezen het teamrapport. Daarin staan teamgemiddelden, en per speler in woorden wat het hoogst ligt en waar die aan werkt. Er staan geen cijfers per speler in, op één ding na: je handicap kan in een voorbeeldindeling van de paren staan. Je persoonlijke rapport zien het team en de captain niet. De pro krijgt een bijlage met de scores per speler en ziet je antwoord op de teamvraag, of dat je die hebt overgeslagen. De beheerder van MentalRoutine kan de bijlage ook openen. Bij het aanmelden via de teamlink vink je aan dat je hiermee akkoord gaat. Je volledige persoonlijke rapport kan de pro alleen openen als jij dat apart aanvinkt; dat is niet verplicht en je kunt het later in de portal aan- of uitzetten. Stoppen met delen kan altijd in de portal.", link: "privacy" },
       { q: "Wie ziet mijn antwoord op de teamvraag?", a: "In het teamrapport staat alleen een telling voor het hele team, zonder namen: bijvoorbeeld drie keer stilte en twee keer één vaste zin. De pro ziet in de bijlage het antwoord per speler, of dat je de vraag hebt overgeslagen. Overslaan mag. Wat jullie als paar doen na een mindere slag, kruisen jullie samen aan op het kaartje." },
-      { q: "Wat als een speler niet wil meedoen of niet wil delen?", a: "Dan doet die speler niet mee; niemand is verplicht. Het teamrapport gaat over de spelers die het assessment hebben gedaan en hun uitkomst binnen het team delen. Een teamrapport kan vanaf vier spelers. Wie niet meedoet, kan later met een leeg kaartje gewoon met een paar meedoen." },
+      { q: "Wat als een speler niet wil meedoen of niet wil delen?", a: "Dan doet die speler niet mee; niemand is verplicht. Het teamrapport gaat over de spelers die het assessment hebben gedaan en hun uitkomst binnen het team delen. Een teamrapport kan vanaf vier spelers. Wie niet meedoet, kan later met een leeg kaartje gewoon in een paar spelen." },
       { q: "Wat gebeurt er als ik stop met delen?", a: "Stoppen kan altijd, in de portal. De pro ziet je scores en je rapport daar dan niet meer en een nieuw teamrapport is zonder jouw gegevens. Een rapport dat al gemaakt is, blijft bestaan, ook de bijlage voor de pro waarin je scores staan. Wil je dat die wordt verwijderd, of heb je een vraag of bezwaar die je niet via de captain of de pro wilt stellen? Mail " + TEAM_CONTACT + "." },
       { q: "Is dit iets voor een sceptisch team?", a: "Ja. Er komen geen cijfers per speler op tafel en niemand hoeft iets over zichzelf te vertellen. Het rapport levert praktische afspraken op voor de wedstrijddag, zoals wie beslist over het geven van een putt. Twijfel je? Blader eerst door een voorbeeldrapport." },
       { q: "Wat als ons team weinig verschillen laat zien?", a: "Dan zegt het rapport dat eerlijk. Het wijst dan geen thema of paren aan en noemt per speler geen hoogste of laagste onderdeel. Het team kiest zelf uit drie thema's, elk met een oefenvorm en een voorbeeldafspraak. De pro krijgt dan per thema een teamles in plaats van de lessenreeks. De wedstrijddag, de teamavond en de kaartjes blijven gewoon." },
       { q: "Hoeveel lessen horen erbij?", a: "Dat bepalen jullie samen met de pro. Er is geen vast aantal en geen vast ritme. In de bijlage voor de pro staat een lessenreeks van vier lessen; dat is een kapstok, geen verplichting. Kiest het team zelf het thema, dan staat er per thema een teamles in plaats van de lessenreeks." },
-      { q: "Kan ons jeugdteam meedoen?", a: "Nee. Het teamaanbod is voor teams met spelers van 18 jaar en ouder. Iedere speler bevestigt dat bij het aanmelden via de teamlink." },
+      { q: "Kan ons jeugdteam meedoen?", a: "Nee. Het teamaanbod is voor teams met spelers van 18 jaar of ouder. Iedere speler bevestigt dat bij het aanmelden via de teamlink." },
       { q: "Kunnen we na het seizoen opnieuw meten?", a: "Ja, als je dat wilt. Elke speler kan na het seizoen zelf een herhaalmeting doen. Die is vrijwillig, kost $39 per speler en zit niet in de teamprijs." },
       { q: "Worden we hier beter van in de competitie?", a: "Dat beloven we niet; niemand kan een uitslag garanderen. Wat je wel krijgt: een beeld van hoe het team zichzelf ziet, afspraken voor de wedstrijddag en een winter waarin jullie gericht oefenen op wat er tussen de slagen gebeurt." },
     ],
@@ -537,7 +537,7 @@ export const PRO_TEAM_BLOCK: Record<TeamLang, { label: string; title: string; ti
       "Bij elkaar voor je eerste team: reken, zonder de lessen en de trainingen zelf, op ruwweg tien uur. Bij een volgend team is dat minder.",
     ],
     gets: "Bij elk teamrapport krijg je een bijlage die alleen jij leest: de scores per speler, per speler één ding om op te letten, en een lessenreeks van vier lessen als kapstok. Kiest het team zelf het thema, dan staat er per thema een teamles in plaats van de lessenreeks. Het volledige persoonlijke rapport van een speler kun je alleen openen als die speler dat apart met je deelt.",
-    cost: "Het team betaalt bij aanmelding t/m 15 maart 2027 $15 per speler, met een maximum van $99 per team; daarna $49 en $299. Eén persoon rekent af voor het hele team: jij of de captain. Jouw lessen zitten daar niet in. Voor jou gelden de gewone regels van het Pro-programma: je eerste vijf lesprogramma's zijn gratis, daarna het abonnement. Een teamrapport telt niet mee voor die vijf.",
+    cost: "Het team betaalt bij aanmelding t/m 15 maart 2027 $15 per speler, met een maximum van $99 per team; daarna $49 per speler en maximaal $299 per team. Eén persoon rekent af voor het hele team: jij of de captain. Jouw lessen zitten daar niet in. Voor jou gelden de gewone regels van het Pro-programma: je eerste vijf lesprogramma's zijn gratis, daarna het abonnement. Een teamrapport telt niet mee voor die vijf.",
     link: "Bekijk wat je team krijgt en wat het jou vraagt",
     annexLink: "Bekijk een voorbeeld van de bijlage voor de pro",
   },

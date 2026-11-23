@@ -700,3 +700,14 @@ teampagina, "reset-zin" (zo in het teamrapport), "Mental Index", de Engelse meta
 "1.000+ golfers" zonder bron, het aantal vragen (40 + intake). Tests: `funnel-check.js`, `teams-check.js` (429), `legal-check.js`,
 `cookie-check.js` lokaal geslaagd.
 
+**Tweede ronde (23-11-2026, avond).** Drie nieuwe AI-lezers op de site zoals hij toen was (ook elk QuickScan-scherm doorlopen).
+Verwerkt: kleine taalpunten op de methodiek ("bij een lastige slag", lidwoorden, factornamen met hoofdletter), teampagina, pro-pagina
+en juridische teksten (leeftijd overal "18 jaar of ouder", "punt 7", "betaalbewijs"), homepage ("11 pagina's", "kies je doel",
+"benoemt", trainingsrapporten met kleine letter) en de teksten rond de QuickScan (uitslag, aanvraag, "11 pagina's", "al 40+ jaar").
+De teamvoorbeelden noemen nu ook woordenboek, kaartje per speler en gesprek met één speler.
+**Besluit opdrachtgever: de QuickScan-vragen en de antwoordschaal worden niet aangepast** (het meetinstrument). De acht vragen die in
+de eerste ronde wel waren aangepast (o.a. de tikfouten "liiging" en "puts", "teebox", "dubbelbogey") en het schaallabel "Helemaal"
+zijn teruggezet naar de stand van vóór 23-11. Wat in de vragen nog taalkundig schuurt, staat als lijst voor de opdrachtgever/Henk in
+het gesprek van 23-11 (niet gewijzigd). De omschrijving van Beoordeling op het uitslagscherm ("kans en risico van een slag inschatten")
+past inhoudelijk niet bij het model (Beoordeling = waarnemen wat de bal deed): ook een besluit voor de opdrachtgever.
+

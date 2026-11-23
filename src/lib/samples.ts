@@ -86,7 +86,7 @@ const nl = {
     quickscan: {
       name: "QuickScan",
       tag: "Gratis · ± 8 minuten",
-      body: "De eerste momentopname: de shotroutine, de sterkste stap en de grootste groeikans — met acties voor de volgende ronde. De QuickScan kijkt minder diep dan het assessment, dus de scores kunnen iets afwijken van het spelersprofiel.",
+      body: "De eerste momentopname: de shotroutine, de sterkste stap en de grootste groeikans — met actiepunten voor de volgende ronde. De QuickScan kijkt minder diep dan het assessment, dus de scores kunnen iets afwijken van het spelersprofiel.",
     },
     profile: {
       name: "Spelersprofiel",

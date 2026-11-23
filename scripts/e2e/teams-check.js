@@ -38,7 +38,7 @@ const ok = (cond, wat) => { console.log(cond ? "  ok  " : "  FOUT", wat); if (!c
       ok(tekst.includes(lang === "nl" ? "Eén persoon rekent af voor het hele team: de pro of de captain." : "One person pays for the whole team: the pro or the captain."), "één betaler: de pro of de captain");
       ok(/betaallink|payment link/i.test(await page.locator("main").textContent()), "de betaallink staat op de pagina (route getest met een echte betaling)");
       ok(tekst.includes("support@mentalroutine.com"), "contactregel zonder pro");
-      ok(lang === "nl" ? tekst.includes("18 jaar en ouder") : tekst.includes("aged 18 and over"), "18+");
+      ok(lang === "nl" ? tekst.includes("18 jaar of ouder") : tekst.includes("aged 18 and over"), "18+");
       ok(lang === "nl" ? tekst.includes("Stuur dit naar je pro") : tekst.includes("Send this to your pro"), `taal = ${lang}`);
       ok(!/koppel|opstelling|pairing|line-?up/i.test(tekst), "niets over koppels of opstelling");
       ok(!tekst.includes("—"), "geen gedachtestreepjes");
