@@ -707,7 +707,28 @@ en juridische teksten (leeftijd overal "18 jaar of ouder", "punt 7", "betaalbewi
 De teamvoorbeelden noemen nu ook woordenboek, kaartje per speler en gesprek met één speler.
 **Besluit opdrachtgever: de QuickScan-vragen en de antwoordschaal worden niet aangepast** (het meetinstrument). De acht vragen die in
 de eerste ronde wel waren aangepast (o.a. de tikfouten "liiging" en "puts", "teebox", "dubbelbogey") en het schaallabel "Helemaal"
-zijn teruggezet naar de stand van vóór 23-11. Wat in de vragen nog taalkundig schuurt, staat als lijst voor de opdrachtgever/Henk in
-het gesprek van 23-11 (niet gewijzigd). De omschrijving van Beoordeling op het uitslagscherm ("kans en risico van een slag inschatten")
+zijn teruggezet naar de stand van vóór 23-11. Wat in de vragen nog taalkundig schuurt, staat hieronder (niet gewijzigd; alleen aanpassen
+op besluit van de opdrachtgever/Henk). De omschrijving van Beoordeling op het uitslagscherm ("kans en risico van een slag inschatten")
 past inhoudelijk niet bij het model (Beoordeling = waarnemen wat de bal deed): ook een besluit voor de opdrachtgever.
+
+**Open: taalpunten in de QuickScan-vragen (bewust niet gewijzigd, `public/quiz.html` TRANSLATIONS.nl)**
+- Tikfouten: "liiging" (ligging) · "Na drie puts" (putts) · "Ik bepaal bij een slechte slag, wat…" (komma weg).
+- Grammatica: "Op een moeilijk par-3" (moeilijke par 3) · "kies ik een meest waarschijnlijke oorzaak" (de meest) · "denk ik kort
+  terug op wat ik de volgende keer…" · "stap ik terug en begin opnieuw" (begin ik) · "…hole eindigde" naast "zie ik" · "als losse slag,
+  niet als begin van…" (lidwoorden).
+- Vertaald Engels: "ik ga hem maken" (lukken) · "een slag terughalen" (voor de geest halen, 2×) · "neem ik een moment" · "herstart ik"
+  · "sluit ik alles om me heen uit" (buiten) · "teebox" (tee) · "dubbelbogey".
+- Niet neutraal: "vraag ik een pro of hij mee wil kijken" · "mijn medespeelster of -speler wat hij of zij heeft gezien" (omslachtig).
+- Krom: "zoek ik eerst bij mijn techniek" (de oorzaak ontbreekt) · "Na een approach die steeds links uitkomt" · "niet mijn beste slag ooit"
+  (club tegenover slag).
+- Antwoordschaal: "Helemaal niet … Helemaal" leest onaf; voorstel "Klopt helemaal niet / Klopt helemaal".
+- Uitslagscherm: de omschrijving van Beoordeling ("de kans en het risico van een slag inschatten") past niet bij het model.
+
+**Socialemedia-links (23-11-2026, `26391f7`)**: footer van de homepage en `sameAs` in `src/app/layout.tsx` wijzen naar de echte accounts
+(bron SocialScraper `src/engagement/growth.py` OWN_ACCOUNTS + YouTube van de opdrachtgever): Instagram en TikTok `mentalroutine.golf`,
+X `_MentalRoutine_`, YouTube `@MentalRoutineforGolfers`, Facebook-pagina `581594451713285`, LinkedIn-bedrijfspagina `129693942`
+(Facebook is nieuw in de footer). Waren verzonnen adressen (`instagram.com/mentalroutine` enz.).
+
+**Bekend, niet opgelost**: een grafiek op de homepage geeft in de browserconsole "<circle> attribute cx: Expected length, undefined"
+(niet zichtbaar voor bezoekers). De statische `<title>` in `public/quiz.html` zegt nog "| Mental Routine" (de JS zet per taal de goede).
 

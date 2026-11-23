@@ -91,6 +91,10 @@
   portal, dan de lijsten/citaten in `teams-text.ts` en de voorbeelden meewijzigen. Test: `node scripts/e2e/teams-check.js
   http://localhost:3123` (425 controles). Vervangen: sessieverslag §10.8. **De voorbeeld-PDF's zijn op 15-11-2026 opnieuw gemaakt
   met de portalcode na ronde 15–17 en de twee vinkjes (portal `538e1eb`), gecontroleerd en geplaatst.**
+  **Nederlandse tekst (23-11-2026, sessieverslag §12)**: bij Nederlands zet een script in de `<head>` `lang="nl"` + `translate="no"`
+  (Chrome "vertaalde" de Nederlandse tekst opnieuw: "Swing" werd "schommel"); NL-tabtitels in `src/lib/page-meta-nl.ts`. Twee
+  rondes nalezen verwerkt. **De QuickScan-vragen en de antwoordschaal nooit zelf aanpassen** (meetinstrument; besluit opdrachtgever
+  23-11); de open taalpunten daarin staan in §12. Socialemedia-links = de echte accounts uit SocialScraper.
   **Op 16-11-2026 opnieuw gemaakt met de drie nieuwe onderdelen (woordenboek, kaartje per speler, gesprek met één speler;
   portal `e74e888`, website `af5caba`): rapport 24–29 p., bijlage 7 p.; `teams-check.js` 429 controles. Verslag: portal-repo
   `docs/SESSIE_TEAMRAPPORT_16NOV2026.md`.**
