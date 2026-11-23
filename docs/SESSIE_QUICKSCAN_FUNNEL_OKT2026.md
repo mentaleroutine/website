@@ -732,3 +732,9 @@ X `_MentalRoutine_`, YouTube `@MentalRoutineforGolfers`, Facebook-pagina `581594
 **Bekend, niet opgelost**: een grafiek op de homepage geeft in de browserconsole "<circle> attribute cx: Expected length, undefined"
 (niet zichtbaar voor bezoekers). De statische `<title>` in `public/quiz.html` zegt nog "| Mental Routine" (de JS zet per taal de goede).
 
+**Oprichtingsjaar (23-11-2026, `b22ea6c`)**: "in 2016 startten zij MentalRoutine" → **2026**, in alle vijf talen (`translations.ts`,
+blok over de mensen achter MentalRoutine) en in de QuickScan (statisch + NL/EN). **Besluit opdrachtgever**: "Onderzoek onder 1.000+
+golfers sinds 2016" en "via onderzoek met meer dan 1.000 golfers vanaf 2016" blijven staan (het onderzoek begon in 2016; MentalRoutine
+zelf is van 2026). Daarmee vervalt het eerder genoemde punt "meer dan tien jaar onderzoek naast sinds 2016" niet: dat gaat over het
+onderzoek en klopt.
+

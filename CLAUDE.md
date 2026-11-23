@@ -94,7 +94,8 @@
   **Nederlandse tekst (23-11-2026, sessieverslag §12)**: bij Nederlands zet een script in de `<head>` `lang="nl"` + `translate="no"`
   (Chrome "vertaalde" de Nederlandse tekst opnieuw: "Swing" werd "schommel"); NL-tabtitels in `src/lib/page-meta-nl.ts`. Twee
   rondes nalezen verwerkt. **De QuickScan-vragen en de antwoordschaal nooit zelf aanpassen** (meetinstrument; besluit opdrachtgever
-  23-11); de open taalpunten daarin staan in §12. Socialemedia-links = de echte accounts uit SocialScraper.
+  23-11); de open taalpunten daarin staan in §12. Socialemedia-links = de echte accounts uit SocialScraper. MentalRoutine is in **2026** gestart; het onderzoek
+  met 1.000+ golfers loopt sinds 2016 (beide jaartallen kloppen, niet gelijktrekken).
   **Op 16-11-2026 opnieuw gemaakt met de drie nieuwe onderdelen (woordenboek, kaartje per speler, gesprek met één speler;
   portal `e74e888`, website `af5caba`): rapport 24–29 p., bijlage 7 p.; `teams-check.js` 429 controles. Verslag: portal-repo
   `docs/SESSIE_TEAMRAPPORT_16NOV2026.md`.**
