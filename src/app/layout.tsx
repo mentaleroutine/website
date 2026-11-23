@@ -77,12 +77,14 @@ const jsonLdOrganization = {
   name: "MentalRoutine",
   url: "https://www.mentalroutine.com",
   logo: "https://www.mentalroutine.com/logoMRpng.png",
+  // De echte accounts (bron: SocialScraper, OWN_ACCOUNTS; 23-11-2026). Verandert er een account, dan ook de footer in src/app/page.tsx.
   sameAs: [
-    "https://instagram.com/mentalroutine",
-    "https://tiktok.com/@mentalroutine",
-    "https://youtube.com/@mentalroutine",
-    "https://x.com/mentalroutine",
-    "https://linkedin.com/company/mentalroutine",
+    "https://www.instagram.com/mentalroutine.golf/",
+    "https://www.tiktok.com/@mentalroutine.golf",
+    "https://www.youtube.com/@MentalRoutineforGolfers",
+    "https://x.com/_MentalRoutine_",
+    "https://www.facebook.com/581594451713285",
+    "https://www.linkedin.com/company/129693942",
   ],
 };
 
